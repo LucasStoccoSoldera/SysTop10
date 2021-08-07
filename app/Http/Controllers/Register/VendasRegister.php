@@ -22,26 +22,29 @@ class VendasRegister extends Controller
      */
     protected function createVenda(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'IDVenda' => ['required', 'integer'],
-            'IDTipoPagamento' => ['required', 'integer'],
-            'IDLogistica' => ['required', 'integer'],
-            'IDCliente' => ['required', 'integer'],
-            'VTVenda' => ['required'],
-            'parcelasVenda' => ['required', 'integer'],
-            'statusVenda' => ['required', 'string'],
-        ],
-        [
-            'IDVenda.required' => 'ID obrigatório.',
-            'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
-            'IDLogistica.required' => 'Logistica obrigatória.',
-            'IDCliente.required' => 'Cliente obrigatório.',
-            'parcelasVenda.required' => 'Quantidade de parcelas obrigatória.',
-            'statusVenda.required' => 'Status da venda obrigatório.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'IDVenda' => ['required', 'integer'],
+                'IDTipoPagamento' => ['required', 'integer'],
+                'IDLogistica' => ['required', 'integer'],
+                'IDCliente' => ['required', 'integer'],
+                'VTVenda' => ['required'],
+                'parcelasVenda' => ['required', 'integer'],
+                'statusVenda' => ['required', 'string'],
+            ],
+            [
+                'IDVenda.required' => 'ID obrigatório.',
+                'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
+                'IDLogistica.required' => 'Logistica obrigatória.',
+                'IDCliente.required' => 'Cliente obrigatório.',
+                'parcelasVenda.required' => 'Quantidade de parcelas obrigatória.',
+                'statusVenda.required' => 'Status da venda obrigatório.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Venda = new Venda;
         $Venda->ven_id = $request->IDVenda;
@@ -56,49 +59,51 @@ class VendasRegister extends Controller
 
         $cont = 1;
         $venda_dados = Venda::find($request->IDVenda);
-        while($cont < $request->parcelasVenda){
+        while ($cont < $request->parcelasVenda) {
 
             $Receber = new Contas_a_Receber();
             $Receber->tpg_id = $request->IDTipoPagamento;
             $Receber->rec_descricao = "Venda para $request->IDCliente";
             $Receber->rec_ven_id = $request->IDVenda;
-            $Receber->rec_valor = ($request->VTVenda/$request->parcelasVenda) * $cont;
+            $Receber->rec_valor = ($request->VTVenda / $request->parcelasVenda) * $cont;
             $Receber->rec_parcelas = $request->parcelasVenda;
             $Receber->rec_data = ($venda_dados->ven_data->modify('+' . ($cont * 30) . ' days'));
             $Receber->rec_status = $request->statusVenda;
             $Venda->save();
-
         }
-            if($Receber){
-                return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);
-            }
+        if ($Receber) {
+            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);
         }
+    }
 
     protected function createItemVenda(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'IDCor' => ['required', 'integer'],
-            'IDDimensao' => ['required', 'integer'],
-            'IDProduto' => ['required', 'integer'],
-            'IDItemVenda' => ['required', 'integer'],
-            'qtdeItemVenda' => ['required', 'integer'],
-            'descricaoItemVenda' => ['required', 'string'],
-            'anexoItemVenda' => ['image'],
-            'VUItemVenda' => ['required'],
-        ],
-        [
-            'IDCor.required' =>'Cor obrigatória.',
-            'IDDimensao.required' => 'Dimensão obrigatória.',
-            'IDProduto.required' => 'Produto obrigatório.',
-            'IDItemVenda.required' => 'ID da venda obrigatório.',
-            'qtdeItemVenda.required' => 'Quantidade obrigatória.',
-            'descricaoItemVenda.required' => 'Descrição obrigatório.',
-            'anexoItemVenda.image' => 'O arquivo precisa ser uma imagem.',
-            'VUItemVenda.required' => 'Valor unitário obrigatório.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'IDCor' => ['required', 'integer'],
+                'IDDimensao' => ['required', 'integer'],
+                'IDProduto' => ['required', 'integer'],
+                'IDItemVenda' => ['required', 'integer'],
+                'qtdeItemVenda' => ['required', 'integer'],
+                'descricaoItemVenda' => ['required', 'string'],
+                'anexoItemVenda' => ['image'],
+                'VUItemVenda' => ['required'],
+            ],
+            [
+                'IDCor.required' => 'Cor obrigatória.',
+                'IDDimensao.required' => 'Dimensão obrigatória.',
+                'IDProduto.required' => 'Produto obrigatório.',
+                'IDItemVenda.required' => 'ID da venda obrigatório.',
+                'qtdeItemVenda.required' => 'Quantidade obrigatória.',
+                'descricaoItemVenda.required' => 'Descrição obrigatório.',
+                'anexoItemVenda.image' => 'O arquivo precisa ser uma imagem.',
+                'VUItemVenda.required' => 'Valor unitário obrigatório.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Venda_Detalhe = new Venda_Detalhe;
         $Venda_Detalhe->cor_id = $request->IDCor;
@@ -112,10 +117,8 @@ class VendasRegister extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
 
-            if($Venda_Detalhe){
-                return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
-            }
+        if ($Venda_Detalhe) {
+            return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
         }
+    }
 }
-
-

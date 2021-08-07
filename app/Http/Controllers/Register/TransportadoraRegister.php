@@ -18,19 +18,22 @@ class TransportadoraRegister extends Controller
      */
     protected function createTransportadora(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'nomeTrans' => ['required', 'string'],
-            'telefone' => ['required', 'telefone'],
-            'limitetransTrans' => ['required', 'integer'],
-        ],
-        [
-            'nomeTrans' => ['required', 'string'],
-            'telefone' => ['required', 'telefone'],
-            'limitetransTrans' => ['required', 'integer'],
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nomeTrans' => ['required', 'string'],
+                'telefone' => ['required', 'telefone'],
+                'limitetransTrans' => ['required', 'integer'],
+            ],
+            [
+                'nomeTrans' => ['required', 'string'],
+                'telefone' => ['required', 'telefone'],
+                'limitetransTrans' => ['required', 'integer'],
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Transportadora = new Transportadora;
         $Transportadora->trans_nome = $request->nomeTrans;
@@ -38,10 +41,8 @@ class TransportadoraRegister extends Controller
         $Transportadora->trans_limite_transporte = $request->limitetransTrans;
         $Transportadora->save();
 
-            if($Transportadora){
-                return response()->json(['status' => 1, 'msg' => 'Transportadora cadastrada com sucesso!']);
-            }
+        if ($Transportadora) {
+            return response()->json(['status' => 1, 'msg' => 'Transportadora cadastrada com sucesso!']);
         }
+    }
 }
-
-

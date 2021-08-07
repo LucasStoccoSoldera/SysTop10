@@ -17,27 +17,28 @@ class LogisticaRegister extends Controller
      */
     protected function createLogistica(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'pacoteLogistica' => ['required', 'integer'],
-            'transLogistica' => ['required', 'integer'],
-        ],
-        [
-            'pacoteLogistica.required' => 'Pacote obrigatório.',
-            'transLogistica.required' => 'Transportadora obrigatória.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'pacoteLogistica' => ['required', 'integer'],
+                'transLogistica' => ['required', 'integer'],
+            ],
+            [
+                'pacoteLogistica.required' => 'Pacote obrigatório.',
+                'transLogistica.required' => 'Transportadora obrigatória.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Logistica = new Logistica;
         $Logistica->pac_id = $request->pacoteLogistica;
         $Logistica->trans_id = $request->transLogistica;
         $Logistica->save();
 
-            if($Logistica){
-                return response()->json(['status' => 1, 'msg' => 'Logistica cadastrada com sucesso!']);
-            }
+        if ($Logistica) {
+            return response()->json(['status' => 1, 'msg' => 'Logistica cadastrada com sucesso!']);
         }
+    }
 }
-
-

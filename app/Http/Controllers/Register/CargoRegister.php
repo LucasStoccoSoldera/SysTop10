@@ -15,24 +15,25 @@ class CargoRegister extends Controller
 {
     protected function createCargo(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'descricaoCargo' => ['required', 'string'],
-        ],
-        [
-            'descricaoCargo.required' => 'Cargo obrigatório.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'descricaoCargo' => ['required', 'string'],
+            ],
+            [
+                'descricaoCargo.required' => 'Cargo obrigatório.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Cargo = new Cargo;
         $Cargo->car_descricao = $request->descricaoCargo;
         $Cargo->save();
 
-            if($Cargo){
-                return response()->json(['status' => 1, 'msg' => 'Cargo cadastrado com sucesso!']);
-            }
+        if ($Cargo) {
+            return response()->json(['status' => 1, 'msg' => 'Cargo cadastrado com sucesso!']);
         }
+    }
 }
-
-

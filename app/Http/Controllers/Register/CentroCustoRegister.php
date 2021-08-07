@@ -18,29 +18,32 @@ class CentroCustoRegister extends Controller
      *
      * @var bool
      */
-        protected $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
     /**
      * @return \App\Models\Centro_Custo
      */
     protected function createCentroCusto(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'NomeCentroCusto' => ['required', 'string'],
-        ],
-        [
-            'NomeCentroCusto.required' => 'Nome do centro de custo obrigatório.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'NomeCentroCusto' => ['required', 'string'],
+            ],
+            [
+                'NomeCentroCusto.required' => 'Nome do centro de custo obrigatório.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
         $Centro_Custo = new Centro_Custo;
         $Centro_Custo->cc_descricao = $request->NomeCentroCusto;
         $Centro_Custo->save();
 
-            if($Centro_Custo){
-                return response()->json(['status' => 1, 'msg' => 'Centro cadastrado com sucesso!']);
-            }
+        if ($Centro_Custo) {
+            return response()->json(['status' => 1, 'msg' => 'Centro cadastrado com sucesso!']);
         }
+    }
 }

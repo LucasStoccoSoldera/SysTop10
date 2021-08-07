@@ -23,29 +23,32 @@ class CompraRegister extends Controller
      */
     protected function createCompra(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'IDCompras' => ['required', 'integer'],
-            'descricaoCompras' => ['string'],
-            'tpgpagtoCompras' => ['required', 'string'],
-            'ccCompras' => ['required', 'string'],
-            'parcelasCompra' => ['required', 'integer'],
-            'qtdeCompras' => ['required', 'integer'],
-            'VTCompras' => ['required'],
-            'dataCompras' => ['required', 'date'],
-            'datapagCompras' => ['date'],
-            'obsCompras' => ['string'],
-        ],
-        [
-            'IDCompras.required' =>'ID da compra obrigatório.',
-            'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
-            'ccCompras.required' => 'Centro de Custo obrigatório.',
-            'parcelasCompra.required' => 'Quantidade de parcelas obrigatório.',
-            'qtdeCompras.required' => 'Quantidade obrigatória.',
-            'dataCompras.required' => 'Data da compra obrigatória.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'IDCompras' => ['required', 'integer'],
+                'descricaoCompras' => ['string'],
+                'tpgpagtoCompras' => ['required', 'string'],
+                'ccCompras' => ['required', 'string'],
+                'parcelasCompra' => ['required', 'integer'],
+                'qtdeCompras' => ['required', 'integer'],
+                'VTCompras' => ['required'],
+                'dataCompras' => ['required', 'date'],
+                'datapagCompras' => ['date'],
+                'obsCompras' => ['string'],
+            ],
+            [
+                'IDCompras.required' => 'ID da compra obrigatório.',
+                'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
+                'ccCompras.required' => 'Centro de Custo obrigatório.',
+                'parcelasCompra.required' => 'Quantidade de parcelas obrigatório.',
+                'qtdeCompras.required' => 'Quantidade obrigatória.',
+                'dataCompras.required' => 'Data da compra obrigatória.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Compras = new Compras;
         $Compras->com_id = $request->IDCompras;
@@ -60,58 +63,61 @@ class CompraRegister extends Controller
         $Compras->com_observacoes = $request->obsCompras;
         $Compras->save();
 
-            $Conta = new Contas_a_Pagar();
-            $Conta->tpg_id = $request->tpgpagtoCompras;
-            $Conta->cc_id = $request->ccCompras;
-            $Conta->con_descricao =  "Compra de $request->descricaoCompras";
-            $Conta->con_tipo = "Variável";
-            $Conta->con_valor_final = $request->VTCompras;
-            $Conta->con_data_venc = $request->datapagCompras;
-            $Conta->con_parcelas = $request->parcelasCompras;
-            $Conta->con_data_pag = "";
-            $Conta->save();
+        $Conta = new Contas_a_Pagar();
+        $Conta->tpg_id = $request->tpgpagtoCompras;
+        $Conta->cc_id = $request->ccCompras;
+        $Conta->con_descricao =  "Compra de $request->descricaoCompras";
+        $Conta->con_tipo = "Variável";
+        $Conta->con_valor_final = $request->VTCompras;
+        $Conta->con_data_venc = $request->datapagCompras;
+        $Conta->con_parcelas = $request->parcelasCompras;
+        $Conta->con_data_pag = "";
+        $Conta->save();
 
-            $cont = 1;
-            $conta_last = DB::table('contas_a_pagar')->get()->last()->con_id;
-            $compras_dados = Compras::find($request->IDCompras);
+        $cont = 1;
+        $conta_last = DB::table('contas_a_pagar')->get()->last()->con_id;
+        $compras_dados = Compras::find($request->IDCompras);
 
-            while($cont < $request->parcelasCompras){
+        while ($cont < $request->parcelasCompras) {
 
-                $Parcela = new Parcelas();
-                $Parcela->tpg_id = $request->tpgpagtoCompras;
-                $Parcela->par_conta = $conta_last;
-                $Parcela->par_numero = $cont;
-                $Parcela->par_valor = ($request->VTCompras/$request->parcelasCompras) * $cont;
-                $Parcela->par_status = "Em Aberto";
-                $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
-                $Parcela->save();
-            }
-
-            if($Parcela){
-                return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!']);
-            }
+            $Parcela = new Parcelas();
+            $Parcela->tpg_id = $request->tpgpagtoCompras;
+            $Parcela->par_conta = $conta_last;
+            $Parcela->par_numero = $cont;
+            $Parcela->par_valor = ($request->VTCompras / $request->parcelasCompras) * $cont;
+            $Parcela->par_status = "Em Aberto";
+            $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            $Parcela->save();
         }
+
+        if ($Parcela) {
+            return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!']);
+        }
+    }
 
 
     protected function createItemCompra(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'IDItemCompra' => ['required', 'integer'],
-            'IDFornecedor' => ['required', 'integer'],
-            'IDProduto' => ['required', 'integer'],
-            'qtdeItemCompra' => ['required', 'integer'],
-            'descricaoItemCompra' => ['required', 'string'],
-        ],
-        [
-            'IDItemCompra.required' => 'ID da compra obrigatório.',
-            'IDFornecedor.required' => 'Fornecedor obrigatório.',
-            'IDProduto.required' => 'Produto obrigatório.',
-            'qtdeItemCompra.required' => 'Quantidade obrigatória.',
-            'descricaoItemCompra.required' => 'Descrição obrigatória.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'IDItemCompra' => ['required', 'integer'],
+                'IDFornecedor' => ['required', 'integer'],
+                'IDProduto' => ['required', 'integer'],
+                'qtdeItemCompra' => ['required', 'integer'],
+                'descricaoItemCompra' => ['required', 'string'],
+            ],
+            [
+                'IDItemCompra.required' => 'ID da compra obrigatório.',
+                'IDFornecedor.required' => 'Fornecedor obrigatório.',
+                'IDProduto.required' => 'Produto obrigatório.',
+                'qtdeItemCompra.required' => 'Quantidade obrigatória.',
+                'descricaoItemCompra.required' => 'Descrição obrigatória.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Compras_Detalhe = new Compras_Detalhe;
         $Compras_Detalhe->com_id = $request->IDItemCompra;
@@ -123,10 +129,8 @@ class CompraRegister extends Controller
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
         $Compras_Detalhe->save();
 
-            if($Compras_Detalhe){
-                return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
-            }
+        if ($Compras_Detalhe) {
+            return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
+        }
     }
 }
-
-

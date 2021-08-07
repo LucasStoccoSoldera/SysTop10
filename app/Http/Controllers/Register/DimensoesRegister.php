@@ -17,24 +17,25 @@ class DimensoesRegister extends Controller
      */
     protected function createDimensao(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'nomeDimensao' => ['required', 'string'],
-        ],
-        [
-            'nomeDimensao.required' => 'Dimensão obrigatória.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nomeDimensao' => ['required', 'string'],
+            ],
+            [
+                'nomeDimensao.required' => 'Dimensão obrigatória.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Dimensao = new Dimensao;
         $Dimensao->dim_descricao = $request->nomeDimensao;
         $Dimensao->save();
 
-            if($Dimensao){
-                return response()->json(['status' => 1, 'msg' => 'Dimensão cadastrada com sucesso!']);
-            }
+        if ($Dimensao) {
+            return response()->json(['status' => 1, 'msg' => 'Dimensão cadastrada com sucesso!']);
         }
+    }
 }
-
-

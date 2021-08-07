@@ -16,23 +16,26 @@ class TipoPagtoRegister extends Controller
      */
     protected function createTipoPagto(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'TPTipoPagto' => ['required', 'string'],
-        ],
-        [
-            'TPTipoPagto.required' => 'Tipo de pagamento obrigatório.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'TPTipoPagto' => ['required', 'string'],
+            ],
+            [
+                'TPTipoPagto.required' => 'Tipo de pagamento obrigatório.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        
+
         $TipoPagto = new TipoPagto;
         $TipoPagto->tpg_descricao = $request->TPTipoPagto;
         $TipoPagto->save();
 
-            if($TipoPagto){
-                return response()->json(['status' => 1, 'msg' => 'Tipo de pagamento cadastrado com sucesso!']);
-            }
+        if ($TipoPagto) {
+            return response()->json(['status' => 1, 'msg' => 'Tipo de pagamento cadastrado com sucesso!']);
         }
+    }
 }

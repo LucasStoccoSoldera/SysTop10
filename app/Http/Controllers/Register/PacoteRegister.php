@@ -18,27 +18,28 @@ class PacoteRegister extends Controller
     protected function createPacote(Request $request)
     {
 
-        $validator = Validator::make($request->all(),[
-            'nomePacotes' => ['required', 'string'],
-            'descricaoPacotes' => ['required', 'string'],
-        ],
-        [
-            'nomePacotes.required' => 'Pacote obrigatório.',
-            'descricaoPacotes.required' => 'Dimensão obrigatória.',
-       ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'nomePacotes' => ['required', 'string'],
+                'descricaoPacotes' => ['required', 'string'],
+            ],
+            [
+                'nomePacotes.required' => 'Pacote obrigatório.',
+                'descricaoPacotes.required' => 'Dimensão obrigatória.',
+            ]
+        );
 
-        if($validator->fails()){
-            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Pacote = new Pacote;
         $Pacote->pac_dimensao = $request->nomePacotes;
         $Pacote->pac_descricao = $request->descricaoPacotes;
         $Pacote->save();
 
-            if($Pacote){
-                return response()->json(['status' => 1, 'msg' => 'Pacote cadastrado com sucesso!']);
-            }
+        if ($Pacote) {
+            return response()->json(['status' => 1, 'msg' => 'Pacote cadastrado com sucesso!']);
         }
+    }
 }
-
-
