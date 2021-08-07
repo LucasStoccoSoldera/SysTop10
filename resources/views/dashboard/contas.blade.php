@@ -520,7 +520,7 @@
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Valor Total:</label> <label style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="VTCompras" id="VTCompras" class="dinheiro form-control" value="{{ old('VTCompras') }}" disabled>
+                                    <input type="text" name="VTCompras" id="VTCompras" class="dinheiro valor form-control" value="{{ old('VTCompras') }}" disabled>
 
                                     <span class="invalid-feedback VTCompras_error" role="alert">
                                     </span>
@@ -745,7 +745,7 @@
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Valor Total Item:</label> <label style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra" class="form-control" disabled value="{{ old('valorTotalItemCompra') }}">
+                                    <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra" class="valor form-control" disabled value="{{ old('valorTotalItemCompra') }}">
 
                                     <span class="invalid-feedback valorItemCompra_error" role="alert">
                                     </span>
@@ -870,9 +870,9 @@ $(document).ready(function(){
          }
     });
 });
-    $('#valorTotalItemCompra').val('#qtdeItemCompra'.val() * '#valorItemCompra'.val());
+    $('#valorTotalItemCompra').val('#qtdeItemCompra'.val() * '#valorItemCompra'.val()); //auto implementa o valor total de um item da compra
 
-    $('#VTCompras').on('', function(){
+    $('#VTCompras').on('não sei o que colocar aqui', function(){ //auto implementa o valor total da compra puxando todos os itens
         $.ajax({
             headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -885,7 +885,7 @@ $(document).ready(function(){
                $('#VTCompras').val(data_decoded.total);
          }
     });
-    })
+    });
 });
 </script>
 @endpush
