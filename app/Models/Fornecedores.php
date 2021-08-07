@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Fornecedores extends Model
+{
+    use HasFactory;
+    public $table='fornecedor';
+
+    protected $fillable = [
+        'for_nome',
+        'for_estado',
+        'for_cidade',
+        'for_bairro',
+        'for_rua',
+        'for_numero',
+        'for_telefone',
+        'for_cpf_cnpj',
+        'for_cep',
+    ];
+}
+

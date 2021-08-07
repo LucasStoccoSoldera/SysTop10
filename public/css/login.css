@@ -1,0 +1,150 @@
+
+    .problema{
+     width: 100%;
+     float: left;
+     height: 50px;
+     background-color: #eb1656;
+     color: #fff;
+     text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin:0;
+    }
+
+    .row-login{
+        width: 50%;
+        height: 100%;
+        float: left;
+        margin-left: 15%;
+    }
+
+    #login{
+        margin-top: 234px;
+        float: left;
+        height: 475;
+        width:432px;
+
+    }
+    #register{
+        margin-top: 50px;
+        float: left;
+        margin-left: 50px;
+        height: 870px;
+        width:432px;
+    }
+    #tamanho-total{
+        height: 100%;
+        width: 100%;
+    }
+
+    #letra-preta{
+        color: black;
+    }
+    #quebra{
+        margin-right: 200px;
+    }
+
+    #btn-login{
+        width: 100%;
+        height: 60px;
+        margin-top: 20px;
+        bottom: auto;
+    }
+    #link{
+        padding: 0;
+        margin-left: 0;
+        color: #2cacec;
+    }
+
+    .strong{
+        color:#2cacec ;
+    }
+
+    .emcima{
+    height: 100px;
+    width: 100%;
+    background-color: #2cacec;
+    }
+    .barra{
+        height: 10px;
+        width: 100%;
+        background-color: #2cacec;
+        }
+        .barra-vertical{
+            height: 870px;
+            margin-top: 50px;
+            margin-bottom: 300px;
+            width: 5px;
+            float: left;
+            margin-left: 65px;
+            background-color: #2cacec;
+            align-items: center;
+            justify-content: center;
+            }
+        .geral{
+            height: 920px;
+            width: 100%;
+        }
+        .junto{
+            height: 100%;
+            width:969px ;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        .campos{
+            font-size: 22px;
+            font-weight: 600;
+            float: left;
+            margin-left: 15px;
+            margin-right: 300px;
+            margin-top: 20px;
+        }
+
+        .campos-grande{
+            font-size: 22px;
+            font-weight: 600;
+            float: left;
+            margin-left: 15px;
+            margin-right: 150px;
+            margin-top: 20px;
+        }
+        #reset{
+            justify-content: center;
+            vertical-align: center;
+            margin-top: 337px;
+            height: 180px;
+            width:650px;
+        }
+
+        #reset-login{
+            float: right;
+            margin-right: 5%;
+            margin-top: 75px;
+            height: 75px;
+            width: 250px;
+        }
+
+        #reset-site{
+            float: left;
+            margin-left: 5%;
+            margin-top: 75px;
+            height: 75px;
+            width: 250px;
+        }
+
+        #row-reset{
+            justify-content: center;
+            vertical-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .voltar_login{
+            float: left;
+            width: 100px;
+            height: 100%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            margin-left: 25px;
+        }

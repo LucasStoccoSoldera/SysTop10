@@ -1,0 +1,1003 @@
+@extends('layouts.header-footer')
+    @section('title', 'Produtos - TopSystem')
+        @section('menu-principal')
+            <div class="sidebar">
+                <!--
+                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+            -->
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="javascript:void(0)" class="simple-text logo-mini">
+                    10
+                    </a>
+                    <a href="javascript:void(0)" class="simple-text logo-normal">
+                    Top System
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li >
+                    <a href="{{  route('admin')  }}">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p>Página Inicial</p>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="{{  route('admin.usuario')  }}">
+                        <i class="tim-icons icon-single-02"></i>
+                        <p>Usuários</p>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="{{  route('admin.cliente')  }}">
+                        <i class="tim-icons icon-satisfied"></i>
+                        <p>Clientes</p>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="{{  route('admin.financeiro')  }}">
+                        <i class="tim-icons icon-coins"></i>
+                        <p>Financeiro</p>
+                    </a>
+                    </li>
+                    <li class="active">
+                    <a href="{{  route('admin.produto')  }}">
+                        <i class="tim-icons icon-components"></i>
+                        <p>Produtos</p>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="{{  route('admin.estoque')  }}">
+                        <i class="tim-icons icon-bag-16"></i>
+                        <p>Estoque</p>
+                    </a>
+                    </li>
+                    <li>
+                    <li>
+                    <a href="{{  route('admin.fornecedor')  }}">
+                        <i class="tim-icons icon-badge"></i>
+                        <p>Fornecedores</p>
+                    </a>
+                    </li>
+                    <li>
+                        <a href="{{  route('admin.detalhe')  }}">
+                            <i class="tim-icons icon-pin"></i>
+                            <p>Gerenciamento Geral</p>
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            @endsection
+    @section('content')
+        <div class="content">
+            <div class="col-12">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title" id="no-margin">Resumo de Produtos</h2><br>
+                            </div>
+                        <div>
+                        <div class="col-auto justify-content-md-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Quantidade de Produtos:</h4>
+                        <h3 class="dados-resumo"  style="color: #2caeec;">{{$dado1}}</h3>
+                        </div>
+                        <div class="col-auto justify-content-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Produto mais Vendido:</h4>
+                        <h3 class="dados-resumo" style="color: #2caeec;">{{$dado2}}</h3>
+                        </div>
+                        <div class="col-auto justify-content-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Produtos em Promoção:</h4>
+                        <h3 class="dados-resumo" style="color: #2caeec;">{{$dado3}}</h3>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="col-12">
+                    <div class="row">
+                          <div class="card">
+                              <div>
+                          <form class="form" id="form-consulta" method="POST" action="" >
+                              <div class="card-header">
+                                  <h2 class="card-title"> Filtrar Produtos</h2>
+                              </div>
+                              <div class="">
+                                  <div class="campo">
+                              <label for="nome" class="campos">Nome do Produto</label>
+
+                          <div class="input" id="nome">
+                              <input name="txt_nome" id="nome" type="text" class="form-control-filtro @error('txt_nome') is-invalid @enderror">
+
+                                  @error('txt_nome')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $errors }}</strong>
+                                          </span>
+                                  @enderror
+                          </div>
+                          </div>
+                          <div class="campo">
+                          <label for="material" class="campos">Material</label>
+
+                          <div class="input" id="nome">
+                                  <input name="txt_material" id="nome" type="text" class="form-control-filtro @error('txt_material') is-invalid @enderror">
+
+                                  @error('txt_material')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $errors }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
+                          </div>
+                          <div class="campo">
+                          <label for="dimensao" class="campos">Dimensão</label>
+
+                          <div class="input"id="nome">
+                                      <input name="txt_dimensao" id="nome" type="text" class="form-control-filtro @error('txt_dimensao') is-invalid @enderror">
+
+                                      @error('txt_dimensao')
+                                          <span class="invalid-feedback" role="alert">
+                                              <strong>{{ $errors }}</strong>
+                                          </span>
+                                      @enderror
+                                  </div>
+                          </div>
+                          <div class="campo float-right" id="botao">
+                                  <button class="btn btn-primary btn-block float-right" id="btn-form-consulta">Filtrar</button>
+                          </div>
+                              </div>
+                              </form>
+                              </div>
+                          </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                            <div class="col-8">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Consulta de Produtos <button class="btn btn-primary btn-block" id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                                Nome
+                                            </th>
+                                            <th>
+                                                Tipo
+                                            </th>
+                                            <th>
+                                                Pedido Mínimo
+                                            </th>
+                                            <th class="text-right">
+                                                Preço Custo
+                                            </th>
+                                            <th class="text-right">
+                                                Preço Venda
+                                            </th>
+                                            <th class="text-right">
+                                            <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach ($produtos as $produto)
+                                            <tr>
+                                                <td>
+                                                {{$produto['pro_nome']}}
+                                                </td>
+                                                <td>
+                                                    {{$produto['tpp_id']}}
+                                                </td>
+                                                <td>
+                                                    {{$produto['pro_pedidominimo']}}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{$produto['pro_precocusto']}}
+                                                </td>
+                                                <td class="text-right">
+                                                    {{$produto['pro_precovenda']}}
+                                                </td>
+                                                <td class="text-right">
+                                                <a href="#" class="btn btn-primary"id="alter"><i class="tim-icons icon-pencil"></i></a>
+                                                <button  href="#" class="btn btn-primary red" id="excluir-pro" name="excluir-produto" data-id="{{$produto['pro_id']}}" onclick="showDelete({{$produto['pro_id']}}, `{{route('admin.delete.produto')}}`);" style="padding: 11px 25px;"><i class="tim-icons icon-simple-remove"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                            <div class="col-4">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Detalhes do Produto </h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                            Material
+                                            </th>
+                                            <th>
+                                            Dimensões
+                                            </th>
+                                            <th>
+                                            Cores
+                                            </th>
+                                            <th class="text-center">
+                                            Gravura?
+                                            </th>
+                                            <th class="text-center">
+                                            Terceirizado?
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach ($produtos as $produto)
+                                            <tr>
+                                                <td>
+                                                {{$produto['mat_id']}}
+                                                </td>
+                                                <td>
+                                                {{$dimensoes}}
+                                                </td>
+                                                <td>
+                                                {{$cores}}
+                                                </td>
+                                                <td class="text-center">
+                                                {{$gravura}}
+                                                </td>
+                                                <td class="text-center">
+                                                {{$terceirizado}}
+                                                </td>
+                                            </tr>
+                                         @endforeach
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        @endsection
+        @section('sub-menu')
+        <div class="add">
+            <div class="dropup show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <img src="../img/dash/addbtn.png">
+            </a>
+            <div class="dropdown-menu" id="add-menu">
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterProdutos"><img src="../img/dash/cadastro_produtos.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterTipoProduto"><img src="../img/dash/logistica.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterMaterial"><img src="../img/dash/materia_prima.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterDimensao"><img src="../img/dash/dimensao.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterCores"><img src="../img/dash/cores.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterPacotes"><img src="../img/dash/pacote.png" width="75" height="75"></a>
+            </div>
+            </div>
+        </div>
+        @endsection
+@section('modals')
+
+@isset($msgRegistrar)
+<x-alert-register :msgRegistrar="$msgRegistrar"/>
+@endisset
+
+  <div class="modal fade" id="modalRegisterProdutos" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formRegisterProdutos" method="POST" autocomplete="off" enctype="multipart/form-data"  action="{{route('admin.create.produto')}}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cadastrar Produtos</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">ID:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="IDProduto" id="IDProduto" class="form-control" maxlength="6" value="{{ old('IDProduto') }}" placeholder="ID do Produto" autofocus>
+                                <span class="invalid-feedback IDProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Nome do Produto:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="NomeProduto" id="NomeProduto" class="form-control" maxlength="80" value="{{ old('NomeProduto') }}" placeholder="Entre com o Nome">
+                                <span class="invalid-feedback NomeProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Tipo de Produto:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="TipoProduto" id="TipoProduto" class="form-control" maxlength="50" value="{{ old('TipoProduto') }}" placeholder="Selecione com o Tipo do Produto">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach($tipos as $tipo)
+                                    <option value="{{$tipo['tpp_id']}}">{{$tipo['tpp_descricao']}}</option>
+                                  @endforeach
+                                </select>
+                                <span class="invalid-feedback TipoProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Preço de Custo:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="PCProduto" id="PCProduto" class="form-control" onkeypress="mascara(this, 'R$####,##')" maxlength="9" value="{{ old('PCProduto') }}" placeholder="Entre com o Preço de Custo">
+                                <span class="invalid-feedback PCProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Preço de Venda:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="PVProduto" id="PCVenda" class="form-control" onkeypress="mascara(this, 'R$####,##')" maxlength="9" value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
+                                <span class="invalid-feedback PCVenda_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="modal-label">Material:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="MaterialProduto" id="MaterialProduto" class="form-control" maxlength="50" value="{{ old('MaterialProduto') }}" placeholder="Selecione com a Material Base">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach($materiais as $material)
+                                    <option value="{{$material['mat_id']}}">{{$material['mat_descricao']}}</option>
+                                  @endforeach
+                                </select>
+                                <span class="invalid-feedback MaterialProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Pacote:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="PacoteProduto" id="PacoteProduto" class="form-control" maxlength="15" value="{{ old('PacoteProduto') }}" placeholder="Selecione com o Pacote">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach($pacotes as $pacote)
+                                    <option value="{{$pacote['pac_id']}}">{{$pacote['pac_descricao']}}</option>
+                                  @endforeach
+                                </select>
+                                <span class="invalid-feedback PacoteProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Dimensão:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="DimensaoProduto" id="DimensaoProduto" class="form-control" onkeypress="mascara(this, '### x ### x ###')" maxlength="15" value="{{ old('DimensaoProduto') }}" placeholder="Selecione com o Dimensão">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach($dimensoes as $dimensao)
+                                    <option value="{{$dimensao['dim_id']}}">{{$dimensao['dim_descricao']}}</option>
+                                  @endforeach
+                                </select>
+                                <span class="invalid-feedback DimensaoProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Cores:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                     <select type="text" name="CoresProduto" id="CoresProduto" class="form-control" maxlength="25" value="{{ old('CoresProduto') }}" placeholder="Selecione com o Cores">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach($cores as $cor)
+                                    <option value="{{$cor['cor_id']}}">{{$cor['cor_nome']}}</option>
+                                  @endforeach
+                                </select>
+                                <span class="invalid-feedback CoresProduto_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"> Personalizável?</label>
+                                <div class="switch__container">
+                                    <input id="switch-shadow" name="PersoProduto" value={{"Sim" ?? "Não"}} class="switch switch--shadow" type="checkbox">
+                                    <label for="switch-shadow"></label>
+                                    <span class="invalid-feedback PersoProduto_error" role="alert">
+                                    </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"> Terceirizado?</label>
+                                <div class="switch__container">
+                                    <input id="switch-shadow-2" name="TerceProduto" value={{"Sim" ?? "Não"}} class="switch switch--shadow" type="checkbox">
+                                    <label for="switch-shadow-2"></label>
+                                    <span class="invalid-feedback TerceProduto_error" role="alert">
+                                    </span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+            </div>
+                </div>
+        </form>
+    </div>
+  </div>
+        </div>
+
+  <div class="modal fade" id="modalRegisterTipoProduto" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formRegisterTipoProduto" method="POST" autocomplete="off" enctype="multipart/form-data" action="{{route('admin.create.tipoproduto')}}">
+            @csrf
+            <div class="modal-content"style="width: 150%">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cadastrar Tipo de Produto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-direita"  style="width: 100%;">
+                                <label class="modal-label">Tipo de Produto:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="NomeTipoProduto" id="form-direita" class="form-control" maxlength="50" value="{{ old('NomeTipoProduto') }}" placeholder="Entre com o Tipo de Produto">
+                                    <span class="invalid-feedback NomeTipoProduto_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="modal-footer"  style="width: 100%; padding: 24px 15px 16px 15px;">
+                                <button type="button" class="btn btn-secondary btn-register" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                            </div>
+                        </form>
+                            </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Consulta de Tipos de Produto</h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                            ID
+                                            </th>
+                                            <th>
+                                            Descrição
+                                            </th>
+                                            <th class="text-right">
+                                            <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($tipos as $tipo)
+                                            <tr>
+                                                <td>
+                                                {{$tipo['tpp_id']}}
+                                                </td>
+                                                <td>
+                                                {{$tipo['tpp_descricao']}}
+                                                </td>
+                                                <td class="text-right">
+                                                <a href="#" class="btn btn-primary"id="alter"><i class="tim-icons icon-pencil"></i></a>
+                                                <button  href="#" class="btn btn-primary red" id="excluir-tpp" name="excluir-tipo-produto" data-id="{{$tipo['tpp_id']}}" onclick="showDelete({{$tipo['tpp_id']}}, `{{route('admin.delete.tipoproduto')}}`);" style="padding: 11px 25px;"><i class="tim-icons icon-simple-remove"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                 </div>
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="modalRegisterMaterial" style="display:none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-cadastro" id="formRegisterMaterial" method="POST" autocomplete="off" enctype="multipart/form-data"  action="{{route('admin.create.material')}}">
+                @csrf
+                <div class="modal-content" style="width: 150%">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastrar Materiais dos Produtos</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-direita">
+                                    <label class="modal-label">Material de Fabricação:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                        <input type="text" name="NomeMaterial" id="form-direita" class="form-control" maxlength="50" value="{{ old('NomeMaterial') }}" placeholder="Entre com o Material de Fabricação">
+                                        <span class="invalid-feedback NomeMaterial_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="modal-footer"  style="width: 100%; padding: 24px 15px 16px 15px;">
+                                    <button type="button" class="btn btn-secondary btn-register" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                </div>
+                            </form>
+                                </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Consulta de Materiais</h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                            ID
+                                            </th>
+                                            <th>
+                                            Descrição
+                                            </th>
+                                            <th class="text-right">
+                                            <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach ($materiais as $material)
+                                            <tr>
+                                                <td>
+                                                {{$material['mat_id']}}
+                                                </td>
+                                                <td>
+                                                    {{$material['mat_descricao']}}
+                                                </td>
+                                                <td class="text-right">
+                                                <a href="#" class="btn btn-primary"id="alter"><i class="tim-icons icon-pencil"></i></a>
+                                                <button  href="#" class="btn btn-primary red" id="excluir-mat" name="excluir-material" data-id="{{$material['mat_id']}}" onclick="showDelete({{$material['mat_id']}}, `{{route('admin.delete.material')}}`);" style="padding: 11px 25px;"><i class="tim-icons icon-simple-remove"></i></button>
+                                                </td>
+                                            </tr>
+                                         @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        </div>
+  <div class="modal fade" id="modalRegisterDimensao" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formRegisterDimensao" method="POST" autocomplete="off" enctype="multipart/form-data" action="{{route('admin.create.dimensao')}}">
+            @csrf
+            <div class="modal-content" style="width: 150%">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cadastrar Dimensões de Produtos</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-direita">
+                                <label class="modal-label">Dimensão (ZZZ X ZZZ X ZZZ):</label> <label style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="NomeDimensao" id="form-direita" class="dimensao form-control" value="{{ old('NomeDimensao') }}" placeholder="Entre com a Nova Dimensão">
+                                    <span class="invalid-feedback NomeDimensao_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="modal-footer"  style="width: 100%; padding: 24px 15px 16px 15px;">
+                                <button type="button" class="btn btn-secondary btn-register" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                            </div>
+                        </form>
+                            </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Consulta de Dimensões</h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                            ID
+                                            </th>
+                                            <th>
+                                            Tamanho
+                                            </th>
+                                            <th class="text-right">
+                                            <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach ($dimensoes as $dimensao)
+                                            <tr>
+                                                <td>
+                                                {{$dimensao['dim_id']}}
+                                                </td>
+                                                <td>
+                                                    {{$dimensao['dim_descricao']}}
+                                                </td>
+                                                <td class="text-right">
+                                                <a href="#" class="btn btn-primary"id="alter"><i class="tim-icons icon-pencil"></i></a>
+                                                <button  href="#" class="btn btn-primary red" id="excluir-dim" name="excluir-dimensao" data-id="{{$dimensao['dim_id']}}" onclick="showDelete({{$dimensao['dim_id']}}, `{{route('admin.delete.dimensao')}}`);" style="padding: 11px 25px;"><i class="tim-icons icon-simple-remove"></i></button>
+                                                </td>
+                                            </tr>
+                                         @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="modalRegisterCores" style="display:none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-cadastro" id="formRegisterCores" method="POST" autocomplete="off" enctype="multipart/form-data"  action="{{route('admin.create.cor')}}">
+                @csrf
+                <div class="modal-content" style="width: 150%">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastrar Cores dos Produtos</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="modal-label">Nome da Cor:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                        <input type="text" name="NomeCores" id="form-direita" class="form-control" maxlength="25" value="{{ old('NomeCores') }}" placeholder="Entre com o Nome da Cor">
+                                        <span class="invalid-feedback NomeCores_error" role="alert">
+                                        </span>
+                                    </div>
+                            </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="modal-label">Código de Cor:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                            <input type="color" name="CodigoCores" id="form-direita" class="form-control" value="{{ old('CodigoCores') }}" placeholder="Entre com o Codigo da Cor">
+                                            <span class="invalid-feedback CodigoCores_error" role="alert">
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="modal-label">Cor Especial:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                                <input type="text" name="EspecialCores" id="form-direita" class="form-control" value="{{ old('EspecialCores') }}" placeholder="Entre com a Cor Especial">
+                                                <span class="invalid-feedback EspecialCores_error" role="alert">
+                                                </span>
+                                            </div>
+                                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="modal-footer"  style="width: 100%; padding: 24px 15px 16px 15px;">
+                            <button type="button" class="btn btn-secondary btn-register" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btn-register" >Cadastrar</button>
+                        </div>
+                    </form>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Consulta de Cores</h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                    <table class="table tablesorter " id="">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                            ID
+                                            </th>
+                                            <th>
+                                            Nome
+                                            </th>
+                                            <th>
+                                            HEX
+                                            </th>
+                                            <th class="text-right">
+                                            <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                         @foreach ($cores as $cor)
+                                            <tr>
+                                                <td>
+                                                   {{$cor['cor_id']}}
+                                                </td>
+                                                <td>
+                                                    {{$cor['cor_nome']}}
+                                                </td>
+                                                <td>
+                                                    {{$cor['cor_hex']}}
+                                                </td>
+                                                <td class="text-right">
+                                                <a href="#" class="btn btn-primary"id="alter"><i class="tim-icons icon-pencil"></i></a>
+                                                <button  href="#" class="btn btn-primary red" id="excluir-cor" name="excluir-cor" data-id="{{$cor['cor_id']}}" onclick="showDelete({{$cor['cor_id']}}, `{{route('admin.delete.cor')}}`);" style="padding: 11px 25px;"><i class="tim-icons icon-simple-remove"></i></button>
+                                                </td>
+                                            </tr>
+                                         @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                         </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="modalRegisterPacotes" style="display:none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-cadastro" id="formRegisterPacotes" method="POST" autocomplete="off" enctype="multipart/form-data"  action="{{route('admin.create.pacote')}}">
+                    @csrf
+                    <div class="modal-content" style="width: 100%">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastrar Pacotes para Envio</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Dimensão da Caixa:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                            <input type="text" name="DimensaoPacotes" id="DimensaoPacotes" class="dimensao form-control" value="{{ old('DimensaoPacotes') }}" placeholder="Entre com a Dimensão da Caixa">
+                                            <span class="invalid-feedback DimensaoPacotes_error" role="alert">
+                                            </span>
+                                        </div>
+                                </div>
+                                <div class="col-6">
+                                        <div class="form-group" id="form-group">
+                                            <label class="modal-label">Descrição da Caixa:</label> <label style="color: red; font-size: 12px;"> * </label>
+                                                <input type="text" name="DescricaoPacotes" id="DescricaoPacotes" class="form-control" maxlength="80" value="{{ old('DescricaoPacotes') }}" placeholder="Entre com a Descrição">
+                                                <span class="invalid-feedback DescricaoPacotes_error" role="alert">
+                                                </span>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary btn-register" >Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            </div>
+
+  @endsection
+
+@push('ajax')
+<script>
+
+$(document).ready(function(){
+
+    $("#formRegisterProdutos").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterProdutos')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    $("#formRegisterTipoProduto").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterTipoProduto')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    $("#formRegisterMaterial").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterMaterial')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    $("#formRegisterDimensao").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterDimensao')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    $("#formRegisterCores").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterCores')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    $("#formRegisterPacotes").on('submit', function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData:false,
+            dataType: 'json',
+            beforeSend:function(){
+                $(document).find('span.invalid-feedback').text('');
+
+            },
+            success:function(data_decoded){
+                if(data_decoded.status == 1){
+                    $('#formRegisterPacotes')[0].reset();
+                    $('#mensagem').text(data_decoded.msg);
+                    $('#modalAlertRegistrar').modal('show');
+                }
+                if(data_decoded.status == 0){
+                    $.each(data_decoded.error, function(prefix, val){
+                        $('span.' +prefix+ '_error').text(val[0]);
+                        $('input#' +prefix).addClass('is-invalid');
+                    });
+               }
+            }
+         });
+    });
+
+    if ($('#CodigoCores').val() != ''){
+        $('#EspecialCores').attr('disabled');
+    }
+});
+
+</script>
+@endpush

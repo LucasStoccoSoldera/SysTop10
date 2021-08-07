@@ -1,0 +1,132 @@
+<?php
+
+namespace App\Http\Controllers\Register;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CompraRequest;
+use App\Http\Requests\ItemCompraRequest;
+use App\Models\Compras;
+use App\Models\Compras_Detalhe;
+use App\Models\Contas_a_Pagar;
+use App\Models\Notificacao;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Parcelas;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class CompraRegister extends Controller
+{
+
+    /**
+     * @return \App\Models\Compras
+     */
+    protected function createCompra(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'IDCompras' => ['required', 'integer'],
+            'descricaoCompras' => ['string'],
+            'tpgpagtoCompras' => ['required', 'string'],
+            'ccCompras' => ['required', 'string'],
+            'parcelasCompra' => ['required', 'integer'],
+            'qtdeCompras' => ['required', 'integer'],
+            'VTCompras' => ['required'],
+            'dataCompras' => ['required', 'date'],
+            'datapagCompras' => ['date'],
+            'obsCompras' => ['string'],
+        ],
+        [
+            'IDCompras.required' =>'ID da compra obrigatório.',
+            'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
+            'ccCompras.required' => 'Centro de Custo obrigatório.',
+            'parcelasCompra.required' => 'Quantidade de parcelas obrigatório.',
+            'qtdeCompras.required' => 'Quantidade obrigatória.',
+            'dataCompras.required' => 'Data da compra obrigatória.',
+       ]);
+
+        if($validator->fails()){
+            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        }
+        $Compras = new Compras;
+        $Compras->com_id = $request->IDCompras;
+        $Compras->cde_id = $request->descricaoCompras;
+        $Compras->tpg_id = $request->tpgpagtoCompras;
+        $Compras->cc_id = $request->ccCompras;
+        $Compras->com_parcelas = $request->parcelasCompra;
+        $Compras->com_qtde = $request->qtdeCompras;
+        $Compras->com_valor = $request->VTCompras;
+        $Compras->com_data_compra = $request->dataCompras;
+        $Compras->com_data_pagto = $request->datapagCompras;
+        $Compras->com_observacoes = $request->obsCompras;
+        $Compras->save();
+
+            $Conta = new Contas_a_Pagar();
+            $Conta->tpg_id = $request->tpgpagtoCompras;
+            $Conta->cc_id = $request->ccCompras;
+            $Conta->con_descricao =  "Compra de $request->descricaoCompras";
+            $Conta->con_tipo = "Variável";
+            $Conta->con_valor_final = $request->VTCompras;
+            $Conta->con_data_venc = $request->datapagCompras;
+            $Conta->con_parcelas = $request->parcelasCompras;
+            $Conta->con_data_pag = "";
+            $Conta->save();
+
+            $cont = 1;
+            $conta_last = DB::table('contas_a_pagar')->get()->last()->con_id;
+            $compras_dados = Compras::find($request->IDCompras);
+
+            while($cont < $request->parcelasCompras){
+
+                $Parcela = new Parcelas();
+                $Parcela->tpg_id = $request->tpgpagtoCompras;
+                $Parcela->par_conta = $conta_last;
+                $Parcela->par_numero = $cont;
+                $Parcela->par_valor = ($request->VTCompras/$request->parcelasCompras) * $cont;
+                $Parcela->par_status = "Em Aberto";
+                $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                $Parcela->save();
+            }
+
+            if($Parcela){
+                return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!']);
+            }
+        }
+
+
+    protected function createItemCompra(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'IDItemCompra' => ['required', 'integer'],
+            'IDFornecedor' => ['required', 'integer'],
+            'IDProduto' => ['required', 'integer'],
+            'qtdeItemCompra' => ['required', 'integer'],
+            'descricaoItemCompra' => ['required', 'string'],
+        ],
+        [
+            'IDItemCompra.required' => 'ID da compra obrigatório.',
+            'IDFornecedor.required' => 'Fornecedor obrigatório.',
+            'IDProduto.required' => 'Produto obrigatório.',
+            'qtdeItemCompra.required' => 'Quantidade obrigatória.',
+            'descricaoItemCompra.required' => 'Descrição obrigatória.',
+       ]);
+
+        if($validator->fails()){
+            return response()->json(['status' =>0, 'error' => $validator->errors()]);
+        }
+        $Compras_Detalhe = new Compras_Detalhe;
+        $Compras_Detalhe->com_id = $request->IDItemCompra;
+        $Compras_Detalhe->for_id = $request->IDFornecedor;
+        $Compras_Detalhe->cde_produto = $request->IDProduto;
+        $Compras_Detalhe->cde_qtde = $request->qtdeItemCompra;
+        $Compras_Detalhe->cde_valoritem = $request->valorItemCompra;
+        $Compras_Detalhe->cde_valortotal = $request->valorTotalItemCompra;
+        $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
+        $Compras_Detalhe->save();
+
+            if($Compras_Detalhe){
+                return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
+            }
+    }
+}
+
+
