@@ -129,16 +129,16 @@ class FornecedorRegister extends Controller
         $Fornecedores = new Fornecedores;
         $Fornecedores->for_nome = $request->nomeFornecedor;
         if (isset($telefone)) {
-            $Fornecedores->for_telefone = $request->telefoneFornecedor;
+            $Fornecedores->for_telefone = $request->telefoneFornecedor->preg_replace('/[^0-9]/', '');
         } else {
-            $Fornecedores->for_celular = $request->celularFornecedor;
+            $Fornecedores->for_celular = $request->celularFornecedor->preg_replace('/[^0-9]/', '');
         }
         if (isset($cpf)) {
-            $Fornecedores->for_cpf = $request->cpfFornecedor;
+            $Fornecedores->for_cpf = $request->cpfFornecedor->preg_replace('/[^0-9]/', '');
         } else {
-            $Fornecedores->for_cnpj = $request->cnpjFornecedor;
+            $Fornecedores->for_cnpj = $request->cnpjFornecedor->preg_replace('/[^0-9]/', '');
         }
-        $Fornecedores->for_cep = $request->cepFornecedor;
+        $Fornecedores->for_cep = $request->cepFornecedor->preg_replace('/[^0-9]/', '');
         $Fornecedores->for_cidade = $request->cidadeFornecedor;
         $Fornecedores->for_estado = $request->estadoFornecedor;
         $Fornecedores->for_bairro = $request->bairroFornecedor;

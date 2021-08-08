@@ -37,7 +37,7 @@ class TransportadoraRegister extends Controller
         }
         $Transportadora = new Transportadora;
         $Transportadora->trans_nome = $request->nomeTrans;
-        $Transportadora->trans_telefone = $request->telefone;
+        $Transportadora->trans_telefone = $request->telefone->preg_replace('/[^0-9]/', '');
         $Transportadora->trans_limite_transporte = $request->limitetransTrans;
         $Transportadora->save();
 

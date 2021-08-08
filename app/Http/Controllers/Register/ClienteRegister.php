@@ -133,14 +133,14 @@ class ClienteRegister extends Controller
             $Cliente->cli_usuario = $request->usuarioCliente;
             $Cliente->cli_senha = Hash::make($request->senhaCliente);
             if (isset($cpf)) {
-                $Cliente->cli_cpf = $request->cpfCliente;
+                $Cliente->cli_cpf = $request->cpfCliente->preg_replace('/[^0-9]/', '');
             } else {
-                $Cliente->cli_cnpj = $request->cnpjCliente;
+                $Cliente->cli_cnpj = $request->cnpjCliente->preg_replace('/[^0-9]/', '');;
             }
             if (isset($telefone)) {
-                $Cliente->cli_telefone = $request->telefoneCliente;
+                $Cliente->cli_telefone = $request->telefoneCliente->preg_replace('/[^0-9]/', '');;
             } else {
-                $Cliente->cli_celular = $request->celularCliente;
+                $Cliente->cli_celular = $request->celularCliente->preg_replace('/[^0-9]/', '');;
             }
             $Cliente->cli_logradouro = "";
             $Cliente->cli_bairro = "";
