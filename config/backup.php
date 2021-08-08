@@ -113,7 +113,7 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'D:\Flex Sistemas\Banco_bkp',
+                'banco_bkp',
             ],
         ],
 
