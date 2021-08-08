@@ -584,6 +584,16 @@
 
                             </div>
                             <div class="form-group" id="form-group">
+                                <label class="modal-label">Desconto:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="descontoCompras" id="descontoCompras"
+                                    class="porcentagem valor form-control" value="{{ old('descontoCompras') }}">
+
+                                <span class="invalid-feedback descontoCompras_error" role="alert">
+                                </span>
+
+                            </div>
+                            <div class="form-group" id="form-group">
                                 <label class="modal-label">Valor Total:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="VTCompras" id="VTCompras"
@@ -998,10 +1008,20 @@
     });
   });
 
-      //Soma o valor total do pedido
-      var total = 0;
-    $('#VTCompras').html(function(){
-
-    });
+  $('#modalAlertRegistrar').modal('hide',
+    function() { //auto implementa o valor total da compra puxando todos os itens
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.contas.soma') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $('#VTCompras').val(data_decoded.total - $('#descontoCompras').val());
+                }
+            });
+        });
 </script>
 @endpush

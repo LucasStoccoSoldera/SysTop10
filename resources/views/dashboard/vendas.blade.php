@@ -787,5 +787,22 @@
       $('#VTItemVenda').val(qtd * vlr);
     });
   });
+
+
+  $('#modalAlertRegistrar').modal('hide',
+    function() { //auto implementa o valor total da compra puxando todos os itens
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.contas.soma') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $('#VTVenda').val(data_decoded.total - $('#descontoVenda').val());
+                }
+            });
+        });
 </script>
 @endpush

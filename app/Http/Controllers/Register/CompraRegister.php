@@ -32,6 +32,7 @@ class CompraRegister extends Controller
                 'ccCompras' => ['required', 'string'],
                 'parcelasCompra' => ['required', 'integer'],
                 'qtdeCompras' => ['required', 'integer'],
+                'descontoCompras' => ['required'],
                 'VTCompras' => ['required'],
                 'dataCompras' => ['required', 'date'],
                 'datapagCompras' => ['date'],
@@ -57,6 +58,7 @@ class CompraRegister extends Controller
         $Compras->cc_id = $request->ccCompras;
         $Compras->com_parcelas = $request->parcelasCompra;
         $Compras->com_qtde = $request->qtdeCompras;
+        $Compras->com_desconto = $request->descontoCompras;
         $Compras->com_valor = $request->VTCompras;
         $Compras->com_data_compra = $request->dataCompras;
         $Compras->com_data_pagto = $request->datapagCompras;

@@ -19,6 +19,7 @@ class CreateCompra extends Migration
             $table->unsignedBigInteger('cc_id');
             $table->date('com_data_compra');
             $table->date('com_data_pagto');
+            $table->integer('com_desconto');
             $table->float('com_valor', 2);
             $table->integer('com_qtde');
             $table->string('com_parcelas');
