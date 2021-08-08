@@ -32,7 +32,7 @@ class ProdutoRegister extends Controller
                 'logistica' => ['required', 'integer'],
                 'dimensaoProduto' => ['required', 'integer'],
                 'pedidoMinimo' => ['integer'],
-                'foto' => ['required', 'image', 'dimensions:width=100,height=200'],
+                'fotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
             ],
             [
                 'nomeProduto.required' => 'Nome obrigatório.',
@@ -42,14 +42,17 @@ class ProdutoRegister extends Controller
                 'materialProduto.required' => 'Material obrigatório.',
                 'logistica.required' => 'Logística obrigatória.',
                 'dimensaoProduto.required' => 'Dimensão obrigatória.',
-                'foto.required' => 'Foto do produto obrigatória.',
-                'foto.dimensions' => 'A foto do produto precisa ter a dimensão de 200 x 200.',
+                'fotoProduto.required' => 'Foto do produto obrigatória.',
+                'fotoProduto.dimensions' => 'A foto do produto precisa ter a dimensão de 200 x 200.',
             ]
         );
 
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
+
+        $nameFile = $request->fotoProduto->getClientOriginalName() . $request->fotoProduto->extension();
+        
         $Produto = new Produto;
         $Produto->pro_nome = $request->nomeProduto;
         $Produto->tpp_id = $request->tipoProduto;
@@ -59,7 +62,9 @@ class ProdutoRegister extends Controller
         $Produto->log_id = $request->logistica;
         $Produto->dim_id = $request->dimensaoProduto;
         $Produto->pro_pedidominimo = $request->pedidoMinimo;
-        $Produto->pro_foto_path = $request->foto;
+        $file = $request->fotoProduto;
+        $upload = $request->fotoProduto->store('fotos');
+        $Produto->pro_foto_path = $nameFile;
         $Produto->pro_personalizacao = $request->$dataForm['persoProduto'];
         $Produto->pro_terceirizacao = $request->$dataForm['terceProduto'];
         $Produto->save();

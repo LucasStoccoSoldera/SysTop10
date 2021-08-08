@@ -374,6 +374,14 @@
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
                                     <span class="invalid-feedback PCVenda_error" role="alert">
                                     </span>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Foto do Produto:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="file" name="fotoProduto" id="fotoProduto" class="form-control"
+                                            value="{{ old('fotoProduto') }}">
+                                        <span class="invalid-feedback fotoProduto_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">

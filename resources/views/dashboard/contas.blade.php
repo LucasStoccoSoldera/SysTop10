@@ -985,24 +985,23 @@
                 }
             });
         });
-        $('#valorTotalItemCompra').val('#qtdeItemCompra'.val() * '#valorItemCompra'
-    .val()); //auto implementa o valor total de um item da compra
+    });
 
-        $('#VTCompras').on('não sei o que colocar aqui',
-    function() { //auto implementa o valor total da compra puxando todos os itens
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.contas.soma') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $('#VTCompras').val(data_decoded.total);
-                }
-            });
-        });
+    $('#qtdeCompras, #valorItemCompra').on('change blur keyup',function(){
+    $('#qtdeCompras, #valorItemCompra').each(function(){//percorre todos os campos de quantidade
+      //quantidade
+      var qtd = $('#qtdeCompras').val();
+      //pega o valor unitário
+      var vlr = $('#valorItemCompra').val();
+      // coloca o resultado no valor total
+      $('#valorTotalItemCompra').val(qtd * vlr);
+    });
+  });
+
+      //Soma o valor total do pedido
+      var total = 0;
+    $('#VTCompras').html(function(){
+
     });
 </script>
 @endpush

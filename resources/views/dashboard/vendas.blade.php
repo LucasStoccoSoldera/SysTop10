@@ -776,5 +776,16 @@
             });
         });
     });
+
+    $('#qtdeItemVenda, #VUItemVenda').on('change blur keyup',function(){
+    $('#qtdeItemVenda, #VUItemVenda').each(function(){//percorre todos os campos de quantidade
+      //quantidade
+      var qtd = $('#qtdeItemVenda').val();
+      //pega o valor unitário
+      var vlr = $('#VUItemVenda').val();
+      // coloca o resultado no valor total
+      $('#VTItemVenda').val(qtd * vlr);
+    });
+  });
 </script>
 @endpush
