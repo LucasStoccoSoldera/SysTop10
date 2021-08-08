@@ -52,7 +52,7 @@ class ProdutoRegister extends Controller
         }
 
         $nameFile = $request->fotoProduto->getClientOriginalName() . $request->fotoProduto->extension();
-        
+
         $Produto = new Produto;
         $Produto->pro_nome = $request->nomeProduto;
         $Produto->tpp_id = $request->tipoProduto;
