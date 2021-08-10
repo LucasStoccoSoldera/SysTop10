@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Register;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompraRequest;
 use App\Http\Requests\ItemCompraRequest;
+use App\Models\Caixa;
 use App\Models\Compras;
 use App\Models\Compras_Detalhe;
 use App\Models\Contas_a_Pagar;
@@ -75,6 +76,14 @@ class CompraRegister extends Controller
         $Conta->con_parcelas = $request->parcelasCompras;
         $Conta->con_data_pag = "";
         $Conta->save();
+
+        $Caixa = new Caixa();
+        $Caixa->cax_descricao = "Compra de $request->descricaoCompras";
+        $Caixa->cax_operacao = 0;
+        $Caixa->cax_valor =  $request->VTCompras;
+        $Caixa->cax_ctpagar = $request->VTCompras;
+        $Caixa->cax_ctreceber = "";
+        $Caixa->save();
 
         $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->con_id;

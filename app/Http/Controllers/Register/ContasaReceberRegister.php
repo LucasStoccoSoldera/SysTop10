@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Register;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContasaReceberRequest;
 use App\Models\Contas_a_Receber;
-use App\Models\Parcelas;
+use App\Models\Caixa;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
@@ -49,6 +49,14 @@ class ContasaReceberRegister extends Controller
         $Contas_a_Receber->rec_data = $request->dataReceber;
         $Contas_a_Receber->rec_status = $request->statusReceber;
         $Contas_a_Receber->save();
+
+        $Caixa = new Caixa();
+        $Caixa->cax_descricao = "Credito $request->descricaoReceber";
+        $Caixa->cax_operacao = 1;
+        $Caixa->cax_valor =  $request->valorReceber;
+        $Caixa->cax_ctpagar = "";
+        $Caixa->cax_ctreceber = $request->valorReceber;
+        $Caixa->save();
 
         if ($Contas_a_Receber) {
             return response()->json(['status' => 1, 'msg' => 'Crédito cadastrado com sucesso!']);

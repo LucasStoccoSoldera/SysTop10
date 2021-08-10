@@ -8,7 +8,7 @@ use App\Http\Requests\VendaRequest;
 use App\Models\Venda;
 use App\Models\Venda_Detalhe;
 use App\Models\Contas_a_Receber;
-use App\Models\Parcelas;
+use App\Models\Caixa;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
@@ -57,6 +57,14 @@ class VendasRegister extends Controller
         $Venda->ven_desconto = $request->descontoVenda;
         $Venda->save();
 
+        $Caixa = new Caixa();
+        $Caixa->cax_descricao = "Venda";
+        $Caixa->cax_operacao = 1;
+        $Caixa->cax_valor =  $request->VTVenda;
+        $Caixa->cax_ctpagar = "";
+        $Caixa->cax_ctreceber = $request->VTVenda;
+        $Caixa->save();
+
         $cont = 1;
         $venda_dados = Venda::find($request->IDVenda);
         while ($cont < $request->parcelasVenda) {
@@ -69,7 +77,7 @@ class VendasRegister extends Controller
             $Receber->rec_parcelas = $request->parcelasVenda;
             $Receber->rec_data = ($venda_dados->ven_data->modify('+' . ($cont * 30) . ' days'));
             $Receber->rec_status = $request->statusVenda;
-            $Venda->save();
+            $Receber->save();
         }
         if ($Receber) {
             return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);

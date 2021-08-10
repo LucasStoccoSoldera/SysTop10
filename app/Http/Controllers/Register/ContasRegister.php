@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Register;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use App\Models\Contas_a_Pagar;
+use App\Models\Caixa;
 use App\Models\Parcelas;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
@@ -56,6 +57,14 @@ class ContasRegister extends Controller
         $Contas_a_Pagar->tpg_id = $request->tpgpagtoContas;
         $Contas_a_Pagar->cc_id = $request->centrocustoContas;
         $Contas_a_Pagar->save();
+
+        $Caixa = new Caixa();
+        $Caixa->cax_descricao = "Conta $request->descricaoContas";
+        $Caixa->cax_operacao = 0;
+        $Caixa->cax_valor =  $request->valorfContas;
+        $Caixa->cax_ctpagar = $request->valorfContas;
+        $Caixa->cax_ctreceber = "";
+        $Caixa->save();
 
         if ($Contas_a_Pagar) {
             return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
