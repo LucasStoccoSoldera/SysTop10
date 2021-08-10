@@ -304,11 +304,6 @@
     </div>
 @endsection
 @section('modals')
-
-    @isset($msgRegistrar)
-        <x-alert-register :msgRegistrar="$msgRegistrar" />
-    @endisset
-
     <div class="modal fade" id="modalRegisterProdutos" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formRegisterProdutos" method="POST" autocomplete="off" enctype="multipart/form-data"
@@ -393,7 +388,8 @@
                                         placeholder="Selecione com a Material Base">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($materiais as $material)
-                                            <option value="{{ $material['mat_id'] }}">{{ $material['mat_descricao'] }}
+                                            <option value="{{ $material['mat_id'] }}">
+                                                {{ $material['mat_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -423,7 +419,8 @@
                                         value="{{ old('DimensaoProduto') }}" placeholder="Selecione com o Dimensão">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['dim_id'] }}">{{ $dimensao['dim_descricao'] }}
+                                            <option value="{{ $dimensao['dim_id'] }}">
+                                                {{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -456,8 +453,9 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label"> Terceirizado?</label>
                                         <div class="switch__container">
-                                            <input id="switch-shadow-2" name="TerceProduto" value={{ 'Sim' ?? 'Não' }}
-                                                class="switch switch--shadow" type="checkbox">
+                                            <input id="switch-shadow-2" name="TerceProduto"
+                                                value={{ 'Sim' ?? 'Não' }} class="switch switch--shadow"
+                                                type="checkbox">
                                             <label for="switch-shadow-2"></label>
                                             <span class="invalid-feedback TerceProduto_error" role="alert">
                                             </span>
@@ -467,7 +465,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formRegisterProdutos" data-modal="modalRegisterProdutos">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
                     </div>
@@ -505,8 +504,9 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="btn btn-secondary btn-register"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formRegisterTipoProduto"
+                                data-modal="modalRegisterTipoProduto">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
         </form>
@@ -593,8 +593,8 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="btn btn-secondary btn-register"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
         </form>
@@ -679,8 +679,8 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="btn btn-secondary btn-register"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formRegisterDimensao" data-modal="modalRegisterDimensao">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
         </form>
@@ -785,8 +785,8 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="btn btn-secondary btn-register"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formRegisterCores" data-modal="modalRegisterCores">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
         </form>
@@ -890,7 +890,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterPacotes"
+                        data-modal="modalRegisterPacotes">Cancelar</button>
                     <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                 </div>
             </div>

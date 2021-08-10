@@ -320,7 +320,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterLogistica" data-modal="modalRegisterLogistica">Cancelar</button>
                     <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                 </div>
             </div>
@@ -374,7 +375,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterTransportadora"
+                        data-modal="modalRegisterTransportadora">Cancelar</button>
                     <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                 </div>
             </div>

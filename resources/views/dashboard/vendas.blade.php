@@ -272,7 +272,8 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <a href="{{ route('admin.Vendas') }}" class="btn btn-primary"
-                                                id="{{ $venda['ven_id'] }}"><i class="tim-icons icon-map-big"></i></a>
+                                                id="{{ $venda['ven_id'] }}"><i
+                                                    class="tim-icons icon-map-big"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-ven"
                                                 name="excluir-venda" data-id="{{ $venda['ven_id'] }}"
                                                 onclick="showDelete({{ $venda['ven_id'] }}, `{{ route('admin.delete.venda') }}`);"
@@ -374,11 +375,6 @@
 @endsection
 
 @section('modals')
-
-    @isset($msgRegistrar)
-        <x-alert-register :msgRegistrar="$msgRegistrar" />
-    @endisset
-
 
     <div class="modal fade" id="modalRegisterVenda" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -573,8 +569,8 @@
                         </div>
                         <div class="row">
                             <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                                <button type="button" class="btn btn-secondary btn-register"
-                                    data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="cancela btn btn-secondary btn-danger"
+                                    data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
                                 <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                             </div>
             </form>
@@ -652,7 +648,8 @@
                                     value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($produtos as $produto)
-                                        <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}</option>
+                                        <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <span class="invalid-feedback IDProduto_error" role="alert">
@@ -697,7 +694,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formRegisterItemVenda" data-modal="modalRegisterItemVenda">Cancelar</button>
                         <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                     </div>
                 </div>
@@ -777,20 +775,20 @@
         });
     });
 
-    $('#qtdeItemVenda, #VUItemVenda').on('change blur keyup',function(){
-    $('#qtdeItemVenda, #VUItemVenda').each(function(){//percorre todos os campos de quantidade
-      //quantidade
-      var qtd = $('#qtdeItemVenda').val();
-      //pega o valor unitário
-      var vlr = $('#VUItemVenda').val();
-      // coloca o resultado no valor total
-      $('#VTItemVenda').val(qtd * vlr);
+    $('#qtdeItemVenda, #VUItemVenda').on('change blur keyup', function() {
+        $('#qtdeItemVenda, #VUItemVenda').each(function() { //percorre todos os campos de quantidade
+            //quantidade
+            var qtd = $('#qtdeItemVenda').val();
+            //pega o valor unitário
+            var vlr = $('#VUItemVenda').val();
+            // coloca o resultado no valor total
+            $('#VTItemVenda').val(qtd * vlr);
+        });
     });
-  });
 
 
-  $('#modalAlertRegistrar').modal('hide',
-    function() { //auto implementa o valor total da compra puxando todos os itens
+    $('#modalAlertRegistrar').modal('hide',
+        function() { //auto implementa o valor total da compra puxando todos os itens
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

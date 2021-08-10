@@ -526,7 +526,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterContas" data-modal="modalRegisterContas">Cancelar</button>
                     <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                 </div>
             </div>
@@ -764,8 +765,8 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="btn btn-secondary btn-register"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary btn-danger cancela"
+                                data-form="formRegisterCompras" data-modal="modalRegisterCompras">Cancelar</button>
                             <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                         </div>
         </form>
@@ -825,7 +826,8 @@
                                 value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($produtos as $produto)
-                                    <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}</option>
+                                    <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}
+                                    </option>
                                 @endforeach
                             </select>
 
@@ -881,7 +883,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterItemCompra" data-modal="modalRegisterItemCompra">Cancelar</button>
                     <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                 </div>
     </form>
@@ -997,19 +1000,19 @@
         });
     });
 
-    $('#qtdeCompras, #valorItemCompra').on('change blur keyup',function(){
-    $('#qtdeCompras, #valorItemCompra').each(function(){//percorre todos os campos de quantidade
-      //quantidade
-      var qtd = $('#qtdeCompras').val();
-      //pega o valor unitário
-      var vlr = $('#valorItemCompra').val();
-      // coloca o resultado no valor total
-      $('#valorTotalItemCompra').val(qtd * vlr);
+    $('#qtdeCompras, #valorItemCompra').on('change blur keyup', function() {
+        $('#qtdeCompras, #valorItemCompra').each(function() { //percorre todos os campos de quantidade
+            //quantidade
+            var qtd = $('#qtdeCompras').val();
+            //pega o valor unitário
+            var vlr = $('#valorItemCompra').val();
+            // coloca o resultado no valor total
+            $('#valorTotalItemCompra').val(qtd * vlr);
+        });
     });
-  });
 
-  $('#modalAlertRegistrar').modal('hide',
-    function() { //auto implementa o valor total da compra puxando todos os itens
+    $('#modalAlertRegistrar').modal('hide',
+        function() { //auto implementa o valor total da compra puxando todos os itens
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

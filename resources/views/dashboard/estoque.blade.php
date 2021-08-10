@@ -298,7 +298,8 @@
                                         value="{{ old('IDDimensao') }}" placeholder="Selecione com a Dimensão">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['dim_id'] }}">{{ $dimensao['dim_descricao'] }}
+                                            <option value="{{ $dimensao['dim_id'] }}">
+                                                {{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -322,7 +323,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formRegisterEstoque" data-modal="modalRegisterEstoque">Cancelar</button>
                         <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                     </div>
                 </div>

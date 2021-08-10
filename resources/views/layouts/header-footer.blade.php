@@ -243,7 +243,27 @@
             $("#id").val(id);
             $('#modalAlertDelete').modal('show');
         }
+
+        function cancelar() {
+            var form2 = $('#formCancelar').val();
+            var modal2 = $('#modalCancelar').val();
+            $('#' + form2)[0].reset();
+            $('#modalAlertCancelar').hide(500);
+            $('#' + modal2).delay(500).hide(500);
+            $('#modalAlertCancelar').close();
+            $('#' + modal2).close();
+
+        }
+
+        $('button.cancela').on('click', function() {
+            var form = $(this).data('form');
+            var modal = $(this).data('modal');
+            $('#modalAlertCancelar').modal('show');
+            $('#formCancelar').val(form);
+            $('#modalCancelar').val(modal);
+        });
     </script>
+
     <div class="modal fade" id="modalAlertRegistrar" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formAlertRegistrar" method="POST" autocomplete="off" enctype="multipart/form-data">
@@ -276,7 +296,7 @@
     </div>
 
 
-    <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="modalAlertDelete" style="display: none; top: 50%;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
@@ -309,188 +329,216 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
+    <div class="modal fade" id="modalAlertCancelar" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h4 class="modal-title">! Alerta de Cancelamento !</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div style="text-align: center;">
+                                <label class="modal-label danger" style="font-size: 18px; padding 0px;"> Deseja
+                                    realmente cancelar esse cadastro?</label>
+                                <input name="form" id="formCancelar" type="hidden" class="input_01">
+                                <input name="modal" id="modalCancelar" type="hidden" class="input_01">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        style="padding 0px; width: 125px; height:50px;">Voltar</button>
+                                    <button type="submit" class="btn btn-secondary bg-danger"
+                                        style="background-image:none;padding 0px; width: 125px; height:50px;"
+                                        onclick="cancelar();">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            $('.porcentagem').mask('#0%');
-            $('.dinheiro').mask('#.##0,00', {
-                reverse: true
+        <script>
+            $(document).ready(function() {
+
+                $('.porcentagem').mask('#0%');
+                $('.dinheiro').mask('#.##0,00', {
+                    reverse: true
+                });
+                $('.cpf').mask('000-000.000-00');
+                $('.cnpj').mask('00.000.000/0000-00');
+                $('.rg').mask('00.000.000-0');
+                $('.cep').mask('00000-000');
+                $('.telefone').mask('(00) 0000-0000');
+                $('.celular').mask('(00) 0 0000-0000');
+                $('.dimensao').mask('000 x 000 x 000');
+                $('.cep').mask('00000-000');
+
             });
-            $('.cpf').mask('000-000.000-00');
-            $('.cnpj').mask('00.000.000/0000-00');
-            $('.rg').mask('00.000.000-0');
-            $('.cep').mask('00000-000');
-            $('.telefone').mask('(00) 0000-0000');
-            $('.celular').mask('(00) 0 0000-0000');
-            $('.dimensao').mask('000 x 000 x 000');
-            $('.cep').mask('00000-000');
+        </script>
 
-        });
-    </script>
+        <script>
+            $(document).ready(function() {
+                $().ready(function() {
+                    $sidebar = $('.sidebar');
+                    $navbar = $('.navbar');
+                    $main_panel = $('.main-panel');
 
-    <script>
-        $(document).ready(function() {
-            $().ready(function() {
-                $sidebar = $('.sidebar');
-                $navbar = $('.navbar');
-                $main_panel = $('.main-panel');
+                    $full_page = $('.full-page');
 
-                $full_page = $('.full-page');
+                    $sidebar_responsive = $('body > .navbar-collapse');
+                    sidebar_mini_active = true;
+                    white_color = false;
 
-                $sidebar_responsive = $('body > .navbar-collapse');
-                sidebar_mini_active = true;
-                white_color = false;
+                    window_width = $(window).width();
 
-                window_width = $(window).width();
-
-                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+                    fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
 
-                $('.fixed-plugin a').click(function(event) {
-                    if ($(this).hasClass('switch-trigger')) {
-                        if (event.stopPropagation) {
-                            event.stopPropagation();
-                        } else if (window.event) {
-                            window.event.cancelBubble = true;
+                    $('.fixed-plugin a').click(function(event) {
+                        if ($(this).hasClass('switch-trigger')) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (window.event) {
+                                window.event.cancelBubble = true;
+                            }
                         }
-                    }
-                });
+                    });
 
-                $('.fixed-plugin .background-color span').click(function() {
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
+                    $('.fixed-plugin .background-color span').click(function() {
+                        $(this).siblings().removeClass('active');
+                        $(this).addClass('active');
 
-                    var new_color = $(this).data('color');
+                        var new_color = $(this).data('color');
 
-                    if ($sidebar.length != 0) {
-                        $sidebar.attr('data', new_color);
-                    }
+                        if ($sidebar.length != 0) {
+                            $sidebar.attr('data', new_color);
+                        }
 
-                    if ($main_panel.length != 0) {
-                        $main_panel.attr('data', new_color);
-                    }
+                        if ($main_panel.length != 0) {
+                            $main_panel.attr('data', new_color);
+                        }
 
-                    if ($full_page.length != 0) {
-                        $full_page.attr('filter-color', new_color);
-                    }
+                        if ($full_page.length != 0) {
+                            $full_page.attr('filter-color', new_color);
+                        }
 
-                    if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.attr('data', new_color);
-                    }
-                });
+                        if ($sidebar_responsive.length != 0) {
+                            $sidebar_responsive.attr('data', new_color);
+                        }
+                    });
 
-                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-                    var $btn = $(this);
+                    $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+                        var $btn = $(this);
 
-                    if (sidebar_mini_active == true) {
-                        $('body').removeClass('sidebar-mini');
-                        sidebar_mini_active = false;
-                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                    } else {
-                        $('body').addClass('sidebar-mini');
-                        sidebar_mini_active = true;
-                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
-                    }
+                        if (sidebar_mini_active == true) {
+                            $('body').removeClass('sidebar-mini');
+                            sidebar_mini_active = false;
+                            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                        } else {
+                            $('body').addClass('sidebar-mini');
+                            sidebar_mini_active = true;
+                            blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                        }
 
-                    // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function() {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 180);
+                        // we simulate the window Resize so the charts will get updated in realtime.
+                        var simulateWindowResize = setInterval(function() {
+                            window.dispatchEvent(new Event('resize'));
+                        }, 180);
 
-                    // we stop the simulation of Window Resize after the animations are completed
-                    setTimeout(function() {
-                        clearInterval(simulateWindowResize);
-                    }, 1000);
-                });
-
-                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
-                    var $btn = $(this);
-
-                    if (white_color == true) {
-
-                        $('body').addClass('change-background');
+                        // we stop the simulation of Window Resize after the animations are completed
                         setTimeout(function() {
-                            $('body').removeClass('change-background');
-                            $('body').removeClass('white-content');
-                        }, 900);
-                        white_color = false;
-                    } else {
+                            clearInterval(simulateWindowResize);
+                        }, 1000);
+                    });
 
-                        $('body').addClass('change-background');
-                        setTimeout(function() {
-                            $('body').removeClass('change-background');
-                            $('body').addClass('white-content');
-                        }, 900);
+                    $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+                        var $btn = $(this);
 
-                        white_color = true;
-                    }
+                        if (white_color == true) {
+
+                            $('body').addClass('change-background');
+                            setTimeout(function() {
+                                $('body').removeClass('change-background');
+                                $('body').removeClass('white-content');
+                            }, 900);
+                            white_color = false;
+                        } else {
+
+                            $('body').addClass('change-background');
+                            setTimeout(function() {
+                                $('body').removeClass('change-background');
+                                $('body').addClass('white-content');
+                            }, 900);
+
+                            white_color = true;
+                        }
 
 
-                });
+                    });
 
-                $('.light-badge').click(function() {
-                    $('body').addClass('white-content');
-                });
+                    $('.light-badge').click(function() {
+                        $('body').addClass('white-content');
+                    });
 
-                $('.dark-badge').click(function() {
-                    $('body').removeClass('white-content');
+                    $('.dark-badge').click(function() {
+                        $('body').removeClass('white-content');
+                    });
                 });
             });
-        });
-    </script>
+        </script>
 
-    <script>
-        $(document).ready(function() {
-            // Javascript method's body can be found in assets/js/demos.js
-            demo.initDashboardPageCharts();
-        });
-        $(event).ready(function() { // A DIFERENÇA ESTA AQUI, EXECUTA QUANDO O DOCUMENTO ESTA "PRONTO"
-            $("div.voltar").fadeIn(500);
-        });
-    </script>
-
-    <script type="text/javascript">
-        function mascara(t, mask) {
-
-            var i = t.value.length;
-            var saida = mask.substring(1, 0);
-            var texto = mask.substring(i)
-
-            if (texto.substring(0, 1) != saida) {
-                t.value += texto.substring(0, 1);
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        function changeImage() {
-            if (document.getElementById('imgsub').src == "http://localhost:8000/img/dash/add_open.png" && document
-                .getElementById('igmsub').click) {
-                document.getElementById('imgsub').src = "../img/dash/addbtn.png";
-            } else {
-                document.getElementById('imgsub').src = "../img/dash/add_open.png";
-            }
-        }
-
-        function pegaCodigo(campoItem, campoOrigem) {
-            document.getElementById(campoItem).value = document.getElementById(campoOrigem).value();
-        }
-
-        function volta() {
-            document.getElementById('imgsub').src = "../img/dash/add_btn.png";
-        }
-    </script>
-
-    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-    <script>
-        window.TrackJS &&
-            TrackJS.install({
-                token: "ee6fab19c5a04ac1a32a645abde4613a",
-                application: "black-dashboard-free"
+        <script>
+            $(document).ready(function() {
+                // Javascript method's body can be found in assets/js/demos.js
+                demo.initDashboardPageCharts();
             });
-    </script>
+            $(event).ready(function() { // A DIFERENÇA ESTA AQUI, EXECUTA QUANDO O DOCUMENTO ESTA "PRONTO"
+                $("div.voltar").fadeIn(500);
+            });
+        </script>
 
-    @stack('ajax')
+        <script type="text/javascript">
+            function mascara(t, mask) {
+
+                var i = t.value.length;
+                var saida = mask.substring(1, 0);
+                var texto = mask.substring(i)
+
+                if (texto.substring(0, 1) != saida) {
+                    t.value += texto.substring(0, 1);
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            function changeImage() {
+                if (document.getElementById('imgsub').src == "http://localhost:8000/img/dash/add_open.png" && document
+                    .getElementById('igmsub').click) {
+                    document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+                } else {
+                    document.getElementById('imgsub').src = "../img/dash/add_open.png";
+                }
+            }
+
+            function pegaCodigo(campoItem, campoOrigem) {
+                document.getElementById(campoItem).value = document.getElementById(campoOrigem).value();
+            }
+
+            function volta() {
+                document.getElementById('imgsub').src = "../img/dash/add_btn.png";
+            }
+        </script>
+
+        <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+        <script>
+            window.TrackJS &&
+                TrackJS.install({
+                    token: "ee6fab19c5a04ac1a32a645abde4613a",
+                    application: "black-dashboard-free"
+                });
+        </script>
+
+        @stack('ajax')
 
 </body>
 

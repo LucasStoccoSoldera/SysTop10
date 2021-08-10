@@ -346,7 +346,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formRegisterFornecedores"
+                            data-modal="modalRegisterFornecedores">Cancelar</button>
                         <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
                     </div>
                 </div>
