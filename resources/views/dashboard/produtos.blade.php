@@ -668,9 +668,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Dimensão (ZZZ X ZZZ X ZZZ):</label> <label
+                                <label class="modal-label">Nome e Dimensão (Sacola Grande ZZZ X ZZZ X ZZZ):</label>
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeDimensao" id="form-direita" class="dimensao form-control"
+                                <input type="text" name="NomeDimensao" id="form-direita" class="form-control"
                                     value="{{ old('NomeDimensao') }}" placeholder="Entre com a Nova Dimensão">
                                 <span class="invalid-feedback NomeDimensao_error" role="alert">
                                 </span>

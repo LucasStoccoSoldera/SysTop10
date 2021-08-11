@@ -131,8 +131,10 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
+
+
         <div class="row">
+            <div class="col-12">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Fornecedores <button class="btn btn-primary btn-block"

@@ -27,7 +27,7 @@ class UserRegister extends Controller
 
         $validator = Validator::make($request->all(),[
             'nomeUser' => ['required', 'string'],
-            'usuarioUser' => ['required', 'email','unique:usuario'],
+            'usuarioUser' => ['required', 'email'],
             'senhaUser' => ['required', 'string', 'confirmed'],
             'celularUser' => ['required', 'string'],
             'cpfUser' => ['required', 'string'],
@@ -55,8 +55,8 @@ class UserRegister extends Controller
         }
         $Usuario = new Usuario;
         $Usuario->usu_nome_completo = $request->nomeUser;
-        $Usuario->usu_usuario = ($request['usuarioUser']);
-        $Usuario->usu_senha = Hash::make($request['senhaUser']);
+        $Usuario->usu_usuario = $request->usuarioUser;
+        $Usuario->usu_senha = Hash::make($request->senhaUser);
         $Usuario->usu_celular = $request->celularUser->preg_replace('/[^0-9]/', '');
         $Usuario->usu_cpf = $request->cpfUser->preg_replace('/[^0-9]/', '');
         $Usuario->car_id = $request->cargoUser;

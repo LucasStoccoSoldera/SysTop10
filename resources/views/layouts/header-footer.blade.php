@@ -248,10 +248,8 @@
             var form2 = $('#formCancelar').val();
             var modal2 = $('#modalCancelar').val();
             $('#' + form2)[0].reset();
-            $('#modalAlertCancelar').hide(500);
-            $('#' + modal2).delay(500).hide(500);
-            $('#modalAlertCancelar').close();
-            $('#' + modal2).close();
+            $('#modalAlertCancelar').hide(800);
+            $('#' + modal2).delay(500).hide(800);
 
         }
 
@@ -329,7 +327,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalAlertCancelar" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="modalAlertCancelar" style="display: none; top: 50%;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger">

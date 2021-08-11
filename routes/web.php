@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Usuario', [App\Http\Controllers\UserController::class, 'Usuario'])->name('admin.usuario');
     Route::get('/admin/Cliente', [App\Http\Controllers\ClienteController::class, 'Cliente'])->name('admin.cliente');
     Route::get('/admin/Financeiro', [App\Http\Controllers\FinanceiroController::class, 'Financeiro'])->name('admin.financeiro');
-    Route::get('/admin/Contas', [App\Http\Controllers\ContasController::class, 'Contas'])->name('admin.contas');
+    Route::get('/admin/Contas', [App\Http\Controllers\ContasController::class, 'Contas'])->name('admin.Contas');
     Route::get('/admin/Contas_soma', [App\Http\Controllers\ContasController::class, 'SomaItens'])->name('admin.contas.soma');
     Route::get('/admin/ContasaReceber', [App\Http\Controllers\ContasaReceberController::class, 'ContasaReceber'])->name('admin.ContasaReceber');
     Route::get('/admin/Vendas', [App\Http\Controllers\VendasController::class, 'Vendas'])->name('admin.Vendas');

@@ -156,12 +156,12 @@
         </div>
     </div>
 
-    <div class="col-12">
         <div class="row">
+            <div class="col-12">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Usuários <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                         id="btn-form-consulta-imprimir">Imprimir</button></h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
@@ -224,6 +224,7 @@
             </div>
         </div>
     </div>
+    @endsection
 @section('sub-menu')
     <div class="add">
         <div class="dropup show-dropdown">
@@ -241,7 +242,6 @@
         </div>
     </div>
 </div>
-@endsection
 @endsection
 
 @section('modals')
@@ -277,7 +277,7 @@
                             </span>
                         </div>
                         <div class="form-group" id="form-group">
-                            <label class="modal-label">Cargo:</label> <label style="color: red; font-size: 12px;"> *
+                            <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
                             </label>
                             <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="80"
                                 value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
@@ -305,18 +305,6 @@
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
-                        </div>
-                        <div class="form-group" id="form-group">
-                            <label class="modal-label">Permissões:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="25"
-                                value="{{ old('cargoUser') }}" placeholder="Selecione o Cargo">
-                                <option value="1">Estoquista</option>
-                                <option value="2">Vendedor</option>
-                                <option value="3">Admin</option>
-                            </select>
-                            <span class="invalid-feedback cargoUser_error" role="alert">
-                            </span>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
@@ -465,7 +453,7 @@
                         <div class="form-group">
                             <label class="modal-label">Usuários:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow usu" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -473,7 +461,7 @@
                         <div class="form-group">
                             <label class="modal-label">Clientes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="clientePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow cli" name="clientePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -481,7 +469,7 @@
                         <div class="form-group">
                             <label class="modal-label">Financeiro:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow fin" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -489,7 +477,7 @@
                         <div class="form-group">
                             <label class="modal-label">Produtos:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="produtoPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow pro" name="produtoPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -499,7 +487,7 @@
                         <div class="form-group">
                             <label class="modal-label">Estoque:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="estoquePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow est" name="estoquePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -507,7 +495,7 @@
                         <div class="form-group">
                             <label class="modal-label">Fornecedores:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow for" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -515,7 +503,7 @@
                         <div class="form-group">
                             <label class="modal-label">Detalhes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="detalhePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow det" name="detalhePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -523,7 +511,7 @@
                         <div class="form-group">
                             <label class="modal-label">Logistica:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="logisticaPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadow log" name="logisticaPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -571,9 +559,9 @@
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
-                            if (val[0] =
-                                'A confirmação da senha não corresponde.') {
-                                $('span.' + 'senhaConfirm_error').text(val[0]);
+                            if (val[0] = 'A confirmação da senha não corresponde.') {
+                                $('span.senhaConfirm_error').text(val[0]);
+                                $('input#senhaConfirm_error').addClass('is-invalid');
                             }
                             $('span.' + prefix + '_error').text(val[0]);
                             $('input#' + prefix).addClass('is-invalid');
