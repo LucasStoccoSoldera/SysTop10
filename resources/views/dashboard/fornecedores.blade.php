@@ -389,7 +389,7 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('input#' + prefix).addClass('is-invalid');
+                                 $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }

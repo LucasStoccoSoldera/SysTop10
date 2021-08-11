@@ -271,23 +271,26 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Email para Login:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="usuarioUser" id="usuarioUser" class="form-control"
-                                value="{{ old('usuarioUser') }}" placeholder="Entre com o Login">
-                            <span class="invalid-feedback usuarioUser_error" role="alert">
+                            <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
+                                value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
+                            <span class="invalid-feedback usu_usuario_error" role="alert">
                             </span>
                         </div>
                         <div class="form-group" id="form-group">
-                            <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
-                            </label>
-                            <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="80"
-                                value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
-                                <option value="">------------Selecione------------</option>
-                                @foreach ($cargos as $cargo)
-                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <span class="invalid-feedback cargoUser_error" role="alert">
+                            <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
+                                * </label>
+                            <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
+                                value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
+                            <span class="invalid-feedback cpfUser_error" role="alert">
+                            </span>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Celular:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="celularUser" id="celularUser"
+                                class="celular form-control" value="{{ old('celularUser') }}"
+                                placeholder="Entre com o Celular">
+                            <span class="invalid-feedback celularUser_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -305,6 +308,20 @@
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
+                            </label>
+                            <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="80"
+                                value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($cargos as $cargo)
+                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <span class="invalid-feedback cargoUser_error" role="alert">
+                            </span>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
@@ -564,7 +581,7 @@
                                 $('input#senhaConfirm_error').addClass('is-invalid');
                             }
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                             $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }
@@ -597,7 +614,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                             $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }
@@ -630,7 +647,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                             $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }

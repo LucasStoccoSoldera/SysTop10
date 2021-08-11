@@ -29,7 +29,7 @@ class ContasRegister extends Controller
                 'valorfContas' => ['required'],
                 'parcelasContas' => ['required', 'integer'],
                 'datavContas' => ['required', 'date'],
-                'tpgpagtoContas' => ['string'],
+                'tpgpagtoContas' => ['required', 'string'],
                 'centrocustoContas' => ['required', 'string'],
             ],
             [
@@ -37,8 +37,9 @@ class ContasRegister extends Controller
                 'tipoContas.required' => 'Tipo obrigatório.',
                 'valorContas.required' => 'Valor obrigatório.',
                 'valorfContas.required' => 'Valor final obrigatório.',
-                'parcelasContas.required' => 'Quantidade de parcelas obrigatória.',
-                'datavContas.required' => 'Data de vencimento obrigatória.',
+                'parcelasContas.required' => 'Qtde. de parcelas obrigatória.',
+                'datavContas.required' => 'Data de venc. obrigatória.',
+                'tpgpagtoContas.required' => 'Tipo de Pagamento obrigatório.',
                 'centrocustoContas.required' => 'Centro de custo obrigatório.',
             ]
         );

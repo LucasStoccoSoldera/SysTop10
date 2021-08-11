@@ -408,6 +408,7 @@
                                 <select type="text" name="tipoContas" id="tipoContas" class="form-control"
                                     maxlength="25" value="{{ old('tipoContas') }}"
                                     placeholder="Selecione o Tipo da Conta">
+                                    <option value="">------------Selecione------------</option>
                                     <option value="Fixa">Fixa</option>
                                     <option value="Variável">Variável</option>
                                 </select>
@@ -445,6 +446,7 @@
                                 <select type="text" name="parcelasContas" id="parcelasContas" class="form-control"
                                     maxlength="25" value="{{ old('parcelasContas') }}"
                                     placeholder="Selecione a Qtde de Parcelas">
+                                    <option value="">------------Selecione------------</option>
                                     <option value="1">A Vista</option>
                                     <option value="2">2x</option>
                                     <option value="3">3x</option>
@@ -646,6 +648,7 @@
                                 <select type="text" name="parcelasCompras" id="parcelasCompras" class="form-control"
                                     maxlength="25" value="{{ old('parcelasCompras') }}"
                                     placeholder="Selecione a Qtde de Parcelas">
+                                    <option value="">------------Selecione------------</option>
                                     <option value="1">A Vista</option>
                                     <option value="2">2x</option>
                                     <option value="3">3x</option>
@@ -926,7 +929,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                            $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }
@@ -959,7 +962,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                            $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }
@@ -992,7 +995,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                            $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }

@@ -27,7 +27,7 @@ class UserRegister extends Controller
 
         $validator = Validator::make($request->all(),[
             'nomeUser' => ['required', 'string'],
-            'usuarioUser' => ['required', 'email'],
+            'usu_usuario' => ['required', 'email','unique:usuario'],
             'senhaUser' => ['required', 'string', 'confirmed'],
             'celularUser' => ['required', 'string'],
             'cpfUser' => ['required', 'string'],
@@ -35,11 +35,11 @@ class UserRegister extends Controller
         ],
         [
             'nomeUser.required' => 'Nome obrigatório.',
-            'usuarioUser.required' => 'E-mail obrigatório.',
-            'usuarioUser.unique' => 'O E-mail informado ja está em uso.',
-            'usuarioUser.email' => 'O E-mail informado é inválido.',
+            'usu_usuario.required' => 'E-mail obrigatório.',
+            'usu_usuario.unique' => 'O E-mail informado ja está em uso.',
+            'usu_usuario.email' => 'O E-mail informado é inválido.',
             'senhaUser.required' => 'Senha obrigatória.',
-            'senhaUser.confirmed' => 'A confirmação da senha não corresponde.',
+            'senhaUser.confirmed' => 'A confirmação não corresponde.',
             'celularUser.required' => 'Celular obrigatório.',
             'celularUser.celular' => 'Celular inválido.',
             'cpfUser.required' => 'CPF obrigatório.',
@@ -47,18 +47,15 @@ class UserRegister extends Controller
             'cargoUser.required' => 'Cargo obrigatório.',
        ]);
 
-
-
-
         if($validator->fails()){
             return response()->json(['status' =>0, 'error' => $validator->errors()]);
         }
         $Usuario = new Usuario;
         $Usuario->usu_nome_completo = $request->nomeUser;
-        $Usuario->usu_usuario = $request->usuarioUser;
+        $Usuario->usu_usuario = $request->usu_usuario;
         $Usuario->usu_senha = Hash::make($request->senhaUser);
-        $Usuario->usu_celular = $request->celularUser->preg_replace('/[^0-9]/', '');
-        $Usuario->usu_cpf = $request->cpfUser->preg_replace('/[^0-9]/', '');
+        $Usuario->usu_celular = preg_replace('/[^0-9]/', "", $request->celularUser);
+        $Usuario->usu_cpf = preg_replace('/[^0-9]/', "", $request->cpfUser);
         $Usuario->car_id = $request->cargoUser;
         $Usuario->usu_status = $request->$dataForm['statusUser'];
         $Usuario->save();

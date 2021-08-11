@@ -279,7 +279,6 @@
             </div>
         </div>
     </div>
-</div>
 
 @section('sub-menu')
 <div class="add">
@@ -439,7 +438,7 @@
                                 $('span.' + 'senhaConfirm_error').text(val[0]);
                             }
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('input#' + prefix).addClass('is-invalid');
+                             $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }

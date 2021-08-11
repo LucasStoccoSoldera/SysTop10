@@ -32,8 +32,8 @@ class ContasaReceberRegister extends Controller
                 'tipoPagtoReceber.required' => 'Tipo de pagamento obrigatório.',
                 'descricaoReceber.required' => 'Descrição obrigatória.',
                 'valorReceber.required' => 'Valor obrigatório.',
-                'parcelasReceber.required' => 'Quantidade de parcelas obrigatória.',
-                'dataReceber.required' => 'Data do recebimento obrigatória.',
+                'parcelasReceber.required' => 'Qtde. de parcelas obrigatória.',
+                'dataReceber.required' => 'Data do recb. obrigatória.',
             ]
         );
 

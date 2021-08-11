@@ -43,7 +43,7 @@ class ProdutoRegister extends Controller
                 'logistica.required' => 'Logística obrigatória.',
                 'dimensaoProduto.required' => 'Dimensão obrigatória.',
                 'fotoProduto.required' => 'Foto do produto obrigatória.',
-                'fotoProduto.dimensions' => 'A foto do produto precisa ter a dimensão de 200 x 200.',
+                'fotoProduto.dimensions' => 'Dimensão de 200 x 200.',
             ]
         );
 

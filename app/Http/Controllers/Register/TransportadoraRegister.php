@@ -26,9 +26,9 @@ class TransportadoraRegister extends Controller
                 'limitetransTrans' => ['required', 'integer'],
             ],
             [
-                'nomeTrans' => ['required', 'string'],
-                'telefone' => ['required', 'telefone'],
-                'limitetransTrans' => ['required', 'integer'],
+                'nomeTrans' => 'Transportadora obrigatória.',
+                'telefone' => 'Telefone obrigatório.',
+                'limitetransTrans' => 'Limite obrigatório.',
             ]
         );
 

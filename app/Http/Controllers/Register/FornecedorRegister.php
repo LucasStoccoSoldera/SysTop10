@@ -30,7 +30,6 @@ class FornecedorRegister extends Controller
             ],
             [
                 'nomeFornecedor.required' => 'Nome obrigatório.',
-                'telefoneFornecedor.required' => 'Telefone obrigatório.',
                 'cepFornecedor.required' => 'CEP obrigatório.',
                 'cepFornecedor.cep' => 'CEP inválido.',
                 'cidadeFornecedor.required' => 'Cidade obrigatória.',

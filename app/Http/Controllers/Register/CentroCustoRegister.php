@@ -30,7 +30,7 @@ class CentroCustoRegister extends Controller
                 'NomeCentroCusto' => ['required', 'string'],
             ],
             [
-                'NomeCentroCusto.required' => 'Nome do centro de custo obrigatório.',
+                'NomeCentroCusto.required' => 'Centro de custo obrigatório.',
             ]
         );
 
