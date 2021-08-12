@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\DimensoesRequest;
 use App\Models\Dimensao;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class DimensoesRegister extends Controller
+class DimensaoRegister extends Controller
 {
 
     /**
@@ -20,10 +18,10 @@ class DimensoesRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeDimensao' => ['required', 'string'],
+                'NomeDimensao' => ['required', 'string'],
             ],
             [
-                'nomeDimensao.required' => 'Dimensão obrigatória.',
+                'NomeDimensao.required' => 'Dimensão obrigatória.',
             ]
         );
 
@@ -31,7 +29,7 @@ class DimensoesRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Dimensao = new Dimensao;
-        $Dimensao->dim_descricao = $request->nomeDimensao;
+        $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
 
         if ($Dimensao) {

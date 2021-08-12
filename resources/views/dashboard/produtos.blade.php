@@ -372,9 +372,9 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Foto do Produto:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="file" name="fotoProduto" id="fotoProduto" class="form-control"
-                                            value="{{ old('fotoProduto') }}">
-                                        <span class="invalid-feedback fotoProduto_error" role="alert">
+                                        <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
+                                            value="{{ old('FotoProduto') }}">
+                                        <span class="invalid-feedback FotoProduto_error" role="alert">
                                         </span>
                                     </div>
                                 </div>
@@ -428,7 +428,7 @@
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Cores:</label> <label
+                                    <label class="modal-label">Cores: </label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <select type="text" name="CoresProduto" id="CoresProduto" class="form-control"
                                         maxlength="25" value="{{ old('CoresProduto') }}"
@@ -491,9 +491,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group" id="form-direita" style="width: 100%;">
-                                <label class="modal-label">Tipo de Produto:</label> <label
+                                <label class="modal-label">Tipo de Produto: </label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeTipoProduto" id="form-direita" class="form-control"
+                                <input type="text" name="NomeTipoProduto" id="NomeTipoProduto"style="width: 100%; margin-right: 0px;" class="form-control"
                                     maxlength="50" value="{{ old('NomeTipoProduto') }}"
                                     placeholder="Entre com o Tipo de Produto">
                                 <span class="invalid-feedback NomeTipoProduto_error" role="alert">
@@ -581,9 +581,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Material de Fabricação:</label> <label
+                                <label class="modal-label">Material de Fabricação: </label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeMaterial" id="form-direita" class="form-control"
+                                <input type="text" name="NomeMaterial" id="NomeMaterial" style="width: 100%; margin-right: 0px;" class="form-control"
                                     maxlength="50" value="{{ old('NomeMaterial') }}"
                                     placeholder="Entre com o Material de Fabricação">
                                 <span class="invalid-feedback NomeMaterial_error" role="alert">
@@ -667,10 +667,10 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-group" id="form-direita">
-                                <label class="modal-label">Nome e Dimensão (Sacola Grande ZZZ X ZZZ X ZZZ):</label>
-                                    style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeDimensao" id="form-direita" class="form-control"
+                            <div class="form-group">
+                                <label class="modal-label">Nome e Dimensão <br>(Sacola Grande ZZZ X ZZZ X ZZZ): </label><label style="color: red; font-size: 12px;">
+                                     * </label>
+                                <input type="text" name="NomeDimensao" id="NomeDimensao" style="width: 100%; margin-right: 0px;" class="form-control"
                                     value="{{ old('NomeDimensao') }}" placeholder="Entre com a Nova Dimensão">
                                 <span class="invalid-feedback NomeDimensao_error" role="alert">
                                 </span>
@@ -757,7 +757,7 @@
                             <div class="form-group">
                                 <label class="modal-label">Nome da Cor:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeCores" id="form-direita" class="form-control"
+                                <input type="text" name="NomeCores" id="NomeCores" style="width: 100%; margin-right: 0px;" class="form-control"
                                     maxlength="25" value="{{ old('NomeCores') }}"
                                     placeholder="Entre com o Nome da Cor">
                                 <span class="invalid-feedback NomeCores_error" role="alert">
@@ -768,7 +768,7 @@
                             <div class="form-group">
                                 <label class="modal-label">Código de Cor:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="color" name="CodigoCores" id="form-direita" class="form-control"
+                                <input type="color" name="CodigoCores" id="CodigoCores" style="width: 100%; margin-right: 0px;" class="form-control"
                                     value="{{ old('CodigoCores') }}" placeholder="Entre com o Codigo da Cor">
                                 <span class="invalid-feedback CodigoCores_error" role="alert">
                                 </span>
@@ -776,7 +776,7 @@
                             <div class="form-group">
                                 <label class="modal-label">Cor Especial:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="EspecialCores" id="form-direita" class="form-control"
+                                <input type="text" name="EspecialCores" id="EspecialCores" style="width: 100%; margin-right: 0px;" class="form-control"
                                     value="{{ old('EspecialCores') }}" placeholder="Entre com a Cor Especial">
                                 <span class="invalid-feedback EspecialCores_error" role="alert">
                                 </span>

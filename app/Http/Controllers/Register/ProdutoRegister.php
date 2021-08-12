@@ -18,32 +18,36 @@ class ProdutoRegister extends Controller
     protected function createProduto(Request $request)
     {
         $dataForm = $request->all();
-        $dataForm['persoProduto'] = (!isset($dataForm['persoProduto'])) ? 0 : 1;
-        $dataForm['terceProduto'] = (!isset($dataForm['terceProduto'])) ? 0 : 1;
+        $dataForm['PersoProduto'] = (!isset($dataForm['PersoProduto'])) ? 0 : 1;
+        $dataForm['TerceProduto'] = (!isset($dataForm['TerceProduto'])) ? 0 : 1;
 
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeProduto' => ['required', 'string'],
-                'tipoProduto' => ['required', 'integer'],
+                'IDProduto' => ['required', 'integer'],
+                'NomeProduto' => ['required', 'string'],
+                'TipoProduto' => ['required', 'integer'],
                 'PCProduto' => ['required'],
                 'PCVenda' => ['required'],
-                'materialProduto' => ['required', 'integer'],
-                'logistica' => ['required', 'integer'],
-                'dimensaoProduto' => ['required', 'integer'],
-                'pedidoMinimo' => ['integer'],
-                'fotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
+                'MaterialProduto' => ['required', 'integer'],
+                'Logistica' => ['required', 'integer'],
+                'DimensaoProduto' => ['required', 'integer'],
+                'PacoteProduto' => ['required', 'integer'],
+                'PedidoMinimo' => ['integer'],
+                'FotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
             ],
             [
-                'nomeProduto.required' => 'Nome obrigatório.',
-                'tipoProduto.required' => 'Tipo obrigatório.',
+                'IDProduto' => 'ID obrigatório.',
+                'NomeProduto.required' => 'Nome obrigatório.',
+                'TipoProduto.required' => 'Tipo obrigatório.',
                 'PCProduto.required' => 'Preço de custo obrigatório.',
                 'PCVenda.required' => 'Preço de venda obrigatório.',
-                'materialProduto.required' => 'Material obrigatório.',
-                'logistica.required' => 'Logística obrigatória.',
-                'dimensaoProduto.required' => 'Dimensão obrigatória.',
-                'fotoProduto.required' => 'Foto do produto obrigatória.',
-                'fotoProduto.dimensions' => 'Dimensão de 200 x 200.',
+                'MaterialProduto.required' => 'Material obrigatório.',
+                'Logistica.required' => 'Logística obrigatória.',
+                'DimensaoProduto.required' => 'Dimensão obrigatória.',
+                'PacoteProduto.required' => 'Pacote obrigatório.',
+                'FotoProduto.required' => 'Foto do produto obrigatória.',
+                'FotoProduto.dimensions' => 'Dimensão de 200 x 200.',
             ]
         );
 
@@ -54,16 +58,17 @@ class ProdutoRegister extends Controller
         $nameFile = $request->fotoProduto->getClientOriginalName() . $request->fotoProduto->extension();
 
         $Produto = new Produto;
-        $Produto->pro_nome = $request->nomeProduto;
-        $Produto->tpp_id = $request->tipoProduto;
+        $Produto->pro_id = $request->IDProduto;
+        $Produto->pro_nome = $request->NomeProduto;
+        $Produto->tpp_id = $request->TipoProduto;
         $Produto->pro_precocusto = $request->PCProduto;
         $Produto->pro_precovenda = $request->PCVenda;
-        $Produto->mat_id = $request->materialProduto;
-        $Produto->log_id = $request->logistica;
-        $Produto->dim_id = $request->dimensaoProduto;
-        $Produto->pro_pedidominimo = $request->pedidoMinimo;
-        $file = $request->fotoProduto;
-        $upload = $request->fotoProduto->store('fotos');
+        $Produto->mat_id = $request->MaterialProduto;
+        $Produto->log_id = $request->Logistica;
+        $Produto->dim_id = $request->DimensaoProduto;
+        $Produto->pro_pedidominimo = $request->PedidoMinimo;
+        $file = $request->FotoProduto;
+        $upload = $request->FotoProduto->store('fotos');
         $Produto->pro_foto_path = $nameFile;
         $Produto->pro_personalizacao = $request->$dataForm['persoProduto'];
         $Produto->pro_terceirizacao = $request->$dataForm['terceProduto'];

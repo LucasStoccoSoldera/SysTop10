@@ -21,12 +21,12 @@ class PacoteRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomePacotes' => ['required', 'string'],
-                'descricaoPacotes' => ['required', 'string'],
+                'DimensaoPacotes' => ['required', 'string'],
+                'DescricaoPacotes' => ['required', 'string'],
             ],
             [
-                'nomePacotes.required' => 'Pacote obrigatório.',
-                'descricaoPacotes.required' => 'Dimensão obrigatória.',
+                'DimensaoPacotes.required' => 'Pacote obrigatório.',
+                'DescricaoPacotes.required' => 'Dimensão obrigatória.',
             ]
         );
 
@@ -34,8 +34,8 @@ class PacoteRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Pacote = new Pacote;
-        $Pacote->pac_dimensao = $request->nomePacotes;
-        $Pacote->pac_descricao = $request->descricaoPacotes;
+        $Pacote->pac_dimensao = $request->DimensaoPacotes;
+        $Pacote->pac_descricao = $request->DescricaoPacotes;
         $Pacote->save();
 
         if ($Pacote) {

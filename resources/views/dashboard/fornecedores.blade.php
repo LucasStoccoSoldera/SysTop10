@@ -275,15 +275,6 @@
                                     </span>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">CNPJ:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
-                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
-                                        placeholder="Entre com o CNPJ">
-                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
-                                    </span>
-                                </div>
-                                <div class="form-group" id="form-group">
                                     <label class="modal-label">Produtos:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <select type="text" name="produtosFornecedor" id="produtosFornecedor"
@@ -298,6 +289,8 @@
                                     <span class="invalid-feedback produtosFornecedor_error" role="alert">
                                     </span>
                                 </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"> CEP:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
@@ -306,8 +299,6 @@
                                     <span class="invalid-feedback cepFornecedor_error" role="alert">
                                     </span>
                                 </div>
-                            </div>
-                            <div class="col-6">
                                 <div class="form-group">
                                     <label class="modal-label">Cidade:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
@@ -342,6 +333,15 @@
                                         class="form-control" maxlength="4" value="{{ old('ncasaFornecedor') }}"
                                         placeholder="Entre com o Número">
                                     <span class="invalid-feedback ncasaFornecedor_error" role="alert">
+                                    </span>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">CNPJ:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
+                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
+                                        placeholder="Entre com o CNPJ">
+                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
                                     </span>
                                 </div>
                             </div>

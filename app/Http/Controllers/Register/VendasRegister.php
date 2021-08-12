@@ -38,6 +38,7 @@ class VendasRegister extends Controller
                 'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
                 'IDLogistica.required' => 'Logistica obrigatória.',
                 'IDCliente.required' => 'Cliente obrigatório.',
+                'VTVenda.required' => 'Valor total obrigatório.',
                 'parcelasVenda.required' => 'Qtde. de parcelas obrigatória.',
                 'statusVenda.required' => 'Status da venda obrigatório.',
             ]

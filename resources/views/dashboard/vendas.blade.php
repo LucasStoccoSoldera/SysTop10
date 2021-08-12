@@ -430,8 +430,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Tipo de Pagamento:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="tipoPagto" id="tipoPagto" maxlength="25"
-                                        class="form-control" value="{{ old('tipoPagto') }}"
+                                    <select type="text" name="IDTipoPagamento" id="IDTipoPagamento" maxlength="25"
+                                        class="form-control" value="{{ old('IDTipoPagamento') }}"
                                         placeholder="Selecione com o Tipo de Pagamento">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($pagamentos as $pagamento)
@@ -439,15 +439,16 @@
                                                 {{ $pagamento['tpg_descricao'] }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="invalid-feedback tipoPagto_error" role="alert">
+                                    <span class="invalid-feedback IDTipoPagamento_error" role="alert">
                                     </span>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Qtde. Parcelas:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="parcelasVendas" id="parcelasVendas" class="form-control"
+                                    <select type="text" name="parcelasVenda" id="parcelasVenda" class="form-control"
                                         maxlength="25" value="{{ old('parcelasVendas') }}"
                                         placeholder="Selecione a Qtde de Parcelas">
+                                        <option value="">------------Selecione------------</option>
                                         <option value="1">A Vista</option>
                                         <option value="2">2x</option>
                                         <option value="3">3x</option>
@@ -461,14 +462,14 @@
                                         <option value="11">11x</option>
                                         <option value="12">12x</option>
                                     </select>
-                                    <span class="invalid-feedback parcelasVendas_error" role="alert">
+                                    <span class="invalid-feedback parcelasVenda_error" role="alert">
                                     </span>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Logistica:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="logistica" id="logistica" maxlength="25"
-                                        class="form-control" value="{{ old('logistica') }}"
+                                    <select type="text" name="IDLogistica" id="IDLogistica" maxlength="25"
+                                        class="form-control" value="{{ old('IDLogistica') }}"
                                         placeholder="Selecione a Logistica">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($logisticas as $logistica)
@@ -476,7 +477,7 @@
                                                 {{ $logistica['log_descricao'] }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="invalid-feedback logistica_error" role="alert">
+                                    <span class="invalid-feedback IDLogistica_error" role="alert">
                                     </span>
                                 </div>
                                 <div class="form-group" id="form-group">
@@ -485,6 +486,7 @@
                                     <select type="text" name="statusVenda" id="statusVenda" class="form-control"
                                         maxlength="25" value="{{ old('statusVenda') }}"
                                         placeholder="Selecione o Status">
+                                        <option value="">------------Selecione------------</option>
                                         <option value="1">Em Aberto</option>
                                         <option value="2">Fechada</option>
                                         <option value="3">Cancelada</option>

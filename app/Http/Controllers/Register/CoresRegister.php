@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CoresRequest;
 use App\Models\Cor;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class CoresRegister extends Controller
+class CorRegister extends Controller
 {
 
     /**

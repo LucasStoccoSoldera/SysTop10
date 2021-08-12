@@ -20,10 +20,10 @@ class TipoProdutoRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'DescricaoTipoProduto' => ['required', 'string'],
+                'NomeTipoProduto' => ['required', 'string'],
             ],
             [
-                'DescricaoTipoProduto.required' => 'Tipo de produto obrigatório.',
+                'NomeTipoProduto.required' => 'Tipo de produto obrigatório.',
             ]
         );
 
@@ -31,7 +31,7 @@ class TipoProdutoRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Tipo_Produto = new TipoProduto;
-        $Tipo_Produto->tpp_descricao = $request->DescricaoTipoProduto;
+        $Tipo_Produto->tpp_descricao = $request->NomeTipoProduto;
         $Tipo_Produto->save();
 
         if ($Tipo_Produto) {

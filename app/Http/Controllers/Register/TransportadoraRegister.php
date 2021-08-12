@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LogisticaRequest;
-use App\Http\Requests\TransportadoraRequest;
 use App\Models\Transportadora;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class TransportadoraRegister extends Controller
@@ -22,13 +19,14 @@ class TransportadoraRegister extends Controller
             $request->all(),
             [
                 'nomeTrans' => ['required', 'string'],
-                'telefone' => ['required', 'telefone'],
+                'telefoneTrans' => ['required', 'telefone'],
                 'limitetransTrans' => ['required', 'integer'],
             ],
             [
-                'nomeTrans' => 'Transportadora obrigatória.',
-                'telefone' => 'Telefone obrigatório.',
-                'limitetransTrans' => 'Limite obrigatório.',
+                'nomeTrans.required' => 'Transportadora obrigatória.',
+                'telefoneTrans.required' => 'Telefone obrigatório.',
+                'telefoneTrans.telefone' => 'Telefone inválido.',
+                'limitetransTrans.required' => 'Limite obrigatório.',
             ]
         );
 

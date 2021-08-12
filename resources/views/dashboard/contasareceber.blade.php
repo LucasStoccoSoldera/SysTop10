@@ -221,8 +221,8 @@
         </div>
     </div>
 
-    <div class="col-12">
-        <div class="row">
+    <div class="row">
+        <div class="col-12">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Contas a Receber <button class="btn btn-primary btn-block"
@@ -330,8 +330,8 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group" id="form-group">
-                                <label class="modal-label">Descrição:</label> <label
-                                    style="color: red; font-size: 12px;"> * </label>
+                                <label class="modal-label">Descrição:</label><label style="color: red; font-size: 12px;">
+                                     * </label>
                                 <input type="text" name="descricaoReceber" id="descricaoReceber" maxlength="80"
                                     value="{{ old('descricaoReceber') }}" class="form-control"
                                     placeholder="Entre com a Descricao">
@@ -364,6 +364,7 @@
                                 <select type="text" name="statusReceber" id="statusReceber" class="form-control"
                                     maxlength="25" value="{{ old('statusReceber') }}"
                                     placeholder="Selecione o Status">
+                                    <option value="">------------Selecione------------</option>
                                     <option value="1">Em Aberto</option>
                                     <option value="2">Fechada</option>
                                     <option value="3">Cancelada</option>
@@ -371,6 +372,7 @@
                                 <span class="invalid-feedback statusReceber_error" role="alert">
                                 </span>
                             </div>
+                        </div>
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Valor a Receber:</label> <label
@@ -389,6 +391,7 @@
                                     <select type="text" name="parcelasReceber" id="parcelasReceber"
                                         class="form-control" maxlength="25" value="{{ old('parcelasReceber') }}"
                                         placeholder="Selecione a Qtde de Parcelas">
+                                        <option value="">------------Selecione------------</option>
                                         <option value="1">A Vista</option>
                                         <option value="2">2x</option>
                                         <option value="3">3x</option>
@@ -421,6 +424,7 @@
                                 </div>
                             </div>
                         </div>
+                </div>
                         <div class="modal-footer">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterContasaReceber"
@@ -463,7 +467,7 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('#' + prefix).addClass('.is-invalid');
+                            $('#' + prefix).addClass('is-invalid');
                         });
                     }
                 }

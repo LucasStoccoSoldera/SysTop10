@@ -20,10 +20,10 @@ class MaterialBaseRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'descricaoMaterial' => ['required', 'string'],
+                'NomeMaterial' => ['required', 'string'],
             ],
             [
-                'descricaoMaterial.required' => 'Material obrigatório.',
+                'NomeMaterial.required' => 'Material obrigatório.',
             ]
         );
 
@@ -31,7 +31,7 @@ class MaterialBaseRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Material_Base = new Material_Base;
-        $Material_Base->mat_descricao = $request->descricaoMaterial;
+        $Material_Base->mat_descricao = $request->NomeMaterial;
         $Material_Base->save();
 
         if ($Material_Base) {
