@@ -349,8 +349,10 @@
                             </label>
                             <input type="text" name="nomeTrans" id="nomeTrans" class="form-control" maxlength="50"
                                 value="{{ old('nomeTrans') }}" placeholder="Entre com o Nome" autofocus>
+                                <div class="div-feedback">
                             <span class="invalid-feedback nomeTrans_error" role="alert">
                             </span>
+                                </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -360,8 +362,10 @@
                             <input type="text" name="telefoneTrans" id="telefoneTrans" class="telefone form-control"
                                 onkeypress="mascara(this, '## ####-####')" maxlength="12"
                                 value="{{ old('telefoneTrans') }}" placeholder="Entre com o Telefone">
+                                <div class="div-feedback">
                             <span class="invalid-feedback telefoneTrans_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Limite de Transporte:</label> <label
@@ -369,8 +373,10 @@
                             <input type="text" name="limitetransTrans" id="limitetransTrans" class="form-control"
                                 maxlength="50" value="{{ old('limitetransTrans') }}"
                                 placeholder="Entre com o Limite de Pacote">
+                                <div class="div-feedback">
                             <span class="invalid-feedback limitetransTrans_error" role="alert">
                             </span>
+                                </div>
                         </div>
                     </div>
                 </div>

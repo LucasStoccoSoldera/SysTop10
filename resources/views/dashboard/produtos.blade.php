@@ -325,8 +325,10 @@
                                     <input type="text" name="IDProduto" id="IDProduto" class="form-control"
                                         maxlength="6" value="{{ old('IDProduto') }}" placeholder="ID do Produto"
                                         autofocus>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback IDProduto_error" role="alert">
                                     </span>
+                                </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Nome do Produto:</label> <label
@@ -334,8 +336,10 @@
                                     <input type="text" name="NomeProduto" id="NomeProduto" class="form-control"
                                         maxlength="80" value="{{ old('NomeProduto') }}"
                                         placeholder="Entre com o Nome">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback NomeProduto_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Tipo de Produto:</label> <label
@@ -349,8 +353,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback TipoProduto_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Custo:</label> <label
@@ -358,8 +364,10 @@
                                     <input type="text" name="PCProduto" id="PCProduto" class="form-control"
                                         onkeypress="mascara(this, 'R$####,##')" maxlength="9"
                                         value="{{ old('PCProduto') }}" placeholder="Entre com o Preço de Custo">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback PCProduto_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Venda:</label> <label
@@ -367,15 +375,19 @@
                                     <input type="text" name="PVProduto" id="PCVenda" class="form-control"
                                         onkeypress="mascara(this, 'R$####,##')" maxlength="9"
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback PCVenda_error" role="alert">
                                     </span>
+                                        </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Foto do Produto:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
                                         <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
                                             value="{{ old('FotoProduto') }}">
+                                            <div class="div-feedback">
                                         <span class="invalid-feedback FotoProduto_error" role="alert">
                                         </span>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -393,8 +405,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback MaterialProduto_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Pacote:</label> <label
@@ -408,8 +422,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback PacoteProduto_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Dimensão:</label> <label
@@ -424,8 +440,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback DimensaoProduto_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Cores: </label> <label
@@ -438,8 +456,10 @@
                                             <option value="{{ $cor['cor_id'] }}">{{ $cor['cor_nome'] }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback CoresProduto_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"> Personalizável?</label>

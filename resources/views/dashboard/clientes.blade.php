@@ -318,32 +318,40 @@
                             <input type="text" name="nomeCliente" id="nomeCliente" class="form-control"
                                 maxlength="25" value="{{ old('nomeCliente') }}" placeholder="Entre com o Nome"
                                 autofocus>
+                                <div class="div-feedback">
                             <span class="invalid-feedback nomeCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Email para Login:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="usuarioCliente" id="usuarioCliente" class="form-control"
                                 value="{{ old('usuarioCliente') }}" placeholder="Entre com o Login">
+                                <div class="div-feedback">
                             <span class="invalid-feedback usuarioCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;"> *
                             </label>
                             <input type="text" name="cpfCliente" id="cpfCliente" class="cpf form-control"
                                 value="{{ old('cpfCliente') }}" placeholder="Entre com o CPF">
+                                <div class="div-feedback">
                             <span class="invalid-feedback cpfCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">CNPJ:</label> <label style="color: red; font-size: 12px;"> *
                             </label>
                             <input type="text" name="cnpjCliente" id="cnpjCliente" class="cnpj form-control"
                                 value="{{ old('cnpjCliente') }}" placeholder="Entre com o CNPJ">
+                                <div class="div-feedback">
                             <span class="invalid-feedback cnpjCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -353,8 +361,10 @@
                             <input type="text" name="telefoneCliente" id="telefoneCliente"
                                 class="telefone form-control" value="{{ old('telefoneCliente') }}"
                                 placeholder="Entre com o Telefone">
+                                <div class="div-feedback">
                             <span class="invalid-feedback telefoneCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Celular:</label> <label style="color: red; font-size: 12px;">
@@ -362,24 +372,30 @@
                             <input type="text" name="celularCliente" id="celularCliente"
                                 class="celular form-control" value="{{ old('celularCliente') }}"
                                 placeholder="Entre com o Celular">
+                                <div class="div-feedback">
                             <span class="invalid-feedback celular_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Senha:</label> <label style="color: red; font-size: 12px;"> *
                             </label>
                             <input type="password" name="senhaCliente" id="senhaCliente" class="form-control"
                                 value="{{ old('senhaCliente') }}" placeholder="Entre com a Senha">
+                                <div class="div-feedback">
                             <span class="invalid-feedback senhaCliente_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Confirmar Senha:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="password" name="senhaCliente_confirmation" id="senhaCliente_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
+                                <div class="div-feedback">
                             <span class="invalid-feedback senhaConfirm_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">

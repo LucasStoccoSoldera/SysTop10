@@ -265,24 +265,30 @@
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="nomeUser" id="nomeUser" class="form-control" maxlength="25"
                                 value="{{ old('nomeUser') }}" placeholder="Entre com o Nome" autofocus>
+                                <div class="div-feedback">
                             <span class="invalid-feedback nomeUser_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Email para Login:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
                                 value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
+                                <div class="div-feedback">
                             <span class="invalid-feedback usu_usuario_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
                                 * </label>
                             <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
                                 value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
+                                <div class="div-feedback">
                             <span class="invalid-feedback cpfUser_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Celular:</label> <label
@@ -290,8 +296,10 @@
                             <input type="text" name="celularUser" id="celularUser"
                                 class="celular form-control" value="{{ old('celularUser') }}"
                                 placeholder="Entre com o Celular">
+                                <div class="div-feedback">
                             <span class="invalid-feedback celularUser_error" role="alert">
                             </span>
+                                </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -300,14 +308,20 @@
                             </label>
                             <input type="password" name="senhaUser" id="senhaUser" class="form-control"
                                 value="{{ old('senhaUser') }}" placeholder="Entre com a Senha">
+                                <div class="div-feedback">
                             <span class="invalid-feedback senhaUser_error" role="alert">
                             </span>
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Confirmar Senha:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
+                                <div class="div-feedback">
+                                    <span class="invalid-feedback senhaUser_error" role="alert">
+                                    </span>
+                                        </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
@@ -320,8 +334,10 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="div-feedback">
                             <span class="invalid-feedback cargoUser_error" role="alert">
                             </span>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">

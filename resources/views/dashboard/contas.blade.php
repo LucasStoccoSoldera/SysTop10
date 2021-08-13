@@ -397,10 +397,10 @@
                                 <input type="text" name="descricaoContas" id="descricaoContas" class="form-control"
                                     maxlength="80" value="{{ old('descricaoContas') }}"
                                     placeholder="Entre com a Descrição" autofocus>
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback descricaoContas_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Tipo:</label> <label
@@ -412,10 +412,10 @@
                                     <option value="Fixa">Fixa</option>
                                     <option value="Variável">Variável</option>
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback tipoContas_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Valor:</label> <label
@@ -423,10 +423,10 @@
                                 <input type="text" name="valorContas" id="valorContas" class="dinheiro form-control"
                                     maxlength="11" value="{{ old('valorContas') }}"
                                     placeholder="Entre com o Valor da Conta">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback valorContas_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Valor Final:</label> <label
@@ -435,10 +435,10 @@
                                     class="dinheiro form-control" maxlength="11"
                                     value="{{ old('valorfContas') }}"
                                     placeholder="Entre com o Valor Final da Conta">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback valorfContas_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Qtde. Parcelas:</label> <label
@@ -460,10 +460,10 @@
                                     <option value="11">11x</option>
                                     <option value="12">12x</option>
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback parcelasContas_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
@@ -474,10 +474,10 @@
                                     onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                     value="{{ old('datavContas') }}"
                                     placeholder="Entre com a Data de Vencimento">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback datavContas_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Data de Pagamento:</label> <label
@@ -485,10 +485,10 @@
                                 <input type="date" name="datapContas" id="datapContas" class="form-control"
                                     onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                     value="{{ old('datapContas') }}" placeholder="Entre com a Data de Pagamento">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback datapContas_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Tipo de Pagamento:</label> <label
@@ -502,10 +502,10 @@
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback tpgpagtoContas_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Centro de Custo:</label> <label
@@ -519,10 +519,10 @@
                                         </option>
                                     @endforeach
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback centrocustoContas_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -559,10 +559,10 @@
                                 <input type="text" name="IDCompras" id="IDCompras" class="form-control"
                                     maxlength="80" value="{{ old('IDCompras') }}" placeholder="ID Automático"
                                     autofocus>
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback IDCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Descrição da Compra:</label> <label
@@ -570,10 +570,10 @@
                                 <input type="text" name="descricaoCompras" id="descricaoCompras"
                                     class="form-control" maxlength="80" value="{{ old('descricaoCompras') }}"
                                     placeholder="Entre com a Descrição da Compra">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback descricaoCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Quantidade:</label> <label
@@ -581,30 +581,30 @@
                                 <input type="text" name="qtdeCompras" id="qtdeCompras" class="form-control"
                                     maxlength="5" value="{{ old('qtdeCompras') }}"
                                     placeholder="Entre com a Quantidade">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback qtdeCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Desconto:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="descontoCompras" id="descontoCompras"
                                     class="porcentagem valor form-control" value="{{ old('descontoCompras') }}">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback descontoCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Valor Total:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="VTCompras" id="VTCompras"
                                     class="dinheiro valor form-control" value="{{ old('VTCompras') }}" disabled>
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback VTCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Centro de Custo:</label> <label
@@ -618,10 +618,10 @@
                                         </option>
                                     @endforeach
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback ccCompras_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                         </div>
                         <div class="col-6">
@@ -637,10 +637,10 @@
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback tpgpagtoCompras_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Qtde. Parcelas:</label> <label
@@ -662,10 +662,10 @@
                                     <option value="11">11x</option>
                                     <option value="12">12x</option>
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback parcelasCompras_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Data da Compra:</label> <label
@@ -673,10 +673,10 @@
                                 <input type="date" name="dataCompras" id="dataCompras" class="form-control"
                                     onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                     value="{{ old('dataCompras') }}" placeholder="Entre com a Data da Compra">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback dataCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Data Pag Limite:</label> <label
@@ -684,10 +684,10 @@
                                 <input type="date" name="datapagCompras" id="datapagCompras" class="form-control"
                                     onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                     value="{{ old('datapagCompras') }}" placeholder="Entre com a data Limite">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback datapagCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Observações:</label> <label
@@ -695,10 +695,10 @@
                                 <input type="textarea" name="obsCompras" id="obsCompras" class="form-control"
                                     maxlength="255" value="{{ old('obsCompras') }}"
                                     placeholder="Caso tenha alguma Observação">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback obsCompras_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -800,10 +800,10 @@
                             <input type="text" name="IDItemCompra" id="IDCompra" maxlength="2"
                                 value="{{ old('IDItemCompra') }}"
                                 onloadstart="pegaCodigo(IDItemCompra, IDCompra)" disabled class="form-control">
-
+                                <div class="div-feedback">
                             <span class="invalid-feedback IDCompra_error" role="alert">
                             </span>
-
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Fornecedor:</label> <label
@@ -817,10 +817,10 @@
                                     </option>
                                 @endforeach
                             </select>
-
+                            <div class="div-feedback">
                             <span class="invalid-feedback IDFornecedor_error" role="alert">
                             </span>
-
+                            </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
@@ -833,10 +833,10 @@
                                     </option>
                                 @endforeach
                             </select>
-
+                            <div class="div-feedback">
                             <span class="invalid-feedback IDProduto_error" role="alert">
                             </span>
-
+                            </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Descrição:</label> <label
@@ -844,10 +844,10 @@
                             <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
                                 class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
                                 placeholder="Coloque uma Descrição">
-
+                                <div class="div-feedback">
                             <span class="invalid-feedback descricaoItemVenda_error" role="alert">
                             </span>
-
+                                </div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -857,30 +857,30 @@
                             <input type="text" name="qtdeItemCompra" id="qtdeItemCompra" class="form-control"
                                 maxlength="5" value="{{ old('qtdeItemCompra') }}"
                                 placeholder="Entre com a Quantidade">
-
+                                <div class="div-feedback">
                             <span class="invalid-feedback qtdeItemCompra_error" role="alert">
                             </span>
-
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Valor Item:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="valorItemCompra" id="valorItemCompra" class="form-control"
                                 value="{{ old('valorItemCompra') }}" placeholder="Entre com a Valor">
-
+                                <div class="div-feedback">
                             <span class="invalid-feedback valorItemCompra_error" role="alert">
                             </span>
-
+                                </div>
                         </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Valor Total Item:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra"
                                 class="valor form-control" disabled value="{{ old('valorTotalItemCompra') }}">
-
+                                <div class="div-feedback">
                             <span class="invalid-feedback valorItemCompra_error" role="alert">
                             </span>
-
+                                </div>
                         </div>
 
                     </div>

@@ -244,8 +244,10 @@
                                     <input type="text" name="nomeFornecedor" id="nomeFornecedor" maxlength="80"
                                         value="{{ old('nomeFornecedor') }}" class="form-control"
                                         placeholder="Entre com o Nome" autofocus>
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback nomeFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Telefone:</label> <label
@@ -254,8 +256,10 @@
                                         onkeypress="mascara(this, '## ####-####')" maxlength="12"
                                         value="{{ old('telefoneFornecedor') }}" class="form-control"
                                         placeholder="Entre com o Telefone">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback telefoneFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Celular:</label> <label
@@ -263,16 +267,20 @@
                                     <input type="text" name="celularFornecedor" id="celularFornecedor"
                                         class="celular form-control" value="{{ old('celularFornecedor') }}"
                                         placeholder="Entre com o Celular">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback celularFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
                                         * </label>
                                     <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="cpf form-control"
                                         value="{{ old('cpfFornecedor') }}" placeholder="Entre com o CPF">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback cpfFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produtos:</label> <label
@@ -286,8 +294,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback produtosFornecedor_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -296,8 +306,10 @@
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="cepFornecedor" id="cepFornecedor" class="cep form-control"
                                         value="{{ old('cepFornecedor') }}" placeholder="Entre com o CEP">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback cepFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Cidade:</label> <label
@@ -305,8 +317,10 @@
                                     <input type="text" name="cidadeFornecedor" id="cidadeFornecedor"
                                         class="form-control" maxlength="120" value="{{ old('cidadeFornecedor') }}"
                                         placeholder="Entre com a Cidade">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback cidadeFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Estado:</label> <label
@@ -314,8 +328,10 @@
                                     <input type="text" name="estadoFornecedor" id="estadoFornecedor"
                                         class="form-control" maxlength="2" value="{{ old('estadoFornecedor') }}"
                                         placeholder="Entre com o Estado">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback estadoFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Bairro:</label> <label
@@ -323,8 +339,10 @@
                                     <input type="text" name="bairroFornecedor" id="bairroFornecedor"
                                         class="form-control" maxlength="80" value="{{ old('bairroFornecedor') }}"
                                         placeholder="Entre com o Bairro">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback bairroFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Número:</label> <label
@@ -332,8 +350,10 @@
                                     <input type="number" name="ncasaFornecedor" id="ncasaFornecedor"
                                         class="form-control" maxlength="4" value="{{ old('ncasaFornecedor') }}"
                                         placeholder="Entre com o Número">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback ncasaFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CNPJ:</label> <label
@@ -341,8 +361,10 @@
                                     <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
                                         class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
                                         placeholder="Entre com o CNPJ">
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback cnpjFornecedor_error" role="alert">
                                     </span>
+                                        </div>
                                 </div>
                             </div>
                         </div>

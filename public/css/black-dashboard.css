@@ -2632,6 +2632,10 @@ textarea.form-control.is-valid {
     font-size: 120%;
     color: #f5365c;
 }
+.div-feedback{
+    width: 300px;
+    height: 31px;
+}
 
 .invalid-tooltip {
     position: absolute;

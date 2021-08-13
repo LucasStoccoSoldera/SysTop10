@@ -335,10 +335,10 @@
                                 <input type="text" name="descricaoReceber" id="descricaoReceber" maxlength="80"
                                     value="{{ old('descricaoReceber') }}" class="form-control"
                                     placeholder="Entre com a Descricao">
-
+                                    <div class="div-feedback">
                                 <span class="invalid-feedback descricaoReceber_error" role="alert">
                                 </span>
-
+                                    </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Tipo de Pagamento:</label> <label
@@ -352,10 +352,10 @@
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>
-
+                                <div class="div-feedback">
                                 <span class="invalid-feedback tipoPagtoReceber_error" role="alert">
                                 </span>
-
+                                </div>
                             </div>
 
                             <div class="form-group" id="form-group">
@@ -369,8 +369,10 @@
                                     <option value="2">Fechada</option>
                                     <option value="3">Cancelada</option>
                                 </select>
+                                <div class="div-feedback">
                                 <span class="invalid-feedback statusReceber_error" role="alert">
                                 </span>
+                                </div>
                             </div>
                         </div>
                             <div class="col-6">
@@ -380,10 +382,10 @@
                                     <input type="text" name="valorReceber" id="valorReceber"
                                         class="dinheiro form-control" maxlength="11"
                                         value="{{ old('valorReceber') }}" placeholder="Entre com o Valor">
-
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback valorReceber_error" role="alert">
                                     </span>
-
+                                        </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Qtde. Parcelas:</label> <label
@@ -405,10 +407,10 @@
                                         <option value="11">11x</option>
                                         <option value="12">12x</option>
                                     </select>
-
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback parcelasReceber_error" role="alert">
                                     </span>
-
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Recebimento:</label> <label
@@ -417,10 +419,10 @@
                                         onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                         value="{{ old('dataReceber') }}" class="form-control"
                                         placeholder="Entre com a Data">
-
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback dataReceber_error" role="alert">
                                     </span>
-
+                                        </div>
                                 </div>
                             </div>
                         </div>
