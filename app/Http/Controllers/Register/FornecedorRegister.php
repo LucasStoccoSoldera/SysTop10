@@ -8,6 +8,7 @@ use App\Models\Fornecedores;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class FornecedorRegister extends Controller
 {
@@ -74,8 +75,8 @@ class FornecedorRegister extends Controller
                     'cnpjFornecedor' => ['required', 'string', 'cnpj'],
                 ],
                 [
-                    'cpfFornecedor.required' => 'CPF obrigatório.',
-                    'cnpjFornecedor.required' => 'CNPJ obrigatório.',
+                    'cpfFornecedor.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cnpjFornecedor.required' => 'CPF ou CNPJ obrigatórios.',
                 ]
             );
         }
@@ -114,16 +115,14 @@ class FornecedorRegister extends Controller
                     'celularFornecedor' => ['required', 'celular'],
                 ],
                 [
-                    'telefoneFornecedor.required' => 'Telefone obrigatório.',
-                    'celularFornecedor.required' => 'Celular obrigatório.',
+                    'telefoneFornecedor.required' => 'Telefone ou Celular obrigatórios.',
+                    'celularFornecedor.required' => 'Telefone ou Celular obrigatórios.',
                 ]
             );
         }
 
-
-
         if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors() + $validator_cpf_cnpj->errors() + $validator_telefone_celular->errors()]);
+            return response()->json(['status' => 0, 'error' => $validator->errors(), $validator_cpf_cnpj->errors(), $validator_telefone_celular->errors()]);
         }
         $Fornecedores = new Fornecedores;
         $Fornecedores->for_nome = $request->nomeFornecedor;

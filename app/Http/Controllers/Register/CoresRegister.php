@@ -19,20 +19,50 @@ class CorRegister extends Controller
             $request->all(),
             [
                 'NomeCores' => ['required', 'string'],
-                'CodigoCores' => ['required', 'string'],
-                'EspecialCores' => ['required', 'string'],
             ],
             [
                 'NomeCores.required' => 'Nome da cor obrigatório.',
             ]
         );
-
+        if (!empty($request->telefoneFornecedor && $request->celularFornecedor)) {
         if (isset($request->CodigoCores)) {
+            $validator_cor_especial = Validator::make(
+                $request->all(),
+                [
+                    'CodigoCores' => ['required', 'string'],
+                ],
+                [
+                    'CodigoCores.required' => 'Código obrigatório.',
+                ]
+            );
             $cor = $request->CodigoCores;
+        } else{
+            $validator_cor_especial = Validator::make(
+                $request->all(),
+                [
+                    'EspecialCores' => ['required', 'string'],
+                ],
+                [
+                    'EspecialCores.required' => 'Cor especial obrigatório.',
+                ]
+            );
         }
+    } else{
+        $validator_cor_especial = Validator::make(
+            $request->all(),
+            [
+                'CodigoCores' => ['required', 'string'],
+                'EspecialCores' => ['required', 'string'],
+            ],
+            [
+                'CodigoCores.required' => 'Código ou Especial obrigatórios.',
+                'EspecialCores.required' => 'Código ou Especial obrigatórios.',
+            ]
+        );
+    }
 
         if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors()]);
+            return response()->json(['status' => 0, 'error' => $validator->errors(), $validator_cor_especial->errors()]);
         }
         $Cor = new Cor;
         $Cor->cor_nome = $request->NomeCores;

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Register;
 use App\Http\Controllers\Controller;
 use App\Models\TipoPagto;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class TipoPagtoRegister extends Controller

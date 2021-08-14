@@ -35,31 +35,6 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../demo/demo.css" rel="stylesheet" />
 
-
-
-    <!--   Core JS Files   -->
-
-    <script src="../js/dash/core/jquery.min.js"></script>
-    <script src="../js/dash/core/popper.min.js"></script>
-    <script src="../js/dash/core/bootstrap.min.js"></script>
-    <script src="../js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="../js/dash/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../js/dash/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../js/dash/black-dashboard.min.js?v=1.0.0"></script>
-    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../demo/demo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
-        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
 </head>
 
 
@@ -357,6 +332,29 @@
                 </div>
             </div>
         </div>
+
+
+    <!--   Core JS Files   -->
+    <script src="../js/dash/core/jquery.min.js"></script>
+    <script src="../js/dash/core/popper.min.js"></script>
+    <script src="../js/dash/core/bootstrap.min.js"></script>
+    <script src="../js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="../js/dash/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../js/dash/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../js/dash/black-dashboard.min.js?v=1.0.0"></script>
+    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../demo/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
         <script>
             $(document).ready(function() {

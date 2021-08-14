@@ -28,6 +28,8 @@ class DimensaoRegister extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
+
+
         $Dimensao = new Dimensao;
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();

@@ -114,16 +114,14 @@ class ClienteRegister extends Controller
                     'celularCliente' => ['required', 'celular'],
                 ],
                 [
-                    'telefoneCliente.required' => 'Telefone obrigatório.',
-                    'telefoneCliente.telefone' => 'Telefone inválido.',
-                    'celularCliente.required' => 'Celular obrigatório.',
-                    'celularCliente.celular' => 'Celular inválido.',
+                    'telefoneCliente.required' => 'Telefone ou Celular obrigatórios.',
+                    'celularCliente.required' => 'Telefone ou Celular obrigatórios.',
                 ]
             );
         }
 
         if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors() + $validator_cpf_cnpj->errors() + $validator_telefone_celular->errors()]);
+            return response()->json(['status' => 0, 'error' => $validator->errors(), $validator_cpf_cnpj->errors(), $validator_telefone_celular->errors()]);
         }
 
 

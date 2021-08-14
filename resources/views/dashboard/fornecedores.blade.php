@@ -283,6 +283,17 @@
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
+                                    <label class="modal-label">CNPJ:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
+                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
+                                        placeholder="Entre com o CNPJ">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
                                     <label class="modal-label">Produtos:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <select type="text" name="produtosFornecedor" id="produtosFornecedor"
@@ -355,17 +366,6 @@
                                     </span>
                                         </div>
                                 </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">CNPJ:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
-                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
-                                        placeholder="Entre com o CNPJ">
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
-                                    </span>
-                                        </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -410,6 +410,7 @@
                         }
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
+                                console.log(prefix);
                                 $('span.' + prefix + '_error').text(val[0]);
                                  $('#' + prefix).addClass('is-invalid');
                             });
