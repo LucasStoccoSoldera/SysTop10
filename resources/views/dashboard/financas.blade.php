@@ -154,19 +154,19 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title" id="no-margin">Relações Financeiras (Semana)</h2><br>
+                    <h2 class="card-title" id="no-margin">Relações Financeiras (Sem)</h2><br>
                 </div>
                 <div>
                     <div class="col-auto justify-content-md-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">Caixa (Semana):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">Caixa (Sem):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem4 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">Total de Entradas (Semana):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">T. de Entradas (Sem):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem5 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">Total de Saídas (Semana):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">T. de Saídas (Sem):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem6 }}</h3>
                     </div>
                 </div>
