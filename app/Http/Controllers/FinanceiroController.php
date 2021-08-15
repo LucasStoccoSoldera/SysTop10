@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Venda;
 use App\Models\Contas_a_Pagar;
 use App\Models\Contas_a_Receber;

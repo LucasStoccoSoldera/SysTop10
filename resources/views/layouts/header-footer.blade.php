@@ -213,32 +213,6 @@
     </div>
 
     @yield('modals')
-    <script>
-        function showDelete(id, rota) {
-            $("#formExcluir").change("action", `"` + rota + `"`);
-            $("#id").val(id);
-            $('#modalAlertDelete').modal('show');
-        }
-
-        function cancelar() {
-            var form2 = $('#formCancelar').val();
-            var modal2 = $('#modalCancelar').val();
-            $('#' + form2)[0].reset();
-            $('.div-feedback').hide(50);
-            $('.is-invalid').removeClass('is-invalid');
-            $('#modalAlertCancelar').hide(800);
-            $('#' + modal2).delay(500).hide(800);
-
-        }
-
-        $('button.cancela').on('click', function() {
-            var form = $(this).data('form');
-            var modal = $(this).data('modal');
-            $('#modalAlertCancelar').modal('show');
-            $('#formCancelar').val(form);
-            $('#modalCancelar').val(modal);
-        });
-    </script>
 
     <div class="modal fade" id="modalAlertRegistrar" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -272,7 +246,7 @@
     </div>
 
 
-    <div class="modal fade" id="modalAlertDelete" style="display: none; top: 50%;" aria-hidden="true">
+    <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
@@ -355,6 +329,41 @@
         integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script>
+            function showDelete(id, rota) {
+                $("#formExcluir").change("action", `"` + rota + `"`);
+                $("#id").val(id);
+                $('#modalAlertDelete').modal('show');
+            }
+
+            function cancelar() {
+                var form2 = $('#formCancelar').val();
+                var modal2 = $('#modalCancelar').val();
+                $('#' + form2)[0].reset();
+                $('.div-feedback').hide(50);
+                $('.is-invalid').removeClass('is-invalid');
+                $('#modalAlertCancelar').hide(800);
+                $('#' + modal2).delay(500).hide(800);
+
+            }
+
+                $('button.red').on('click', function() {
+                var id = $(this).data('id');
+                var rota = $(this).data('rota');
+                $('#modalAlertDelete').modal('show');
+                $('#idDelete').val(id);
+                $('#formExcluir').change('action', rota);
+            });
+
+            $('button.cancela').on('click', function() {
+                var form = $(this).data('form');
+                var modal = $(this).data('modal');
+                $('#modalAlertCancelar').modal('show');
+                $('#formCancelar').val(form);
+                $('#modalCancelar').val(modal);
+            });
+
+        </script>
 
         <script>
             $(document).ready(function() {

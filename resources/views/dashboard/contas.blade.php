@@ -270,8 +270,7 @@
                                             <a href="#" class="btn btn-primary"><i
                                                     class="tim-icons icon-map-big"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-con"
-                                                name="excluir-conta" data-id="{{ $conta['con_id'] }}"
-                                                onclick="showDelete({{ $conta['con_id'] }}, `{{ route('admin.delete.conta') }}`);"
+                                                name="excluir-conta" data-id="{{ $conta['con_id'] }}" data-rota="{{ route('admin.delete.conta') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -737,8 +736,7 @@
                                                                     class="tim-icons icon-pencil"></i></a>
                                                             <button href="#" class="btn btn-primary red"
                                                                 id="excluir-cde" name="excluir-item-compra"
-                                                                data-id="{{ $ItemCompra['cde_id'] }}"
-                                                                onclick="showDelete({{ $ItemCompra['cde_id'] }}, `{{ route('admin.delete.itemcompra') }}`);"
+                                                                data-id="{{ $ItemCompra['cde_id'] }}" data-rota="{{ route('admin.delete.itemcompra') }}"
                                                                 style="padding: 11px 25px;"><i
                                                                     class="tim-icons icon-simple-remove"></i></button>
                                                         </td>
@@ -987,6 +985,24 @@
             });
         });
     });
+    $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.contas') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $contas = data_decoded.$contas;
+                    $ItensCompra = data_decoded.$ItensCompra;
+                }
+            });
+        }
+    );
 
     $('#qtdeCompras, #valorItemCompra').on('change blur keyup', function() {
         $('#qtdeCompras, #valorItemCompra').each(function() { //percorre todos os campos de quantidade

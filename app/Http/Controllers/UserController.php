@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cargo;
-use Illuminate\Http\Request;
+use App\Models\Privilegio;
 use App\Models\Usuario;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,6 +22,7 @@ class UserController extends Controller
 
         $data = Usuario::all();
         $data2 = Cargo::all();
+        $data3 = Privilegio::all();
 
 
    //   $data = DB::select('select
@@ -43,7 +43,8 @@ class UserController extends Controller
             'dado3' => $dado3,
 
             'usuarios' => $data,
-            'cargos' => $data2
+            'cargos' => $data2,
+            'privilegios' => $data3
         ]);
     }
 }

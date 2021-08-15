@@ -33,6 +33,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Detalhe', [App\Http\Controllers\DetalhesController::class, 'Detalhe'])->name('admin.detalhe');
     Route::get('/admin/Logistica', [App\Http\Controllers\LogisticaController::class, 'Logistica'])->name('admin.Logistica');
 
+    Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');
+    Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');
+    Route::get('/admin/List_Financeiro', [App\Http\Controllers\Lista\FinanceiroList::class, 'listFinanceiro'])->name('admin.list.financeiro');
+    Route::get('/admin/List_Contas', [App\Http\Controllers\Lista\ContasList::class, 'listContas'])->name('admin.list.contas');
+    Route::get('/admin/List_ContasaReceber', [App\Http\Controllers\Lista\ContasaReceberList::class, 'listContasaReceber'])->name('admin.list.contasareceber');
+    Route::get('/admin/List_Vendas', [App\Http\Controllers\Lista\VendasList::class, 'listVendas'])->name('admin.list.vendas');
+    Route::get('/admin/List_Produto', [App\Http\Controllers\Lista\ProdutosList::class, 'listProduto'])->name('admin.list.produto');
+    Route::get('/admin/List_Estoque', [App\Http\Controllers\Lista\EstoqueList::class, 'listEstoque'])->name('admin.list.estoque');
+    Route::get('/admin/List_Fornecedor', [App\Http\Controllers\Lista\FornecedoresList::class, 'listFornecedores'])->name('admin.list.fornecedor');
+    Route::get('/admin/List_Detalhe', [App\Http\Controllers\Lista\DetalhesList::class, 'listDetalhe'])->name('admin.list.detalhe');
+    Route::get('/admin/List_Logistica', [App\Http\Controllers\Lista\LogisticaList::class, 'listLogistica'])->name('admin.list.logistica');
+
     Route::post('/admin/Usuario/Registrar_usuario', [App\Http\Controllers\Register\UserRegister::class, 'createUser'])->name('admin.create.user');
     Route::post('/admin/Usuario/Registrar_cargo', [App\Http\Controllers\Register\CargoRegister::class, 'createCargo'])->name('admin.create.cargo');
     Route::post('/admin/Usuario/Registrar_privilegio', [App\Http\Controllers\Register\PrivilegioRegister::class, 'createPrivilegio'])->name('admin.create.privilegio');

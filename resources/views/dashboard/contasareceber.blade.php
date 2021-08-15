@@ -278,8 +278,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-rec"
-                                                name="excluir-receber" data-id="{{ $credito['rec_id'] }}"
-                                                onclick="showDelete({{ $credito['rec_id'] }}, `{{ route('admin.delete.receber') }}`);"
+                                                name="excluir-receber" data-id="{{ $credito['rec_id'] }}" data-rota="{{ route('admin.delete.receber') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -472,6 +471,23 @@
                 }
             });
         });
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.contasareceber') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $creditos = data_decoded.$creditos;
+                }
+            });
+        }
+    );
     });
 </script>
 @endpush

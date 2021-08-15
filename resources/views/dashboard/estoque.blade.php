@@ -350,6 +350,24 @@
                     }
                 });
             });
+            $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.estoque') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $entradas = data_decoded.$movimentacoes;
+                    $produtos = data_decoded.$produtos;
+                }
+            });
+        }
+    );
         });
     </script>
 @endpush

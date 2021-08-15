@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Material_Base;
 use App\Models\TipoProduto;

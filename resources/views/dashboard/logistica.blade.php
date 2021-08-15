@@ -210,8 +210,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-log"
-                                                name="excluir-logistica" data-id="{{ $logistica['log_id'] }}"
-                                                onclick="showDelete({{ $logistica['log_id'] }}, `{{ route('admin.delete.logistica') }}`);"
+                                                name="excluir-logistica" data-id="{{ $logistica['log_id'] }}" data-rota="{{ route('admin.delete.logistica') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -436,6 +435,25 @@
                 }
             });
         });
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.logistica') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $pacotes = data_decoded.$pacotes;
+                    $transportadoras = data_decoded.$transportadoras;
+                    $logisticas = data_decoded.$logisticas;
+                }
+            });
+        }
+    );
     });
 </script>
 @endpush

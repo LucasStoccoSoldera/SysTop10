@@ -134,8 +134,7 @@
                                     <a href="#" class="btn btn-primary" id="alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button href="#" class="btn btn-primary red" id="excluir-cc"
-                                        name="excluir-centro-custo" data-id="{{ $centro['cc_id'] }}"
-                                        onclick="showDelete({{ $centro['cc_id'] }}, `{{ route('admin.delete.centrocusto') }}`);"
+                                        name="excluir-centro-custo" data-id="{{ $centro['cc_id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
                                         style="padding: 11px 25px;"><i
                                             class="tim-icons icon-simple-remove"></i></button>
                                 </div>
@@ -172,8 +171,7 @@
                                     <a href="#" class="btn btn-primary" id="alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button href="#" class="btn btn-primary red" id="excluir-tpg"
-                                        name="excluir-tipo-pagamento" data-id="{{ $pagamento['tpg_id'] }}"
-                                        onclick="showDelete({{ $pagamento['tpg_id'] }}, `{{ route('admin.delete.tpgpagto') }}`);"
+                                        name="excluir-tipo-pagamento" data-id="{{ $pagamento['tpg_id'] }}" data-rota="{{ route('admin.delete.tpgpagto') }}"
                                         style="padding: 11px 25px;"><i
                                             class="tim-icons icon-simple-remove"></i></button>
                                 </div>
@@ -337,6 +335,25 @@
                     }
                 });
             });
-        });
+
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.detalhe') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $centros = data_decoded.$centros;
+                    $pagamentos = data_decoded.$pagamentos;
+                }
+            });
+        }
+    );
+});
     </script>
 @endpush

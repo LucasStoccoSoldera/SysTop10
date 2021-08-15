@@ -207,8 +207,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-pro"
-                                                name="excluir-produto" data-id="{{ $produto['pro_id'] }}"
-                                                onclick="showDelete({{ $produto['pro_id'] }}, `{{ route('admin.delete.produto') }}`);"
+                                                name="excluir-produto" data-id="{{ $produto['pro_id'] }}"  data-rota="{{ route('admin.delete.produto') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -557,8 +556,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-tpp"
-                                                name="excluir-tipo-produto" data-id="{{ $tipo['tpp_id'] }}"
-                                                onclick="showDelete({{ $tipo['tpp_id'] }}, `{{ route('admin.delete.tipoproduto') }}`);"
+                                                name="excluir-tipo-produto" data-id="{{ $tipo['tpp_id'] }}" data-rota="{{ route('admin.delete.tipoproduto') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -645,8 +643,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-mat"
-                                                name="excluir-material" data-id="{{ $material['mat_id'] }}"
-                                                onclick="showDelete({{ $material['mat_id'] }}, `{{ route('admin.delete.material') }}`);"
+                                                name="excluir-material" data-id="{{ $material['mat_id'] }}" data-rota="{{ route('admin.delete.material') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -731,8 +728,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-dim"
-                                                name="excluir-dimensao" data-id="{{ $dimensao['dim_id'] }}"
-                                                onclick="showDelete({{ $dimensao['dim_id'] }}, `{{ route('admin.delete.dimensao') }}`);"
+                                                name="excluir-dimensao" data-id="{{ $dimensao['dim_id'] }}" data-rota="{{ route('admin.delete.dimensao') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -843,8 +839,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-cor"
-                                                name="excluir-cor" data-id="{{ $cor['cor_id'] }}"
-                                                onclick="showDelete({{ $cor['cor_id'] }}, `{{ route('admin.delete.cor') }}`);"
+                                                name="excluir-cor" data-id="{{ $cor['cor_id'] }}" data-rota="{{ route('admin.delete.cor') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -1113,6 +1108,27 @@
                 }
             });
         });
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.produto') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $produtos = data_decoded.$produtos;
+                    $tipos = data_decoded.$tipos;
+                    $materiais = data_decoded.$materiais;
+                    $dimensoes = data_decoded.$dimensoes;
+                    $cores = data_decoded.$cores;
+                }
+            });
+        }
+    );
 
         if ($('#CodigoCores').val() != '') {
             $('#EspecialCores').attr('disabled');

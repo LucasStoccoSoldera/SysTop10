@@ -210,8 +210,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-usu"
-                                                name="excluir-usuario" data-id="{{ $usuario['usu_id'] }}"
-                                                onclick="showDelete({{ $usuario['usu_id'] }}, `{{ route('admin.delete.user') }}`);"
+                                                name="excluir-usuario" data-id="{{ $usuario['usu_id'] }}"  data-rota="{{ route('admin.delete.user') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -430,8 +429,7 @@
                                         <a href="#" class="btn btn-primary" id="alter"><i
                                                 class="tim-icons icon-pencil"></i></a>
                                         <button href="#" class="btn btn-primary red" id="excluir-car"
-                                            name="excluir-cargo" data-id="{{ $cargo['car_id'] }}"
-                                            onclick="showDelete({{ $cargo['car_id'] }}, `{{ route('admin.delete.cargo') }}`);"
+                                            name="excluir-cargo" data-id="{{ $cargo['car_id'] }}"  data-rota="{{ route('admin.delete.cargo') }}"
                                             style="padding: 11px 25px;"><i
                                                 class="tim-icons icon-simple-remove"></i></button>
                                     </td>
@@ -669,6 +667,23 @@
                 }
             });
         });
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.user') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $usuarios = data_decoded.$usuarios;
+                }
+            });
+        }
+    );
     });
 </script>
 @endpush

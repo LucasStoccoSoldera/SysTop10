@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Logistica;
 use App\Models\Centro_Custo;
 use App\Models\TipoPagto;
@@ -21,7 +20,6 @@ class DetalhesController extends Controller
         $relacao_total = Logistica::count();
             $transportadora_total = Transportadora::count();
             $pacotes_total = Pacote::count();
-
 
 
         return view('dashboard.detalhes', [

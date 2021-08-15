@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Logistica;
 use App\Models\Pacote;
 use App\Models\Transportadora;

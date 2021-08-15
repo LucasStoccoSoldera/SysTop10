@@ -272,8 +272,7 @@
                                                 id="{{ $venda['ven_id'] }}"><i
                                                     class="tim-icons icon-map-big"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-ven"
-                                                name="excluir-venda" data-id="{{ $venda['ven_id'] }}"
-                                                onclick="showDelete({{ $venda['ven_id'] }}, `{{ route('admin.delete.venda') }}`);"
+                                                name="excluir-venda" data-id="{{ $venda['ven_id'] }}" data-rota="{{ route('admin.delete.venda') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -550,8 +549,7 @@
                                                                         class="tim-icons icon-pencil"></i></a>
                                                                 <button href="#" class="btn btn-primary red"
                                                                     id="excluir-det" name="excluir-item-venda"
-                                                                    data-id="{{ $item_ato['det_id'] }}"
-                                                                    onclick="showDelete({{ $item_ato['det_id'] }}, `{{ route('admin.delete.itemvenda') }}`);"
+                                                                    data-id="{{ $item_ato['det_id'] }}" data-rota="{{ route('admin.delete.itemvenda') }}"
                                                                     style="padding: 11px 25px;"><i
                                                                         class="tim-icons icon-simple-remove"></i></button>
                                                             </td>
@@ -801,9 +799,29 @@
         });
     });
 
+    $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.detalhe') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $vendas = data_decoded.$vendas;
+                    $itensvenda = data_decoded.$itensvenda;
+                    $itens_ato = data_decoded.$itens_ato;
+                }
+            });
+        }
+    );
 
     $('#modalAlertRegistrar').modal('hide',
-        function() { //auto implementa o valor total da compra puxando todos os itens
+        function() {
+             //auto implementa o valor total da compra puxando todos os itens
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -816,6 +834,7 @@
                     $('#VTVenda').val(data_decoded.total - $('#descontoVenda').val());
                 }
             });
-        });
+          }
+    );
 </script>
 @endpush

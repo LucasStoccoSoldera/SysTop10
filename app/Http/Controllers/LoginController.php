@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
-use Exception;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Exists;
-use function GuzzleHttp\Promise\all;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\Isset_;
 
 class LoginController extends Controller
 {

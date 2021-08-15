@@ -266,8 +266,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-cli"
-                                                name="excluir-cliente" data-id="{{ $cliente['cli_id'] }}"
-                                                onclick="showDelete({{ $cliente['cli_id'] }}, `{{ route('admin.delete.cliente') }}`);"
+                                                name="excluir-cliente" data-id="{{ $cliente['cli_id'] }}" data-rota="{{ route('admin.delete.cliente') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                     </tr>
@@ -460,6 +459,23 @@
                 }
             });
         });
+        $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.cliente') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $clientes = data_decoded.$clientes;
+                }
+            });
+        }
+    );
 
         if ($('#cpfCliente').val() != '') {
             $('#cnpjCliente').attr('disabled');

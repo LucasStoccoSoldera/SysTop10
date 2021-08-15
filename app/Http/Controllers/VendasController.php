@@ -33,6 +33,8 @@ class VendasController extends Controller
         if(isset($id)){
         $data5 = Venda_Detalhe::where('ven_id', $id);
 
+       return  response()->json(['vendas' => $data, 'itensvenda' => $data5, 'itens_ato' => $data6]);
+
         return view('dashboard.vendas', [
 
             'dado1' => $dado1,

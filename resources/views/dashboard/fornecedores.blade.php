@@ -187,8 +187,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-for"
-                                                name="excluir-fornecedor" data-id="{{ $fornecedor['for_id'] }}"
-                                                onclick="showDelete({{ $fornecedor['for_id'] }}, `{{ route('admin.delete.fornecedor') }}`);"
+                                                name="excluir-fornecedor" data-id="{{ $fornecedor['for_id'] }}" data-rota="{{ route('admin.delete.fornecedor') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -418,6 +417,23 @@
                     }
                 });
             });
+            $(document).on('click', '[data-dismiss="modal"]',
+            function(e) {
+        e.preventDefault();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{ route('admin.list.fornecedor') }}",
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    $fornecedores = data_decoded.$fornecedores;
+                }
+            });
+        }
+    );
         });
 
         if ($('#cpfFornecedor').val() != '') {
