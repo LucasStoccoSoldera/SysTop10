@@ -145,22 +145,22 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 5%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Nome / Razão
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         CPF / CNPJ
                                     </th>
-                                    <th>
+                                    <th style="width: 15%">
                                         Telefone
                                     </th>
-                                    <th>
+                                    <th style="width: 10%">
                                         Cidade
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -209,7 +209,7 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal"
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static"
                     data-target="#modalRegisterFornecedores"><img src="../img/dash/cadastro_fornecedor.png" width="75"
                         height="75"></a>
             </div>

@@ -229,19 +229,19 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 30%">
                                         Descrição
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Valor Final
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Centro de Custo
                                     </th>
-                                    <th>
+                                    <th style="width: 15%">
                                         Data de vencimento
                                     </th>
-                                    <th class="text-center">
+                                    <th style="width: 15%">
                                         Data de Pagamento
                                     </th>
                                 </tr>
@@ -288,34 +288,28 @@
         <div class="col-4">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Parcelas da Conta <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Parcelas <button class="btn btn-primary btn-block"
+                            id="btn-form-consulta-imprimir" style="width:auto;"><i  class="tim-icons icon-paper"></i></button></h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
-                                        Nº Parcela
+                                    <th style="width: 30%">
+                                        Nº
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Conta
                                     </th>
-                                    <th>
-                                        Tipo Pagto.
+                                    <th style="width: 30%">
+                                        Tp.Pag.
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Valor
                                     </th>
-                                    <th class="text-center">
+                                    <th style="width: 30%">
                                         Status
-                                    </th>
-                                    <th class="text-center">
-                                        Data Pag.
-                                    </th>
-                                    <th class="text-right">
-                                        <div id="acao">Ações</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -337,18 +331,6 @@
                                         <td class="text-center">
                                             {{ $parcela['par_status'] }}
                                         </td>
-                                        <td class="text-center">
-                                            {{ $parcela['par_data_pagto'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-par"
-                                                name="excluir-parcela" data-id="{{ $parcela['par_id'] }}"
-                                                onclick="showDelete({{ $parcela['par_id'] }}, `{{ route('admin.delete.parcela') }}`);"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -365,9 +347,9 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterContas"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterContas"><img
                         src="../img/dash/cadastro_contas.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterCompras"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCompras"><img
                         src="../img/dash/compras.png" width="75" height="75"></a>
             </div>
         </div>
@@ -710,7 +692,7 @@
                             <div class="card" id="card-consulta-tabela">
                                 <div class="card-header" id="ch-adaptado">
                                     <h2 class="card-title">Itens da Compra <button class="btn btn-primary btn-block"
-                                            id="btn-form-consulta-imprimir" data-toggle="modal"
+                                            id="btn-form-consulta-imprimir" data-toggle="modal" data-backdrop="static"
                                             data-target="#modalRegisterItemCompra">+ Add</button> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -718,17 +700,20 @@
                                         <table class="table tablesorter " id="">
                                             <thead class=" text-primary">
                                                 <tr>
-                                                    <th>
+                                                    <th style="width: 30%">
                                                         Produto
                                                     </th>
-                                                    <th>
+                                                    <th style="width: 10%">
                                                         Qtde
                                                     </th>
-                                                    <th class="text-right">
+                                                    <th style="width: 20%">
                                                         Valor Unit.
                                                     </th>
-                                                    <th class="text-right">
+                                                    <th style="width: 20%">
                                                         Valor Final
+                                                    </th>
+                                                    <th class="text-right" style="width: 20%">
+                                                        <div id="acao">Ações</div>
                                                     </th>
                                                 </tr>
                                             </thead>

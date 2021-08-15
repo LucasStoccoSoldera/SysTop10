@@ -225,21 +225,21 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 20%">
                                         Nome Completo
                                     </th>
-                                    <th>
-                                        Nome Completo
+                                    <th style="width: 25%">
+                                        Documento
                                     </th>
                                     Telefone
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Cidade
                                     </th>
-                                    <th class="text-center">
+                                    <th style="width: 15%">
                                         Data Cadastro
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -287,7 +287,7 @@
             <img id="imgsub" src="../img/dash/addbtn.png">
         </a>
         <div class="dropdown-menu" id="add-menu">
-            <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterCliente"> <img
+            <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-backdrop="static" data-target="#modalRegisterCliente"> <img
                     src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
         </div>
     </div>

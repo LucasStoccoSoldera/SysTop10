@@ -230,22 +230,19 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 30%">
                                         Cliente
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Valor Total
                                     </th>
-                                    <th>
-                                        Tipo de Pagamento
-                                    </th>
-                                    <th>
+                                    <th style="width: 15%">
                                         Status
                                     </th>
-                                    <th class="text-center">
+                                    <th class="text-center" style="width: 15%">
                                         Data da Venda
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         Ações
                                     </th>
                                 </tr>
@@ -292,31 +289,25 @@
         <div class="col-4">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Itens da Venda <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Itens Venda <button class="btn btn-primary btn-block"
+                        id="btn-form-consulta-imprimir" style="width:auto;"><i  class="tim-icons icon-paper"></i></button></h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         Venda
                                     </th>
-                                    <th>
+                                    <th style="width: 35%">
                                         Produto
                                     </th>
-                                    <th>
+                                    <th style="width: 10%">
                                         Qtde
                                     </th>
-                                    <th class="text-right">
-                                        Valor Unit.
-                                    </th>
-                                    <th class="text-right">
+                                    <th style="width: 35%">
                                         Valor Total
-                                    </th>
-                                    <th class="text-right">
-                                        Ações
                                     </th>
                                 </tr>
                             </thead>
@@ -334,19 +325,7 @@
                                                 {{ $itemvenda['det_qtde'] }}
                                             </td>
                                             <td class="text-right">
-                                                {{ $itemvenda['det_valor_unitario'] }}
-                                            </td>
-                                            <td class="text-right">
                                                 {{ $itemvenda['det_valor_total'] }}
-                                            </td>
-                                            <td class="text-right">
-                                                <a href="#" class="btn btn-primary" id="alter"><i
-                                                        class="tim-icons icon-pencil"></i></a>
-                                                <button href="#" class="btn btn-primary red" id="excluir-det"
-                                                    name="excluir-item-venda" data-id="{{ $itemvenda['det_id'] }}"
-                                                    onclick="showDelete({{ $itemvenda['det_id'] }}, `{{ route('admin.delete.itemvenda') }}`);"
-                                                    style="padding: 11px 25px;"><i
-                                                        class="tim-icons icon-simple-remove"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -367,7 +346,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterVenda"> <img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterVenda"> <img
                         src="../img/dash/cadastro_receber.png" width="75" height="75"></a>
             </div>
         </div>
@@ -520,7 +499,7 @@
                                 <div class="card" id="card-consulta-tabela">
                                     <div class="card-header" id="ch-adaptado">
                                         <h2 class="card-title">Itens da Venda <button class="btn btn-primary btn-block"
-                                                id="btn-form-consulta-imprimir" data-toggle="modal"
+                                                id="btn-form-consulta-imprimir" data-toggle="modal" data-backdrop="static"
                                                 data-target="#modalRegisterItemVenda">+ Add</button> </h2>
                                     </div>
                                     <div class="card-body" id="cd-adaptado">
@@ -528,22 +507,22 @@
                                             <table class="table tablesorter " id="">
                                                 <thead class=" text-primary">
                                                     <tr>
-                                                        <th>
+                                                        <th style="width: 25%">
                                                             Produto
                                                         </th>
-                                                        <th>
+                                                        <th style="width: 10%">
                                                             Qtde
                                                         </th>
-                                                        <th>
+                                                        <th style="width: 20%">
                                                             Dimensão
                                                         </th>
-                                                        <th>
+                                                        <th style="width: 5%">
                                                             Cor
                                                         </th>
-                                                        <th class="text-right">
+                                                        <th style="width: 20%">
                                                             Valor Total
                                                         </th>
-                                                        <th class="text-right">
+                                                        <th class="text-right" style="width: 20%">
                                                             <div id="acao">Ações</div>
                                                         </th>
                                                     </tr>

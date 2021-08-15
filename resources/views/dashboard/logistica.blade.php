@@ -86,17 +86,14 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Dimensão
                                     </th>
-                                    <th>
+                                    <th style="width: 60%">
                                         Descrição
-                                    </th>
-                                    <th class="text-right">
-                                        <div id="acao">Ações</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -112,15 +109,6 @@
                                         <td>
                                             {{ $pacote['pac_descricao'] }}
                                         </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-pac"
-                                                name="excluir-pacote" data-id="{{ $pacote['pac_id'] }}"
-                                                onclick="showDelete({{ $pacote['pac_id'] }}, `{{ route('admin.delete.pacote') }}`);"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -134,7 +122,7 @@
         <div class="col-6">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Consulta de Transportadoras <button class="btn btn-primary btn-block"
+                    <h2 class="card-title">Consulta de Transp. <button class="btn btn-primary btn-block"
                             id="btn-form-consulta-imprimir">Imprimir</button></h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
@@ -142,20 +130,17 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 45%">
                                         Nome
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Telefone
                                     </th>
-                                    <th>
-                                        Limite de Transporte
-                                    <th class="text-right">
-                                        <div id="acao">Ações</div>
-                                    </th>
+                                    <th style="width: 15%">
+                                        Limite
                                 </tr>
                             </thead>
                             <tbody>
@@ -172,16 +157,6 @@
                                         </td>
                                         <td>
                                             {{ $transportadora['trans_limite_transporte'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-trans"
-                                                name="excluir-transportadora"
-                                                data-id="{{ $transportadora['trans_id'] }}"
-                                                onclick="showDelete({{ $transportadora['trans_id'] }}, `{{ route('admin.delete.transportadora') }}`);"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -205,16 +180,16 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 35%">
                                         Pacote
                                     </th>
-                                    <th>
+                                    <th style="width: 35%">
                                         Transportadora
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -256,9 +231,9 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterTransportadora">
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterTransportadora">
                     <img src="../img/dash/transporte.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterLogistica"> <img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterLogistica"> <img
                         src="../img/dash/logistica_log.png" width="75" height="75"></a>
             </div>
         </div>

@@ -168,22 +168,22 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 5%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 25%">
                                         Nome
                                     </th>
-                                    <th>
+                                    <th style="width: 15%">
                                         Cargo
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Telefone
                                     </th>
-                                    <th class="text-center">
+                                    <th style="width: 15%">
                                         Data de Cadastro
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -232,11 +232,11 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterUser"> <img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterUser"> <img
                         src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterCargo"> <img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCargo"> <img
                         src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterPrivilegio">
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterPrivilegio">
                     <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
             </div>
         </div>
@@ -406,13 +406,13 @@
                     <table class="table tablesorter " id="">
                         <thead class=" text-primary">
                             <tr>
-                                <th>
+                                <th style="width: 10%">
                                     ID
                                 </th>
-                                <th>
+                                <th style="width: 50%">
                                     Descrição
                                 </th>
-                                <th class="text-right">
+                                <th class="text-right" style="width: 40%">
                                     <div id="acao">Ações</div>
                                 </th>
                             </tr>

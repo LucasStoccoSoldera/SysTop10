@@ -112,7 +112,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <button class="btn btn-primary col-12" id="btn-detalhe" data-toggle="modal"
+                    <button class="btn btn-primary col-12" id="btn-detalhe" data-toggle="modal" data-backdrop="static"
                         data-target="#modalRegisterCentroCusto">
                         <div class="tudo">
                             <p id="p-detalhe">{{ __('Novo Centro de Custo') }}</p>
@@ -150,7 +150,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <button class="btn btn-primary col-12" id="btn-detalhe" data-toggle="modal"
+                    <button class="btn btn-primary col-12" id="btn-detalhe" data-toggle="modal" data-backdrop="static"
                         data-target="#modalRegisterTpgPagto">
                         <div class="tudo">
                             <p id="p-detalhe">{{ __('Novo Tipo de Pagamento') }}</p>

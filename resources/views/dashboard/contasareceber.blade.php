@@ -233,25 +233,22 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 5%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Origem
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Valor (R$)
                                     </th>
-                                    <th>
-                                        Tipo de Pagamento
-                                    </th>
-                                    <th class="text-center">
+                                    <th style="width: 15%">
                                         Data Contabilizada
                                     </th>
-                                    <th class="text-center">
+                                    <th class="text-center"style="width: 15%">
                                         Status
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 15%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -303,7 +300,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterContasaReceber">
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterContasaReceber">
                     <img src="../img/dash/cadastro_receber.png" width="75" height="75"></a>
                 <a class="dropdown-item" id="no-padding" href="{{ route('admin.Vendas') }}"> <img
                         src="../img/dash/vendas.png" width="75" height="75"></a>

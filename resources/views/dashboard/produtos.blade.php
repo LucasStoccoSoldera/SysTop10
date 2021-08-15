@@ -168,22 +168,19 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 25%">
                                         Nome
                                     </th>
-                                    <th>
+                                    <th style="width: 15%">
                                         Tipo
                                     </th>
-                                    <th>
-                                        Pedido Mínimo
-                                    </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         Preço Custo
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         Preço Venda
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -234,20 +231,17 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 20%">
                                         Material
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Dimensões
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Cores
                                     </th>
-                                    <th class="text-center">
+                                    <th class="text-center" style="width: 10%">
                                         Gravura?
-                                    </th>
-                                    <th class="text-center">
-                                        Terceirizado?
                                     </th>
                                 </tr>
                             </thead>
@@ -266,9 +260,6 @@
                                         <td class="text-center">
                                             {{ $gravura }}
                                         </td>
-                                        <td class="text-center">
-                                            {{ $terceirizado }}
-                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -286,18 +277,18 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterProdutos"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterProdutos"><img
                         src="../img/dash/cadastro_produtos.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal"
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static"
                     data-target="#modalRegisterTipoProduto"><img src="../img/dash/logistica.png" width="75"
                         height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterMaterial"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterMaterial"><img
                         src="../img/dash/materia_prima.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterDimensao"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterDimensao"><img
                         src="../img/dash/dimensao.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterCores"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCores"><img
                         src="../img/dash/cores.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterPacotes"><img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterPacotes"><img
                         src="../img/dash/pacote.png" width="75" height="75"></a>
             </div>
         </div>
@@ -542,13 +533,13 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 50%">
                                         Descrição
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 40%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -630,13 +621,13 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 50%">
                                         Descrição
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 40%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -716,13 +707,13 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 50%">
                                         Tamanho
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 40%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -822,16 +813,16 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th>
+                                    <th style="width: 30%">
                                         Nome
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         HEX
                                     </th>
-                                    <th class="text-right">
+                                    <th class="text-right" style="width: 40%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>

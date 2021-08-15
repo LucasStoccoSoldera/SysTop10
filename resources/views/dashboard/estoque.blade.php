@@ -143,20 +143,20 @@
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 35%">
                                         Produto
                                     </th>
-                                    <th>
+                                    <th style="width: 10%">
                                         Qtde
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Dimensão
                                     </th>
-                                    <th>
+                                    <th style="width: 20%">
                                         Cor
                                     </th>
-                                    <th class="text-center">
-                                        Data da Última Entrada
+                                    <th class="text-center" style="width: 15%">
+                                        Data
                                     </th>
                                 </tr>
                             </thead>
@@ -191,27 +191,17 @@
         <div class="col-4">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Todos os Produtos <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Todos os Produtos
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th>
+                                    <th style="width: 70%">
                                         Produto
                                     </th>
-                                    <th>
-                                        Dimensão
-                                    </th>
-                                    <th>
-                                        Cor
-                                    </th>
-                                    <th>
-                                        Qtde
-                                    </th>
-                                    <th class="text-center">
+                                    <th style="width: 30%">
                                         Status
                                     </th>
                                 </tr>
@@ -221,15 +211,6 @@
                                     <tr>
                                         <td>
                                             {{ $entrada['pro_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $entrada['dim_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $entrada['cor_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $entrada['est_qtde'] }}
                                         </td>
                                         <td class="text-center">
                                             {{ $entrada['est_status'] }}
@@ -252,7 +233,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-target="#modalRegisterEstoque"> <img
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterEstoque"> <img
                         src="../img/dash/materia_prima.png" width="75" height="75"></a>
             </div>
         </div>
