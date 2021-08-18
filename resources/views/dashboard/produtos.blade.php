@@ -121,8 +121,15 @@
                                     <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Material:</label>
-                                    <input type="text" name="txt_material" id="txt_material" maxlength="20"
-                                        value="{{ old('txt_material') }}" class="form-control @error('txt_material') is-invalid @enderror">
+                                    <select type="text" name="txt_material" id="txt_material" class="form-control" @error('txt_material') is-invalid @enderror
+                                    value="{{ old('txt_material') }}"
+                                   >
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($materiais as $material)
+                                        <option value="{{ $material['mat_id'] }}">{{ $material['mat_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                         @error('txt_material')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -134,8 +141,15 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
-                                    <input type="text" name="txt_dimensao" id="txt_dimensao"
-                                        value="{{ old('txt_dimensao') }}" class="form-control @error('txt_dimensao') is-invalid @enderror">
+                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="form-control" @error('txt_dimensao') is-invalid @enderror
+                                    value="{{ old('txt_centro') }}"
+                                   >
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($dimensoes as $dimensao)
+                                        <option value="{{ $dimensao['dim_id'] }}">{{ $dimensao['dim_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                         @error('txt_dimensao')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>

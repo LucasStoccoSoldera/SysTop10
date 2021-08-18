@@ -196,8 +196,15 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
-                                    <input type="text" name="txt_produto" id="txt_produto"
-                                        value="{{ old('txt_produto') }}" class="form-control @error('txt_produto') is-invalid @enderror">
+                                    <select type="text" name="txt_produto" id="txt_produto" class="form-control" @error('txt_produto') is-invalid @enderror
+                                    value="{{ old('txt_produto') }}"
+                                   >
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($produtos as $produto)
+                                        <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
                                         @error('txt_produto')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
