@@ -159,70 +159,73 @@
     <div class="col-12">
         <div class="row">
             <div class="card">
-                <div>
-                    <form class="form" id="form-consulta" method="POST" action="">
+                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="">
+                    @csrf
                         <div class="card-header">
                             <h2 class="card-title"> Filtrar Contas a Receber</h2>
                         </div>
-                        <div class="">
-                            <div class="campo">
-                                <label for="origem" class="campos">Origem</label>
+                        <div class="col-12">
 
-                                <div class="input" id="nome">
-                                    <input name="txt_origem" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_origem') is-invalid @enderror">
-
-                                    @error('txt_origem')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
-
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Origem:</label>
+                                    <input type="text" name="txt_origem" id="txt_origem" maxlength="20"
+                                        value="{{ old('txt_data_venc') }}" class="form-control @error('txt_data_venc') is-invalid @enderror">
+                                        @error('txt_data_venc')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="data" class="campos">Data Contabilizada</label>
+                                    </div>
 
-                                <div class="input" id="data">
-                                    <input name="txt_data" id="data" type="date"
-                                        class="form-control-filtro @error('txt_data') is-invalid @enderror">
-
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
-
+                                    <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Data Contabilizada:</label>
+                                    <input type="date" name="txt_data" id="txt_data"
+                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        @error('txt_data')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="status" class="campos">Status</label>
 
-                                <div class="input" id="nome">
-                                    <input name="txt_status" id="data" type="text"
-                                        class="form-control-filtro @error('txt_status') is-invalid @enderror">
-
-                                    @error('txt_status')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
-
+                                <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Status:</label>
+                                    <select type="text" name="txt_status" id="txt_status" class="form-control" @error('txt_status') is-invalid @enderror
+                                    maxlength="25" value="{{ old('txt_status') }}"
+                                >
+                                    <option value="">------------Selecione------------</option>
+                                    <option value="1">Em Aberto</option>
+                                    <option value="2">Fechada</option>
+                                    <option value="3">Cancelada</option>
+                                </select>
+                                        @error('txt_status')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary"
+                                        id="btn-form-consulta">Filtrar</button>
                             </div>
-                            <div class="campo float-right" id="botao">
-                                <button class="btn btn-primary btn-block float-right"
-                                    id="btn-form-consulta">Filtrar</button>
                             </div>
-                        </div>
-                    </form>
+                            </div>
+                        </form>
                 </div>
-            </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" style="padding-left: 0px; padding-right: 0px">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Contas a Receber <button class="btn btn-primary btn-block"

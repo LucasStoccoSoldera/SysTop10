@@ -159,67 +159,68 @@
     <div class="col-12">
         <div class="row">
             <div class="card">
-                <div>
                     <form class="form" id="form-consulta" method="POST" action="">
                         <div class="card-header">
-                            <h2 class="card-title"> Filtrar Vendas</h2>
+                            <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
+                            enctype="multipart/form-data" action="">
+                            @csrf
                         </div>
-                        <div class="">
-                            <div class="campo">
-                                <label for="cliente" class="campos">Cliente</label>
+                        <div class="col-12">
 
-                                <div class="input" id="nome">
-                                    <input name="txt_cliente" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_cliente') is-invalid @enderror">
-
-                                    @error('txt_cliente')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Cliente:</label>
+                                    <input type="text" name="txt_cliente" id="txt_cliente" maxlength="13"
+                                        value="{{ old('txt_cliente') }}" class="form-control @error('txt_cliente') is-invalid @enderror">
+                                        @error('txt_cliente')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="data" class="campos">Data da Venda</label>
+                                    </div>
 
-                                <div class="input" id="data">
-                                    <input name="txt_data" id="data" type="date"
-                                        class="form-control-filtro @error('txt_data') is-invalid @enderror">
-
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Data da Venda:</label>
+                                    <input type="date" name="txt_data" id="txt_data" maxlength="20"
+                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        @error('txt_data')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="produto" class="campos">Produto</label>
 
-                                <div class="input" id="nome">
-                                    <input name="txt_produto" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_produto') is-invalid @enderror">
-
-                                    @error('txt_produto')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Produto:</label>
+                                    <input type="text" name="txt_produto" id="txt_produto"
+                                        value="{{ old('txt_produto') }}" class="form-control @error('txt_produto') is-invalid @enderror">
+                                        @error('txt_produto')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary"
+                                        id="btn-form-consulta">Filtrar</button>
                             </div>
-                            <div class="campo float-right" id="botao">
-                                <button class="btn btn-primary btn-block float-right"
-                                    id="btn-form-consulta">Filtrar</button>
                             </div>
-                        </div>
-                    </form>
+                            </div>
+                        </form>
                 </div>
-            </div>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-8">
+        <div class="col-8" style="padding-left: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Vendas <button class="btn btn-primary btn-block"
@@ -285,7 +286,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-4" style="padding-right: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Itens Venda <button class="btn btn-primary btn-block"

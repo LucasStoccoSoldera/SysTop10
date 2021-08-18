@@ -73,67 +73,67 @@
     <div class="col-12">
         <div class="row">
             <div class="card">
-                <div>
-                    <form class="form" id="form-consulta" method="POST" action="">
+                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="">
+                    @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Produtos no Estoque</h2>
                         </div>
-                        <div class="">
-                            <div class="campo">
-                                <label for="produto" class="campos">Produto</label>
+                        <div class="col-12">
 
-                                <div class="input" id="nome">
-                                    <input name="txt_produto" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_produto') is-invalid @enderror">
-
-                                    @error('txt_produto')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Produto:</label>
+                                    <input type="text" name="txt_produto" id="txt_produto" maxlength="25"
+                                        value="{{ old('txt_produto') }}" class="form-control @error('txt_produto') is-invalid @enderror">
+                                        @error('txt_produto')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="qtde" class="campos"> Quantidade</label>
+                                    </div>
 
-                                <div class="input" id="cpf">
-                                    <input name="txt_qtde" id="cpf" type="text"
-                                        class="form-control-filtro @error('txt_qtde') is-invalid @enderror">
-
-                                    @error('txt_qtde')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Quantidade:</label>
+                                    <input type="number" name="txt_qtde" id="txt_qtde" maxlength="6"
+                                        value="{{ old('txt_qtde') }}" class="form-control @error('txt_qtde') is-invalid @enderror">
+                                        @error('txt_qtde')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="status" class="campos">Status</label>
 
-                                <div class="input" id="cpf">
-                                    <input name="txt_status" id="cpf" type="text"
-                                        class="form-control-filtro @error('txt_status') is-invalid @enderror">
-
-                                    @error('txt_status')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Dimensão:</label>
+                                    <input type="text" name="txt_dimensao" id="txt_dimensao"
+                                        value="{{ old('txt_dimensao') }}" class="form-control @error('txt_dimensao') is-invalid @enderror">
+                                        @error('txt_dimensao')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary"
+                                        id="btn-form-consulta">Filtrar</button>
                             </div>
-                            <div class="campo float-right" id="botao">
-                                <button class="btn btn-primary btn-block float-right"
-                                    id="btn-form-consulta">Filtrar</button>
                             </div>
-                        </div>
-                    </form>
+                            </div>
+                        </form>
                 </div>
-            </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-8" style="padding-left: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Movimentação do Estoque</h2>
@@ -188,7 +188,7 @@
         </div>
 
 
-        <div class="col-4">
+        <div class="col-4" style="padding-right: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Todos os Produtos

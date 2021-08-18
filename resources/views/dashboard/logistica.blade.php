@@ -78,8 +78,7 @@
         <div class="col-6">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Consulta de Pacotes<button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Consulta de Pacotes</h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
@@ -122,8 +121,7 @@
         <div class="col-6">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Consulta de Transp. <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Consulta de Transp.</h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
@@ -240,10 +238,6 @@
 @endsection
 @endsection
 @section('modals')
-
-@isset($msgRegistrar)
-    <x-alert-register :msgRegistrar="$msgRegistrar" />
-@endisset
 
 <div class="modal fade" id="modalRegisterLogistica" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">

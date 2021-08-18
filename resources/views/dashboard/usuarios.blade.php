@@ -97,71 +97,71 @@
     <div class="col-12">
         <div class="row">
             <div class="card">
-                <div>
-                    <form class="form" id="form-consulta" method="POST" action="">
+                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="">
+                    @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Usuários</h2>
                         </div>
-                        <div class="">
-                            <div class="campo">
-                                <label for="cargo" class="campos">Cargo</label>
+                        <div class="col-12">
 
-                                <div class="input" id="nome">
-                                    <input name="txt_cargo" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_cargo') is-invalid @enderror">
-
-                                    @error('txt_cargo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Cargo:</label>
+                                    <select type="text" name="txt_cargo" id="txt_cargo" class="form-control"
+                                value="{{ old('txt_cargo') }}">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($cargos as $cargo)
+                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
+                                    </option>
+                                @endforeach
+                            </select>
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="nome" class="campos">Nome</label>
+                                    </div>
 
-                                <div class="input" id="nome">
-                                    <input name="txt_nome" id="nome" type="text"
-                                        class="form-control-filtro @error('txt_nome') is-invalid @enderror">
-
-                                    @error('txt_nome')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Usuario:</label>
+                                    <input type="text" name="txt_usuario" id="txt_usuario" maxlength="25"
+                                        value="{{ old('txt_usuario') }}" class="form-control @error('txt_usuario') is-invalid @enderror">
+                                        @error('txt_usuario')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="campo">
-                                <label for="data" class="campos">Data</label>
 
-                                <div class="input" id="data">
-                                    <input name="txt_data" id="data" type="date"
-                                        class="form-control-filtro @error('txt_data') is-invalid @enderror">
-
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Data:</label>
+                                    <input type="date" name="txt_data" id="txt_data"
+                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        @error('txt_data')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary"
+                                        id="btn-form-consulta">Filtrar</button>
                             </div>
-                            <div class="campo float-right" id="botao">
-                                <button class="btn btn-primary btn-block float-right"
-                                    id="btn-form-consulta">Filtrar</button>
                             </div>
-                        </div>
-                    </form>
+                            </div>
+                        </form>
                 </div>
-            </div>
         </div>
     </div>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-12"  style="padding-left: 0px; padding-right: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Consulta de Usuários <button class="btn btn-primary btn-block"
-                         id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                    <h2 class="card-title">Consulta de Usuários</h2>
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
