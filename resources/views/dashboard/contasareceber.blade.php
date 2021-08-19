@@ -169,17 +169,16 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Origem:</label>
-                                    <input type="text" name="txt_origem" id="txt_origem" maxlength="20"
-                                        value="{{ old('txt_data_venc') }}" class="form-control @error('txt_data_venc') is-invalid @enderror">
-                                        @error('txt_data_venc')
+                                    <label class="modal-label">Descrição:</label>
+                                    <input type="text" name="txt_descricao" id="txt_descricao" maxlength="20"
+                                        value="{{ old('txt_descricao') }}" class="form-control @error('txt_descricao') is-invalid @enderror">
+                                        @error('txt_descricao')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
                                             </span>
                                         @enderror
                                 </div>
                                     </div>
-
                                     <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data Contabilizada:</label>
@@ -491,6 +490,16 @@
             });
         }
     );
+
+    var path = "{{route ('admin.autocomplete.rec.descricao')}}"
+
+$('input#txt_descricao').typeahead({
+    source: function (terms,process){
+        return $.get(path, {terms:terms}, function(data){
+            return process(data);
+        });
+    }
+});
     });
 </script>
 @endpush

@@ -794,7 +794,7 @@
                 }
             });
         });
-    });
+
 
     $('#qtdeItemVenda, #VUItemVenda').on('change blur keyup', function() {
         $('#qtdeItemVenda, #VUItemVenda').each(function() { //percorre todos os campos de quantidade
@@ -844,5 +844,17 @@
             });
           }
     );
+
+    var path = "{{route ('admin.autocomplete.ven.cliente')}}"
+
+$('input#txt_cliente').typeahead({
+    source: function (terms,process){
+        return $.get(path, {terms:terms}, function(data){
+            return process(data);
+        });
+    }
+});
+
+});
 </script>
 @endpush

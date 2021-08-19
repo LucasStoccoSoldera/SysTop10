@@ -32,6 +32,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Fornecedor', [App\Http\Controllers\FornecedoresController::class, 'Fornecedores'])->name('admin.fornecedor');
     Route::get('/admin/Detalhe', [App\Http\Controllers\DetalhesController::class, 'Detalhe'])->name('admin.detalhe');
     Route::get('/admin/Logistica', [App\Http\Controllers\LogisticaController::class, 'Logistica'])->name('admin.Logistica');
+    Route::get('/admin/Autocomplete_cli_cli', [App\Http\Controllers\AutocompleteController::class, 'Cli_Nome'])->name('admin.autocomplete.cli.nome');
+    Route::get('/admin/Autocomplete_rec_des', [App\Http\Controllers\AutocompleteController::class, 'Rec_Descricao'])->name('admin.autocomplete.rec.descricao');
+    Route::get('/admin/Autocomplete_for_for', [App\Http\Controllers\AutocompleteController::class, 'For_Nome'])->name('admin.autocomplete.for.nome');
+    Route::get('/admin/Autocomplete_pro_pro', [App\Http\Controllers\AutocompleteController::class, 'Pro_Nome'])->name('admin.autocomplete.pro.nome');
+    Route::get('/admin/Autocomplete_usu_usu', [App\Http\Controllers\AutocompleteController::class, 'Usu_Nome'])->name('admin.autocomplete.usu.nome');
+    Route::get('/admin/Autocomplete_ven_cli', [App\Http\Controllers\AutocompleteController::class, 'Ven_Cliente'])->name('admin.autocomplete.ven.cliente');
 
     Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');
     Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');

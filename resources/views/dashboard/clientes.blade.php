@@ -179,7 +179,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Nome:</label>
                                 <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                    value="{{ old('txt_nome') }}" class="form-control @error('txt_nome') is-invalid @enderror">
+                                    value="{{ old('txt_nome') }}" class="form-control @error('txt_nome') is-invalid @enderror typeahead">
                                     @error('txt_nome')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors }}</strong>
@@ -483,6 +483,16 @@
         if ($('#telefoneCliente').val() != '') {
             $('#celularCliente').attr('disabled');
         }
+
+        var path = "{{route ('admin.autocomplete.cli.nome')}}"
+
+        $('input#txt_nome').typeahead({
+            source: function (terms,process){
+                return $.get(path, {terms:terms}, function(data){
+                    return process(data);
+                });
+            }
+        });
     });
 </script>
 @endpush

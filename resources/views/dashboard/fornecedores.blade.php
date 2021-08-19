@@ -428,8 +428,6 @@
             });
         }
     );
-        });
-
         if ($('#cpfFornecedor').val() != '') {
             $('#cnpjFornecedor').attr('disabled');
         }
@@ -437,5 +435,16 @@
         if ($('#telefoneFornecedor').val() != '') {
             $('#celularFornecedor').attr('disabled');
         }
+
+        var path = "{{route ('admin.autocomplete.for.nome')}}"
+
+        $('input#txt_nome).typeahead({
+    source: function (terms,process){
+        return $.get(path, {terms:terms}, function(data){
+            return process(data);
+        });
+    }
+});
+    });
     </script>
 @endpush
