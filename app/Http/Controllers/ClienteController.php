@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 use App\Models\Cliente;
 
@@ -8,9 +10,18 @@ class ClienteController extends Controller
 {
 
     public function Cliente(){
+        
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
 
         $dado1 = Cliente::count();
-        $dado2 = Cliente::count();
+        $dado2 = DB::table('cliente')->where('created_at', '=>', "$ontem")->count();
         $dado3 = Cliente::count();
 
         $data = Cliente::limit(25)->get();

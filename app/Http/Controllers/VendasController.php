@@ -10,10 +10,24 @@ use App\Models\TipoPagto;
 use Illuminate\Http\Request;
 use App\Models\Venda;
 use App\Models\Venda_Detalhe;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class VendasController extends Controller
 {
     public function Vendas(Request $request){
+
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
         $dado1 = 'teste';
         $dado2 = 'teste';

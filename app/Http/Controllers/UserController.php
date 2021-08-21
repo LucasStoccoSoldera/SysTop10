@@ -5,16 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Cargo;
 use App\Models\Privilegio;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class UserController extends Controller
 {
     public function Usuario(){
 
-        $col01 = 'ID';
-        $col02 = 'Nome Completo';
-        $col03 = 'Cargo';
-        $col04 = 'Data Cadastro';
-        $col05 = 'Ações';
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
         $dado1 = Usuario::count();
         $dado2 = Usuario::where('car_id', '1')->count();
@@ -32,12 +40,6 @@ class UserController extends Controller
    //   on usuario.car_id = cargo.car_id;');
 
         return view('dashboard.usuarios', [
-            'col01' => $col01,
-            'col02' => $col02,
-            'col03' => $col03,
-            'col04' => $col04,
-            'col05' => $col05,
-
             'dado1' => $dado1,
             'dado2' => $dado2,
             'dado3' => $dado3,

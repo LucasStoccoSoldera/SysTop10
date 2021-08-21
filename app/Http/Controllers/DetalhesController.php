@@ -7,10 +7,24 @@ use App\Models\Centro_Custo;
 use App\Models\TipoPagto;
 use App\Models\Transportadora;
 use App\Models\Pacote;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class DetalhesController extends Controller
 {
     public function Detalhe() {
+
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
         $data = Logistica::all();
         $data2 = Centro_Custo::all();

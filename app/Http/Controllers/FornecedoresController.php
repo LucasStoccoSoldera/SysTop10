@@ -4,36 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Fornecedores;
 use App\Models\Produto;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class FornecedoresController extends Controller
 {
     public function Fornecedores(){
 
-        $col01 = 'ID';
-        $col02 = 'Nome / Razão';
-        $col03 = 'CPF / CNPJ';
-        $col04 = 'Telefone';
-        $col05 = 'Cidade';
-        $col06 = 'Ações';
-
-        $dado1 = Fornecedores::count();
-        $dado2 = 'teste';
-        $dado3 = 'teste';
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
         $data = Fornecedores::limit(25)->get();
         $data2 = Produto::all();
 
         return view('dashboard.fornecedores', [
-            'col01' => $col01,
-            'col02' => $col02,
-            'col03' => $col03,
-            'col04' => $col04,
-            'col05' => $col05,
-            'col06' => $col06,
-
-            'dado1' => $dado1,
-            'dado2' => $dado2,
-            'dado3' => $dado3,
 
             'fornecedores' => $data,
              'produtos' => $data2

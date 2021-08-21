@@ -63,6 +63,7 @@ class ProdutoRegister extends Controller
         $Produto->tpp_id = $request->TipoProduto;
         $Produto->pro_precocusto = $request->PCProduto;
         $Produto->pro_precovenda = $request->PCVenda;
+        $Produto->pro_promocao = $request->PromocaoProduto;
         $Produto->mat_id = $request->MaterialProduto;
         $Produto->log_id = $request->Logistica;
         $Produto->dim_id = $request->DimensaoProduto;

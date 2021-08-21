@@ -8,24 +8,28 @@ use App\Models\TipoProduto;
 use App\Models\Pacote;
 use App\Models\Cor;
 use App\Models\Dimensao;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class ProdutosController extends Controller
 {
     public function Produto(){
 
-        $col01 = 'Nome';
-        $col02 = 'Tipo';
-        $col03 = 'Pedido Mínimo';
-        $col04 = 'Terceirização';
-        $col05 = 'Cores';
-        $col06 = 'Dimensão';
-        $col07 = 'Gravura';
-        $col08 = 'Adição';
-        $col09 = 'Ações';
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
+        $dado1 = Produto::count();
+        $dado2 ='teste';
+        $dado3 = DB::table('produto')->where('pro_promocao', '=', 'Sim')->count();
 
         $data = Produto::all();
         $data2 = TipoProduto::all();
@@ -36,15 +40,6 @@ class ProdutosController extends Controller
 
 
         return view('dashboard.produtos', [
-            'col01' => $col01,
-            'col02' => $col02,
-            'col03' => $col03,
-            'col04' => $col04,
-            'col05' => $col05,
-            'col06' => $col06,
-            'col07' => $col07,
-            'col08' => $col08,
-            'col09' => $col09,
 
             'dado1' => $dado1,
             'dado2' => $dado2,

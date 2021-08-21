@@ -145,6 +145,30 @@
                 </div>
         </div>
     </div>
+</div>
+
+    <div class="col-12 justify-content-center">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title" id="no-margin">Resumo de Estoque</h2><br>
+                </div>
+                <div>
+                    <div class="col-auto justify-content-md-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Total de Itens:</h4>
+                        <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado1 }}</h3>
+                    </div>
+                    <div class="col-auto justify-content-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Maior Quantidade:</h4>
+                        <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado2 }}</h3>
+                    </div>
+                    <div class="col-auto justify-content-center float-left">
+                        <h4 class="resumo" style="color: #2caeec;">Maior Entrada (Mês):</h4>
+                        <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado3 }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <div class="row">
         <div class="col-8" style="padding-left: 0px;">

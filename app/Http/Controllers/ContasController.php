@@ -11,14 +11,28 @@ use App\Models\Produto;
 use App\Models\Fornecedores;
 use App\Models\Compras_Detalhe;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class ContasController extends Controller
 {
     public function Contas(Request $request){
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
+
+
+        $dado1 = DB::table('contas_a_pagar')->where('created_at', '=>', "$mes_passado")->where('con_tipo', '=', 'Fixa')->count();
+        $dado2 = DB::table('contas_a_pagar')->where('created_at', '=>', "$mes_passado")->where('con_tipo', '=', 'Variável')->count();
+        $dado3 = DB::table('contas_a_pagar')->sum('con_valor_final');
 
         $data1 = Contas_a_Pagar::all();
         $data2 = Centro_Custo::all();

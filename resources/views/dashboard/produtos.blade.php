@@ -82,7 +82,7 @@
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado1 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">Qtde. mais Vendido:</h4>
+                        <h4 class="resumo" style="color: #2caeec;">Mais Vendido:</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado2 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
@@ -383,6 +383,15 @@
                                     <span class="invalid-feedback PCVenda_error" role="alert">
                                     </span>
                                         </div>
+                                        <div class="form-group" id="form-group">
+                                            <label class="modal-label"> Promoção?</label>
+                                            <div class="switch__container">
+                                                <input id="switch-shadow" name="PromocaoProduto" value={{ 'Sim' ?? 'Não' }}
+                                                    class="switch switch--shadow" type="checkbox">
+                                                <label for="switch-shadow"></label>
+                                                <span class="invalid-feedback PromocaoProduto_error" role="alert">
+                                                </span>
+                                            </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Foto do Produto:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>

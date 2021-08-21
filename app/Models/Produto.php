@@ -17,6 +17,7 @@ class Produto extends Model
         'pro_nome',
         'pro_precocusto',
         'pro_precovenda',
+        'pro_promocao',
         'pro_foto_path',
         'pro_personalizacao',
         'pro_pedidominimo',

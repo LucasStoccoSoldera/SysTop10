@@ -6,43 +6,41 @@ use App\Models\Venda;
 use App\Models\Contas_a_Pagar;
 use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
 
 class FinanceiroController extends Controller
 {
     public function Financeiro(){
 
-        $col01 = 'teste';
-        $col02 = 'teste';
-        $col03 = 'teste';
-        $col04 = 'teste';
-        $lineCol01 = 'teste';
-        $lineCol02 = 'teste';
-        $lineCol03 = 'teste';
-        $lineCol04 = 'teste';
+        $ano = date("Y");
+        $mes = date("m");
+        $dia = date("d");
+        $hora = date("H");
+        $minuto = date("i");
+        $segundo = date("s");
+        $now = date("Y-m-d H:i:s");
+        $ontem = Carbon::now()->subDay();
+        $semana_passado = Carbon::now()->subWeek();
+        $mes_passado = Carbon::now()->subMonth();
+        $ano_passado = Carbon::now()->subYear();
 
-        $hoje1 = 'teste';
-        $hoje2 = 'teste';
-        $hoje3 = 'teste';
-        $sem4 = 'teste';
-        $sem5 = 'teste';
-        $sem6 = 'teste';
-        $mes7 = 'teste';
-        $mes8 = 'teste';
-        $mes9 = 'teste';
+        $hoje1 = (DB::table('caixa')->where('created_at', '=>', "$ontem")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$ontem")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $hoje2 = DB::table('contas_a_receber')->where('created_at', '=>', "$ontem")->sum('rec_valor');
+        $hoje3 = DB::table('contas_a_pagar')->where('created_at', '=>', "$ontem")->sum('con_valor_final');
+        $sem4 = (DB::table('caixa')->where('created_at', '=>', "$semana_passado")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$semana_passado")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $sem5 = DB::table('contas_a_receber')->where('created_at', '=>', "$semana_passado")->sum('rec_valor');
+        $sem6 = DB::table('contas_a_pagar')->where('created_at', '=>', "$semana_passado")->sum('con_valor_final');
+        $mes7 = (DB::table('caixa')->where('created_at', '=>', "$mes_passado")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$mes_passado")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $mes8 = DB::table('contas_a_receber')->where('created_at', '=>', "$mes_passado")->sum('rec_valor');
+        $mes9 = DB::table('contas_a_pagar')->where('created_at', '=>', "$mes_passado")->sum('con_valor_final');
 
         $data_conta = Contas_a_Pagar::all();
         $data_receber = Contas_a_Receber::all();
         $data_venda = Venda::all();
 
         return view('dashboard.financas', [
-            'col01' => $col01,
-            'col02' => $col02,
-            'col03' => $col03,
-            'col04' => $col04,
-            'lineCol01' => $lineCol01,
-            'lineCol02' => $lineCol02,
-            'lineCol03' => $lineCol03,
-            'lineCol04' => $lineCol04,
 
             'hoje1' => $hoje1,
             'hoje2' => $hoje2,
