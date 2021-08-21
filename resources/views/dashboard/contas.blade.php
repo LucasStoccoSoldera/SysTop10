@@ -698,8 +698,8 @@
                             <div class="card" id="card-consulta-tabela">
                                 <div class="card-header" id="ch-adaptado">
                                     <h2 class="card-title">Itens da Compra <button class="btn btn-primary btn-block"
-                                            id="btn-form-consulta-imprimir" data-toggle="modal" data-backdrop="static"
-                                            data-target="#modalRegisterItemCompra">+ Add</button> </h2>
+                                            id="btn-form-consulta-imprimir"data-backdrop="static"
+                                            onclick="abrirItem()">+ Add</button> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
                                     <div class="table-responsive">
@@ -1036,6 +1036,10 @@
                     $('#VTCompras').val(data_decoded.total - $('#descontoCompras').val());
                 }
             });
+
+            function abrirItem {
+                $('#modalRegisterItemCompra').modal('show');
+}
         });
 </script>
 @endpush

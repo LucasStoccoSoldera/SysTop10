@@ -507,7 +507,7 @@
                                     <div class="card-header" id="ch-adaptado">
                                         <h2 class="card-title">Itens da Venda <button class="btn btn-primary btn-block"
                                                 id="btn-form-consulta-imprimir" data-toggle="modal" data-backdrop="static"
-                                                data-target="#modalRegisterItemVenda">+ Add</button> </h2>
+                                                onclick="abrirItem()">+ Add</button> </h2>
                                     </div>
                                     <div class="card-body" id="cd-adaptado">
                                         <div class="table-responsive">
@@ -855,6 +855,9 @@ $('input#txt_cliente').typeahead({
     }
 });
 
+function abrirItem {
+    $('#modalRegisterItemVenda').modal('show');
+}
 });
 </script>
 @endpush
