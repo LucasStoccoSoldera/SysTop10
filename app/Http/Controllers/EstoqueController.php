@@ -27,7 +27,9 @@ class EstoqueController extends Controller
 
         $dado1 = DB::table('estoque')->sum('est_qtde');
         $dado2 = DB::table('estoque')->sum('est_qtde');
-        $dado3 ='teste';// DB::table('estoque')->where('created_at', '=>', "$mes_passado")->where('con_tipo', '=', 'Variável')->count();
+       $dado3 =  'teste';//DB::table('estoque')
+                           //                            ->max('est_qtde')
+                             //                          ->first();
 
         $data = Estoque::all();
         $data2 = Produto::all();

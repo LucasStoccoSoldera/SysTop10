@@ -590,10 +590,6 @@
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
-                            if (val[0] = 'A confirmação da senha não corresponde.') {
-                                $('span.senhaConfirm_error').text(val[0]);
-                                $('input#senhaConfirm_error').addClass('is-invalid');
-                            }
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
                         });

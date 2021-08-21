@@ -110,9 +110,9 @@
                             <label for="password-confirm" class="campos" id="quebra">{{ __('Confirme sua senha') }}</label>
                             <div class="input">
                                 <input id="senhaCliente_confirmation" type="password" class="form-control-filtro  @error('senhaCliente') is-invalid @enderror" name="senhaCliente_confirmation">
-                                <span class="invalid-feedback senhaConfirm_error" role="alert">
+                                <span class="invalid-feedback senhaCliente_error" role="alert">
                                 </span>
-                            </div>
+                            </div>  
                         </div>
 
                         <div class="form-group row">
@@ -190,9 +190,6 @@ $(document).ready(function(){
             },
             success:function(data_decoded){
                 if(data_decoded.status == 0){
-                    if(val[0] = 'A confirmação da senha não corresponde.'){
-                            $('span.' + 'senhaConfirm_error').text(val[0]);
-                        }
                     $.each(data_decoded.error, function(prefix, val){
                         $('span.' +prefix+ '_error').text(val[0]);
                         $('input#' +prefix).addClass('is-invalid');
