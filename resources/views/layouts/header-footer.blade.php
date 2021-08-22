@@ -248,8 +248,9 @@
 
     <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data" >
                 @csrf
+                @method('DELETE')
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: red">
                         <h4 class="modal-title">! Alerta de Exclusão !</h4>
@@ -380,8 +381,17 @@
                 $('.celular').mask('(00) 0 0000-0000');
                 $('.dimensao').mask('000 x 000 x 000');
                 $('.cep').mask('00000-000');
-
             });
+
+            if(){
+            $('button.cancela').on('click', function() {
+                var form = $(this).data('form');
+                var modal = $(this).data('modal');
+                $('#modalAlertCancelar').modal('show');
+                $('#formCancelar').val(form);
+                $('#modalCancelar').val(modal);
+            });
+        }
         </script>
 
         <script>
