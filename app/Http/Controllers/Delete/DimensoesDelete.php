@@ -17,6 +17,6 @@ class DimensoesDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A dimensão $descricao foi excluída com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }

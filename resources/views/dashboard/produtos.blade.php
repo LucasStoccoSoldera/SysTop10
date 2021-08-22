@@ -383,15 +383,7 @@
                                     <span class="invalid-feedback PCVenda_error" role="alert">
                                     </span>
                                         </div>
-                                        <div class="form-group" id="form-group">
-                                            <label class="modal-label"> Promoção?</label>
-                                            <div class="switch__container">
-                                                <input id="switch-shadow" name="PromocaoProduto" value={{ 'Sim' ?? 'Não' }}
-                                                    class="switch switch--shadow" type="checkbox">
-                                                <label for="switch-shadow"></label>
-                                                <span class="invalid-feedback PromocaoProduto_error" role="alert">
-                                                </span>
-                                            </div>
+                                </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Foto do Produto:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
@@ -403,7 +395,6 @@
                                             </div>
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="modal-label">Material:</label> <label
@@ -483,6 +474,7 @@
                                         <span class="invalid-feedback PersoProduto_error" role="alert">
                                         </span>
                                     </div>
+                                </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label"> Terceirizado?</label>
                                         <div class="switch__container">
@@ -494,13 +486,24 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label"> Promoção?</label>
+                                        <div class="switch__container">
+                                            <input id="switch-shadow" name="PromocaoProduto" value={{ 'Sim' ?? 'Não' }}
+                                                class="switch switch--shadow" type="checkbox">
+                                            <label for="switch-shadow"></label>
+                                            <span class="invalid-feedback PromocaoProduto_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterProdutos" data-modal="modalRegisterProdutos">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                          <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterProdutos">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
                     </div>
             </form>
@@ -540,7 +543,8 @@
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterTipoProduto"
                                 data-modal="modalRegisterTipoProduto">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
     </div>
@@ -627,7 +631,8 @@
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
     </div>
@@ -712,7 +717,8 @@
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterDimensao" data-modal="modalRegisterDimensao">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
     </div>
@@ -817,7 +823,8 @@
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterCores" data-modal="modalRegisterCores">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
     </div>
@@ -898,7 +905,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Dimensão da Caixa:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="DimensaoPacotes" id="DimensaoPacotes"
+                                <input type="text" name="DimensaoPacotes" id=" dimensao DimensaoPacotes"
                                     class="dimensao form-control" value="{{ old('DimensaoPacotes') }}"
                                     placeholder="Entre com a Dimensão da Caixa">
                                 <span class="invalid-feedback DimensaoPacotes_error" role="alert">
@@ -921,7 +928,8 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterPacotes"
                         data-modal="modalRegisterPacotes">Cancelar</button>
-                    <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
             </div>
         </form>
@@ -1165,6 +1173,29 @@ $('input#txt_nome').typeahead({
             return process(data);
         });
     }
+});
+
+$("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
 });
     });
 </script>

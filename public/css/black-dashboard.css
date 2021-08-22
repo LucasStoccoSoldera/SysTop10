@@ -2915,6 +2915,27 @@ textarea.form-control.is-invalid {
     background-color: #f5365c !important;
     background-image: none !important;
 }
+
+.limpar {
+    background: none !important;
+    background-color: #ff4f26 !important;
+    background-image: none !important;
+    color: #fff !important;
+    width: 25%;
+}
+.limpar:hover {
+    background: none !important;
+    background-color: #ff4f26 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+.limpar:active {
+    background: none !important;
+    background-color: #ff4f26 !important;
+    background-image: none !important;
+    color: #fff !important;
+}
+
 #alter {
     background-color: #d7ba11;
     background-image: none;
@@ -5707,13 +5728,6 @@ input[type="button"].btn-block {
     height: fit-content;
     padding: 2rem;
     padding-bottom: 4rem;
-}
-#detalhe-item {
-    text-align: center;
-    float: unset;
-    margin: 0 auto;
-    margin-top: 30px;
-    color: fff;
 }
 #btn-detalhe {
     height: 100px;

@@ -14,7 +14,7 @@ class CreateVendasDetalhe extends Migration
     public function up()
     {
         Schema::create('vendas_detalhe', function (Blueprint $table) {
-            $table->id('det_id');
+            $table->id();
             $table->unsignedBigInteger('cor_id');
             $table->unsignedBigInteger('dim_id');
             $table->unsignedBigInteger('pro_id');
@@ -26,10 +26,10 @@ class CreateVendasDetalhe extends Migration
             $table->float('det_valor_total', 2);
             $table->timestamps();
 
-            $table->foreign('cor_id')->references('cor_id')->on('cores');
-            $table->foreign('dim_id')->references('dim_id')->on('dimensoes');
-            $table->foreign('pro_id')->references('pro_id')->on('produto');
-            $table->foreign('ven_id')->references('ven_id')->on('vendas');
+            $table->foreign('cor_id')->references('id')->on('cores');
+            $table->foreign('dim_id')->references('id')->on('dimensoes');
+            $table->foreign('pro_id')->references('id')->on('produto');
+            $table->foreign('ven_id')->references('id')->on('vendas');
         });
     }
 

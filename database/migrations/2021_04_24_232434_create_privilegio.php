@@ -14,7 +14,7 @@ class CreatePrivilegio extends Migration
     public function up()
     {
         Schema::create('privilegio', function (Blueprint $table) {
-            $table->id('pri_id');
+            $table->id();
             $table->char('pri_usuarios', 1);
             $table->char('pri_clientes', 1);
             $table->char('pri_financeiro', 1);

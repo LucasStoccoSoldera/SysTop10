@@ -7,7 +7,7 @@ use App\Models\Dimensao;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class DimensaoRegister extends Controller
+class DimensoesRegister extends Controller
 {
 
     /**

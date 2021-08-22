@@ -9,7 +9,7 @@ class Cliente extends Authenticatable
 
     protected $fillable = ['cli_nome', 'cli_usuario', 'cli_cpf', 'cli_cnpj', 'cli_telefone', 'cli_celular','cli_logradouro', 'cli_bairro', 'cli_n_casa', 'cli_cidade', 'cli_uf', 'cli_complemento',];
     protected $hidden = ['cli_senha'];
-    protected $primaryKey = 'cli_id';
+    protected $primaryKey = 'id';
     protected $table = "cliente";
 
 }

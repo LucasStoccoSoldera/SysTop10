@@ -14,7 +14,7 @@ class ContasAReceber extends Migration
     public function up()
     {
         Schema::create('contas_a_receber', function (Blueprint $table) {
-            $table->id('rec_id');
+            $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->string('rec_descricao');
             $table->string('rec_ven_id');
@@ -24,7 +24,7 @@ class ContasAReceber extends Migration
             $table->char('rec_status');
             $table->timestamps();
 
-            $table->foreign('tpg_id')->references('tpg_id')->on('tipopagto');
+            $table->foreign('tpg_id')->references('id')->on('tipopagto');
         });
     }
 

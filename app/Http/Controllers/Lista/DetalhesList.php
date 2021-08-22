@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Lista;
 use App\Http\Controllers\Controller;
 use App\Models\Centro_Custo;
 use App\Models\TipoPagto;
+use Illuminate\Support\Facades\DB;
 
 class DetalhesList extends Controller
 {
     public function listDetalhe() {
 
-        $data2 = Centro_Custo::all();
-        $data3 = TipoPagto::all();
+        $centros = DB::table('centro_custo')->select('cc_descricao')->get();
+        $pagamentos = DB::table('tipopagto')->select('tpg_descricao')->get();
 
-        return  response()->json(['centros' => $data2, 'pagamentos' => $data3]);
+        return response()->json(['centros' => $centros, 'pagamentos' => $pagamentos]);
     }
 }

@@ -14,7 +14,7 @@ class CreateCliente extends Migration
     public function up()
     {
         Schema::create('cliente', function (Blueprint $table) {
-            $table->id('cli_id');
+            $table->id();
             $table->string('cli_nome');
             $table->string('cli_usuario')->unique();
             $table->string('cli_senha');

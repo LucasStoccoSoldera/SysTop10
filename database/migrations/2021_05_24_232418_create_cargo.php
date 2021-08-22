@@ -14,12 +14,12 @@ class CreateCargo extends Migration
     public function up()
     {
         Schema::create('cargo', function (Blueprint $table) {
-            $table->id('car_id');
+            $table->id();
             $table->unsignedBigInteger('pri_id');
             $table->string('car_descricao');
             $table->timestamps();
 
-            $table->foreign('pri_id')->references('pri_id')->on('privilegio');
+            $table->foreign('pri_id')->references('id')->on('privilegio');
         });
     }
 

@@ -17,6 +17,6 @@ class FornecedorDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O fornecedor $nome foi excluído com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }

@@ -14,7 +14,7 @@ class CreateMaterialBase extends Migration
     public function up()
     {
         Schema::create('material', function (Blueprint $table) {
-            $table->id('mat_id');
+            $table->id();
             $table->string('mat_descricao');
             $table->timestamps();
         });

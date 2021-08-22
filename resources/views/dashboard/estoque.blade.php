@@ -344,7 +344,8 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterEstoque" data-modal="modalRegisterEstoque">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                      <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterEstoque">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -406,6 +407,29 @@
             });
         }
     );
+
+    $("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
+});
         });
     </script>
 @endpush

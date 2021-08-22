@@ -20,7 +20,7 @@ class VendasDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A venda $descricao foi excluída com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 
     public function deleteItemVenda(Request $request)
@@ -28,6 +28,6 @@ class VendasDelete extends Controller
         $data=Venda_Detalhe::find($request->id);
 
         $data->delete();
-        return redirect()->back();
+        return response()->json();
     }
 }

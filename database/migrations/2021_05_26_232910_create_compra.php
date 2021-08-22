@@ -14,7 +14,7 @@ class CreateCompra extends Migration
     public function up()
     {
         Schema::create('compra', function (Blueprint $table) {
-            $table->id('com_id');
+            $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->unsignedBigInteger('cc_id');
             $table->date('com_data_compra');
@@ -26,8 +26,8 @@ class CreateCompra extends Migration
             $table->string('com_observacoes');
             $table->timestamps();
 
-            $table->foreign('tpg_id')->references('tpg_id')->on('tipopagto');
-            $table->foreign('cc_id')->references('cc_id')->on('centro_custo');
+            $table->foreign('tpg_id')->references('id')->on('tipopagto');
+            $table->foreign('cc_id')->references('id')->on('centro_custo');
         });
     }
 

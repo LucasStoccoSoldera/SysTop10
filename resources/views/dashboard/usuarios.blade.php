@@ -353,7 +353,8 @@
             <div class="modal-footer">
                 <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterUser"
                     data-modal="modalRegisterUser">Cancelar</button>
-                <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                              <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterUser">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
             </div>
         </div>
     </form>
@@ -390,7 +391,7 @@
                     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterCargo" data-modal="modalRegisterCargo">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
     </form>
 </div>
@@ -553,7 +554,7 @@
             <div class="modal-footer">
                 <button type="button" class="cancela btn btn-secondary btn-danger"
                     data-form="formRegisterPrivilegio" data-modal="modalRegisterPrivilegio">Cancelar</button>
-                <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
             </div>
         </div>
     </form>
@@ -689,6 +690,29 @@ $('input#txt_nome').typeahead({
             return process(data);
         });
     }
+});
+
+$("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
 });
     });
 </script>

@@ -9,7 +9,7 @@ class Usuario extends Authenticatable
 
     protected $fillable = ['usu_nome_completo', 'usu_usuario', 'usu_celular', 'usu_cpf', 'car_id','usu_status'];
     protected $hidden = ['usu_senha'];
-    protected $primaryKey = 'usu_id';
+    protected $primaryKey = 'id';
     protected $table = "usuario";
 
 }

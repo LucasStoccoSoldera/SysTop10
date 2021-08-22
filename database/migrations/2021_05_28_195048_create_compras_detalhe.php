@@ -14,7 +14,7 @@ class CreateComprasDetalhe extends Migration
     public function up()
     {
         Schema::create('compras_detalhe', function (Blueprint $table) {
-            $table->id('cde_id');
+            $table->id();
             $table->unsignedBigInteger('for_id');
             $table->unsignedBigInteger('com_id');
             $table->string('cde_produto');
@@ -24,8 +24,8 @@ class CreateComprasDetalhe extends Migration
             $table->string('cde_descricao');
             $table->timestamps();
 
-            $table->foreign('com_id')->references('com_id')->on('compra');
-            $table->foreign('for_id')->references('for_id')->on('fornecedor');
+            $table->foreign('com_id')->references('id')->on('compra');
+            $table->foreign('for_id')->references('id')->on('fornecedor');
         });
     }
 

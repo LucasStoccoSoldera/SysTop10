@@ -14,7 +14,7 @@ class CreateCores extends Migration
     public function up()
     {
         Schema::create('cores', function (Blueprint $table) {
-            $table->id('cor_id');
+            $table->id();
             $table->string('cor_nome');
             $table->string('cor_hex');
             $table->string('cor_especial');

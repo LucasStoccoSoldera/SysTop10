@@ -14,7 +14,7 @@ class CreatePacote extends Migration
     public function up()
     {
         Schema::create('pacote', function (Blueprint $table) {
-            $table->id('pac_id');
+            $table->id();
             $table->string('pac_dimensao');
             $table->string('pac_descricao');
             $table->timestamps();

@@ -14,7 +14,7 @@ class CreateCentroCusto extends Migration
     public function up()
     {
         Schema::create('centro_custo', function (Blueprint $table) {
-            $table->id('cc_id');
+            $table->id();
             $table->string('cc_descricao');
             $table->timestamps();
         });

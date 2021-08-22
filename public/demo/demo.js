@@ -729,7 +729,7 @@ demo = {
   },
 
   showNotification: function(from, align) {
-    color = Math.floor((Math.random() * 4) + 1);
+    color = 3;
 
     $.notify({
       icon: "tim-icons icon-bell-55",

@@ -48,7 +48,7 @@ class LoginController extends Controller
 
                if (!empty($get_usuario)){
                     if(Hash::check($request->password, $get_usuario->usu_senha)){
-                        Auth::loginUsingId($get_usuario->usu_id);
+                        Auth::loginUsingId($get_usuario->id);
                         $get_usuario = null;
                         return redirect()->route('admin');
                     }
@@ -57,7 +57,7 @@ class LoginController extends Controller
 
                 if (!empty($get_cliente)){
                     if(Hash::check($request->password, $get_cliente->cli_senha)){
-                        Auth::loginUsingId($get_cliente->cli_id);
+                        Auth::loginUsingId($get_cliente->id);
                         $get_cliente = null;
                         return redirect()->route('home');
                     }

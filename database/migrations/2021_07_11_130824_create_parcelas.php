@@ -15,7 +15,7 @@ class CreateParcelas extends Migration
     public function up()
     {
         Schema::create('parcelas', function (Blueprint $table) {
-            $table->id('par_id');
+            $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->BigInteger('par_venda');
             $table->BigInteger('par_conta');
@@ -25,7 +25,7 @@ class CreateParcelas extends Migration
             $table->date('par_data_pagto');
             $table->timestamps();
 
-            $table->foreign('tpg_id')->references('tpg_id')->on('tipopagto');
+            $table->foreign('tpg_id')->references('id')->on('tipopagto');
         });
     }
 

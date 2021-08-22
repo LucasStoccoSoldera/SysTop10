@@ -39,13 +39,13 @@ class VendasController extends Controller
         $data3 = Dimensao::all();
         $data4 = Produto::all();
 
-        $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
+        $data6 = Venda_Detalhe::where('id', $request->IDVenda);
 
         $data7 = TipoPagto::all();
         $data8 = Logistica::all();
 
         if(isset($id)){
-        $data5 = Venda_Detalhe::where('ven_id', $id);
+        $data5 = Venda_Detalhe::where('id', $id);
 
        return  response()->json(['vendas' => $data, 'itensvenda' => $data5, 'itens_ato' => $data6]);
 

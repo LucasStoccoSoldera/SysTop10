@@ -128,12 +128,16 @@
                     <div>
                         <div class="col-auto justify-content-md-center">
                             @foreach ($centros as $centro)
-                                <h3 class="dados-resumo" id="detalhe-item" style="color: #2caeec;">
+                                <h3 class="dados-resumo" id="cc_descricao_json" style="color: #2caeec;    text-align: center;
+                                float: unset;
+                                margin: 0 auto;
+                                margin-top: 30px;
+                                color: fff;">
                                     {{ $centro['cc_descricao'] }}</h3>
                                 <div class="text-center">
                                     <a href="#" class="btn btn-primary" id="alter"><i
                                             class="tim-icons icon-pencil"></i></a>
-                                    <button href="#" class="btn btn-primary red" id="excluir-cc"
+                                    <button class="btn btn-primary red" id="excluir-cc"
                                         name="excluir-centro-custo" data-id="{{ $centro['cc_id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
                                         style="padding: 11px 25px;"><i
                                             class="tim-icons icon-simple-remove"></i></button>
@@ -165,7 +169,11 @@
                     <div>
                         <div class="col-auto justify-content-md-center">
                             @foreach ($pagamentos as $pagamento)
-                                <h3 class="dados-resumo" id="detalhe-item" style="color: #2caeec;">
+                                <h3 class="dados-resumo" id="tpg_descricao_json" style="color: #2caeec;    text-align: center;
+                                float: unset;
+                                margin: 0 auto;
+                                margin-top: 30px;
+                                color: fff;">
                                     {{ $pagamento['tpg_descricao'] }}</h3>
                                 <div class="text-center">
                                     <a href="#" class="btn btn-primary" id="alter"><i
@@ -187,11 +195,6 @@
 
 @endsection
 @section('modals')
-
-    @isset($msgRegistrar)
-        <x-alert-register :msgRegistrar="$msgRegistrar" />
-    @endisset
-
     <div class="modal fade" id="modalRegisterCentroCusto" style="display:none;" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formRegisterCentroCusto" method="POST" autocomplete="off"
@@ -222,7 +225,8 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterCentroCusto" data-modal="modalRegisterCentroCusto">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -259,7 +263,8 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterTpgPagto" data-modal="modalRegisterTpgPagto">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -335,7 +340,7 @@
                     }
                 });
             });
-
+/*
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
@@ -348,12 +353,42 @@
                 processData: false,
                 dataType: 'json',
                 success: function(data_decoded) {
-                    $centros = data_decoded.$centros;
-                    $pagamentos = data_decoded.$pagamentos;
+                    $.each(data_decoded.centros, function() {
+                        console.log(data_decoded.centros);
+                        console.log('h3#' + data_decoded.centros + '_json');
+                                 //   $('h3#' + prefix + '_json').text(val[0]);
+                    });
+                    $.each(data_decoded.pagamentos, function(prefix, val) {
+                                //$('h3#' + prefix + '_json').text(val[0]);
+                    });
                 }
             });
         }
-    );
+    ); */
+
+    $("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
+});
+
 });
     </script>
 @endpush

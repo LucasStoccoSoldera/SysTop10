@@ -7,7 +7,7 @@ use App\Models\Cor;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class CorRegister extends Controller
+class CoresRegister extends Controller
 {
 
     /**

@@ -14,7 +14,7 @@ class CreateDimensoes extends Migration
     public function up()
     {
         Schema::create('dimensoes', function (Blueprint $table) {
-            $table->id('dim_id');
+            $table->id();
             $table->string('dim_descricao');
             $table->timestamps();
         });

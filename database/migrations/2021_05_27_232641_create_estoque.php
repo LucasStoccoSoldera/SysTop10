@@ -14,7 +14,7 @@ class CreateEstoque extends Migration
     public function up()
     {
         Schema::create('estoque', function (Blueprint $table) {
-            $table->id('est_id');
+            $table->id();
             $table->unsignedBigInteger('dim_id');
             $table->unsignedBigInteger('cor_id');
             $table->integer('est_qtde');
@@ -22,8 +22,8 @@ class CreateEstoque extends Migration
             $table->integer('est_limite');
             $table->timestamps();
 
-            $table->foreign('dim_id')->references('dim_id')->on('dimensoes');
-            $table->foreign('cor_id')->references('cor_id')->on('cores');
+            $table->foreign('dim_id')->references('id')->on('dimensoes');
+            $table->foreign('cor_id')->references('id')->on('cores');
         });
     }
 

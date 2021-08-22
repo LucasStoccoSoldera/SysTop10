@@ -14,13 +14,13 @@ class CreateLogistica extends Migration
     public function up()
     {
         Schema::create('logistica', function (Blueprint $table) {
-            $table->id('log_id');
+            $table->id();
             $table->unsignedBigInteger('pac_id');
             $table->unsignedBigInteger('trans_id');
             $table->timestamps();
 
-            $table->foreign('trans_id')->references('trans_id')->on('transportadora');
-            $table->foreign('pac_id')->references('pac_id')->on('pacote');
+            $table->foreign('trans_id')->references('id')->on('transportadora');
+            $table->foreign('pac_id')->references('id')->on('pacote');
         });
     }
 

@@ -16,7 +16,7 @@ class LogisticaDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A relação logística $request->id foi excluído com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 
     public function deleteTransportadora(Request $request)
@@ -25,6 +25,6 @@ class LogisticaDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A transportadora $request->id foi excluída com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }

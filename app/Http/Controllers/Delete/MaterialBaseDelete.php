@@ -17,6 +17,6 @@ class MaterialBaseDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O material base $descricao foi excluído com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }

@@ -14,7 +14,7 @@ class CreateContasAPagar extends Migration
     public function up()
     {
         Schema::create('contas_a_pagar', function (Blueprint $table) {
-            $table->id('con_id');
+            $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->unsignedBigInteger('cc_id');
             $table->string('con_descricao');
@@ -26,8 +26,8 @@ class CreateContasAPagar extends Migration
             $table->date('con_data_pag');
             $table->timestamps();
 
-            $table->foreign('tpg_id')->references('tpg_id')->on('tipopagto');
-            $table->foreign('cc_id')->references('cc_id')->on('centro_custo');
+            $table->foreign('tpg_id')->references('id')->on('tipopagto');
+            $table->foreign('cc_id')->references('id')->on('centro_custo');
         });
     }
 

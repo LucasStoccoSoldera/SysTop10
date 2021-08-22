@@ -518,7 +518,8 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
                         data-form="formRegisterContas" data-modal="modalRegisterContas">Cancelar</button>
-                    <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                  <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContas">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
             </div>
         </form>
@@ -578,7 +579,7 @@
                                 <label class="modal-label">Desconto:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="descontoCompras" id="descontoCompras"
-                                    class="porcentagem valor form-control" value="{{ old('descontoCompras') }}">
+                                    class="porcentagem form-control" value="{{ old('descontoCompras') }}">
                                     <div class="div-feedback">
                                 <span class="invalid-feedback descontoCompras_error" role="alert">
                                 </span>
@@ -697,9 +698,11 @@
                         <div class="col-12">
                             <div class="card" id="card-consulta-tabela">
                                 <div class="card-header" id="ch-adaptado">
-                                    <h2 class="card-title">Itens da Compra <button class="btn btn-primary btn-block"
-                                            id="btn-form-consulta-imprimir"data-backdrop="static"
-                                            onclick="abrirItem()">+ Add</button> </h2>
+                                    <h2 class="card-title">Itens da Compra
+                                        <a class="btn btn-primary btn-block"
+                                            id="btn-form-consulta-imprimir" data-toggle="modal"
+                                            data-backdrop="static" data-target="#modalRegisterItemCompra">
+                                            + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
                                     <div class="table-responsive">
@@ -760,7 +763,8 @@
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                             <button type="button" class="btn btn-secondary btn-danger cancela"
                                 data-form="formRegisterCompras" data-modal="modalRegisterCompras">Cancelar</button>
-                            <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                          <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterCompras">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
     </div>
@@ -829,19 +833,6 @@
                             </div>
                         </div>
                         <div class="form-group" id="form-group">
-                            <label class="modal-label">Descrição:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
-                                class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
-                                placeholder="Coloque uma Descrição">
-                                <div class="div-feedback">
-                            <span class="invalid-feedback descricaoItemVenda_error" role="alert">
-                            </span>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group" id="form-group">
                             <label class="modal-label">Quantidade:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="qtdeItemCompra" id="qtdeItemCompra" class="form-control"
@@ -849,6 +840,19 @@
                                 placeholder="Entre com a Quantidade">
                                 <div class="div-feedback">
                             <span class="invalid-feedback qtdeItemCompra_error" role="alert">
+                            </span>
+                                </div>
+                    </div>
+                </div>
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Descrição:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
+                                class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
+                                placeholder="Coloque uma Descrição">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback descricaoItemVenda_error" role="alert">
                             </span>
                                 </div>
                         </div>
@@ -878,7 +882,8 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
                         data-form="formRegisterItemCompra" data-modal="modalRegisterItemCompra">Cancelar</button>
-                    <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                  <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemCompra">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
     </form>
 </div>
@@ -1040,6 +1045,29 @@
             function abrirItem {
                 $('#modalRegisterItemCompra').modal('show');
 }
+
+$("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
+});
         });
 </script>
 @endpush

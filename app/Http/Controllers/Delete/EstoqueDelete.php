@@ -15,6 +15,6 @@ class EstoqueDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A entrada $request->id foi excluída com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }

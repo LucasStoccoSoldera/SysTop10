@@ -14,7 +14,7 @@ class CreateProduto extends Migration
     public function up()
     {
         Schema::create('produto', function (Blueprint $table) {
-            $table->id('pro_id');
+            $table->id();
             $table->unsignedBigInteger('mat_id');
             $table->unsignedBigInteger('tpp_id');
             $table->unsignedBigInteger('log_id');
@@ -29,10 +29,10 @@ class CreateProduto extends Migration
             $table->char('pro_terceirizacao', 1);
             $table->timestamps();
 
-            $table->foreign('mat_id')->references('mat_id')->on('material');
-            $table->foreign('tpp_id')->references('tpp_id')->on('tipoproduto');
-            $table->foreign('log_id')->references('log_id')->on('logistica');
-            $table->foreign('dim_id')->references('dim_id')->on('dimensoes');
+            $table->foreign('mat_id')->references('id')->on('material');
+            $table->foreign('tpp_id')->references('id')->on('tipoproduto');
+            $table->foreign('log_id')->references('id')->on('logistica');
+            $table->foreign('dim_id')->references('id')->on('dimensoes');
         });
     }
 

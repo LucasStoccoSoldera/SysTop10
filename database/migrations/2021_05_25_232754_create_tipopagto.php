@@ -14,7 +14,7 @@ class CreateTipopagto extends Migration
     public function up()
     {
         Schema::create('tipopagto', function (Blueprint $table) {
-            $table->id('tpg_id');
+            $table->id();
             $table->string('tpg_descricao');
             $table->timestamps();
         });

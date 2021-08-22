@@ -14,7 +14,7 @@ class CreateTipoproduto extends Migration
     public function up()
     {
         Schema::create('tipoproduto', function (Blueprint $table) {
-            $table->id('tpp_id');
+            $table->id();
             $table->string('tpp_descricao');
             $table->timestamps();
         });

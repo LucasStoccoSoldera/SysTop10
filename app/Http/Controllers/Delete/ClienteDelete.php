@@ -17,7 +17,7 @@ class ClienteDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O cliente $nome foi excluído com sucesso!";
-        return redirect()->back()->with($msgExcluir);
+        return response()->json(['msg' => $msgExcluir]);
     }
 }
 

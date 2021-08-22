@@ -64,8 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Produto/Registrar_material_base', [App\Http\Controllers\Register\MaterialBaseRegister::class, 'createMaterialBase'])->name('admin.create.material');
     Route::post('/admin/Produto/Registrar_tipo_produto', [App\Http\Controllers\Register\TipoProdutoRegister::class, 'createTipoProduto'])->name('admin.create.tipoproduto');
     Route::post('/admin/Produto/Registrar_pacote', [App\Http\Controllers\Register\PacoteRegister::class, 'createPacote'])->name('admin.create.pacote');
-    Route::post('/admin/Produto/Registrar_cor', [App\Http\Controllers\Register\CorRegister::class, 'createCor'])->name('admin.create.cor');
-    Route::post('/admin/Produto/Registrar_dimensao', [App\Http\Controllers\Register\DimensaoRegister::class, 'createDimensao'])->name('admin.create.dimensao');
+    Route::post('/admin/Produto/Registrar_cor', [App\Http\Controllers\Register\CoresRegister::class, 'createCor'])->name('admin.create.cor');
+    Route::post('/admin/Produto/Registrar_dimensao', [App\Http\Controllers\Register\DimensoesRegister::class, 'createDimensao'])->name('admin.create.dimensao');
     Route::post('/admin/Estoque/Registrar_estoque', [App\Http\Controllers\Register\EstoqueRegister::class, 'createEstoque'])->name('admin.create.estoque');
     Route::post('/admin/Fornecedor/Registrar_fornecedor', [App\Http\Controllers\Register\FornecedorRegister::class, 'createFornecedor'])->name('admin.create.fornecedor');
     Route::post('/admin/Detalhe/Registrar_centro_custo', [App\Http\Controllers\Register\CentroCustoRegister::class, 'createCentroCusto'])->name('admin.create.centrocusto');

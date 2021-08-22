@@ -14,7 +14,7 @@ class CreateUsuario extends Migration
     public function up()
     {
         Schema::create('usuario', function (Blueprint $table) {
-            $table->id('usu_id');
+            $table->id();
             $table->unsignedBigInteger('car_id');
             $table->string('usu_nome_completo');
             $table->string('usu_usuario')->unique();
@@ -25,7 +25,7 @@ class CreateUsuario extends Migration
             $table->string('usu_status');
             $table->timestamps();
 
-            $table->foreign('car_id')->references('car_id')->on('cargo');
+            $table->foreign('car_id')->references('id')->on('cargo');
         });
     }
 

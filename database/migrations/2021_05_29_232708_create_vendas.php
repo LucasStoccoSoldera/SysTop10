@@ -14,7 +14,7 @@ class CreateVendas extends Migration
     public function up()
     {
         Schema::create('vendas', function (Blueprint $table) {
-            $table->id('ven_id');
+            $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->unsignedBigInteger('log_id');
             $table->unsignedBigInteger('cli_id');
@@ -25,9 +25,9 @@ class CreateVendas extends Migration
             $table->float('desconto', 2);
             $table->timestamps();
 
-            $table->foreign('tpg_id')->references('tpg_id')->on('tipopagto');
-            $table->foreign('log_id')->references('log_id')->on('logistica');
-            $table->foreign('cli_id')->references('cli_id')->on('cliente');
+            $table->foreign('tpg_id')->references('id')->on('tipopagto');
+            $table->foreign('log_id')->references('id')->on('logistica');
+            $table->foreign('cli_id')->references('id')->on('cliente');
         });
     }
 

@@ -245,6 +245,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalReturnDelete" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: green">
+                        <h4 class="modal-title">Mensagem de Exclusão</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div style="text-align: center;">
+                                    <label class="modal-label" id="mensagem_delete"
+                                        style="font-size: 18px; color:red; padding 0px;"></label>
+                                    <br>
+                                </div>
+                                <div class="modal-footer" style="padding 0px; margin-left: auto; margin-right: auto;">
+                                    <button type="button" class="btn btn-secondary"
+                                        style="background-image:none; background-color: red !important;padding 0px; margin-left: auto; margin-right: auto; width: 150px; height:50px;"
+                                        data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
 
     <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -262,6 +288,7 @@
                                     <label class="modal-label" style="font-size: 18px; color:red; padding 0px;"> Deseja
                                         realmente excluir esse registro?</label>
                                     <input name="id" id="idDelete" type="hidden" class="input_01">
+                                    <input name="form" id="rotaDelete" type="hidden" class="input_01">
                                     <br>
                                     <img src="../img/dash/delete.png"
                                         style="padding 0px; width: 100px; heigth:100px; margin-top:10px;">
@@ -337,6 +364,14 @@
                 $('#modalAlertDelete').modal('show');
             }
 
+            $('button.cancela').on('click', function() {
+                var form = $(this).data('form');
+                var modal = $(this).data('modal');
+                $('#modalAlertCancelar').modal('show');
+                $('#formCancelar').val(form);
+                $('#modalCancelar').val(modal);
+            });
+
             function cancelar() {
                 var form2 = $('#formCancelar').val();
                 var modal2 = $('#modalCancelar').val();
@@ -345,23 +380,21 @@
                 $('.is-invalid').removeClass('is-invalid');
                 $('#modalAlertCancelar').hide(800);
                 $('#' + modal2).delay(500).hide(800);
-
             }
+
+            $('.limpar').on('click', function() {
+                var form_limpar = $(this).data('form');
+                var valform = $('#' + form_limpar).val();
+                $('#' + valform)[0].reset();
+            });
 
                 $('button.red').on('click', function() {
                 var id = $(this).data('id');
                 var rota = $(this).data('rota');
                 $('#modalAlertDelete').modal('show');
                 $('#idDelete').val(id);
+                $('#rotaDelete').val(rota);
                 $('#formExcluir').change('action', rota);
-            });
-
-            $('button.cancela').on('click', function() {
-                var form = $(this).data('form');
-                var modal = $(this).data('modal');
-                $('#modalAlertCancelar').modal('show');
-                $('#formCancelar').val(form);
-                $('#modalCancelar').val(modal);
             });
 
         </script>
@@ -383,7 +416,6 @@
                 $('.cep').mask('00000-000');
             });
 
-            if(){
             $('button.cancela').on('click', function() {
                 var form = $(this).data('form');
                 var modal = $(this).data('modal');
@@ -391,7 +423,6 @@
                 $('#formCancelar').val(form);
                 $('#modalCancelar').val(modal);
             });
-        }
         </script>
 
         <script>

@@ -505,9 +505,11 @@
                             <div class="col-12">
                                 <div class="card" id="card-consulta-tabela">
                                     <div class="card-header" id="ch-adaptado">
-                                        <h2 class="card-title">Itens da Venda <button class="btn btn-primary btn-block"
-                                                id="btn-form-consulta-imprimir" data-toggle="modal" data-backdrop="static"
-                                                onclick="abrirItem()">+ Add</button> </h2>
+                                        <h2 class="card-title">Itens da Venda
+                                            <a class="btn btn-primary btn-block"
+                                            id="btn-form-consulta-imprimir" data-toggle="modal"
+                                            data-backdrop="static" data-target="#modalRegisterItemVenda">
+                                            + Add</a> </h2>
                                     </div>
                                     <div class="card-body" id="cd-adaptado">
                                         <div class="table-responsive">
@@ -574,7 +576,8 @@
                             <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                                 <button type="button" class="cancela btn btn-secondary btn-danger"
                                     data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
-                                <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                              <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterVenda">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                             </div>
             </form>
         </div>
@@ -717,7 +720,8 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterItemVenda" data-modal="modalRegisterItemVenda">Cancelar</button>
-                        <button type="submit" class="btn btn-primary btn-register">Cadastrar</button>
+                                      <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemVenda">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
         </form>
@@ -858,6 +862,29 @@ $('input#txt_cliente').typeahead({
 function abrirItem {
     $('#modalRegisterItemVenda').modal('show');
 }
+
+$("#formExcluir").on('submit', function(e) {
+
+e.preventDefault();
+
+var rota = $('#rotaDelete').val();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'DELETE',
+    url: rota,
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    success: function(data_decoded) {
+            $('#formExcluir')[0].reset();
+            $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalReturnDelete').modal('show');
+    }
+});
+});
 });
 </script>
 @endpush

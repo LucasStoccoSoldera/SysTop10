@@ -14,7 +14,7 @@ class CreateCaixa extends Migration
     public function up()
     {
         Schema::create('caixa', function (Blueprint $table) {
-            $table->id('cax_id');
+            $table->id();
             $table->timestamp('cax_data');
             $table->string('cax_descricao');
             $table->char('cax_operacao');
