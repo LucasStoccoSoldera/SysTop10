@@ -200,7 +200,7 @@
                                    >
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($centros as $centro)
-                                        <option value="{{ $centro['cc_id'] }}">{{ $centro['cc_descricao'] }}
+                                        <option value="{{ $centro['id'] }}">{{ $centro['cc_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -486,7 +486,7 @@
                                     placeholder="Selecione com o Tipo de Pagamento">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pagamentos as $pagamento)
-                                        <option value="{{ $pagamento['tpg_id'] }}">
+                                        <option value="{{ $pagamento['id'] }}">
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>
@@ -503,7 +503,7 @@
                                     placeholder="Selecione com o Centro de Custo">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($centros as $centro)
-                                        <option value="{{ $centro['cc_id'] }}">{{ $centro['cc_descricao'] }}
+                                        <option value="{{ $centro['id'] }}">{{ $centro['cc_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -603,7 +603,7 @@
                                     placeholder="Selecione com o Centro de Custo">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($centros as $centro)
-                                        <option value="{{ $centro['cc_id'] }}">{{ $centro['cc_descricao'] }}
+                                        <option value="{{ $centro['id'] }}">{{ $centro['cc_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -622,7 +622,7 @@
                                     placeholder="Selecione com o Tipo de Pagamento">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pagamentos as $pagamento)
-                                        <option value="{{ $pagamento['tpg_id'] }}">
+                                        <option value="{{ $pagamento['id'] }}">
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>
@@ -807,7 +807,7 @@
                                 placeholder="Selecione com o Fornecedor" autofocus>
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($fornecedores as $fornecedor)
-                                    <option value="{{ $fornecedor['for_id'] }}">{{ $fornecedor['for_nome'] }}
+                                    <option value="{{ $fornecedor['id'] }}">{{ $fornecedor['for_nome'] }}
                                     </option>
                                 @endforeach
                             </select>
@@ -823,7 +823,7 @@
                                 value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($produtos as $produto)
-                                    <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}
+                                    <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
                                     </option>
                                 @endforeach
                             </select>

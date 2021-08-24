@@ -294,7 +294,7 @@
                                         placeholder="Selecione com o Produtos">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($produtos as $produto)
-                                            <option value="{{ $produto['pro_id'] }}">{{ $produto['pro_nome'] }}
+                                            <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
                                             </option>
                                         @endforeach
                                     </select>

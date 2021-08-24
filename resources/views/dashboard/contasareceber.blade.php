@@ -346,7 +346,7 @@
                                     placeholder="Selecione com o Tipo de Pagamento">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pagamentos as $pagamento)
-                                        <option value="{{ $pagamento['tpg_id'] }}">
+                                        <option value="{{ $pagamento['id'] }}">
                                             {{ $pagamento['tpg_descricao'] }}</option>
                                     @endforeach
                                 </select>

@@ -112,7 +112,7 @@
                                 value="{{ old('txt_cargo') }}">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($cargos as $cargo)
-                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
+                                    <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
                                     </option>
                                 @endforeach
                             </select>
@@ -329,7 +329,7 @@
                                 value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($cargos as $cargo)
-                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
+                                    <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
                                     </option>
                                 @endforeach
                             </select>
@@ -471,7 +471,7 @@
                                 placeholder="Selecione com o Cargo">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($cargos as $cargo)
-                                    <option value="{{ $cargo['car_id'] }}">{{ $cargo['car_descricao'] }}
+                                    <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
                                     </option>
                                 @endforeach
                             </select>

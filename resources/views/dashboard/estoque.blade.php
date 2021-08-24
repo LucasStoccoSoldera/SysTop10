@@ -122,7 +122,7 @@
                                    >
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($dimensoes as $dimensao)
-                                        <option value="{{ $dimensao['dim_id'] }}">{{ $dimensao['dim_descricao'] }}
+                                        <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -317,7 +317,7 @@
                                         value="{{ old('IDDimensao') }}" placeholder="Selecione com a Dimensão">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['dim_id'] }}">
+                                            <option value="{{ $dimensao['id'] }}">
                                                 {{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
@@ -332,7 +332,7 @@
                                         value="{{ old('IDCor') }}" placeholder="Selecione com a Cor">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($cores as $cor)
-                                            <option value="{{ $cor['cor_id'] }}">{{ $cor['cor_nome'] }}</option>
+                                            <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
                                         @endforeach
                                     </select>
                                     <span class="invalid-feedback IDCor_error" role="alert">

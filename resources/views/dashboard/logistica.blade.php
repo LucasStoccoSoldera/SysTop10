@@ -262,7 +262,7 @@
                                     placeholder="Selecione com um Pacote" autofocus>
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pacotes as $pacote)
-                                        <option value="{{ $pacote['pac_id'] }}">{{ $pacote['pac_descricao'] }}
+                                        <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -277,7 +277,7 @@
                                     placeholder="Selecione com uma Transportadora">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($transportadoras as $transportadora)
-                                        <option value="{{ $transportadora['trans_id'] }}">
+                                        <option value="{{ $transportadora['id'] }}">
                                             {{ $transportadora['trans_nome'] }}</option>
                                     @endforeach
                                 </select>

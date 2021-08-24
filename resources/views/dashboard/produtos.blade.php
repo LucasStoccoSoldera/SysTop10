@@ -126,7 +126,7 @@
                                    >
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($materiais as $material)
-                                        <option value="{{ $material['mat_id'] }}">{{ $material['mat_descricao'] }}
+                                        <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -146,7 +146,7 @@
                                    >
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($dimensoes as $dimensao)
-                                        <option value="{{ $dimensao['dim_id'] }}">{{ $dimensao['dim_descricao'] }}
+                                        <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -353,7 +353,7 @@
                                         placeholder="Selecione com o Tipo do Produto">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($tipos as $tipo)
-                                            <option value="{{ $tipo['tpp_id'] }}">{{ $tipo['tpp_descricao'] }}
+                                            <option value="{{ $tipo['id'] }}">{{ $tipo['tpp_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -404,7 +404,7 @@
                                         placeholder="Selecione com a Material Base">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($materiais as $material)
-                                            <option value="{{ $material['mat_id'] }}">
+                                            <option value="{{ $material['id'] }}">
                                                 {{ $material['mat_descricao'] }}
                                             </option>
                                         @endforeach
@@ -422,7 +422,7 @@
                                         placeholder="Selecione com o Pacote">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($pacotes as $pacote)
-                                            <option value="{{ $pacote['pac_id'] }}">{{ $pacote['pac_descricao'] }}
+                                            <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -439,7 +439,7 @@
                                         value="{{ old('DimensaoProduto') }}" placeholder="Selecione com o Dimensão">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['dim_id'] }}">
+                                            <option value="{{ $dimensao['id'] }}">
                                                 {{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
@@ -457,7 +457,7 @@
                                         placeholder="Selecione com o Cores">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($cores as $cor)
-                                            <option value="{{ $cor['cor_id'] }}">{{ $cor['cor_nome'] }}</option>
+                                            <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
