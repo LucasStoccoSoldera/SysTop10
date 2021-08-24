@@ -66,7 +66,7 @@ class VendasRegister extends Controller
         $Caixa->cax_ctreceber = $request->VTVenda;
         $Caixa->save();
 
-        $cont = 1;
+        $cont = 0;
         $venda_dados = Venda::find($request->IDVenda);
         while ($cont < $request->parcelasVenda) {
 

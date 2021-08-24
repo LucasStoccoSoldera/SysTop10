@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Response;
 use App\Models\Contas_a_Pagar;
 use App\Models\Caixa;
 use App\Models\Parcelas;
+use Illuminate\Support\Facades\DB;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
@@ -66,6 +67,22 @@ class ContasRegister extends Controller
         $Caixa->cax_ctpagar = $request->valorfContas;
         $Caixa->cax_ctreceber = "";
         $Caixa->save();
+
+
+        $cont = 0;
+        $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
+        $contas_dados = Contas_a_Pagar::find($conta_last);
+        while ($cont < $request->parcelasContas) {
+
+            $Parcela = new Parcelas();
+            $Parcela->tpg_id = $request->tpgpagtoContas;
+            $Parcela->par_conta = $conta_last;
+            $Parcela->par_numero = $cont;
+            $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas) * $cont;
+            $Parcela->par_status = "Em Aberto";
+            $Parcela->par_data_pagto = ($conta_last->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            $Parcela->save();
+        }
 
         if ($Contas_a_Pagar) {
             return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);

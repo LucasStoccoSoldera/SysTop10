@@ -85,8 +85,8 @@ class CompraRegister extends Controller
         $Caixa->cax_ctreceber = "";
         $Caixa->save();
 
-        $cont = 1;
-        $conta_last = DB::table('contas_a_pagar')->get()->last()->con_id;
+        $cont = 0;
+        $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $compras_dados = Compras::find($request->IDCompras);
 
         while ($cont < $request->parcelasCompras) {
