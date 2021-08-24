@@ -210,7 +210,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-usu"
-                                                name="excluir-usuario" data-id="{{ $usuario['usu_id'] }}"  data-rota="{{ route('admin.delete.user') }}"
+                                                name="excluir-usuario" data-id="{{ $usuario['id'] }}"  data-rota="{{ route('admin.delete.user') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -430,7 +430,7 @@
                                         <a href="#" class="btn btn-primary" id="alter"><i
                                                 class="tim-icons icon-pencil"></i></a>
                                         <button href="#" class="btn btn-primary red" id="excluir-car"
-                                            name="excluir-cargo" data-id="{{ $cargo['car_id'] }}"  data-rota="{{ route('admin.delete.cargo') }}"
+                                            name="excluir-cargo" data-id="{{ $cargo['id'] }}"  data-rota="{{ route('admin.delete.cargo') }}"
                                             style="padding: 11px 25px;"><i
                                                 class="tim-icons icon-simple-remove"></i></button>
                                     </td>
@@ -710,6 +710,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });

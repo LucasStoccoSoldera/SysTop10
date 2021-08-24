@@ -186,7 +186,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-for"
-                                                name="excluir-fornecedor" data-id="{{ $fornecedor['for_id'] }}" data-rota="{{ route('admin.delete.fornecedor') }}"
+                                                name="excluir-fornecedor" data-id="{{ $fornecedor['id'] }}" data-rota="{{ route('admin.delete.fornecedor') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -464,6 +464,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });

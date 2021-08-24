@@ -208,7 +208,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-log"
-                                                name="excluir-logistica" data-id="{{ $logistica['log_id'] }}" data-rota="{{ route('admin.delete.logistica') }}"
+                                                name="excluir-logistica" data-id="{{ $logistica['id'] }}" data-rota="{{ route('admin.delete.logistica') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -469,6 +469,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });

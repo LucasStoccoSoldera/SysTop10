@@ -87,20 +87,44 @@
                     <h1 class="card-title" id="detalhe-title">Logística</h1>
                 </div>
                 <div class="card-body" id="detalhe">
-                    <div>
+                    <div class="justify-content-md-center">
                         <div class="col-auto justify-content-md-center">
-                            <h4 class="resumo" id="detalhe-item">Total de Relações</h4>
-                            <h3 class="dados-resumo" id="detalhe-item" style="color: #2caeec;">{{ $relacao_total }}
+                            <h4 class="resumo" style="text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">Total de Relações</h4>
+                            <h3 class="dados-resumo"style="color: #2caeec;text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">{{ $relacao_total }}
                             </h3>
                         </div>
                         <div class="col-auto justify-content-center">
-                            <h4 class="resumo" id="detalhe-item">Total de Transportadoras</h4>
-                            <h3 class="dados-resumo" id="detalhe-item" style="color: #2caeec;">
+                            <h4 class="resumo" style="text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">Total de Transportadoras</h4>
+                            <h3 class="dados-resumo"style="color: #2caeec;text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">
                                 {{ $transportadora_total }}</h3>
                         </div>
                         <div class="col-auto justify-content-center">
-                            <h4 class="resumo" id="detalhe-item">Total de Pacotes</h4>
-                            <h3 class="dados-resumo" id="detalhe-item" style="color: #2caeec;">{{ $pacotes_total }}
+                            <h4 class="resumo" style="text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">Total de Pacotes</h4>
+                            <h3 class="dados-resumo"style="color: #2caeec;text-align: center;
+                            float: unset;
+                            margin: 0 auto;
+                            margin-top: 30px;
+                            color: fff;">{{ $pacotes_total }}
                             </h3>
                         </div>
 
@@ -138,7 +162,7 @@
                                     <a href="#" class="btn btn-primary" id="alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button class="btn btn-primary red" id="excluir-cc"
-                                        name="excluir-centro-custo" data-id="{{ $centro['cc_id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
+                                        name="excluir-centro-custo" data-id="{{ $centro['id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
                                         style="padding: 11px 25px;"><i
                                             class="tim-icons icon-simple-remove"></i></button>
                                 </div>
@@ -179,7 +203,7 @@
                                     <a href="#" class="btn btn-primary" id="alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button href="#" class="btn btn-primary red" id="excluir-tpg"
-                                        name="excluir-tipo-pagamento" data-id="{{ $pagamento['tpg_id'] }}" data-rota="{{ route('admin.delete.tpgpagto') }}"
+                                        name="excluir-tipo-pagamento" data-id="{{ $pagamento['id'] }}" data-rota="{{ route('admin.delete.tpgpagto') }}"
                                         style="padding: 11px 25px;"><i
                                             class="tim-icons icon-simple-remove"></i></button>
                                 </div>
@@ -384,6 +408,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });

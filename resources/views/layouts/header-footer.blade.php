@@ -214,7 +214,7 @@
 
     @yield('modals')
 
-    <div class="modal fade" id="modalAlertRegistrar" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="modalAlertRegistrar" style="display: none; top: 40%;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formAlertRegistrar" method="POST" autocomplete="off" enctype="multipart/form-data">
                 @csrf
@@ -248,7 +248,7 @@
     <div class="modal fade" id="modalReturnDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: green">
+                    <div class="modal-header" style="background-color: red">
                         <h4 class="modal-title">Mensagem de Exclusão</h4>
                     </div>
                     <div class="modal-body">
@@ -414,14 +414,6 @@
                 $('.celular').mask('(00) 0 0000-0000');
                 $('.dimensao').mask('000 x 000 x 000');
                 $('.cep').mask('00000-000');
-            });
-
-            $('button.cancela').on('click', function() {
-                var form = $(this).data('form');
-                var modal = $(this).data('modal');
-                $('#modalAlertCancelar').modal('show');
-                $('#formCancelar').val(form);
-                $('#modalCancelar').val(modal);
             });
         </script>
 

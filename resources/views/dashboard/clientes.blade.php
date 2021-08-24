@@ -265,7 +265,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-cli"
-                                                name="excluir-cliente" data-id="{{ $cliente['cli_id'] }}" data-rota="{{ route('admin.delete.cliente') }}"
+                                                name="excluir-cliente" data-id="{{ $cliente['id'] }}" data-rota="{{ route('admin.delete.cliente') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                     </tr>
@@ -494,7 +494,7 @@
                 });
             }
         });
-        
+
         $("#formExcluir").on('submit', function(e) {
 
 e.preventDefault();
@@ -513,6 +513,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });

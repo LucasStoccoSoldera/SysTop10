@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Delete;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\TipoProduto;
+use App\Models\TipoPagto;
 
 class TipoPagtoDelete extends Controller
 {
     public function deleteTipoPagto(Request $request)
     {
-        $data=TipoProduto::find($request->id);
+        $data=TipoPagto::find($request->id);
 
         $descricao = $data->tpg_descricao;
 

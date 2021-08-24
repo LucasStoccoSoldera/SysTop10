@@ -280,7 +280,7 @@
                                             <a href="#" class="btn btn-primary" id="alter"><i
                                                     class="tim-icons icon-pencil"></i></a>
                                             <button href="#" class="btn btn-primary red" id="excluir-rec"
-                                                name="excluir-receber" data-id="{{ $credito['rec_id'] }}" data-rota="{{ route('admin.delete.receber') }}"
+                                                name="excluir-receber" data-id="{{ $credito['id'] }}" data-rota="{{ route('admin.delete.receber') }}"
                                                 style="padding: 11px 25px;"><i
                                                     class="tim-icons icon-simple-remove"></i></button>
                                         </td>
@@ -520,6 +520,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#mensagem_delete').text(data_decoded.msg);
+            $('#modalAlertDelete').hide();
             $('#modalReturnDelete').modal('show');
     }
 });
