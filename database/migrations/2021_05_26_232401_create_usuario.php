@@ -18,8 +18,8 @@ class CreateUsuario extends Migration
             $table->unsignedBigInteger('car_id');
             $table->string('usu_nome_completo');
             $table->string('usu_usuario')->unique();
-            $table->integer('usu_celular');
-            $table->integer('usu_cpf');
+            $table->string('usu_celular');
+            $table->string('usu_cpf');
             $table->string('usu_senha');
             $table->timestamp('usu_data_cadastro');
             $table->string('usu_status');

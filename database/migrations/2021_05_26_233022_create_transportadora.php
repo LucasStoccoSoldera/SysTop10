@@ -17,6 +17,7 @@ class CreateTransportadora extends Migration
             $table->id();
             $table->string('trans_nome');
             $table->string('trans_telefone');
+            $table->string('trans_celular');
             $table->integer('trans_limite_transporte');
             $table->timestamps();
         });

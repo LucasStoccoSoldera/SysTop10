@@ -19,10 +19,9 @@ class CreateCliente extends Migration
             $table->string('cli_usuario')->unique();
             $table->string('cli_senha');
            $table->timestamps();
-            $table->integer('cli_cpf');
-            $table->integer('cli_cnpj');
-            $table->integer('cli_telefone');
-            $table->integer('cli_celular');
+            $table->string('cli_cpf_cnpj');
+            $table->string('cli_telefone');
+            $table->string('cli_celular');
             $table->string('cli_logradouro');
             $table->string('cli_bairro');
             $table->string('cli_n_casa');

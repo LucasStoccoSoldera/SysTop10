@@ -246,8 +246,7 @@
                                     <label class="modal-label">Telefone:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="telefoneFornecedor" id="telefoneFornecedor"
-                                        onkeypress="mascara(this, '## ####-####')" maxlength="12"
-                                        value="{{ old('telefoneFornecedor') }}" class="form-control"
+                                        value="{{ old('telefoneFornecedor') }}" class="telefone form-control"
                                         placeholder="Entre com o Telefone">
                                         <div class="div-feedback">
                                     <span class="invalid-feedback telefoneFornecedor_error" role="alert">
@@ -380,7 +379,6 @@
         $(document).ready(function() {
 
             $("#formRegisterFornecedores").on('submit', function(e) {
-
                 e.preventDefault();
 
                 $.ajax({
@@ -429,13 +427,18 @@
             });
         }
     );
-        if ($('#cpfFornecedor').val() != '') {
-            $('#cnpjFornecedor').attr('disabled');
-        }
 
-        if ($('#telefoneFornecedor').val() != '') {
-            $('#celularFornecedor').attr('disabled');
+    $('#cpfFornecedor').on('type', function(){
+        if ($('#cpfFornecedor').val() != '') {
+            $('#cnpjFornecedor').attr('disabled', 'true');
         }
+    });
+
+        $('#cnpjFornecedor').on('type', function(){
+        if ($('#cnpjFornecedor').val() != '') {
+            $('#cpfFornecedor').attr('disabled', 'true');
+        }
+    });
 
         var path = "{{route ('admin.autocomplete.for.nome')}}"
 

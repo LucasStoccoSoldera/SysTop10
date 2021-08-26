@@ -58,7 +58,7 @@ class PrivilegioRegister extends Controller
             ->where('privilegio.pri_id', '=', $request->cargoPrivilegio)
             ->get();
 
-        DB::insert("insert into privilegio (pri_usuarios, pri_clientes, pri_financeiro,
+        DB::inset("insert into privilegio (pri_usuarios, pri_clientes, pri_financeiro,
         pri_produtos, pri_estoque, pri_fornecedores, pri_detalhes, pri_logistica)
         values ($request->usuarioPrivilegio, $request->clientePrivilegio, $request->financeiroPrivilegio,
         $request->produtoPrivilegio, $request->estoquePrivilegio, $request->fornecedorPrivilegio,

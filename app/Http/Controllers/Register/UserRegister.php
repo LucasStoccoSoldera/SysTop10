@@ -54,8 +54,8 @@ class UserRegister extends Controller
         $Usuario->usu_nome_completo = $request->nomeUser;
         $Usuario->usu_usuario = $request->usu_usuario;
         $Usuario->usu_senha = Hash::make($request->senhaUser);
-        $Usuario->usu_celular = preg_replace('/[^0-9]/', "", $request->celularUser);
-        $Usuario->usu_cpf = preg_replace('/[^0-9]/', "", $request->cpfUser);
+        $Usuario->usu_celular = $request->celularUser;
+        $Usuario->usu_cpf = $request->cpfUser;
         $Usuario->car_id = $request->cargoUser;
         $Usuario->usu_status = $request->$dataForm['statusUser'];
         $Usuario->save();

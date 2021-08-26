@@ -13,6 +13,7 @@ class Transportadora extends Model
     protected $fillable = [
         'trans_nome',
         'trans_telefone',
+        'trans_celular',
         'trans_limite_transporte',
     ];
 }

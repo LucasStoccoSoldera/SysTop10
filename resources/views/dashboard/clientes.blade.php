@@ -424,13 +424,13 @@
     $(document).ready(function() {
 
         $("#formRegisterCliente").on('submit', function(e) {
-
             e.preventDefault();
-
+            
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
+
                 type: $(this).attr('method'),
                 url: $(this).attr('action'),
                 data: $(this).serialize(),
@@ -448,10 +448,6 @@
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
-                            if (val[0] =
-                                'A confirmação da senha não corresponde.') {
-                                $('span.' + 'senhaConfirm_error').text(val[0]);
-                            }
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
                         });
@@ -476,14 +472,23 @@
             });
         }
     );
-
+        $('#cpfCliente').on('type', function(){
         if ($('#cpfCliente').val() != '') {
-            $('#cnpjCliente').attr('disabled');
+            $('#cnpjCliente').attr('disabled', 'true');
         }
+        if ($('#cnpjCliente').val() != '') {
+            $('#cpfCliente').attr('disabled', 'true');
+        }
+    });
 
-        if ($('#telefoneCliente').val() != '') {
-            $('#celularCliente').attr('disabled');
+    $('#cnpjCliente').on('type', function(){
+        if ($('#cpfCliente').val() != '') {
+            $('#cnpjCliente').attr('disabled', 'true');
         }
+        if ($('#cnpjCliente').val() != '') {
+            $('#cpfCliente').attr('disabled', 'true');
+        }
+    });
 
         var path = "{{route ('admin.autocomplete.cli.nome')}}"
 

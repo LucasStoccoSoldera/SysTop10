@@ -22,31 +22,32 @@ class ClienteRegister extends Controller
     protected function createCliente(ClienteRequest $request)
     {
 
-        $dataForm = $request->all();
-        $dataForm['statusCliente'] = (!isset($dataForm['statusCliente'])) ? 0 : 1;
+     $dataForm = $request->all();
+     $dataForm['statusCliente'] = (!isset($dataForm['statusCliente'])) ? 0 : 1;
 
         $validator = Validator::make(
             $request->all(),
             [
                 'nomeCliente' => ['required', 'string'],
-                'usuarioCliente' => ['required'],
+                'usuarioCliente' => ['required','email'],
                 'senhaCliente' => ['required', 'confirmed'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
                 'usuarioCliente.required' => 'Usuário obrigatório.',
+                'usuarioCliente.email' => 'E-mail inválido.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
             ]
         );
 
-        if (!empty($request->cpfCliente && $request->cnpjCliente)) {
+        if (!empty($request->cpfCliente || $request->cnpjCliente)) {
 
             if (isset($request->cpfCliente)) {
                 $validator_cpf_cnpj = Validator::make(
                     $request->cpfCliente,
                     [
-                        'cpfCliente' => ['required', 'digits:11', 'cpf'],
+                        'cpfCliente' => ['required', 'cpf'],
                     ],
                     [
                         'cpfCliente.required' => 'CPF Obrigatório.',
@@ -58,7 +59,7 @@ class ClienteRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cnpjCliente,
                     [
-                        'cnpjCliente' => ['required', 'digits:14', 'cnpj'],
+                        'cnpjCliente' => ['required', 'cnpj'],
                     ],
                     [
                         'cnpjCliente.required' => 'CNPJ Obrigatório.',
@@ -80,7 +81,8 @@ class ClienteRegister extends Controller
             );
         }
 
-        if (!empty($request->telefoneCliente && $request->celularCliente)) {
+        if (!empty($request->telefoneCliente || $request->celularCliente)) {
+            if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
 
             if (isset($request->telefoneCliente)) {
                 $validator_telefone_celular = Validator::make(
@@ -119,9 +121,22 @@ class ClienteRegister extends Controller
                 ]
             );
         }
+    } else {
+        $validator_telefone_celular = Validator::make(
+            [$request->telefoneCliente, $request->celularCliente],
+            [
+                'telefoneCliente' => ['telefone'],
+                'celularCliente' => ['celular'],
+            ],
+            [
+                'telefoneCliente.telefone' => 'Telefone inválido.',
+                'celularCliente.celular' => 'Celular inválido.',
+            ]
+        );
+    }
 
-        if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors(), $validator_cpf_cnpj->errors(), $validator_telefone_celular->errors()]);
+        if ($validator->fails() || $validator_cpf_cnpj->fails() || $validator_telefone_celular->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cpf_cnpj' => $validator_cpf_cnpj->errors(),  'error_telefone_celular' => $validator_telefone_celular->errors()]);
         }
 
 
@@ -131,14 +146,14 @@ class ClienteRegister extends Controller
             $Cliente->cli_usuario = $request->usuarioCliente;
             $Cliente->cli_senha = Hash::make($request->senhaCliente);
             if (isset($cpf)) {
-                $Cliente->cli_cpf = preg_replace('/[^0-9]/', "", $request->cpfCliente);
+                $Cliente->cli_cpf_cnpj = $request->cpfCliente;
             } else {
-                $Cliente->cli_cnpj = preg_replace('/[^0-9]/', "", $request->cnpjCliente);
+                $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
             }
             if (isset($telefone)) {
-                $Cliente->cli_telefone = preg_replace('/[^0-9]/', "", $request->telefoneCliente);
+                $Cliente->cli_telefone = $request->telefoneCliente;
             } else {
-                $Cliente->cli_celular = preg_replace('/[^0-9]/', "",$request->celularCliente);
+                $Cliente->cli_celular = $request->celularCliente;
             }
             $Cliente->cli_logradouro = "";
             $Cliente->cli_bairro = "";
@@ -158,3 +173,4 @@ class ClienteRegister extends Controller
         }
     }
 }
+

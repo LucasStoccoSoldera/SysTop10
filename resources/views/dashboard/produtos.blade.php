@@ -805,7 +805,7 @@
                                 <label class="modal-label">Código de Cor:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="color" name="CodigoCores" id="CodigoCores" style="width: 100%; margin-right: 0px;" class="form-control"
-                                    value="{{ old('CodigoCores') }}" placeholder="Entre com o Codigo da Cor">
+                                    placeholder="Entre com o Codigo da Cor">
                                 <span class="invalid-feedback CodigoCores_error" role="alert">
                                 </span>
                             </div>
@@ -1089,7 +1089,6 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
-
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
@@ -1101,7 +1100,12 @@
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
-                        });
+                            });
+                             $.each(data_decoded.error_cor_especial, function(prefix, val) {
+                                 console.log('entro');
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
                     }
                 }
             });
@@ -1161,9 +1165,18 @@
         }
     );
 
-        if ($('#CodigoCores').val() != '') {
-            $('#EspecialCores').attr('disabled');
+
+    $('#CodigoCores').on('type', function(){
+        if ($('#CodigoCores').val() != '#000000') {
+            $('#EspecialCores').attr('disabled',  'true');
         }
+    });
+
+    $('#EspecialCores').on('type', function(){
+        if ($('#EspecialCores').val() != '') {
+            $('#CodigoCores').attr('disabled', 'true');
+        }
+    });
 
         var path = "{{route ('admin.autocomplete.pro.nome')}}"
 

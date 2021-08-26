@@ -41,7 +41,7 @@ class FornecedorRegister extends Controller
             ]
         );
 
-        if (!empty($request->cpfFornecedor && $request->cnpjFornecedor)) {
+        if (!empty($request->cpfFornecedor || $request->cnpjFornecedor)) {
 
             if (isset($request->cpfFornecedor)) {
                 $validator_cpf_cnpj = Validator::make(
@@ -81,7 +81,8 @@ class FornecedorRegister extends Controller
             );
         }
 
-        if (!empty($request->telefoneFornecedor && $request->celularFornecedor)) {
+        if (!empty($request->telefoneFornecedor || $request->celularFornecedor)) {
+            if (isset($request->telefoneFornecedor) && isset($request->celularFornecedor)) {
 
             if (isset($request->telefoneFornecedor)) {
                 $validator_telefone_celular = Validator::make(
@@ -120,23 +121,37 @@ class FornecedorRegister extends Controller
                 ]
             );
         }
+    } else {
+        $validator_telefone_celular = Validator::make(
+            [$request->telefoneFornecedor, $request->celularFornecedor],
+            [
+                'telefoneFornecedor' => ['telefone'],
+                'celularFornecedor' => ['celular'],
+            ],
+            [
+                'telefoneFornecedor.required' => 'Telefone inválido.',
+                'celularFornecedor.required' => 'Celular inválido.',
+            ]
+        );
+    }
 
-        if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors(), $validator_cpf_cnpj->errors(), $validator_telefone_celular->errors()]);
+        if ($validator->fails() || $validator_cpf_cnpj->fails() || $validator_telefone_celular->fails()  ) {
+            return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cpf_cnpj' => $validator_cpf_cnpj->errors(), 'error_telefone_celular' => $validator_telefone_celular->errors()]);
         }
+
         $Fornecedores = new Fornecedores;
         $Fornecedores->for_nome = $request->nomeFornecedor;
         if (isset($telefone)) {
-            $Fornecedores->for_telefone = $request->telefoneFornecedor->preg_replace('/[^0-9]/', '');
+            $Fornecedores->for_telefone = $request->telefoneFornecedor;
         } else {
-            $Fornecedores->for_celular = $request->celularFornecedor->preg_replace('/[^0-9]/', '');
+            $Fornecedores->for_celular = $request->celularFornecedor;
         }
         if (isset($cpf)) {
-            $Fornecedores->for_cpf = $request->cpfFornecedor->preg_replace('/[^0-9]/', '');
+            $Fornecedores->for_cpf = $request->cpfFornecedor;
         } else {
-            $Fornecedores->for_cnpj = $request->cnpjFornecedor->preg_replace('/[^0-9]/', '');
+            $Fornecedores->for_cnpj = $request->cnpjFornecedor;
         }
-        $Fornecedores->for_cep = $request->cepFornecedor->preg_replace('/[^0-9]/', '');
+        $Fornecedores->for_cep = $request->cepFornecedor;
         $Fornecedores->for_cidade = $request->cidadeFornecedor;
         $Fornecedores->for_estado = $request->estadoFornecedor;
         $Fornecedores->for_bairro = $request->bairroFornecedor;
