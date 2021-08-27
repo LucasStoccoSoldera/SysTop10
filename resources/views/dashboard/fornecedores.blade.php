@@ -377,7 +377,6 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
-
             $("#formRegisterFornecedores").on('submit', function(e) {
                 e.preventDefault();
 
@@ -402,10 +401,17 @@
                         }
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
-                                console.log(prefix);
                                 $('span.' + prefix + '_error').text(val[0]);
                                  $('#' + prefix).addClass('is-invalid');
                             });
+                            $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
+                             $.each(data_decoded.error_telefone_celular, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
                         }
                     }
                 });
@@ -442,12 +448,13 @@
 
         var path = "{{route ('admin.autocomplete.for.nome')}}"
 
-        $('input#txt_nome).typeahead({
-    source: function (terms,process){
-        return $.get(path, {terms:terms}, function(data){
-            return process(data);
+        $('input#txt_nome').typeahead({
+            source: function (terms,process){
+                return $.get(path, {terms:terms}, function(data){
+                    return process(data);
+                });
+            }
         });
-});
 
 $("#formExcluir").on('submit', function(e) {
 

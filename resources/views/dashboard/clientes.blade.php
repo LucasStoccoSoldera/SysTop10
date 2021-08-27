@@ -425,12 +425,11 @@
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();
-            
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-
                 type: $(this).attr('method'),
                 url: $(this).attr('action'),
                 data: $(this).serialize(),
@@ -451,6 +450,14 @@
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
                         });
+                        $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
+                             $.each(data_decoded.error_telefone_celular, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
                     }
                 }
             });

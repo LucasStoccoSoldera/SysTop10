@@ -1102,7 +1102,6 @@
                              $('#' + prefix).addClass('is-invalid');
                             });
                              $.each(data_decoded.error_cor_especial, function(prefix, val) {
-                                 console.log('entro');
                                  $('span.' + prefix + '_error').text(val[0]);
                                 $('#' + prefix).addClass('is-invalid');
                              });

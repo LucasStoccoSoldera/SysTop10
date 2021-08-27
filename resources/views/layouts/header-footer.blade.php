@@ -357,6 +357,10 @@
         integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script src="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
+        <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+
+
         <script>
             function showDelete(id, rota) {
                 $("#formExcluir").change("action", `"` + rota + `"`);
