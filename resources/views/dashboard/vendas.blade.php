@@ -235,7 +235,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_venda">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 30%">
@@ -301,7 +301,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_item_venda">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -513,7 +513,7 @@
                                     </div>
                                     <div class="card-body" id="cd-adaptado">
                                         <div class="table-responsive">
-                                            <table class="table tablesorter " id="">
+                                            <table class="table tablesorter " id="tb_item_venda_ato">
                                                 <thead class=" text-primary">
                                                     <tr>
                                                         <th style="width: 25%">
@@ -732,6 +732,19 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+    $('#tb_venda').DataTable( {
+        paging: true,
+        searching: false,
+    });
+    $('#tb_item_venda').DataTable( {
+        paging: true,
+        searching: false,
+    });
+    $('#tb_item_venda_ato').DataTable( {
+        paging: true,
+        searching: false,
+    });
 
         $("#formRegisterVenda").on('submit', function(e) {
 

@@ -233,7 +233,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_conta">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 30%">
@@ -299,7 +299,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_parcela">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 30%">
@@ -706,7 +706,7 @@
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
                                     <div class="table-responsive">
-                                        <table class="table tablesorter " id="">
+                                        <table class="table tablesorter " id="tb_item_compra">
                                             <thead class=" text-primary">
                                                 <tr>
                                                     <th style="width: 30%">
@@ -898,6 +898,19 @@
 <script>
     $(document).ready(function() {
 
+        $('#tb_conta').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_parcela').DataTable( {
+            paging: false,
+            searching: false,
+        });
+        $('#tb_item_compra').DataTable( {
+            paging: true,
+            searching: false,
+        });
+
         $("#formRegisterContas").on('submit', function(e) {
 
             e.preventDefault();
@@ -1042,7 +1055,7 @@
                 }
             });
 
-            function abrirItem {
+            function abrirItem() {
                 $('#modalRegisterItemCompra').modal('show');
 }
 

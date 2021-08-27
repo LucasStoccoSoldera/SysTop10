@@ -221,7 +221,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_cliente">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 20%">
@@ -422,6 +422,12 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $('#tb_cliente').DataTable( {
+            paging: true,
+            searching: false,
+
+        } );
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();

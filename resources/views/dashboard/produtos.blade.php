@@ -179,7 +179,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_produto">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 25%">
@@ -556,7 +556,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_tipo_produto">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -644,7 +644,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_material">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -730,7 +730,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_dimensao">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -836,7 +836,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_cor">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -941,6 +941,27 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $('#tb_produto').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_tipo_produto').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_material').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_dimensao').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_cor').DataTable( {
+            paging: true,
+            searching: false,
+        } );
 
         $("#formRegisterProdutos").on('submit', function(e) {
 

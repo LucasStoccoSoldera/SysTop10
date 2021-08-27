@@ -82,7 +82,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_pacote">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -125,7 +125,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_transportadora">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -175,7 +175,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_logistica">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 10%">
@@ -374,6 +374,19 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $('#tb_pacote').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_transportadora').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_logistica').DataTable( {
+            paging: true,
+            searching: false,
+        });
 
         $("#formRegisterLogistica").on('submit', function(e) {
 

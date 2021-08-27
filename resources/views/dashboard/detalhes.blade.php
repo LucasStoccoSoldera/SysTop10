@@ -299,7 +299,7 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
-
+            
             $("#formRegisterCentroCusto").on('submit', function(e) {
 
                 e.preventDefault();

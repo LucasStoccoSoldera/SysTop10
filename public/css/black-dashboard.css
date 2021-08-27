@@ -23150,3 +23150,60 @@ input[type="radio"] {
 #option-3:checked:checked ~ .option-3 span {
     color: #fff;
 }
+
+/* Data Table */
+
+.dataTables_length{
+    float: right;
+    margin-bottom: 20px;
+}
+
+th{
+    padding-left: 0px !important;
+}
+
+td{
+    padding-left: 0px !important;
+}
+
+.dataTables_info{
+margin-top: 25px;
+margin-bottom: 25px;
+color: #0779e8;
+font-weight: bold;
+font-size: 16px;
+}
+
+.paginate_button{
+    width: 200px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    background: #00cca4 ;
+    background-image: none;
+    margin-bottom: 0px;
+    padding: 5px 40px 5px 40px;
+    border-radius: 20px 20px 20px 20px ;
+}
+
+.current{
+    background: var(--yellow);
+    margin-top: 5px;
+    color: #000;
+}
+
+.next{
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    float: right;
+}
+
+.previous{
+    font-size: 16px;
+    font-weight: bold;
+    color:#fff;
+    float: left;
+    margin-right: 15px;
+}

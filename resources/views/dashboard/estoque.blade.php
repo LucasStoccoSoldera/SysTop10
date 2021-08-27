@@ -178,7 +178,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_estoque">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 35%">
@@ -233,7 +233,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_produto_estoque">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 70%">
@@ -356,6 +356,15 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
+
+        $('#tb_estoque').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_produto_estoque').DataTable( {
+            paging: false,
+            searching: false,
+        });
 
             $("#formRegisterEstoque").on('submit', function(e) {
 

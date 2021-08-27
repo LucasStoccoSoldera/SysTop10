@@ -165,7 +165,7 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="">
+                        <table class="table tablesorter " id="tb_usuario">
                             <thead class=" text-primary">
                                 <tr>
                                     <th style="width: 5%">
@@ -403,7 +403,7 @@
             </div>
             <div class="card-body" id="cd-adaptado">
                 <div class="table-responsive">
-                    <table class="table tablesorter " id="">
+                    <table class="table tablesorter " id="tb_cargo">
                         <thead class=" text-primary">
                             <tr>
                                 <th style="width: 10%">
@@ -566,6 +566,15 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $('#tb_usuario').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_cargo').DataTable( {
+            paging: true,
+            searching: false,
+        } );
 
         $("#formRegisterUser").on('submit', function(e) {
             e.preventDefault();
