@@ -482,18 +482,10 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.contasareceber') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $creditos = data_decoded.$creditos;
-                }
-            });
+        $('#tb_receber').DataTable( {
+            paging: true,
+            searching: false,
+        });
         }
     );
 

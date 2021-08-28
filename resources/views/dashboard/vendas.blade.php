@@ -827,20 +827,18 @@
     $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.detalhe') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $vendas = data_decoded.$vendas;
-                    $itensvenda = data_decoded.$itensvenda;
-                    $itens_ato = data_decoded.$itens_ato;
-                }
-            });
+            $('#tb_venda').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_item_venda').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_item_venda_ato').DataTable( {
+            paging: true,
+            searching: false,
+        });
         }
     );
 

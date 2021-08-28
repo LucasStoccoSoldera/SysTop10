@@ -1166,22 +1166,26 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.produto') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $produtos = data_decoded.$produtos;
-                    $tipos = data_decoded.$tipos;
-                    $materiais = data_decoded.$materiais;
-                    $dimensoes = data_decoded.$dimensoes;
-                    $cores = data_decoded.$cores;
-                }
-            });
+        $('#tb_produto').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_tipo_produto').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_material').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_dimensao').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_cor').DataTable( {
+            paging: true,
+            searching: false,
+        } );
         }
     );
 

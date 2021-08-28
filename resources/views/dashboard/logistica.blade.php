@@ -456,20 +456,18 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.logistica') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $pacotes = data_decoded.$pacotes;
-                    $transportadoras = data_decoded.$transportadoras;
-                    $logisticas = data_decoded.$logisticas;
-                }
-            });
+        $('#tb_pacote').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_transportadora').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_logistica').DataTable( {
+            paging: true,
+            searching: false,
+        });
         }
     );
 

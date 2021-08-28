@@ -1013,19 +1013,18 @@
     $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.contas') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $contas = data_decoded.$contas;
-                    $ItensCompra = data_decoded.$ItensCompra;
-                }
-            });
+        $('#tb_conta').DataTable( {
+            paging: true,
+            searching: false,
+        });
+        $('#tb_parcela').DataTable( {
+            paging: false,
+            searching: false,
+        });
+        $('#tb_item_compra').DataTable( {
+            paging: true,
+            searching: false,
+        });
         }
     );
 

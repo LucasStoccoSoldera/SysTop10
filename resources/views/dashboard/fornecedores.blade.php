@@ -425,17 +425,9 @@
             $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.fornecedor') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $fornecedores = data_decoded.$fornecedores;
-                }
+        $('#tb_fornecedor').DataTable( {
+                paging: true,
+            searching: false,
             });
         }
     );

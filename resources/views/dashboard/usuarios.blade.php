@@ -676,18 +676,14 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.user') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $usuarios = data_decoded.$usuarios;
-                }
-            });
+        $('#tb_usuario').DataTable( {
+            paging: true,
+            searching: false,
+        } );
+        $('#tb_cargo').DataTable( {
+            paging: true,
+            searching: false,
+        } );
         }
     );
 

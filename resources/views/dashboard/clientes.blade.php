@@ -427,7 +427,7 @@
             paging: true,
             searching: false,
 
-        } );
+        });
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();
@@ -471,18 +471,10 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.cliente') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $clientes = data_decoded.$clientes;
-                }
-            });
+        $('#tb_cliente').DataTable({
+            paging: true,
+            searching: false,
+        });
         }
     );
         $('#cpfCliente').on('type', function(){
