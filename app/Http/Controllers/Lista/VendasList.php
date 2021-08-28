@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Lista;
 
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Venda;
@@ -19,13 +21,95 @@ class VendasList extends Controller
         $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
 
         if(isset($id)){
-        $data5 = Venda_Detalhe::where('ven_id', $id);
+            if($request->ajax()){
 
-       return  response()->json(['vendas' => $data, 'itensvenda' => $data5, 'itens_ato' => $data6]);
+                $data = Venda::all();
+                $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
+                $data5 = Venda_Detalhe::where('ven_id', $id);
 
-       return  response()->json(['vendas' => $data, 'itensvenda' => $data5, 'itens_ato' => $data6]);
+                return  [DataTables::of ($data)->addColumn('Ações', function($data){
+
+                    $btn = '<a href="#" class="btn btn-primary" id="alter"><i
+                    class="tim-icons icon-pencil"></i></a>';
+                    $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                    name="excluir-cliente" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.venda') .'"
+                    style="padding: 11px 25px;"><i
+                    class="tim-icons icon-simple-remove"></i></button>';
+
+                    return $btn;
+                })
+
+                ->rawColumns(['action'])
+                ->make(true)
+
+                ,
+
+                    DataTables::of ($data5)->addColumn('Ações', function($data5){
+
+                    $btn = '<a href="#" class="btn btn-primary" id="alter"><i
+                    class="tim-icons icon-pencil"></i></a>';
+                    $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                    name="excluir-cliente" data-id=" '.$data5.' " data-rota=" '. route('admin.delete.itemvenda') .'"
+                    style="padding: 11px 25px;"><i
+                    class="tim-icons icon-simple-remove"></i></button>';
+
+                    return $btn;
+                })
+
+                ->rawColumns(['action'])
+                ->make(true)
+
+                ,
+
+                DataTables::of ($data6)->addColumn('Ações', function($data6){
+
+                    $btn = '<a href="#" class="btn btn-primary" id="alter"><i
+                    class="tim-icons icon-pencil"></i></a>';
+                    $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                    name="excluir-cliente" data-id=" '.$data6.' " data-rota=" '. route('admin.delete.itemvenda') .'"
+                    style="padding: 11px 25px;"><i
+                    class="tim-icons icon-simple-remove"></i></button>';
+
+                    return $btn;
+                })
+
+                ->rawColumns(['action'])
+                ->make(true)
+                ];
+            }
         } else{
-            return  response()->json(['vendas' => $data, 'itens_ato' => $data6]);
+            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+
+                $btn = '<a href="#" class="btn btn-primary" id="alter"><i
+                class="tim-icons icon-pencil"></i></a>';
+                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                name="excluir-cliente" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.venda') .'"
+                style="padding: 11px 25px;"><i
+                class="tim-icons icon-simple-remove"></i></button>';
+
+                return $btn;
+            })
+
+            ->rawColumns(['action'])
+            ->make(true)
+
+            ,
+
+            DataTables::of ($data6)->addColumn('Ações', function($data6){
+
+                $btn = '<a href="#" class="btn btn-primary" id="alter"><i
+                class="tim-icons icon-pencil"></i></a>';
+                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                name="excluir-cliente" data-id=" '.$data6.' " data-rota=" '. route('admin.delete.itemvenda') .'"
+                style="padding: 11px 25px;"><i
+                class="tim-icons icon-simple-remove"></i></button>';
+
+                return $btn;
+            })
+
+            ->rawColumns(['action'])
+            ->make(true)
+            ];
         }
     }
 }
