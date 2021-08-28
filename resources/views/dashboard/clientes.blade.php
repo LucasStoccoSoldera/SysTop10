@@ -166,7 +166,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">CPF / CNPJ:</label>
                                 <input type="number" name="txt_cpf_cnpj" id="txt_cpf_cnpj" maxlength="13"
-                                    value="{{ old('txt_cpf_cnpj') }}" class="form-control @error('txt_cpf_cnpj') is-invalid @enderror">
+                                    value="{{ old('txt_cpf_cnpj') }}" class="filtro form-control @error('txt_cpf_cnpj') is-invalid @enderror">
                                     @error('txt_cpf_cnpj')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors }}</strong>
@@ -179,7 +179,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Nome:</label>
                                 <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                    value="{{ old('txt_nome') }}" class="form-control @error('txt_nome') is-invalid @enderror typeahead">
+                                    value="{{ old('txt_nome') }}" class="filtro form-control @error('txt_nome') is-invalid @enderror typeahead">
                                     @error('txt_nome')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors }}</strong>
@@ -192,7 +192,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Data:</label>
                                 <input type="date" name="txt_data" id="txt_data"
-                                    value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                    value="{{ old('txt_data') }}" class="filtro form-control @error('txt_data') is-invalid @enderror">
                                     @error('txt_data')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors }}</strong>

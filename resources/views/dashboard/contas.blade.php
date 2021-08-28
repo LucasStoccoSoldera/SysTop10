@@ -170,7 +170,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Vencimento:</label>
                                     <input type="date" name="txt_data_venc" id="txt_data_venc"
-                                        value="{{ old('txt_data_venc') }}" class="form-control @error('txt_data_venc') is-invalid @enderror">
+                                        value="{{ old('txt_data_venc') }}" class="filtro form-control @error('txt_data_venc') is-invalid @enderror">
                                         @error('txt_data_venc')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -183,7 +183,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Pagamento:</label>
                                     <input type="date" name="txt_data_pag" id="txt_data_pag"
-                                        value="{{ old('txt_data_pag') }}" class="form-control @error('txt_data_pag') is-invalid @enderror">
+                                        value="{{ old('txt_data_pag') }}" class="filtro form-control @error('txt_data_pag') is-invalid @enderror">
                                         @error('txt_data_pag')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -195,7 +195,7 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Centro de Custo:</label>
-                                    <select type="text" name="txt_centro" id="txt_centro" class="form-control" @error('txt_centro') is-invalid @enderror
+                                    <select type="text" name="txt_centro" id="txt_centro" class="filtro form-control" @error('txt_centro') is-invalid @enderror
                                     maxlength="25" value="{{ old('txt_centro') }}"
                                    >
                                     <option value="">------------Selecione------------</option>

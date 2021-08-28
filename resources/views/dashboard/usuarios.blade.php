@@ -108,7 +108,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cargo:</label>
-                                    <select type="text" name="txt_cargo" id="txt_cargo" class="form-control"
+                                    <select type="text" name="txt_cargo" id="txt_cargo" class="filtro form-control"
                                 value="{{ old('txt_cargo') }}">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($cargos as $cargo)
@@ -123,7 +123,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Usuario:</label>
                                     <input type="text" name="txt_usuario" id="txt_usuario" maxlength="25"
-                                        value="{{ old('txt_usuario') }}" class="form-control @error('txt_usuario') is-invalid @enderror">
+                                        value="{{ old('txt_usuario') }}" class="filtro form-control @error('txt_usuario') is-invalid @enderror">
                                         @error('txt_usuario')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -136,7 +136,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data:</label>
                                     <input type="date" name="txt_data" id="txt_data"
-                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        value="{{ old('txt_data') }}" class="filtro form-control @error('txt_data') is-invalid @enderror">
                                         @error('txt_data')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -179,7 +179,7 @@
                                     </th>
                                     <th style="width: 20%">
                                         Telefone
-                                    </th>
+                                    </th class="text-center">
                                     <th style="width: 15%">
                                         Data de Cadastro
                                     </th>
@@ -315,7 +315,7 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Confirmar Senha:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
+                            <input type="password" name="senhaUser_confirmation" id="senhaUser"
                                 class="form-control" placeholder="Confirmação da Senha">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback senhaUser_error" role="alert">

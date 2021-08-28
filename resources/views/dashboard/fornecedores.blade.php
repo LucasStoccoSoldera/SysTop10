@@ -85,7 +85,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CPF / CNPJ:</label>
                                     <input type="number" name="txt_cpf_cnpj" id="txt_cpf_cnpj" maxlength="13"
-                                        value="{{ old('txt_cpf_cnpj') }}" class="form-control @error('txt_cpf_cnpj') is-invalid @enderror">
+                                        value="{{ old('txt_cpf_cnpj') }}" class="filtro form-control @error('txt_cpf_cnpj') is-invalid @enderror">
                                         @error('txt_cpf_cnpj')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -98,7 +98,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Fornecedor:</label>
                                     <input type="text" name="txt_nome" id="txt_nome" maxlength="25"
-                                        value="{{ old('txt_nome') }}" class="form-control @error('txt_nome') is-invalid @enderror">
+                                        value="{{ old('txt_nome') }}" class="filtro form-control @error('txt_nome') is-invalid @enderror">
                                         @error('txt_nome')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -111,7 +111,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cidade:</label>
                                     <input type="text" name="txt_cidade" id="txt_cidade"
-                                        value="{{ old('txt_cidade') }}" class="form-control @error('txt_cidade') is-invalid @enderror">
+                                        value="{{ old('txt_cidade') }}" class="filtro form-control @error('txt_cidade') is-invalid @enderror">
                                         @error('txt_cidade')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>

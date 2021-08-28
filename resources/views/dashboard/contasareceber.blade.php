@@ -171,7 +171,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Descrição:</label>
                                     <input type="text" name="txt_descricao" id="txt_descricao" maxlength="20"
-                                        value="{{ old('txt_descricao') }}" class="form-control @error('txt_descricao') is-invalid @enderror">
+                                        value="{{ old('txt_descricao') }}" class="filtro form-control @error('txt_descricao') is-invalid @enderror">
                                         @error('txt_descricao')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -183,7 +183,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data Contabilizada:</label>
                                     <input type="date" name="txt_data" id="txt_data"
-                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        value="{{ old('txt_data') }}" class="filtro form-control @error('txt_data') is-invalid @enderror">
                                         @error('txt_data')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -195,7 +195,7 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Status:</label>
-                                    <select type="text" name="txt_status" id="txt_status" class="form-control" @error('txt_status') is-invalid @enderror
+                                    <select type="text" name="txt_status" id="txt_status" class="filtro form-control" @error('txt_status') is-invalid @enderror
                                     maxlength="25" value="{{ old('txt_status') }}"
                                 >
                                     <option value="">------------Selecione------------</option>

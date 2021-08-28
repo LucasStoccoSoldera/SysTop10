@@ -2217,6 +2217,10 @@ pre code {
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+.filtro{
+    color: #fff;
+}
+
 .valor {
     font-weight: bolder;
     color: green;
@@ -2321,7 +2325,7 @@ pre code {
 }
 
 .form-control:focus {
-    color: #000;
+    color: #2caeec;
     border-color: rgba(50, 151, 211, 0.25);
     outline: 0;
     box-shadow: none, none;
@@ -23183,8 +23187,8 @@ font-size: 16px;
     background: #00cca4 ;
     background-image: none;
     margin-bottom: 0px;
-    padding: 5px 40px 5px 40px;
-    border-radius: 20px 20px 20px 20px ;
+    padding: 5px 20px 5px 20px;
+    border-radius: 20px 0px 20px 20px ;
 }
 
 .current{

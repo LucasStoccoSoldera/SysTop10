@@ -85,7 +85,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <input type="text" name="txt_produto" id="txt_produto" maxlength="25"
-                                        value="{{ old('txt_produto') }}" class="form-control @error('txt_produto') is-invalid @enderror">
+                                        value="{{ old('txt_produto') }}" class="filtro form-control @error('txt_produto') is-invalid @enderror">
                                         @error('txt_produto')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -97,7 +97,7 @@
                                     <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"style="float: left; margin-right: 100%;   ">Quantidade:</label>
-                                    <select type="text" name="txt_fil" id="txt_fil" class="form-control"
+                                    <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
                                      value="{{ old('txt_fil') }}" style="width: 15%; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
                                     <option value="">...</option>
                                     <option value="1"><=</option>
@@ -105,7 +105,7 @@
                                     <option value="3">>=</option>
                                 </select>
                                     <input type="number" name="txt_qtde" id="txt_qtde" maxlength="6"
-                                        value="{{ old('txt_qtde') }}" class="form-control @error('txt_qtde') is-invalid @enderror"style="width: 80%;float:right;">
+                                        value="{{ old('txt_qtde') }}" class="filtro form-control @error('txt_qtde') is-invalid @enderror"style="width: 80%;float:right;">
                                         @error('txt_qtde')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -117,7 +117,7 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="form-control" @error('txt_dimensao') is-invalid @enderror
+                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control" @error('txt_dimensao') is-invalid @enderror
                                     value="{{ old('txt_centro') }}"
                                    >
                                     <option value="">------------Selecione------------</option>

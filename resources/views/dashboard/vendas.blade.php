@@ -171,7 +171,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cliente:</label>
                                     <input type="text" name="txt_cliente" id="txt_cliente" maxlength="13"
-                                        value="{{ old('txt_cliente') }}" class="form-control @error('txt_cliente') is-invalid @enderror">
+                                        value="{{ old('txt_cliente') }}" class="filtro form-control @error('txt_cliente') is-invalid @enderror">
                                         @error('txt_cliente')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -184,7 +184,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data da Venda:</label>
                                     <input type="date" name="txt_data" id="txt_data" maxlength="20"
-                                        value="{{ old('txt_data') }}" class="form-control @error('txt_data') is-invalid @enderror">
+                                        value="{{ old('txt_data') }}" class="filtro form-control @error('txt_data') is-invalid @enderror">
                                         @error('txt_data')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -196,7 +196,7 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
-                                    <select type="text" name="txt_produto" id="txt_produto" class="form-control" @error('txt_produto') is-invalid @enderror
+                                    <select type="text" name="txt_produto" id="txt_produto" class="filtro form-control" @error('txt_produto') is-invalid @enderror
                                     value="{{ old('txt_produto') }}"
                                    >
                                     <option value="">------------Selecione------------</option>

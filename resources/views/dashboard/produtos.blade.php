@@ -109,7 +109,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                        value="{{ old('txt_nome') }}" class="form-control @error('txt_nome') is-invalid @enderror">
+                                        value="{{ old('txt_nome') }}" class="filtro form-control @error('txt_nome') is-invalid @enderror">
                                         @error('txt_nome')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors }}</strong>
@@ -121,7 +121,7 @@
                                     <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Material:</label>
-                                    <select type="text" name="txt_material" id="txt_material" class="form-control" @error('txt_material') is-invalid @enderror
+                                    <select type="text" name="txt_material" id="txt_material" class="filtro form-control" @error('txt_material') is-invalid @enderror
                                     value="{{ old('txt_material') }}"
                                    >
                                     <option value="">------------Selecione------------</option>
@@ -141,7 +141,7 @@
                                 <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="form-control" @error('txt_dimensao') is-invalid @enderror
+                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control" @error('txt_dimensao') is-invalid @enderror
                                     value="{{ old('txt_centro') }}"
                                    >
                                     <option value="">------------Selecione------------</option>

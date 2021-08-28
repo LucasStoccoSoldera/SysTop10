@@ -15,7 +15,7 @@ class CreateCargo extends Migration
     {
         Schema::create('cargo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pri_id');
+            $table->unsignedBigInteger('pri_id')->default(1);
             $table->string('car_descricao');
             $table->timestamps();
 
