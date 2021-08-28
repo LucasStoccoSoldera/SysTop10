@@ -378,14 +378,44 @@
         $('#tb_pacote').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_transportadora').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_logistica').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
 
         $("#formRegisterLogistica").on('submit', function(e) {
@@ -459,14 +489,44 @@
         $('#tb_pacote').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_transportadora').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_logistica').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         }
     );

@@ -945,22 +945,72 @@
         $('#tb_produto').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_tipo_produto').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_material').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_dimensao').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_cor').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
 
         $("#formRegisterProdutos").on('submit', function(e) {
@@ -1169,22 +1219,72 @@
         $('#tb_produto').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_tipo_produto').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_material').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_dimensao').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         $('#tb_cor').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         } );
         }
     );

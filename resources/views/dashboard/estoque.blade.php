@@ -360,10 +360,30 @@
         $('#tb_estoque').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_produto_estoque').DataTable( {
-            paging: false,
+            paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
 
             $("#formRegisterEstoque").on('submit', function(e) {
@@ -404,10 +424,30 @@
         $('#tb_estoque').DataTable( {
             paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         $('#tb_produto_estoque').DataTable( {
-            paging: false,
+            paging: true,
             searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.user') }}",
+            columns: [
+                {"data": "usu_id"},
+                {"data": "usu_nome_completo"},
+                {"data": "car_descricao"},
+                {"data": "usu_telefone"},
+                {"data": "usu_data_cadastro"},
+            ]
         });
         }
     );
