@@ -16,9 +16,8 @@ class PacoteTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $pacote->id,
-            'trans_nome' => $pacote->trans_nome,
-            'trans_telefone' => (string) $pacote->trans_telefone,
-            'trans_limite_transporte' => (int) $pacote->trans_limite_transporte,
+            'pac_dimensao' => (string) $pacote->id,
+            'pac_descricao' => $pacote->id,
         ];
     }
 }

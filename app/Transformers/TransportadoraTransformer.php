@@ -15,8 +15,9 @@ class TransportadoraTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $transportadora->id,
-            'log_pacote' => $transportadora->log_pacote,
-            'log_transportadora' => $transportadora->log_transportadora,
+            'trans_nome' => $transportadora->trans_nome,
+            'trans_telefone' => (string) $transportadora->trans_telefone,
+            'trans_limite_transporte' => (int) $transportadora->trans_limite_transporte,
         ];
     }
 }

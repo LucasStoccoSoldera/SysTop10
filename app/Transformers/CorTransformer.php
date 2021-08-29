@@ -16,8 +16,7 @@ class CorTransformer extends TransformerAbstract
         return [
             'id' => (int) $cor->id,
             'cor_nome' => (string) $cor->cor_nome,
-            'cor_hex' => (string) $cor->cor_hex,
-            'cor_especial' => (string) $cor->cor_especial,
+            'cor_hex_especial' => (string) $cor->cor_hex_especial,
         ];
     }
 }

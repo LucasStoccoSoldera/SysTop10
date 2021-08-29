@@ -17,7 +17,6 @@ class ProdutosTransformer extends TransformerAbstract
             'id' => (int) $produto->id,
             'pro_nome' => $produto->pro_nome,
             'tpp_id' => (int) $produto->tpp_id,
-            'pro_pedidominimo' => (int) $produto->pro_pedidominimo,
             'pro_precovenda' => (string) $produto->pro_precovenda,
         ];
     }
