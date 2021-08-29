@@ -16,8 +16,7 @@ class CreateCores extends Migration
         Schema::create('cores', function (Blueprint $table) {
             $table->id();
             $table->string('cor_nome');
-            $table->string('cor_hex');
-            $table->string('cor_especial');
+            $table->string('cor_hex_especial');
             $table->timestamps();
         });
     }
