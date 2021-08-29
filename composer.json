@@ -19,6 +19,7 @@
         "laravel/ui": "^3.2",
         "laravellegends/pt-br-validator": "^8.0",
         "spatie/laravel-backup": "^6.16",
+        "yajra/laravel-datatables-fractal": "^1.6",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

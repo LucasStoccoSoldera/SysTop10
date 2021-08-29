@@ -11,6 +11,7 @@ class Estoque extends Model
     public $table='estoque';
 
     protected $fillable = [
+        'pro_id',
         'dim_id',
         'cor_id',
         'est_qtde',

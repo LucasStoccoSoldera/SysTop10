@@ -97,19 +97,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pacotes as $pacote)
-                                    <tr>
-                                        <td>
-                                            {{ $pacote['pac_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $pacote['pac_dimensao'] }}
-                                        </td>
-                                        <td>
-                                            {{ $pacote['pac_descricao'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -142,22 +130,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transportadoras as $transportadora)
-                                    <tr>
-                                        <td>
-                                            {{ $transportadora['trans_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $transportadora['trans_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $transportadora['trans_telefone'] }}
-                                        </td>
-                                        <td>
-                                            {{ $transportadora['trans_limite_transporte'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -193,27 +166,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($logisticas as $logistica)
-                                    <tr>
-                                        <td>
-                                            {{ $logistica['log_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $logistica['log_pacote'] }}
-                                        </td>
-                                        <td>
-                                            {{ $logistica['log_transportadora'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-log"
-                                                name="excluir-logistica" data-id="{{ $logistica['id'] }}" data-rota="{{ route('admin.delete.logistica') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

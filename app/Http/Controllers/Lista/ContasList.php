@@ -12,6 +12,10 @@ use App\Models\Parcelas;
 use App\Models\Produto;
 use App\Models\Fornecedores;
 use App\Models\Compras_Detalhe;
+use App\Transformers\ContasTransformer;
+use App\Transformers\ParcelasTransformer;
+use App\Transformers\ItemCompraTransformer;
+use League\Fractal\Resource\Item;
 
 class ContasList extends Controller
 {
@@ -32,7 +36,9 @@ class ContasList extends Controller
             $data4 = Compras_Detalhe::where('com_id', $request->IDCompra);
             $data7 = Parcelas::all();
 
-            return  [DataTables::of ($data1)->addColumn('Ações', function($data1){
+            return  [DataTables::eloquent($data1)
+            ->setTransformer(new ContasTransformer)
+            ->addColumn('Ações', function($data1){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -49,7 +55,9 @@ class ContasList extends Controller
 
             ,
 
-                DataTables::of ($data4)->addColumn('Ações', function($data4){
+                DataTables::eloquent($data4)
+                ->setTransformer(new ItemCompraTransformer)
+                ->addColumn('Ações', function($data4){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -66,7 +74,8 @@ class ContasList extends Controller
 
             ,
 
-            DataTables::of ($data7)
+            DataTables::eloquent($data7)
+            ->setTransformer(new ParcelasTransformer)
             ->make(true)
         ];
         }

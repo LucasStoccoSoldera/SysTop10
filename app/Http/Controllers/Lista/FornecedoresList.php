@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Fornecedores;
 use App\Models\Produto;
+use App\Transformers\FornecedoresTransformer;
 
 class FornecedoresList extends Controller
 {
@@ -22,7 +23,9 @@ class FornecedoresList extends Controller
 
             $data = Fornecedores::all();
 
-            return  DataTables::of ($data)->addColumn('Ações', function($data){
+            return  DataTables::eloquent($data)
+            ->setTransformer(new FornecedoresTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';

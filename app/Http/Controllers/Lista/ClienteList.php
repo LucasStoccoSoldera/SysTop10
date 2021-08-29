@@ -6,6 +6,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cliente;
+use App\Transformers\ClienteTransformer;
 
 class ClienteList extends Controller
 {
@@ -21,8 +22,10 @@ class ClienteList extends Controller
         if($request->ajax()){
 
             $data = Cliente::all();
-            
-            return  DataTables::of ($data)->addColumn('Ações', function($data){
+
+            return  DataTables::eloquent($data)
+            ->setTransformer(new ClienteTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';

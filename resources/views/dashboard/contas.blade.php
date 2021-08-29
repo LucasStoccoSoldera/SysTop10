@@ -254,35 +254,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($contas as $conta)
-                                    <tr>
-                                        <td>
-                                            {{ $conta['con_descricao'] }}
-                                        </td>
-                                        <td>
-                                            {{ $conta['con_valor_final'] }}
-                                        </td>
-                                        <td>
-                                            {{ $conta['cc_id'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $conta['con_data_venc'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $conta['con_data_pag'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <a href="#" class="btn btn-primary"><i
-                                                    class="tim-icons icon-map-big"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-con"
-                                                name="excluir-conta" data-id="{{ $conta['id'] }}" data-rota="{{ route('admin.delete.conta') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -320,25 +292,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($parcelas as $parcela)
-                                    <tr>
-                                        <td>
-                                            {{ $parcela['par_numero'] }}
-                                        </td>
-                                        <td>
-                                            {{ $parcela['par_conta'] }}
-                                        </td>
-                                        <td>
-                                            {{ $parcela['tpg_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $parcela['par_valor'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $parcela['par_status'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -727,31 +681,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($ItensCompra as $ItemCompra)
-                                                    <tr>
-                                                        <td>
-                                                            {{ $ItemCompra['cde_produto'] }}
-                                                        </td>
-                                                        <td>
-                                                            {{ $ItemCompra['cde_qtde'] }}
-                                                        </td>
-                                                        <td class="text-right">
-                                                            {{ $ItemCompra['valor_unitario'] }}
-                                                        </td>
-                                                        <td class="text-right">
-                                                            {{ $ItemCompra['valor_final'] }}
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                                    class="tim-icons icon-pencil"></i></a>
-                                                            <button href="#" class="btn btn-primary red"
-                                                                id="excluir-cde" name="excluir-item-compra"
-                                                                data-id="{{ $ItemCompra['id'] }}" data-rota="{{ route('admin.delete.itemcompra') }}"
-                                                                style="padding: 11px 25px;"><i
-                                                                    class="tim-icons icon-simple-remove"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
+                                               {{-- DataTables --}}
                                             </tbody>
                                         </table>
                                     </div>

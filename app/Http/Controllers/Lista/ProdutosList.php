@@ -11,6 +11,12 @@ use App\Models\TipoProduto;
 use App\Models\Pacote;
 use App\Models\Cor;
 use App\Models\Dimensao;
+use App\Transformers\ProdutosTransformer;
+use App\Transformers\TipoProdutoTransformer;
+use App\Transformers\MaterialTransformer;
+use App\Transformers\DimensaoTransformer;
+use App\Transformers\CorTransformer;
+use App\Transformers\PacoteTransformer;
 
 class ProdutosList extends Controller
 {
@@ -28,6 +34,7 @@ class ProdutosList extends Controller
         $data6 = Cor::all();
 
 
+
         if($request->ajax()){
 
             $data = Produto::all();
@@ -37,7 +44,9 @@ class ProdutosList extends Controller
             $data5 = Dimensao::all();
             $data6 = Cor::all();
 
-            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+            return  [DataTables::eloquent($data)
+            ->setTransformer(new ProdutosTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -54,7 +63,9 @@ class ProdutosList extends Controller
 
             ,
 
-                DataTables::of ($data2)->addColumn('Ações', function($data2){
+                DataTables::eloquent($data2)
+                ->setTransformer(new TipoProdutoTransformer)
+                ->addColumn('Ações', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -71,7 +82,9 @@ class ProdutosList extends Controller
 
             ,
 
-            DataTables::of ($data3)->addColumn('Ações', function($data3){
+            DataTables::eloquent($data3)
+            ->setTransformer(new MaterialTransformer)
+            ->addColumn('Ações', function($data3){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -88,7 +101,9 @@ class ProdutosList extends Controller
 
             ,
 
-            DataTables::of ($data4)->addColumn('Ações', function($data4){
+            DataTables::eloquent($data4)
+            ->setTransformer(new DimensaoTransformer)
+            ->addColumn('Ações', function($data4){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -105,7 +120,9 @@ class ProdutosList extends Controller
 
             ,
 
-            DataTables::of ($data5)->addColumn('Ações', function($data5){
+            DataTables::eloquent($data5)
+            ->setTransformer(new CorTransformer)
+            ->addColumn('Ações', function($data5){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -122,7 +139,9 @@ class ProdutosList extends Controller
 
             ,
 
-            DataTables::of ($data6)->addColumn('Ações', function($data6){
+            DataTables::eloquent($data6)
+            ->setTransformer(new PacoteTransformer)
+            ->addColumn('Ações', function($data6){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Centro_Custo;
 use App\Models\TipoPagto;
 use Illuminate\Support\Facades\DB;
+use App\Transformers\DetalhesTransformer;
 
 class DetalhesList extends Controller
 {

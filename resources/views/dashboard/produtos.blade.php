@@ -200,33 +200,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($produtos as $produto)
-                                    <tr>
-                                        <td>
-                                            {{ $produto['pro_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $produto['tpp_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $produto['pro_pedidominimo'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            {{ $produto['pro_precocusto'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            {{ $produto['pro_precovenda'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-pro"
-                                                name="excluir-produto" data-id="{{ $produto['pro_id'] }}"  data-rota="{{ route('admin.delete.produto') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -259,22 +233,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($produtos as $produto)
-                                    <tr>
-                                        <td>
-                                            {{ $produto['mat_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $dimensoes }}
-                                        </td>
-                                        <td>
-                                            {{ $cores }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $gravura }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -571,24 +530,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tipos as $tipo)
-                                    <tr>
-                                        <td>
-                                            {{ $tipo['tpp_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $tipo['tpp_descricao'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-tpp"
-                                                name="excluir-tipo-produto" data-id="{{ $tipo['id'] }}" data-rota="{{ route('admin.delete.tipoproduto') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -659,24 +601,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($materiais as $material)
-                                    <tr>
-                                        <td>
-                                            {{ $material['mat_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $material['mat_descricao'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-mat"
-                                                name="excluir-material" data-id="{{ $material['id'] }}" data-rota="{{ route('admin.delete.material') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -745,24 +670,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dimensoes as $dimensao)
-                                    <tr>
-                                        <td>
-                                            {{ $dimensao['dim_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $dimensao['dim_descricao'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-dim"
-                                                name="excluir-dimensao" data-id="{{ $dimensao['id'] }}" data-rota="{{ route('admin.delete.dimensao') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -854,27 +762,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cores as $cor)
-                                    <tr>
-                                        <td>
-                                            {{ $cor['cor_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $cor['cor_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $cor['cor_hex'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-cor"
-                                                name="excluir-cor" data-id="{{ $cor['id'] }}" data-rota="{{ route('admin.delete.cor') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

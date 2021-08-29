@@ -189,33 +189,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($usuarios as $usuario)
-                                    <tr>
-                                        <td>
-                                            {{ $usuario['usu_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $usuario['usu_nome_completo'] }}
-                                        </td>
-                                        <td>
-                                            {{ $usuario['car_descricao'] }}
-                                        </td>
-                                        <td>
-                                            {{ $usuario['usu_telefone'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $usuario['usu_data_cadastro'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-usu"
-                                                name="excluir-usuario" data-id="{{ $usuario['id'] }}"  data-rota="{{ route('admin.delete.user') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -574,7 +548,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "usu_id"},
+                {"data": "id"},
                 {"data": "usu_nome_completo"},
                 {"data": "car_descricao"},
                 {"data": "usu_telefone"},
@@ -704,7 +678,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "usu_id"},
+                {"data": "id"},
                 {"data": "usu_nome_completo"},
                 {"data": "car_descricao"},
                 {"data": "usu_telefone"},

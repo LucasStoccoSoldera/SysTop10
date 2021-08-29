@@ -199,25 +199,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($entradas as $entrada)
-                                    <tr>
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            {{ $entrada['quantidade'] }}
-                                        </td>
-                                        <td>
-                                            {{ $entrada['dim_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $entrada['cor_id'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $entrada['data'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -245,16 +227,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($entradas as $entrada)
-                                    <tr>
-                                        <td>
-                                            {{ $entrada['pro_id'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $entrada['est_status'] }}
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

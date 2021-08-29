@@ -256,36 +256,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($vendas as $venda)
-                                    <tr>
-                                        <td>
-                                            {{ $venda['cli_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $venda['ven_valor_total'] }}
-                                        </td>
-                                        <td>
-                                            {{ $venda['tpg_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $venda['ven_status'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $venda['ven_data'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <a href="{{ route('admin.Vendas') }}" class="btn btn-primary"
-                                                id="{{ $venda['ven_id'] }}"><i
-                                                    class="tim-icons icon-map-big"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-ven"
-                                                name="excluir-venda" data-id="{{ $venda['id'] }}" data-rota="{{ route('admin.delete.venda') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -319,24 +290,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @isset($itensvenda)
-                                    @foreach ($itensvenda as $itemvenda)
-                                        <tr>
-                                            <td>
-                                                {{ $itemvenda['ven_id'] }}
-                                            </td>
-                                            <td>
-                                                {{ $itemvenda['pro_id'] }}
-                                            </td>
-                                            <td>
-                                                {{ $itemvenda['det_qtde'] }}
-                                            </td>
-                                            <td class="text-right">
-                                                {{ $itemvenda['det_valor_total'] }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endisset
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>
@@ -537,34 +491,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($itens_ato as $item_ato)
-                                                        <tr>
-                                                            <td>
-                                                                {{ $item_ato['pro_id'] }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $item_ato['det_qtde'] }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $item_ato['dim_id'] }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $item_ato['cor_id'] }}
-                                                            </td>
-                                                            <td class="text-right">
-                                                                {{ $item_ato['det_valor_total'] }}
-                                                            </td>
-                                                            <td class="text-right">
-                                                                <a href="#" class="btn btn-primary" id="alter"><i
-                                                                        class="tim-icons icon-pencil"></i></a>
-                                                                <button href="#" class="btn btn-primary red"
-                                                                    id="excluir-det" name="excluir-item-venda"
-                                                                    data-id="{{ $item_ato['id'] }}" data-rota="{{ route('admin.delete.itemvenda') }}"
-                                                                    style="padding: 11px 25px;"><i
-                                                                        class="tim-icons icon-simple-remove"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
+                                                    {{-- DataTables --}}
                                                 </tbody>
                                             </table>
                                         </div>

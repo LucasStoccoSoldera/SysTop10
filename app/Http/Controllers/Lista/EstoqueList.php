@@ -9,6 +9,7 @@ use App\Models\Estoque;
 use App\Models\Produto;
 use App\Models\Dimensao;
 use App\Models\Cor;
+use App\Transformers\EstoqueTransformer;
 
 class EstoqueList extends Controller
 {
@@ -30,7 +31,9 @@ class EstoqueList extends Controller
             $data = Estoque::all();
             $data2 = Produto::all();
 
-            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+            return  [DataTables::eloquent($data)
+            ->setTransformer(new EstoqueTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -47,7 +50,8 @@ class EstoqueList extends Controller
 
             ,
 
-                DataTables::of ($data2)
+                DataTables::eloquent($data2)
+                ->setTransformer(new EstoqueTransformer)
                 ->make(true)
         ];
         }

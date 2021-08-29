@@ -165,33 +165,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($fornecedores as $fornecedor)
-                                    <tr>
-                                        <td>
-                                            {{ $fornecedor['for_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $fornecedor['for_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $fornecedor['for_cpf_cnpj'] }}
-                                        </td>
-                                        <td>
-                                            {{ $fornecedor['for_telefone'] }}
-                                        </td>
-                                        <td>
-                                            {{ $fornecedor['for_cidade'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-for"
-                                                name="excluir-fornecedor" data-id="{{ $fornecedor['id'] }}" data-rota="{{ route('admin.delete.fornecedor') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

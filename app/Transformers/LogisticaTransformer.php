@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Transformers;
+
+use App\Models\Logistica;
+use League\Fractal\TransformerAbstract;
+
+class LogisticaTransformer extends TransformerAbstract
+{
+    /**
+     * @param \App\Models\Logistica $logistica
+     * @return array
+     */
+    public function transformLogistica(Logistica $logistica)
+    {
+        return [
+            'id' => (int) $logistica->id,
+            'pac_dimensao' => (string) $logistica->id,
+            'pac_descricao' => $logistica->id,
+        ];
+    }
+
+}

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Lista;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Venda;
 use App\Models\Venda_Detalhe;
+use App\Transformers\VendasTransformer;
+use App\Transformers\ItemVendaTransformer;
 
 class VendasList extends Controller
 {
@@ -27,7 +28,9 @@ class VendasList extends Controller
                 $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
                 $data5 = Venda_Detalhe::where('ven_id', $id);
 
-                return  [DataTables::of ($data)->addColumn('Ações', function($data){
+                return  [DataTables::eloquent($data)
+                ->setTransformer(new VendasTransformer)
+                ->addColumn('Ações', function($data){
 
                     $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                     class="tim-icons icon-pencil"></i></a>';
@@ -44,7 +47,9 @@ class VendasList extends Controller
 
                 ,
 
-                    DataTables::of ($data5)->addColumn('Ações', function($data5){
+                    DataTables::eloquent($data5)
+                    ->setTransformer(new ItemVendaTransformer)
+                    ->addColumn('Ações', function($data5){
 
                     $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                     class="tim-icons icon-pencil"></i></a>';
@@ -61,7 +66,9 @@ class VendasList extends Controller
 
                 ,
 
-                DataTables::of ($data6)->addColumn('Ações', function($data6){
+                DataTables::eloquent($data6)
+                ->setTransformer(new ItemVendaTransformer)
+                ->addColumn('Ações', function($data6){
 
                     $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                     class="tim-icons icon-pencil"></i></a>';
@@ -78,7 +85,9 @@ class VendasList extends Controller
                 ];
             }
         } else{
-            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+            return  [DataTables::eloquent($data)
+            ->setTransformer(new VendasTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -95,7 +104,9 @@ class VendasList extends Controller
 
             ,
 
-            DataTables::of ($data6)->addColumn('Ações', function($data6){
+            DataTables::eloquent($data6)
+            ->setTransformer(new ItemVendaTransformer)
+            ->addColumn('Ações', function($data6){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';

@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Logistica;
 use App\Models\Pacote;
 use App\Models\Transportadora;
+use App\Transformers\LogisticaTransformer;
+use App\Transformers\TransportadoraTransformer;
+use App\Transformers\PacoteTransformer;
 
 class LogisticaList extends Controller
 {
@@ -24,7 +27,9 @@ class LogisticaList extends Controller
             $data2 = Logistica::all();
             $data3 = Pacote::all();
 
-            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+            return  [DataTables::eloquent($data)
+            ->setTransformer(new TransportadoraTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -41,7 +46,9 @@ class LogisticaList extends Controller
 
             ,
 
-                DataTables::of ($data2)->addColumn('Ações', function($data2){
+                DataTables::eloquent($data2)
+                ->setTransformer(new LogisticaTransformer)
+                ->addColumn('Ações', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -58,7 +65,9 @@ class LogisticaList extends Controller
 
             ,
 
-            DataTables::of ($data3)->addColumn('Ações', function($data3){
+            DataTables::eloquent($data3)
+            ->setTransformer(new PacoteTransformer)
+            ->addColumn('Ações', function($data3){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';

@@ -244,32 +244,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clientes as $cliente)
-                                    <tr>
-                                        <td>
-                                            {{ $cliente['cli_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $cliente['cli_nome'] }}
-                                        </td>
-                                        <td>
-                                            {{ $cliente['cli_telefone'] }}
-                                        </td>
-                                        <td>
-                                            {{ $cliente['cli_cidade'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $cliente['cli_data_cadastro'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-cli"
-                                                name="excluir-cliente" data-id="{{ $cliente['id'] }}" data-rota="{{ route('admin.delete.cliente') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                    </tr>
-                                @endforeach
+                             {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

@@ -256,36 +256,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($creditos as $credito)
-                                    <tr>
-                                        <td>
-                                            {{ $credito['rec_id'] }}
-                                        </td>
-                                        <td>
-                                            {{ $credito['rec_descricao'] }}
-                                        </td>
-                                        <td>
-                                            {{ $credito['rec_valor'] }}
-                                        </td>
-                                        <td>
-                                            {{ $credito['tipo_pagto'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $credito['rec_data'] }}
-                                        </td>
-                                        <td class="text-center">
-                                            {{ $credito['rec_status'] }}
-                                        </td>
-                                        <td class="text-right">
-                                            <a href="#" class="btn btn-primary" id="alter"><i
-                                                    class="tim-icons icon-pencil"></i></a>
-                                            <button href="#" class="btn btn-primary red" id="excluir-rec"
-                                                name="excluir-receber" data-id="{{ $credito['id'] }}" data-rota="{{ route('admin.delete.receber') }}"
-                                                style="padding: 11px 25px;"><i
-                                                    class="tim-icons icon-simple-remove"></i></button>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                               {{-- DataTables --}}
                             </tbody>
                         </table>
                     </div>

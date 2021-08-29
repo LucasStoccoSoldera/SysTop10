@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cargo;
 use App\Models\Privilegio;
 use App\Models\Usuario;
+use App\Transformers\UserTransformer;
+use App\Transformers\CargoTransformer;
 
 class UserList extends Controller
 {
@@ -27,7 +29,9 @@ class UserList extends Controller
             $data = Usuario::all();
             $data2 = Cargo::all();
 
-            return  [DataTables::of ($data)->addColumn('Ações', function($data){
+            return  [DataTables::eloquent($data)
+            ->setTransformer(new UserTransformer)
+            ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -44,7 +48,9 @@ class UserList extends Controller
 
             ,
 
-                DataTables::of ($data2)->addColumn('Ações', function($data2){
+                DataTables::eloquent($data2)
+                ->setTransformer(new CargoTransformer)
+                ->addColumn('Ações', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
