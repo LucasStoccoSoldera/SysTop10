@@ -67,9 +67,9 @@ class CoresRegister extends Controller
         $Cor = new Cor;
         $Cor->cor_nome = $request->NomeCores;
         if (isset($cor)) {
-            $Cor->cor_hex = $request->CodigoCores;
+            $Cor->cor_hex_especial = $request->CodigoCores;
         } else {
-            $Cor->cor_especial = $request->EspecialCores;
+            $Cor->cor_hex_especial = $request->EspecialCores;
         }
         $Cor->save();
 

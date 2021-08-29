@@ -12,8 +12,7 @@ class Cor extends Model
 
     protected $fillable = [
         'cor_nome',
-        'cor_hex',
-        'cor_especial',
+        'cor_hex_especial',
     ];
 }
 
