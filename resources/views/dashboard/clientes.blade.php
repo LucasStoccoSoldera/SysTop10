@@ -227,12 +227,13 @@
                                     <th style="width: 20%">
                                         Nome Completo
                                     </th>
-                                    <th style="width: 25%">
+                                    <th style="width: 15%">
                                         Documento
                                     </th>
-                                    Telefone
+                                    <th style="width: 15%">
+                                    Celular
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         Cidade
                                     </th>
                                     <th style="width: 15%">
@@ -403,13 +404,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.cliente') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "cli_nome"},
+                {"data": "cli_cpf_cnpj"},
+                {"data": "cli_celular"},
+                {"data": "cli_cidade"},
+                {"data": "created_at"},
             ]
         });
 
@@ -463,11 +464,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "cli_nome"},
+                {"data": "cli_cpf_cnpj"},
+                {"data": "cli_celular"},
+                {"data": "cli_cidade"},
+                {"data": "created_at"},
             ]
         });
         }

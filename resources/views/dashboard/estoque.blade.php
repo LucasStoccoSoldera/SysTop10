@@ -218,10 +218,13 @@
                         <table class="table tablesorter " id="tb_produto_estoque">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 70%">
+                                    <th style="width: 60%">
                                         Produto
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 15%">
+                                        Qtde.
+                                    </th>
+                                    <th style="width: 25%">
                                         Status
                                     </th>
                                 </tr>
@@ -335,13 +338,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "pro_id"},
+                {"data": "est_qtde"},
+                {"data": "dim_id"},
+                {"data": "cor_id"},
+                {"data": "created_at"},
             ]
         });
         $('#tb_produto_estoque').DataTable( {
@@ -349,13 +352,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "pro_id"},
+                {"data": "est_qtde"},
+                {"data": "est_status"},
             ]
         });
 
@@ -399,13 +400,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "pro_id"},
+                {"data": "est_qtde"},
+                {"data": "dim_id"},
+                {"data": "cor_id"},
+                {"data": "created_at"},
             ]
         });
         $('#tb_produto_estoque').DataTable( {
@@ -413,13 +414,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "pro_id"},
+                {"data": "est_qtde"},
+                {"data": "est_status"},
             ]
         });
         }

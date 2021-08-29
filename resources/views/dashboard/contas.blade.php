@@ -833,13 +833,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "con_descricao"},
+                {"data": "con_valor_final"},
+                {"data": "cc_id"},
+                {"data": "con_data_venc"},
+                {"data": "con_data_pag"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -847,13 +847,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "par_numero"},
+                {"data": "par_conta"},
+                {"data": "tpg_id"},
+                {"data": "par_valor"},
+                {"data": "par_status"},
             ]
         });
         $('#tb_item_compra').DataTable( {
@@ -861,13 +861,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "cde_produto"},
+                {"data": "cde_qtde"},
+                {"data": "valor_unitario"},
+                {"data": "valor_final"},
             ]
         });
 
@@ -978,13 +977,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "con_descricao"},
+                {"data": "con_valor_final"},
+                {"data": "cc_id"},
+                {"data": "con_data_venc"},
+                {"data": "con_data_pag"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -992,13 +991,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "par_numero"},
+                {"data": "par_conta"},
+                {"data": "tpg_id"},
+                {"data": "par_valor"},
+                {"data": "par_status"},
             ]
         });
         $('#tb_item_compra').DataTable( {
@@ -1006,13 +1005,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "cde_produto"},
+                {"data": "cde_qtde"},
+                {"data": "valor_unitario"},
+                {"data": "valor_final"},
             ]
         });
         }

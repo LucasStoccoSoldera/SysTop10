@@ -119,14 +119,18 @@
                                     <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th style="width: 45%">
+                                    <th style="width: 35%">
                                         Nome
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 25%">
                                         Telefone
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 10%">
                                         Limite
+                                    </th>
+                                    <th class="text-right" style="width: 20%">
+                                        <div id="acao">Ações</div>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -333,13 +337,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pac_dimensao"},
+                {"data": "pac_descricao"},
             ]
         });
         $('#tb_transportadora').DataTable( {
@@ -347,13 +349,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "trans_nome"},
+                {"data": "trans_telefone"},
+                {"data": "trans_limite_transporte"},
             ]
         });
         $('#tb_logistica').DataTable( {
@@ -361,13 +362,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "log_pacote"},
+                {"data": "log_transportadora"},
             ]
         });
 
@@ -444,13 +443,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pac_dimensao"},
+                {"data": "pac_descricao"},
             ]
         });
         $('#tb_transportadora').DataTable( {
@@ -458,13 +455,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "trans_nome"},
+                {"data": "trans_telefone"},
+                {"data": "trans_limite_transporte"},
             ]
         });
         $('#tb_logistica').DataTable( {
@@ -472,13 +468,11 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "log_pacote"},
+                {"data": "log_transportadora"},
             ]
         });
         }

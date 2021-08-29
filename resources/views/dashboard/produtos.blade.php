@@ -182,16 +182,16 @@
                         <table class="table tablesorter " id="tb_produto">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 25%">
+                                    <th style="width: 10%">
+                                        ID
+                                    </th>
+                                    <th style="width: 30%">
                                         Nome
                                     </th>
                                     <th style="width: 15%">
                                         Tipo
                                     </th>
-                                    <th class="text-right" style="width: 20%">
-                                        Preço Custo
-                                    </th>
-                                    <th class="text-right" style="width: 20%">
+                                    <th class="text-right" style="width: 25%">
                                         Preço Venda
                                     </th>
                                     <th class="text-right" style="width: 20%">
@@ -754,7 +754,7 @@
                                         Nome
                                     </th>
                                     <th style="width: 20%">
-                                        HEX
+                                        Cód / Pal
                                     </th>
                                     <th class="text-right" style="width: 40%">
                                         <div id="acao">Ações</div>
@@ -812,16 +812,50 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <div class="row">
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterPacotes"
                         data-modal="modalRegisterPacotes">Cancelar</button>
 
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
-            </div>
         </form>
     </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" id="card-consulta-tabela">
+                    <div class="card-header" id="ch-adaptado">
+                        <h2 class="card-title">Consulta de Pacotes</h2>
+                    </div>
+                    <div class="card-body" id="cd-adaptado">
+                        <div class="table-responsive">
+                            <table class="table tablesorter " id="tb_cor">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th style="width: 10%">
+                                            ID
+                                        </th>
+                                        <th style="width: 30%">
+                                            Nome
+                                        </th>
+                                        <th style="width: 20%">
+                                           Dimensão
+                                        </th>
+                                        <th class="text-right" style="width: 40%">
+                                            <div id="acao">Ações</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{-- DataTables --}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 </div>
 
 @endsection
@@ -835,13 +869,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_nome"},
+                {"data": "tpp_id"},
+                {"data": "pro_precovenda"},
             ]
         } );
         $('#tb_tipo_produto').DataTable( {
@@ -849,13 +882,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "tpp_descricao"},
             ]
         } );
         $('#tb_material').DataTable( {
@@ -863,13 +893,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "mat_descricao"},
             ]
         } );
         $('#tb_dimensao').DataTable( {
@@ -877,13 +904,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "dim_descricao"},
             ]
         } );
         $('#tb_cor').DataTable( {
@@ -891,13 +915,23 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "cor_nome"},
+                {"data": "cor_hex_especial"},
+            ]
+        } );
+        $('#tb_pacote').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.produto') }}",
+            columns: [
+                {"data": "id"},
+                {"data": "pac_dimensao"},
+                {"data": "pac_descricao"},
             ]
         } );
 
@@ -1109,13 +1143,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_nome"},
+                {"data": "tpp_id"},
+                {"data": "pro_precovenda"},
             ]
         } );
         $('#tb_tipo_produto').DataTable( {
@@ -1123,13 +1156,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "tpp_descricao"},
             ]
         } );
         $('#tb_material').DataTable( {
@@ -1137,13 +1167,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "mat_descricao"},
             ]
         } );
         $('#tb_dimensao').DataTable( {
@@ -1151,13 +1178,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "dim_descricao"},
             ]
         } );
         $('#tb_cor').DataTable( {
@@ -1165,13 +1189,23 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "cor_nome"},
+                {"data": "cor_hex_especial"},
+            ]
+        } );
+        $('#tb_pacote').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.produto') }}",
+            columns: [
+                {"data": "id"},
+                {"data": "pac_dimensao"},
+                {"data": "pac_descricao"},
             ]
         } );
         }

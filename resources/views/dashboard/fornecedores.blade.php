@@ -357,13 +357,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.fornecedor') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "for_nome"},
+                {"data": "for_cpf_cnpj"},
+                {"data": "for_telefone"},
+                {"data": "for_cidade"},
             ]
             });
 
@@ -414,13 +414,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.fornecedor') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "for_nome"},
+                {"data": "for_cpf_cnpj"},
+                {"data": "for_telefone"},
+                {"data": "for_cidade"},
             ]
             });
         }

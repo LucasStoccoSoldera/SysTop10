@@ -562,11 +562,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
+                {"data": "id"},
                 {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
             ]
         } );
 
@@ -692,11 +689,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
+                {"data": "id"},
                 {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
             ]
         } );
         }

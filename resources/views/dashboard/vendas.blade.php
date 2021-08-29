@@ -665,13 +665,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "ven_valor_total"},
+                {"data": "tpg_id"},
+                {"data": "ven_status"},
+                {"data": "ven_data"},
             ]
     });
     $('#tb_item_venda').DataTable( {
@@ -679,13 +679,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_id"},
+                {"data": "det_qtde"},
+                {"data": "det_valor_total"},
             ]
     });
     $('#tb_item_venda_ato').DataTable( {
@@ -693,13 +692,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_id"},
+                {"data": "det_qtde"},
+                {"data": "det_valor_total"},
             ]
     });
 
@@ -789,13 +787,13 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "ven_valor_total"},
+                {"data": "tpg_id"},
+                {"data": "ven_status"},
+                {"data": "ven_data"},
             ]
         });
         $('#tb_item_venda').DataTable( {
@@ -803,13 +801,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_id"},
+                {"data": "det_qtde"},
+                {"data": "det_valor_total"},
             ]
         });
         $('#tb_item_venda_ato').DataTable( {
@@ -817,13 +814,12 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "pro_id"},
+                {"data": "det_qtde"},
+                {"data": "det_valor_total"},
             ]
         });
         }

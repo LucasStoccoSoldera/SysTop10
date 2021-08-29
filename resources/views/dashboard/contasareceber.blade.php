@@ -418,13 +418,14 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contasareceber') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "rec_descricao"},
+                {"data": "rec_valor"},
+                {"data": "tipo_pagto"},
+                {"data": "rec_data"},
+                {"data": "rec_status"},
             ]
         });
 
@@ -468,13 +469,14 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.contasareceber') }}",
             columns: [
-                {"data": "usu_id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {"data": "id"},
+                {"data": "rec_descricao"},
+                {"data": "rec_valor"},
+                {"data": "tipo_pagto"},
+                {"data": "rec_data"},
+                {"data": "rec_status"},
             ]
         });
         }
