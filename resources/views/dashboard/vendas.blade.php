@@ -442,8 +442,9 @@
                                         placeholder="Selecione o Status">
                                         <option value="">------------Selecione------------</option>
                                         <option value="1">Em Aberto</option>
-                                        <option value="2">Fechada</option>
-                                        <option value="3">Cancelada</option>
+                                        <option value="2">Faturada</option>
+                                        <option value="3">Fechada</option>
+                                        <option value="4">Cancelada</option>
                                     </select>
                                     <div class="div-feedback">
                                     <span class="invalid-feedback statusVenda_error" role="alert">

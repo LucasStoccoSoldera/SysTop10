@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Transformers;
+namespace App\Transformers;
 
 use App\Models\Contas_a_Receber;
 use League\Fractal\TransformerAbstract;
 
-class ReceberTransformer extends TransformerAbstract
+class ContasaReceberTransformer extends TransformerAbstract
 {
     /**
      * @param \App\Models\Contas_a_Receber $contasaReceber

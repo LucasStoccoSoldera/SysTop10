@@ -6,7 +6,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contas_a_Receber;
-use App\Transformers\ReceberTransformer;
+use App\Transformers\ContasaReceberTransformer;
 
 class ContasaReceberList extends Controller
 {
@@ -23,7 +23,7 @@ class ContasaReceberList extends Controller
 
             $data = Contas_a_Receber::all();
             return  DataTables::eloquent($data)
-            ->setTransformer(new ReceberTransformer)
+            ->setTransformer(new ContasaReceberTransformer)
             ->addColumn('Ações', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
