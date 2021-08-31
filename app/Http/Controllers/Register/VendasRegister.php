@@ -9,6 +9,7 @@ use App\Models\Venda;
 use App\Models\Venda_Detalhe;
 use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
+use App\Models\Estoque;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
@@ -125,6 +126,13 @@ class VendasRegister extends Controller
         $Venda_Detalhe->det_valor_unitario = $request->VUItemVenda;
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
+
+        $Estoque = new Estoque();
+        $Estoque->pro_id = $request->IDProduto;
+        $Estoque->dim_id = $request->IDDimensao;
+        $Estoque->cor_id =  $request->IDCor;
+        $Estoque->est_qtde = $request->qtdeItemVenda * -1;
+        $Estoque->save();
 
         if ($Venda_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);

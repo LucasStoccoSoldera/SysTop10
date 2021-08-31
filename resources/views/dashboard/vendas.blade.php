@@ -668,11 +668,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "ven_valor_total"},
-                {"data": "tpg_id"},
-                {"data": "ven_status"},
-                {"data": "ven_data"},
+                {data: "id"},
+                {data: "ven_valor_total"},
+                {data: "tpg_id"},
+                {data: "ven_status"},
+                {data: "ven_data"},
             ]
     });
     $('#tb_item_venda').DataTable( {
@@ -682,10 +682,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_id"},
-                {"data": "det_qtde"},
-                {"data": "det_valor_total"},
+                {data: "id"},
+                {data: "pro_id"},
+                {data: "det_qtde"},
+                {data: "det_valor_total"},
             ]
     });
     $('#tb_item_venda_ato').DataTable( {
@@ -695,10 +695,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_id"},
-                {"data": "det_qtde"},
-                {"data": "det_valor_total"},
+                {data: "id"},
+                {data: "pro_id"},
+                {data: "det_qtde"},
+                {data: "det_valor_total"},
             ]
     });
 
@@ -790,11 +790,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "ven_valor_total"},
-                {"data": "tpg_id"},
-                {"data": "ven_status"},
-                {"data": "ven_data"},
+                {data: "id"},
+                {data: "ven_valor_total"},
+                {data: "tpg_id"},
+                {data: "ven_status"},
+                {data: "ven_data"},
             ]
         });
         $('#tb_item_venda').DataTable( {
@@ -804,10 +804,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_id"},
-                {"data": "det_qtde"},
-                {"data": "det_valor_total"},
+                {data: "id"},
+                {data: "pro_id"},
+                {data: "det_qtde"},
+                {data: "det_valor_total"},
             ]
         });
         $('#tb_item_venda_ato').DataTable( {
@@ -817,10 +817,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_id"},
-                {"data": "det_qtde"},
-                {"data": "det_valor_total"},
+                {data: "id"},
+                {data: "pro_id"},
+                {data: "det_qtde"},
+                {data: "det_valor_total"},
             ]
         });
         }

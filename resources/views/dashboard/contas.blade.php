@@ -729,23 +729,72 @@
                             </span>
                                 </div>
                         </div>
-                        <div class="form-group" id="form-group">
-                            <label class="modal-label">Fornecedor:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <select type="text" name="IDFornecedor" id="IDFornecedor" class="form-control"
-                                maxlength="50" value="{{ old('IDFornecedor') }}"
-                                placeholder="Selecione com o Fornecedor" autofocus>
-                                <option value="">------------Selecione------------</option>
-                                @foreach ($fornecedores as $fornecedor)
-                                    <option value="{{ $fornecedor['id'] }}">{{ $fornecedor['for_nome'] }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="div-feedback">
-                            <span class="invalid-feedback IDFornecedor_error" role="alert">
-                            </span>
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Descrição:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
+                                    class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
+                                    placeholder="Coloque uma Descrição">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback descricaoItemVenda_error" role="alert">
+                                </span>
+                                    </div>
                             </div>
-                        </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Fornecedor:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="IDFornecedor" id="IDFornecedor" class="form-control"
+                                    maxlength="50" value="{{ old('IDFornecedor') }}"
+                                    placeholder="Selecione com o Fornecedor" autofocus>
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($fornecedores as $fornecedor)
+                                        <option value="{{ $fornecedor['id'] }}">{{ $fornecedor['for_nome'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback IDFornecedor_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Tipo:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="tipoItemCompra" id="tipoItemCompra" class="form-control"
+                                    maxlength="25" value="{{ old('tipoItemCompra') }}"
+                                    placeholder="Selecione o Status">
+                                    <option value="">------------Selecione------------</option>
+                                    <option value="1">Produto Interno</option>
+                                    <option value="2">Protudo Externo</option>
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback tipoItemCompra_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Valor Item:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="valorItemCompra" id="valorItemCompra" class="form-control"
+                                    value="{{ old('valorItemCompra') }}" placeholder="Entre com a Valor">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback valorItemCompra_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Valor Total Item:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra"
+                                    class="valor form-control" disabled value="{{ old('valorTotalItemCompra') }}">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback valorItemCompra_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                </div>
+                    <div id="interno">
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
                                 * </label>
@@ -762,6 +811,59 @@
                             </span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="modal-label">Dimensão:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <select type="text" name="dimensaoItemCompra" id="dimensaoItemCompra" class="form-control"
+                                onkeypress="mascara(this, '### x ### x ###')" maxlength="15"
+                                value="{{ old('dimensaoItemCompra') }}" placeholder="Selecione com o Dimensão">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($dimensoes as $dimensao)
+                                    <option value="{{ $dimensao['id'] }}">
+                                        {{ $dimensao['dim_descricao'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback dimensaoItemCompra_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Cores: </label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <select type="text" name="coresItemCompra" id="coresItemCompra" class="form-control"
+                                maxlength="25" value="{{ old('coresItemCompra') }}"
+                                placeholder="Selecione com o Cores">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($cores as $cor)
+                                    <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback coresItemCompra_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="externo">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
+                                * </label>
+                            <select type="text" name="IDProduto" id="IDProduto" class="form-control" maxlength="50"
+                                value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($produtos as $produto)
+                                    <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback IDProduto_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                    </div>
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Quantidade:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
@@ -773,40 +875,6 @@
                             </span>
                                 </div>
                     </div>
-                </div>
-                    <div class="col-6">
-                        <div class="form-group" id="form-group">
-                            <label class="modal-label">Descrição:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
-                                class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
-                                placeholder="Coloque uma Descrição">
-                                <div class="div-feedback">
-                            <span class="invalid-feedback descricaoItemVenda_error" role="alert">
-                            </span>
-                                </div>
-                        </div>
-                        <div class="form-group" id="form-group">
-                            <label class="modal-label">Valor Item:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="valorItemCompra" id="valorItemCompra" class="form-control"
-                                value="{{ old('valorItemCompra') }}" placeholder="Entre com a Valor">
-                                <div class="div-feedback">
-                            <span class="invalid-feedback valorItemCompra_error" role="alert">
-                            </span>
-                                </div>
-                        </div>
-                        <div class="form-group" id="form-group">
-                            <label class="modal-label">Valor Total Item:</label> <label
-                                style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra"
-                                class="valor form-control" disabled value="{{ old('valorTotalItemCompra') }}">
-                                <div class="div-feedback">
-                            <span class="invalid-feedback valorItemCompra_error" role="alert">
-                            </span>
-                                </div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -826,7 +894,19 @@
 
 @push('ajax')
 <script>
+    var valor = $("#tipoItemCompra").val();
+
+    if(valor == 'Produto Interno'){
+        $("#externo").hide();
+        $("#interno").show();
+    } else {
+        $("#externo").show();
+        $("#interno").hide();
+    }
+
     $(document).ready(function() {
+        $("#externo").hide();
+        $("#interno").hide();
 
         $('#tb_conta').DataTable( {
             paging: true,
@@ -835,11 +915,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "con_descricao"},
-                {"data": "con_valor_final"},
-                {"data": "cc_id"},
-                {"data": "con_data_venc"},
-                {"data": "con_data_pag"},
+                {data: "con_descricao"},
+                {data: "con_valor_final"},
+                {data: "cc_id"},
+                {data: "con_data_venc"},
+                {data: "con_data_pag"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -849,11 +929,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "par_numero"},
-                {"data": "par_conta"},
-                {"data": "tpg_id"},
-                {"data": "par_valor"},
-                {"data": "par_status"},
+                {data: "par_numero"},
+                {data: "par_conta"},
+                {data: "tpg_id"},
+                {data: "par_valor"},
+                {data: "par_status"},
             ]
         });
         $('#tb_item_compra').DataTable( {
@@ -863,10 +943,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "cde_produto"},
-                {"data": "cde_qtde"},
-                {"data": "valor_unitario"},
-                {"data": "valor_final"},
+                {data: "cde_produto"},
+                {data: "cde_qtde"},
+                {data: "valor_unitario"},
+                {data: "valor_final"},
             ]
         });
 
@@ -964,6 +1044,10 @@
                             $('span.' + prefix + '_error').text(val[0]);
                             $('#' + prefix).addClass('is-invalid');
                         });
+                        $.each(data_decoded.error_interno, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
                     }
                 }
             });
@@ -979,11 +1063,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "con_descricao"},
-                {"data": "con_valor_final"},
-                {"data": "cc_id"},
-                {"data": "con_data_venc"},
-                {"data": "con_data_pag"},
+                {data: "con_descricao"},
+                {data: "con_valor_final"},
+                {data: "cc_id"},
+                {data: "con_data_venc"},
+                {data: "con_data_pag"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -993,11 +1077,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "par_numero"},
-                {"data": "par_conta"},
-                {"data": "tpg_id"},
-                {"data": "par_valor"},
-                {"data": "par_status"},
+                {data: "par_numero"},
+                {data: "par_conta"},
+                {data: "tpg_id"},
+                {data: "par_valor"},
+                {data: "par_status"},
             ]
         });
         $('#tb_item_compra').DataTable( {
@@ -1007,10 +1091,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
-                {"data": "cde_produto"},
-                {"data": "cde_qtde"},
-                {"data": "valor_unitario"},
-                {"data": "valor_final"},
+                {data: "cde_produto"},
+                {data: "cde_qtde"},
+                {data: "valor_unitario"},
+                {data: "valor_final"},
             ]
         });
         }

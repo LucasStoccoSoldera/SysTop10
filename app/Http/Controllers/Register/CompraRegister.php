@@ -9,6 +9,7 @@ use App\Models\Caixa;
 use App\Models\Compras;
 use App\Models\Compras_Detalhe;
 use App\Models\Contas_a_Pagar;
+use App\Models\Estoque;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Parcelas;
@@ -114,31 +115,75 @@ class CompraRegister extends Controller
             [
                 'IDItemCompra' => ['required', 'integer'],
                 'IDFornecedor' => ['required', 'integer'],
-                'IDProduto' => ['required', 'integer'],
                 'qtdeItemCompra' => ['required', 'integer'],
                 'descricaoItemCompra' => ['required', 'string'],
             ],
             [
                 'IDItemCompra.required' => 'ID da compra obrigatório.',
                 'IDFornecedor.required' => 'Fornecedor obrigatório.',
-                'IDProduto.required' => 'Produto obrigatório.',
                 'qtdeItemCompra.required' => 'Quantidade obrigatória.',
                 'descricaoItemCompra.required' => 'Descrição obrigatória.',
             ]
         );
 
-        if ($validator->fails()) {
-            return response()->json(['status' => 0, 'error' => $validator->errors()]);
+
+        if ($request->tipoItemCompra == 'Produto Interno') {
+            $validator_interno = Validator::make(
+                $request->all(),
+                [
+                    'IDProduto' => ['required', 'integer'],
+                    'dimensaoItemCompra' => ['required', 'integer'],
+                    'coresItemCompra' => ['required', 'integer'],
+
+                ],
+                [
+                    'IDProduto.required' => 'Produto obrigatório.',
+                    'dimensaoItemCompra.cpf' => 'Dimensão obrigatória.',
+                    'coresItemCompra.cpf' => 'Cor obrigatória.',
+                ]
+            );
+            $interno = true;
+        } else {
+            $validator_interno = Validator::make(
+                $request->all(),
+                [
+                    'IDProduto' => ['required', 'integer'],
+                ],
+                [
+                    'IDProduto.required' => 'Produto obrigatório.',
+                ]
+            );
+            $interno = false;
+        }
+
+        if ($validator->fails() || $validator_interno->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_interno' => $validator_interno->errors()]);
         }
         $Compras_Detalhe = new Compras_Detalhe;
         $Compras_Detalhe->com_id = $request->IDItemCompra;
         $Compras_Detalhe->for_id = $request->IDFornecedor;
+        $Compras_Detalhe->cde_tipo = $request->tipoItemCompra;
+        if($interno = true){
         $Compras_Detalhe->cde_produto = $request->IDProduto;
+        $Compras_Detalhe->dim_id = $request->dimensaoItemCompra;
+        $Compras_Detalhe->cor_id = $request->coresItemCompra;
+        } else{
+        $Compras_Detalhe->cde_produto = $request->IDProduto;
+        }
         $Compras_Detalhe->cde_qtde = $request->qtdeItemCompra;
         $Compras_Detalhe->cde_valoritem = $request->valorItemCompra;
         $Compras_Detalhe->cde_valortotal = $request->valorTotalItemCompra;
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
         $Compras_Detalhe->save();
+
+        if($interno = true){
+        $Estoque = new Estoque();
+        $Estoque->pro_id = $request->IDProduto;
+        $Estoque->dim_id = $request->IDDimensao;
+        $Estoque->cor_id =  $request->IDCor;
+        $Estoque->est_qtde = $request->qtdeItemCompra;
+        $Estoque->save();
+        }
 
         if ($Compras_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);

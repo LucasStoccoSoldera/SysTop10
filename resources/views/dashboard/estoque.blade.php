@@ -276,9 +276,9 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Quantidade:</label> <label
+                                    <label class="modal-label">Quantidade (Saídas = -):</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="number" name="qtdeEstoque" id="qtdeEstoque" class="form-control"
+                                    <input type="text" name="qtdeEstoque" id="qtdeEstoque" class="form-control"
                                         maxlength="6" value="{{ old('qtdeEstoque') }}"
                                         placeholder="Entre com a Quantidade" autofocus>
                                     <span class="invalid-feedback qtdeEstoque_error" role="alert">
@@ -340,11 +340,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "pro_id"},
-                {"data": "est_qtde"},
-                {"data": "dim_id"},
-                {"data": "cor_id"},
-                {"data": "created_at"},
+                {data: "pro_id"},
+                {data: "est_qtde"},
+                {data: "dim_id"},
+                {data: "cor_id"},
+                {data: "created_at"},
             ]
         });
         $('#tb_produto_estoque').DataTable( {
@@ -354,9 +354,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "pro_id"},
-                {"data": "est_qtde"},
-                {"data": "est_status"},
+                {data: "pro_id"},
+                {data: "est_qtde"},
+                {data: "est_status"},
             ]
         });
 
@@ -402,11 +402,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "pro_id"},
-                {"data": "est_qtde"},
-                {"data": "dim_id"},
-                {"data": "cor_id"},
-                {"data": "created_at"},
+                {data: "pro_id"},
+                {data: "est_qtde"},
+                {data: "dim_id"},
+                {data: "cor_id"},
+                {data: "created_at"},
             ]
         });
         $('#tb_produto_estoque').DataTable( {
@@ -416,9 +416,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {"data": "pro_id"},
-                {"data": "est_qtde"},
-                {"data": "est_status"},
+                {data: "pro_id"},
+                {data: "est_qtde"},
+                {data: "est_status"},
             ]
         });
         }
