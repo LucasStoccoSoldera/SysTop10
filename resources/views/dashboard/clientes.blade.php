@@ -406,11 +406,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.cliente') }}",
             columns: [
-                {"data": "cli_nome"},
-                {"data": "cli_cpf_cnpj"},
-                {"data": "cli_celular"},
-                {"data": "cli_cidade"},
-                {"data": "created_at"},
+                {data: 'cli_nome'},
+                {data: 'cli_cpf_cnpj'},
+                {data: 'cli_celular'},
+                {data: 'cli_cidade'},
+                {data: 'created_at'},
             ]
         });
 
@@ -464,11 +464,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "cli_nome"},
-                {"data": "cli_cpf_cnpj"},
-                {"data": "cli_celular"},
-                {"data": "cli_cidade"},
-                {"data": "created_at"},
+                {data: 'cli_nome'},
+                {data: 'cli_cpf_cnpj'},
+                {data: 'cli_celular'},
+                {data: 'cli_cidade'},
+                {data: 'created_at'},
             ]
         });
         }

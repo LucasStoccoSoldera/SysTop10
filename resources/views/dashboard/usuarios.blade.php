@@ -548,11 +548,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {data: "id"},
+                {data: "usu_nome_completo"},
+                {data: "car_descricao"},
+                {data: "usu_telefone"},
+                {data: "usu_data_cadastro"},
             ]
         } );
         $('#tb_cargo').DataTable( {
@@ -562,8 +562,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "id"},
-                {"data": "car_descricao"},
+                {data: "id"},
+                {data: "car_descricao"},
             ]
         } );
 
@@ -675,11 +675,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "id"},
-                {"data": "usu_nome_completo"},
-                {"data": "car_descricao"},
-                {"data": "usu_telefone"},
-                {"data": "usu_data_cadastro"},
+                {data: "id"},
+                {data: "usu_nome_completo"},
+                {data: "car_descricao"},
+                {data: "usu_telefone"},
+                {data: "usu_data_cadastro"},
             ]
         } );
         $('#tb_cargo').DataTable( {
@@ -689,8 +689,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {"data": "id"},
-                {"data": "car_descricao"},
+                {data: "id"},
+                {data: "car_descricao"},
             ]
         } );
         }

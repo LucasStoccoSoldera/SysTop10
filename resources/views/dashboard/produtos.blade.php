@@ -871,10 +871,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_nome"},
-                {"data": "tpp_id"},
-                {"data": "pro_precovenda"},
+                {data: "id"},
+                {data: "pro_nome"},
+                {data: "tpp_id"},
+                {data: "pro_precovenda"},
             ]
         } );
         $('#tb_tipo_produto').DataTable( {
@@ -884,8 +884,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "tpp_descricao"},
+                {data: "id"},
+                {data: "tpp_descricao"},
             ]
         } );
         $('#tb_material').DataTable( {
@@ -895,8 +895,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "mat_descricao"},
+                {data: "id"},
+                {data: "mat_descricao"},
             ]
         } );
         $('#tb_dimensao').DataTable( {
@@ -906,8 +906,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "dim_descricao"},
+                {data: "id"},
+                {data: "dim_descricao"},
             ]
         } );
         $('#tb_cor').DataTable( {
@@ -917,9 +917,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "cor_nome"},
-                {"data": "cor_hex_especial"},
+                {data: "id"},
+                {data: "cor_nome"},
+                {data: "cor_hex_especial"},
             ]
         } );
         $('#tb_pacote').DataTable( {
@@ -929,9 +929,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pac_dimensao"},
-                {"data": "pac_descricao"},
+                {data: "id"},
+                {data: "pac_dimensao"},
+                {data: "pac_descricao"},
             ]
         } );
 
@@ -1145,10 +1145,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pro_nome"},
-                {"data": "tpp_id"},
-                {"data": "pro_precovenda"},
+                {data: "id"},
+                {data: "pro_nome"},
+                {data: "tpp_id"},
+                {data: "pro_precovenda"},
             ]
         } );
         $('#tb_tipo_produto').DataTable( {
@@ -1158,8 +1158,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "tpp_descricao"},
+                {data: "id"},
+                {data: "tpp_descricao"},
             ]
         } );
         $('#tb_material').DataTable( {
@@ -1169,8 +1169,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "mat_descricao"},
+                {data: "id"},
+                {data: "mat_descricao"},
             ]
         } );
         $('#tb_dimensao').DataTable( {
@@ -1180,8 +1180,8 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "dim_descricao"},
+                {data: "id"},
+                {data: "dim_descricao"},
             ]
         } );
         $('#tb_cor').DataTable( {
@@ -1191,9 +1191,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "cor_nome"},
-                {"data": "cor_hex_especial"},
+                {data: "id"},
+                {data: "cor_nome"},
+                {data: "cor_hex_especial"},
             ]
         } );
         $('#tb_pacote').DataTable( {
@@ -1203,9 +1203,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pac_dimensao"},
-                {"data": "pac_descricao"},
+                {data: "id"},
+                {data: "pac_dimensao"},
+                {data: "pac_descricao"},
             ]
         } );
         }

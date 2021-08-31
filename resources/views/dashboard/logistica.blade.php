@@ -339,9 +339,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pac_dimensao"},
-                {"data": "pac_descricao"},
+                {data: "id"},
+                {data: "pac_dimensao"},
+                {data: "pac_descricao"},
             ]
         });
         $('#tb_transportadora').DataTable( {
@@ -351,10 +351,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "trans_nome"},
-                {"data": "trans_telefone"},
-                {"data": "trans_limite_transporte"},
+                {data: "id"},
+                {data: "trans_nome"},
+                {data: "trans_telefone"},
+                {data: "trans_limite_transporte"},
             ]
         });
         $('#tb_logistica').DataTable( {
@@ -364,9 +364,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "log_pacote"},
-                {"data": "log_transportadora"},
+                {data: "id"},
+                {data: "log_pacote"},
+                {data: "log_transportadora"},
             ]
         });
 
@@ -445,9 +445,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "pac_dimensao"},
-                {"data": "pac_descricao"},
+                {data: "id"},
+                {data: "pac_dimensao"},
+                {data: "pac_descricao"},
             ]
         });
         $('#tb_transportadora').DataTable( {
@@ -457,10 +457,10 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "trans_nome"},
-                {"data": "trans_telefone"},
-                {"data": "trans_limite_transporte"},
+                {data: "id"},
+                {data: "trans_nome"},
+                {data: "trans_telefone"},
+                {data: "trans_limite_transporte"},
             ]
         });
         $('#tb_logistica').DataTable( {
@@ -470,9 +470,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {"data": "id"},
-                {"data": "log_pacote"},
-                {"data": "log_transportadora"},
+                {data: "id"},
+                {data: "log_pacote"},
+                {data: "log_transportadora"},
             ]
         });
         }

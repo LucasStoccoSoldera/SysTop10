@@ -420,12 +420,12 @@
             serverside: true,
             ajax: "{{ route('admin.list.contasareceber') }}",
             columns: [
-                {"data": "id"},
-                {"data": "rec_descricao"},
-                {"data": "rec_valor"},
-                {"data": "tipo_pagto"},
-                {"data": "rec_data"},
-                {"data": "rec_status"},
+                {data: "id"},
+                {data: "rec_descricao"},
+                {data: "rec_valor"},
+                {data: "tipo_pagto"},
+                {data: "rec_data"},
+                {data: "rec_status"},
             ]
         });
 
@@ -471,12 +471,12 @@
             serverside: true,
             ajax: "{{ route('admin.list.contasareceber') }}",
             columns: [
-                {"data": "id"},
-                {"data": "rec_descricao"},
-                {"data": "rec_valor"},
-                {"data": "tipo_pagto"},
-                {"data": "rec_data"},
-                {"data": "rec_status"},
+                {data: "id"},
+                {data: "rec_descricao"},
+                {data: "rec_valor"},
+                {data: "tipo_pagto"},
+                {data: "rec_data"},
+                {data: "rec_status"},
             ]
         });
         }

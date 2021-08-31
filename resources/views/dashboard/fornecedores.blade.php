@@ -359,11 +359,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.fornecedor') }}",
             columns: [
-                {"data": "id"},
-                {"data": "for_nome"},
-                {"data": "for_cpf_cnpj"},
-                {"data": "for_telefone"},
-                {"data": "for_cidade"},
+                {data: "id"},
+                {data: "for_nome"},
+                {data: "for_cpf_cnpj"},
+                {data: "for_telefone"},
+                {data: "for_cidade"},
             ]
             });
 
@@ -416,11 +416,11 @@
             serverside: true,
             ajax: "{{ route('admin.list.fornecedor') }}",
             columns: [
-                {"data": "id"},
-                {"data": "for_nome"},
-                {"data": "for_cpf_cnpj"},
-                {"data": "for_telefone"},
-                {"data": "for_cidade"},
+                {data: "id"},
+                {data: "for_nome"},
+                {data: "for_cpf_cnpj"},
+                {data: "for_telefone"},
+                {data: "for_cidade"},
             ]
             });
         }
