@@ -245,7 +245,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalReturnDelete" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="modalReturnDelete" style="display: none; top: 25%;" aria-hidden="true">
         <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: red">
