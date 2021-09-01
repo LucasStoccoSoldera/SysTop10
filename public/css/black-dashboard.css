@@ -23202,6 +23202,7 @@ font-size: 16px;
     font-weight: bold;
     color:#fff;
     float: right;
+    border-radius: 20px 20px 20px 20px;
 }
 
 .previous{
@@ -23210,4 +23211,5 @@ font-size: 16px;
     color:#fff;
     float: left;
     margin-right: 15px;
+    border-radius: 20px 20px 20px 20px;
 }
