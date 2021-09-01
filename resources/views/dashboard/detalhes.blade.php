@@ -299,7 +299,7 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
-            
+
             $("#formRegisterCentroCusto").on('submit', function(e) {
 
                 e.preventDefault();
@@ -364,7 +364,7 @@
                     }
                 });
             });
-/*
+{{--
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
         e.preventDefault();
@@ -388,7 +388,7 @@
                 }
             });
         }
-    ); */
+    ); --}}
 
     $("#formExcluir").on('submit', function(e) {
 

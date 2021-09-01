@@ -348,7 +348,7 @@
             ]
         });
         $('#tb_produto_estoque').DataTable( {
-            paging: true,
+            paging: false,
             searching: false,
             processing: true,
             serverside: true,
@@ -410,7 +410,7 @@
             ]
         });
         $('#tb_produto_estoque').DataTable( {
-            paging: true,
+            paging: false,
             searching: false,
             processing: true,
             serverside: true,
