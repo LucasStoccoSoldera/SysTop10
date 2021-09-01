@@ -927,7 +927,7 @@
             ]
         });
         $('#tb_parcela').DataTable( {
-            paging: true,
+            paging: false,
             searching: false,
             processing: true,
             serverside: true,
@@ -1075,7 +1075,7 @@
             ]
         });
         $('#tb_parcela').DataTable( {
-            paging: true,
+            paging: false,
             searching: false,
             processing: true,
             serverside: true,
