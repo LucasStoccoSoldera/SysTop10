@@ -1,0 +1,5 @@
+Corrigir datable spamando alerta
+Corrigir datable não reinicializa (excluir e inserir novamente?)
+Cadastros arrementendo, problema no preventDefault
+Modal cancelamento e excluir bugão
+

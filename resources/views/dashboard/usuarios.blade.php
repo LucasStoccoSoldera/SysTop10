@@ -550,7 +550,7 @@
             columns: [
                 {data: "id"},
                 {data: "usu_nome_completo"},
-                {data: "car_descricao"},
+                {data: "car_id"},
                 {data: "usu_telefone"},
                 {data: "usu_data_cadastro"},
             ]
@@ -667,7 +667,6 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function(e) {
-        e.preventDefault();
         $('#tb_usuario').DataTable( {
             paging: true,
             searching: false,
@@ -677,7 +676,7 @@
             columns: [
                 {data: "id"},
                 {data: "usu_nome_completo"},
-                {data: "car_descricao"},
+                {data: "car_id"},
                 {data: "usu_telefone"},
                 {data: "usu_data_cadastro"},
             ]

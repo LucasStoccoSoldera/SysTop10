@@ -15,10 +15,10 @@ class ItemCompraTransformer extends TransformerAbstract
     public function transform(Compras_Detalhe $ItemCompra)
     {
         return [
-            'cde_produto' => (int) $ItemCompra->id,
-            'cde_qtde' => $ItemCompra->id,
-            'valor_unitario' => (string) $ItemCompra->id,
-            'valor_final' => (string) $ItemCompra->id,
+            'cde_produto' => (int) $ItemCompra->cde_produto,
+            'cde_qtde' => $ItemCompra->cde_qtde,
+            'cde_valoritem' => (string) $ItemCompra->cde_valoritem,
+            'cde_valortotal' => (string) $ItemCompra->cde_valortotal,
         ];
     }
 }

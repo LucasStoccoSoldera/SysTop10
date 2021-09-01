@@ -365,8 +365,8 @@
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
                 {data: "id"},
-                {data: "log_pacote"},
-                {data: "log_transportadora"},
+                {data: "pac_id"},
+                {data: "trans_id"},
             ]
         });
 
@@ -471,8 +471,8 @@
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
                 {data: "id"},
-                {data: "log_pacote"},
-                {data: "log_transportadora"},
+                {data: "pac_id"},
+                {data: "trans_id"},
             ]
         });
         }

@@ -15,10 +15,10 @@ class FornecedoresTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $fornecedores->id,
-            'for_nome' => $fornecedores->id,
-            'for_cpf_cnpj' => (string) $fornecedores->id,
-            'for_telefone' => (string) $fornecedores->id,
-            'for_cidade' => $fornecedores->id,
+            'for_nome' => $fornecedores->for_nome,
+            'for_cpf_cnpj' => (string) $fornecedores->for_cpf_cnpj,
+            'for_telefone' => (string) $fornecedores->for_telefone,
+            'for_cidade' => $fornecedores->for_cidade,
         ];
     }
 }

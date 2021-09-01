@@ -16,7 +16,7 @@ class UserTransformer extends TransformerAbstract
         return [
             'id' => (int) $user->id,
             'usu_nome_completo' => $user->usu_nome_completo,
-            'car_descricao' => $user->car_descricao,
+            'car_id' => $user->car_id,
             'usu_telefone' => (string) $user->usu_telefone,
             'usu_data_cadastro' => (string) $user->usu_data_cadastro,
         ];

@@ -21,7 +21,6 @@ class UserList extends Controller
 
         $data = Usuario::query();
 
-
         if($request->ajax()){
 
             $data = Usuario::query();

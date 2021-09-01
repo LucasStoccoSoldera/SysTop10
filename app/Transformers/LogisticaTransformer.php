@@ -15,8 +15,8 @@ class LogisticaTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $logistica->id,
-            'log_pacote' => $logistica->log_pacote,
-            'log_transportadora' => $logistica->log_transportadora,
+            'pac_id' => $logistica->pac_id,
+            'trans_id' => $logistica->trans_id,
         ];
     }
 

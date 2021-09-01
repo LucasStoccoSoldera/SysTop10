@@ -949,8 +949,8 @@
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
-                {data: "valor_unitario"},
-                {data: "valor_final"},
+                {data: "cde_valoritem"},
+                {data: "cde_valortotal"},
             ]
         });
 
@@ -1097,8 +1097,8 @@
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
-                {data: "valor_unitario"},
-                {data: "valor_final"},
+                {data: "cde_valoritem"},
+                {data: "cde_valortotal"},
             ]
         });
         }
