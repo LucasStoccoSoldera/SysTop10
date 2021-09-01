@@ -10,6 +10,8 @@ use App\Models\Parcelas;
 use App\Models\Produto;
 use App\Models\Fornecedores;
 use App\Models\Compras_Detalhe;
+use App\Models\Dimensao;
+use App\Models\Cor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -44,6 +46,9 @@ class ContasController extends Controller
 
         $data7 = Parcelas::all();
 
+        $data8 = Dimensao::all();
+        $data9 = Cor::all();
+
 
 
         return view('dashboard.contas', [
@@ -57,7 +62,9 @@ class ContasController extends Controller
             'ItensCompra' => $data4,
             'fornecedores' => $data5,
             'produtos' => $data6,
-            'parcelas' => $data7
+            'parcelas' => $data7,
+            'dimensoes' => $data8,
+            'cores' => $data9,
 
         ]);
     }
