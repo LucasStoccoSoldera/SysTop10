@@ -58,6 +58,8 @@ class ContasRegister extends Controller
         $Contas_a_Pagar->con_data_pag = $request->datapContas;
         $Contas_a_Pagar->tpg_id = $request->tpgpagtoContas;
         $Contas_a_Pagar->cc_id = $request->centrocustoContas;
+        $Contas_a_Pagar->con_status= "Aberto";
+        $Contas_a_Pagar->con_compra= "Conta";
         $Contas_a_Pagar->save();
 
         $Caixa = new Caixa();

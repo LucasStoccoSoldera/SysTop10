@@ -20,6 +20,8 @@ class Contas_a_Pagar extends Model
         'con_data_venc',
         'con_parcelas',
         'con_data_pag',
+        'con_status',
+        'con_compra',
     ];
 }
 

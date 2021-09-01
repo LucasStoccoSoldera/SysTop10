@@ -236,9 +236,12 @@
                         <table class="table tablesorter " id="tb_conta">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 30%">
+                                    <th style="width: 25%">
                                         Descrição
                                     </th>
+                                    <th style="width: 10%">
+                                        Class.
+                                     </th>
                                     <th style="width: 20%">
                                         Valor Final
                                     </th>
@@ -248,9 +251,9 @@
                                     <th style="width: 15%">
                                         Data de vencimento
                                     </th>
-                                    <th style="width: 15%">
-                                        Data de Pagamento
-                                    </th>
+                                    <th style="width: 10%">
+                                        Status
+                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -916,10 +919,11 @@
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
                 {data: "con_descricao"},
+                {data: "con_compra"},
                 {data: "con_valor_final"},
                 {data: "cc_id"},
                 {data: "con_data_venc"},
-                {data: "con_data_pag"},
+                {data: "con_status"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -927,7 +931,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
+            ajax: "{{ route('admin.list.parcelas') }}",
             columns: [
                 {data: "par_numero"},
                 {data: "par_conta"},
@@ -941,7 +945,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
+            ajax: "{{ route('admin.list.itemcompra') }}",
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
@@ -1067,7 +1071,7 @@
                 {data: "con_valor_final"},
                 {data: "cc_id"},
                 {data: "con_data_venc"},
-                {data: "con_data_pag"},
+                {data: "con_status"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -1075,7 +1079,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
+            ajax: "{{ route('admin.list.parcelas') }}",
             columns: [
                 {data: "par_numero"},
                 {data: "par_conta"},
@@ -1089,7 +1093,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
+            ajax: "{{ route('admin.list.itemcompra') }}",
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},

@@ -76,6 +76,8 @@ class CompraRegister extends Controller
         $Conta->con_data_venc = $request->datapagCompras;
         $Conta->con_parcelas = $request->parcelasCompras;
         $Conta->con_data_pag = "";
+        $Conta->con_status= "Aberto";
+        $Conta->con_compra= "Compra";
         $Conta->save();
 
         $Caixa = new Caixa();

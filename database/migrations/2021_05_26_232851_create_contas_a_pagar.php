@@ -24,6 +24,8 @@ class CreateContasAPagar extends Migration
             $table->string('con_parcelas');
             $table->date('con_data_venc');
             $table->date('con_data_pag');
+            $table->string('con_status');
+            $table->string('con_compra');
             $table->timestamps();
 
             $table->foreign('tpg_id')->references('id')->on('tipopagto');
