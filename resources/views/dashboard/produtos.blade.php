@@ -324,8 +324,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Custo:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="PCProduto" id="PCProduto" class="form-control"
-                                        onkeypress="mascara(this, 'R$####,##')" maxlength="9"
+                                    <input type="text" name="PCProduto" id="PCProduto" class="dinheiro form-control"
+                                        maxlength="9"
                                         value="{{ old('PCProduto') }}" placeholder="Entre com o Preço de Custo">
                                         <div class="div-feedback">
                                     <span class="invalid-feedback PCProduto_error" role="alert">
@@ -335,8 +335,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="PVProduto" id="PCVenda" class="form-control"
-                                        onkeypress="mascara(this, 'R$####,##')" maxlength="9"
+                                    <input type="text" name="PVProduto" id="PCVenda" class=" dinheiro form-control"
+                                        maxlength="9"
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
                                         <div class="div-feedback">
                                     <span class="invalid-feedback PCVenda_error" role="alert">
