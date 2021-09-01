@@ -337,7 +337,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.logistica') }}",
+            ajax: "{{ route('admin.list.pacote') }}",
             columns: [
                 {data: "id"},
                 {data: "pac_dimensao"},
@@ -349,7 +349,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.logistica') }}",
+            ajax: "{{ route('admin.list.transportadora') }}",
             columns: [
                 {data: "id"},
                 {data: "trans_nome"},
@@ -443,7 +443,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.logistica') }}",
+            ajax: "{{ route('admin.list.pacote') }}",
             columns: [
                 {data: "id"},
                 {data: "pac_dimensao"},
@@ -455,7 +455,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.logistica') }}",
+            ajax: "{{ route('admin.list.transportadora') }}",
             columns: [
                 {data: "id"},
                 {data: "trans_nome"},

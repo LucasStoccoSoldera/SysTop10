@@ -680,7 +680,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.vendas') }}",
+            ajax: "{{ route('admin.list.itemvenda') }}",
             columns: [
                 {data: "id"},
                 {data: "pro_id"},
@@ -693,7 +693,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.vendas') }}",
+            ajax: "{{ route('admin.list.itemvendaato') }}",
             columns: [
                 {data: "id"},
                 {data: "pro_id"},
@@ -802,7 +802,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.vendas') }}",
+            ajax: "{{ route('admin.list.itemvenda') }}",
             columns: [
                 {data: "id"},
                 {data: "pro_id"},
@@ -815,7 +815,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.vendas') }}",
+            ajax: "{{ route('admin.list.itemvendaato') }}",
             columns: [
                 {data: "id"},
                 {data: "pro_id"},

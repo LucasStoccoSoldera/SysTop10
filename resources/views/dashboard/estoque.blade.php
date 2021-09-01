@@ -352,7 +352,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.estoque') }}",
+            ajax: "{{ route('admin.list.estoqueproduto') }}",
             columns: [
                 {data: "pro_id"},
                 {data: "est_qtde"},
@@ -414,7 +414,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.estoque') }}",
+            ajax: "{{ route('admin.list.estoqueproduto') }}",
             columns: [
                 {data: "pro_id"},
                 {data: "est_qtde"},

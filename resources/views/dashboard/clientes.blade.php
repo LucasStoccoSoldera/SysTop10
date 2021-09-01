@@ -462,7 +462,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.cliente') }}",
             columns: [
                 {data: 'cli_nome'},
                 {data: 'cli_cpf_cnpj'},

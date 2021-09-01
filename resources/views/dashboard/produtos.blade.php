@@ -882,7 +882,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.tipoproduto') }}",
             columns: [
                 {data: "id"},
                 {data: "tpp_descricao"},
@@ -893,7 +893,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.material') }}",
             columns: [
                 {data: "id"},
                 {data: "mat_descricao"},
@@ -904,7 +904,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.dimensao') }}",
             columns: [
                 {data: "id"},
                 {data: "dim_descricao"},
@@ -915,7 +915,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.cor') }}",
             columns: [
                 {data: "id"},
                 {data: "cor_nome"},
@@ -927,7 +927,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.pacote') }}",
             columns: [
                 {data: "id"},
                 {data: "pac_dimensao"},
@@ -1156,7 +1156,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.tipoproduto') }}",
             columns: [
                 {data: "id"},
                 {data: "tpp_descricao"},
@@ -1167,7 +1167,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.material') }}",
             columns: [
                 {data: "id"},
                 {data: "mat_descricao"},
@@ -1178,7 +1178,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.dimensao') }}",
             columns: [
                 {data: "id"},
                 {data: "dim_descricao"},
@@ -1189,7 +1189,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.cor') }}",
             columns: [
                 {data: "id"},
                 {data: "cor_nome"},
@@ -1201,7 +1201,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
+            ajax: "{{ route('admin.list.pacote') }}",
             columns: [
                 {data: "id"},
                 {data: "pac_dimensao"},

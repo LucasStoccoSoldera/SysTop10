@@ -560,7 +560,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.cargo') }}",
             columns: [
                 {data: "id"},
                 {data: "car_descricao"},
@@ -687,7 +687,7 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
+            ajax: "{{ route('admin.list.cargo') }}",
             columns: [
                 {data: "id"},
                 {data: "car_descricao"},
