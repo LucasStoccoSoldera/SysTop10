@@ -19,19 +19,16 @@ class UserList extends Controller
         $dado2 = Usuario::where('car_id', '1')->count();
         $dado3 = Usuario::where('car_id', '2' && '3')->count();
 
-        $data = Usuario::all();
-        $data2 = Cargo::all();
-        $data3 = Privilegio::all();
+        $data = Usuario::query();
 
 
         if($request->ajax()){
 
-            $data = Usuario::all();
-            $data2 = Cargo::all();
+            $data = Usuario::query();
 
-            return  [DataTables::eloquent($data)
+            return  DataTables::eloquent($data)
             ->setTransformer(new UserTransformer)
-            ->addColumn('Ações', function($data){
+            ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -44,27 +41,7 @@ class UserList extends Controller
             })
 
             ->rawColumns(['action'])
-            ->make(true)
-
-            ,
-
-                DataTables::eloquent($data2)
-                ->setTransformer(new CargoTransformer)
-                ->addColumn('Ações', function($data2){
-
-                $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.cargo') .'"
-                style="padding: 11px 25px;"><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
-            ->rawColumns(['action'])
-            ->make(true)
-        ];
+            ->toJson();
         }
     }
 }

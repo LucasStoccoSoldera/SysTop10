@@ -12,20 +12,18 @@ class ClienteList extends Controller
 {
 
     public function listCliente(Request $request){
-
+        
         $dado1 = Cliente::count();
         $dado2 = Cliente::count();
         $dado3 = Cliente::count();
 
-        $data = Cliente::all();
-
         if($request->ajax()){
 
-            $data = Cliente::all();
+            $data = Cliente::query();
 
             return  DataTables::eloquent($data)
             ->setTransformer(new ClienteTransformer)
-            ->addColumn('Ações', function($data){
+            ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -37,7 +35,7 @@ class ClienteList extends Controller
                 return $btn;
             })
             ->rawColumns(['action'])
-            ->make(true);
+            ->toJson();
         }
     }
 }

@@ -39,18 +39,32 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Autocomplete_usu_usu', [App\Http\Controllers\AutocompleteController::class, 'Usu_Nome'])->name('admin.autocomplete.usu.nome');
     Route::get('/admin/Autocomplete_ven_cli', [App\Http\Controllers\AutocompleteController::class, 'Ven_Cliente'])->name('admin.autocomplete.ven.cliente');
 
-    Route::resource('user', UserList::class);
-    Route::resource('cliente', ClienteList::class);
-    Route::resource('financeiro', FinanceiroList::class);
-    Route::resource('contas', ContasList::class);
-    Route::resource('contasareceber', ContasaReceberList::class);
-    Route::resource('vendas', VendasList::class);
-    Route::resource('produto', ProdutosList::class);
-    Route::resource('estoque', EstoqueList::class);
-    Route::resource('fornecedor', FornecedoresList::class);
-    Route::resource('detalhe', DetalhesList::class);
-    Route::resource('logistica', LogisticaList::class);
-    
+    Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');
+    Route::get('/admin/List_Cargo', [App\Http\Controllers\Lista\CargoList::class, 'listCargo'])->name('admin.list.cargo');
+    Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');
+    Route::get('/admin/List_Financeiro', [App\Http\Controllers\Lista\FinanceiroList::class, 'listFinanceiro'])->name('admin.list.financeiro');
+    Route::get('/admin/List_Contas', [App\Http\Controllers\Lista\ContasList::class, 'listContas'])->name('admin.list.contas');
+    Route::get('/admin/List_Parcelas', [App\Http\Controllers\Lista\ParcelasList::class, 'listParcelas'])->name('admin.list.parcelas');
+    Route::get('/admin/List_Compra', [App\Http\Controllers\Lista\CompraList::class, 'listCompra'])->name('admin.list.compra');
+    Route::get('/admin/List_ItemCompra', [App\Http\Controllers\Lista\ItemCompraList::class, 'listItemCompra'])->name('admin.list.itemcompra');
+    Route::get('/admin/List_ContasaReceber', [App\Http\Controllers\Lista\ContasaReceberList::class, 'listContasaReceber'])->name('admin.list.contasareceber');
+    Route::get('/admin/List_Vendas', [App\Http\Controllers\Lista\VendasList::class, 'listVendas'])->name('admin.list.vendas');
+    Route::get('/admin/List_ItemVenda', [App\Http\Controllers\Lista\ItemVendaList::class, 'listItemVenda'])->name('admin.list.itemvenda');
+    Route::get('/admin/List_ItemVendaAto', [App\Http\Controllers\Lista\ItemVendaAtoList::class, 'listItemVendaAto'])->name('admin.list.itemvendaato');
+    Route::get('/admin/List_Produto', [App\Http\Controllers\Lista\ProdutosList::class, 'listProduto'])->name('admin.list.produto');
+    Route::get('/admin/List_Material', [App\Http\Controllers\Lista\MaterialList::class, 'listMaterial'])->name('admin.list.material');
+    Route::get('/admin/List_TipoProduto', [App\Http\Controllers\Lista\TipoProdutoList::class, 'listTipoProduto'])->name('admin.list.tipoproduto');
+    Route::get('/admin/List_Dimensao', [App\Http\Controllers\Lista\DimensaoList::class, 'listDimensao'])->name('admin.list.dimensao');
+    Route::get('/admin/List_Cor', [App\Http\Controllers\Lista\CorList::class, 'listCor'])->name('admin.list.cor');
+    Route::get('/admin/List_Pacote', [App\Http\Controllers\Lista\PacoteList::class, 'listPacote'])->name('admin.list.pacote');
+    Route::get('/admin/List_Estoque', [App\Http\Controllers\Lista\EstoqueList::class, 'listEstoque'])->name('admin.list.estoque');
+    Route::get('/admin/List_EstoqueProduto', [App\Http\Controllers\Lista\EstoqueProdutoList::class, 'listEstoqueProduto'])->name('admin.list.estoqueproduto');
+    Route::get('/admin/List_Fornecedor', [App\Http\Controllers\Lista\FornecedoresList::class, 'listFornecedores'])->name('admin.list.fornecedor');
+    Route::get('/admin/List_CentroCusto', [App\Http\Controllers\Lista\CentroCustoList::class, 'listCentroCusto'])->name('admin.list.centrocusto');
+   Route::get('/admin/List_TipoPagto', [App\Http\Controllers\Lista\TipoPagtoList::class, 'listTipoPagto'])->name('admin.list.tipopagto');
+    Route::get('/admin/List_Transportadora', [App\Http\Controllers\Lista\TransportadoraList::class, 'listTransportadora'])->name('admin.list.transportadora');
+    Route::get('/admin/List_Logistica', [App\Http\Controllers\Lista\LogisticaList::class, 'listLogistica'])->name('admin.list.logistica');
+
     Route::post('/admin/Usuario/Registrar_usuario', [App\Http\Controllers\Register\UserRegister::class, 'createUser'])->name('admin.create.user');
     Route::post('/admin/Usuario/Registrar_cargo', [App\Http\Controllers\Register\CargoRegister::class, 'createCargo'])->name('admin.create.cargo');
     Route::post('/admin/Usuario/Registrar_privilegio', [App\Http\Controllers\Register\PrivilegioRegister::class, 'createPrivilegio'])->name('admin.create.privilegio');

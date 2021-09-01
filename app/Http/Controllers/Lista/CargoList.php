@@ -2,33 +2,28 @@
 
 namespace App\Http\Controllers\Lista;
 
-use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\Controller;
-use App\Models\Contas_a_Pagar;
-use App\Transformers\ContasTransformer;
+use App\Models\Cargo;
+use App\Transformers\CargoTransformer;
 
-class ContasList extends Controller
+class CargoList extends Controller
 {
-    public function listContas(Request $request){
-
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
+    public function listCargo(Request $request){
 
         if($request->ajax()){
 
-            $data1 = Contas_a_Pagar::query();
+                $data2 = Cargo::query();
 
-
-            return  DataTables::eloquent($data1)
-            ->setTransformer(new ContasTransformer)
-            ->addColumn('action', function($data1){
+                DataTables::eloquent($data2)
+                ->setTransformer(new CargoTransformer)
+                ->addColumn('action', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
                 $btn = ' <button class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id=" '.$data1->id.' " data-rota=" '. route('admin.delete.conta') .'"
+                name="excluir-cliente" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.cargo') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
@@ -40,3 +35,4 @@ class ContasList extends Controller
         }
     }
 }
+

@@ -28,14 +28,7 @@ class ProdutosController extends Controller
         $ano_passado = Carbon::now()->subYear();
 
         $dado1 = Produto::count();
-        $dado2 = 'teste'; //DB::table('vendas_detalhe')
-                   //                                    -> join('produto', 'vendas_detalhe.pro_id', '=', 'produto.pro_id')
-                    //                                   -> select('produto.pro_descricao')
-                     //                                  ->distinct()
-                      //                                 ->sum('det_qtde')
-                       //                                ->max()
-                        //                                ->orderByDesc('produto.pro_descricao');
-                                             //           ->first();
+        $dado2 = 'teste'; 
         $dado3 = DB::table('produto')->where('pro_promocao', '=', 'Sim')->count();
 
         $data = Produto::all();

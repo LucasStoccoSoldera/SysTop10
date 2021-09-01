@@ -12,19 +12,19 @@ class ContasaReceberList extends Controller
 {
     public function listContasaReceber(Request $request){
 
-
         $dado1 = 'teste';
         $dado2 = 'teste';
         $dado3 = 'teste';
 
-        $data = Contas_a_Receber::all();
+        $data = Contas_a_Receber::query();
 
         if($request->ajax()){
 
-            $data = Contas_a_Receber::all();
+            $data = Contas_a_Receber::query();
+            
             return  DataTables::eloquent($data)
             ->setTransformer(new ContasaReceberTransformer)
-            ->addColumn('Ações', function($data){
+            ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -36,7 +36,7 @@ class ContasaReceberList extends Controller
                 return $btn;
             })
             ->rawColumns(['action'])
-            ->make(true);
+            ->toJson();
         }
     }
 }

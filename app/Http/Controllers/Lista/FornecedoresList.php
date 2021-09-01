@@ -17,15 +17,15 @@ class FornecedoresList extends Controller
         $dado2 = 'teste';
         $dado3 = 'teste';
 
-        $data = Fornecedores::all();
+        $data = Fornecedores::query();
 
         if($request->ajax()){
 
-            $data = Fornecedores::all();
+            $data = Fornecedores::query();
 
             return  DataTables::eloquent($data)
             ->setTransformer(new FornecedoresTransformer)
-            ->addColumn('Ações', function($data){
+            ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>';
@@ -37,7 +37,7 @@ class FornecedoresList extends Controller
                 return $btn;
             })
             ->rawColumns(['action'])
-            ->make(true);
+            ->toJson();;
         }
     }
 }
