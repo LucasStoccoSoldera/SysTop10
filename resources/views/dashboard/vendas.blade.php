@@ -666,8 +666,18 @@
             searching: false,
             processing: true,
             serverside: true,
-
-            ajax: "{{ route('admin.list.vendas') }}",
+//         fnDrawCallback: function () {
+//
+//        $('#tb_venda').click(function () {
+//        // get position of the selected row
+//        var position = table.fnGetPosition(this)
+//        // value of the first column (can be hidden)
+//        var id = table.fnGetData(position)[0]
+//        // redirect
+//        $.this().loadItem(id);
+//        })
+//    },
+        ajax: "{{ route('admin.list.vendas') }}",
             columns: [
                 {data: "id"},
                 {data: "ven_valor_total"},
@@ -810,7 +820,8 @@ function abrirItem {
     $('#modalRegisterItemVenda').modal('show');
 }
 
-function loadItem {
+function loadItem (id) {
+    $id = id;
     $('#tb_item_venda').DataTable( {
              paging: true,
             searching: false,

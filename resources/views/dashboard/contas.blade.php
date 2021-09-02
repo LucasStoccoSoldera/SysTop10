@@ -927,20 +927,6 @@
                 {data: "action"},
             ]
         });
-        $('#tb_parcela').DataTable( {
-            paging: false,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.parcelas') }}",
-            columns: [
-                {data: "par_numero"},
-                {data: "par_conta"},
-                {data: "tpg_id"},
-                {data: "par_valor"},
-                {data: "par_status"},
-            ]
-        });
         $('#tb_item_compra').DataTable( {
             paging: true,
             searching: false,
@@ -1096,7 +1082,25 @@
 
             function abrirItem() {
                 $('#modalRegisterItemCompra').modal('show');
-}
+            }
+
+            function loadItem (id) {
+            $id = id;
+            $('#tb_parcela').DataTable( {
+            paging: false,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.parcelas') }}",
+            columns: [
+                {data: "par_numero"},
+                {data: "par_conta"},
+                {data: "tpg_id"},
+                {data: "par_valor"},
+                {data: "par_status"},
+            ]
+        });
+        }
 
 $("#formExcluir").on('submit', function(e) {
 
