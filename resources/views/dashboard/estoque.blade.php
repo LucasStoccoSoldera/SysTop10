@@ -333,7 +333,7 @@
     <script>
         $(document).ready(function() {
 
-        $('#tb_estoque').DataTable( {
+            var table_estoque = $('#tb_estoque').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -348,7 +348,7 @@
                 {data: "action"},
             ]
         });
-        $('#tb_produto_estoque').DataTable( {
+        var table_produto_estoque = $('#tb_produto_estoque').DataTable( {
             paging: false,
             searching: false,
             processing: true,
@@ -364,8 +364,8 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_estoque").fnReloadAjax();
-                $("#tb_produto_estoque").fnReloadAjax();
+                table_estoque.ajax.reload(null, false);
+                table_produto_estoque.ajax.reload(null, false);
         }
     );
 

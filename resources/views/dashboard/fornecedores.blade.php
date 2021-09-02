@@ -352,7 +352,7 @@
     <script>
         $(document).ready(function() {
 
-            $('#tb_fornecedor').DataTable( {
+           var table_fornecedor = $('#tb_fornecedor').DataTable( {
                 paging: true,
             searching: false,
             processing: true,
@@ -370,7 +370,7 @@
 
             $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_fornecedor").fnReloadAjax();
+                table_fornecedor.ajax.reload(null, false);
         }
     );
 

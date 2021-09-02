@@ -398,7 +398,7 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
-        $('#tb_cliente').DataTable( {
+        var table_cliente = $('#tb_cliente').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -416,7 +416,7 @@
 
     $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_cliente").fnReloadAjax();
+                table_cliente.ajax.reload(null, false);
         }
     );
 

@@ -63,6 +63,7 @@
                     <i class="tim-icons icon-pin"></i>
                     <p>Gerenciamento Geral</p>
                 </a>
+                <a href="{{ route('admin.logistica') }}" hidden  id="logistica"></a>
             </li>
         </ul>
         <div class="voltar">
@@ -332,7 +333,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#tb_pacote').DataTable( {
+        var table_pacote = $('#tb_pacote').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -345,7 +346,7 @@
                 {data: "action"},
             ]
         });
-        $('#tb_transportadora').DataTable( {
+        var table_transportadora = $('#tb_transportadora').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -359,7 +360,7 @@
                 {data: "action"},
             ]
         });
-        $('#tb_logistica').DataTable( {
+        var table_logistica = $('#tb_logistica').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -375,9 +376,9 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_pacote").fnReloadAjax();
-                $("#tb_transportadora").fnReloadAjax();
-                $("#tb_logistica").fnReloadAjax();
+                table_pacote.ajax.reload(null, false);
+                table_transportadora.ajax.reload(null, false);
+                table_logistica.ajax.reload(null, false);
         }
     );
 
@@ -435,7 +436,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterTransportadora')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#logistica').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {

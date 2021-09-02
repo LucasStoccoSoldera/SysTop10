@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="active">
-                <a href="{{ route('admin.usuario') }}">
+                <a href="{{ route('admin.usuario') }}" id="usuarios">
                     <i class="tim-icons icon-single-02"></i>
                     <p>Usuários</p>
                 </a>
@@ -438,71 +438,71 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6" style="text-align: -webkit-center;">
                         <div class="form-group">
                             <label class="modal-label">Usuários:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow usu" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowusu" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowusu"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Clientes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow cli" name="clientePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowcli" name="clientePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowcli"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Financeiro:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow fin" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowfin" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowfin"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Produtos:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow pro" name="produtoPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowpro" name="produtoPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowpro"></label>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 float-right">
+                    <div class="col-6" style="text-align: -webkit-center;">
                         <div class="form-group">
                             <label class="modal-label">Estoque:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow est" name="estoquePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowest" name="estoquePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowest"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Fornecedores:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow for" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowfor" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowfor"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Detalhes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow det" name="detalhePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowdet" name="detalhePrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowdet"></label>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Logistica:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow log" name="logisticaPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowlog" name="logisticaPrivilegio" value={{ 1 ?? 0 }}
                                     class="switch switch--shadow" type="checkbox">
-                                <label for="switch-shadow"></label>
+                                <label for="switch-shadowlog"></label>
                             </div>
                         </div>
                     </div>
@@ -524,7 +524,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#tb_usuario').DataTable( {
+       var table_usuario = $('#tb_usuario').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -539,7 +539,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_cargo').DataTable( {
+        var table_cargo = $('#tb_cargo').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -554,8 +554,8 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_usuario").fnReloadAjax();
-                $("#tb_cargo").fnReloadAjax();
+                table_usuario.ajax.reload(null, false);
+                table_cargo.ajax.reload(null, false);
         }
     );
 
@@ -613,7 +613,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterCargo')[0].reset();
                         $('#mensagem').attr(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#usuarios').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {

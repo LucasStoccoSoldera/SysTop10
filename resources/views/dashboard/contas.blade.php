@@ -911,7 +911,7 @@
         $("#externo").hide();
         $("#interno").hide();
 
-        $('#tb_conta').DataTable( {
+        var table_conta = $('#tb_conta').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -927,7 +927,7 @@
                 {data: "action"},
             ]
         });
-        $('#tb_item_compra').DataTable( {
+        var table_item_compra = $('#tb_item_compra').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -944,9 +944,8 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_conta").fnReloadAjax();
-                $("#tb_parcela").fnReloadAjax();
-                $("#tb_item_compra").fnReloadAjax();
+                table_conta.ajax.reload(null, false);
+                table_item_compra.ajax.reload(null, false);
         }
     );
 

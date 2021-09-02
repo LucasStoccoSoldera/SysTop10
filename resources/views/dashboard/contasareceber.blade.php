@@ -413,7 +413,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#tb_receber').DataTable( {
+        var table_receber = $('#tb_receber').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -432,7 +432,7 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_receber").fnReloadAjax();
+                table_receber.ajax.reload(null, false);
         }
     );
 

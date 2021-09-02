@@ -335,6 +335,31 @@
             </div>
         </div>
 
+        <div class="modal fade" id="modalReturnCadastro" style="display: none; top: 50%;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h4 class="modal-title">Alerta de Cadastro</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div style="text-align: center;">
+                                    <label class="modal-label success" style="font-size: 18px; padding 0px;"> Deseja continuar cadastrando?</label>
+                                    <div class="modal-footer">
+                                        <a href="" id="rotaReload" class="btn btn-secondary badge-success"
+                                            style="background-image:none;padding 0px; width: 125px; height:50px;">Parar</a>
+                                        <button type="submit" class="btn btn-secondary badge-success"
+                                            style="background-image:none;padding 0px; width: 125px; height:50px;"
+                                            data-dismiss="modal">Próximo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
     <!--   Core JS Files   -->
     <script src="../js/dash/core/jquery.min.js"></script>
@@ -399,6 +424,10 @@
                 $('#idDelete').val(id);
                 $('#rotaDelete').val(rota);
                 $('#formExcluir').change('action', rota);
+            });
+
+            $('#modalReturnCadastro').on('show', function() {
+                $('#rotaReload').attr('href', rota_reload);
             });
 
         </script>

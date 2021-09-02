@@ -661,7 +661,7 @@
 <script>
     $(document).ready(function() {
 
-    $('#tb_venda').DataTable( {
+        var table_venda= $('#tb_venda').DataTable( {
         paging: true,
             searching: false,
             processing: true,
@@ -687,7 +687,7 @@
                 {data: "action"},
             ]
     });
-    $('#tb_item_venda_ato').DataTable( {
+    var table_item_venda_ato = $('#tb_item_venda_ato').DataTable( {
         paging: true,
             searching: false,
             processing: true,
@@ -704,9 +704,8 @@
 
     $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_venda").fnReloadAjax();
-                $("#tb_item_venda").fnReloadAjax();
-                $("#tb_item_venda_ato").fnReloadAjax();
+                table_venda.ajax.reload(null, false);
+                table_item_venda_ato.ajax.reload(null, false);
         }
     );
 
@@ -822,7 +821,7 @@ function abrirItem {
 
 function loadItem (id) {
     $id = id;
-    $('#tb_item_venda').DataTable( {
+    var table_item_venda = $('#tb_item_venda').DataTable( {
              paging: true,
             searching: false,
             processing: true,

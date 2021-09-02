@@ -40,7 +40,7 @@
                 </a>
             </li>
             <li class="active">
-                <a href="{{ route('admin.produto') }}">
+                <a href="{{ route('admin.produto') }}" id="produtos">
                     <i class="tim-icons icon-components"></i>
                     <p>Produtos</p>
                 </a>
@@ -864,7 +864,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#tb_produto').DataTable( {
+        var table_produto = $('#tb_produto').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -878,7 +878,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_tipo_produto').DataTable( {
+        var table_tipo_produto = $('#tb_tipo_produto').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -890,7 +890,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_material').DataTable( {
+        var table_material = $('#tb_material').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -902,7 +902,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_dimensao').DataTable( {
+        var table_dimensao = $('#tb_dimensao').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -914,7 +914,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_cor').DataTable( {
+        var table_cor = $('#tb_cor').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -927,7 +927,7 @@
                 {data: "action"},
             ]
         } );
-        $('#tb_pacote').DataTable( {
+        var table_pacote = $('#tb_pacote').DataTable( {
             paging: true,
             searching: false,
             processing: true,
@@ -943,12 +943,12 @@
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
-                $("#tb_produto").fnReloadAjax();
-                $("#tb_tipo_produto").fnReloadAjax();
-                $("#tb_material").fnReloadAjax();
-                $("#tb_dimensao").fnReloadAjax();
-                $("#tb_cor").fnReloadAjax();
-                $("#tb_pacote").fnReloadAjax();
+                table_produto.ajax.reload(null, false);
+                table_tipo_produto.ajax.reload(null, false);
+                table_material.ajax.reload(null, false);
+                table_dimensao.ajax.reload(null, false);
+                table_cor.ajax.reload(null, false);
+                table_pacote.ajax.reload(null, false);
         }
     );
 
@@ -1006,7 +1006,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterTipoProduto')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#produtos').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
@@ -1039,7 +1040,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterMaterial')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#produtos').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
@@ -1072,7 +1074,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterDimensao')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#produtos').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
@@ -1104,7 +1107,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterCores')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#produtos').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
@@ -1141,7 +1145,8 @@
                     if (data_decoded.status == 1) {
                         $('#formRegisterPacotes')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        var rota_reload = $('#produtos').attr('href');
+                        $('#modalReturnCadastro').modal('show');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
