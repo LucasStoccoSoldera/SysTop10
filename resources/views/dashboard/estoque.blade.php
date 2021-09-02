@@ -362,6 +362,13 @@
             ]
         });
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_estoque").fnReloadAjax();
+                $("#tb_produto_estoque").fnReloadAjax();
+        }
+    );
+
             $("#formRegisterEstoque").on('submit', function(e) {
 
                 e.preventDefault();

@@ -373,6 +373,14 @@
             ]
         });
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_pacote").fnReloadAjax();
+                $("#tb_transportadora").fnReloadAjax();
+                $("#tb_logistica").fnReloadAjax();
+        }
+    );
+
         $("#formRegisterLogistica").on('submit', function(e) {
 
             e.preventDefault();

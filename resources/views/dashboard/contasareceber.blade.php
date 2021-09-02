@@ -430,6 +430,12 @@
             ]
         });
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_receber").fnReloadAjax();
+        }
+    );
+
         $("#formRegisterContasaReceber").on('submit', function(e) {
 
             e.preventDefault();

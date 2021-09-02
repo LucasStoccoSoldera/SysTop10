@@ -414,6 +414,11 @@
             ]
         });
 
+    $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_cliente").fnReloadAjax();
+        }
+    );
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();

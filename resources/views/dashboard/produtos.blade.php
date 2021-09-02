@@ -941,6 +941,17 @@
             ]
         } );
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_produto").fnReloadAjax();
+                $("#tb_tipo_produto").fnReloadAjax();
+                $("#tb_material").fnReloadAjax();
+                $("#tb_dimensao").fnReloadAjax();
+                $("#tb_cor").fnReloadAjax();
+                $("#tb_pacote").fnReloadAjax();
+        }
+    );
+
         $("#formRegisterProdutos").on('submit', function(e) {
 
             e.preventDefault();

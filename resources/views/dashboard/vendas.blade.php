@@ -666,6 +666,7 @@
             searching: false,
             processing: true,
             serverside: true,
+
             ajax: "{{ route('admin.list.vendas') }}",
             columns: [
                 {data: "id"},
@@ -674,19 +675,6 @@
                 {data: "ven_status"},
                 {data: "ven_data"},
                 {data: "action"},
-            ]
-    });
-    $('#tb_item_venda').DataTable( {
-             paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.itemvenda') }}",
-            columns: [
-                {data: "id"},
-                {data: "pro_id"},
-                {data: "det_qtde"},
-                {data: "det_valor_total"},
             ]
     });
     $('#tb_item_venda_ato').DataTable( {
@@ -703,6 +691,14 @@
                 {data: "action"},
             ]
     });
+
+    $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_venda").fnReloadAjax();
+                $("#tb_item_venda").fnReloadAjax();
+                $("#tb_item_venda_ato").fnReloadAjax();
+        }
+    );
 
         $("#formRegisterVenda").on('submit', function(e) {
 
@@ -812,6 +808,22 @@ $('input#txt_cliente').typeahead({
 
 function abrirItem {
     $('#modalRegisterItemVenda').modal('show');
+}
+
+function loadItem {
+    $('#tb_item_venda').DataTable( {
+             paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.itemvenda') }}",
+            columns: [
+                {data: "id"},
+                {data: "pro_id"},
+                {data: "det_qtde"},
+                {data: "det_valor_total"},
+            ]
+    });
 }
 
 $("#formExcluir").on('submit', function(e) {

@@ -359,7 +359,7 @@
 
         <script src="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
         <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-
+        <script src="//cdn.datatables.net/plug-ins/1.11.0/api/fnReloadAjax.js"></script>
 
         <script>
             function showDelete(id, rota) {

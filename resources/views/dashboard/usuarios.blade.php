@@ -552,6 +552,13 @@
             ]
         } );
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_usuario").fnReloadAjax();
+                $("#tb_cargo").fnReloadAjax();
+        }
+    );
+
         $("#formRegisterUser").on('submit', function(e) {
             e.preventDefault();
 

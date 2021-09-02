@@ -368,6 +368,12 @@
             ]
             });
 
+            $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_fornecedor").fnReloadAjax();
+        }
+    );
+
             $("#formRegisterFornecedores").on('submit', function(e) {
                 e.preventDefault();
 

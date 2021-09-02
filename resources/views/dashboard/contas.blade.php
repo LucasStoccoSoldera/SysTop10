@@ -956,6 +956,14 @@
             ]
         });
 
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                $("#tb_conta").fnReloadAjax();
+                $("#tb_parcela").fnReloadAjax();
+                $("#tb_item_compra").fnReloadAjax();
+        }
+    );
+
         $("#formRegisterContas").on('submit', function(e) {
 
             e.preventDefault();
