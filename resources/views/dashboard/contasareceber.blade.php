@@ -426,6 +426,7 @@
                 {data: "tipo_pagto"},
                 {data: "rec_data"},
                 {data: "rec_status"},
+                {data: "action"},
             ]
         });
 
@@ -461,26 +462,6 @@
                 }
             });
         });
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_receber').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.contasareceber') }}",
-            columns: [
-                {data: "id"},
-                {data: "rec_descricao"},
-                {data: "rec_valor"},
-                {data: "tipo_pagto"},
-                {data: "rec_data"},
-                {data: "rec_status"},
-            ]
-        });
-        }
-    );
 
     var path = "{{route ('admin.autocomplete.rec.descricao')}}"
 

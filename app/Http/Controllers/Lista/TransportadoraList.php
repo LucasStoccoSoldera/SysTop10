@@ -17,12 +17,12 @@ class TransportadoraList extends Controller
             $data = Transportadora::query();
 
             return  DataTables::eloquent($data)
-            ->setTransformer(new TransportadoraTransformer)
             ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                class="tim-icons icon-pencil"></i></a>
+                
+                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.transportadora') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';

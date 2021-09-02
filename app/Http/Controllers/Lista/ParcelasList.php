@@ -14,10 +14,9 @@ class ParcelasList extends Controller
 
         if($request->ajax()){
 
-            $data7 = Parcelas::where('con_id', '=', $id);
+            $data7 = Parcelas::where('con_id', '=', $request->id);
 
             DataTables::eloquent($data7)
-            ->setTransformer(new ParcelasTransformer)
             ->toJson();
         }
     }

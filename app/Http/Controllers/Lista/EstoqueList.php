@@ -21,7 +21,6 @@ class EstoqueList extends Controller
             $data = Estoque::query();
 
             return  DataTables::eloquent($data)
-            ->setTransformer(new EstoqueTransformer)
             ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i

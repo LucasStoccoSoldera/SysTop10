@@ -22,12 +22,15 @@ class ContasList extends Controller
 
 
             return  DataTables::eloquent($data1)
-            ->setTransformer(new ContasTransformer)
             ->addColumn('action', function($data1){
 
-                $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                $btn = '<a href="#" class="btn btn-primary" id="view"><i
+                class="tim-icons icon-pencil"></i></a>
+
+                <a href="#" class="btn btn-primary" id="alter"><i
+                class="tim-icons icon-pencil"></i></a>
+
+                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data1->id.' " data-rota=" '. route('admin.delete.conta') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';

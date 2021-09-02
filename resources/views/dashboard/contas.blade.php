@@ -924,6 +924,7 @@
                 {data: "cc_id"},
                 {data: "con_data_venc"},
                 {data: "con_status"},
+                {data: "action"},
             ]
         });
         $('#tb_parcela').DataTable( {
@@ -951,6 +952,7 @@
                 {data: "cde_qtde"},
                 {data: "cde_valoritem"},
                 {data: "cde_valortotal"},
+                {data: "action"},
             ]
         });
 
@@ -1057,52 +1059,6 @@
             });
         });
     });
-    $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_conta').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
-            columns: [
-                {data: "con_descricao"},
-                {data: "con_valor_final"},
-                {data: "cc_id"},
-                {data: "con_data_venc"},
-                {data: "con_status"},
-            ]
-        });
-        $('#tb_parcela').DataTable( {
-            paging: false,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.parcelas') }}",
-            columns: [
-                {data: "par_numero"},
-                {data: "par_conta"},
-                {data: "tpg_id"},
-                {data: "par_valor"},
-                {data: "par_status"},
-            ]
-        });
-        $('#tb_item_compra').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.itemcompra') }}",
-            columns: [
-                {data: "cde_produto"},
-                {data: "cde_qtde"},
-                {data: "cde_valoritem"},
-                {data: "cde_valortotal"},
-            ]
-        });
-        }
-    );
 
     $('#qtdeCompras, #valorItemCompra').on('change blur keyup', function() {
         $('#qtdeCompras, #valorItemCompra').each(function() { //percorre todos os campos de quantidade

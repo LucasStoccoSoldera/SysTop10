@@ -21,7 +21,6 @@ class EstoqueList extends Controller
             $data = Estoque::query();
 
                 DataTables::eloquent($data)
-                ->setTransformer(new EstoqueTransformer)
                 ->toJson();
         }
     }

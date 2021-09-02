@@ -18,12 +18,12 @@ class ItemVendaAtoList extends Controller
 
 
             DataTables::eloquent($data6)
-            ->setTransformer(new ItemVendaTransformer)
             ->addColumn('action', function($data6){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                class="tim-icons icon-pencil"></i></a>
+                
+                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data6.' " data-rota=" '. route('admin.delete.itemvenda') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';

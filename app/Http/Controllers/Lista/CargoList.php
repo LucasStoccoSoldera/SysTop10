@@ -17,12 +17,12 @@ class CargoList extends Controller
                 $data2 = Cargo::query();
 
                 DataTables::eloquent($data2)
-                ->setTransformer(new CargoTransformer)
                 ->addColumn('action', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                class="tim-icons icon-pencil"></i></a>
+                
+                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.cargo') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';

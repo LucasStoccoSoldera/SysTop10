@@ -398,7 +398,6 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
-
         $('#tb_cliente').DataTable( {
             paging: true,
             searching: false,
@@ -411,8 +410,10 @@
                 {data: 'cli_celular'},
                 {data: 'cli_cidade'},
                 {data: 'created_at'},
+                {data: "action"},
             ]
         });
+
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();
@@ -454,25 +455,6 @@
             });
         });
 
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_cliente').DataTable({
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.cliente') }}",
-            columns: [
-                {data: 'cli_nome'},
-                {data: 'cli_cpf_cnpj'},
-                {data: 'cli_celular'},
-                {data: 'cli_cidade'},
-                {data: 'created_at'},
-            ]
-        });
-        }
-    );
         $('#cpfCliente').on('type', function(){
         if ($('#cpfCliente').val() != '') {
             $('#cnpjCliente').attr('disabled', 'true');

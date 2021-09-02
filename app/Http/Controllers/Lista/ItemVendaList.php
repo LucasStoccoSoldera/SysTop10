@@ -14,10 +14,9 @@ class ItemVendaList extends Controller
 
         if($request->ajax()){
 
-            $data5 = Venda_Detalhe::where('ven_id', '=', $id);
+            $data5 = Venda_Detalhe::where('ven_id', '=', $request->id);
 
             DataTables::eloquent($data5)
-            ->setTransformer(new ItemVendaTransformer)
             ->toJson();
         }
     }

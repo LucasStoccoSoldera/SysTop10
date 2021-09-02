@@ -364,6 +364,7 @@
                 {data: "for_cpf_cnpj"},
                 {data: "for_telefone"},
                 {data: "for_cidade"},
+                {data: "action"},
             ]
             });
 
@@ -406,25 +407,6 @@
                     }
                 });
             });
-            $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_fornecedor').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.fornecedor') }}",
-            columns: [
-                {data: "id"},
-                {data: "for_nome"},
-                {data: "for_cpf_cnpj"},
-                {data: "for_telefone"},
-                {data: "for_cidade"},
-            ]
-            });
-        }
-    );
 
     $('#cpfFornecedor').on('type', function(){
         if ($('#cpfFornecedor').val() != '') {

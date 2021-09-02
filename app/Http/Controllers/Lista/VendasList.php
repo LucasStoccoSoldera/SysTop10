@@ -21,7 +21,14 @@ class VendasList extends Controller
                 $data = Venda::query();
 
                 return  DataTables::eloquent($data)
-                ->setTransformer(new VendasTransformer)
+                ->addColumn('action', function($data){
+
+                    $btn = '<a href="#" class="btn btn-primary" id="view"><i
+                    class="tim-icons icon-pencil"></i></a>';
+                    return $btn;
+                })
+
+                ->rawColumns(['action'])
                 ->toJson();
         }
     }

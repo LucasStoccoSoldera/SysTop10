@@ -673,6 +673,7 @@
                 {data: "tpg_id"},
                 {data: "ven_status"},
                 {data: "ven_data"},
+                {data: "action"},
             ]
     });
     $('#tb_item_venda').DataTable( {
@@ -699,6 +700,7 @@
                 {data: "pro_id"},
                 {data: "det_qtde"},
                 {data: "det_valor_total"},
+                {data: "action"},
             ]
     });
 
@@ -779,52 +781,6 @@
             $('#VTItemVenda').val(qtd * vlr);
         });
     });
-
-    $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-            $('#tb_venda').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.vendas') }}",
-            columns: [
-                {data: "id"},
-                {data: "ven_valor_total"},
-                {data: "tpg_id"},
-                {data: "ven_status"},
-                {data: "ven_data"},
-            ]
-        });
-        $('#tb_item_venda').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.itemvenda') }}",
-            columns: [
-                {data: "id"},
-                {data: "pro_id"},
-                {data: "det_qtde"},
-                {data: "det_valor_total"},
-            ]
-        });
-        $('#tb_item_venda_ato').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.itemvendaato') }}",
-            columns: [
-                {data: "id"},
-                {data: "pro_id"},
-                {data: "det_qtde"},
-                {data: "det_valor_total"},
-            ]
-        });
-        }
-    );
 
     $('#modalAlertRegistrar').modal('hide',
         function() {

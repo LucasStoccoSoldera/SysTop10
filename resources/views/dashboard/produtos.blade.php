@@ -875,6 +875,7 @@
                 {data: "pro_nome"},
                 {data: "tpp_id"},
                 {data: "pro_precovenda"},
+                {data: "action"},
             ]
         } );
         $('#tb_tipo_produto').DataTable( {
@@ -886,6 +887,7 @@
             columns: [
                 {data: "id"},
                 {data: "tpp_descricao"},
+                {data: "action"},
             ]
         } );
         $('#tb_material').DataTable( {
@@ -897,6 +899,7 @@
             columns: [
                 {data: "id"},
                 {data: "mat_descricao"},
+                {data: "action"},
             ]
         } );
         $('#tb_dimensao').DataTable( {
@@ -908,6 +911,7 @@
             columns: [
                 {data: "id"},
                 {data: "dim_descricao"},
+                {data: "action"},
             ]
         } );
         $('#tb_cor').DataTable( {
@@ -920,6 +924,7 @@
                 {data: "id"},
                 {data: "cor_nome"},
                 {data: "cor_hex_especial"},
+                {data: "action"},
             ]
         } );
         $('#tb_pacote').DataTable( {
@@ -932,6 +937,7 @@
                 {data: "id"},
                 {data: "pac_dimensao"},
                 {data: "pac_descricao"},
+                {data: "action"},
             ]
         } );
 
@@ -1135,81 +1141,6 @@
                 }
             });
         });
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_produto').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.produto') }}",
-            columns: [
-                {data: "id"},
-                {data: "pro_nome"},
-                {data: "tpp_id"},
-                {data: "pro_precovenda"},
-            ]
-        } );
-        $('#tb_tipo_produto').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.tipoproduto') }}",
-            columns: [
-                {data: "id"},
-                {data: "tpp_descricao"},
-            ]
-        } );
-        $('#tb_material').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.material') }}",
-            columns: [
-                {data: "id"},
-                {data: "mat_descricao"},
-            ]
-        } );
-        $('#tb_dimensao').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.dimensao') }}",
-            columns: [
-                {data: "id"},
-                {data: "dim_descricao"},
-            ]
-        } );
-        $('#tb_cor').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.cor') }}",
-            columns: [
-                {data: "id"},
-                {data: "cor_nome"},
-                {data: "cor_hex_especial"},
-            ]
-        } );
-        $('#tb_pacote').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.pacote') }}",
-            columns: [
-                {data: "id"},
-                {data: "pac_dimensao"},
-                {data: "pac_descricao"},
-            ]
-        } );
-        }
-    );
 
 
     $('#CodigoCores').on('type', function(){

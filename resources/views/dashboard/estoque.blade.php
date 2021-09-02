@@ -345,6 +345,7 @@
                 {data: "dim_id"},
                 {data: "cor_id"},
                 {data: "created_at"},
+                {data: "action"},
             ]
         });
         $('#tb_produto_estoque').DataTable( {
@@ -357,6 +358,7 @@
                 {data: "pro_id"},
                 {data: "est_qtde"},
                 {data: "est_status"},
+                {data: "action"},
             ]
         });
 
@@ -392,37 +394,6 @@
                     }
                 });
             });
-            $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_estoque').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.estoque') }}",
-            columns: [
-                {data: "pro_id"},
-                {data: "est_qtde"},
-                {data: "dim_id"},
-                {data: "cor_id"},
-                {data: "created_at"},
-            ]
-        });
-        $('#tb_produto_estoque').DataTable( {
-            paging: false,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.estoqueproduto') }}",
-            columns: [
-                {data: "pro_id"},
-                {data: "est_qtde"},
-                {data: "est_status"},
-            ]
-        });
-        }
-    );
 
     $("#formExcluir").on('submit', function(e) {
 

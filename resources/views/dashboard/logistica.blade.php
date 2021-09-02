@@ -342,6 +342,7 @@
                 {data: "id"},
                 {data: "pac_dimensao"},
                 {data: "pac_descricao"},
+                {data: "action"},
             ]
         });
         $('#tb_transportadora').DataTable( {
@@ -355,6 +356,7 @@
                 {data: "trans_nome"},
                 {data: "trans_telefone"},
                 {data: "trans_limite_transporte"},
+                {data: "action"},
             ]
         });
         $('#tb_logistica').DataTable( {
@@ -367,6 +369,7 @@
                 {data: "id"},
                 {data: "pac_id"},
                 {data: "trans_id"},
+                {data: "action"},
             ]
         });
 
@@ -435,48 +438,6 @@
                 }
             });
         });
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-        $('#tb_pacote').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.pacote') }}",
-            columns: [
-                {data: "id"},
-                {data: "pac_dimensao"},
-                {data: "pac_descricao"},
-            ]
-        });
-        $('#tb_transportadora').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.transportadora') }}",
-            columns: [
-                {data: "id"},
-                {data: "trans_nome"},
-                {data: "trans_telefone"},
-                {data: "trans_limite_transporte"},
-            ]
-        });
-        $('#tb_logistica').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.logistica') }}",
-            columns: [
-                {data: "id"},
-                {data: "pac_id"},
-                {data: "trans_id"},
-            ]
-        });
-        }
-    );
 
     $("#formExcluir").on('submit', function(e) {
 

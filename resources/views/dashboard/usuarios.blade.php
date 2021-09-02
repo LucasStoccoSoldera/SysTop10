@@ -178,7 +178,7 @@
                                         Cargo
                                     </th>
                                     <th style="width: 20%">
-                                        Telefone
+                                        Celular
                                     </th class="text-center">
                                     <th style="width: 15%">
                                         Data de Cadastro
@@ -289,7 +289,7 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Confirmar Senha:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="password" name="senhaUser_confirmation" id="senhaUser"
+                            <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback senhaUser_error" role="alert">
@@ -392,24 +392,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cargos as $cargo)
-                                <tr>
-                                    <td>
-                                        {{ $cargo['car_id'] }}
-                                    </td>
-                                    <td>
-                                        {{ $cargo['car_descricao'] }}
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="#" class="btn btn-primary" id="alter"><i
-                                                class="tim-icons icon-pencil"></i></a>
-                                        <button href="#" class="btn btn-primary red" id="excluir-car"
-                                            name="excluir-cargo" data-id="{{ $cargo['id'] }}"  data-rota="{{ route('admin.delete.cargo') }}"
-                                            style="padding: 11px 25px;"><i
-                                                class="tim-icons icon-simple-remove"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            {{-- DataTables --}}
                         </tbody>
                     </table>
                 </div>
@@ -551,8 +534,9 @@
                 {data: "id"},
                 {data: "usu_nome_completo"},
                 {data: "car_id"},
-                {data: "usu_telefone"},
+                {data: "usu_celular"},
                 {data: "usu_data_cadastro"},
+                {data: "action"},
             ]
         } );
         $('#tb_cargo').DataTable( {
@@ -564,6 +548,7 @@
             columns: [
                 {data: "id"},
                 {data: "car_descricao"},
+                {data: "action"},
             ]
         } );
 
@@ -593,6 +578,7 @@
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
+                             $('#' + prefix  + '_confirmation').addClass('is-invalid');
                         });
                     }
                 }
@@ -664,36 +650,6 @@
                 }
             });
         });
-
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        $('#tb_usuario').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.user') }}",
-            columns: [
-                {data: "id"},
-                {data: "usu_nome_completo"},
-                {data: "car_id"},
-                {data: "usu_telefone"},
-                {data: "usu_data_cadastro"},
-            ]
-        } );
-        $('#tb_cargo').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.cargo') }}",
-            columns: [
-                {data: "id"},
-                {data: "car_descricao"},
-            ]
-        } );
-        }
-    );
 
     var path = "{{route ('admin.autocomplete.usu.nome')}}"
 

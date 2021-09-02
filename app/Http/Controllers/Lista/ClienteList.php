@@ -12,7 +12,7 @@ class ClienteList extends Controller
 {
 
     public function listCliente(Request $request){
-        
+
         $dado1 = Cliente::count();
         $dado2 = Cliente::count();
         $dado3 = Cliente::count();
@@ -22,12 +22,12 @@ class ClienteList extends Controller
             $data = Cliente::query();
 
             return  DataTables::eloquent($data)
-            ->setTransformer(new ClienteTransformer)
             ->addColumn('action', function($data){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
-                class="tim-icons icon-pencil"></i></a>';
-                $btn = ' <button class="btn btn-primary red" id="excluir-cli"
+                class="tim-icons icon-pencil"></i></a>
+                
+                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.cliente') .'"
                 style="padding: 11px 25px;"><i
                 class="tim-icons icon-simple-remove"></i></button>';

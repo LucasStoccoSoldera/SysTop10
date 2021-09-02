@@ -364,31 +364,6 @@
                     }
                 });
             });
-{{--
-        $(document).on('click', '[data-dismiss="modal"]',
-            function(e) {
-        e.preventDefault();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.list.detalhe') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $.each(data_decoded.centros, function() {
-                        console.log(data_decoded.centros);
-                        console.log('h3#' + data_decoded.centros + '_json');
-                                 //   $('h3#' + prefix + '_json').text(val[0]);
-                    });
-                    $.each(data_decoded.pagamentos, function(prefix, val) {
-                                //$('h3#' + prefix + '_json').text(val[0]);
-                    });
-                }
-            });
-        }
-    ); --}}
 
     $("#formExcluir").on('submit', function(e) {
 
