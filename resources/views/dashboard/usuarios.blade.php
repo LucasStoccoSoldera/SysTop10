@@ -201,7 +201,7 @@
 @section('sub-menu')
     <div class="add">
         <div class="dropup show-dropdown">
-            <a href="#" onclick="changeImage();" data-toggle="dropdown">
+            <a href="#" data-toggle="dropdown">
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
@@ -353,7 +353,7 @@
                         <div class="form-group" id="form-direita">
                             <label class="modal-label">Cargo:</label> <label style="color: red; font-size: 12px;"> *
                             </label>
-                            <input type="text" name="descricaoCargo" id="form-direita" class="form-control"
+                            <input type="text" name="descricaoCargo" id="descricaoCargo" class="form-control"
                                 maxlength="15" value="{{ old('descricaoCargo') }}"
                                 placeholder="Entre com o Cargo">
                             <span class="invalid-feedback descricaoCargo_error" role="alert">

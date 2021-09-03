@@ -379,9 +379,7 @@
         integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="//cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"></script>
         <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-        <script src="//cdn.datatables.net/plug-ins/1.11.0/api/fnReloadAjax.js"></script>
 
         <script>
             function showDelete(id, rota) {
@@ -582,14 +580,14 @@
         </script>
 
         <script type="text/javascript">
-            function changeImage() {
-                if (document.getElementById('imgsub').src == "http://localhost:8000/img/dash/add_open.png" && document
-                    .getElementById('igmsub').click) {
+
+                    $('#imgsub').click(function() {
+                        if (document.getElementById('imgsub').src == "http://localhost:8000/img/dash/add_open.png") {
                     document.getElementById('imgsub').src = "../img/dash/addbtn.png";
                 } else {
                     document.getElementById('imgsub').src = "../img/dash/add_open.png";
                 }
-            }
+                    });
 
             function pegaCodigo(campoItem, campoOrigem) {
                 document.getElementById(campoItem).value = document.getElementById(campoOrigem).value();

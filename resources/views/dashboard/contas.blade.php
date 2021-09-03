@@ -889,7 +889,6 @@
     </form>
 </div>
 </div>
-</div>
 
 
 @endsection
@@ -908,8 +907,7 @@
     }
 
     $(document).ready(function() {
-        $("#externo").hide();
-        $("#interno").hide();
+
 
         var table_conta = $('#tb_conta').DataTable( {
             paging: true,

@@ -243,7 +243,7 @@
 @section('sub-menu')
     <div class="add">
         <div class="dropup show-dropdown">
-            <a href="#" onclick="changeImage();" data-toggle="dropdown">
+            <a href="#" data-toggle="dropdown">
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
