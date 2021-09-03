@@ -471,13 +471,13 @@
 
     var path = "{{route ('admin.autocomplete.rec.descricao')}}"
 
-$('input#txt_descricao').typeahead({
-    source: function (terms,process){
-        return $.get(path, {terms:terms}, function(data){
-            return process(data);
-        });
-    }
-});
+  // $('input#txt_descricao').typeahead({
+  //     source: function (terms,process){
+  //         return $.get(path, {terms:terms}, function(data){
+  //             return process(data);
+  //         });
+  //     }
+  // });
 
 $("#formExcluir").on('submit', function(e) {
 

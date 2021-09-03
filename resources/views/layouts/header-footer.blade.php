@@ -31,7 +31,7 @@
     <!-- Nucleo Icons -->
     <link href="../css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="../css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="../css/black-dashboard.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../demo/demo.css" rel="stylesheet" />
 
@@ -366,9 +366,6 @@
     <script src="../js/dash/core/popper.min.js"></script>
     <script src="../js/dash/core/bootstrap.min.js"></script>
     <script src="../js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
     <script src="../js/dash/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
@@ -564,7 +561,7 @@
         <script>
             $(document).ready(function() {
                 // Javascript method's body can be found in assets/js/demos.js
-                demo.initDashboardPageCharts();
+             //   demo.initDashboardPageCharts();
             });
             $(event).ready(function() { // A DIFERENÇA ESTA AQUI, EXECUTA QUANDO O DOCUMENTO ESTA "PRONTO"
                 $("div.voltar").fadeIn(500);
@@ -603,7 +600,7 @@
             }
         </script>
 
-        <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+
         <script>
             window.TrackJS &&
                 TrackJS.install({

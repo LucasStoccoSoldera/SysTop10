@@ -87,9 +87,6 @@
 <script src="js/dash/core/popper.min.js"></script>
 <script src="js/dash/core/bootstrap.min.js"></script>
 <script src="js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
-<!--  Google Maps Plugin    -->
-<!-- Place this tag in your head or just before your close body tag. -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
 <script src="js/dash/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->

@@ -179,7 +179,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Nome:</label>
                                 <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                    value="{{ old('txt_nome') }}" class="filtro form-control @error('txt_nome') is-invalid @enderror typeahead">
+                                    value="{{ old('txt_nome') }}" class="filtro form-control @error('txt_nome') is-invalid @enderror">
                                     @error('txt_nome')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors }}</strong>
@@ -478,15 +478,15 @@
         }
     });
 
-        var path = "{{route ('admin.autocomplete.cli.nome')}}"
+    //   var path = "{{route ('admin.autocomplete.cli.nome')}}"
 
-        $('input#txt_nome').typeahead({
-            source: function (terms,process){
-                return $.get(path, {terms:terms}, function(data){
-                    return process(data);
-                });
-            }
-        });
+    //   $('input#txt_nome').typeahead({
+    //       source: function (terms,process){
+    //           return $.get(path, {terms:terms}, function(data){
+    //               return process(data);
+    //           });
+    //       }
+    //   });
 
         $("#formExcluir").on('submit', function(e) {
 

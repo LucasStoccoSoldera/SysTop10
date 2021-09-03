@@ -1173,13 +1173,13 @@
 
         var path = "{{route ('admin.autocomplete.pro.nome')}}"
 
-$('input#txt_nome').typeahead({
-    source: function (terms,process){
-        return $.get(path, {terms:terms}, function(data){
-            return process(data);
-        });
-    }
-});
+     //   $('input#txt_nome').typeahead({
+     //       source: function (terms,process){
+     //           return $.get(path, {terms:terms}, function(data){
+     //               return process(data);
+     //           });
+     //       }
+     //   });
 
 $("#formExcluir").on('submit', function(e) {
 

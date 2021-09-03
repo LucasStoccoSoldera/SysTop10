@@ -15598,7 +15598,6 @@ fieldset[disabled] .btn-link.active {
 
 .footer .nav {
     display: inline-block;
-    float: left;
     margin-bottom: 0;
     padding-left: 30px;
     list-style: none;
@@ -20116,7 +20115,6 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 .color-swatch-header .pass-fail-item {
-    float: left;
     display: inline-block;
     text-align: center;
     padding: 2px;
@@ -20175,7 +20173,6 @@ table.tablesorter thead tr .headerSortDown {
 
 .table-colors .swatch {
     display: inline-block;
-    float: left;
     width: 40px;
     height: 40px;
     margin-right: 20px;
@@ -20193,7 +20190,6 @@ table.tablesorter thead tr .headerSortDown {
     font-weight: 600;
     line-height: 10px;
     display: inline-block;
-    float: left;
     margin: 5px 10px 0 0;
     padding: 2px 4px;
     letter-spacing: 0.05em;
@@ -22024,7 +22020,7 @@ Copyright (c) 2015 Daniel Eden
 
 .white-content .card:not(.card-white) {
     background: #ffffff;
-    box-shadow: 0 1px 15px 0 rgba(, , , 0.05);
+    box-shadow: 0 1px 15px 0 rgba(0,0 ,0 , 0.05);
 }
 
 .white-content .card:not(.card-white) .card-header {
@@ -22894,7 +22890,7 @@ Copyright (c) 2015 Daniel Eden
     padding-right: 0;
 }
 
-/*# sourceMappingURL=dashboard-free.css.map */
+
 .borda {
     height: 100%;
     width: 645%;
