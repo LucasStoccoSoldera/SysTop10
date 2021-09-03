@@ -344,8 +344,8 @@
                 {data: "est_qtde"},
                 {data: "dim_id"},
                 {data: "cor_id"},
-                {data: "created_at"},
-                {data: "action"},
+                {data: "created_at", className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         });
         var table_produto_estoque = $('#tb_produto_estoque').DataTable( {
@@ -357,8 +357,8 @@
             columns: [
                 {data: "pro_id"},
                 {data: "est_qtde"},
-                {data: "est_status"},
-                {data: "action"},
+                {data: "est_status", className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         });
 

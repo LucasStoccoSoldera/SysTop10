@@ -409,8 +409,8 @@
                 {data: 'cli_cpf_cnpj'},
                 {data: 'cli_celular'},
                 {data: 'cli_cidade'},
-                {data: 'created_at'},
-                {data: "action"},
+                {data: 'created_at', className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         });
 

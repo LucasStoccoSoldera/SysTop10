@@ -422,11 +422,11 @@
             columns: [
                 {data: "id"},
                 {data: "rec_descricao"},
-                {data: "rec_valor"},
+                {data: "rec_valor", className: "text-right"},
                 {data: "tipo_pagto"},
-                {data: "rec_data"},
-                {data: "rec_status"},
-                {data: "action"},
+                {data: "rec_data", className: "text-center"},
+                {data: "rec_status", className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         });
 

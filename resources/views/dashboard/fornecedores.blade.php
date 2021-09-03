@@ -364,7 +364,7 @@
                 {data: "for_cpf_cnpj"},
                 {data: "for_telefone"},
                 {data: "for_cidade"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
             });
 

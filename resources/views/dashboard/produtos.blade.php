@@ -874,8 +874,8 @@
                 {data: "id"},
                 {data: "pro_nome"},
                 {data: "tpp_id"},
-                {data: "pro_precovenda"},
-                {data: "action"},
+                {data: "pro_precovenda", className: "text-right"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_tipo_produto = $('#tb_tipo_produto').DataTable( {
@@ -887,7 +887,7 @@
             columns: [
                 {data: "id"},
                 {data: "tpp_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_material = $('#tb_material').DataTable( {
@@ -899,7 +899,7 @@
             columns: [
                 {data: "id"},
                 {data: "mat_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_dimensao = $('#tb_dimensao').DataTable( {
@@ -911,7 +911,7 @@
             columns: [
                 {data: "id"},
                 {data: "dim_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_cor = $('#tb_cor').DataTable( {
@@ -924,7 +924,7 @@
                 {data: "id"},
                 {data: "cor_nome"},
                 {data: "cor_hex_especial"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_pacote = $('#tb_pacote').DataTable( {
@@ -937,7 +937,7 @@
                 {data: "id"},
                 {data: "pac_dimensao"},
                 {data: "pac_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
 

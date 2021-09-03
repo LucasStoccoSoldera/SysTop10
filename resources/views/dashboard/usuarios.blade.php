@@ -535,8 +535,8 @@
                 {data: "usu_nome_completo"},
                 {data: "car_id"},
                 {data: "usu_celular"},
-                {data: "usu_data_cadastro"},
-                {data: "action"},
+                {data: "usu_data_cadastro", className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         } );
         var table_cargo = $('#tb_cargo').DataTable( {
@@ -548,7 +548,7 @@
             columns: [
                 {data: "id"},
                 {data: "car_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         } );
 

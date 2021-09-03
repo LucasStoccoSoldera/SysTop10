@@ -919,12 +919,12 @@
             ajax: "{{ route('admin.list.contas') }}",
             columns: [
                 {data: "con_descricao"},
-                {data: "con_compra"},
-                {data: "con_valor_final"},
+                {data: "con_compra", className: "text-center"},
+                {data: "con_valor_final", className: "text-right"},
                 {data: "cc_id"},
-                {data: "con_data_venc"},
-                {data: "con_status"},
-                {data: "action"},
+                {data: "con_data_venc", className: "text-center"},
+                {data: "con_status", className: "text-center"},
+                {data: "action", className: "text-right"},
             ]
         });
         var table_item_compra = $('#tb_item_compra').DataTable( {
@@ -936,9 +936,9 @@
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
-                {data: "cde_valoritem"},
-                {data: "cde_valortotal"},
-                {data: "action"},
+                {data: "cde_valoritem", className: "text-right"},
+                {data: "cde_valortotal", className: "text-right"},
+                {data: "action", className: "text-right"},
             ]
         });
 

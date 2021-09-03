@@ -343,7 +343,7 @@
                 {data: "id"},
                 {data: "pac_dimensao"},
                 {data: "pac_descricao"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         });
         var table_transportadora = $('#tb_transportadora').DataTable( {
@@ -357,7 +357,7 @@
                 {data: "trans_nome"},
                 {data: "trans_telefone"},
                 {data: "trans_limite_transporte"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         });
         var table_logistica = $('#tb_logistica').DataTable( {
@@ -370,7 +370,7 @@
                 {data: "id"},
                 {data: "pac_id"},
                 {data: "trans_id"},
-                {data: "action"},
+                {data: "action", className: "text-right"},
             ]
         });
 
