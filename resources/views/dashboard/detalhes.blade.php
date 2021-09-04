@@ -315,6 +315,7 @@
                     dataType: 'json',
                     beforeSend: function() {
                         $(document).find('span.invalid-feedback').attr('');
+                        $(document).find('input').removeClass('is-invalid');
 
                     },
                     success: function(data_decoded) {
@@ -348,6 +349,7 @@
                     dataType: 'json',
                     beforeSend: function() {
                         $(document).find('span.invalid-feedback').attr('');
+                        $(document).find('input').removeClass('is-invalid');
                     },
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {

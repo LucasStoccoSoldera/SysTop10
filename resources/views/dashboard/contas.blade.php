@@ -962,6 +962,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
+                    $(document).find('input').removeClass('is-invalid');
 
                 },
                 success: function(data_decoded) {
@@ -995,6 +996,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
+                    $(document).find('input').removeClass('is-invalid');
 
                 },
                 success: function(data_decoded) {
@@ -1028,6 +1030,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
+                    $(document).find('input').removeClass('is-invalid');
 
                 },
                 success: function(data_decoded) {
