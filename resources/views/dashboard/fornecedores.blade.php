@@ -260,8 +260,7 @@
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produtos:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Produtos:</label>
                                     <select type="text" name="produtosFornecedor" id="produtosFornecedor"
                                         class="form-control" maxlength="80" value="{{ old('produtosFornecedor') }}"
                                         placeholder="Selecione com o Produtos">

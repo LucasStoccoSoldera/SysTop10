@@ -28,7 +28,7 @@ class ProdutosController extends Controller
         $ano_passado = Carbon::now()->subYear();
 
         $dado1 = Produto::count();
-        $dado2 = 'teste'; 
+        $dado2 = 'teste';
         $dado3 = DB::table('produto')->where('pro_promocao', '=', 'Sim')->count();
 
         $data = Produto::all();
@@ -50,7 +50,7 @@ class ProdutosController extends Controller
             'materiais' => $data3,
             'pacotes' => $data4,
             'dimensoes' => $data5,
-            'cores' => $data6,
+            'cores' => $data6
 
         ]);
     }

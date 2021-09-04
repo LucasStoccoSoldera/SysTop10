@@ -87,9 +87,9 @@ class TransportadoraRegister extends Controller
         $Transportadora = new Transportadora;
         $Transportadora->trans_nome = $request->nomeTrans;
         if (isset($telefone)) {
-            $Transportadora->cli_telefone = $request->telefoneTrans;
+            $Transportadora->trans_telefone = $request->telefoneTrans;
         } else {
-            $Transportadora->cli_celular = $request->celularTrans;
+            $Transportadora->trans_celular = $request->celularTrans;
         }
         $Transportadora->trans_limite_transporte = $request->limitetransTrans;
         $Transportadora->save();

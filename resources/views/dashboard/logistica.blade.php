@@ -248,7 +248,7 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
                         data-form="formRegisterLogistica" data-modal="modalRegisterLogistica">Cancelar</button>
-                                  <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterLogistica">Limpar</button>
+
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
             </div>
@@ -331,6 +331,7 @@
 
 @push('ajax')
 <script>
+
     $(document).ready(function() {
 
         var table_pacote = $('#tb_pacote').DataTable( {

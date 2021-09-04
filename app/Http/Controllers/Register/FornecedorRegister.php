@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedores;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\AssignOp\Concat;
 
 class FornecedorRegister extends Controller
 {
@@ -125,12 +122,12 @@ class FornecedorRegister extends Controller
         $validator_telefone_celular = Validator::make(
             [$request->telefoneFornecedor, $request->celularFornecedor],
             [
-                'telefoneFornecedor' => ['telefone'],
-                'celularFornecedor' => ['celular'],
+                'telefoneFornecedor' => ['required'],
+                'celularFornecedor' => ['required'],
             ],
             [
-                'telefoneFornecedor.required' => 'Telefone inválido.',
-                'celularFornecedor.required' => 'Celular inválido.',
+                'telefoneFornecedor.required' => 'Telefone ou Celular obrigatórios.',
+                'celularFornecedor.required' => 'Telefone ou Celular obrigatórios.',
             ]
         );
     }

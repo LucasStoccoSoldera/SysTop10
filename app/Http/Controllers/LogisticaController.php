@@ -32,7 +32,7 @@ class LogisticaController extends Controller
         return view('dashboard.logistica', [
             'transportadoras' => $data,
             'logisticas' => $data2,
-            'pacotes' => $data3,
+            'pacotes' => $data3
         ]);
     }
 }

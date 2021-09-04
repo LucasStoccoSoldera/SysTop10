@@ -31,7 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Estoque', [App\Http\Controllers\EstoqueController::class, 'Estoque'])->name('admin.estoque');
     Route::get('/admin/Fornecedor', [App\Http\Controllers\FornecedoresController::class, 'Fornecedores'])->name('admin.fornecedor');
     Route::get('/admin/Detalhe', [App\Http\Controllers\DetalhesController::class, 'Detalhe'])->name('admin.detalhe');
-    Route::get('/admin/Logistica', [App\Http\Controllers\LogisticaController::class, 'Logistica'])->name('admin.Logistica');
+    Route::get('/admin/Logistica', [App\Http\Controllers\LogisticaController::class, 'Logistica'])->name('admin.logistica');
+
     Route::get('/admin/Autocomplete_cli_cli', [App\Http\Controllers\AutocompleteController::class, 'Cli_Nome'])->name('admin.autocomplete.cli.nome');
     Route::get('/admin/Autocomplete_rec_des', [App\Http\Controllers\AutocompleteController::class, 'Rec_Descricao'])->name('admin.autocomplete.rec.descricao');
     Route::get('/admin/Autocomplete_for_for', [App\Http\Controllers\AutocompleteController::class, 'For_Nome'])->name('admin.autocomplete.for.nome');

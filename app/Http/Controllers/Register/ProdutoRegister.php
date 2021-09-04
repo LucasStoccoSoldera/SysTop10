@@ -17,9 +17,6 @@ class ProdutoRegister extends Controller
      */
     protected function createProduto(Request $request)
     {
-        $dataForm = $request->all();
-        $dataForm['PersoProduto'] = (!isset($dataForm['PersoProduto'])) ? 0 : 1;
-        $dataForm['TerceProduto'] = (!isset($dataForm['TerceProduto'])) ? 0 : 1;
 
         $validator = Validator::make(
             $request->all(),
@@ -28,7 +25,7 @@ class ProdutoRegister extends Controller
                 'NomeProduto' => ['required', 'string'],
                 'TipoProduto' => ['required', 'integer'],
                 'PCProduto' => ['required'],
-                'PCVenda' => ['required'],
+                'PVProduto' => ['required'],
                 'MaterialProduto' => ['required', 'integer'],
                 'Logistica' => ['required', 'integer'],
                 'DimensaoProduto' => ['required', 'integer'],
@@ -41,7 +38,7 @@ class ProdutoRegister extends Controller
                 'NomeProduto.required' => 'Nome obrigatório.',
                 'TipoProduto.required' => 'Tipo obrigatório.',
                 'PCProduto.required' => 'Preço de custo obrigatório.',
-                'PCVenda.required' => 'Preço de venda obrigatório.',
+                'PVProduto.required' => 'Preço de venda obrigatório.',
                 'MaterialProduto.required' => 'Material obrigatório.',
                 'Logistica.required' => 'Logística obrigatória.',
                 'DimensaoProduto.required' => 'Dimensão obrigatória.',
@@ -62,7 +59,7 @@ class ProdutoRegister extends Controller
         $Produto->pro_nome = $request->NomeProduto;
         $Produto->tpp_id = $request->TipoProduto;
         $Produto->pro_precocusto = $request->PCProduto;
-        $Produto->pro_precovenda = $request->PCVenda;
+        $Produto->pro_precovenda = $request->PVProduto;
         $Produto->pro_promocao = $request->PromocaoProduto;
         $Produto->mat_id = $request->MaterialProduto;
         $Produto->log_id = $request->Logistica;
@@ -71,8 +68,8 @@ class ProdutoRegister extends Controller
         $file = $request->FotoProduto;
         $upload = $request->FotoProduto->store('fotos');
         $Produto->pro_foto_path = $nameFile;
-        $Produto->pro_personalizacao = $request->$dataForm['persoProduto'];
-        $Produto->pro_terceirizacao = $request->$dataForm['terceProduto'];
+        $Produto->pro_personalizacao = $request->persoProduto;
+        $Produto->pro_terceirizacao = $request->terceProduto;
         $Produto->save();
 
         if ($Produto) {

@@ -21,9 +21,7 @@ class ClienteRegister extends Controller
      */
     protected function createCliente(ClienteRequest $request)
     {
-
      $dataForm = $request->all();
-     $dataForm['statusCliente'] = (!isset($dataForm['statusCliente'])) ? 0 : 1;
 
         $validator = Validator::make(
             $request->all(),

@@ -394,8 +394,7 @@
                                     <label class="modal-label">Dimensão:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <select type="text" name="DimensaoProduto" id="DimensaoProduto" class="form-control"
-                                        onkeypress="mascara(this, '### x ### x ###')" maxlength="15"
-                                        value="{{ old('DimensaoProduto') }}" placeholder="Selecione com o Dimensão">
+                                        value="{{ old('DimensaoProduto') }}" placeholder="Selecione a Dimensão">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
                                             <option value="{{ $dimensao['id'] }}">
@@ -813,10 +812,9 @@
                         </div>
                     </div>
                 <div class="row">
-                <div class="modal-footer">
+                <div class="modal-footer"style="width: 100%; padding: 24px 15px 16px 15px;">
                     <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterPacotes"
                         data-modal="modalRegisterPacotes">Cancelar</button>
-
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
         </form>
@@ -1002,7 +1000,6 @@
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
-
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
@@ -1037,7 +1034,6 @@
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
-
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
@@ -1072,7 +1068,6 @@
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
-
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
@@ -1106,8 +1101,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
-                    $(document).find('input').removeClass('is-invalid');
-                },
+                    $(document).find('input').removeClass('is-invalid');                },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterCores')[0].reset();
@@ -1145,7 +1139,6 @@
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
-
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {

@@ -25,18 +25,7 @@ class CoresRegister extends Controller
             ]
         );
         if ($request->CodigoCores != "#000000" || !empty($request->EspecialCores)) {
-        if ($request->CodigoCores == "#000000") {
-            $validator_cor_especial = Validator::make(
-                $request->all(),
-                [
-                    'CodigoCores' => ['integer'],
-                ],
-                [
-                    'CodigoCores.integer' => 'Código obrigatório.',
-                ]
-            );
-            $cor = $request->CodigoCores;
-        } else{
+        if (isset($request->EspecialCores)) {
             $validator_cor_especial = Validator::make(
                 $request->all(),
                 [
@@ -46,8 +35,20 @@ class CoresRegister extends Controller
                     'EspecialCores.required' => 'Cor especial obrigatório.',
                 ]
             );
+            $cor = $request->EspecialCores;
+        } else {
+            $validator_cor_especial = Validator::make(
+                $request->all(),
+                [
+                    'CodigoCores' => ['required', 'string'],
+                ],
+                [
+                    'CodigoCores.required' => 'Código obrigatório.',
+                ]
+            );
+            $cor = $request->CodigoCores;
         }
-    } else{
+    } else {
         $validator_cor_especial = Validator::make(
             $request->all(),
             [
@@ -66,11 +67,7 @@ class CoresRegister extends Controller
         }
         $Cor = new Cor;
         $Cor->cor_nome = $request->NomeCores;
-        if (isset($cor)) {
-            $Cor->cor_hex_especial = $request->CodigoCores;
-        } else {
-            $Cor->cor_hex_especial = $request->EspecialCores;
-        }
+         $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
         if ($Cor) {
