@@ -316,7 +316,7 @@
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
                                 * </label><br>
                             <div class="switch__container">
-                                <input id="switch-shadow" name="userStatus" value={{ 'Ativo' ?? 'Inativo' }}
+                                <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
@@ -573,6 +573,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
+                    $(document).find('input').removeClass('is-invalid');
 
                 },
                 success: function(data_decoded) {

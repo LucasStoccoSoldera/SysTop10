@@ -23,7 +23,6 @@ class UserRegister extends Controller
     protected function createUser(Request $request)
     {
         $dataForm = $request->all();
-        $dataForm['statusUser'] = (!isset($dataForm['statusUser']))? 0 : 1;
 
         $validator = Validator::make($request->all(),[
             'nomeUser' => ['required', 'string'],
@@ -57,7 +56,7 @@ class UserRegister extends Controller
         $Usuario->usu_celular = $request->celularUser;
         $Usuario->usu_cpf = $request->cpfUser;
         $Usuario->car_id = $request->cargoUser;
-        $Usuario->usu_status = $request->$dataForm['statusUser'];
+        $Usuario->usu_status = $request->statusUser;
         $Usuario->save();
 
             if($Usuario){
