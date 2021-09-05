@@ -439,7 +439,7 @@
                 </div>
                 <div class="row">
                     <div class="col-6" style="text-align: -webkit-center;">
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Usuários:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowusu" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
@@ -447,7 +447,7 @@
                                 <label for="switch-shadowusu"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Clientes:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowcli" name="clientePrivilegio" value={{ 1 ?? 0 }}
@@ -455,7 +455,7 @@
                                 <label for="switch-shadowcli"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Financeiro:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowfin" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
@@ -463,7 +463,7 @@
                                 <label for="switch-shadowfin"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Produtos:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowpro" name="produtoPrivilegio" value={{ 1 ?? 0 }}
@@ -473,7 +473,7 @@
                         </div>
                     </div>
                     <div class="col-6" style="text-align: -webkit-center;">
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Estoque:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowest" name="estoquePrivilegio" value={{ 1 ?? 0 }}
@@ -481,7 +481,7 @@
                                 <label for="switch-shadowest"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Fornecedores:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowfor" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
@@ -489,7 +489,7 @@
                                 <label for="switch-shadowfor"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group">
                             <label class="modal-label">Detalhes:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowdet" name="detalhePrivilegio" value={{ 1 ?? 0 }}
@@ -497,7 +497,7 @@
                                 <label for="switch-shadowdet"></label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group switch_group" >
                             <label class="modal-label">Logistica:</label><br>
                             <div class="switch__container">
                                 <input id="switch-shadowlog" name="logisticaPrivilegio" value={{ 1 ?? 0 }}

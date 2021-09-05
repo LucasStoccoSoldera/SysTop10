@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cor;
+use App\Models\CorProduto;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -70,8 +73,35 @@ class CoresRegister extends Controller
          $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
+        Schema::table('cor_produto', function (Blueprint $table, Request $request) {
+            $table->char($request->NomeCores)->default(0);
+        });
+
         if ($Cor) {
             return response()->json(['status' => 1, 'msg' => 'Cor cadastrada com sucesso!']);
+        }
+    }
+
+    protected function createCorProduto(Request $request)
+    {
+        if(empty($request->produtoCorProduto)){
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'produtoCorProduto' => ['required'],
+            ],
+            [
+                'produtoCorProduto.required' => 'Produto obrigatório.',
+            ]
+        );
+        if ($validator->fails()){
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
+        }
+        $CorProduto = new CorProduto;
+        $CorProduto->cop_produto = $request->produtoCorProduto;
+
+        $colunas = Schema::getColumnListing('cor_produto');
+        dd($colunas);
         }
     }
 }

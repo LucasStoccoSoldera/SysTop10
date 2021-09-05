@@ -32,6 +32,8 @@ class CargoRegister extends Controller
         $Cargo->car_descricao = $request->descricaoCargo;
         $Cargo->save();
 
+
+
         if ($Cargo) {
             return response()->json(['status' => 1, 'msg' => 'Cargo cadastrado com sucesso!']);
         }

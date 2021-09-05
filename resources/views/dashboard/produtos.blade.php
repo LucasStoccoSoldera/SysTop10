@@ -250,18 +250,20 @@
             </a>
             <div class="dropdown-menu" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterProdutos"><img
-                        src="../img/dash/cadastro_produtos.png" width="75" height="75"></a>
+                        src="../img/dash/cadastro_produtos.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static"
-                    data-target="#modalRegisterTipoProduto"><img src="../img/dash/logistica.png" width="75"
-                        height="75"></a>
+                    data-target="#modalRegisterTipoProduto"><img src="../img/dash/logistica.png" width="65"
+                        height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterMaterial"><img
-                        src="../img/dash/materia_prima.png" width="75" height="75"></a>
+                        src="../img/dash/materia_prima.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterDimensao"><img
-                        src="../img/dash/dimensao.png" width="75" height="75"></a>
+                        src="../img/dash/dimensao.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCores"><img
-                        src="../img/dash/cores.png" width="75" height="75"></a>
+                        src="../img/dash/cores.png" width="65" height="65"></a>
+                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCorProduto"><img
+                        src="../img/dash/cores.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterPacotes"><img
-                        src="../img/dash/pacote.png" width="75" height="75"></a>
+                        src="../img/dash/pacote.png" width="65" height="65"></a>
             </div>
         </div>
     </div>
@@ -343,16 +345,6 @@
                                     </span>
                                         </div>
                                 </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Foto do Produto:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
-                                            value="{{ old('FotoProduto') }}">
-                                            <div class="div-feedback">
-                                        <span class="invalid-feedback FotoProduto_error" role="alert">
-                                        </span>
-                                            </div>
-                                    </div>
                                 </div>
                             <div class="col-6">
                                 <div class="form-group">
@@ -408,18 +400,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Cores: </label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="CoresProduto" id="CoresProduto" class="form-control"
-                                        maxlength="25" value="{{ old('CoresProduto') }}"
-                                        placeholder="Selecione com o Cores">
-                                        <option value="">------------Selecione------------</option>
-                                        @foreach ($cores as $cor)
-                                            <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="div-feedback">
-                                    <span class="invalid-feedback CoresProduto_error" role="alert">
+                                    <label class="modal-label">Promoção: </label>
+                                        <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" dinheiro form-control"
+                                        maxlength="9"
+                                        value="{{ old('PromocaoProduto') }}" placeholder="Promoção?">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback PromocaoProduto_error" role="alert">
                                     </span>
                                     </div>
                                 </div>
@@ -444,15 +430,19 @@
                                             </span>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="form-group" id="form-group">
-                                        <label class="modal-label"> Promoção?</label>
-                                        <div class="switch__container">
-                                            <input id="switch-shadow" name="PromocaoProduto" value={{ 'Sim' ?? 'Não' }}
-                                                class="switch switch--shadow" type="checkbox">
-                                            <label for="switch-shadow"></label>
-                                            <span class="invalid-feedback PromocaoProduto_error" role="alert">
-                                            </span>
-                                        </div>
+                                        <label class="modal-label">Foto do Produto:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
+                                            value="{{ old('FotoProduto') }}">
+                                            <div class="div-feedback">
+                                        <span class="invalid-feedback FotoProduto_error" role="alert">
+                                        </span>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -773,6 +763,70 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="modalRegisterCorProduto" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formRegisterCorProduto" method="POST" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.create.corproduto') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Relação Cor Produto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <select type="text" name="produtoCorProduto" id="produtoCorProduto" class="form-control"
+                                    maxlength="80" value="{{ old('produtoCorProduto') }}"
+                                    placeholder="Selecione com o Cargo">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($produtos as $produto)
+                                        <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="invalid-feedback produtoCorProduto_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="visible-xs-block">
+                    <h4 class="modal-label" style="font-weight: bold; color: black;text-align: -webkit-center;">Cores:</h4>
+                    <hr class="visible-xs-block">
+                    <div class="row" style="margin-top: 15px">
+                            @php
+                                $cont = 0;
+                            @endphp
+
+                            <div class="col-12" style="text-align: -webkit-center;">
+                            @foreach ($cores as $cor)
+                            <div class="form-group">
+                                <label class="modal-label">{{$cor['cor_nome']}}</label><br>
+                                <div style="float: unset">
+                                    <input id="{{"switch-shadow" . "$cont"}}" name="{{$cor['cor_nome'] . "_" . "$cont"}}" value={{ 1 ?? 0 }}
+                                         type="checkbox">
+                                </div>
+                            </div>
+                            <hr class="visible-xs-block">
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterCorProduto" data-modal="modalRegisterCorProduto">Cancelar</button>
+                    <button type="submit" class="btn-register btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
 
 <div class="modal fade" id="modalRegisterPacotes" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
@@ -1122,6 +1176,37 @@
                 }
             });
         });
+
+     $("#formRegisterCorProduto").on('submit', function(e) {
+
+e.preventDefault();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: $(this).attr('method'),
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    beforeSend: function() {
+        $(document).find('span.invalid-feedback').text('');
+        $(document).find('input').removeClass('is-invalid');                },
+    success: function(data_decoded) {
+        if (data_decoded.status == 1) {
+            $('#mensagem').text(data_decoded.msg);
+            $('#modalAlertRegistrar').modal('show');
+        }
+        if (data_decoded.status == 0) {
+            $.each(data_decoded.error, function(prefix, val) {
+                $('span.' + prefix + '_error').text(val[0]);
+                 $('#' + prefix).addClass('is-invalid');
+                });
+        }
+    }
+});
+});
 
         $("#formRegisterPacotes").on('submit', function(e) {
 

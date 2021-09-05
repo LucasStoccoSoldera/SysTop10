@@ -75,7 +75,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <a class="btn btn-primary col-12" id="btn-detalhe" href="{{ route('admin.Logistica') }}">
+                    <a class="btn btn-primary col-12" id="btn-detalhe" href="{{ route('admin.logistica') }}">
                         <div class="tudo">
                             <p id="p-detalhe">{{ __('Ir para Logística') }}</p>
                         </div>
