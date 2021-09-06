@@ -809,13 +809,13 @@
 
     var path = "{{route ('admin.autocomplete.ven.cliente')}}"
 
-   //    $('input#txt_cliente').typeahead({
-   //        source: function (terms,process){
-   //            return $.get(path, {terms:terms}, function(data){
-   //                return process(data);
-   //            });
-   //        }
-   //    });
+       $('input#txt_cliente').typeahead({
+           source: function (terms,process){
+               return $.get(path, {terms:terms}, function(dados){
+                   return process(dados);
+               });
+           }
+       });
 
 function abrirItem {
     $('#modalRegisterItemVenda').modal('show');
