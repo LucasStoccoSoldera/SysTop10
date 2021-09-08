@@ -16,12 +16,12 @@ class ItemCompraList extends Controller
 
             $data4 = Compras_Detalhe::where('com_id', $request->IDCompra);
 
-            DataTables::eloquent($data4)
+            return DataTables::eloquent($data4)
                 ->addColumn('action', function($data4){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>
-                
+
                 <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data4.' " data-rota=" '. route('admin.delete.itemcompra') .'"
                 style="padding: 11px 25px;"><i

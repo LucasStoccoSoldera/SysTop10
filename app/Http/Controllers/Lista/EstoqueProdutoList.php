@@ -20,7 +20,7 @@ class EstoqueList extends Controller
 
             $data = Estoque::query();
 
-                DataTables::eloquent($data)
+            return DataTables::eloquent($data)
                 ->toJson();
         }
     }

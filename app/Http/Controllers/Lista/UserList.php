@@ -19,8 +19,6 @@ class UserList extends Controller
         $dado2 = Usuario::where('car_id', '1')->count();
         $dado3 = Usuario::where('car_id', '2' && '3')->count();
 
-        $data = Usuario::query();
-
         if($request->ajax()){
 
             $data = Usuario::query();

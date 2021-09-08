@@ -20,12 +20,12 @@ class LogisticaList extends Controller
 
             $data2 = Logistica::query();
 
-                DataTables::eloquent($data2)
+            return DataTables::eloquent($data2)
                 ->addColumn('action', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>
-                
+
                 <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.logistica') .'"
                 style="padding: 11px 25px;"><i

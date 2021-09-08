@@ -16,7 +16,7 @@ class ItemVendaList extends Controller
 
             $data5 = Venda_Detalhe::where('ven_id', '=', $request->id);
 
-            DataTables::eloquent($data5)
+            return DataTables::eloquent($data5)
             ->toJson();
         }
     }

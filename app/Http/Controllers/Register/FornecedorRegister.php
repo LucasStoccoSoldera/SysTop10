@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedores;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FornecedorRegister extends Controller
 {
@@ -44,7 +48,7 @@ class FornecedorRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cpfFornecedor,
                     [
-                        'cpfFornecedor' => ['required', 'string', 'cpf'],
+                        'cpfFornecedor' => ['required', 'cpf'],
                     ],
                     [
                         'cpfFornecedor.required' => 'CPF obrigatório.',
@@ -56,7 +60,7 @@ class FornecedorRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cnpjFornecedor,
                     [
-                        'cnpjFornecedor' => ['required', 'string', 'cnpj'],
+                        'cnpjFornecedor' => ['required', 'cnpj'],
                     ],
                     [
                         'cnpjFornecedor.required' => 'CNPJ obrigatório.',
@@ -68,8 +72,8 @@ class FornecedorRegister extends Controller
             $validator_cpf_cnpj = Validator::make(
                 [$request->cpfFornecedor, $request->cnpjFornecedor],
                 [
-                    'cpfFornecedor' => ['required', 'string', 'cpf'],
-                    'cnpjFornecedor' => ['required', 'string', 'cnpj'],
+                    'cpfFornecedor' => ['required'],
+                    'cnpjFornecedor' => ['required'],
                 ],
                 [
                     'cpfFornecedor.required' => 'CPF ou CNPJ obrigatórios.',
@@ -79,13 +83,12 @@ class FornecedorRegister extends Controller
         }
 
         if (!empty($request->telefoneFornecedor || $request->celularFornecedor)) {
-            if (isset($request->telefoneFornecedor) && isset($request->celularFornecedor)) {
 
             if (isset($request->telefoneFornecedor)) {
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneFornecedor,
                     [
-                        'telefoneFornecedor' => ['required', 'string', 'telefone'],
+                        'telefoneFornecedor' => ['required', 'telefone'],
                     ],
                     [
                         'telefoneFornecedor.required' => 'Telefone obrigatório.',
@@ -101,24 +104,24 @@ class FornecedorRegister extends Controller
                     ],
                     [
                         'celularFornecedor.required' => 'Celular obrigatório.',
-                        'celularFornecedor.telefone' => 'Celular inválido.',
+                        'celularFornecedor.celular' => 'Celular inválido.',
                     ]
                 );
             }
-        } else {
+        } else if (isset($request->telefoneFornecedor) && isset($request->celularFornecedor)) {
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneFornecedor, $request->celularFornecedor],
                 [
-                    'telefoneFornecedor' => ['required', 'string', 'telefone'],
-                    'celularFornecedor' => ['required', 'celular'],
+                    'telefoneFornecedor' => ['telefone'],
+                    'celularFornecedor' => ['celular'],
                 ],
                 [
-                    'telefoneFornecedor.required' => 'Telefone ou Celular obrigatórios.',
-                    'celularFornecedor.required' => 'Telefone ou Celular obrigatórios.',
+                    'telefoneFornecedor.telefone' => 'Telefone inválido.',
+                    'celularFornecedor.celular' => 'Celular inválido.',
                 ]
             );
         }
-    } else {
+      else {
         $validator_telefone_celular = Validator::make(
             [$request->telefoneFornecedor, $request->celularFornecedor],
             [
@@ -161,5 +164,3 @@ class FornecedorRegister extends Controller
         }
     }
 }
-
-// teste

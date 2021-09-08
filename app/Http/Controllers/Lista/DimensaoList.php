@@ -15,7 +15,7 @@ class DimensaoList extends Controller
         if($request->ajax()){
             $data5 = Dimensao::query();
 
-            DataTables::eloquent($data5)
+            return DataTables::eloquent($data5)
             ->addColumn('action', function($data5){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i

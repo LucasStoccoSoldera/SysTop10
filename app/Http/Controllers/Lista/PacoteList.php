@@ -16,12 +16,12 @@ class PacoteList extends Controller
 
             $data4 = Pacote::query();
 
-            DataTables::eloquent($data4)
+            return DataTables::eloquent($data4)
             ->addColumn('action', function($data4){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>
-                
+
                <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data4->id.' " data-rota=" '. route('admin.delete.pacote') .'"
                 style="padding: 11px 25px;"><i

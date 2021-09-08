@@ -17,12 +17,12 @@ class ItemVendaAtoList extends Controller
             $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
 
 
-            DataTables::eloquent($data6)
+            return DataTables::eloquent($data6)
             ->addColumn('action', function($data6){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i
                 class="tim-icons icon-pencil"></i></a>
-                
+
                 <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data6.' " data-rota=" '. route('admin.delete.itemvenda') .'"
                 style="padding: 11px 25px;"><i
