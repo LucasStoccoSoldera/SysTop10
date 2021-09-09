@@ -310,9 +310,9 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterContas"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterContas');"><img
                         src="../img/dash/cadastro_contas.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCompras"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCompras');"><img
                         src="../img/dash/compras.png" width="75" height="75"></a>
             </div>
         </div>

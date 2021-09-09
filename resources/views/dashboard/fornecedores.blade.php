@@ -144,7 +144,7 @@
                         <table class="table tablesorter " id="tb_fornecedor">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 5%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
                                     <th style="width: 30%">
@@ -181,8 +181,8 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static"
-                    data-target="#modalRegisterFornecedores"><img src="../img/dash/cadastro_fornecedor.png" width="75"
+                <a class="dropdown-item" id="no-padding" data-backdrop="static"
+                     onclick="abrirModal('#modalRegisterFornecedores');"><img src="../img/dash/cadastro_fornecedor.png" width="75"
                         height="75"></a>
             </div>
         </div>
@@ -358,7 +358,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.fornecedor') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "for_nome"},
                 {data: "for_cpf_cnpj"},
                 {data: "for_telefone"},

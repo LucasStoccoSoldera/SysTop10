@@ -181,7 +181,7 @@
                         <table class="table tablesorter " id="tb_estoque">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 35%">
+                                    <th class="text-center" style="width: 35%">
                                         Produto
                                     </th>
                                     <th style="width: 10%">
@@ -218,7 +218,7 @@
                         <table class="table tablesorter " id="tb_produto_estoque">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 60%">
+                                    <th class="text-center" style="width: 60%">
                                         Produto
                                     </th>
                                     <th style="width: 15%">
@@ -247,7 +247,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterEstoque"> <img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterEstoque');"> <img
                         src="../img/dash/materia_prima.png" width="75" height="75"></a>
             </div>
         </div>
@@ -340,7 +340,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoque') }}",
             columns: [
-                {data: "pro_id"},
+                {data: "pro_id", className: "text-center"},
                 {data: "est_qtde"},
                 {data: "dim_id"},
                 {data: "cor_id"},
@@ -355,7 +355,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.estoqueproduto') }}",
             columns: [
-                {data: "pro_id"},
+                {data: "pro_id", className: "text-center"},
                 {data: "est_qtde"},
                 {data: "est_status", className: "text-center"},
                 {data: "action", className: "text-right"},

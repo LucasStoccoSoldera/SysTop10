@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Delete;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\Dimensao;
+use App\Models\Cargo;
 
-class DimensoesDelete extends Controller
+class CargoDelete extends Controller
 {
     public function deleteDimensao(Request $request)
     {
-        $data=Dimensao::find($request->id);
+        $data=Cargo::find($request->id);
 
-        $descricao = $data->dim_descricao;
+        $descricao = $data->car_descricao;
 
         $data->delete();
-        $msgExcluir = "A dimensão $descricao foi excluída com sucesso!";
+        $msgExcluir = "O cargo $descricao foi excluída com sucesso!";
         return redirect()->back()->with($msgExcluir);
     }
 }

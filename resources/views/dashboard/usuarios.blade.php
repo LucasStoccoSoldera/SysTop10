@@ -168,7 +168,7 @@
                         <table class="table tablesorter " id="tb_usuario">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 5%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
                                     <th style="width: 25%">
@@ -205,12 +205,12 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterUser"> <img
-                        src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCargo"> <img
-                        src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterPrivilegio">
-                    <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
+                <button class="dropdown-item" id="no-padding" data-backdrop="static"onclick="abrirModal('#modalRegisterUser');"> <img
+                        src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
+                <button class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCargo');"> <img
+                        src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
+                <button class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterPrivilegio');">
+                    <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
             </div>
         </div>
     </div>
@@ -380,7 +380,7 @@
                     <table class="table tablesorter " id="tb_cargo">
                         <thead class=" text-primary">
                             <tr>
-                                <th style="width: 10%">
+                                <th class="text-center" style="width: 10%">
                                     ID
                                 </th>
                                 <th style="width: 50%">
@@ -531,7 +531,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.user') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "usu_nome_completo"},
                 {data: "car_id"},
                 {data: "usu_celular"},
@@ -546,7 +546,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.cargo') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "car_descricao"},
                 {data: "action", className: "text-right"},
             ]

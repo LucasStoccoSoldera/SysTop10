@@ -16,7 +16,7 @@ class CargoList extends Controller
 
                 $data2 = Cargo::query();
 
-                return  DataTables::eloquent($data2)
+              return  DataTables::eloquent($data2)
                 ->addColumn('action', function($data2){
 
                 $btn = '<a href="#" class="btn btn-primary" id="alter"><i

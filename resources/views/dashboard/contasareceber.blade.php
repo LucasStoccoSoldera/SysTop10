@@ -232,10 +232,10 @@
                 </div>
                 <div class="card-body" id="cd-adaptado">
                     <div class="table-responsive">
-                        <table class="table tablesorter " id="tb_receber">
+                        <table class="table tablesorter" id="tb_receber">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 5%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
                                     <th style="width: 30%">
@@ -272,7 +272,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterContasaReceber">
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterContasaReceber');">
                     <img src="../img/dash/cadastro_receber.png" width="75" height="75"></a>
                 <a class="dropdown-item" id="no-padding" href="{{ route('admin.Vendas') }}"> <img
                         src="../img/dash/vendas.png" width="75" height="75"></a>
@@ -420,7 +420,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.contasareceber') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "rec_descricao"},
                 {data: "rec_valor", className: "text-right"},
                 {data: "tipo_pagto"},

@@ -238,19 +238,19 @@
                         <table class="table tablesorter " id="tb_venda">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 30%">
-                                        Cliente
+                                    <th class="text-center" style="width: 10%">
+                                        ID
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 25%">
                                         Valor Total
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 20%">
                                         Status
                                     </th>
-                                    <th class="text-center" style="width: 15%">
+                                    <th class="text-center" style="width: 120%">
                                         Data da Venda
                                     </th>
-                                    <th class="text-right" style="width: 20%">
+                                    <th class="text-right" style="width: 25%">
                                         Ações
                                     </th>
                                 </tr>
@@ -275,7 +275,7 @@
                         <table class="table tablesorter " id="tb_item_venda">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         Venda
                                     </th>
                                     <th style="width: 35%">
@@ -307,7 +307,7 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterVenda"> <img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterVenda');"> <img
                         src="../img/dash/cadastro_receber.png" width="75" height="75"></a>
             </div>
         </div>
@@ -471,7 +471,7 @@
                                             <table class="table tablesorter " id="tb_item_venda_ato">
                                                 <thead class=" text-primary">
                                                     <tr>
-                                                        <th style="width: 25%">
+                                                        <th class="text-center" style="width: 25%">
                                                             Produto
                                                         </th>
                                                         <th style="width: 10%">
@@ -666,20 +666,10 @@
             searching: false,
             processing: true,
             serverside: true,
-//         fnDrawCallback: function () {
-//
-//        $('#tb_venda').click(function () {
-//        // get position of the selected row
-//        var position = table.fnGetPosition(this)
-//        // value of the first column (can be hidden)
-//        var id = table.fnGetData(position)[0]
-//        // redirect
-//        $.this().loadItem(id);
-//        })
-//    },
+
         ajax: "{{ route('admin.list.vendas') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "ven_valor_total", className: "text-right"},
                 {data: "tpg_id"},
                 {data: "ven_status", className: "text-center"},
@@ -694,7 +684,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.itemvendaato') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "pro_id"},
                 {data: "det_qtde"},
                 {data: "det_valor_total", className: "text-right"},

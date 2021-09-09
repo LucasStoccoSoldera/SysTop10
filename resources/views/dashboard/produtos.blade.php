@@ -249,20 +249,20 @@
                 <img src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterProdutos"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterProdutos');"><img
                         src="../img/dash/cadastro_produtos.png" width="65" height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static"
-                    data-target="#modalRegisterTipoProduto"><img src="../img/dash/logistica.png" width="65"
+                <a class="dropdown-item" id="no-padding" data-backdrop="static"
+                     onclick="abrirModal('#modalRegisterTipoProduto');"><img src="../img/dash/logistica.png" width="65"
                         height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterMaterial"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterMaterial');"><img
                         src="../img/dash/materia_prima.png" width="65" height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterDimensao"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterDimensao');"><img
                         src="../img/dash/dimensao.png" width="65" height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCores"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCores');"><img
                         src="../img/dash/cores.png" width="65" height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterCorProduto"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCorProduto');"><img
                         src="../img/dash/cores.png" width="65" height="65"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterPacotes"><img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterPacotes');"><img
                         src="../img/dash/pacote.png" width="65" height="65"></a>
             </div>
         </div>
@@ -507,7 +507,7 @@
                         <table class="table tablesorter " id="tb_tipo_produto">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 50%">
@@ -578,7 +578,7 @@
                         <table class="table tablesorter " id="tb_material">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 50%">
@@ -647,7 +647,7 @@
                         <table class="table tablesorter " id="tb_dimensao">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 50%">
@@ -736,16 +736,16 @@
                         <table class="table tablesorter " id="tb_cor">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 20%">
                                         Nome
                                     </th>
                                     <th style="width: 20%">
                                         Cód / Pal
                                     </th>
-                                    <th class="text-right" style="width: 40%">
+                                    <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -881,10 +881,10 @@
                     </div>
                     <div class="card-body" id="cd-adaptado">
                         <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_cor">
+                            <table class="table tablesorter " id="tb_pacote">
                                 <thead class=" text-primary">
                                     <tr>
-                                        <th style="width: 10%">
+                                        <th class="text-center" style="width: 10%">
                                             ID
                                         </th>
                                         <th style="width: 30%">
@@ -923,7 +923,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.produto') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "pro_nome"},
                 {data: "tpp_id"},
                 {data: "pro_precovenda", className: "text-right"},
@@ -937,7 +937,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.tipoproduto') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "tpp_descricao"},
                 {data: "action", className: "text-right"},
             ]
@@ -949,7 +949,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.material') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "mat_descricao"},
                 {data: "action", className: "text-right"},
             ]
@@ -961,7 +961,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.dimensao') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "dim_descricao"},
                 {data: "action", className: "text-right"},
             ]
@@ -973,7 +973,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.cor') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "cor_nome"},
                 {data: "cor_hex_especial"},
                 {data: "action", className: "text-right"},
@@ -986,9 +986,9 @@
             serverside: true,
             ajax: "{{ route('admin.list.pacote') }}",
             columns: [
-                {data: "id"},
-                {data: "pac_dimensao"},
+                {data: "id", className: "text-center"},
                 {data: "pac_descricao"},
+                {data: "pac_dimensao"},
                 {data: "action", className: "text-right"},
             ]
         } );

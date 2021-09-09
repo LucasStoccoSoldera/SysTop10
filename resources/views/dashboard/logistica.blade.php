@@ -86,7 +86,7 @@
                         <table class="table tablesorter " id="tb_pacote">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 30%">
@@ -117,7 +117,7 @@
                         <table class="table tablesorter " id="tb_transportadora">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 35%">
@@ -156,7 +156,7 @@
                         <table class="table tablesorter " id="tb_logistica">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         ID
                                     </th>
                                     <th style="width: 35%">
@@ -186,9 +186,9 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterTransportadora">
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterTransportadora');">
                     <img src="../img/dash/transporte.png" width="75" height="75"></a>
-                <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-target="#modalRegisterLogistica"> <img
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterLogistica');"> <img
                         src="../img/dash/logistica_log.png" width="75" height="75"></a>
             </div>
         </div>
@@ -341,7 +341,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.pacote') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "pac_dimensao"},
                 {data: "pac_descricao"},
                 {data: "action", className: "text-right"},
@@ -354,7 +354,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.transportadora') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "trans_nome"},
                 {data: "trans_telefone"},
                 {data: "trans_limite_transporte"},
@@ -368,7 +368,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
-                {data: "id"},
+                {data: "id", className: "text-center"},
                 {data: "pac_id"},
                 {data: "trans_id"},
                 {data: "action", className: "text-right"},

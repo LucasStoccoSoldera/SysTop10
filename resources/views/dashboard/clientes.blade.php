@@ -261,7 +261,7 @@
             <img id="imgsub" src="../img/dash/addbtn.png">
         </a>
         <div class="dropdown-menu" id="add-menu">
-            <a class="dropdown-item" id="no-padding" data-toggle="modal" data-backdrop="static" data-backdrop="static" data-target="#modalRegisterCliente"> <img
+            <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCliente');"> <img
                     src="../img/dash/cadastro_pessoa.png" width="75" height="75"></a>
         </div>
     </div>
