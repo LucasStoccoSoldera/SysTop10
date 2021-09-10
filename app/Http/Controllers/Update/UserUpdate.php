@@ -11,8 +11,13 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UserRegister extends Controller
+class UserUpdate extends Controller
 {
+
+    protected function editUser(Request $request)
+    {
+        $object = Usuario::find($request->IDEdit);
+    }
 
     use RegistersUsers;
 
@@ -20,7 +25,7 @@ class UserRegister extends Controller
      * @param  array  $data
      * @return \App\Models\Usuario
      */
-    protected function createUser(Request $request)
+    protected function updateUser(Request $request)
     {
         $dataForm = $request->all();
 

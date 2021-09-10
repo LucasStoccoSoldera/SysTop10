@@ -807,7 +807,7 @@
            }
        });
 
-function abrirItem {
+function abrirItem() {
     $('#modalRegisterItemVenda').modal('show');
 }
 

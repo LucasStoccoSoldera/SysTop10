@@ -11,12 +11,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class ContasaReceberRegister extends Controller
+class ContasaReceberUpdate extends Controller
 {
+
+    protected function editReceber(Request $request)
+    {
+        $object = Contas_a_Receber::find($request->IDEdit);
+    }
+
     /**
      * @return \App\Models\Contas_a_Receber
      */
-    protected function createReceber(Request $request)
+    protected function updateReceber(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

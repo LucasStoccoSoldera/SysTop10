@@ -10,13 +10,18 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class CoresRegister extends Controller
+class CoresUpdate extends Controller
 {
+
+    protected function editCor(Request $request)
+    {
+        $object = Cor::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Cor
      */
-    protected function createCor(Request $request)
+    protected function updateCor(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
@@ -82,7 +87,7 @@ class CoresRegister extends Controller
         }
     }
 
-    protected function createCorProduto(Request $request)
+    protected function updateCorProduto(Request $request)
     {
         if(empty($request->produtoCorProduto)){
         $validator = Validator::make(

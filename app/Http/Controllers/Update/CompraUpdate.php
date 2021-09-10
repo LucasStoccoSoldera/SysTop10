@@ -17,13 +17,18 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CompraRegister extends Controller
+class CompraUpdate extends Controller
 {
+
+    protected function editCompra(Request $request)
+    {
+        $object = Compras::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Compras
      */
-    protected function createCompra(Request $request)
+    protected function updateCompra(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
@@ -110,7 +115,7 @@ class CompraRegister extends Controller
     }
 
 
-    protected function createItemCompra(Request $request)
+    protected function updateItemCompra(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

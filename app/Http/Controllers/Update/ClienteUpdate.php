@@ -12,14 +12,19 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ClienteRegister extends Controller
+class ClienteUpdate extends Controller
 {
+
+    protected function editCliente(ClienteRequest $request)
+    {
+        $object = Cliente::find($request->IDEdit);
+    }
 
     /**
      * @param  array  $data
      * @return \App\Models\Cliente
      */
-    protected function createCliente(ClienteRequest $request)
+    protected function updateCliente(ClienteRequest $request)
     {
      $dataForm = $request->all();
 

@@ -11,8 +11,14 @@ use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CentroCustoRegister extends Controller
+class CentroCustoUpdate extends Controller
 {
+
+    protected function editCentroCusto(Request $request)
+    {
+        $object = Centro_Custo::find($request->IDEdit);
+    }
+
     /**
      * Indicates if the validator should stop on the first rule failure.
      *
@@ -22,7 +28,7 @@ class CentroCustoRegister extends Controller
     /**
      * @return \App\Models\Centro_Custo
      */
-    protected function createCentroCusto(Request $request)
+    protected function updateCentroCusto(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

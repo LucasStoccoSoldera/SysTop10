@@ -7,13 +7,17 @@ use App\Models\Transportadora;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class TransportadoraRegister extends Controller
+class TransportadoraUpdate extends Controller
 {
+    protected function editTransportadora(Request $request)
+    {
+        $object = Transportadora::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Transportadora
      */
-    protected function createTransportadora(Request $request)
+    protected function updateTransportadora(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

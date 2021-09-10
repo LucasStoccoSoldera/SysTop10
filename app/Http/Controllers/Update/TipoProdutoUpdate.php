@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class TipoProdutoRegister extends Controller
+class TipoProdutoUpdate extends Controller
 {
+
+    protected function editTipoProduto(Request $request)
+    {
+        $object = TipoProduto::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\TipoProduto
      */
-    protected function createTipoProduto(Request $request)
+    protected function updateTipoProduto(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class ContasRegister extends Controller
+class ContasUpdate extends Controller
 {
+
+    protected function editPagar(Request $request)
+    {
+        $object = Contas_a_Pagar::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Contas_a_Pagar
      */
-    protected function createPagar(Request $request)
+    protected function updatePagar(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

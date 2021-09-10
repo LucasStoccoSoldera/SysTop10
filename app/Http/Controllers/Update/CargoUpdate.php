@@ -11,9 +11,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 
-class CargoRegister extends Controller
+class CargoUpdate extends Controller
 {
-    protected function createCargo(Request $request)
+
+    protected function editCargo(Request $request)
+    {
+        $object = Cargo::find($request->IDEdit);
+    }
+
+    protected function updateCargo(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

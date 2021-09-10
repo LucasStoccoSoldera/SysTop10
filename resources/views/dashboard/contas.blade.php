@@ -1065,20 +1065,21 @@
         });
     });
 
-    $('#modalAlertRegistrar').modal('hide',
-        function() { //auto implementa o valor total da compra puxando todos os itens
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: "GET",
-                url: "{{ route('admin.contas.soma') }}",
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    $('#VTCompras').val(data_decoded.total - $('#descontoCompras').val());
-                }
-            });
+  //    $('#modalAlertRegistrar').modal('hide',
+  //        function(e)
+  //        { //autoimplementa o valor total da compra puxando todos os itens
+  //            $.ajax({
+  //                headers: {
+  //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //                },
+  //                type: "GET",
+  //                url: "{{ route('admin.contas.soma') }}",
+  //                processData: false,
+  //                dataType: 'json',
+  //                success: function(data_decoded) {
+  //                    $('#VTCompras').val(data_decoded.total - $('#descontoCompras').val());
+  //                }
+  //            });
 
             function abrirItem() {
                 $('#modalRegisterItemCompra').modal('show');
@@ -1125,6 +1126,6 @@ $.ajax({
     }
 });
 });
-        });
+   //     });
 </script>
 @endpush

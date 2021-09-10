@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PrivilegioRegister extends Controller
+class PrivilegioUpdate extends Controller
 {
-    protected function createCargo(Request $request)
+
+    protected function  editCargo(Request $request)
+    {
+        $object = Privilegio::find($request->IDEdit);
+    }
+
+    protected function updateCargo(Request $request)
     {
         $dataForm = $request->all();
         $dataForm['usuarioPrivilegio'] = (!isset($dataForm['usuarioPrivilegio'])) ? 0 : 1;

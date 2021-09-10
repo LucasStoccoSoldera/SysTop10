@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class LogisticaRegister extends Controller
+class LogisticaUpdate extends Controller
 {
+
+    protected function editLogistica(Request $request)
+    {
+        $object = Logistica::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Logistica
      */
-    protected function createLogistica(Request $request)
+    protected function updateLogistica(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

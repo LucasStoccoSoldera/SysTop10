@@ -10,13 +10,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class EstoqueRegister extends Controller
+class EstoqueUpdate extends Controller
 {
+
+    protected function editEstoque(Request $request)
+    {
+        $object = Estoque::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Estoque
      */
-    protected function createEstoque(Request $request)
+    protected function updateEstoque(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class PacoteRegister extends Controller
+class PacoteUpdate extends Controller
 {
+    protected function editPacote(Request $request)
+    {
+        $object = Pacote::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Pacote
      */
-    protected function createPacote(Request $request)
+    protected function updatePacote(Request $request)
     {
 
         $validator = Validator::make(

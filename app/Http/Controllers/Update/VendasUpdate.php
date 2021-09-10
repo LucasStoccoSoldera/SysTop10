@@ -15,13 +15,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class VendasRegister extends Controller
+class VendasUpdate extends Controller
 {
+
+    protected function editVenda(Request $request)
+    {
+        $object = Venda::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Venda
      */
-    protected function createVenda(Request $request)
+    protected function updateVenda(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
@@ -86,7 +91,7 @@ class VendasRegister extends Controller
         }
     }
 
-    protected function createItemVenda(Request $request)
+    protected function updateItemVenda(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

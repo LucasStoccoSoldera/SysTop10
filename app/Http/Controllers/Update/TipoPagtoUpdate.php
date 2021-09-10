@@ -7,13 +7,18 @@ use App\Models\TipoPagto;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class TipoPagtoRegister extends Controller
+class TipoPagtoUpdate extends Controller
 {
+
+    protected function editTipoPagto(Request $request)
+    {
+        $object = TipoPagto::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\TipoPagto
      */
-    protected function createTipoPagto(Request $request)
+    protected function updateTipoPagto(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

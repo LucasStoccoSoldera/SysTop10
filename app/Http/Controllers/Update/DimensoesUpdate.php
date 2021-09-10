@@ -7,13 +7,18 @@ use App\Models\Dimensao;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class DimensoesRegister extends Controller
+class DimensoesUpdate extends Controller
 {
+
+    protected function editDimensao(Request $request)
+    {
+        $object = Dimensao::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Dimensao
      */
-    protected function createDimensao(Request $request)
+    protected function updateDimensao(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

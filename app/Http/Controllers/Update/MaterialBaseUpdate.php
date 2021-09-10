@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
-class MaterialBaseRegister extends Controller
+class MaterialBaseUpdate extends Controller
 {
+
+    protected function editMaterialBase(Request $request)
+    {
+        $object = Material_Base::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Material_Base
      */
-    protected function createMaterialBase(Request $request)
+    protected function updateMaterialBase(Request $request)
     {
         $validator = Validator::make(
             $request->all(),

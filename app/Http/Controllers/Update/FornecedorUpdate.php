@@ -11,13 +11,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class FornecedorRegister extends Controller
+class FornecedorUpdate extends Controller
 {
+
+    protected function editFornecedor(Request $request)
+    {
+        $object = Fornecedores::find($request->IDEdit);
+    }
 
     /**
      * @return \App\Models\Fornecedores
      */
-    protected function createFornecedor(Request $request)
+    protected function updateFornecedor(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
