@@ -14,7 +14,8 @@ class LogisticaUpdate extends Controller
 
     protected function editLogistica(Request $request)
     {
-        $object = Logistica::find($request->IDEdit);
+        $object = Logistica::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

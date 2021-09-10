@@ -22,7 +22,8 @@ class CompraUpdate extends Controller
 
     protected function editCompra(Request $request)
     {
-        $object = Compras::find($request->IDEdit);
+        $object = Compras::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

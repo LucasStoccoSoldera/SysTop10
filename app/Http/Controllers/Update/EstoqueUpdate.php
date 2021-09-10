@@ -15,7 +15,8 @@ class EstoqueUpdate extends Controller
 
     protected function editEstoque(Request $request)
     {
-        $object = Estoque::find($request->IDEdit);
+        $object = Estoque::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

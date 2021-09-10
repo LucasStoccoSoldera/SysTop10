@@ -12,7 +12,8 @@ class DimensoesUpdate extends Controller
 
     protected function editDimensao(Request $request)
     {
-        $object = Dimensao::find($request->IDEdit);
+        $object = Dimensao::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

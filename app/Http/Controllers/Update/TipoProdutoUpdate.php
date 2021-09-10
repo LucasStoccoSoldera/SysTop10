@@ -14,7 +14,8 @@ class TipoProdutoUpdate extends Controller
 
     protected function editTipoProduto(Request $request)
     {
-        $object = TipoProduto::find($request->IDEdit);
+        $object = TipoProduto::find($request->IDEdit->get());
+        return response()->json(compact('object'));
     }
 
     /**

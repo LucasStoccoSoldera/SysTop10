@@ -24,7 +24,7 @@ class ContasList extends Controller
             return  DataTables::eloquent($data1)
             ->addColumn('action', function($data1){
 
-                $btn = '<a href="#" class="btn btn-primary" id="view"><i
+                $btn = '<a href="#" class="btn btn-primary" id="view" data-id=" '.$data1->id.' "><i
                 class="tim-icons icon-pencil"></i></a>
 
                 <a href="#" class="btn btn-primary" id="alter"><i

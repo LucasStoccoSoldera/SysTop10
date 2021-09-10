@@ -12,7 +12,8 @@ class TipoPagtoUpdate extends Controller
 
     protected function editTipoPagto(Request $request)
     {
-        $object = TipoPagto::find($request->IDEdit);
+        $object = TipoPagto::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

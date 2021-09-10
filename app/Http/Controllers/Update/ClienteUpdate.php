@@ -17,7 +17,8 @@ class ClienteUpdate extends Controller
 
     protected function editCliente(ClienteRequest $request)
     {
-        $object = Cliente::find($request->IDEdit);
+        $object = Cliente::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

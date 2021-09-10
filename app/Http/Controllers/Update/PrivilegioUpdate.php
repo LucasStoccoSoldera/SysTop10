@@ -13,7 +13,8 @@ class PrivilegioUpdate extends Controller
 
     protected function  editCargo(Request $request)
     {
-        $object = Privilegio::find($request->IDEdit);
+        $object = Privilegio::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     protected function updateCargo(Request $request)

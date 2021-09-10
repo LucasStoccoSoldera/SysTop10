@@ -14,7 +14,8 @@ class ProdutoUpdate extends Controller
 
     protected function editProduto(Request $request)
     {
-        $object = Produto::find($request->IDEdit);
+        $object = Produto::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

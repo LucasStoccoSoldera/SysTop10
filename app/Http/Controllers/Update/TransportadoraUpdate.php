@@ -11,7 +11,8 @@ class TransportadoraUpdate extends Controller
 {
     protected function editTransportadora(Request $request)
     {
-        $object = Transportadora::find($request->IDEdit);
+        $object = Transportadora::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

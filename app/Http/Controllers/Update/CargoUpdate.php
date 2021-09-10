@@ -16,7 +16,8 @@ class CargoUpdate extends Controller
 
     protected function editCargo(Request $request)
     {
-        $object = Cargo::find($request->IDEdit);
+        $object = Cargo::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     protected function updateCargo(Request $request)

@@ -20,7 +20,8 @@ class VendasUpdate extends Controller
 
     protected function editVenda(Request $request)
     {
-        $object = Venda::find($request->IDEdit);
+        $object = Venda::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**

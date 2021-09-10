@@ -13,7 +13,8 @@ class PacoteUpdate extends Controller
 {
     protected function editPacote(Request $request)
     {
-        $object = Pacote::find($request->IDEdit);
+        $object = Pacote::find($request->IDEdit)->get();
+        return response()->json(compact('object'));
     }
 
     /**
