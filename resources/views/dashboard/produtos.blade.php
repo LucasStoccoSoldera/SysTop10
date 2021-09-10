@@ -1025,8 +1025,7 @@
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterProdutos')[0].reset();
-                        $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
@@ -1282,9 +1281,8 @@ $.ajax({
     dataType: 'json',
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
-            $('#mensagem_delete').text(data_decoded.msg);
             $('#modalAlertDelete').hide();
-            $('#modalReturnDelete').modal('show');
+            demo.showNotification('top','right'4,data_decoded.msg, 'icon-alert-circle-exc');
     }
 });
 });

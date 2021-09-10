@@ -522,4 +522,20 @@ demo = {
 
   },
 
+  showNotification: function(from, align, cor, msg, icon) {
+    color = cor;
+
+    $.notify({
+      icon: icon,
+      message: msg,
+
+    }, {
+      type: type[color],
+      timer: 3000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  }
 };
