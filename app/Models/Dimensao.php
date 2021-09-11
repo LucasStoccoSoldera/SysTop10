@@ -14,5 +14,11 @@ class Dimensao extends Model
         'dim_descricao',
 
     ];
+
+    public function dimensao_muitos()
+    {
+        return $this->belongsToMany(Estoque::class, Produto::class, Venda::class);
+    }
+
 }
 

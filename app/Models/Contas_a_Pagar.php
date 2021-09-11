@@ -23,5 +23,15 @@ class Contas_a_Pagar extends Model
         'con_status',
         'con_compra',
     ];
+
+    public function tipopagto_contas_a_pagar()
+    {
+        return $this->hasMany(TipoPagto::class);
+    }
+
+    public function centro_custo_contas_a_pagar()
+    {
+        return $this->hasMany(Centro_Custo::class);
+    }
 }
 

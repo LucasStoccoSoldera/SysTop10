@@ -13,4 +13,9 @@ class TipoPagto extends Model
     protected $fillable = [
         'tpg_descricao',
     ];
+
+    public function tipopagto_muitos()
+    {
+        return $this->belongsToMany(Compras::class, Contas_a_Pagar::class, Contas_a_Receber::class, Venda::class, Parcelas::class);
+    }
 }

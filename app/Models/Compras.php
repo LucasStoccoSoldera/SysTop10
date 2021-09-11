@@ -22,5 +22,21 @@ class Compras extends Model
         'com_observacoes',
         'com_parcelas',
     ];
+
+    public function tipopagto_compra()
+    {
+        return $this->hasMany(TipoPagto::class);
+    }
+
+    public function centro_custo_compra()
+    {
+        return $this->hasMany(Centro_Custo::class);
+    }
+
+
+    public function compra_itemcompra()
+    {
+        return $this->belongsToOne(Compras_Detalhe::class);
+    }
 }
 

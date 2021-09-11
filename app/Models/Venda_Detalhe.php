@@ -21,5 +21,25 @@ class Venda_Detalhe extends Model
         'det_valor_unitario',
         'det_valor_total',
     ];
+
+    public function cores_itemvenda()
+    {
+        return $this->hasMany(Cor::class);
+    }
+
+    public function dimensoes_itemvenda()
+    {
+        return $this->hasMany(Dimensao::class);
+    }
+
+    public function produto_itemvenda()
+    {
+        return $this->hasMany(Produto::class);
+    }
+
+    public function vendas_itemvenda()
+    {
+        return $this->hasMany(Venda::class);
+    }
 }
 

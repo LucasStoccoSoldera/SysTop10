@@ -20,5 +20,10 @@ class Privilegio extends Model
         'pri_detalhes',
         'pri_logistica',
     ];
+
+    public function privilegio_cargo()
+    {
+        return $this->belongsToOne(Cargo::class);
+    }
 }
 

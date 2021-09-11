@@ -14,5 +14,10 @@ class Cor extends Model
         'cor_nome',
         'cor_hex_especial',
     ];
+
+    public function cor_muitos()
+    {
+        return $this->belongsToMany(Estoque::class, Produto::class, Venda::class);
+    }
 }
 

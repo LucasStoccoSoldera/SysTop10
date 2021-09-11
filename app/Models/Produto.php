@@ -23,5 +23,32 @@ class Produto extends Model
         'pro_pedidominimo',
         'pro_terceirizacao',
     ];
+
+    public function material_produto()
+    {
+        return $this->hasMany(Material_Base::class);
+    }
+
+    public function tipoproduto_produto()
+    {
+        return $this->hasMany(TipoProduto::class);
+    }
+
+    public function logistica_produto()
+    {
+        return $this->hasMany(Logistica::class);
+    }
+
+    public function dimensoes_produto()
+    {
+        return $this->hasMany(Dimensao::class);
+    }
+
+
+    public function produto_muitos()
+    {
+        return $this->belongsToMany(Estoque::class, Venda::class);
+    }
+
 }
 

@@ -14,4 +14,9 @@ class TipoProduto extends Model
         'tpp_descricao',
 
     ];
+
+    public function  tipoproduto_produto()
+    {
+        return $this->belongsToOne(Produto::class);
+    }
 }

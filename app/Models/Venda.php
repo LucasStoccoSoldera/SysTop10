@@ -22,5 +22,25 @@ class Venda extends Model
     protected $casts = [
         'ven_data' => 'datetime',
     ];
+
+    public function tipopagto_venda()
+    {
+        return $this->hasMany(TipoPagto::class);
+    }
+
+    public function logistica_venda()
+    {
+        return $this->hasMany(Logistica::class);
+    }
+
+    public function cliente_venda()
+    {
+        return $this->hasMany(Cliente::class);
+    }
+
+    public function venda_itemvenda()
+    {
+        return $this->belongsToOne(Venda_Detalhe::class);
+    }
 }
 

@@ -16,4 +16,9 @@ class Transportadora extends Model
         'trans_celular',
         'trans_limite_transporte',
     ];
+
+    public function transportadora_logistica()
+    {
+        return $this->belongsToOne(Logistica::class);
+    }
 }

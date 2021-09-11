@@ -21,5 +21,10 @@ class Fornecedores extends Model
         'for_cpf_cnpj',
         'for_cep',
     ];
+
+    public function fornecedor_itemcompra()
+    {
+        return $this->belongsToOne(Compras_Detalhe::class);
+    }
 }
 

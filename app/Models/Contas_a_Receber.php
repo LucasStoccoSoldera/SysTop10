@@ -19,4 +19,9 @@ class Contas_a_Receber extends Model
         'rec_status',
         'rec_data',
     ];
+
+    public function tipopagto_contas_a_receber()
+    {
+        return $this->hasMany(TipoPagto::class);
+    }
 }

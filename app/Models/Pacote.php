@@ -14,5 +14,10 @@ class Pacote extends Model
         'pac_descricao',
         'pac_dimensao',
     ];
+
+    public function  pacote_logistica()
+    {
+        return $this->belongsToOne(Logistica::class);
+    }
 }
 

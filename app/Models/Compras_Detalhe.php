@@ -19,5 +19,15 @@ class Compras_Detalhe extends Model
         'cde_valortotal',
         'cde_descricao',
     ];
+
+    public function compra_itemcompra()
+    {
+        return $this->hasMany(Compras::class);
+    }
+
+    public function fornecedor_itemcompra()
+    {
+        return $this->hasMany(Fornecedores::class);
+    }
 }
 

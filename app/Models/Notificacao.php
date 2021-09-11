@@ -14,4 +14,9 @@ class Notificacao extends Model
         'not_tipo',
         'not_descricao',
     ];
+
+    public function cargo_notificacao()
+    {
+        return $this->hasMany(Cargo::class);
+    }
 }

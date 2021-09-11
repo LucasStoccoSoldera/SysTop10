@@ -13,4 +13,14 @@ class Cargo extends Model
     protected $fillable = [
         'car_descricao',
     ];
+
+    public function privilegio_cargo()
+    {
+        return $this->hasMany(Privilegio::class);
+    }
+
+    public function cargo_muitos()
+    {
+        return $this->belongsToMany(Usuario::class, Notificacao::class);
+    }
 }

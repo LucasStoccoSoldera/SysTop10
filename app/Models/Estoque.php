@@ -18,5 +18,20 @@ class Estoque extends Model
         'est_status',
         'est_limite',
     ];
+
+    public function dimensoes_estoque()
+    {
+        return $this->hasMany(Dimensao::class);
+    }
+
+    public function cores_estoque()
+    {
+        return $this->hasMany(Cor::class);
+    }
+
+    public function estoque_produto()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }
 

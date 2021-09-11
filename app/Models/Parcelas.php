@@ -19,4 +19,9 @@ class Parcelas extends Model
         'par_status',
         'par_data_pagto',
     ];
+
+    public function tipopagto_parcelas()
+    {
+        return $this->hasMany(TipoPagto::class);
+    }
 }
