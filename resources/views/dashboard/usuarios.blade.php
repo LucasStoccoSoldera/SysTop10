@@ -689,7 +689,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
-            demo.showNotification('top','right'4,data_decoded.msg, 'icon-alert-circle-exc');
+            demo.showNotification('top','right',4,data_decoded.msg, 'icon-alert-circle-exc');
     }
 });
 });
