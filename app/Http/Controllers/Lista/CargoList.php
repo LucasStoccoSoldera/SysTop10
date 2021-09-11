@@ -19,12 +19,12 @@ class CargoList extends Controller
               return  DataTables::eloquent($data2)
                 ->addColumn('action', function($data2){
 
-                $btn = '<a href="#" class="btn btn-primary" id="alter" data-id=" '.$data2->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data2->id.' "><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.cargo') .'"
-                style="padding: 11px 25px;"><i
+                <button class="btn btn-primary red" id="excluir-car"
+                name="excluir-cargo" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.cargo') .'"
+               ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

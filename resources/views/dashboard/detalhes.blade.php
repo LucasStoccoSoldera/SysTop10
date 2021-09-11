@@ -159,7 +159,7 @@
                                 color: fff;">
                                     {{ $centro['cc_descricao'] }}</h3>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-primary" id="alter"><i
+                                    <a href="#" class="btn btn-primary alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button class="btn btn-primary red" id="excluir-cc"
                                         name="excluir-centro-custo" data-id="{{ $centro['id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
@@ -200,7 +200,7 @@
                                 color: fff;">
                                     {{ $pagamento['tpg_descricao'] }}</h3>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-primary" id="alter"><i
+                                    <a href="#" class="btn btn-primary alter"><i
                                             class="tim-icons icon-pencil"></i></a>
                                     <button href="#" class="btn btn-primary red" id="excluir-tpg"
                                         name="excluir-tipo-pagamento" data-id="{{ $pagamento['id'] }}" data-rota="{{ route('admin.delete.tpgpagto') }}"

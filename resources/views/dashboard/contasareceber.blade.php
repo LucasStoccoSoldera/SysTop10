@@ -423,7 +423,6 @@
                 {data: "id", className: "text-center"},
                 {data: "rec_descricao"},
                 {data: "rec_valor", className: "text-right"},
-                {data: "tipo_pagto"},
                 {data: "rec_data", className: "text-center"},
                 {data: "rec_status", className: "text-center"},
                 {data: "action", className: "text-right"},

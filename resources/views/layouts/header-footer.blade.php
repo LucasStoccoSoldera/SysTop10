@@ -214,64 +214,6 @@
 
     @yield('modals')
 
-    <div class="modal fade" id="modalAlertRegistrar" style="display: none; top: 40%;" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="formAlertRegistrar" method="POST" autocomplete="off" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: green">
-                        <h4 class="modal-title">Mensagem de Cadastro</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div style="text-align: center;">
-                                    <label class="modal-label" id="mensagem"
-                                        style="font-size: 18px; color:green; padding 0px;"></label>
-                                    <br>
-                                    <img src="../img/dash/success.png"
-                                        style="padding 0px; width: 100px; heigth:100px;  margin-top:10px;">
-                                </div>
-                                <div class="modal-footer" style="padding 0px; margin-left: auto; margin-right: auto;">
-                                    <button type="button" class="btn btn-secondary"
-                                        style="background-image:none; background-color: green !important;padding 0px; margin-left: auto; margin-right: auto; width: 150px; height:50px;"
-                                        data-dismiss="modal">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalReturnDelete" style="display: none; top: 25%;" aria-hidden="true">
-        <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color: red">
-                        <h4 class="modal-title">Mensagem de Exclusão</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div style="text-align: center;">
-                                    <label class="modal-label" id="mensagem_delete"
-                                        style="font-size: 18px; color:red; padding 0px;"></label>
-                                    <br>
-                                </div>
-                                <div class="modal-footer" style="padding 0px; margin-left: auto; margin-right: auto;">
-                                    <button type="button" class="btn btn-secondary"
-                                        style="background-image:none; background-color: red !important;padding 0px; margin-left: auto; margin-right: auto; width: 150px; height:50px;"
-                                        data-dismiss="modal">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-
-
     <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data" >
@@ -334,24 +276,25 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <div class="modal fade" id="modalReturnCadastro" style="display: none; top: 50%;" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header bg-danger">
+                    <div class="modal-header" style="background-color: #00cca4;">
                         <h4 class="modal-title">Alerta de Cadastro</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
                                 <div style="text-align: center;">
-                                    <label class="modal-label success" style="font-size: 18px; padding 0px;"> Deseja continuar cadastrando?</label>
+                                    <label class="modal-label" style="font-size: 18px; padding 0px;"> Deseja continuar cadastrando?</label>
                                     <div class="modal-footer">
-                                        <a href="" id="rotaReload" class="btn btn-secondary badge-success"
-                                            style="background-image:none;padding 0px; width: 125px; height:50px;">Parar</a>
-                                        <button type="submit" class="btn btn-secondary badge-success"
-                                            style="background-image:none;padding 0px; width: 125px; height:50px;"
-                                            data-dismiss="modal">Próximo</button>
+                                        <a id="rotaReload" class="btn btn-secondary"
+                                            style="background-color: #d7ba11;background-image:none;padding: 16px 40px !important; width: 125px; height:50px; margin-right:10px;vertical-align: middle;color: #fff;">Parar</a>
+                                        <button type="submit" class="btn btn-secondary"
+                                            style="background-color: #00cca4;background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;"
+                                            onclick="hideModal('modalReturnCadastro');">Próximo</button>
                                     </div>
                                 </div>
                             </div>
@@ -427,10 +370,23 @@
                 $('#rotaDelete').val(rota2);
                 $('#formExcluir').change('action', rota2);
             });
+            
+            $('button.red-min').on('click', function() {
+                var id = $(this).data('id');
+                var rota3 = $(this).data('rota');
+                $('#modalAlertDelete').modal('show');
+                $('#idDelete').val(id);
+                $('#rotaDelete').val(rota3);
+                $('#formExcluir').change('action', rota3);
+            });
 
             $('#modalReturnCadastro').on('show', function() {
                 $('#rotaReload').attr('href', rota_reload);
             });
+
+           function hideModal(modal) {
+                $('#' + modal).hide();
+            }
 
         </script>
 

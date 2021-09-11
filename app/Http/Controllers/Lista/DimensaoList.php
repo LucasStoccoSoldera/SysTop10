@@ -18,12 +18,12 @@ class DimensaoList extends Controller
             return DataTables::eloquent($data5)
             ->addColumn('action', function($data5){
 
-                $btn = '<a href="#" class="btn btn-primary" id="alter" data-id=" '.$data5->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data5->id.' "><i
                 class="tim-icons icon-pencil"></i></a>
 
                 <button class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id=" '.$data5->id.' " data-rota=" '. route('admin.delete.dimensao') .'"
-                style="padding: 11px 25px;"><i
+               ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

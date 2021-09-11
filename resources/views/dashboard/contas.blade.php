@@ -236,7 +236,7 @@
                         <table class="table tablesorter " id="tb_conta">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th style="width: 25%">
+                                    <th style="width: 20%">
                                         Descrição
                                     </th>
                                     <th style="width: 10%">
@@ -245,14 +245,17 @@
                                     <th style="width: 20%">
                                         Valor Final
                                     </th>
-                                    <th style="width: 20%">
-                                        Centro de Custo
+                                    <th style="width: 15%">
+                                        CC
                                     </th>
                                     <th style="width: 15%">
-                                        Data de vencimento
+                                        Dt. Venc.
                                     </th>
                                     <th style="width: 10%">
                                         Status
+                                     </th>
+                                     <th style="width: 10%">
+                                        <div id="acao">Ações</div>
                                      </th>
                                 </tr>
                             </thead>
@@ -678,7 +681,7 @@
                                                     <th style="width: 20%">
                                                         Valor Final
                                                     </th>
-                                                    <th class="text-right" style="width: 20%">
+                                                    <th class="text-right" style="width: 5%">
                                                         <div id="acao">Ações</div>
                                                     </th>
                                                 </tr>

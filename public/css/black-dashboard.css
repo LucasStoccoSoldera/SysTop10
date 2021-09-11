@@ -2914,6 +2914,7 @@ textarea.form-control.is-invalid {
 .red {
     background-color: #f5365c !important;
     background-image: none !important;
+    padding: 11px 25px;
 }
 .red:hover {
     background-color: #f5365c !important;
@@ -2922,6 +2923,22 @@ textarea.form-control.is-invalid {
 .red:active {
     background-color: #f5365c !important;
     background-image: none !important;
+}
+
+.red-min {
+    background-color: #f5365c !important;
+    background-image: none !important;
+    padding: 11px 10px;
+}
+.red-min:hover {
+    background-color: #f5365c !important;
+    background-image: none !important;
+    padding: 11px 10px;
+}
+.red-min:active {
+    background-color: #f5365c !important;
+    background-image: none !important;
+    padding: 11px 10px;
 }
 
 .limpar {
@@ -2944,19 +2961,34 @@ textarea.form-control.is-invalid {
     color: #fff !important;
 }
 
-#alter {
-    background-color: #d7ba11;
-    background-image: none;
+.alter {
+    background-color: #d7ba11 !important;
+    background-image: none !important;
     padding: 11px 30px;
 }
-#alter:hover {
-    background-color: #d7ba11;
-    background-image: none;
+.alter:hover {
+    background-color: #d7ba11 !important;
+    background-image: none !important;
 }
-#alter:active {
-    background-color: #d7ba11;
-    background-image: none;
+.alter:active {
+    background-color: #d7ba11 !important;
+    background-image: none !important;
 }
+
+.alter-min {
+    background-color: #d7ba11!important;
+    background-image: none !important;
+    padding: 11px 15px;
+}
+.alter-min:hover {
+    background-color: #d7ba11 !important;
+    background-image: none !important;
+}
+.alter-min:active {
+    background-color: #d7ba11 !important;
+    background-image: none !important;
+}
+
 #btn-cadastro-full {
     height: 62px;
     width: 100%;
@@ -23122,7 +23154,7 @@ font-size: 16px;
 }
 
 .paginate_button{
-    width: 200px;
+    width: 30%;
     text-align: center;
     font-size: 16px;
     font-weight: bold;

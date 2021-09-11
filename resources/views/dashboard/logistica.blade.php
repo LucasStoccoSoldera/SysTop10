@@ -86,15 +86,18 @@
                         <table class="table tablesorter " id="tb_pacote">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th class="text-center" style="width: 10%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 10%">
                                         Dimensão
                                     </th>
-                                    <th style="width: 60%">
+                                    <th style="width: 10%">
                                         Descrição
                                     </th>
+                                    <th style="width: 5%">
+                                        <div id="acao">Ações</div>
+                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,10 +120,10 @@
                         <table class="table tablesorter " id="tb_transportadora">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th class="text-center" style="width: 10%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 35%">
+                                    <th style="width: 25%">
                                         Nome
                                     </th>
                                     <th style="width: 25%">
@@ -129,7 +132,7 @@
                                     <th style="width: 10%">
                                         Limite
                                     </th>
-                                    <th class="text-right" style="width: 20%">
+                                    <th class="text-right" style="width: 5%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>

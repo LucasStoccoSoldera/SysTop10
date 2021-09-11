@@ -27,12 +27,12 @@ class ContasList extends Controller
                 $btn = '<a href="#" class="btn btn-primary" id="view" data-id=" '.$data1->id.' "><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <a href="#" class="btn btn-primary" id="alter"><i
+                <a href="#" class="btn btn-primary alter"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id=" '.$data1->id.' " data-rota=" '. route('admin.delete.conta') .'"
-                style="padding: 11px 25px;"><i
+                <button class="btn btn-primary red" id="excluir-con"
+                name="excluir-contas" data-id=" '.$data1->id.' " data-rota=" '. route('admin.delete.conta') .'"
+               ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

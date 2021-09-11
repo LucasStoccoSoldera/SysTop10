@@ -247,10 +247,10 @@
                                     <th style="width: 20%">
                                         Status
                                     </th>
-                                    <th class="text-center" style="width: 120%">
+                                    <th class="text-center" style="width: 20%">
                                         Data da Venda
                                     </th>
-                                    <th class="text-right" style="width: 25%">
+                                    <th class="text-right" style="width: 15%">
                                         Ações
                                     </th>
                                 </tr>
@@ -486,7 +486,7 @@
                                                         <th style="width: 20%">
                                                             Valor Total
                                                         </th>
-                                                        <th class="text-right" style="width: 20%">
+                                                        <th class="text-right" style="width: 5%">
                                                             <div id="acao">Ações</div>
                                                         </th>
                                                     </tr>

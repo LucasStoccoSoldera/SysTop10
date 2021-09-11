@@ -26,12 +26,12 @@ class UserList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
-                $btn = '<a href="#" class="btn btn-primary" id="alter" data-id=" '.$data->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data->id.' "><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.user') .'"
-                style="padding: 11px 25px;"><i
+                <button class="btn btn-primary red" id="excluir-usu"
+                name="excluir-user" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.user') .'"
+               ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;
