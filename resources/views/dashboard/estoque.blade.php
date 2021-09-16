@@ -278,14 +278,49 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Quantidade (Saídas = -):</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="qtdeEstoque" id="qtdeEstoque" class="form-control"
+                                    <input type="number" name="qtdeEstoque" id="qtdeEstoque" class="form-control"
                                         maxlength="6" value="{{ old('qtdeEstoque') }}"
                                         placeholder="Entre com a Quantidade" autofocus>
+                                        <div class="div-feedback">
                                     <span class="invalid-feedback qtdeEstoque_error" role="alert">
                                     </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Status:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="statusEstoque" id="statusEstoque" class="form-control"
+                                        maxlength="25" value="{{ old('statusEstoque') }}"
+                                        placeholder="Selecione o Status">
+                                        <option value="1">Entrada</option>
+                                        <option value="2">Faturada</option>
+                                        <option value="3">Fechada</option>
+                                        <option value="4">Cancelada</option>
+                                    </select>
+                                    <div class="div-feedback">
+                                    <span class="invalid-feedback statusEstoque_error" role="alert">
+                                    </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
+                                    </label>
+                                    <select type="text" name="produtoEstoque" id="produtoEstoque" class="form-control"
+                                        maxlength="80" value="{{ old('produtoEstoque') }}"
+                                        placeholder="Selecione com o Produto">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($produtos as $produto)
+                                            <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                    <span class="invalid-feedback produtoEstoque_error" role="alert">
+                                    </span>
+                                    </div>
+                                </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão do Produto:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
@@ -298,8 +333,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback IDDimensao_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cor do Produto:</label> <label
@@ -311,8 +348,10 @@
                                             <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
                                         @endforeach
                                     </select>
+                                    <div class="div-feedback">
                                     <span class="invalid-feedback IDCor_error" role="alert">
                                     </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
