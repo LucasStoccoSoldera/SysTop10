@@ -82,8 +82,10 @@
             justify-content: center;
             }
         .geral{
-            height: 920px;
+            height: 100%;
             width: 100%;
+            display: inline-block;
+            margin-bottom: 200px;
         }
         .junto{
             height: 100%;
@@ -143,8 +145,6 @@
         .voltar_login{
             float: left;
             width: 100px;
-            height: 100%;
-            margin-top: 2%;
-            margin-bottom: 2%;
+            height: 132%;
             margin-left: 25px;
         }
