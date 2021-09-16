@@ -310,10 +310,10 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Celular</label> <label style="color: red; font-size: 12px;">
                                 * </label>
-                            <input type="text" name="telefoneTrans" id="telefoneTrans" class="celular form-control"
-                                value="{{ old('telefoneTrans') }}" placeholder="Entre com o Telefone">
+                            <input type="text" name="celularTrans" id="celularTrans" class="celular form-control"
+                                value="{{ old('celularTrans') }}" placeholder="Entre com o Celular">
                                 <div class="div-feedback">
-                            <span class="invalid-feedback telefoneTrans_error" role="alert">
+                            <span class="invalid-feedback celularTrans_error" role="alert">
                             </span>
                                 </div>
                         </div>
@@ -449,6 +449,10 @@
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
                         });
+                        $.each(data_decoded.error_telefone_celular, function(prefix, val) {
+                                 $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                             });
                     }
                 }
             });

@@ -18,25 +18,38 @@ class TransportadoraRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeTrans' => ['required', 'string'],
-                'limitetransTrans' => ['required', 'integer'],
+                'nomeTrans' => ['required'],
+                'limitetransTrans' => ['required'],
             ],
             [
                 'nomeTrans.required' => 'Transportadora obrigatória.',
                 'limitetransTrans.required' => 'Limite obrigatório.',
             ]
         );
+
+        if (isset($request->telefoneTrans) && isset($request->celularTrans)) {
+
+            $validator_telefone_celular = Validator::make(
+                [$request->telefoneTrans, $request->celularTrans],
+                [
+                    'telefoneTrans' => ['telefone'],
+                    'celularTrans' => ['celular'],
+                ],
+                [
+                    'telefoneTrans.telefone' => 'Telefone inválido.',
+                    'celularTrans.celular' => 'Celular inválido.',
+                ]
+            );
+        } else{
         if (!empty($request->telefoneTrans || $request->celularTrans)) {
-            if (isset($request->telefoneTrans) && isset($request->celularTrans)) {
 
             if (isset($request->telefoneTrans)) {
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneTrans,
                     [
-                        'telefoneTrans' => ['required', 'telefone'],
+                        'telefoneTrans' => ['telefone'],
                     ],
                     [
-                        'telefoneTrans.required' => 'Telefone obrigatório.',
                         'telefoneTrans.telefone' => 'Telefone inválido.',
                     ]
                 );
@@ -45,10 +58,9 @@ class TransportadoraRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularTrans,
                     [
-                        'celularTrans' => ['required', 'celular'],
+                        'celularTrans' => ['celular'],
                     ],
                     [
-                        'celularTrans.required' => 'Celular obrigatório.',
                         'celularTrans.celular' => 'Celular inválido.',
                     ]
                 );
@@ -66,18 +78,6 @@ class TransportadoraRegister extends Controller
                 ]
             );
         }
-    } else {
-        $validator_telefone_celular = Validator::make(
-            [$request->telefoneTrans, $request->celularTrans],
-            [
-                'telefoneTrans' => ['telefone'],
-                'celularTrans' => ['celular'],
-            ],
-            [
-                'telefoneTrans.telefone' => 'Telefone inválido.',
-                'celularTrans.celular' => 'Celular inválido.',
-            ]
-        );
     }
 
         if ($validator->fails() || $validator_telefone_celular->fails()) {
