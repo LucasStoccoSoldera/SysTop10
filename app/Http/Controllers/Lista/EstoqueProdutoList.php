@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Estoque;
 use App\Transformers\EstoqueTransformer;
 
-class EstoqueList extends Controller
+class EstoqueProdutoList extends Controller
 {
     public function listEstoqueProduto(Request $request){
 

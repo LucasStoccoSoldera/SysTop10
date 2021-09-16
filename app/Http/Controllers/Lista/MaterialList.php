@@ -19,11 +19,11 @@ class MaterialList extends Controller
             return DataTables::eloquent($data3)
             ->addColumn('action', function($data3){
 
-                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data3->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data3->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red" id="excluir-mat"
-                name="excluir-material" data-id=" '.$data3->id.' " data-rota=" '. route('admin.delete.material') .'"
+                <button type="button" class="btn btn-primary red" id="excluir-mat"
+                name="excluir-material" data-id="'.$data3->id.'" data-rota="'. route('admin.delete.material') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 

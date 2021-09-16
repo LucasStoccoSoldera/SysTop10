@@ -11,7 +11,7 @@ use App\Transformers\VendasTransformer;
 class VendasList extends Controller
 {
     public function listVendas(Request $request){
-
+        
         $dado1 = 'teste';
         $dado2 = 'teste';
         $dado3 = 'teste';
@@ -21,7 +21,7 @@ class VendasList extends Controller
                 $data = Venda::query();
 
                 return  DataTables::eloquent($data)
-                ->addColumn('action', function($data){
+                ->addColumn('action', function(){
 
                     $btn = '<a href="#" class="btn btn-primary" id="view"><i
                     class="tim-icons icon-pencil"></i></a>';

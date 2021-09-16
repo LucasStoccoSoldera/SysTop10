@@ -327,7 +327,7 @@
             <div class="modal-footer">
                 <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterUser"
                     data-modal="modalRegisterUser">Cancelar</button>
-                              <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterUser">Limpar</button>
+                              <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterUser">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
             </div>
         </div>

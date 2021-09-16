@@ -238,7 +238,7 @@
                         <table class="table tablesorter " id="tb_venda">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th class="text-center" style="width: 10%">
+                                    <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
                                     <th style="width: 25%">
@@ -247,7 +247,7 @@
                                     <th style="width: 20%">
                                         Status
                                     </th>
-                                    <th class="text-center" style="width: 20%">
+                                    <th class="text-center" style="width: 15%">
                                         Data da Venda
                                     </th>
                                     <th class="text-right" style="width: 15%">
@@ -504,7 +504,7 @@
                             <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                                 <button type="button" class="cancela btn btn-secondary btn-danger"
                                     data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
-                                              <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterVenda">Limpar</button>
+                                              <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterVenda">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                             </div>
             </form>
@@ -648,7 +648,7 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterItemVenda" data-modal="modalRegisterItemVenda">Cancelar</button>
-                                      <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemVenda">Limpar</button>
+                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemVenda">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
@@ -666,12 +666,10 @@
             searching: false,
             processing: true,
             serverside: true,
-
         ajax: "{{ route('admin.list.vendas') }}",
             columns: [
                 {data: "id", className: "text-center"},
                 {data: "ven_valor_total", className: "text-right"},
-                {data: "tpg_id"},
                 {data: "ven_status", className: "text-center"},
                 {data: "ven_data", className: "text-center"},
                 {data: "action", className: "text-right"},

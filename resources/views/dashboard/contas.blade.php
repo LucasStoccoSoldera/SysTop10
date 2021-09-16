@@ -478,7 +478,7 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
                         data-form="formRegisterContas" data-modal="modalRegisterContas">Cancelar</button>
-                                  <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContas">Limpar</button>
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContas">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
             </div>
@@ -699,7 +699,7 @@
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
                             <button type="button" class="btn btn-secondary btn-danger cancela"
                                 data-form="formRegisterCompras" data-modal="modalRegisterCompras">Cancelar</button>
-                                          <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterCompras">Limpar</button>
+                                          <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterCompras">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
         </form>
@@ -886,7 +886,7 @@
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
                         data-form="formRegisterItemCompra" data-modal="modalRegisterItemCompra">Cancelar</button>
-                                  <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemCompra">Limpar</button>
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemCompra">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
     </form>

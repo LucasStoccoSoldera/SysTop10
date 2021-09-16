@@ -23,11 +23,11 @@ class LogisticaList extends Controller
             return DataTables::eloquent($data2)
                 ->addColumn('action', function($data2){
 
-                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data2->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data2->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red" id="excluir-log"
-                name="excluir-logistica" data-id=" '.$data2->id.' " data-rota=" '. route('admin.delete.logistica') .'"
+                <button type="button" class="btn btn-primary red" id="excluir-log"
+                name="excluir-logistica" data-id="'.$data2->id.'" data-rota="'. route('admin.delete.logistica') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 

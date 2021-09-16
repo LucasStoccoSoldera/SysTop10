@@ -19,9 +19,6 @@ class Venda extends Model
         'ven_desconto',
         'ven_parcelas',
     ];
-    protected $casts = [
-        'ven_data' => 'datetime',
-    ];
 
     public function tipopagto_venda()
     {

@@ -20,11 +20,11 @@ class ItemVendaAtoList extends Controller
             return DataTables::eloquent($data6)
             ->addColumn('action', function($data6){
 
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id=" '.$data6->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data6->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red-min" id="excluir-deta"
-                name="excluir-itemvendaa" data-id=" '.$data6.' " data-rota=" '. route('admin.delete.itemvenda') .'"
+                <button type="button" class="btn btn-primary red-min" id="excluir-deta"
+                name="excluir-itemvendaa" data-id="'.$data6.'" data-rota="'. route('admin.delete.itemvenda') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 

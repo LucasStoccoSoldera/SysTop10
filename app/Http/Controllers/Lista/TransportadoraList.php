@@ -19,11 +19,11 @@ class TransportadoraList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id=" '.$data->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red-min" id="excluir-trans"
-                name="excluir-transportadora" data-id=" '.$data->id.' " data-rota=" '. route('admin.delete.transportadora') .'"
+                <button type="button" class="btn btn-primary red-min" id="excluir-trans"
+                name="excluir-transportadora" data-id="'.$data->id.'" data-rota="'. route('admin.delete.transportadora') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 

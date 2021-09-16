@@ -19,11 +19,11 @@ class ItemCompraList extends Controller
             return DataTables::eloquent($data4)
                 ->addColumn('action', function($data4){
 
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id=" '.$data4->id.' "><i
+                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data4->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-                <button class="btn btn-primary red-min" id="excluir-cde"
-                name="excluir-itemcompra" data-id=" '.$data4.' " data-rota=" '. route('admin.delete.itemcompra') .'"
+                <button type="button" class="btn btn-primary red-min" id="excluir-cde"
+                name="excluir-itemcompra" data-id="'.$data4.'" data-rota="'. route('admin.delete.itemcompra') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';
 

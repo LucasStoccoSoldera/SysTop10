@@ -400,7 +400,7 @@
                             <button type="button" class="cancela btn btn-secondary btn-danger"
                                 data-form="formRegisterContasaReceber"
                                 data-modal="modalRegisterContasaReceber">Cancelar</button>
-                                          <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContasaReceber">Limpar</button>
+                                          <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContasaReceber">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
                     </div>

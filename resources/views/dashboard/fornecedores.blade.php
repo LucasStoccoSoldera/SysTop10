@@ -338,7 +338,7 @@
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterFornecedores"
                             data-modal="modalRegisterFornecedores">Cancelar</button>
-                                      <button  type="button" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterFornecedores">Limpar</button>
+                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterFornecedores">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>

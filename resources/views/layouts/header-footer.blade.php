@@ -290,7 +290,7 @@
                                 <div style="text-align: center;">
                                     <label class="modal-label" style="font-size: 18px; padding 0px;"> Deseja continuar cadastrando?</label>
                                     <div class="modal-footer">
-                                        <a id="rotaReload" class="btn btn-secondary"
+                                        <a href="" id="rotaReload" class="btn btn-secondary"
                                             style="background-color: #d7ba11;background-image:none;padding: 16px 40px !important; width: 125px; height:50px; margin-right:10px;vertical-align: middle;color: #fff;">Parar</a>
                                         <button type="submit" class="btn btn-secondary"
                                             style="background-color: #00cca4;background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;"
@@ -362,7 +362,8 @@
                 $('#' + valform)[0].reset();
             });
 
-                $('button.red').on('click', function() {
+                $('.red').on('click', function() {
+                    console.log('teste');
                 var id = $(this).data('id');
                 var rota2 = $(this).data('rota');
                 $('#modalAlertDelete').modal('show');
@@ -370,7 +371,7 @@
                 $('#rotaDelete').val(rota2);
                 $('#formExcluir').change('action', rota2);
             });
-            
+
             $('button.red-min').on('click', function() {
                 var id = $(this).data('id');
                 var rota3 = $(this).data('rota');
@@ -378,10 +379,6 @@
                 $('#idDelete').val(id);
                 $('#rotaDelete').val(rota3);
                 $('#formExcluir').change('action', rota3);
-            });
-
-            $('#modalReturnCadastro').on('show', function() {
-                $('#rotaReload').attr('href', rota_reload);
             });
 
            function hideModal(modal) {
@@ -552,6 +549,12 @@
                 }
                     });
 
+                $(document).on('click', '[data-dismiss="modal"]',
+                    function() {
+                        document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+                    }
+               );
+
             function pegaCodigo(campoItem, campoOrigem) {
                 document.getElementById(campoItem).value = document.getElementById(campoOrigem).value();
             }
@@ -571,6 +574,11 @@
         </script>
 
         @stack('ajax')
+        <script>
+            $('#modalReturnCadastro').on('show', function() {
+                $('#rotaReload').attr('href', rota_reload);
+            });
+        </script>
 
 </body>
 
