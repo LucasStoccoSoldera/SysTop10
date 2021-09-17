@@ -355,23 +355,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Dimensão:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="DimensaoProduto" id="DimensaoProduto" class="form-control"
-                                        value="{{ old('DimensaoProduto') }}" placeholder="Selecione a Dimensão">
-                                        <option value="">------------Selecione------------</option>
-                                        @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['id'] }}">
-                                                {{ $dimensao['dim_descricao'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="div-feedback">
-                                    <span class="invalid-feedback DimensaoProduto_error" role="alert">
-                                    </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="modal-label">Promoção: </label>
                                         <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" dinheiro form-control"
                                         maxlength="9"
