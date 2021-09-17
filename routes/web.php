@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Produto/Registrar_cor', [App\Http\Controllers\Register\CoresRegister::class, 'createCor'])->name('admin.create.cor');
     Route::post('/admin/Produto/Registrar_cor_produto', [App\Http\Controllers\Register\CoresRegister::class, 'createCorProduto'])->name('admin.create.corproduto');
     Route::post('/admin/Produto/Registrar_dimensao', [App\Http\Controllers\Register\DimensoesRegister::class, 'createDimensao'])->name('admin.create.dimensao');
+    Route::post('/admin/Produto/Registrar_dimensao_produto', [App\Http\Controllers\Register\DimensoesRegister::class, 'createDimensaoProduto'])->name('admin.create.dimensaoproduto');
     Route::post('/admin/Estoque/Registrar_estoque', [App\Http\Controllers\Register\EstoqueRegister::class, 'createEstoque'])->name('admin.create.estoque');
     Route::post('/admin/Fornecedor/Registrar_fornecedor', [App\Http\Controllers\Register\FornecedorRegister::class, 'createFornecedor'])->name('admin.create.fornecedor');
     Route::post('/admin/Detalhe/Registrar_centro_custo', [App\Http\Controllers\Register\CentroCustoRegister::class, 'createCentroCusto'])->name('admin.create.centrocusto');
@@ -126,7 +127,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Produto/Editar_tipo_produto', [App\Http\Controllers\Update\TipoProdutoUpdate::class, 'editTipoProduto'])->name('admin.edit.tipoproduto');
     Route::get('/admin/Produto/Editar_pacote', [App\Http\Controllers\Update\PacoteUpdate::class, 'editPacote'])->name('admin.edit.pacote');
     Route::get('/admin/Produto/Editar_cor', [App\Http\Controllers\Update\CoresUpdate::class, 'editCor'])->name('admin.edit.cor');
-    Route::get('/admin/Produto/Editar_cor_produto', [App\Http\Controllers\Update\CoresUpdate::class, 'editCorProduto'])->name('admin.edit.corproduto');
     Route::get('/admin/Produto/Editar_dimensao', [App\Http\Controllers\Update\DimensoesUpdate::class, 'editDimensao'])->name('admin.edit.dimensao');
     Route::get('/admin/Estoque/Editar_estoque', [App\Http\Controllers\Update\EstoqueUpdate::class, 'editEstoque'])->name('admin.edit.estoque');
     Route::get('/admin/Fornecedor/Editar_fornecedor', [App\Http\Controllers\Update\FornecedorUpdate::class, 'editFornecedor'])->name('admin.edit.fornecedor');
@@ -149,7 +149,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/admin/Produto/Atualizar_tipo_produto', [App\Http\Controllers\Update\TipoProdutoUpdate::class, 'updateTipoProduto'])->name('admin.update.tipoproduto');
     Route::put('/admin/Produto/Atualizar_pacote', [App\Http\Controllers\Update\PacoteUpdate::class, 'updatePacote'])->name('admin.update.pacote');
     Route::put('/admin/Produto/Atualizar_cor', [App\Http\Controllers\Update\CoresUpdate::class, 'updateCor'])->name('admin.update.cor');
-    Route::put('/admin/Produto/Atualizar_cor_produto', [App\Http\Controllers\Update\CoresUpdate::class, 'updateCorProduto'])->name('admin.update.corproduto');
     Route::put('/admin/Produto/Atualizar_dimensao', [App\Http\Controllers\Update\DimensoesUpdate::class, 'updateDimensao'])->name('admin.update.dimensao');
     Route::put('/admin/Estoque/Atualizar_estoque', [App\Http\Controllers\Update\EstoqueUpdate::class, 'updateEstoque'])->name('admin.update.estoque');
     Route::put('/admin/Fornecedor/Atualizar_fornecedor', [App\Http\Controllers\Update\FornecedorUpdate::class, 'updateFornecedor'])->name('admin.update.fornecedor');

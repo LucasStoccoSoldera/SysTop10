@@ -47,7 +47,7 @@ class Produto extends Model
 
     public function produto_muitos()
     {
-        return $this->belongsToMany(Estoque::class, Venda::class);
+        return $this->belongsToMany(Estoque::class, Venda::class, CorProduto::class, DimensaoProduto::class);
     }
 
 }

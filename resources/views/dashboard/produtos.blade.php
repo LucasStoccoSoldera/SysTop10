@@ -220,20 +220,22 @@
             </a>
             <div class="dropdown-menu" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterProdutos');"><img
-                        src="../img/dash/cadastro_produtos.png" width="65" height="65"></a>
+                        src="../img/dash/cadastro_produtos.png" width="55" height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static"
-                     onclick="abrirModal('#modalRegisterTipoProduto');"><img src="../img/dash/logistica.png" width="65"
-                        height="65"></a>
+                     onclick="abrirModal('#modalRegisterTipoProduto');"><img src="../img/dash/logistica.png" width="55"
+                        height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterMaterial');"><img
-                        src="../img/dash/materia_prima.png" width="65" height="65"></a>
+                        src="../img/dash/materia_prima.png" width="55" height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterDimensao');"><img
-                        src="../img/dash/dimensao.png" width="65" height="65"></a>
+                        src="../img/dash/dimensao.png" width="55" height="55"></a>
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterDimensaoProduto');"><img
+                    src="../img/dash/dimensao.png" width="55" height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCores');"><img
-                        src="../img/dash/cores.png" width="65" height="65"></a>
+                        src="../img/dash/cores.png" width="55" height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCorProduto');"><img
-                        src="../img/dash/cores.png" width="65" height="65"></a>
+                        src="../img/dash/cores.png" width="55" height="55"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterPacotes');"><img
-                        src="../img/dash/pacote.png" width="65" height="65"></a>
+                        src="../img/dash/pacote.png" width="55" height="55"></a>
             </div>
         </div>
     </div>
@@ -641,6 +643,70 @@
 </div>
 </div>
 </div>
+
+<div class="modal fade" id="modalRegisterDimensaoProduto" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formRegisterDimensaoProduto" method="POST" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.create.dimensaoproduto') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Relação Dimensão Produto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <select type="text" name="produtoCorProduto" id="produtoCorProduto" class="form-control"
+                                    maxlength="80" value="{{ old('produtoCorProduto') }}"
+                                    placeholder="Selecione com o Produto">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($produtos as $produto)
+                                        <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="invalid-feedback produtoDimensaoProduto_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="visible-xs-block">
+                    <h4 class="modal-label" style="font-weight: bold; color: black;text-align: -webkit-center;">Cores:</h4>
+                    <hr class="visible-xs-block">
+                    <div class="row" style="margin-top: 15px">
+                            @php
+                                $cont = 0;
+                            @endphp
+
+                            <div class="col-12" style="text-align: -webkit-center;">
+                            @foreach ($dimensoes as $dimensao)
+                            <div class="form-group">
+                                <label class="modal-label">{{$dimensao['dim_descricao']}}</label><br>
+                                <div style="float: unset">
+                                    <input id="{{"switch-shadow" . "$cont"}}" name="{{$dimensao['dim_descricao'] . "_" . "$cont"}}" value={{ 1 ?? 0 }}
+                                         type="checkbox">
+                                </div>
+                            </div>
+                            <hr class="visible-xs-block">
+                        @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterDimensaoProduto" data-modal="modalRegisterDimensaoProduto">Cancelar</button>
+                    <button type="submit" class="btn-register btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
 
 <div class="modal fade" id="modalRegisterCores" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">

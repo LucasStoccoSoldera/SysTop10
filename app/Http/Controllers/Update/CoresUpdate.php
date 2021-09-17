@@ -87,27 +87,4 @@ class CoresUpdate extends Controller
             return response()->json(['status' => 1, 'msg' => 'Cor cadastrada com sucesso!']);
         }
     }
-
-    protected function updateCorProduto(Request $request)
-    {
-        if(empty($request->produtoCorProduto)){
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'produtoCorProduto' => ['required'],
-            ],
-            [
-                'produtoCorProduto.required' => 'Produto obrigatório.',
-            ]
-        );
-        if ($validator->fails()){
-            return response()->json(['status' => 0, 'error' => $validator->errors()]);
-        }
-        $CorProduto = new CorProduto;
-        $CorProduto->cop_produto = $request->produtoCorProduto;
-
-        $colunas = Schema::getColumnListing('cor_produto');
-        dd($colunas);
-        }
-    }
 }
