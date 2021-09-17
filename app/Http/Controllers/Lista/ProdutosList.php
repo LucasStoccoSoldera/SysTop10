@@ -33,10 +33,15 @@ class ProdutosList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
-                $btn = '<a href="#" class="btn btn-primary alter" data-id= '.$data->id.'"><i
+                $btn = '<button type="button" class="btn btn-primary visu" id="visu-pro"
+                name="visu-produto" data-id="'.$data->id.'"
+               ><i
+                class="tim-icons icon-chart-pie-36"></i></button>
+
+                <a href="#" class="btn btn-primary alter-min" data-id= '.$data->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
-               <button type="button" class="btn btn-primary red" id="excluir-pro"
+               <button type="button" class="btn btn-primary red-min" id="excluir-pro"
                 name="excluir-produto" data-id="'.$data->id.'" data-rota="'. route('admin.delete.produto') .'"
                ><i
                 class="tim-icons icon-simple-remove"></i></button>';

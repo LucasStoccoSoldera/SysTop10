@@ -171,7 +171,7 @@
     </div>
 
     <div class="row">
-        <div class="col-8" style="padding-left: 0px;">
+        <div class="col-12" style="padding-left: 0px;">
             <div class="card" id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Produtos <button class="btn btn-primary btn-block"
@@ -185,50 +185,20 @@
                                     <th style="width: 10%">
                                         ID
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 20%">
                                         Nome
                                     </th>
                                     <th style="width: 15%">
                                         Tipo
                                     </th>
-                                    <th class="text-right" style="width: 25%">
+                                    <th class="text-right" style="width: 15%">
+                                        Preço Custo
+                                    </th>
+                                    <th class="text-right" style="width: 15%">
                                         Preço Venda
                                     </th>
                                     <th class="text-right" style="width: 20%">
                                         <div id="acao">Ações</div>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               {{-- DataTables --}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4" style="padding-right: 0px;">
-            <div class="card" id="card-consulta-tabela">
-                <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Detalhes do Produto </h2>
-                </div>
-                <div class="card-body" id="cd-adaptado">
-                    <div class="table-responsive">
-                        <table class="table tablesorter " id="">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th style="width: 20%">
-                                        Material
-                                    </th>
-                                    <th style="width: 30%">
-                                        Dimensões
-                                    </th>
-                                    <th style="width: 30%">
-                                        Cores
-                                    </th>
-                                    <th class="text-center" style="width: 10%">
-                                        Gravura?
                                     </th>
                                 </tr>
                             </thead>
@@ -784,7 +754,7 @@
                                 </label>
                                 <select type="text" name="produtoCorProduto" id="produtoCorProduto" class="form-control"
                                     maxlength="80" value="{{ old('produtoCorProduto') }}"
-                                    placeholder="Selecione com o Cargo">
+                                    placeholder="Selecione com o Produto">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($produtos as $produto)
                                         <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
@@ -926,6 +896,7 @@
                 {data: "id", className: "text-center"},
                 {data: "pro_nome"},
                 {data: "tpp_id"},
+                {data: "pro_precocusto", className: "text-right"},
                 {data: "pro_precovenda", className: "text-right"},
                 {data: "action", className: "text-right"},
             ]

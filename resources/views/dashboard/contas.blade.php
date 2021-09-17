@@ -225,7 +225,7 @@
     </div>
 
     <div class="row">
-        <div class="col-8" style="padding-left: 0px;">
+        <div class="col-12" style="padding-left: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Contas<button class="btn btn-primary btn-block"
@@ -242,10 +242,10 @@
                                     <th style="width: 10%">
                                         Class.
                                      </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         Valor Final
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 12%">
                                         CC
                                     </th>
                                     <th style="width: 15%">
@@ -254,47 +254,9 @@
                                     <th style="width: 10%">
                                         Status
                                      </th>
-                                     <th style="width: 10%">
+                                     <th style="width: 20%">
                                         <div id="acao">Ações</div>
                                      </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               {{-- DataTables --}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-4" style="padding-right: 0px;">
-            <div class="card " id="card-consulta-tabela">
-                <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Parcelas <button class="btn btn-primary btn-block"
-                            id="btn-form-consulta-imprimir" style="width:auto;"><i  class="tim-icons icon-paper"></i></button></h2>
-                </div>
-                <div class="card-body" id="cd-adaptado">
-                    <div class="table-responsive">
-                        <table class="table tablesorter " id="tb_parcela">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th style="width: 30%">
-                                        Nº
-                                    </th>
-                                    <th style="width: 30%">
-                                        Conta
-                                    </th>
-                                    <th style="width: 30%">
-                                        Tp.Pag.
-                                    </th>
-                                    <th style="width: 30%">
-                                        Valor
-                                    </th>
-                                    <th style="width: 30%">
-                                        Status
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>

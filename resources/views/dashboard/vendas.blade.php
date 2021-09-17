@@ -227,7 +227,7 @@
 
 
     <div class="row">
-        <div class="col-8" style="padding-left: 0px;">
+        <div class="col-12" style="padding-left: 0px;">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Vendas <button class="btn btn-primary btn-block"
@@ -242,50 +242,22 @@
                                         ID
                                     </th>
                                     <th style="width: 25%">
+                                        Cliente
+                                    </th>
+                                    <th class="text-right" style="width: 15%">
                                         Valor Total
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 10%">
                                         Status
+                                    </th>
+                                    <th class="text-center" style="width: 5%">
+                                        Parcelas
                                     </th>
                                     <th class="text-center" style="width: 15%">
                                         Data da Venda
                                     </th>
                                     <th class="text-right" style="width: 15%">
                                         Ações
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- DataTables --}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4" style="padding-right: 0px;">
-            <div class="card " id="card-consulta-tabela">
-                <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Itens Venda <button class="btn btn-primary btn-block"
-                        id="btn-form-consulta-imprimir" style="width:auto;"><i  class="tim-icons icon-paper"></i></button></h2>
-                </div>
-                <div class="card-body" id="cd-adaptado">
-                    <div class="table-responsive">
-                        <table class="table tablesorter " id="tb_item_venda">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th class="text-center" style="width: 10%">
-                                        Venda
-                                    </th>
-                                    <th style="width: 35%">
-                                        Produto
-                                    </th>
-                                    <th style="width: 10%">
-                                        Qtde
-                                    </th>
-                                    <th style="width: 35%">
-                                        Valor Total
                                     </th>
                                 </tr>
                             </thead>
@@ -669,8 +641,10 @@
         ajax: "{{ route('admin.list.vendas') }}",
             columns: [
                 {data: "id", className: "text-center"},
+                {data: "cli_id"},
                 {data: "ven_valor_total", className: "text-right"},
                 {data: "ven_status", className: "text-center"},
+                {data: "ven_parcelas", className: "text-center"},
                 {data: "ven_data", className: "text-center"},
                 {data: "action", className: "text-right"},
             ]
