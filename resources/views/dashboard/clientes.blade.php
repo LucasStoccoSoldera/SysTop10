@@ -273,7 +273,7 @@
 @section('modals')
 <div class="modal fade" id="modalRegisterCliente" style="display:none;" aria-hidden="true">
 <div class="modal-dialog">
-    <form class="form-cadastro" id="formRegisterCliente" method="POST" autocomplete="off"
+    <form id="formRegisterCliente" method="POST" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.create.cliente') }}">
         @csrf
         <div class="modal-content">
@@ -445,6 +445,7 @@
                         demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
                     }
                     if (data_decoded.status == 0) {
+                        console.log('voltou');
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
