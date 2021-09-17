@@ -167,11 +167,44 @@
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado3 }}</h3>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="card " id="card-consulta-tabela" style="border-color: #2CAEEC !important;
+                    border-color: white;
+                    border-width: medium;
+                    border-style: double;">
+                        <div class="card-header" id="ch-adaptado">
+                            <h2 class="card-title">Todos os Produtos
+                        </div>
+                        <div class="card-body" id="cd-adaptado">
+                            <div class="table-responsive">
+                                <table class="table tablesorter " id="tb_produto_estoque">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th class="text-center" style="width: 60%">
+                                                Produto
+                                            </th>
+                                            <th style="width: 15%">
+                                                Qtde.
+                                            </th>
+                                            <th style="width: 25%">
+                                                Status
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       {{-- DataTables --}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
     <div class="row">
-        <div class="col-8" style="padding-left: 0px;">
+        <div class="col-12">
             <div class="card " id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Movimentação do Estoque</h2>
@@ -181,16 +214,16 @@
                         <table class="table tablesorter " id="tb_estoque">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th class="text-center" style="width: 35%">
+                                    <th class="text-center" style="width: 15%">
                                         Produto
                                     </th>
                                     <th style="width: 10%">
                                         Qtde
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         Dimensão
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 15%">
                                         Cor
                                     </th>
                                     <th class="text-center" style="width: 15%">
@@ -207,36 +240,6 @@
             </div>
         </div>
 
-
-        <div class="col-4" style="padding-right: 0px;">
-            <div class="card " id="card-consulta-tabela">
-                <div class="card-header" id="ch-adaptado">
-                    <h2 class="card-title">Todos os Produtos
-                </div>
-                <div class="card-body" id="cd-adaptado">
-                    <div class="table-responsive">
-                        <table class="table tablesorter " id="tb_produto_estoque">
-                            <thead class=" text-primary">
-                                <tr>
-                                    <th class="text-center" style="width: 60%">
-                                        Produto
-                                    </th>
-                                    <th style="width: 15%">
-                                        Qtde.
-                                    </th>
-                                    <th style="width: 25%">
-                                        Status
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               {{-- DataTables --}}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
