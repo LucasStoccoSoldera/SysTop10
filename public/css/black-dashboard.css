@@ -2911,6 +2911,20 @@ textarea.form-control.is-invalid {
     margin-top: 0px;
 }
 
+.visu {
+    background-color: #00CCA4 !important;
+    background-image: none !important;
+    padding: 11px 15px;
+}
+.visu:hover {
+    background-color: #00CCA4 !important;
+    background-image: none !important;
+}
+.visu:active {
+    background-color: #00CCA4 !important;
+    background-image: none !important;
+}
+
 .red {
     background-color: #f5365c !important;
     background-image: none !important;
