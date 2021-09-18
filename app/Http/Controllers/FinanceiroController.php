@@ -26,13 +26,13 @@ class FinanceiroController extends Controller
         $mes_passado = Carbon::now()->subMonth();
         $ano_passado = Carbon::now()->subYear();
 
-        $hoje1 = (DB::table('caixa')->where('created_at', '>=', "$ontem")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$ontem")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $hoje1 = (DB::table('caixa')->where('created_at', '>=', "$ontem")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$ontem")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
         $hoje2 = DB::table('contas_a_receber')->where('created_at', '>=', "$ontem")->sum('rec_valor');
         $hoje3 = DB::table('contas_a_pagar')->where('created_at', '>=', "$ontem")->sum('con_valor_final');
-        $sem4 = (DB::table('caixa')->where('created_at', '>=', "$semana_passado")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$semana_passado")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $sem4 = (DB::table('caixa')->where('created_at', '>=', "$semana_passado")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$semana_passado")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
         $sem5 = DB::table('contas_a_receber')->where('created_at', '>=', "$semana_passado")->sum('rec_valor');
         $sem6 = DB::table('contas_a_pagar')->where('created_at', '>=', "$semana_passado")->sum('con_valor_final');
-        $mes7 = (DB::table('caixa')->where('created_at', '>=', "$mes_passado")->where('cax_ctpagar', 'is null')->sum('cax_valor')) - DB::table('caixa')->where('created_at', '=>', "$mes_passado")->where('cax_ctreceber', 'is null')->sum('cax_valor');
+        $mes7 = (DB::table('caixa')->where('created_at', '>=', "$mes_passado")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$mes_passado")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
         $mes8 = DB::table('contas_a_receber')->where('created_at', '>=', "$mes_passado")->sum('rec_valor');
         $mes9 = DB::table('contas_a_pagar')->where('created_at', '>=', "$mes_passado")->sum('con_valor_final');
 

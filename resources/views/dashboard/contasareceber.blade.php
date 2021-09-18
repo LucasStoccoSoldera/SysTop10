@@ -139,15 +139,15 @@
                 </div>
                 <div>
                     <div class="col-auto justify-content-md-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">A Rec. este Ano (R$):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">Rec. este Ano (R$):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado1 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">A Rec.r este Mês (R$):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">Rec.r este Mês (R$):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado2 }}</h3>
                     </div>
                     <div class="col-auto justify-content-center float-left">
-                        <h4 class="resumo" style="color: #2caeec;">A Rec. Hoje (R$):</h4>
+                        <h4 class="resumo" style="color: #2caeec;">Rec. Hoje (R$):</h4>
                         <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado3 }}</h3>
                     </div>
                 </div>
