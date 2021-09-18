@@ -1003,7 +1003,7 @@
             ]
         });
 
-        var table_conta = $('#tb_parcelas').DataTable( {
+        var table_parcelas = $('#tb_parcelas').DataTable( {
             paging: true,
             searching: false,
             processing: true,
