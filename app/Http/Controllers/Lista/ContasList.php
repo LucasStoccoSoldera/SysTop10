@@ -25,7 +25,7 @@ class ContasList extends Controller
             ->addColumn('action', function($data1){
 
                 $btn = '<button type="button" class="btn btn-primary visu" id="visu-pro"
-                name="visu-produto" data-id="'.$data1->id.'"
+                name="visu-produto" data-id="'.$data1->id.'" data-valor="'.$data1->con_valor_final.'" data-tpg="'.$data1->tpg_id.'" data-cc="'.$data1->cc_id.'"
                ><i
                 class="tim-icons icon-chart-pie-36"></i></button>
 
