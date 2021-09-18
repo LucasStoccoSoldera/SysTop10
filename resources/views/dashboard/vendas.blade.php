@@ -67,7 +67,7 @@
         </ul>
         <div class="voltar">
             <a href="{{ route('admin.ContasaReceber') }}">
-                <img src="../img/dash/voltar.png" alt="" width="100px" height="100px">
+                <img src="../img/dash/voltar.png" alt="" class="voltar">
             </a>
         </div>
     </div>
