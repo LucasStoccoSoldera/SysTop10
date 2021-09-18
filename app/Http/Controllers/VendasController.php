@@ -29,9 +29,9 @@ class VendasController extends Controller
         $mes_passado = Carbon::now()->subMonth();
         $ano_passado = Carbon::now()->subYear();
 
-        $dado1 = DB::table('vendas')->where('created_at', '=>', "$ontem")->count();
-        $dado2 = DB::table('vendas')->where('created_at', '=>', "$mes_passado")->count();
-        $dado3 = DB::table('vendas')->where('created_at', '=>', "$ano")->count();
+        $dado1 = DB::table('vendas')->where('created_at', '>=', "$ontem")->count();
+        $dado2 = DB::table('vendas')->where('created_at', '>=', "$mes_passado")->count();
+        $dado3 = DB::table('vendas')->where('created_at', '>=', "$ano")->count();
 
         $data = Venda::all();
 

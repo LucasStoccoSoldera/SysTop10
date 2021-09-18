@@ -32,8 +32,8 @@ class ContasController extends Controller
         $ano_passado = Carbon::now()->subYear();
 
 
-        $dado1 = DB::table('contas_a_pagar')->where('created_at', '=>', "$mes_passado")->where('con_tipo', '=', 'Fixa')->count();
-        $dado2 = DB::table('contas_a_pagar')->where('created_at', '=>', "$mes_passado")->where('con_tipo', '=', 'Variável')->count();
+        $dado1 = DB::table('contas_a_pagar')->where('created_at', '>=', $mes_passado)->where('con_tipo', '=', 'Fixa')->sum('con_valor_final');
+        $dado2 = DB::table('contas_a_pagar')->where('created_at', '>=', $mes_passado)->where('con_tipo', '=', 'Variável')->sum('con_valor_final');
         $dado3 = DB::table('contas_a_pagar')->sum('con_valor_final');
 
         $data1 = Contas_a_Pagar::all();

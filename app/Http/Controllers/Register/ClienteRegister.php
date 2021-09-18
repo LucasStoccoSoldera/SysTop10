@@ -38,10 +38,9 @@ class ClienteRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cpfCliente,
                     [
-                        'cpfCliente' => ['required', 'cpf'],
+                        'cpfCliente' => ['cpf'],
                     ],
                     [
-                        'cpfCliente.required' => 'CPF Obrigatório.',
                         'cpfCliente.cpf' => 'CPF inválido.',
                     ]
                 );
@@ -50,10 +49,9 @@ class ClienteRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cnpjCliente,
                     [
-                        'cnpjCliente' => ['required', 'cnpj'],
+                        'cnpjCliente' => ['cnpj'],
                     ],
                     [
-                        'cnpjCliente.required' => 'CNPJ Obrigatório.',
                         'cnpjCliente.cnpj' => 'CNPJ inválido.',
                     ]
                 );
@@ -66,8 +64,8 @@ class ClienteRegister extends Controller
                     'cnpjCliente' => ['required', 'cnpj'],
                 ],
                 [
-                    'cpfCliente.required' => 'CPF Obrigatório.',
-                    'cnpjCliente.required' => 'CNPJ Obrigatório.',
+                    'cpfCliente.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cnpjCliente.required' => 'CPF ou CNPJ obrigatório.',
                 ]
             );
         }

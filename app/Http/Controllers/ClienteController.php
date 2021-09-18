@@ -10,7 +10,7 @@ class ClienteController extends Controller
 {
 
     public function Cliente(){
-        
+
         $ano = date("Y");
         $mes = date("m");
         $dia = date("d");
@@ -21,7 +21,7 @@ class ClienteController extends Controller
         $ontem = Carbon::now()->subDay();
 
         $dado1 = Cliente::count();
-        $dado2 = DB::table('cliente')->where('created_at', '=>', "$ontem")->count();
+        $dado2 = DB::table('cliente')->where('created_at', '>=', "$ontem")->count();
         $dado3 = Cliente::count();
 
         $data = Cliente::limit(25)->get();
