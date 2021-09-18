@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClienteRequest;
+use Illuminate\Http\Request;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -12,9 +13,8 @@ use Illuminate\Support\Facades\DB;
 class ClienteRegister extends Controller
 {
 
-    protected function createCliente(ClienteRequest $request)
+    protected function createCliente(Request $request)
     {
-        dd('foi');
 
         $validator = Validator::make(
             $request->all(),
@@ -72,17 +72,29 @@ class ClienteRegister extends Controller
             );
         }
 
+        if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
+
+            $validator_telefone_celular = Validator::make(
+                [$request->telefoneCliente, $request->celularCliente],
+                [
+                    'telefoneCliente' => ['telefone'],
+                    'celularCliente' => ['celular'],
+                ],
+                [
+                    'telefoneCliente.telefone' => 'Telefone inválido.',
+                    'celularCliente.celular' => 'Celular inválido.',
+                ]
+            );
+        } else{
         if (!empty($request->telefoneCliente || $request->celularCliente)) {
-            if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
 
             if (isset($request->telefoneCliente)) {
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneCliente,
                     [
-                        'telefoneCliente' => ['required', 'telefone'],
+                        'telefoneCliente' => ['telefone'],
                     ],
                     [
-                        'telefoneCliente.required' => 'Telefone obrigatório.',
                         'telefoneCliente.telefone' => 'Telefone inválido.',
                     ]
                 );
@@ -91,10 +103,9 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularCliente,
                     [
-                        'celularCliente' => ['required', 'celular'],
+                        'celularCliente' => ['celular'],
                     ],
                     [
-                        'celularCliente.required' => 'Celular obrigatório.',
                         'celularCliente.celular' => 'Celular inválido.',
                     ]
                 );
@@ -112,18 +123,6 @@ class ClienteRegister extends Controller
                 ]
             );
         }
-    } else {
-        $validator_telefone_celular = Validator::make(
-            [$request->telefoneCliente, $request->celularCliente],
-            [
-                'telefoneCliente' => ['telefone'],
-                'celularCliente' => ['celular'],
-            ],
-            [
-                'telefoneCliente.telefone' => 'Telefone inválido.',
-                'celularCliente.celular' => 'Celular inválido.',
-            ]
-        );
     }
 
         if ($validator->fails() || $validator_cpf_cnpj->fails() || $validator_telefone_celular->fails()) {

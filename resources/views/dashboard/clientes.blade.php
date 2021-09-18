@@ -274,7 +274,7 @@
 <div class="modal fade" id="modalRegisterCliente" style="display:none;" aria-hidden="true">
 <div class="modal-dialog">
     <form id="formRegisterCliente" method="POST" autocomplete="off"
-        enctype="multipart/form-data" action="{{ route('admin.create.cliente') }}">
+        enctype="multipart/form-data" action="{{ route('admin.create.cliente.admin') }}">
         @csrf
         <div class="modal-content">
             <div class="modal-header">
@@ -347,7 +347,7 @@
                                 class="celular form-control" value="{{ old('celularCliente') }}"
                                 placeholder="Entre com o Celular">
                                 <div class="div-feedback">
-                            <span class="invalid-feedback celular_error" role="alert">
+                            <span class="invalid-feedback celularCliente_error" role="alert">
                             </span>
                                 </div>
                         </div>
@@ -367,7 +367,7 @@
                             <input type="password" name="senhaCliente_confirmation" id="senhaCliente_confirmation"
                                 class="form-control" placeholder="Confirmação da Senha">
                                 <div class="div-feedback">
-                            <span class="invalid-feedback senhaConfirm_error" role="alert">
+                            <span class="invalid-feedback senhaCliente_error" role="alert">
                             </span>
                                 </div>
                         </div>
@@ -445,10 +445,11 @@
                         demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
                     }
                     if (data_decoded.status == 0) {
-                        console.log('voltou');
+
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
                              $('#' + prefix).addClass('is-invalid');
+                             $('#' + prefix  + '_confirmation').addClass('is-invalid');
                         });
                         $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
                                  $('span.' + prefix + '_error').text(val[0]);

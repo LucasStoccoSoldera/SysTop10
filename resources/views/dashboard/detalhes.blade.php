@@ -219,7 +219,7 @@
 
 @endsection
 @section('modals')
-    <div class="modal fade" id="modalRegisterCentroCusto" style="display:none;top: 0;" aria-hidden="true">
+    <div class="modal" id="modalRegisterCentroCusto" style="display:none;top: 0;" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formRegisterCentroCusto" method="POST" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.create.centrocusto') }}">

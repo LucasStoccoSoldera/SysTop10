@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Usuario/Registrar_usuario', [App\Http\Controllers\Register\UserRegister::class, 'createUser'])->name('admin.create.user');
     Route::post('/admin/Usuario/Registrar_cargo', [App\Http\Controllers\Register\CargoRegister::class, 'createCargo'])->name('admin.create.cargo');
     Route::post('/admin/Usuario/Registrar_privilegio', [App\Http\Controllers\Register\PrivilegioRegister::class, 'createPrivilegio'])->name('admin.create.privilegio');
+    Route::post('admin/Cliente/Registrar_cliente', [App\Http\Controllers\Register\ClienteRegister::class, 'createCliente'])->name('admin.create.cliente.admin');
     Route::post('/admin/Financeiro/Registrar_conta', [App\Http\Controllers\Register\ContasRegister::class, 'createPagar'])->name('admin.create.conta');
     Route::post('/admin/Financeiro/Registrar_compra', [App\Http\Controllers\Register\CompraRegister::class, 'createCompra'])->name('admin.create.compra');
     Route::post('/admin/Financeiro/Registrar_itemcompra', [App\Http\Controllers\Register\CompraRegister::class, 'createItemCompra'])->name('admin.create.itemcompra');

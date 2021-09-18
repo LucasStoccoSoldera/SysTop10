@@ -48,10 +48,9 @@ class FornecedorRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cpfFornecedor,
                     [
-                        'cpfFornecedor' => ['required', 'cpf'],
+                        'cpfFornecedor' => ['cpf'],
                     ],
                     [
-                        'cpfFornecedor.required' => 'CPF obrigatório.',
                         'cpfFornecedor.cpf' => 'CPF inválido.',
                     ]
                 );
@@ -60,10 +59,9 @@ class FornecedorRegister extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->cnpjFornecedor,
                     [
-                        'cnpjFornecedor' => ['required', 'cnpj'],
+                        'cnpjFornecedor' => ['cnpj'],
                     ],
                     [
-                        'cnpjFornecedor.required' => 'CNPJ obrigatório.',
                         'cnpjFornecedor.cnpj' => 'CNPJ inválido.',
                     ]
                 );
@@ -88,10 +86,9 @@ class FornecedorRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneFornecedor,
                     [
-                        'telefoneFornecedor' => ['required', 'telefone'],
+                        'telefoneFornecedor' => ['telefone'],
                     ],
                     [
-                        'telefoneFornecedor.required' => 'Telefone obrigatório.',
                         'telefoneFornecedor.telefone' => 'Telefone inválido.',
                     ]
                 );
@@ -100,10 +97,9 @@ class FornecedorRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularFornecedor,
                     [
-                        'celularCliente' => ['required', 'celular'],
+                        'celularCliente' => ['celular'],
                     ],
                     [
-                        'celularFornecedor.required' => 'Celular obrigatório.',
                         'celularFornecedor.celular' => 'Celular inválido.',
                     ]
                 );

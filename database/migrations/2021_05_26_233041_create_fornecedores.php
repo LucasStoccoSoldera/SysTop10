@@ -23,7 +23,7 @@ class CreateFornecedores extends Migration
             $table->string('for_numero');
             $table->string('for_telefone');
             $table->string('for_celular');
-            $table->string('cli_cpf_cnpj');
+            $table->string('for_cpf_cnpj');
             $table->string('for_cep');
             $table->timestamps();
         });

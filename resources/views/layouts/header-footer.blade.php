@@ -328,14 +328,14 @@
             function showDelete(id, rota) {
                 $("#formExcluir").change("action", `"` + rota + `"`);
                 $("#id").val(id);
-                $('#modalAlertDelete').modal('show');
+                $('#modalAlertDelete').modal('show', {backdrop: false});
             }
 
             $('button.cancela').on('click', function() {
                 var form = $(this).data('form');
                 var modal = $(this).data('modal');
-                $('#' + modal).modal('show');
-                $('#modalAlertCancelar').modal('show');
+                $('#' + modal).modal('show', {backdrop: false});
+                $('#modalAlertCancelar').modal('show', {backdrop: false});
                 $('#formCancelar').val(form);
                 $('#modalCancelar').val(modal);
             });
@@ -345,7 +345,6 @@
                 var modal2 = $('#modalCancelar').val();
                 $('#' + form2)[0].reset();
                 $('.div-feedback').val("");
-                $('#' + modal2).modal('show');
                 $('.is-invalid').removeClass('is-invalid');
                 $('#modalAlertCancelar').hide(800);
                 $('#' + modal2).delay(500).hide(800);
@@ -353,7 +352,7 @@
 
             function abrirModal(modalOpen) {
                 console.log(modalOpen);
-                $(modalOpen).modal('show');
+                $(modalOpen).modal('show', {backdrop: false});
             }
 
             $('.limpar').on('click', function() {
@@ -366,7 +365,7 @@
                     console.log('teste');
                 var id = $(this).data('id');
                 var rota2 = $(this).data('rota');
-                $('#modalAlertDelete').modal('show');
+                $('#modalAlertDelete').modal('show', {backdrop: false});
                 $('#idDelete').val(id);
                 $('#rotaDelete').val(rota2);
                 $('#formExcluir').change('action', rota2);
@@ -375,7 +374,7 @@
             $('button.red-min').on('click', function() {
                 var id = $(this).data('id');
                 var rota3 = $(this).data('rota');
-                $('#modalAlertDelete').modal('show');
+                $('#modalAlertDelete').modal('show', {backdrop: false});
                 $('#idDelete').val(id);
                 $('#rotaDelete').val(rota3);
                 $('#formExcluir').change('action', rota3);

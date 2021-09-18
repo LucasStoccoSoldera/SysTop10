@@ -855,6 +855,75 @@
 </div>
 </div>
 
+<div class="modal fade" id="modalShowParcelas" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content" style="width: 150%">
+                <div class="modal-header">
+                    <h4 class="modal-title">Visualização de Parcelas</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group" id="form-direita">
+                                <label class="modal-label">Conta: </label><br><br>
+                                    <label class="modal-label">Valor Final: </label><br><br>
+                                    <label class="modal-label">Tipo Pagamento: </label><br><br>
+                                    <label class="modal-label">Centro de Custo: </label><br><br>
+                            </div>
+                        </div>
+                            <div class="col-6">
+                                <div class="form-group" id="form-direita">
+                                    <label class="modal-label">Conta: </label><br><br>
+                                        <label class="modal-label">Valor Final: </label><br><br>
+                                        <label class="modal-label">Tipo Pagamento: </label><br><br>
+                                        <label class="modal-label">Centro de Custo: </label><br><br>
+                                </div>
+                        </div>
+                    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="card-consulta-tabela">
+                <div class="card-header" id="ch-adaptado">
+                    <h2 class="card-title">Consulta de Parcelas</h2>
+                </div>
+                <div class="card-body" id="cd-adaptado">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="tb_parcelas">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="text-center" style="width: 10%">
+                                        ID
+                                    </th>
+                                    <th style="width: 50%">
+                                        Descrição
+                                    </th>
+                                    <th class="text-right" style="width: 40%">
+                                        <div id="acao">Ações</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- DataTables --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+        <button type="button" class="cancela btn btn-secondary btn-danger"
+            data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 @endsection
 
@@ -872,7 +941,7 @@
     }
 
     $(document).ready(function() {
-
+    $('#modalShowParcelas').modal('show');
 
         var table_conta = $('#tb_conta').DataTable( {
             paging: true,
