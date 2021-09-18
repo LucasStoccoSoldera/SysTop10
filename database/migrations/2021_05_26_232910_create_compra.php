@@ -20,7 +20,7 @@ class CreateCompra extends Migration
             $table->date('com_data_compra');
             $table->date('com_data_pagto');
             $table->integer('com_desconto');
-            $table->float('com_valor', 2);
+            $table->float('com_valor', 12, 2);
             $table->integer('com_qtde');
             $table->string('com_parcelas');
             $table->string('com_observacoes');

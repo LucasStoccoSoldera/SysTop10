@@ -390,7 +390,7 @@
             $(document).ready(function() {
 
                 $('.porcentagem').mask('#0%');
-                $('.dinheiro').mask('#.##0,00', {
+                $('.dinheiro').mask('#0.00', {
                     reverse: true
                 });
                 $('.cpf').mask('000-000.000-00');

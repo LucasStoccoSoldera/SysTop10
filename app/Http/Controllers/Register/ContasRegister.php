@@ -67,7 +67,6 @@ class ContasRegister extends Controller
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->valorfContas;
         $Caixa->cax_ctpagar = $request->valorfContas;
-        $Caixa->cax_ctreceber = "";
         $Caixa->save();
 
 
@@ -82,11 +81,14 @@ class ContasRegister extends Controller
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas) * $cont;
             $Parcela->par_status = "Em Aberto";
-            $Parcela->par_data_pagto = ($conta_last->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            if ($contas_dados->con_data_pag <> null){
+            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            }
             $Parcela->save();
+            $cont ++;
         }
 
-        if ($Contas_a_Pagar) {
+        if ($Parcela) {
             return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
         }
     }

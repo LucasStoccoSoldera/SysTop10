@@ -22,8 +22,8 @@ class CreateVendasDetalhe extends Migration
             $table->integer('det_qtde');
             $table->text('det_descricao');
             $table->String('det_anexo_path');
-            $table->float('det_valor_unitario', 2);
-            $table->float('det_valor_total', 2);
+            $table->float('det_valor_unitario', 12, 2);
+            $table->float('det_valor_total', 12, 2);
             $table->timestamps();
 
             $table->foreign('cor_id')->references('id')->on('cores');

@@ -20,8 +20,8 @@ class CreateProduto extends Migration
             $table->unsignedBigInteger('log_id');
             $table->unsignedBigInteger('dim_id');
             $table->string('pro_nome');
-            $table->float('pro_precocusto', 2);
-            $table->float('pro_precovenda', 2);
+            $table->float('pro_precocusto', 12, 2);
+            $table->float('pro_precovenda', 12, 2);
             $table->string('pro_promocao');
             $table->string('pro_foto_path');
             $table->char('pro_personalizacao', 1);

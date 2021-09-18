@@ -272,7 +272,7 @@
     <div class="add">
         <div class="dropup show-dropdown">
             <a href="#" data-toggle="dropdown">
-                <img src="../img/dash/addbtn.png">
+                <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterContas');"><img
@@ -1057,13 +1057,14 @@
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
+                    $(document).find('select').removeClass('is-invalid');
 
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterContas')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
-                        $('#modalAlertRegistrar').modal('show');
+                        demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
                     }
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {

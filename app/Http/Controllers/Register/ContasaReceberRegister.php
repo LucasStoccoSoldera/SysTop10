@@ -56,7 +56,6 @@ class ContasaReceberRegister extends Controller
         $Caixa->cax_descricao = "Credito $request->descricaoReceber";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->valorReceber;
-        $Caixa->cax_ctpagar = "";
         $Caixa->cax_ctreceber = $request->valorReceber;
         $Caixa->save();
 

@@ -75,7 +75,9 @@ class CompraRegister extends Controller
         $Conta->con_valor_final = $request->VTCompras;
         $Conta->con_data_venc = $request->datapagCompras;
         $Conta->con_parcelas = $request->parcelasCompras;
-        $Conta->con_data_pag = "";
+        if ($request->datapagCompras <> null){
+        $Conta->con_data_pag = $request->datapagCompras;
+        }
         $Conta->con_status= "Aberto";
         $Conta->con_compra= "Compra";
         $Conta->save();
@@ -85,7 +87,6 @@ class CompraRegister extends Controller
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->VTCompras;
         $Caixa->cax_ctpagar = $request->VTCompras;
-        $Caixa->cax_ctreceber = "";
         $Caixa->save();
 
         $cont = 0;
@@ -100,8 +101,11 @@ class CompraRegister extends Controller
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->VTCompras / $request->parcelasCompras) * $cont;
             $Parcela->par_status = "Em Aberto";
+            if ($compras_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            }
             $Parcela->save();
+            $cont ++;
         }
 
         if ($Parcela) {

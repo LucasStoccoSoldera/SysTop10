@@ -18,9 +18,9 @@ class CreateCaixa extends Migration
             $table->timestamp('cax_data');
             $table->string('cax_descricao');
             $table->char('cax_operacao');
-            $table->float('cax_valor', 2);
-            $table->float('cax_ctpagar', 2);
-            $table->float('cax_ctreceber', 2);
+            $table->float('cax_valor', 12, 2);
+            $table->float('cax_ctpagar', 12, 2)->nullable();
+            $table->float('cax_ctreceber', 12, 2)->nullable();
             $table->timestamps();
         });
     }

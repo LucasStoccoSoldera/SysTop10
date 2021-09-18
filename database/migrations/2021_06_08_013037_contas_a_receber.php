@@ -19,7 +19,7 @@ class ContasAReceber extends Migration
             $table->string('rec_descricao');
             $table->string('rec_ven_id');
             $table->date('rec_data');
-            $table->float('rec_valor', 2);
+            $table->float('rec_valor', 12, 2);
             $table->string('rec_parcelas');
             $table->char('rec_status');
             $table->timestamps();

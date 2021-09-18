@@ -63,7 +63,6 @@ class VendasRegister extends Controller
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->VTVenda;
-        $Caixa->cax_ctpagar = "";
         $Caixa->cax_ctreceber = $request->VTVenda;
         $Caixa->save();
 
