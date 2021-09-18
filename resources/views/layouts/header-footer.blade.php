@@ -344,7 +344,7 @@
                 var form2 = $('#formCancelar').val();
                 var modal2 = $('#modalCancelar').val();
                 $('#' + form2)[0].reset();
-                $('.div-feedback').val("");
+                $('.div-feedback').html("");
                 $('.is-invalid').removeClass('is-invalid');
                 $('#modalAlertCancelar').hide(800);
                 $('#' + modal2).delay(500).hide(800);

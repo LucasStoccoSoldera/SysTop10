@@ -119,17 +119,19 @@ class CompraRegister extends Controller
                 'IDFornecedor' => ['required', 'integer'],
                 'qtdeItemCompra' => ['required', 'integer'],
                 'descricaoItemCompra' => ['required', 'string'],
+                'valorItemCompra' => ['required'],
             ],
             [
                 'IDItemCompra.required' => 'ID da compra obrigatório.',
                 'IDFornecedor.required' => 'Fornecedor obrigatório.',
                 'qtdeItemCompra.required' => 'Quantidade obrigatória.',
                 'descricaoItemCompra.required' => 'Descrição obrigatória.',
+                'valorItemCompra.required' => 'Valor do item obrigatório.',
             ]
         );
 
 
-        if ($request->tipoItemCompra == 'Produto Interno') {
+        if ($request->tipoItemCompra == "1") {
             $validator_interno = Validator::make(
                 $request->all(),
                 [
@@ -140,8 +142,8 @@ class CompraRegister extends Controller
                 ],
                 [
                     'IDProduto.required' => 'Produto obrigatório.',
-                    'dimensaoItemCompra.cpf' => 'Dimensão obrigatória.',
-                    'coresItemCompra.cpf' => 'Cor obrigatória.',
+                    'dimensaoItemCompra.required' => 'Dimensão obrigatória.',
+                    'coresItemCompra.required' => 'Cor obrigatória.',
                 ]
             );
             $interno = true;

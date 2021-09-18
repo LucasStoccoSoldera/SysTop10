@@ -623,7 +623,7 @@
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block"
                                             id="btn-form-consulta-imprimir" data-toggle="modal"
-                                            data-backdrop="static" data-target="#modalRegisterItemCompra">
+                                            data-backdrop="static" onclick="abrirModal('#modalRegisterItemCompra');">
                                             + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -679,7 +679,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Cadastrar Itens da Compra</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="hideModal('modalRegisterItemCompra');" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -697,15 +697,15 @@
                             </span>
                                 </div>
                         </div>
-                        <div class="col-6">
+
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Descrição:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="textarea" name="descricaoItemVenda" id="descricaoItemVenda"
-                                    class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
+                                <input type="textarea" name="descricaoItemCompra" id="descricaoItemCompra"
+                                    class="form-control" maxlength="80" value="{{ old('descricaoItemCompra') }}"
                                     placeholder="Coloque uma Descrição">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback descricaoItemVenda_error" role="alert">
+                                <span class="invalid-feedback descricaoItemCompra_error" role="alert">
                                 </span>
                                     </div>
                             </div>
@@ -732,15 +732,16 @@
                                 <select type="text" name="tipoItemCompra" id="tipoItemCompra" class="form-control"
                                     maxlength="25" value="{{ old('tipoItemCompra') }}"
                                     placeholder="Selecione o Status">
-                                    <option value="">------------Selecione------------</option>
                                     <option value="1">Produto Interno</option>
-                                    <option value="2">Protudo Externo</option>
+                                    <option value="2">Produto Externo</option>
                                 </select>
                                 <div class="div-feedback">
                                 <span class="invalid-feedback tipoItemCompra_error" role="alert">
                                 </span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Valor Item:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -757,11 +758,11 @@
                                 <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra"
                                     class="valor form-control" disabled value="{{ old('valorTotalItemCompra') }}">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback valorItemCompra_error" role="alert">
+                                <span class="invalid-feedback valorTotalItemCompra_error" role="alert">
                                 </span>
                                     </div>
                             </div>
-                </div>
+
                     <div id="interno">
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
@@ -844,6 +845,7 @@
                                 </div>
                     </div>
                     </div>
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="cancela btn btn-secondary btn-danger"
@@ -851,6 +853,7 @@
                                   <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemCompra">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                 </div>
+            </div>
     </form>
 </div>
 </div>
@@ -930,18 +933,27 @@
 
 @push('ajax')
 <script>
-    var valor = $("#tipoItemCompra").val();
 
-    if(valor == 'Produto Interno'){
-        $("#externo").hide();
-        $("#interno").show();
-    } else {
-        $("#externo").show();
-        $("#interno").hide();
-    }
+            $("#externo").hide();
+            $("#interno").show();
+
+    $('#tipoItemCompra').on('blur', function(){
+        var valor = $("#tipoItemCompra").val();
+
+            if(valor == "1"){
+            $("#externo").hide();
+            $("#interno").show();
+            $('.div-feedback').val("");
+            $('.is-invalid').removeClass('is-invalid');
+        } else {
+            $("#externo").show();
+            $("#interno").hide();
+            $('.div-feedback').html("");
+            $('.is-invalid').removeClass('is-invalid');
+        }
+    });
 
     $(document).ready(function() {
-    $('#modalShowParcelas').modal('show');
 
         var table_conta = $('#tb_conta').DataTable( {
             paging: true,
