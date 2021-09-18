@@ -294,7 +294,7 @@
                                             style="background-color: #d7ba11;background-image:none;padding: 16px 40px !important; width: 125px; height:50px; margin-right:10px;vertical-align: middle;color: #fff;">Parar</a>
                                         <button type="submit" class="btn btn-secondary"
                                             style="background-color: #00cca4;background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;"
-                                            onclick="hideModal('modalReturnCadastro');">Próximo</button>
+                                            data-dismiss="modal">Próximo</button>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +398,7 @@
                 $('.rg').mask('00.000.000-0');
                 $('.cep').mask('00000-000');
                 $('.telefone').mask('(00) 0000-0000');
-                $('.celular').mask('(00) 0 0000-0000');
+                $('.celular').mask('(00) 00000-0000');
                 $('.dimensao').mask('000 x 000 x 000');
                 $('.cep').mask('00000-000');
             });
