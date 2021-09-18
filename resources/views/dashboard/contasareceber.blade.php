@@ -238,16 +238,22 @@
                                     <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 25%">
                                         Origem
                                     </th>
-                                    <th style="width: 20%">
+                                    <th class="text-center" style="width: 10%">
+                                        Venda
+                                    </th>
+                                    <th class="text-center" style="width: 5%">
+                                        Parcelas
+                                    </th>
+                                    <th style="width: 10%">
                                         Valor (R$)
                                     </th>
                                     <th style="width: 15%">
                                         Data Contabilizada
                                     </th>
-                                    <th class="text-center"style="width: 15%">
+                                    <th class="text-center" style="width: 15%">
                                         Status
                                     </th>
                                     <th class="text-right" style="width: 15%">
@@ -334,9 +340,9 @@
                                     maxlength="25" value="{{ old('statusReceber') }}"
                                     placeholder="Selecione o Status">
                                     <option value="">------------Selecione------------</option>
-                                    <option value="1">Em Aberto</option>
-                                    <option value="2">Fechada</option>
-                                    <option value="3">Cancelada</option>
+                                    <option value="Aberta">Aberto</option>
+                                    <option value="Fechada">Fechada</option>
+                                    <option value="Cancelada">Cancelada</option>
                                 </select>
                                 <div class="div-feedback">
                                 <span class="invalid-feedback statusReceber_error" role="alert">
@@ -407,6 +413,92 @@
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="modalShowParcelas" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Visualização de Parcelas</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="form-group" id="form-direita">
+                                <label class="modal-label">Conta: </label><br><br>
+                                    <label class="modal-label">Valor Final: </label><br><br>
+                                </div>
+                        </div>
+                                <div class="col-3">
+                                    <div class="form-group" id="form-direita">
+                                    <label class="modal-label" id="ls_par_conta"></label> <br><br>
+                                    <label class="modal-label" id="ls_par_valor"></label><br><br>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group" id="form-direita">
+                                <label class="modal-label">Tipo Pagamento: </label><br><br>
+                                    <label class="modal-label">Data Geração: </label><br><br>
+                                </div>
+                        </div>
+                                <div class="col-3">
+                                    <div class="form-group" id="form-direita">
+                                    <label class="modal-label" id="ls_par_tpg"></label><br><br>
+                                    <label class="modal-label" id="ls_par_data"></label><br><br>
+                            </div>
+                        </div>
+                    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="card-consulta-tabela">
+                <div class="card-header" id="ch-adaptado">
+                    <h2 class="card-title">Consulta de Parcelas</h2>
+                </div>
+                <div class="card-body" id="cd-adaptado">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="tb_parcelas">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="text-center" style="width: 5%">
+                                        Conta
+                                    </th>
+                                    <th class="text-center" style="width: 5%">
+                                        Parc.
+                                    </th>
+                                    <th class="text-right" style="width: 20%">
+                                        Valor
+                                    </th>
+                                    <th class="text-center" style="width: 15%">
+                                        Status
+                                    </th>
+                                    <th class="text-center" style="width: 20%">
+                                        Pagto.
+                                    </th>
+                                    <th class="text-right" style="width: 25%">
+                                        <div id="acao">Ações</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- DataTables --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+        <button type="button" class="cancela btn btn-secondary btn-danger"
+            data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection
 
 @push('ajax')
@@ -422,6 +514,8 @@
             columns: [
                 {data: "id", className: "text-center"},
                 {data: "rec_descricao"},
+                {data: "rec_ven_id", className: "text-center"},
+                {data: "rec_parcelas", className: "text-center"},
                 {data: "rec_valor", className: "text-right"},
                 {data: "rec_data", className: "text-center"},
                 {data: "rec_status", className: "text-center"},
@@ -429,11 +523,42 @@
             ]
         });
 
+        var table_parcelas = $('#tb_parcelas').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.parcelas') }}",
+            columns: [
+                {data: "par_conta", className: "text-center"},
+                {data: "par_numero", className: "text-center"},
+                {data: "par_valor", className: "text-right"},
+                {data: "par_status", className: "text-center"},
+                {data: "par_data_pagto", className: "text-center"},
+            ]
+        });
+
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
                 table_receber.ajax.reload(null, false);
+                table_parcelas.ajax.reload(null, false);
         }
     );
+
+    $('button.visu').on('click', function(){
+            var conta = $(this).data('id');
+            var valor = $(this).data('valor');
+            var pagto = $(this).data('tpg');
+            var data = $(this).data('data');
+            $('#modalShowParcelas').modal('show');
+        });
+
+        $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_data').val(data);
+        });
 
         $("#formRegisterContasaReceber").on('submit', function(e) {
 

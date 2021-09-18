@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContasaReceberRequest;
 use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
 use App\Models\Notificacao;
+use Illuminate\Support\Facades\DB;
+use App\Models\Parcelas;
 use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 class ContasaReceberRegister extends Controller
@@ -59,7 +59,25 @@ class ContasaReceberRegister extends Controller
         $Caixa->cax_ctreceber = $request->valorReceber;
         $Caixa->save();
 
-        if ($Contas_a_Receber) {
+        $cont = 0;
+        $conta_last = DB::table('contas_a_receber')->get()->last()->id;
+        $contas_dados = Contas_a_Receber::find($conta_last);
+        while ($cont < $request->parcelasReceber) {
+
+            $Parcela = new Parcelas();
+            $Parcela->tpg_id = $request->tipoPagtoReceber;
+            $Parcela->par_venda = $conta_last;
+            $Parcela->par_numero = $cont;
+            $Parcela->par_valor = ($request->valorReceber / $request->parcelasReceber) * $cont;
+            $Parcela->par_status = "Aberta";
+            if ($contas_dados->con_data_pag <> null){
+            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            }
+            $Parcela->save();
+            $cont ++;
+        }
+
+        if ($Parcela) {
             return response()->json(['status' => 1, 'msg' => 'Crédito cadastrado com sucesso!']);
         }
     }

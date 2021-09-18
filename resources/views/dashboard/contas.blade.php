@@ -246,7 +246,7 @@
                                         Valor Final
                                     </th>
                                     <th style="width: 12%">
-                                        CC
+                                        Tipo
                                     </th>
                                     <th style="width: 15%">
                                         Dt. Venc.
@@ -971,21 +971,6 @@
 
     $(document).ready(function() {
 
-        $('.visu').on('click', function(){
-            $('#modalShowParcelas').modal('show');
-            var conta = $(this).data('id');
-            var valor = $(this).data('valor');
-            var pagto = $(this).data('tpg');
-            var centro = $(this).data('cc');
-        });
-
-        $('#modalShowParcelas').on('show', function(){
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_cc').val(centro);
-        });
-
         var table_conta = $('#tb_conta').DataTable( {
             paging: true,
             searching: false,
@@ -996,7 +981,7 @@
                 {data: "con_descricao"},
                 {data: "con_compra", className: "text-center"},
                 {data: "con_valor_final", className: "text-right"},
-                {data: "cc_id"},
+                {data: "con_tipo", className: "text-center"},
                 {data: "con_data_venc", className: "text-center"},
                 {data: "con_status", className: "text-center"},
                 {data: "action", className: "text-right"},
@@ -1015,7 +1000,6 @@
                 {data: "par_valor", className: "text-right"},
                 {data: "par_status", className: "text-center"},
                 {data: "par_data_pagto", className: "text-center"},
-                {data: "action", className: "text-right"},
             ]
         });
 
@@ -1038,8 +1022,24 @@
             function() {
                 table_conta.ajax.reload(null, false);
                 table_item_compra.ajax.reload(null, false);
+                table_parcelas.ajax.reload(null, false);
         }
     );
+
+    $('button.visu').on('click', function(){
+            var conta = $(this).data('id');
+            var valor = $(this).data('valor');
+            var pagto = $(this).data('tpg');
+            var centro = $(this).data('cc');
+            $('#modalShowParcelas').modal('show');
+        });
+
+        $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_cc').val(centro);
+        });
 
         $("#formRegisterContas").on('submit', function(e) {
 

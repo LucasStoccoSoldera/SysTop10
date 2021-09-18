@@ -17,11 +17,11 @@ class ContasAReceber extends Migration
             $table->id();
             $table->unsignedBigInteger('tpg_id');
             $table->string('rec_descricao');
-            $table->string('rec_ven_id');
+            $table->string('rec_ven_id')->nullable();
             $table->date('rec_data');
             $table->float('rec_valor', 12, 2);
             $table->string('rec_parcelas');
-            $table->char('rec_status');
+            $table->string('rec_status');
             $table->timestamps();
 
             $table->foreign('tpg_id')->references('id')->on('tipopagto');

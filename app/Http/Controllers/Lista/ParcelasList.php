@@ -15,8 +15,13 @@ class ParcelasList extends Controller
 
         if($request->ajax()){
 
-            $data7 = Parcelas::where('par_conta', '=', $request->id);
+            $conta = Parcelas::where('par_conta', '=', $request->id);
 
+            if($conta <> null){
+                $data7 = Parcelas::where('par_conta', '=', $request->id);
+            } else{
+                $data7 = Parcelas::where('par_venda', '=', $request->id);
+            }
             return DataTables::eloquent($data7)
             ->toJson();
         }
