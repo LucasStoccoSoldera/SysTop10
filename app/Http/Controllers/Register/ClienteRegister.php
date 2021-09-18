@@ -62,8 +62,8 @@ class ClienteRegister extends Controller
             $validator_cpf_cnpj = Validator::make(
                 [$request->cpfCliente, $request->cnpjCliente],
                 [
-                    'cpfCliente' => ['required', 'digits:11', 'cpf'],
-                    'cnpjCliente' => ['required', 'digits:14', 'cnpj'],
+                    'cpfCliente' => ['required', 'cpf'],
+                    'cnpjCliente' => ['required', 'cnpj'],
                 ],
                 [
                     'cpfCliente.required' => 'CPF Obrigatório.',
@@ -77,12 +77,12 @@ class ClienteRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneCliente, $request->celularCliente],
                 [
-                    'telefoneCliente' => ['telefone'],
-                    'celularCliente' => ['celular'],
+                    'telefoneCliente' => ['Celular'],
+                    'celularCliente' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneCliente.telefone' => 'Telefone inválido.',
-                    'celularCliente.celular' => 'Celular inválido.',
+                    'telefoneCliente.Celular' => 'Telefone inválido.',
+                    'celularCliente.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         } else{
@@ -92,10 +92,10 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneCliente,
                     [
-                        'telefoneCliente' => ['telefone'],
+                        'telefoneCliente' => ['Celular'],
                     ],
                     [
-                        'telefoneCliente.telefone' => 'Telefone inválido.',
+                        'telefoneCliente.Celular' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneCliente;
@@ -103,10 +103,10 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularCliente,
                     [
-                        'celularCliente' => ['celular'],
+                        'celularCliente' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularCliente.celular' => 'Celular inválido.',
+                        'celularCliente.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -114,8 +114,8 @@ class ClienteRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneCliente, $request->celularCliente],
                 [
-                    'telefoneCliente' => ['required', 'telefone'],
-                    'celularCliente' => ['required', 'celular'],
+                    'telefoneCliente' => ['required'],
+                    'celularCliente' => ['required'],
                 ],
                 [
                     'telefoneCliente.required' => 'Telefone ou Celular obrigatórios.',

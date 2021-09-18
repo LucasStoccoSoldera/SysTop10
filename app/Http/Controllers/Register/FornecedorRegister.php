@@ -86,10 +86,10 @@ class FornecedorRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneFornecedor,
                     [
-                        'telefoneFornecedor' => ['telefone'],
+                        'telefoneFornecedor' => ['Celular'],
                     ],
                     [
-                        'telefoneFornecedor.telefone' => 'Telefone inválido.',
+                        'telefoneFornecedor.Celular' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneFornecedor;
@@ -97,10 +97,10 @@ class FornecedorRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularFornecedor,
                     [
-                        'celularCliente' => ['celular'],
+                        'celularCliente' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularFornecedor.celular' => 'Celular inválido.',
+                        'celularFornecedor.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -108,12 +108,12 @@ class FornecedorRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneFornecedor, $request->celularFornecedor],
                 [
-                    'telefoneFornecedor' => ['telefone'],
-                    'celularFornecedor' => ['celular'],
+                    'telefoneFornecedor' => ['Celular'],
+                    'celularFornecedor' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneFornecedor.telefone' => 'Telefone inválido.',
-                    'celularFornecedor.celular' => 'Celular inválido.',
+                    'telefoneFornecedor.Celular' => 'Telefone inválido.',
+                    'celularFornecedor.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         }

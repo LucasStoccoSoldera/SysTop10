@@ -32,12 +32,12 @@ class TransportadoraRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneTrans, $request->celularTrans],
                 [
-                    'telefoneTrans' => ['telefone'],
-                    'celularTrans' => ['celular'],
+                    'telefoneTrans' => ['Celular'],
+                    'celularTrans' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneTrans.telefone' => 'Telefone inválido.',
-                    'celularTrans.celular' => 'Celular inválido.',
+                    'telefoneTrans.Celular' => 'Telefone inválido.',
+                    'celularTrans.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         } else{
@@ -47,10 +47,10 @@ class TransportadoraRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->telefoneTrans,
                     [
-                        'telefoneTrans' => ['telefone'],
+                        'telefoneTrans' => ['Celular'],
                     ],
                     [
-                        'telefoneTrans.telefone' => 'Telefone inválido.',
+                        'telefoneTrans.Celular' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneTrans;
@@ -58,10 +58,10 @@ class TransportadoraRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->celularTrans,
                     [
-                        'celularTrans' => ['celular'],
+                        'celularTrans' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularTrans.celular' => 'Celular inválido.',
+                        'celularTrans.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -69,8 +69,8 @@ class TransportadoraRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->telefoneTrans, $request->celularTrans],
                 [
-                    'telefoneTrans' => ['required', 'telefone'],
-                    'celularTrans' => ['required', 'celular'],
+                    'telefoneTrans' => ['required'],
+                    'celularTrans' => ['required'],
                 ],
                 [
                     'telefoneTrans.required' => 'Telefone ou Celular obrigatórios.',
