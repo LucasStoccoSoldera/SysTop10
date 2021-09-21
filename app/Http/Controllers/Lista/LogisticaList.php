@@ -18,22 +18,12 @@ class LogisticaList extends Controller
 
         if($request->ajax()){
 
-            $data2 = Logistica::query();
+            $data = Logistica::select('logistica.id', 'pac_descricao', 'trans_nome')
+            ->join('pacote', 'logistica.pac_id', '=', 'pacote.id')
+            ->join('transportadora', 'logistica.trans_id', '=', 'transportadora.id');
 
-            return DataTables::eloquent($data2)
-                ->addColumn('action', function($data2){
-
-                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data2->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-                <button type="button" class="btn btn-primary red" id="excluir-log"
-                name="excluir-logistica" data-id="'.$data2->id.'" data-rota="'. route('admin.delete.logistica') .'"
-               ><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
+            return DataTables::eloquent($data)
+            ->setTransformer(new LogisticaTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

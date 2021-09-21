@@ -17,6 +17,8 @@ class CreateComprasDetalhe extends Migration
             $table->id();
             $table->unsignedBigInteger('for_id');
             $table->unsignedBigInteger('com_id');
+            $table->integer('dim_id');
+            $table->integer('cor_id');
             $table->string('cde_produto');
             $table->integer('cde_qtde');
             $table->integer('cde_valoritem');

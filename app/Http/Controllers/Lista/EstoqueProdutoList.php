@@ -12,13 +12,11 @@ class EstoqueProdutoList extends Controller
 {
     public function listEstoqueProduto(Request $request){
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
-
         if($request->ajax()){
 
             $data = Estoque::query();
+            $data = Estoque::select('pro_nome', 'est_qtde', 'est_status')
+            ->join('produto', 'estoque.pro_id', '=', 'produto.id');
 
             return DataTables::eloquent($data)
                 ->toJson();

@@ -628,7 +628,7 @@
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
                                     <div class="table-responsive">
-                                        <table class="table tablesorter " id="tb_item_compra">
+                                        <table class="table tablesorter " id="tb_item_compra_ato">
                                             <thead class=" text-primary">
                                                 <tr>
                                                     <th style="width: 30%">
@@ -934,6 +934,54 @@
             </div>
         </div>
     </div>
+    
+    <div id="itemcompra">
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="card-consulta-tabela">
+                <div class="card-header" id="ch-adaptado">
+                    <h2 class="card-title">Consulta de Itens da Compra</h2>
+                </div>
+                <div class="card-body" id="cd-adaptado">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="tb_item_compra">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th style="width: 20%">
+                                        Produto
+                                    </th>
+                                    <th class="text-center" style="width: 5%">
+                                        Qtde.
+                                    </th>
+                                    <th style="width: 15%">
+                                        Dimensão
+                                    </th>
+                                    <th style="width: 15%">
+                                        Cor
+                                    </th>
+                                    <th class="text-right" style="width: 15%">
+                                        Valor Unit.
+                                    </th>
+                                    <th class="text-right" style="width: 15%">
+                                        Valor Total
+                                    </th>
+                                    <th class="text-right" style="width: 20%">
+                                        <div id="acao">Ações</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- DataTables --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="row">
     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
         <button type="button" class="cancela btn btn-secondary btn-danger"
@@ -950,6 +998,7 @@
 @push('ajax')
 <script>
 
+            $("#itemcompra").hide();
             $("#externo").hide();
             $("#interno").show();
 
@@ -1003,6 +1052,21 @@
             ]
         });
 
+        var table_item_compra_ato = $('#tb_item_compra_ato').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: "{{ route('admin.list.itemcompraato') }}",
+            columns: [
+                {data: "cde_produto"},
+                {data: "cde_qtde"},
+                {data: "cde_valoritem", className: "text-right"},
+                {data: "cde_valortotal", className: "text-right"},
+                {data: "action", className: "text-right"},
+            ]
+        });
+
         var table_item_compra = $('#tb_item_compra').DataTable( {
             paging: true,
             searching: false,
@@ -1012,6 +1076,8 @@
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
+                {data: "dim_id"},
+                {data: "cor_id"},
                 {data: "cde_valoritem", className: "text-right"},
                 {data: "cde_valortotal", className: "text-right"},
                 {data: "action", className: "text-right"},

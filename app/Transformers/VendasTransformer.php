@@ -15,10 +15,23 @@ class VendasTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $venda->id,
+            'cli_nome' => (int) $venda->cli_nome,
             'ven_valor_total' => (string) $venda->ven_valor_total,
-            'tpg_id' => (int) $venda->tpg_id,
             'ven_status' => $venda->ven_status,
+            'ven_parcelas' => $venda->ven_parcelas,
             'ven_data' => (string) $venda->ven_data,
+            'action' => '<button type="button" class="btn btn-primary visu" id="visu-pro"
+            name="visu-produto" data-id="'.$venda->id.'"
+           ><i
+            class="tim-icons icon-chart-pie-36"></i></button>
+
+            <a href="#" class="btn btn-primary alter-min" data-id= '.$venda->id.'"><i
+            class="tim-icons icon-pencil"></i></a>
+
+           <button type="button" class="btn btn-primary red-min" id="excluir-ven"
+            name="excluir-venda" data-id="'.$venda->id.'" data-rota="'. route('admin.delete.venda') .'"
+           ><i
+            class="tim-icons icon-simple-remove"></i></button>',
         ];
     }
 }

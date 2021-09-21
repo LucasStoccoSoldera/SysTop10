@@ -22,33 +22,13 @@ class ProdutosList extends Controller
 {
     public function listProduto(Request $request){
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
-
         if($request->ajax()){
 
-            $data = Produto::query();
+            $data = Produto::select('produto.id', 'pro_nome', 'tpp_descricao', 'pro_precocusto', 'pro_precovenda')
+            ->join('tipoproduto', 'produto.tpp_id', '=', 'tipoproduto.id');
 
             return  DataTables::eloquent($data)
-            ->addColumn('action', function($data){
-
-                $btn = '<button type="button" class="btn btn-primary visu" id="visu-pro"
-                name="visu-produto" data-id="'.$data->id.'"
-               ><i
-                class="tim-icons icon-chart-pie-36"></i></button>
-
-                <a href="#" class="btn btn-primary alter-min" data-id= '.$data->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-               <button type="button" class="btn btn-primary red-min" id="excluir-pro"
-                name="excluir-produto" data-id="'.$data->id.'" data-rota="'. route('admin.delete.produto') .'"
-               ><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
+            ->setTransformer(new ProdutosTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

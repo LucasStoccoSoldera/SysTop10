@@ -14,23 +14,12 @@ class ItemVendaAtoList extends Controller
 
         if($request->ajax()){
 
-            $data6 = Venda_Detalhe::where('ven_id', $request->IDVenda);
+            $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde', 'det_valor_total')
+            ->join('produto', 'vendas_detalhe.pro_id', '=', 'produto.id')->where('ven_id', $request->IDVenda);
 
 
-            return DataTables::eloquent($data6)
-            ->addColumn('action', function($data6){
-
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data6->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-                <button type="button" class="btn btn-primary red-min" id="excluir-deta"
-                name="excluir-itemvendaa" data-id="'.$data6.'" data-rota="'. route('admin.delete.itemvenda') .'"
-               ><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
+            return DataTables::eloquent($data)
+            ->setTransformer(new ItemVendaTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

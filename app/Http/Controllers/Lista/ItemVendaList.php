@@ -14,9 +14,11 @@ class ItemVendaList extends Controller
 
         if($request->ajax()){
 
-            $data5 = Venda_Detalhe::where('ven_id', '=', $request->id);
+            $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde', 'det_valor_total')
+            ->join('produto', 'vendas_detalhe.pro_id', '=', 'produto.id')->where('ven_id', '=', $request->id);
 
-            return DataTables::eloquent($data5)
+            return DataTables::eloquent($data)
+            ->setTransformer(new ItemVendaTransformer)
             ->toJson();
         }
     }

@@ -14,22 +14,13 @@ class ItemCompraList extends Controller
 
         if($request->ajax()){
 
-            $data4 = Compras_Detalhe::where('com_id', $request->IDCompra);
+            $data = Compras_Detalhe::select('pro_nome', 'cde_qtde', 'dim_descricao', 'cor_nome', 'cde_valoritem', 'cde_valortotal')
+            ->join('produto', 'compras_detalhe.cde_produto', '=', 'produto.id')
+            ->join('dimensoes', 'compras_detalhe.dim_id', '=', 'dimensoes.id')
+            ->join('cores', 'compras_detalhe.cor_id', '=', 'cores.id');
 
-            return DataTables::eloquent($data4)
-                ->addColumn('action', function($data4){
-
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data4->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-                <button type="button" class="btn btn-primary red-min" id="excluir-cde"
-                name="excluir-itemcompra" data-id="'.$data4.'" data-rota="'. route('admin.delete.itemcompra') .'"
-               ><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
+            return DataTables::eloquent($data)
+            ->setTransformer(new ItemCompraTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

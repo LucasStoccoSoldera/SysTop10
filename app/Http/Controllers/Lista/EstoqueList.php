@@ -18,17 +18,13 @@ class EstoqueList extends Controller
 
         if($request->ajax()){
 
-            $data = Estoque::query();
+            $data = Estoque::select('pro_id', 'est_qtde', 'dim_descricao', 'cor_nome', 'created_at')
+            ->join('produto', 'estoque.pro_id', '=', 'produto.id')
+            ->join('dimensoes', 'estoque.dim_id', '=', 'dimensoes.id')
+            ->join('cores', 'estoque.cor_id', '=', 'cores.id');
 
             return  DataTables::eloquent($data)
-            ->addColumn('action', function($data){
-
-                $btn = '<a href="#" class="btn btn-primary alter" data-id=" '.$data->id.' "><i
-                class="tim-icons icon-pencil"></i></a>';
-
-                return $btn;
-            })
-
+            ->setTransformer(new EstoqueTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

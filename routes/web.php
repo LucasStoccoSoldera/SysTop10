@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/List_Parcelas', [App\Http\Controllers\Lista\ParcelasList::class, 'listParcelas'])->name('admin.list.parcelas');
     Route::get('/admin/List_Compra', [App\Http\Controllers\Lista\CompraList::class, 'listCompra'])->name('admin.list.compra');
     Route::get('/admin/List_ItemCompra', [App\Http\Controllers\Lista\ItemCompraList::class, 'listItemCompra'])->name('admin.list.itemcompra');
+    Route::get('/admin/List_ItemCompraAto', [App\Http\Controllers\Lista\ItemCompraAtoList::class, 'listItemCompraAto'])->name('admin.list.itemcompraato');
     Route::get('/admin/List_ContasaReceber', [App\Http\Controllers\Lista\ContasaReceberList::class, 'listContasaReceber'])->name('admin.list.contasareceber');
     Route::get('/admin/List_Vendas', [App\Http\Controllers\Lista\VendasList::class, 'listVendas'])->name('admin.list.vendas');
     Route::get('/admin/List_ItemVenda', [App\Http\Controllers\Lista\ItemVendaList::class, 'listItemVenda'])->name('admin.list.itemvenda');

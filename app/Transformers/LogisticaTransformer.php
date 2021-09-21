@@ -15,8 +15,15 @@ class LogisticaTransformer extends TransformerAbstract
     {
         return [
             'id' => (int) $logistica->id,
-            'pac_id' => $logistica->pac_id,
-            'trans_id' => $logistica->trans_id,
+            'pac_descricao' => $logistica->pac_descricao,
+            'trans_descricao' => $logistica->trans_descricao,
+            'action' => '<a href="#" class="btn btn-primary alter" data-id="'.$logistica->id.'"><i
+            class="tim-icons icon-pencil"></i></a>
+
+            <button type="button" class="btn btn-primary red" id="excluir-log"
+            name="excluir-logistica" data-id="'.$logistica->id.'" data-rota="'. route('admin.delete.logistica') .'"
+           ><i
+            class="tim-icons icon-simple-remove"></i></button>',
         ];
     }
 

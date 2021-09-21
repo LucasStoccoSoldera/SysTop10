@@ -22,23 +22,11 @@ class UserList extends Controller
 
         if($request->ajax()){
 
-            $data = Usuario::query();
+            $data = Usuario::select('usuario.id', 'usu_nome_completo', 'car_descricao', 'usu_celular', 'usu_data_cadastro')
+            ->join('cargo', 'usuario.car_id', '=', 'cargo.id');
 
             return  DataTables::eloquent($data)
-            ->addColumn('action', function($data){
-
-                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-                <button type="button" class="btn btn-primary red" id="excluir-usu"
-                name="excluir-user" data-id="'.$data->id.'" data-rota="'. route('admin.delete.user') .'"
-               ><i
-                class="tim-icons icon-simple-remove"></i></button>';
-
-                return $btn;
-            })
-
-
+            ->setTransformer(new UserTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }

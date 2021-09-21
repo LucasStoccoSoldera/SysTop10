@@ -12,32 +12,14 @@ class VendasList extends Controller
 {
     public function listVendas(Request $request){
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
-
             if($request->ajax()){
 
                 $data = Venda::query();
+                $data = Venda::select('venda.id', 'cli_nome', 'ven_valor_total', 'ven_status', 'ven_parcelas', 'ven_data')
+                ->join('cliente', 'venda.cli_id', '=', 'cliente.id');
 
                 return  DataTables::eloquent($data)
-                ->addColumn('action', function($data){
-
-                    $btn = '<button type="button" class="btn btn-primary visu" id="visu-pro"
-                    name="visu-produto" data-id="'.$data->id.'"
-                   ><i
-                    class="tim-icons icon-chart-pie-36"></i></button>
-
-                    <a href="#" class="btn btn-primary alter-min" data-id= '.$data->id.'"><i
-                    class="tim-icons icon-pencil"></i></a>
-
-                   <button type="button" class="btn btn-primary red-min" id="excluir-ven"
-                    name="excluir-venda" data-id="'.$data->id.'" data-rota="'. route('admin.delete.venda') .'"
-                   ><i
-                    class="tim-icons icon-simple-remove"></i></button>';
-                    return $btn;
-                })
-
+                ->setTransformer(new VendasTransformer)
                 ->rawColumns(['action'])
                 ->toJson();
         }

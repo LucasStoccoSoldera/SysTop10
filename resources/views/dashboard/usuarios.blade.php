@@ -533,7 +533,7 @@
             columns: [
                 {data: "id", className: "text-center"},
                 {data: "usu_nome_completo"},
-                {data: "car_id"},
+                {data: "car_descricao"},
                 {data: "usu_celular"},
                 {data: "usu_data_cadastro", className: "text-center"},
                 {data: "action", className: "text-right"},
