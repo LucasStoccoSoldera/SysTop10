@@ -413,7 +413,7 @@
                 {data: 'cli_cidade'},
                 {data: 'created_at', className: "text-center"},
                 {data: "action", className: "text-right"},
-            ]
+            ],
         });
 
     $(document).on('click', '[data-dismiss="modal"]',

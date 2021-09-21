@@ -6,6 +6,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contas_a_Receber;
+use Illuminate\Support\Facades\DB;
 use App\Transformers\ContasaReceberTransformer;
 
 class ContasaReceberList extends Controller
@@ -16,7 +17,8 @@ class ContasaReceberList extends Controller
 
         if($request->ajax()){
 
-            $data = Contas_a_Receber::query();
+            $data = Contas_a_Receber::select('contas_a_receber.id', 'rec_descricao', 'rec_ven_id', 'rec_parcelas', 'rec_valor',
+            DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y %H:%i') as rec_data"), 'rec_status');
 
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){

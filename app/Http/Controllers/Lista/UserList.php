@@ -22,7 +22,8 @@ class UserList extends Controller
 
         if($request->ajax()){
 
-            $data = Usuario::select('usuario.id', 'usu_nome_completo', 'car_descricao', 'usu_celular', 'usu_data_cadastro')
+            $data = Usuario::select('usuario.id', 'usu_nome_completo', 'car_descricao', 'usu_celular',
+            DB::raw("DATE_FORMAT(usuario.usu_data_cadastro, '%d/%m/%Y %H:%i') as usu_data_cadastro"))
             ->join('cargo', 'usuario.car_id', '=', 'cargo.id');
 
             return  DataTables::eloquent($data)

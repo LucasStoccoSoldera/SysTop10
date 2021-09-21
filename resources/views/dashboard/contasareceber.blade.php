@@ -530,7 +530,7 @@
             serverside: true,
             ajax: "{{ route('admin.list.parcelas') }}",
             columns: [
-                {data: "par_conta", className: "text-center"},
+                {data: "par_venda", className: "text-center"},
                 {data: "par_numero", className: "text-center"},
                 {data: "par_valor", className: "text-right"},
                 {data: "par_status", className: "text-center"},

@@ -6,19 +6,17 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contas_a_Pagar;
+use Illuminate\Support\Facades\DB;
 use App\Transformers\ContasTransformer;
 
 class ContasList extends Controller
 {
     public function listContas(Request $request){
 
-        $dado1 = 'teste';
-        $dado2 = 'teste';
-        $dado3 = 'teste';
-
         if($request->ajax()){
 
-            $data1 = Contas_a_Pagar::query();
+            $data1 = Contas_a_Pagar::select('con_descricao', 'con_compra', 'con_valor_final', 'con_tipo',
+            DB::raw("DATE_FORMAT(contas_a_pagar.con_data_venc, '%d/%m/%Y) as con_data_venc"), 'con_status');
 
 
             return  DataTables::eloquent($data1)
