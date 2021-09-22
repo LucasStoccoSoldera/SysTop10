@@ -137,8 +137,11 @@ class FornecedorRegister extends Controller
         $Fornecedores->for_nome = $request->nomeFornecedor;
         $Fornecedores->for_telefone = $request->telefoneFornecedor;
         $Fornecedores->for_celular = $request->celularFornecedor;
-        $Fornecedores->for_cpf = $request->cpfFornecedor;
-        $Fornecedores->for_cnpj = $request->cnpjFornecedor;
+        if (isset($cpf)){
+        $Fornecedores->for_cpf_cnpj = $request->cpfFornecedor;
+       }else{
+        $Fornecedores->for_cpf_cnpj = $request->cnpjFornecedor;
+        }
         $Fornecedores->for_cep = $request->cepFornecedor;
         $Fornecedores->for_cidade = $request->cidadeFornecedor;
         $Fornecedores->for_estado = $request->estadoFornecedor;

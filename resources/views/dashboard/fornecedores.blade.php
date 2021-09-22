@@ -147,16 +147,16 @@
                                     <th class="text-center" style="width: 5%">
                                         ID
                                     </th>
-                                    <th style="width: 30%">
+                                    <th style="width: 28%">
                                         Nome / Razão
                                     </th>
-                                    <th style="width: 20%">
+                                    <th style="width: 17%">
                                         CPF / CNPJ
                                     </th>
                                     <th style="width: 15%">
                                         Telefone
                                     </th>
-                                    <th style="width: 10%">
+                                    <th style="width: 20%">
                                         Cidade
                                     </th>
                                     <th class="text-right" style="width: 20%">
@@ -288,17 +288,6 @@
                                         </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Cidade:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cidadeFornecedor" id="cidadeFornecedor"
-                                        class="form-control" maxlength="120" value="{{ old('cidadeFornecedor') }}"
-                                        placeholder="Entre com a Cidade">
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback cidadeFornecedor_error" role="alert">
-                                    </span>
-                                        </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="modal-label">Estado:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="estadoFornecedor" id="estadoFornecedor"
@@ -310,6 +299,17 @@
                                         </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="modal-label">Cidade:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cidadeFornecedor" id="cidadeFornecedor"
+                                        class="form-control" maxlength="120" value="{{ old('cidadeFornecedor') }}"
+                                        placeholder="Entre com a Cidade">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cidadeFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
                                     <label class="modal-label">Bairro:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="bairroFornecedor" id="bairroFornecedor"
@@ -317,6 +317,17 @@
                                         placeholder="Entre com o Bairro">
                                         <div class="div-feedback">
                                     <span class="invalid-feedback bairroFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Rua:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="ruaFornecedor" id="ruaFornecedor"
+                                        class="form-control" maxlength="80" value="{{ old('ruaFornecedor') }}"
+                                        placeholder="Entre com a Rua">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback ruaFornecedor_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
