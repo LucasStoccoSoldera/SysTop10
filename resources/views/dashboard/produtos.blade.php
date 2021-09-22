@@ -945,8 +945,8 @@
                 {data: "id", className: "text-center"},
                 {data: "pro_nome"},
                 {data: "tpp_id"},
-                {data: "pro_precocusto", className: "text-right"},
-                {data: "pro_precovenda", className: "text-right"},
+                {data: "pro_precocusto", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
+                {data: "pro_precovenda", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "action", className: "text-right"},
             ]
         } );

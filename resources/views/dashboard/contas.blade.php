@@ -934,7 +934,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="itemcompra">
     <br>
     <br>
@@ -1020,6 +1020,8 @@
 
     $(document).ready(function() {
 
+        var lista_parcelas = false;
+
         var table_conta = $('#tb_conta').DataTable( {
             paging: true,
             searching: false,
@@ -1029,7 +1031,7 @@
             columns: [
                 {data: "con_descricao"},
                 {data: "con_compra", className: "text-center"},
-                {data: "con_valor_final", className: "text-right"},
+                {data: "con_valor_final", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "con_tipo", className: "text-center"},
                 {data: "con_data_venc", className: "text-center"},
                 {data: "con_status", className: "text-center"},
@@ -1037,6 +1039,7 @@
             ]
         });
 
+        if(lista_parcelas == true){
         var table_parcelas = $('#tb_parcelas').DataTable( {
             paging: true,
             searching: false,
@@ -1046,11 +1049,12 @@
             columns: [
                 {data: "par_conta", className: "text-center"},
                 {data: "par_numero", className: "text-center"},
-                {data: "par_valor", className: "text-right"},
+                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "par_status", className: "text-center"},
                 {data: "par_data_pagto", className: "text-center"},
             ]
         });
+    }
 
         var table_item_compra_ato = $('#tb_item_compra_ato').DataTable( {
             paging: true,
@@ -1061,8 +1065,8 @@
             columns: [
                 {data: "cde_produto"},
                 {data: "cde_qtde"},
-                {data: "cde_valoritem", className: "text-right"},
-                {data: "cde_valortotal", className: "text-right"},
+                {data: "cde_valoritem", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
+                {data: "cde_valortotal", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "action", className: "text-right"},
             ]
         });
@@ -1099,6 +1103,14 @@
             var centro = $(this).data('cc');
             $('#modalShowParcelas').modal('show');
         });
+
+        function visualizar(){
+            var conta = $(this).data('id');
+            var valor = $(this).data('valor');
+            var pagto = $(this).data('tpg');
+            var centro = $(this).data('cc');
+            $('#modalShowParcelas').modal('show');
+            }
 
         $('#modalShowParcelas').on('show', function(){
             $('#ls_par_conta').val(conta);

@@ -642,7 +642,7 @@
             columns: [
                 {data: "id", className: "text-center"},
                 {data: "cli_id"},
-                {data: "ven_valor_total", className: "text-right"},
+                {data: "ven_valor_total", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "ven_status", className: "text-center"},
                 {data: "ven_parcelas", className: "text-center"},
                 {data: "ven_data", className: "text-center"},
@@ -660,9 +660,17 @@
                 {data: "id", className: "text-center"},
                 {data: "pro_id"},
                 {data: "det_qtde"},
-                {data: "det_valor_total", className: "text-right"},
+                {data: "det_valor_total", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
             ]
     });
+
+    function visualizar(){
+            var conta = $(this).data('id');
+            var valor = $(this).data('valor');
+            var pagto = $(this).data('tpg');
+            var data = $(this).data('data');
+            $('#modalShowParcelas').modal('show');
+            }
 
     var table_item_venda_ato = $('#tb_item_venda_ato').DataTable( {
         paging: true,
@@ -674,7 +682,7 @@
                 {data: "id", className: "text-center"},
                 {data: "pro_id"},
                 {data: "det_qtde"},
-                {data: "det_valor_total", className: "text-right"},
+                {data: "det_valor_total", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "action", className: "text-right"},
             ]
     });

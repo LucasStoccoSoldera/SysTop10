@@ -499,11 +499,15 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 @endsection
 
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        var lista_parcelas = false;
 
         var table_receber = $('#tb_receber').DataTable( {
             paging: true,
@@ -516,13 +520,13 @@
                 {data: "rec_descricao"},
                 {data: "rec_ven_id", className: "text-center"},
                 {data: "rec_parcelas", className: "text-center"},
-                {data: "rec_valor", className: "text-right"},
+                {data: "rec_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "rec_data", className: "text-center"},
                 {data: "rec_status", className: "text-center"},
                 {data: "action", className: "text-right"},
             ]
         });
-
+        if(lista_parcelas == true){
         var table_parcelas = $('#tb_parcelas').DataTable( {
             paging: true,
             searching: false,
@@ -532,11 +536,12 @@
             columns: [
                 {data: "par_venda", className: "text-center"},
                 {data: "par_numero", className: "text-center"},
-                {data: "par_valor", className: "text-right"},
+                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "par_status", className: "text-center"},
                 {data: "par_data_pagto", className: "text-center"},
             ]
         });
+    }
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
@@ -552,6 +557,14 @@
             var data = $(this).data('data');
             $('#modalShowParcelas').modal('show');
         });
+
+        function visualizar(){
+            var conta = $(this).data('id');
+            var valor = $(this).data('valor');
+            var pagto = $(this).data('tpg');
+            var data = $(this).data('data');
+            $('#modalShowParcelas').modal('show');
+            }
 
         $('#modalShowParcelas').on('show', function(){
             $('#ls_par_conta').val(conta);
