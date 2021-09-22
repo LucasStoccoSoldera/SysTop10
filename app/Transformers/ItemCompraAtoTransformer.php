@@ -14,6 +14,7 @@ class ItemCompraAtoTransformer extends TransformerAbstract
      */
     public function transform(Compras_Detalhe $ItemCompra)
     {
+        $rota = "`{{route('admin.delete.itemcompra')}}`";
         return [
             'cde_produto' => (int) $ItemCompra->cde_produto,
             'cde_qtde' => $ItemCompra->cde_qtde,
@@ -23,8 +24,8 @@ class ItemCompraAtoTransformer extends TransformerAbstract
             class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red-min" id="excluir-cde"
-            name="excluir-itemcompra" data-id="'.$ItemCompra->id.'" data-rota="'. route('admin.delete.itemcompra') .'"
-            onclick="excluir();"><i
+            name="excluir-itemcompra"
+             onclick="excluir('.$ItemCompra->id.', ' . $rota . ');"><i
             class="tim-icons icon-simple-remove"></i></button>'
         ];
     }

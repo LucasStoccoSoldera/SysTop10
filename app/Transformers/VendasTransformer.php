@@ -13,6 +13,7 @@ class VendasTransformer extends TransformerAbstract
      */
     public function transformVenda(Venda $venda)
     {
+        $rota = "`{{route('admin.delete.venda')}}`";
         return [
             'id' => (int) $venda->id,
             'cli_nome' => (int) $venda->cli_nome,
@@ -29,8 +30,8 @@ class VendasTransformer extends TransformerAbstract
             class="tim-icons icon-pencil"></i></a>
 
            <button type="button" class="btn btn-primary red-min" id="excluir-ven"
-            name="excluir-venda" data-id="'.$venda->id.'" data-rota="'. route('admin.delete.venda') .'"
-            onclick="excluir();"><i
+            name="excluir-venda"
+             onclick="excluir('.$venda->id.', ' . $rota . ');"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

@@ -23,6 +23,7 @@ class ContasList extends Controller
             return  DataTables::eloquent($data1)
             ->addColumn('action', function($data1){
 
+                $rota = "`{{route('admin.delete.conta')}}`";
                 $btn = '<button type="button" class="btn btn-primary visu" id="visu-con"
                 name="visu-conta" data-id="'.$data1->id.'" data-valor="'.$data1->con_valor_final.'" data-tpg="'.$data1->tpg_id.'" data-cc="'.$data1->cc_id.'"
                ><i
@@ -32,8 +33,8 @@ class ContasList extends Controller
                 class="tim-icons icon-pencil"></i></a>
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-con"
-                name="excluir-contas" data-id="'.$data1->id.'" data-rota="'. route('admin.delete.conta') .'"
-                onclick="excluir();"><i
+                name="excluir-contas"
+                 onclick="excluir('.$data1->id.', ' . $rota . ');"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

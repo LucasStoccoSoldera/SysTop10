@@ -325,11 +325,6 @@
         <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
 
         <script>
-            function showDelete(id, rota) {
-                $("#formExcluir").change("action", `"` + rota + `"`);
-                $("#id").val(id);
-                $('#modalAlertDelete').modal('show', {backdrop: false});
-            }
 
             $('button.cancela').on('click', function() {
                 var form = $(this).data('form');
@@ -371,7 +366,7 @@
                 $('#formExcluir').change('action', rota2);
             });
 
-            $('button.red-min').on('click', function() {
+            $('.red-min').on('click', function() {
                 var id = $(this).data('id');
                 var rota3 = $(this).data('rota');
                 $('#modalAlertDelete').modal('show', {backdrop: false});
@@ -379,6 +374,14 @@
                 $('#rotaDelete').val(rota3);
                 $('#formExcluir').change('action', rota3);
             });
+
+            function excluir(id3, rota3){
+                console.log(id3, rota3);
+                $('#modalAlertDelete').modal('show');
+                $('#idDelete').val(id3);
+                $('#rotaDelete').val(rota3);
+                $('#formExcluir').attr('action', rota3);
+            }
 
            function hideModal(modal) {
                 $('#' + modal).hide();
@@ -402,8 +405,8 @@
                 $('.dimensao').mask('000 x 000 x 000');
                 $('.cep').mask('00000-000');
             });
-        </script>
 
+        </script>
         <script>
             $(document).ready(function() {
                 $().ready(function() {

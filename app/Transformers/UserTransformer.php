@@ -13,6 +13,7 @@ class UserTransformer extends TransformerAbstract
      */
     public function transform(Usuario $user)
     {
+        $rota = "`{{route('admin.delete.user')}}`";
         return [
             'id' => (int) $user->id,
             'usu_nome_completo' => $user->usu_nome_completo,
@@ -23,8 +24,8 @@ class UserTransformer extends TransformerAbstract
             'action' => '<a href="#" class="btn btn-primary alter" data-id="'.$user->id.'"><i class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-usu"
-            name="excluir-user" data-id="'.$user->id.'" data-rota="'. route('admin.delete.user') .'"
-            onclick="excluir();"><i class="tim-icons icon-simple-remove"></i></button>'
+            name="excluir-user"
+             onclick="excluir('.$user->id.', ' . $rota . ');"><i class="tim-icons icon-simple-remove"></i></button>'
         ];
     }
 

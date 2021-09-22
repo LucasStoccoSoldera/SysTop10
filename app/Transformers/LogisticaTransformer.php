@@ -13,6 +13,7 @@ class LogisticaTransformer extends TransformerAbstract
      */
     public function transformLogistica(Logistica $logistica)
     {
+        $rota = "`{{route('admin.delete.logistica')}}`";
         return [
             'id' => (int) $logistica->id,
             'pac_descricao' => $logistica->pac_descricao,
@@ -21,8 +22,8 @@ class LogisticaTransformer extends TransformerAbstract
             class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-log"
-            name="excluir-logistica" data-id="'.$logistica->id.'" data-rota="'. route('admin.delete.logistica') .'"
-            onclick="excluir();"><i
+            name="excluir-logistica"
+             onclick="excluir('.$logistica->id.', ' . $rota . ');"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

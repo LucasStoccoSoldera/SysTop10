@@ -13,6 +13,7 @@ class ProdutosTransformer extends TransformerAbstract
      */
     public function transformProduto(Produto $produto)
     {
+        $rota = "`{{route('admin.delete.produto')}}`";
         return [
             'id' => (int) $produto->id,
             'pro_nome' => $produto->pro_nome,
@@ -27,8 +28,8 @@ class ProdutosTransformer extends TransformerAbstract
             class="tim-icons icon-pencil"></i></a>
 
            <button type="button" class="btn btn-primary red-min" id="excluir-pro"
-            name="excluir-produto" data-id="'.$produto->id.'" data-rota="'. route('admin.delete.produto') .'"
-            onclick="excluir();"><i
+            name="excluir-produto"
+            onclick="excluir('.$produto->id.', ' . $rota . ');"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

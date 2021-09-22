@@ -13,7 +13,6 @@ class ContasaReceberList extends Controller
 {
     public function listContasaReceber(Request $request){
 
-        $data = Contas_a_Receber::query();
 
         if($request->ajax()){
 
@@ -23,6 +22,7 @@ class ContasaReceberList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
+                $rota = "`{{route('admin.delete.receber')}}`";
                 $btn = '<button type="button" class="btn btn-primary visu" id="visu-rec"
                 name="visu-receber" data-id="'.$data->id.'" data-valor="'.$data->rec_valor.'" data-tpg="'.$data->tpg_id.'" data-data="'.$data->created_at.'"
                ><i
@@ -32,8 +32,8 @@ class ContasaReceberList extends Controller
                 class="tim-icons icon-pencil"></i></a>
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-rec"
-                name="excluir-receber" data-id="'.$data->id.'" data-rota="'. route('admin.delete.receber') .'"
-                onclick="excluir();"><i
+                name="excluir-receber"
+                onclick="excluir('.$data->id.', ' . $rota . ');"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

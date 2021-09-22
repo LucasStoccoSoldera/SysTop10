@@ -14,6 +14,7 @@ class ItemVendaTransformer extends TransformerAbstract
      */
     public function transform(Venda_Detalhe $ItemVenda)
     {
+        $rota = "`{{route('admin.delete.itemvenda')}}`";
         return [
             'id' => (int) $ItemVenda->id,
             'pro_nome' => (int) $ItemVenda->pro_nome,
@@ -23,8 +24,8 @@ class ItemVendaTransformer extends TransformerAbstract
             class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red-min" id="excluir-deta"
-            name="excluir-itemvendaa" data-id="'.$ItemVenda->id.'" data-rota="'. route('admin.delete.itemvenda') .'"
-            onclick="excluir();"><i
+            name="excluir-itemvendaa"
+             onclick="excluir('.$ItemVenda->id.', ' . $rota . ');"><i
             class="tim-icons icon-simple-remove"></i></button>'
         ];
     }

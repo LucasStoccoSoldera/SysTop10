@@ -1,5 +1,5 @@
 @extends('layouts.header-footer')
-@section('title', 'Clientes - TopSystem')
+@section('title', 'Recebe - TopSystem')
 @section('menu-principal')
 <div class="sidebar">
     <!--

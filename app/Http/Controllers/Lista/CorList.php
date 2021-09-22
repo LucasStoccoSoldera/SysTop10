@@ -19,12 +19,13 @@ class CorList extends Controller
             return DataTables::eloquent($data6)
             ->addColumn('action', function($data6){
 
+                $rota = "`{{route('admin.delete.cor')}}`";
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data6->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
                <button type="button" class="btn btn-primary red" id="excluir-cor"
-                name="excluir-cor" data-id="'.$data6->id.'" data-rota="'. route('admin.delete.cor') .'"
-                onclick="excluir();"><i
+                name="excluir-cor"
+                 onclick="excluir('.$data6->id.', ' . $rota . ');"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

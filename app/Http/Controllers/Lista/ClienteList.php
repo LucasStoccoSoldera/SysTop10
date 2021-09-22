@@ -26,12 +26,13 @@ class ClienteList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
+                $rota = "`{{route('admin.delete.cliente')}}`";
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 
                 <button type="button" class="btn btn-primary red" id="excluir-cli"
-                name="excluir-cliente" data-id="'.$data->id.'" data-rota="'. route('admin.delete.cliente') .'"
-                onclick="excluir();"><i
+                name="excluir-cliente"
+                 onclick="excluir('.$data->id.', ' . $rota . ');"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;
