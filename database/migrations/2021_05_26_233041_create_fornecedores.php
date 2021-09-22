@@ -21,9 +21,9 @@ class CreateFornecedores extends Migration
             $table->string('for_bairro');
             $table->string('for_rua');
             $table->string('for_numero');
-            $table->string('for_telefone');
-            $table->string('for_celular');
-            $table->string('for_cpf_cnpj');
+            $table->string('for_telefone')->nullable();
+            $table->string('for_celular')->nullable();
+            $table->string('for_cpf_cnpj')->nullable();
             $table->string('for_cep');
             $table->timestamps();
         });

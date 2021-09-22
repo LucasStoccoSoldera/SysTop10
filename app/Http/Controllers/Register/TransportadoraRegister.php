@@ -30,13 +30,13 @@ class TransportadoraRegister extends Controller
         if (isset($request->telefoneTrans) && isset($request->celularTrans)) {
 
             $validator_telefone_celular = Validator::make(
-                [$request->telefoneTrans, $request->celularTrans],
+                [$request->all()],
                 [
-                    'telefoneTrans' => ['Celular'],
+                    'telefoneTrans' => ['telefone'],
                     'celularTrans' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneTrans.Celular' => 'Telefone inválido.',
+                    'telefoneTrans.telefone' => 'Telefone inválido.',
                     'celularTrans.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
@@ -45,18 +45,18 @@ class TransportadoraRegister extends Controller
 
             if (isset($request->telefoneTrans)) {
                 $validator_telefone_celular = Validator::make(
-                    $request->telefoneTrans,
+                    $request->all(),
                     [
-                        'telefoneTrans' => ['Celular'],
+                        'telefoneTrans' => ['telefone'],
                     ],
                     [
-                        'telefoneTrans.Celular' => 'Telefone inválido.',
+                        'telefoneTrans.telefone' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneTrans;
             } else {
                 $validator_telefone_celular = Validator::make(
-                    $request->celularTrans,
+                    $request->all(),
                     [
                         'celularTrans' => ['celular_com_ddd'],
                     ],
@@ -67,7 +67,7 @@ class TransportadoraRegister extends Controller
             }
         } else {
             $validator_telefone_celular = Validator::make(
-                [$request->telefoneTrans, $request->celularTrans],
+                [$request->all()],
                 [
                     'telefoneTrans' => ['required'],
                     'celularTrans' => ['required'],
@@ -86,11 +86,8 @@ class TransportadoraRegister extends Controller
 
         $Transportadora = new Transportadora;
         $Transportadora->trans_nome = $request->nomeTrans;
-        if (isset($telefone)) {
-            $Transportadora->trans_telefone = $request->telefoneTrans;
-        } else {
-            $Transportadora->trans_celular = $request->celularTrans;
-        }
+        $Transportadora->trans_telefone = $request->telefoneTrans;
+        $Transportadora->trans_celular = $request->celularTrans;
         $Transportadora->trans_limite_transporte = $request->limitetransTrans;
         $Transportadora->save();
 

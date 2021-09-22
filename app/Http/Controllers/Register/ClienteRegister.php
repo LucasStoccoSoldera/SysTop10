@@ -36,7 +36,7 @@ class ClienteRegister extends Controller
 
             if (isset($request->cpfCliente)) {
                 $validator_cpf_cnpj = Validator::make(
-                    $request->cpfCliente,
+                    $request->all(),
                     [
                         'cpfCliente' => ['cpf'],
                     ],
@@ -47,7 +47,7 @@ class ClienteRegister extends Controller
                 $cpf = $request->cpfCliente;
             } else {
                 $validator_cpf_cnpj = Validator::make(
-                    $request->cnpjCliente,
+                    $request->all(),
                     [
                         'cnpjCliente' => ['cnpj'],
                     ],
@@ -58,7 +58,7 @@ class ClienteRegister extends Controller
             }
         } else {
             $validator_cpf_cnpj = Validator::make(
-                [$request->cpfCliente, $request->cnpjCliente],
+                [$request->all()],
                 [
                     'cpfCliente' => ['required', 'cpf'],
                     'cnpjCliente' => ['required', 'cnpj'],
@@ -73,13 +73,13 @@ class ClienteRegister extends Controller
         if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
 
             $validator_telefone_celular = Validator::make(
-                [$request->telefoneCliente, $request->celularCliente],
+                [$request->all()],
                 [
-                    'telefoneCliente' => ['Celular'],
+                    'telefoneCliente' => ['telefone'],
                     'celularCliente' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneCliente.Celular' => 'Telefone inválido.',
+                    'telefoneCliente.telefone' => 'Telefone inválido.',
                     'celularCliente.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
@@ -88,18 +88,18 @@ class ClienteRegister extends Controller
 
             if (isset($request->telefoneCliente)) {
                 $validator_telefone_celular = Validator::make(
-                    $request->telefoneCliente,
+                    $request->all(),
                     [
-                        'telefoneCliente' => ['Celular'],
+                        'telefoneCliente' => ['telefone'],
                     ],
                     [
-                        'telefoneCliente.Celular' => 'Telefone inválido.',
+                        'telefoneCliente.telefone' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneCliente;
             } else {
                 $validator_telefone_celular = Validator::make(
-                    $request->celularCliente,
+                    $request->all(),
                     [
                         'celularCliente' => ['celular_com_ddd'],
                     ],
@@ -110,7 +110,7 @@ class ClienteRegister extends Controller
             }
         } else {
             $validator_telefone_celular = Validator::make(
-                [$request->telefoneCliente, $request->celularCliente],
+                [$request->all()],
                 [
                     'telefoneCliente' => ['required'],
                     'celularCliente' => ['required'],
@@ -133,16 +133,13 @@ class ClienteRegister extends Controller
             $Cliente->cli_nome = $request->nomeCliente;
             $Cliente->cli_usuario = $request->usuarioCliente;
             $Cliente->cli_senha = Hash::make($request->senhaCliente);
-            if (isset($cpf)) {
-                $Cliente->cli_cpf_cnpj = $request->cpfCliente;
-            } else {
-                $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
+            if (isset($cpf)){
+            $Cliente->cli_cpf_cnpj = $request->cpfCliente;
+            }else{
+            $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
             }
-            if (isset($telefone)) {
-                $Cliente->cli_telefone = $request->telefoneCliente;
-            } else {
-                $Cliente->cli_celular = $request->celularCliente;
-            }
+            $Cliente->cli_telefone = $request->telefoneCliente;
+            $Cliente->cli_celular = $request->celularCliente;
             $Cliente->cli_logradouro = "";
             $Cliente->cli_bairro = "";
             $Cliente->cli_n_casa = "";
@@ -156,7 +153,7 @@ class ClienteRegister extends Controller
                 'password' => $request->senhaCliente
             ];
             if ($Cliente) {
-                return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
+                return response()->json(['status' => 1, 'msg' => 'Cliente cadastrado com sucesso!']);
             }
         }
     }

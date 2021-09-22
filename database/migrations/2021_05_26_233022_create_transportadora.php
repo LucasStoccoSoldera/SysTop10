@@ -16,8 +16,8 @@ class CreateTransportadora extends Migration
         Schema::create('transportadora', function (Blueprint $table) {
             $table->id();
             $table->string('trans_nome');
-            $table->string('trans_telefone');
-            $table->string('trans_celular');
+            $table->string('trans_telefone')->nullable();
+            $table->string('trans_celular')->nullable();
             $table->integer('trans_limite_transporte');
             $table->timestamps();
         });
