@@ -18,7 +18,7 @@ class ContasaReceberList extends Controller
         if($request->ajax()){
 
             $data = Contas_a_Receber::select('contas_a_receber.id', 'rec_descricao', 'rec_ven_id', 'rec_parcelas', 'rec_valor',
-            DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y %H:%i') as rec_data"), 'rec_status');
+            DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y') as rec_data"), 'rec_status');
 
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
@@ -33,7 +33,7 @@ class ContasaReceberList extends Controller
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-rec"
                 name="excluir-receber" data-id="'.$data->id.'" data-rota="'. route('admin.delete.receber') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

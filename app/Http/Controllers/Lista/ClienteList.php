@@ -31,7 +31,7 @@ class ClienteList extends Controller
 
                 <button type="button" class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id="'.$data->id.'" data-rota="'. route('admin.delete.cliente') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

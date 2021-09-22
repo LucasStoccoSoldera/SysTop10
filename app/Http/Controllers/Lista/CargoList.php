@@ -24,7 +24,7 @@ class CargoList extends Controller
 
                 <button type="button" class="btn btn-primary red" id="excluir-car"
                 name="excluir-cargo" data-id="'.$data2->id.'" data-rota="'. route('admin.delete.cargo') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

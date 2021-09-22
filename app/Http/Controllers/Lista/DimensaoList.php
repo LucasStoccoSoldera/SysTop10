@@ -23,7 +23,7 @@ class DimensaoList extends Controller
 
                 <button type="button" class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente" data-id="'.$data5->id.'" data-rota="'. route('admin.delete.dimensao') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

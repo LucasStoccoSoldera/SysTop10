@@ -28,7 +28,7 @@ class ProdutosTransformer extends TransformerAbstract
 
            <button type="button" class="btn btn-primary red-min" id="excluir-pro"
             name="excluir-produto" data-id="'.$produto->id.'" data-rota="'. route('admin.delete.produto') .'"
-           ><i
+            onclick="excluir();"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

@@ -24,7 +24,7 @@ class CorList extends Controller
 
                <button type="button" class="btn btn-primary red" id="excluir-cor"
                 name="excluir-cor" data-id="'.$data6->id.'" data-rota="'. route('admin.delete.cor') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

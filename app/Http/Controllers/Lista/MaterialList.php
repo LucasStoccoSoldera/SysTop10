@@ -24,7 +24,7 @@ class MaterialList extends Controller
 
                 <button type="button" class="btn btn-primary red" id="excluir-mat"
                 name="excluir-material" data-id="'.$data3->id.'" data-rota="'. route('admin.delete.material') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

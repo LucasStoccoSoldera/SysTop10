@@ -22,7 +22,7 @@ class LogisticaTransformer extends TransformerAbstract
 
             <button type="button" class="btn btn-primary red" id="excluir-log"
             name="excluir-logistica" data-id="'.$logistica->id.'" data-rota="'. route('admin.delete.logistica') .'"
-           ><i
+            onclick="excluir();"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

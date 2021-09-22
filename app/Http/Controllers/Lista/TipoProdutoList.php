@@ -24,7 +24,7 @@ class TipoProdutoList extends Controller
 
             <button type="button" class="btn btn-primary red" id="excluir-tpp"
             name="excluir-tipoproduto" data-id="'.$data2->id.'" data-rota="'. route('admin.delete.tipoproduto') .'"
-           ><i
+            onclick="excluir();"><i
             class="tim-icons icon-simple-remove"></i></button>';
 
             return $btn;

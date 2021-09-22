@@ -24,7 +24,7 @@ class UserTransformer extends TransformerAbstract
 
             <button type="button" class="btn btn-primary red" id="excluir-usu"
             name="excluir-user" data-id="'.$user->id.'" data-rota="'. route('admin.delete.user') .'"
-           ><i class="tim-icons icon-simple-remove"></i></button>'
+            onclick="excluir();"><i class="tim-icons icon-simple-remove"></i></button>'
         ];
     }
 

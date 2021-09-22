@@ -31,7 +31,7 @@ class FornecedoresList extends Controller
 
                 <button type="button" class="btn btn-primary red" id="excluir-for"
                 name="excluir-fornecedor" data-id="'.$data->id.'" data-rota="'. route('admin.delete.fornecedor') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

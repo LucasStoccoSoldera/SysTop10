@@ -15,8 +15,9 @@ class ContasList extends Controller
 
         if($request->ajax()){
 
-            $data1 = Contas_a_Pagar::select('con_descricao', 'con_compra', 'con_valor_final', 'con_tipo',
-            DB::raw("DATE_FORMAT(contas_a_pagar.con_data_venc, '%d/%m/%Y) as con_data_venc"), 'con_status');
+            $data1 = Contas_a_Pagar::select('con_descricao', 'con_compra',
+            'con_valor_final', 'con_tipo',
+            DB::raw("DATE_FORMAT(contas_a_pagar.con_data_venc, '%d/%m/%Y') as con_data_venc"), 'con_status');
 
 
             return  DataTables::eloquent($data1)
@@ -32,7 +33,7 @@ class ContasList extends Controller
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-con"
                 name="excluir-contas" data-id="'.$data1->id.'" data-rota="'. route('admin.delete.conta') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

@@ -30,7 +30,7 @@ class VendasTransformer extends TransformerAbstract
 
            <button type="button" class="btn btn-primary red-min" id="excluir-ven"
             name="excluir-venda" data-id="'.$venda->id.'" data-rota="'. route('admin.delete.venda') .'"
-           ><i
+            onclick="excluir();"><i
             class="tim-icons icon-simple-remove"></i></button>',
         ];
     }

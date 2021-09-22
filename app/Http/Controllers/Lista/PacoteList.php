@@ -24,7 +24,7 @@ class PacoteList extends Controller
 
                <button type="button" class="btn btn-primary red-min" id="excluir-pac"
                 name="excluir-pacote" data-id="'.$data4->id.'" data-rota="'. route('admin.delete.pacote') .'"
-               ><i
+                onclick="excluir();"><i
                 class="tim-icons icon-simple-remove"></i></button>';
 
                 return $btn;

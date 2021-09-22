@@ -24,7 +24,7 @@ class ItemCompraAtoTransformer extends TransformerAbstract
 
             <button type="button" class="btn btn-primary red-min" id="excluir-cde"
             name="excluir-itemcompra" data-id="'.$ItemCompra->id.'" data-rota="'. route('admin.delete.itemcompra') .'"
-           ><i
+            onclick="excluir();"><i
             class="tim-icons icon-simple-remove"></i></button>'
         ];
     }
