@@ -1,5 +1,22 @@
-Corrigir datable spamando alerta
-Corrigir datable não reinicializa (excluir e inserir novamente?)
-Cadastros arrementendo, problema no preventDefault
-Modal cancelamento e excluir bugão
+Urgente{
+
+Cadastro de fotos
+Parse created_at DataTables
+Rota de delete emitindo zuada
+
+}
+
+Rápido{
+
+Botão continuar do modal continuar cadastrando fechando o de tras junto
+Botão de visualização de parcelas
+
+}
+
+Difícil{
+
+Cabeçalho visualização de parcelas
+Cadastro de Compras e Vendas
+
+}
 
