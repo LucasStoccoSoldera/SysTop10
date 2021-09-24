@@ -68,7 +68,7 @@
         </ul>
         <div class="voltar">
             <a href="{{ route('admin.detalhe') }}">
-                <img src="../img/dash/voltar.png" alt="" width="100px" height="100px">
+                <img src="../img/dash/voltar.png" alt="" width="75px" height="75px">
         </div>
     </div>
 </div>
@@ -126,13 +126,13 @@
                                     <th style="width: 25%">
                                         Nome
                                     </th>
-                                    <th style="width: 25%">
+                                    <th style="width: 15%">
                                         Telefone
                                     </th>
-                                    <th style="width: 10%">
+                                    <th class="text-center" style="width: 10%">
                                         Limite
                                     </th>
-                                    <th class="text-right" style="width: 5%">
+                                    <th class="text-right" style="width: 15%">
                                         <div id="acao">Ações</div>
                                     </th>
                                 </tr>
@@ -330,6 +330,9 @@
     </form>
 </div>
 </div>
+</div>
+</div>
+</div>
 @endsection
 
 @push('ajax')
@@ -360,7 +363,7 @@
                 {data: "id", className: "text-center"},
                 {data: "trans_nome"},
                 {data: "trans_telefone"},
-                {data: "trans_limite_transporte"},
+                {data: "trans_limite_transporte", className: "text-center"},
                 {data: "action", className: "text-right"},
             ]
         });
@@ -372,8 +375,8 @@
             ajax: "{{ route('admin.list.logistica') }}",
             columns: [
                 {data: "id", className: "text-center"},
-                {data: "pac_id"},
-                {data: "trans_id"},
+                {data: "pac_descricao"},
+                {data: "trans_nome"},
                 {data: "action", className: "text-right"},
             ]
         });

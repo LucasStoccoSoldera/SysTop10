@@ -501,6 +501,7 @@
 </div>
 </div>
 </div>
+</div>
 @endsection
 
 @push('ajax')
@@ -558,20 +559,6 @@
             $('#modalShowParcelas').modal('show');
         });
 
-        function visualizar(){
-            var conta = $(this).data('id');
-            var valor = $(this).data('valor');
-            var pagto = $(this).data('tpg');
-            var data = $(this).data('data');
-            $('#modalShowParcelas').modal('show');
-            }
-
-        $('#modalShowParcelas').on('show', function(){
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_data').val(data);
-        });
 
         $("#formRegisterContasaReceber").on('submit', function(e) {
 
@@ -638,6 +625,19 @@ $.ajax({
     }
 });
 });
+
+
+function visualizar(conta, valor, pagto, data){
+            console.log(conta, valor, pagto, data);
+            $('#modalShowParcelas').modal('show');
+    }
+
+    $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_data').val(data);
+        });
     });
 </script>
 @endpush

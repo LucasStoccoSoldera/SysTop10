@@ -23,7 +23,7 @@ class VendasTransformer extends TransformerAbstract
             'ven_data' => (string) $venda->ven_data,
             'action' => '<button type="button" class="btn btn-primary visu" id="visu-pro"
             name="visu-produto" data-id="'.$venda->id.'"
-           ><i
+            onclick="visualizar('.$venda->id.');"><i
             class="tim-icons icon-chart-pie-36"></i></button>
 
             <a href="#" class="btn btn-primary alter-min" data-id= '.$venda->id.'"><i

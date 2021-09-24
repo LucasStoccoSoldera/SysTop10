@@ -28,7 +28,7 @@ class FornecedorRegister extends Controller
                 'estadoFornecedor' => ['required', 'string'],
                 'bairroFornecedor' => ['required', 'string'],
                 'ruaFornecedor' => ['required', 'string'],
-                'ncasaFornecedor' => ['required', 'digits:4'],
+                'ncasaFornecedor' => ['required'],
             ],
             [
                 'nomeFornecedor.required' => 'Nome obrigatório.',

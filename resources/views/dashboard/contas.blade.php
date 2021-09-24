@@ -991,7 +991,9 @@
 </div>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 @endsection
 
 
@@ -1104,21 +1106,6 @@
             $('#modalShowParcelas').modal('show');
         });
 
-        function visualizar(){
-            var conta = $(this).data('id');
-            var valor = $(this).data('valor');
-            var pagto = $(this).data('tpg');
-            var centro = $(this).data('cc');
-            $('#modalShowParcelas').modal('show');
-            }
-
-        $('#modalShowParcelas').on('show', function(){
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_cc').val(centro);
-        });
-
         $("#formRegisterContas").on('submit', function(e) {
 
             e.preventDefault();
@@ -1153,6 +1140,7 @@
                 }
             });
         });
+
 
         $("#formRegisterCompras").on('submit', function(e) {
 
@@ -1295,6 +1283,17 @@ $.ajax({
             demo.showNotification('top','right',4,data_decoded.msg, 'icon-alert-circle-exc');
     }
 });
+function visualizar(conta, valor, pagto, centro){
+            console.log(conta, valor, pagto, centro);
+            $('#modalShowParcelas').modal('show');
+    }
+
+    $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_cc').val(centro);
+        });
 });
    //     });
 </script>

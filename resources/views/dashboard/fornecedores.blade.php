@@ -356,6 +356,8 @@
             </form>
         </div>
     </div>
+</div>
+
 @endsection
 
 @push('ajax')

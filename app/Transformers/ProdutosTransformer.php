@@ -20,8 +20,8 @@ class ProdutosTransformer extends TransformerAbstract
             'tpp_descricao' => (int) $produto->tpp_descricao,
             'pro_precovenda' => (string) $produto->pro_precovenda,
             'action' => '<button type="button" class="btn btn-primary visu" id="visu-pro"
-            name="visu-produto" data-id="'.$produto->id.'"
-           ><i
+            name="visu-produto"
+            onclick="visualizar('.$produto->id.');"><i
             class="tim-icons icon-chart-pie-36"></i></button>
 
             <a href="#" class="btn btn-primary alter-min" data-id= '.$produto->id.'"><i

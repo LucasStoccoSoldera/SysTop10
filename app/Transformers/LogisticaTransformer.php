@@ -11,13 +11,13 @@ class LogisticaTransformer extends TransformerAbstract
      * @param \App\Models\Logistica $logistica
      * @return array
      */
-    public function transformLogistica(Logistica $logistica)
+    public function transform(Logistica $logistica)
     {
         $rota = "`{{route('admin.delete.logistica')}}`";
         return [
             'id' => (int) $logistica->id,
             'pac_descricao' => $logistica->pac_descricao,
-            'trans_descricao' => $logistica->trans_descricao,
+            'trans_nome' => $logistica->trans_nome,
             'action' => '<a href="#" class="btn btn-primary alter" data-id="'.$logistica->id.'"><i
             class="tim-icons icon-pencil"></i></a>
 

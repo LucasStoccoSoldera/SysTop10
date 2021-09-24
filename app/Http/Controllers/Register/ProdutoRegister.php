@@ -27,8 +27,6 @@ class ProdutoRegister extends Controller
                 'PCProduto' => ['required'],
                 'PVProduto' => ['required'],
                 'MaterialProduto' => ['required', 'integer'],
-                'Logistica' => ['required', 'integer'],
-                'DimensaoProduto' => ['required', 'integer'],
                 'PacoteProduto' => ['required', 'integer'],
                 'PedidoMinimo' => ['integer'],
                 'FotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
@@ -40,11 +38,10 @@ class ProdutoRegister extends Controller
                 'PCProduto.required' => 'Preço de custo obrigatório.',
                 'PVProduto.required' => 'Preço de venda obrigatório.',
                 'MaterialProduto.required' => 'Material obrigatório.',
-                'Logistica.required' => 'Logística obrigatória.',
-                'DimensaoProduto.required' => 'Dimensão obrigatória.',
                 'PacoteProduto.required' => 'Pacote obrigatório.',
                 'FotoProduto.required' => 'Foto do produto obrigatória.',
-                'FotoProduto.dimensions' => 'Dimensão de 200 x 200.',
+                'FotoProduto.image' => 'Arquivo não é uma imagem.',
+                'FotoProduto.dimensions:width=100,height=200' => 'Dimensão de 200 x 200.',
             ]
         );
 

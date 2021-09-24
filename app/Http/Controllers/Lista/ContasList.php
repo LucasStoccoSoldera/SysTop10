@@ -25,8 +25,8 @@ class ContasList extends Controller
 
                 $rota = "`{{route('admin.delete.conta')}}`";
                 $btn = '<button type="button" class="btn btn-primary visu" id="visu-con"
-                name="visu-conta" data-id="'.$data1->id.'" data-valor="'.$data1->con_valor_final.'" data-tpg="'.$data1->tpg_id.'" data-cc="'.$data1->cc_id.'"
-               ><i
+                name="visu-conta"
+                onclick="visualizar('.$data1->id.', '.$data1->con_valor_final.', '.$data1->tpg_id.', '.$data1->cc_id.');"><i
                 class="tim-icons icon-chart-pie-36"></i></button>
 
                 <a href="#" class="btn btn-primary alter-min"><i

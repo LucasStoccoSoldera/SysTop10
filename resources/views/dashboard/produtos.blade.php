@@ -309,11 +309,11 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="PVProduto" id="PCVenda" class=" dinheiro form-control"
+                                    <input type="text" name="PVProduto" id="PVProduto" class=" dinheiro form-control"
                                         maxlength="9"
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback PCVenda_error" role="alert">
+                                    <span class="invalid-feedback PVProduto_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
@@ -928,6 +928,8 @@
         </div>
 </div>
 </div>
+</div>
+</div>
 
 @endsection
 
@@ -1306,6 +1308,18 @@ $.ajax({
     }
 });
 });
+
+function visualizar(conta, valor, pagto, data){
+            console.log(conta, valor, pagto, data);
+            $('#modalShowParcelas').modal('show');
+    }
+
+    $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_data').val(data);
+        });
     });
 </script>
 @endpush

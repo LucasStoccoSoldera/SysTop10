@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Cliente;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\ClienteTransformer;
+use Carbon\Carbon;
+use DateTimeZone;
 
 class ClienteList extends Controller
 {
@@ -20,8 +22,9 @@ class ClienteList extends Controller
 
         if($request->ajax()){
 
+            $timezone = new DateTimeZone('America/Sao_Paulo');
             $data = Cliente::select('cli_nome', 'cli_cpf_cnpj', 'cli_celular', 'cli_cidade',
-            DB::raw("DATE_FORMAT(cliente.created_at, '%d/%m/%Y %H:%i') as created_at"));
+            'created_at');
 
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
