@@ -343,6 +343,8 @@
                 $('.is-invalid').removeClass('is-invalid');
                 $('#modalAlertCancelar').hide(800);
                 $('#' + modal2).delay(500).hide(800);
+                $('#modalAlertCancelar').modal('toggle');
+                $('#' + modal2).delay(500).modal('toggle');
             }
 
             function abrirModal(modalOpen) {
