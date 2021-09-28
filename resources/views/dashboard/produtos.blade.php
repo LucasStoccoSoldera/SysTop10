@@ -216,7 +216,7 @@
     <div class="add">
         <div class="dropup show-dropdown">
             <a href="#" data-toggle="dropdown">
-                <img src="../img/dash/addbtn.png">
+                <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterProdutos');"><img

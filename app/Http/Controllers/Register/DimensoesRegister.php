@@ -36,7 +36,7 @@ class DimensoesRegister extends Controller
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
 
-        Schema::table('dimensao_produto', function (Blueprint $table, Request $request) {
+        Schema::table('dimensao_produto', function (Blueprint $table) {
             $table->char($request->dim_descricao)->default(0);
         });
 

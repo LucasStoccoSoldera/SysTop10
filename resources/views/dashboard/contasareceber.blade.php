@@ -1,5 +1,5 @@
 @extends('layouts.header-footer')
-@section('title', 'Recebe - TopSystem')
+@section('title', 'Contas a Receber - TopSystem')
 @section('menu-principal')
 <div class="sidebar">
     <!--
@@ -341,7 +341,6 @@
                                     placeholder="Selecione o Status">
                                     <option value="">------------Selecione------------</option>
                                     <option value="Aberta">Aberto</option>
-                                    <option value="Fechada">Fechada</option>
                                     <option value="Cancelada">Cancelada</option>
                                 </select>
                                 <div class="div-feedback">
@@ -428,25 +427,25 @@
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
                                 <label class="modal-label">Conta: </label><br><br>
-                                    <label class="modal-label">Valor Final: </label><br><br>
+                                    <label class="modal-label">Valor Final: </label><br>
                                 </div>
                         </div>
                                 <div class="col-3">
                                     <div class="form-group" id="form-direita">
                                     <label class="modal-label" id="ls_par_conta"></label> <br><br>
-                                    <label class="modal-label" id="ls_par_valor"></label><br><br>
+                                    <label class="modal-label" id="ls_par_valor"></label><br>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Tipo Pagamento: </label><br><br>
-                                    <label class="modal-label">Data Geração: </label><br><br>
+                                <label class="modal-label">Pagto.: </label><br><br>
+                                    <label class="modal-label">Dt. Geração: </label><br>
                                 </div>
                         </div>
                                 <div class="col-3">
                                     <div class="form-group" id="form-direita">
                                     <label class="modal-label" id="ls_par_tpg"></label><br><br>
-                                    <label class="modal-label" id="ls_par_data"></label><br><br>
+                                    <label class="modal-label" id="ls_par_data"></label><br>
                             </div>
                         </div>
                     </div>
@@ -493,7 +492,7 @@
     <div class="row">
     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
         <button type="button" class="cancela btn btn-secondary btn-danger"
-            data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
+            data-dismiss="modal" style="width: 100%">Cancelar</button>
 </div>
 </div>
 </div>
@@ -527,27 +526,14 @@
                 {data: "action", className: "text-right"},
             ]
         });
-        if(lista_parcelas == true){
-        var table_parcelas = $('#tb_parcelas').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.parcelas') }}",
-            columns: [
-                {data: "par_venda", className: "text-center"},
-                {data: "par_numero", className: "text-center"},
-                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
-                {data: "par_status", className: "text-center"},
-                {data: "par_data_pagto", className: "text-center"},
-            ]
-        });
-    }
+
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
                 table_receber.ajax.reload(null, false);
+                if(lista_parcelas == true){
                 table_parcelas.ajax.reload(null, false);
+                }
         }
     );
 
@@ -558,7 +544,6 @@
             var data = $(this).data('data');
             $('#modalShowParcelas').modal('show');
         });
-
 
         $("#formRegisterContasaReceber").on('submit', function(e) {
 
@@ -626,18 +611,6 @@ $.ajax({
 });
 });
 
-
-function visualizar(conta, valor, pagto, data){
-            console.log(conta, valor, pagto, data);
-            $('#modalShowParcelas').modal('show');
-    }
-
-    $('#modalShowParcelas').on('show', function(){
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_data').val(data);
-        });
     });
 </script>
 @endpush

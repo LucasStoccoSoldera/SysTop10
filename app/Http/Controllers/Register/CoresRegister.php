@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 
 class CoresRegister extends Controller
 {
-
     /**
      * @return \App\Models\Cor
      */
-    protected function createCor(Request $request)
+    public function createCor(Request $request)
     {
         $validator = Validator::make(
             $request->all(),
@@ -73,8 +72,9 @@ class CoresRegister extends Controller
          $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
+
         Schema::table('cor_produto', function (Blueprint $table, Request $request) {
-            $table->char($request->NomeCores)->default(0);
+           return $table->char($request->NomeProduto)->default(0);
         });
 
         if ($Cor) {
@@ -101,7 +101,10 @@ class CoresRegister extends Controller
         $CorProduto->cop_produto = $request->produtoCorProduto;
 
         $colunas = Schema::getColumnListing('cor_produto');
-        dd($colunas);
         }
+    }
+
+    public function pegaNome(Request $request){
+        return $request->NomeCores;
     }
 }

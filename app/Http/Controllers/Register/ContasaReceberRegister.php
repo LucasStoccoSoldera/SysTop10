@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Parcelas;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class ContasaReceberRegister extends Controller
 {
@@ -18,6 +20,9 @@ class ContasaReceberRegister extends Controller
      */
     protected function createReceber(Request $request)
     {
+
+        $ontem = Carbon::now()->subDay();
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -49,7 +54,10 @@ class ContasaReceberRegister extends Controller
         $Contas_a_Receber->rec_valor = $request->valorReceber;
         $Contas_a_Receber->rec_parcelas = $request->parcelasReceber;
         $Contas_a_Receber->rec_data = $request->dataReceber;
-        $Contas_a_Receber->rec_status = $request->statusReceber;
+        $Contas_a_Receber->save();
+
+        if(isset($request->dataReceber) && $request->dataReceber <= $ontem){
+        $Contas_a_Receber->rec_status = "Baixa";
         $Contas_a_Receber->save();
 
         $Caixa = new Caixa();
@@ -58,6 +66,10 @@ class ContasaReceberRegister extends Controller
         $Caixa->cax_valor =  $request->valorReceber;
         $Caixa->cax_ctreceber = $request->valorReceber;
         $Caixa->save();
+        } else{
+            $Contas_a_Receber->rec_status = "Aberta";
+            $Contas_a_Receber->save();
+        }
 
         $cont = 0;
         $conta_last = DB::table('contas_a_receber')->get()->last()->id;
@@ -69,6 +81,9 @@ class ContasaReceberRegister extends Controller
             $Parcela->par_venda = $conta_last;
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->valorReceber / $request->parcelasReceber) * $cont;
+            if(isset($request->dataReceber) && $request->dataReceber <= $ontem){
+                $Parcela->par_status = "Baixa";
+            }
             $Parcela->par_status = "Aberta";
             if ($contas_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));

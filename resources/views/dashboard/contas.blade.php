@@ -731,7 +731,7 @@
                                     style="color: red; font-size: 12px;"> * </label>
                                 <select type="text" name="tipoItemCompra" id="tipoItemCompra" class="form-control"
                                     maxlength="25" value="{{ old('tipoItemCompra') }}"
-                                    placeholder="Selecione o Status">
+                                    placeholder="Selecione o Tipo">
                                     <option value="1">Produto Interno</option>
                                     <option value="2">Produto Externo</option>
                                 </select>
@@ -872,25 +872,25 @@
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
                                 <label class="modal-label">Conta: </label><br><br>
-                                    <label class="modal-label">Valor Final: </label><br><br>
+                                    <label class="modal-label">Valor Final: </label>v
                                 </div>
                         </div>
                                 <div class="col-3">
                                     <div class="form-group" id="form-direita">
                                     <label class="modal-label" id="ls_par_conta"></label> <br><br>
-                                    <label class="modal-label" id="ls_par_valor"></label><br><br>
+                                    <label class="modal-label" id="ls_par_valor"></label><br>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Tipo Pagamento: </label><br><br>
-                                    <label class="modal-label">Centro de Custo: </label><br><br>
+                                <label class="modal-label">Pagto.: </label><br><br>
+                                    <label class="modal-label">Centro: </label><br>
                                 </div>
                         </div>
                                 <div class="col-3">
                                     <div class="form-group" id="form-direita">
-                                    <label class="modal-label" id="ls_par_tpg"></label><br><br>
-                                    <label class="modal-label" id="ls_par_cc"></label><br><br>
+                                    <label class="modal-label" id="ls_par_tpg"></label><br><br><br>
+                                    <label class="modal-label" id="ls_par_cc"></label><br>
                             </div>
                         </div>
                     </div>
@@ -985,7 +985,7 @@
     <div class="row">
     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
         <button type="button" class="cancela btn btn-secondary btn-danger"
-            data-form="formRegisterMaterial" data-modal="modalRegisterMaterial">Cancelar</button>
+            data-dismiss="modal" style="width: 100%">Cancelar</button>
 </div>
 </div>
 </div>
@@ -1041,23 +1041,6 @@
             ]
         });
 
-        if(lista_parcelas == true){
-        var table_parcelas = $('#tb_parcelas').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.parcelas') }}",
-            columns: [
-                {data: "par_conta", className: "text-center"},
-                {data: "par_numero", className: "text-center"},
-                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
-                {data: "par_status", className: "text-center"},
-                {data: "par_data_pagto", className: "text-center"},
-            ]
-        });
-    }
-
         var table_item_compra_ato = $('#tb_item_compra_ato').DataTable( {
             paging: true,
             searching: false,
@@ -1094,7 +1077,10 @@
             function() {
                 table_conta.ajax.reload(null, false);
                 table_item_compra.ajax.reload(null, false);
+                console.log(lista_parcelas);
+                if(lista_parcelas == true){
                 table_parcelas.ajax.reload(null, false);
+                }
         }
     );
 
@@ -1104,6 +1090,34 @@
             var pagto = $(this).data('tpg');
             var centro = $(this).data('cc');
             $('#modalShowParcelas').modal('show');
+        });
+
+
+
+    $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_cc').val(centro);
+
+            var table_parcelas = $('#tb_parcelas').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: {
+                type: 'POST',
+                url: "{{ route('admin.list.parcelas') }}",
+                data: conta,
+            },
+            columns: [
+                {data: "par_conta", className: "text-center"},
+                {data: "par_numero", className: "text-center"},
+                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
+                {data: "par_status", className: "text-center"},
+                {data: "par_data_pagto", className: "text-center"},
+            ]
+        });
         });
 
         $("#formRegisterContas").on('submit', function(e) {
@@ -1283,17 +1297,7 @@ $.ajax({
             demo.showNotification('top','right',4,data_decoded.msg, 'icon-alert-circle-exc');
     }
 });
-function visualizar(conta, valor, pagto, centro){
-            console.log(conta, valor, pagto, centro);
-            $('#modalShowParcelas').modal('show');
-    }
 
-    $('#modalShowParcelas').on('show', function(){
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_cc').val(centro);
-        });
 });
    //     });
 </script>

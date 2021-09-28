@@ -15,24 +15,21 @@ class ParcelasList extends Controller
     public function listParcelas(Request $request){
 
         if($request->ajax()){
-            $conta = Parcelas::where('par_conta', '=', $request->id);
-
-            if (isset($request->id)){
-
-            if($conta <> null){
+            $conta = Parcelas::where('par_conta', '=', $request->id)->get();
+            if(isset($conta)){
+                dd($conta);
                 $data7 = Parcelas::select('par_conta', 'par_numero',
                 'par_valor', 'par_status',
                 DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_conta', '=', $request->id);
             } else{
+                dd('não');
                 $data7 = Parcelas::select('par_venda', 'par_numero',
                 'par_valor', 'par_status',
                 DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_venda', '=', $request->id);
-            }
 
             return DataTables::eloquent($data7)
             ->toJson();
           }
-          return $conta;
         }
     }
 }

@@ -27,14 +27,14 @@ class FinanceiroController extends Controller
         $ano_passado = Carbon::now()->subYear();
 
         $hoje1 = (DB::table('caixa')->where('created_at', '>=', "$ontem")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$ontem")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
-        $hoje2 = DB::table('contas_a_receber')->where('con_data_pag', '>=', "$ontem")->sum('rec_valor');
-        $hoje3 = DB::table('contas_a_pagar')->where('rec_data', '>=', "$ontem")->sum('con_valor_final');
+        $hoje2 = DB::table('contas_a_receber')->where('rec_data', '>=', "$ontem")->sum('rec_valor');
+        $hoje3 = DB::table('contas_a_pagar')->where('con_data_pag', '>=', "$ontem")->sum('con_valor_final');
         $sem4 = (DB::table('caixa')->where('created_at', '>=', "$semana_passado")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$semana_passado")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
-        $sem5 = DB::table('contas_a_receber')->where('con_data_pag', '>=', "$semana_passado")->sum('rec_valor');
-        $sem6 = DB::table('contas_a_pagar')->where('rec_data', '>=', "$semana_passado")->sum('con_valor_final');
+        $sem5 = DB::table('contas_a_receber')->where('rec_data', '>=', "$semana_passado")->sum('rec_valor');
+        $sem6 = DB::table('contas_a_pagar')->where('con_data_pag', '>=', "$semana_passado")->sum('con_valor_final');
         $mes7 = (DB::table('caixa')->where('created_at', '>=', "$mes_passado")->where('cax_ctpagar', '=', null)->sum('cax_valor')) - (DB::table('caixa')->where('created_at', '>=', "$mes_passado")->where('cax_ctreceber', '=', null)->sum('cax_valor'));
-        $mes8 = DB::table('contas_a_receber')->where('con_data_pag', '>=', "$mes_passado")->sum('rec_valor');
-        $mes9 = DB::table('contas_a_pagar')->where('rec_data', '>=', "$mes_passado")->sum('con_valor_final');
+        $mes8 = DB::table('contas_a_receber')->where('rec_data', '>=', "$mes_passado")->sum('rec_valor');
+        $mes9 = DB::table('contas_a_pagar')->where('con_data_pag', '>=', "$mes_passado")->sum('con_valor_final');
 
         $data_conta = Contas_a_Pagar::all();
         $data_receber = Contas_a_Receber::all();
