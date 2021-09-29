@@ -33,7 +33,6 @@ class CompraRegister extends Controller
                 'tpgpagtoCompras' => ['required', 'string'],
                 'ccCompras' => ['required', 'string'],
                 'parcelasCompra' => ['required', 'integer'],
-                'qtdeCompras' => ['required', 'integer'],
                 'descontoCompras' => ['required'],
                 'VTCompras' => ['required'],
                 'dataCompras' => ['required', 'date'],
@@ -45,7 +44,6 @@ class CompraRegister extends Controller
                 'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
                 'ccCompras.required' => 'Centro de Custo obrigatório.',
                 'parcelasCompra.required' => 'Quantidade de parcelas obrigatório.',
-                'qtdeCompras.required' => 'Quantidade obrigatória.',
                 'dataCompras.required' => 'Data da compra obrigatória.',
             ]
         );
@@ -59,7 +57,6 @@ class CompraRegister extends Controller
         $Compras->tpg_id = $request->tpgpagtoCompras;
         $Compras->cc_id = $request->ccCompras;
         $Compras->com_parcelas = $request->parcelasCompra;
-        $Compras->com_qtde = $request->qtdeCompras;
         $Compras->com_desconto = $request->descontoCompras;
         $Compras->com_valor = $request->VTCompras;
         $Compras->com_data_compra = $request->dataCompras;

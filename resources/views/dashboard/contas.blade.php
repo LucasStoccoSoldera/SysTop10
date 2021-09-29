@@ -487,17 +487,6 @@
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
-                                <label class="modal-label">Quantidade:</label> <label
-                                    style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="qtdeCompras" id="qtdeCompras" class="form-control"
-                                    maxlength="5" value="{{ old('qtdeCompras') }}"
-                                    placeholder="Entre com a Quantidade">
-                                    <div class="div-feedback">
-                                <span class="invalid-feedback qtdeCompras_error" role="alert">
-                                </span>
-                                    </div>
-                            </div>
-                            <div class="form-group" id="form-group">
                                 <label class="modal-label">Desconto:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="descontoCompras" id="descontoCompras"
@@ -1025,7 +1014,12 @@
     });
 
     $('#modalRegisterItemCompra').on('show', function(){
+        $("#modalRegisterCompras").hide();
         $("#IDItemCompra").val(idcompra);
+    });
+
+    $('#modalRegisterItemCompra').on('dismiss', function(){
+        $("#modalRegisterCompras").show()
     });
 
     $('#valorItemCompra').on('blur', function(){
