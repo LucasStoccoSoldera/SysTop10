@@ -259,7 +259,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID:</label> <label style="color: red; font-size: 12px;">
                                         * </label>
-                                    <input type="text" name="IDProduto" id="IDProduto" class="form-control"
+                                    <input type="text" name="IDProduto" id="IDProduto" class="form-control id"
                                         maxlength="6" value="{{ old('IDProduto') }}" placeholder="ID do Produto"
                                         autofocus>
                                     <div class="div-feedback">

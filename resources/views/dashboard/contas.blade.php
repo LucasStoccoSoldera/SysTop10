@@ -467,8 +467,8 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDCompras" id="IDCompras" class="form-control"
-                                    maxlength="80" value="{{ old('IDCompras') }}" placeholder="ID Automático"
+                                <input type="text" name="IDCompras" id="IDCompras" class="form-control id"
+                                    maxlength="80" value="{{ old('IDCompras') }}" placeholder="ID"
                                     autofocus>
                                     <div class="div-feedback">
                                 <span class="invalid-feedback IDCompras_error" role="alert">
@@ -689,11 +689,11 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">ID da Compra:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="IDItemCompra" id="IDCompra" maxlength="2"
+                            <input type="text" name="IDItemCompra" id="IDItemCompra"
                                 value="{{ old('IDItemCompra') }}"
-                                onloadstart="pegaCodigo(IDItemCompra, IDCompra)" disabled class="form-control">
+                                 disabled class="form-control id">
                                 <div class="div-feedback">
-                            <span class="invalid-feedback IDCompra_error" role="alert">
+                            <span class="invalid-feedback IDItemCompra_error" role="alert">
                             </span>
                                 </div>
                         </div>
@@ -1010,14 +1010,42 @@
             if(valor == "1"){
             $("#externo").hide();
             $("#interno").show();
-            $('.div-feedback').val("");
+            $('.div-feedback').hide();
             $('.is-invalid').removeClass('is-invalid');
         } else {
             $("#externo").show();
             $("#interno").hide();
-            $('.div-feedback').html("");
+            $('.div-feedback').hide();
             $('.is-invalid').removeClass('is-invalid');
         }
+    });
+
+    $('#IDCompras').on('blur', function(){
+        var idcompra = $("#IDCompras").val();
+    });
+
+    $('#modalRegisterItemCompra').on('show', function(){
+        $("#IDItemCompra").val(idcompra);
+    });
+
+    $('#valorItemCompra').on('blur', function(){
+        var valor = $("#valorItemCompra").val();
+    });
+
+    $('#valorItemCompra').on('blur', function(){
+        var qtde = $("#qtdeItemCompra").val();
+        var valor = $("#valorItemCompra").val();
+        var total = qtde * valor;
+
+        $("#valorTotalItemCompra").val(total);
+    });
+
+    $('#qtdeItemCompra').on('blur', function(){
+        var qtde = $("#qtdeItemCompra").val();
+        var valor = $("#valorItemCompra").val();
+        var total = qtde * valor;
+
+        $("#valorTotalItemCompra").val(total);
     });
 
     $(document).ready(function() {
