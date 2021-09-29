@@ -18,7 +18,7 @@ class ContasaReceberList extends Controller
 
             $data = Contas_a_Receber::select('contas_a_receber.id', 'rec_descricao', 'rec_ven_id', 'rec_parcelas', 'rec_valor',
             DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y') as rec_data"), 'rec_status',
-            'id', 'tpg_id');
+            'id', 'tpg_id')->where('rec_status', '<>', 'Baixa');
 
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){

@@ -18,7 +18,7 @@ class ContasList extends Controller
             $data1 = Contas_a_Pagar::select('con_descricao', 'con_compra',
             'con_valor_final', 'con_tipo',
             DB::raw("DATE_FORMAT(contas_a_pagar.con_data_venc, '%d/%m/%Y') as con_data_venc"), 'con_status',
-            'id', 'tpg_id', 'cc_id');
+            'id', 'tpg_id', 'cc_id')->where('con_status', '<>', 'Pago');
 
 
             return  DataTables::eloquent($data1)
