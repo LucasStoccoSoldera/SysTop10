@@ -767,8 +767,8 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
                                 * </label>
-                            <select type="text" name="IDProduto" id="IDProduto" class="form-control" maxlength="50"
-                                value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
+                            <select type="text" name="IDProdutoI" id="IDProdutoI" class="form-control" maxlength="50"
+                                value="{{ old('IDProdutoI') }}" placeholder="Selecione com o Produto">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($produtos as $produto)
                                     <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
@@ -776,7 +776,7 @@
                                 @endforeach
                             </select>
                             <div class="div-feedback">
-                            <span class="invalid-feedback IDProduto_error" role="alert">
+                            <span class="invalid-feedback IDProdutoI_error" role="alert">
                             </span>
                             </div>
                         </div>
@@ -819,8 +819,8 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
                                 * </label>
-                            <select type="text" name="IDProduto" id="IDProduto" class="form-control" maxlength="50"
-                                value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
+                            <select type="text" name="IDProdutoE" id="IDProdutoE" class="form-control" maxlength="50"
+                                value="{{ old('IDProdutoE') }}" placeholder="Selecione com o Produto">
                                 <option value="">------------Selecione------------</option>
                                 @foreach ($produtos as $produto)
                                     <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
@@ -828,7 +828,7 @@
                                 @endforeach
                             </select>
                             <div class="div-feedback">
-                            <span class="invalid-feedback IDProduto_error" role="alert">
+                            <span class="invalid-feedback IDProdutoE_error" role="alert">
                             </span>
                             </div>
                         </div>
@@ -1157,7 +1157,6 @@
 
 
         $("#formRegisterCompras").on('submit', function(e) {
-
             e.preventDefault();
 
             $.ajax({
