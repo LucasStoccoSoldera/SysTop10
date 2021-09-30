@@ -180,8 +180,11 @@
                                 <table class="table tablesorter " id="tb_produto_estoque">
                                     <thead class=" text-primary">
                                         <tr>
-                                            <th class="text-center" style="width: 60%">
-                                                Produto
+                                            <th class="text-center" style="width: 20%">
+                                                ID Produto
+                                            </th>
+                                            <th style="width: 40%">
+                                                Nome Produto
                                             </th>
                                             <th style="width: 15%">
                                                 Qtde.
@@ -226,8 +229,11 @@
                                     <th style="width: 15%">
                                         Cor
                                     </th>
-                                    <th class="text-center" style="width: 15%">
+                                    <th class="text-center" style="width: 10%">
                                         Data
+                                    </th>
+                                    <th class="text-center" style="width: 5%">
+                                        Horário
                                     </th>
                                 </tr>
                             </thead>
@@ -286,6 +292,28 @@
                                         placeholder="Entre com a Quantidade" autofocus>
                                         <div class="div-feedback">
                                     <span class="invalid-feedback qtdeEstoque_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label" >Data:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="date" name="dataEstoque" id="dataEstoque" class="form-control"
+                                         value="{{ old('dataEstoque') }}"
+                                        placeholder="Entre com a Data" autofocus>
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback dataEstoque_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Horário:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="time" name="timeEstoque" id="timeEstoque" class="form-control"
+                                        value="{{ old('timeEstoque') }}"
+                                        placeholder="Entre com o Horário" autofocus>
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback timeEstoque_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
@@ -384,9 +412,10 @@
             columns: [
                 {data: "pro_id", className: "text-center"},
                 {data: "est_qtde"},
-                {data: "dim_id"},
-                {data: "cor_id"},
-                {data: "created_at", className: "text-center"},
+                {data: "dim_descricao"},
+                {data: "cor_nome"},
+                {data: "est_data", className: "text-center"},
+                {data: "est_time", className: "text-center"},
             ]
         });
         var table_produto_estoque = $('#tb_produto_estoque').DataTable( {
@@ -397,6 +426,7 @@
             ajax: "{{ route('admin.list.estoqueproduto') }}",
             columns: [
                 {data: "pro_id", className: "text-center"},
+                {data: "pro_nome"},
                 {data: "est_qtde"},
                 {data: "est_status", className: "text-center"},
             ]

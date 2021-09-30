@@ -14,8 +14,9 @@ class Estoque extends Model
         'pro_id',
         'dim_id',
         'cor_id',
-        'est_qtde',
         'est_status',
+        'est_data',
+        'est_time',
         'est_limite',
     ];
 

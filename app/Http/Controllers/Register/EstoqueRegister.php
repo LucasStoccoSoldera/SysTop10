@@ -25,6 +25,8 @@ class EstoqueRegister extends Controller
                 'IDCor' => ['required'],
                 'produtoEstoque' => ['required'],
                 'qtdeEstoque' => ['required', 'integer'],
+                'dataEstoque' => ['required'],
+                'timeEstoque' => ['required'],
                 'statusEstoque' => ['required', 'string'],
             ],
             [
@@ -44,8 +46,9 @@ class EstoqueRegister extends Controller
         $Estoque->cor_id = $request->IDCor;
         $Estoque->pro_id = $request->produtoEstoque;
         $Estoque->est_qtde = $request->qtdeEstoque;
+        $Estoque->est_data = $request->dataEstoque;
+        $Estoque->est_time = $request->timeEstoque;
         $Estoque->est_status = $request->statusEstoque;
-        $Estoque->est_limite = $request->limiteEstoque;
         $Estoque->save();
 
         if ($Estoque) {
