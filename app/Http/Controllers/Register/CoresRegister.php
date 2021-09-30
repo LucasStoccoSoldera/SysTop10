@@ -73,8 +73,8 @@ class CoresRegister extends Controller
         $Cor->save();
 
 
-        Schema::table('cor_produto', function (Blueprint $table) {
-           return $table->char($request->NomeProduto)->default(0);
+        Schema::table('cor_produto', function (Blueprint $table) use ($request) {
+           return $table->char($request->NomeCores)->default(0);
         });
 
         if ($Cor) {
@@ -94,13 +94,26 @@ class CoresRegister extends Controller
                 'produtoCorProduto.required' => 'Produto obrigatório.',
             ]
         );
+
         if ($validator->fails()){
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
+
         $CorProduto = new CorProduto;
         $CorProduto->cop_produto = $request->produtoCorProduto;
 
-        $colunas = Schema::getColumnListing('cor_produto');
+        $campos = $request->toArray();
+
+        foreach($campos as $campo){
+        $nome_campo = 'teste';
+        $request->campo = (!isset($request->campo))? 0 : 1;
+        $CorProduto->nome_campo = $request->campo;
+        }
+        $CorProduto->save();
+
+            if ($CorProduto) {
+                return response()->json(['status' => 1, 'msg' => 'Cores vinculadas com sucesso!']);
+            }
         }
     }
 

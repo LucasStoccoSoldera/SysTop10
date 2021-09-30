@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Register;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dimensao;
+use App\Models\DimensaoProduto;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -36,8 +37,8 @@ class DimensoesRegister extends Controller
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
 
-        Schema::table('dimensao_produto', function (Blueprint $table) {
-            $table->char($request->dim_descricao)->default(0);
+        Schema::table('dimensao_produto', function (Blueprint $table) use ($request) {
+            $table->char($request->NomeDimensao)->default(0);
         });
 
         if ($Dimensao) {
@@ -50,10 +51,10 @@ class DimensoesRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeDimensao' => ['required', 'string'],
+                'produtoCorProduto' => ['required', 'string'],
             ],
             [
-                'NomeDimensao.required' => 'Dimensão obrigatória.',
+                'produtoCorProduto.required' => 'Produto obrigatório.',
             ]
         );
 
@@ -61,13 +62,20 @@ class DimensoesRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
+        $Dimensao = new DimensaoProduto;
+        $Dimensao->pro_id = $request->produtoCorProduto;
 
-        $Dimensao = new Dimensao;
-        $Dimensao->dim_descricao = $request->NomeDimensao;
+        $campos = $request->toArray();
+
+        foreach($campos as $campo){
+        $nome_campo = $_REQUEST;
+        $request->campo = (!isset($request->campo))? 0 : 1;
+        $Dimensao->nome_campo = $request->campo;
+        }
         $Dimensao->save();
 
         if ($Dimensao) {
-            return response()->json(['status' => 1, 'msg' => 'Dimensão cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Dimensões vinculadas com sucesso!']);
         }
     }
 
