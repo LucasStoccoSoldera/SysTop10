@@ -488,7 +488,7 @@
 
 <div class="modal fade" id="modalRegisterItemVenda" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="form-cadastro" id="formRegisterItemVenda" method="POST" autocomplete="off"
+        <form id="formRegisterItemVenda" method="POST" autocomplete="off"
             enctype="multipart/form-data" action="{{ route('admin.create.itemvenda') }}">
             @csrf
             <div class="modal-content">
@@ -631,6 +631,40 @@
 
 @push('ajax')
 <script>
+
+      $('#IDVenda').on('blur', function(){
+        var idVenda = $("#IDVenda").val();
+    });
+
+    $('#modalRegisterItemVenda').on('show', function(){
+        $("#modalRegisterVenda").hide();
+        $("#IDItemVenda").val(idVenda);
+    });
+
+    $('#modalRegisterItemVenda').on('[data-dismiss="modal"]', function(){
+        $("#modalRegisterVenda").show()
+    });
+
+    $('#VUItemVenda').on('blur', function(){
+        var valor = $("#VUItemVenda").val();
+    });
+
+    $('#VUItemVenda').on('blur', function(){
+        var qtde = $("#qtdeItemVenda").val();
+        var valor = $("#VUItemVenda").val();
+        var total = qtde * valor;
+
+        $("#valorTotalItemVenda").val(total);
+    });
+
+    $('#qtdeItemVenda').on('blur', function(){
+        var qtde = $("#qtdeItemVenda").val();
+        var valor = $("#VUItemVenda").val();
+        var total = qtde * valor;
+
+        $("#valorTotalItemVenda").val(total);
+    });
+
     $(document).ready(function() {
 
         var table_venda= $('#tb_venda').DataTable( {
@@ -722,6 +756,7 @@
         $("#formRegisterItemVenda").on('submit', function(e) {
 
             e.preventDefault();
+            var formData = new FormData(this);
 
             $.ajax({
                 headers: {
@@ -729,7 +764,7 @@
                 },
                 type: $(this).attr('method'),
                 url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: formData,
                 processData: false,
                 dataType: 'json',
                 beforeSend: function() {
@@ -766,7 +801,7 @@
 
     $('#modalAlertRegistrar').modal('hide',
         function() {
-             //auto implementa o valor total da compra puxando todos os itens
+             //auto implementa o valor total da Venda puxando todos os itens
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

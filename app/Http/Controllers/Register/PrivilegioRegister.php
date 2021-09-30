@@ -10,41 +10,24 @@ use Illuminate\Support\Facades\DB;
 
 class PrivilegioRegister extends Controller
 {
-    protected function createCargo(Request $request)
+    protected function createPrivilegio(Request $request)
     {
-        $dataForm = $request->all();
-        $dataForm['usuarioPrivilegio'] = (!isset($dataForm['usuarioPrivilegio'])) ? 0 : 1;
-        $dataForm['clientePrivilegio'] = (!isset($dataForm['clientePrivilegio'])) ? 0 : 1;
-        $dataForm['financeiroPrivilegio'] = (!isset($dataForm['financeiroPrivilegio'])) ? 0 : 1;
-        $dataForm['produtoPrivilegio'] = (!isset($dataForm['produtoPrivilegio'])) ? 0 : 1;
-        $dataForm['estoquePrivilegio'] = (!isset($dataForm['estoquePrivilegio'])) ? 0 : 1;
-        $dataForm['fornecedorPrivilegio'] = (!isset($dataForm['fornecedorPrivilegio'])) ? 0 : 1;
-        $dataForm['detalhePrivilegio'] = (!isset($dataForm['detalhePrivilegio'])) ? 0 : 1;
-        $dataForm['logisticaPrivilegio'] = (!isset($dataForm['logisticaPrivilegio'])) ? 0 : 1;
+        $request->usuarioPrivilegio = (!isset($request->usuarioPrivilegio))? 0 : 1;
+        $request->clientePrivilegio = (!isset($request->clientePrivilegio))? 0 : 1;
+        $request->financeiroPrivilegio = (!isset($request->financeiroPrivilegio))? 0 : 1;
+        $request->produtoPrivilegio = (!isset($request->produtoPrivilegio))? 0 : 1;
+        $request->estoquePrivilegio = (!isset($request->estoquePrivilegio))? 0 : 1;
+        $request->fornecedorPrivilegio = (!isset($request->fornecedorPrivilegio))? 0 : 1;
+        $request->detalhePrivilegio = (!isset($request->detalhePrivilegio))? 0 : 1;
+        $request->logisticaPrivilegio = (!isset($request->logisticaPrivilegio))? 0 : 1;
 
         $validator = Validator::make(
-            $dataForm,
+            $request->all(),
             [
                 'cargoPrivilegio' => ['required'],
-                'usuarioPrivilegio' => ['required'],
-                'clientePrivilegio' => ['required'],
-                'financeiroPrivilegio' => ['required'],
-                'produtoPrivilegio' => ['required'],
-                'estoquePrivilegio' => ['required'],
-                'fornecedorPrivilegio' => ['required'],
-                'detalhePrivilegio' => ['required'],
-                'logisticaPrivilegio' => ['required'],
             ],
             [
                 'cargoPrivilegio.required' => 'Cargo obrigatório.',
-                'usuarioPrivilegio.required' => 'Usuário precisa de valor.',
-                'clientePrivilegio.required' => 'Cliente precisa de valor.',
-                'financeiroPrivilegio.required' => 'Financeiro precisa de valor.',
-                'produtoPrivilegio.required' => 'Produto precisa de valor.',
-                'estoquePrivilegio.required' => 'Estoque precisa de valor.',
-                'fornecedorPrivilegio.required' => 'Fornecedor precisa de valor.',
-                'detalhePrivilegio.required' => 'Detalhe precisa de valor.',
-                'logisticaPrivilegio.required' => 'Logistica precisa de valor.',
             ]
         );
 
@@ -52,17 +35,25 @@ class PrivilegioRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $car_priv = DB::table('privilegio')
-            ->join('cargo', 'privilegio.pri_id', '=', 'cargo.pri_id')
-            ->select('privilegio.*')
-            ->where('privilegio.pri_id', '=', $request->cargoPrivilegio)
+        $car_priv = DB::table('cargo')
+            ->select('pri_id')
+            ->where('cargo.id', '=', $request->cargoPrivilegio)
             ->get();
 
-        DB::inset("insert into privilegio (pri_usuarios, pri_clientes, pri_financeiro,
-        pri_produtos, pri_estoque, pri_fornecedores, pri_detalhes, pri_logistica)
-        values ($request->usuarioPrivilegio, $request->clientePrivilegio, $request->financeiroPrivilegio,
-        $request->produtoPrivilegio, $request->estoquePrivilegio, $request->fornecedorPrivilegio,
-        $request->detalhePrivilegio, $request->logisticaPrivilegio) where pri_id = $car_priv");
+        $Privilegio = new Privilegio;
+        $Privilegio->pri_usuarios = $request->usuarioPrivilegio;
+        $Privilegio->pri_clientes = $request->clientePrivilegio;
+        $Privilegio->pri_financeiro = $request->financeiroPrivilegio;
+        $Privilegio->pri_produtos = $request->produtoPrivilegio;
+        $Privilegio->pri_estoque = $request->estoquePrivilegio;
+        $Privilegio->pri_fornecedores = $request->fornecedorPrivilegio;
+        $Privilegio->pri_detalhes = $request->detalhePrivilegio;
+        $Privilegio->pri_logistica = $request->logisticaPrivilegio;
+        $Privilegio->save();
+
+        $last_priv = Privilegio::all()->last()->id;
+
+        DB::update("update cargo set pri_id = $last_priv where id = $request->cargoPrivilegio");
 
         return response()->json(['status' => 1, 'msg' => 'Privilegios Atualizados com sucesso!']);
     }

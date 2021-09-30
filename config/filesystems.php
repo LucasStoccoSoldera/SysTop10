@@ -49,6 +49,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'artes_vendas' => [
+            'driver' => 'local',
+            'root' => storage_path('app/artes_vendas'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
         'banco_bkp' => [
             'driver' => 'local',
             'root' => 'D:\Flex Sistemas\Banco_bkp',

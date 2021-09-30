@@ -73,7 +73,7 @@ class CoresRegister extends Controller
         $Cor->save();
 
 
-        Schema::table('cor_produto', function (Blueprint $table, Request $request) {
+        Schema::table('cor_produto', function (Blueprint $table) {
            return $table->char($request->NomeProduto)->default(0);
         });
 

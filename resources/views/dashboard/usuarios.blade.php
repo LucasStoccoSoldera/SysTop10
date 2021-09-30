@@ -432,8 +432,10 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <div class="div-feedback">
                             <span class="invalid-feedback cargoPrivilegio_error" role="alert">
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -442,7 +444,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Usuários:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowusu" name="usuarioPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowusu" name="usuarioPrivilegio" value={{1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowusu"></label>
                             </div>
@@ -450,7 +452,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Clientes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowcli" name="clientePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowcli" name="clientePrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowcli"></label>
                             </div>
@@ -458,7 +460,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Financeiro:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowfin" name="financeiroPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowfin" name="financeiroPrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowfin"></label>
                             </div>
@@ -466,7 +468,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Produtos:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowpro" name="produtoPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowpro" name="produtoPrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowpro"></label>
                             </div>
@@ -476,7 +478,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Estoque:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowest" name="estoquePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowest" name="estoquePrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowest"></label>
                             </div>
@@ -484,7 +486,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Fornecedores:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowfor" name="fornecedorPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowfor" name="fornecedorPrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowfor"></label>
                             </div>
@@ -492,7 +494,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Detalhes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowdet" name="detalhePrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowdet" name="detalhePrivilegio" value={{ 1 }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowdet"></label>
                             </div>
@@ -500,7 +502,7 @@
                         <div class="form-group switch_group" >
                             <label class="modal-label">Logistica:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowlog" name="logisticaPrivilegio" value={{ 1 ?? 0 }}
+                                <input id="switch-shadowlog" name="logisticaPrivilegio" value={{ 1  }}
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowlog"></label>
                             </div>
