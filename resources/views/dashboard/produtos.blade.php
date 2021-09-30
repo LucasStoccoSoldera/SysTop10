@@ -259,8 +259,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID:</label> <label style="color: red; font-size: 12px;">
                                         * </label>
-                                    <input type="text" name="IDProduto" id="IDProduto" class="form-control id"
-                                        maxlength="6" value="{{ old('IDProduto') }}" placeholder="ID do Produto"
+                                    <input type="number" name="IDProduto" id="IDProduto" class="form-control id"
+                                         value="{{ old('IDProduto') }}" placeholder="ID do Produto"
                                         autofocus>
                                     <div class="div-feedback">
                                     <span class="invalid-feedback IDProduto_error" role="alert">
@@ -356,7 +356,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Promoção: </label>
-                                        <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" dinheiro form-control"
+                                        <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" form-control"
                                         maxlength="9"
                                         value="{{ old('PromocaoProduto') }}" placeholder="Promoção?">
                                         <div class="div-feedback">
@@ -364,10 +364,21 @@
                                     </span>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Pedido Mínimo: </label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                        <input type="number" name="PedidoMinimoProduto" id="PedidoMinimoProduto" class=" form-control"
+                                        maxlength="9"
+                                        value="{{ old('PedidoMinimoProduto') }}" placeholder="Pedido Mínimo">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback PedidoMinimoProduto_error" role="alert">
+                                    </span>
+                                    </div>
+                                </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"> Personalizável?</label>
                                     <div class="switch__container">
-                                        <input id="switch-shadow" name="PersoProduto" value={{ 'Sim' ?? 'Não' }}
+                                        <input id="switch-shadow" name="PersoProduto" value={{ 'Sim' }}
                                             class="switch switch--shadow" type="checkbox">
                                         <label for="switch-shadow"></label>
                                         <span class="invalid-feedback PersoProduto_error" role="alert">
@@ -378,7 +389,7 @@
                                         <label class="modal-label"> Terceirizado?</label>
                                         <div class="switch__container">
                                             <input id="switch-shadow-2" name="TerceProduto"
-                                                value={{ 'Sim' ?? 'Não' }} class="switch switch--shadow"
+                                                value={{ 'Sim' }} class="switch switch--shadow"
                                                 type="checkbox">
                                             <label for="switch-shadow-2"></label>
                                             <span class="invalid-feedback TerceProduto_error" role="alert">
@@ -946,7 +957,7 @@
             columns: [
                 {data: "id", className: "text-center"},
                 {data: "pro_nome"},
-                {data: "tpp_id"},
+                {data: "tpp_descricao"},
                 {data: "pro_precocusto", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "pro_precovenda", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
                 {data: "action", className: "text-right"},
@@ -1029,6 +1040,7 @@
         $("#formRegisterProdutos").on('submit', function(e) {
 
             e.preventDefault();
+            var formData = new FormData(this);
 
             $.ajax({
                 headers: {
@@ -1036,8 +1048,9 @@
                 },
                 type: $(this).attr('method'),
                 url: $(this).attr('action'),
-                data: $(this).serialize(),
+                data: formData,
                 processData: false,
+                contentType: false,
                 dataType: 'json',
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');

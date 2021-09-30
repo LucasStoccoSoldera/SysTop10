@@ -611,8 +611,8 @@
                                 <div class="card-header" id="ch-adaptado">
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block"
-                                            id="btn-form-consulta-imprimir" data-toggle="modal"
-                                            data-backdrop="static" onclick="abrirModal('#modalRegisterItemCompra');">
+                                            id="btn-form-consulta-imprimir"
+                                            data-backdrop="static" data-dismiss="modal" onclick="abrirModal('#modalRegisterItemCompra');">
                                             + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -668,7 +668,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Cadastrar Itens da Compra</h4>
-                <button type="button" class="close" onclick="hideModal('modalRegisterItemCompra');" aria-label="Close">
+                <button type="button" class="close" data-dismiss="xmodal" onclick="hideModal('modalRegisterItemCompra');" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -1018,7 +1018,7 @@
         $("#IDItemCompra").val(idcompra);
     });
 
-    $('#modalRegisterItemCompra').on('dismiss', function(){
+    $('#modalRegisterItemCompra').on('[data-dismiss="modal"]', function(){
         $("#modalRegisterCompras").show()
     });
 

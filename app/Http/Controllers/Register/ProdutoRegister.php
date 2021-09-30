@@ -8,6 +8,7 @@ use App\Models\Produto;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ProdutoRegister extends Controller
 {
@@ -17,6 +18,10 @@ class ProdutoRegister extends Controller
      */
     protected function createProduto(Request $request)
     {
+
+
+        $request->PersoProduto = (!isset($request->PersoProduto))? 'Não' : 'Sim';
+        $request->TerceProduto = (!isset($request->TerceProduto))? 'Não' : 'Sim';
 
         $validator = Validator::make(
             $request->all(),
@@ -28,7 +33,7 @@ class ProdutoRegister extends Controller
                 'PVProduto' => ['required'],
                 'MaterialProduto' => ['required', 'integer'],
                 'PacoteProduto' => ['required', 'integer'],
-                'PedidoMinimo' => ['integer'],
+                'PedidoMinimoProduto' => ['required', 'integer'],
                 'FotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
             ],
             [
@@ -41,7 +46,8 @@ class ProdutoRegister extends Controller
                 'PacoteProduto.required' => 'Pacote obrigatório.',
                 'FotoProduto.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.image' => 'Arquivo não é uma imagem.',
-                'FotoProduto.dimensions:width=100,height=200' => 'Dimensão de 200 x 200.',
+                'FotoProduto.dimensions' => 'Dimensão de 100 x 200.',
+                'PedidoMinimoProduto.required' => 'Pedido Mínimo obrigatório.',
             ]
         );
 
@@ -49,25 +55,24 @@ class ProdutoRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $nameFile = $request->fotoProduto->getClientOriginalName() . $request->fotoProduto->extension();
+        $random = rand(1,1000);
+        $nameFile = strtotime("now") . "_" . "$random" . $request->FotoProduto->extension();
 
         $Produto = new Produto;
-        $Produto->pro_id = $request->IDProduto;
+        $Produto->id = $request->IDProduto;
         $Produto->pro_nome = $request->NomeProduto;
         $Produto->tpp_id = $request->TipoProduto;
         $Produto->pro_precocusto = $request->PCProduto;
         $Produto->pro_precovenda = $request->PVProduto;
         $Produto->pro_promocao = $request->PromocaoProduto;
         $Produto->mat_id = $request->MaterialProduto;
-        $Produto->log_id = $request->Logistica;
-        $Produto->dim_id = $request->DimensaoProduto;
-        $Produto->pro_pedidominimo = $request->PedidoMinimo;
-        $file = $request->FotoProduto;
-        $upload = $request->FotoProduto->store('fotos');
+        $Produto->pro_pedidominimo = $request->PedidoMinimoProduto;
         $Produto->pro_foto_path = $nameFile;
-        $Produto->pro_personalizacao = $request->persoProduto;
-        $Produto->pro_terceirizacao = $request->terceProduto;
+        $Produto->pro_personalizacao = $request->PersoProduto;
+        $Produto->pro_terceirizacao = $request->TerceProduto;
         $Produto->save();
+
+        $upload = $request->FotoProduto->storeAs('fotos', $nameFile);
 
         if ($Produto) {
             return response()->json(['status' => 1, 'msg' => 'Produto cadastrado com sucesso!']);

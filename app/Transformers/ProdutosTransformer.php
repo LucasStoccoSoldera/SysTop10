@@ -11,13 +11,14 @@ class ProdutosTransformer extends TransformerAbstract
      * @param \App\Models\Produto $produto
      * @return array
      */
-    public function transformProduto(Produto $produto)
+    public function transform(Produto $produto)
     {
         $rota = "`{{route('admin.delete.produto')}}`";
         return [
             'id' => (int) $produto->id,
             'pro_nome' => $produto->pro_nome,
-            'tpp_descricao' => (int) $produto->tpp_descricao,
+            'tpp_descricao' => $produto->tpp_descricao,
+            'pro_precocusto' => (string) $produto->pro_precocusto,
             'pro_precovenda' => (string) $produto->pro_precovenda,
             'action' => '<button type="button" class="btn btn-primary visu" id="visu-pro"
             name="visu-produto"

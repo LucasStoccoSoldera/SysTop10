@@ -27,7 +27,7 @@ class Logistica extends Model
 
     public function logistica_produto()
     {
-        return $this->belongsToOne(Produto::class);
+       // return $this->belongsToOne(Produto::class);
     }
 }
 

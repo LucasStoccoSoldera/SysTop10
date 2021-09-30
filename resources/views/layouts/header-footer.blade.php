@@ -264,7 +264,7 @@
                                 <input name="form" id="formCancelar" type="hidden" class="input_01">
                                 <input name="modal" id="modalCancelar" type="hidden" class="input_01">
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    <button type="button" class="btn btn-secondary" onclick="hideModal('modalAlertCancelar');"
                                         style="padding 0px; width: 125px; height:50px;">Voltar</button>
                                     <button type="submit" class="btn btn-secondary bg-danger"
                                         style="background-image:none;padding 0px; width: 125px; height:50px;"
@@ -294,13 +294,16 @@
                                             style="background-color: #d7ba11;background-image:none;padding: 16px 40px !important; width: 125px; height:50px; margin-right:10px;vertical-align: middle;color: #fff;">Parar</a>
                                         <button type="submit" class="btn btn-secondary"
                                             style="background-color: #00cca4;background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;"
-                                            data-dismiss="modal">Próximo</button>
+                                            onclick="hideModal('modalReturnCadastro');">Próximo</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="modal fade" id="modalPivo" hidden>
             </div>
 
 
@@ -348,15 +351,8 @@
             }
 
             function abrirModal(modalOpen) {
-                console.log(modalOpen);
                 $(modalOpen).modal('show', {backdrop: false});
             }
-
-            $('.limpar').on('click', function() {
-                var form_limpar = $(this).data('form');
-                var valform = $('#' + form_limpar).val();
-                $('#' + valform)[0].reset();
-            });
 
                 $('.red').on('click', function() {
                     console.log('teste');
@@ -386,7 +382,7 @@
             }
 
            function hideModal(modal) {
-                $('#' + modal).hide();
+                $('#' + modal).modal('hide');
             }
 
         </script>

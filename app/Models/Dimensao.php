@@ -17,7 +17,7 @@ class Dimensao extends Model
 
     public function dimensao_muitos()
     {
-        return $this->belongsToMany(Estoque::class, Produto::class, Venda::class);
+        return $this->belongsToMany(Estoque::class, Venda::class);
     }
 
 }
