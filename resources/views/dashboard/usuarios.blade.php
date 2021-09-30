@@ -444,7 +444,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Usuários:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowusu" name="usuarioPrivilegio" value={{1 }}
+                                <input id="switch-shadowusu" name="usuarioPrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowusu"></label>
                             </div>
@@ -452,7 +452,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Clientes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowcli" name="clientePrivilegio" value={{ 1 }}
+                                <input id="switch-shadowcli" name="clientePrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowcli"></label>
                             </div>
@@ -460,7 +460,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Financeiro:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowfin" name="financeiroPrivilegio" value={{ 1 }}
+                                <input id="switch-shadowfin" name="financeiroPrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowfin"></label>
                             </div>
@@ -468,7 +468,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Produtos:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowpro" name="produtoPrivilegio" value={{ 1 }}
+                                <input id="switch-shadowpro" name="produtoPrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowpro"></label>
                             </div>
@@ -478,7 +478,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Estoque:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowest" name="estoquePrivilegio" value={{ 1 }}
+                                <input id="switch-shadowest" name="estoquePrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowest"></label>
                             </div>
@@ -486,7 +486,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Fornecedores:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowfor" name="fornecedorPrivilegio" value={{ 1 }}
+                                <input id="switch-shadowfor" name="fornecedorPrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowfor"></label>
                             </div>
@@ -494,7 +494,7 @@
                         <div class="form-group switch_group">
                             <label class="modal-label">Detalhes:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowdet" name="detalhePrivilegio" value={{ 1 }}
+                                <input id="switch-shadowdet" name="detalhePrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowdet"></label>
                             </div>
@@ -502,7 +502,7 @@
                         <div class="form-group switch_group" >
                             <label class="modal-label">Logistica:</label><br>
                             <div class="switch__container">
-                                <input id="switch-shadowlog" name="logisticaPrivilegio" value={{ 1  }}
+                                <input id="switch-shadowlog" name="logisticaPrivilegio" value="1"
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadowlog"></label>
                             </div>
@@ -525,6 +525,38 @@
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $('#cargoPrivilegio').on('blur', function(e){
+            e.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "GET",
+                url: "{{route ('admin.edit.privilegio')}}",
+                data: $(this).serialize(),
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    if (data_decoded.status == 1) {
+                       preencher_privilegios(data_decoded.usu, data_decoded.cli, data_decoded.fin,
+                       data_decoded.pro, data_decoded.est, data_decoded.for, data_decoded.det, data_decoded.log);
+                    }
+                }
+            });
+          });
+
+         function preencher_privilegios(usu, cli, fin, pro, est, forn, det, log){
+            $('#usuarioPrivilegio').val(usu);
+            $('#clientePrivilegio').val(cli);
+            $('#financeiroPrivilegio').val(fin);
+            $('#produtoPrivilegio').val(pro);
+            $('#estoquePrivilegio').val(est);
+            $('#fornecedorPrivilegio').val(forn);
+            $('#detalhePrivilegio').val(det);
+            $('#logisticaPrivilegio').val(log);
+         }
 
        var table_usuario = $('#tb_usuario').DataTable( {
             paging: true,
