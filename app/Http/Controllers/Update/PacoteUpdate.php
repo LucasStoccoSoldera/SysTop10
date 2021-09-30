@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Register;
+namespace App\Http\Controllers\Update;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PacoteRequest;
