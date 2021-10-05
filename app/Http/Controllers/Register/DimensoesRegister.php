@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Dimensao;
 use App\Models\DimensaoProduto;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class DimensoesRegister extends Controller
 {
@@ -32,7 +33,6 @@ class DimensoesRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-
         $Dimensao = new Dimensao;
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
@@ -51,10 +51,10 @@ class DimensoesRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'produtoCorProduto' => ['required', 'string'],
+                'produtoDimensaoProduto' => ['required'],
             ],
             [
-                'produtoCorProduto.required' => 'Produto obrigatório.',
+                'produtoDimensaoProduto.required' => 'Produto obrigatório.',
             ]
         );
 
@@ -62,19 +62,23 @@ class DimensoesRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $Dimensao = new DimensaoProduto;
-        $Dimensao->pro_id = $request->produtoCorProduto;
+        $DimensaoProduto = new DimensaoProduto;
 
-        $campos = $request->toArray();
+        if (DimensaoProduto::where('pro_id', '<>', $request->produtoDimensaoProduto)) {
 
-        foreach($campos as $campo){
-        $nome_campo = $_REQUEST;
-        $request->campo = (!isset($request->campo))? 0 : 1;
-        $Dimensao->nome_campo = $request->campo;
+            $DimensaoProduto->pro_id = $request->produtoDimensaoProduto;
         }
-        $Dimensao->save();
+        $DimensaoProduto->save();
 
-        if ($Dimensao) {
+        $dimensoes = $request->dimensoes;
+
+            if ($dimensoes) {
+                foreach($request->dimensoes as $campo => $value){
+                    DB::update("update dimensao_produto set $campo = $value where pro_id = $request->produtoDimensaoProduto");
+                }
+            }
+
+        if ($DimensaoProduto) {
             return response()->json(['status' => 1, 'msg' => 'Dimensões vinculadas com sucesso!']);
         }
     }

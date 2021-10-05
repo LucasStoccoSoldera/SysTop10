@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Cor;
 use App\Models\CorProduto;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class CoresRegister extends Controller
 {
@@ -27,54 +28,53 @@ class CoresRegister extends Controller
             ]
         );
         if ($request->CodigoCores != "#000000" || !empty($request->EspecialCores)) {
-        if (isset($request->EspecialCores)) {
-            $validator_cor_especial = Validator::make(
-                $request->all(),
-                [
-                    'EspecialCores' => ['required', 'string'],
-                ],
-                [
-                    'EspecialCores.required' => 'Cor especial obrigatório.',
-                ]
-            );
-            $cor = $request->EspecialCores;
+            if (isset($request->EspecialCores)) {
+                $validator_cor_especial = Validator::make(
+                    $request->all(),
+                    [
+                        'EspecialCores' => ['required', 'string'],
+                    ],
+                    [
+                        'EspecialCores.required' => 'Cor especial obrigatório.',
+                    ]
+                );
+                $cor = $request->EspecialCores;
+            } else {
+                $validator_cor_especial = Validator::make(
+                    $request->all(),
+                    [
+                        'CodigoCores' => ['required', 'string'],
+                    ],
+                    [
+                        'CodigoCores.required' => 'Código obrigatório.',
+                    ]
+                );
+                $cor = $request->CodigoCores;
+            }
         } else {
             $validator_cor_especial = Validator::make(
                 $request->all(),
                 [
-                    'CodigoCores' => ['required', 'string'],
+                    'CodigoCores' => ['integer'],
+                    'EspecialCores' => ['required', 'string'],
                 ],
                 [
-                    'CodigoCores.required' => 'Código obrigatório.',
+                    'CodigoCores.integer' => 'Código ou Especial obrigatórios.',
+                    'EspecialCores.required' => 'Código ou Especial obrigatórios.',
                 ]
             );
-            $cor = $request->CodigoCores;
         }
-    } else {
-        $validator_cor_especial = Validator::make(
-            $request->all(),
-            [
-                'CodigoCores' => ['integer'],
-                'EspecialCores' => ['required', 'string'],
-            ],
-            [
-                'CodigoCores.integer' => 'Código ou Especial obrigatórios.',
-                'EspecialCores.required' => 'Código ou Especial obrigatórios.',
-            ]
-        );
-    }
 
         if ($validator->fails() || $validator_cor_especial->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cor_especial' => $validator_cor_especial->errors()]);
         }
         $Cor = new Cor;
         $Cor->cor_nome = $request->NomeCores;
-         $Cor->cor_hex_especial = $cor;
+        $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
-
         Schema::table('cor_produto', function (Blueprint $table) use ($request) {
-           return $table->char($request->NomeCores)->default(0);
+            return $table->char($request->NomeCores)->default(0);
         });
 
         if ($Cor) {
@@ -84,7 +84,6 @@ class CoresRegister extends Controller
 
     protected function createCorProduto(Request $request)
     {
-        if(empty($request->produtoCorProduto)){
         $validator = Validator::make(
             $request->all(),
             [
@@ -95,29 +94,27 @@ class CoresRegister extends Controller
             ]
         );
 
-        if ($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
         $CorProduto = new CorProduto;
-        $CorProduto->cop_produto = $request->produtoCorProduto;
 
-        $campos = $request->toArray();
-
-        foreach($campos as $campo){
-        $nome_campo = 'teste';
-        $request->campo = (!isset($request->campo))? 0 : 1;
-        $CorProduto->nome_campo = $request->campo;
+        if (CorProduto::where('pro_id', '<>', $request->produtoCorProduto)) {
+            $CorProduto->pro_id = $request->produtoCorProduto;
         }
         $CorProduto->save();
 
-            if ($CorProduto) {
-                return response()->json(['status' => 1, 'msg' => 'Cores vinculadas com sucesso!']);
+        $cores = $request->cores;
+
+        if ($cores) {
+            foreach ($request->dimensoes as $campo => $value) {
+                DB::update("update cor_produto set $campo = $value where pro_id = $request->produtoCorProduto");
             }
         }
-    }
 
-    public function pegaNome(Request $request){
-        return $request->NomeCores;
+        if ($CorProduto) {
+            return response()->json(['status' => 1, 'msg' => 'Cores vinculadas com sucesso!']);
+        }
     }
 }
