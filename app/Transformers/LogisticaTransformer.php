@@ -13,7 +13,7 @@ class LogisticaTransformer extends TransformerAbstract
      */
     public function transform(Logistica $logistica)
     {
-        $rota = "`{{route('admin.delete.logistica')}}`";
+        $rota =  "'" . route('admin.delete.logistica') . "'";
         return [
             'id' => (int) $logistica->id,
             'pac_descricao' => $logistica->pac_descricao,

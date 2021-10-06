@@ -13,7 +13,7 @@ class ProdutosTransformer extends TransformerAbstract
      */
     public function transform(Produto $produto)
     {
-        $rota = "`{{route('admin.delete.produto')}}`";
+        $rota =  "'" . route('admin.delete.produto') . "'";
         return [
             'id' => (int) $produto->id,
             'pro_nome' => $produto->pro_nome,

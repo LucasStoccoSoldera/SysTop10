@@ -13,7 +13,7 @@ class UserTransformer extends TransformerAbstract
      */
     public function transform(Usuario $user)
     {
-        $rota = "`{{route('admin.delete.user')}}`";
+        $rota =  "'" . route('admin.delete.user') . "'";
         return [
             'id' => (int) $user->id,
             'usu_nome_completo' => $user->usu_nome_completo,

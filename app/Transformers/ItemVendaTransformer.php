@@ -14,7 +14,7 @@ class ItemVendaTransformer extends TransformerAbstract
      */
     public function transform(Venda_Detalhe $ItemVenda)
     {
-        $rota = "`{{route('admin.delete.itemvenda')}}`";
+        $rota =  "'" . route('admin.delete.itemvenda') . "'";
         return [
             'id' => (int) $ItemVenda->id,
             'pro_nome' => (int) $ItemVenda->pro_nome,

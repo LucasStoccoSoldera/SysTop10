@@ -23,8 +23,8 @@ class ContasaReceberList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
-                $rota = "`{{route('admin.delete.receber')}}`";
-                $rota_parc = "`{{route('admin.list.parcelas')}}`";
+                $rota = "'" .  route('admin.delete.receber') . "'";
+                $rota_parc = "'" . route('admin.list.parcelas') . "'";
                 $btn = '
 
                 <script>function visualizar(conta, valor, pagto, data){preencherParcelas(conta, valor, pagto, data);$("#modalShowParcelas").modal("show");}</script>
