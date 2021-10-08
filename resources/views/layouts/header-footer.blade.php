@@ -355,7 +355,6 @@
             }
 
                 $('.red').on('click', function() {
-                    console.log('teste');
                 var id = $(this).data('id');
                 var rota2 = $(this).data('rota');
                 $('#modalAlertDelete').modal('show', {backdrop: false});
