@@ -19,3 +19,24 @@ Cadastro de Compras e Vendas
 
 }
 
+
+Remover deletes{
+
+    cargo
+    centro custo
+    Cores
+    dimensoes
+    estoque
+
+    Validar{
+        cliente
+        fornecedor
+    }
+
+    Alerta{
+        pacote
+        material
+        tipo produto
+    }
+
+}
