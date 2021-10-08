@@ -54,7 +54,6 @@ class ContasaReceberRegister extends Controller
         $Contas_a_Receber->rec_valor = $request->valorReceber;
         $Contas_a_Receber->rec_parcelas = $request->parcelasReceber;
         $Contas_a_Receber->rec_data = $request->dataReceber;
-        $Contas_a_Receber->save();
 
         if(isset($request->dataReceber) && $request->dataReceber <= $ontem){
         $Contas_a_Receber->rec_status = "Baixa";

@@ -475,9 +475,6 @@
                                     <th class="text-center" style="width: 20%">
                                         Pagto.
                                     </th>
-                                    <th class="text-right" style="width: 25%">
-                                        <div id="acao">Ações</div>
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -525,6 +522,32 @@
                 {data: "rec_status", className: "text-center"},
                 {data: "action", className: "text-right"},
             ]
+        });
+
+        $('#modalShowParcelas').on('show', function(){
+            $('#ls_par_conta').val(conta);
+            $('#ls_par_valor').val(valor);
+            $('#ls_par_tpg').val(pagto);
+            $('#ls_par_data').val(data);
+
+            var table_parcelas = $('#tb_parcelas').DataTable( {
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: {
+                type: 'POST',
+                url: "{{ route('admin.list.parcelas') }}",
+                data: conta,
+            },
+            columns: [
+                {data: "par_conta", className: "text-center"},
+                {data: "par_numero", className: "text-center"},
+                {data: "par_valor", className: "text-right", render: DataTable.render.number( '.', ',', 2, 'R$' )},
+                {data: "par_status", className: "text-center"},
+                {data: "par_data_pagto", className: "text-center"},
+            ]
+        });
         });
 
 
