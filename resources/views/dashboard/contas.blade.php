@@ -612,7 +612,7 @@
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block"
                                             id="btn-form-consulta-imprimir"
-                                            data-backdrop="static" data-dismiss="modal" onclick="abrirModal('#modalRegisterItemCompra');">
+                                            data-backdrop="static" data-target="#modalRegisterItemCompra">
                                             + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -653,8 +653,8 @@
                                           <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterCompras">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
+                    </div>
         </form>
-    </div>
 </div>
 </div>
 </div>
@@ -668,7 +668,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Cadastrar Itens da Compra</h4>
-                <button type="button" class="close" data-dismiss="xmodal" onclick="hideModal('modalRegisterItemCompra');" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -861,7 +861,7 @@
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
                                 <label class="modal-label">Conta: </label><br><br>
-                                    <label class="modal-label">Valor Final: </label>v
+                                    <label class="modal-label">Valor Final: </label>
                                 </div>
                         </div>
                                 <div class="col-3">
@@ -872,7 +872,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Pagto.: </label><br><br>
+                                <label class="modal-label">Pagto: </label><br><br>
                                     <label class="modal-label">Centro: </label><br>
                                 </div>
                         </div>
@@ -894,23 +894,20 @@
                         <table class="table tablesorter " id="tb_parcelas">
                             <thead class=" text-primary">
                                 <tr>
-                                    <th class="text-center" style="width: 5%">
+                                    <th class="text-center" style="width: 10%">
                                         Conta
                                     </th>
-                                    <th class="text-center" style="width: 5%">
+                                    <th class="text-center" style="width: 10%">
                                         Parc.
                                     </th>
-                                    <th class="text-right" style="width: 20%">
+                                    <th class="text-right" style="width: 30%">
                                         Valor
                                     </th>
                                     <th class="text-center" style="width: 15%">
                                         Status
                                     </th>
-                                    <th class="text-center" style="width: 20%">
+                                    <th class="text-center" style="width: 30%">
                                         Pagto.
-                                    </th>
-                                    <th class="text-right" style="width: 25%">
-                                        <div id="acao">Ações</div>
                                     </th>
                                 </tr>
                             </thead>
@@ -1177,37 +1174,36 @@
             });
         });
 
-
         $("#formRegisterCompras").on('submit', function(e) {
-            e.preventDefault();
+        e.preventDefault();
 
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                processData: false,
-                dataType: 'json',
-                beforeSend: function() {
-                    $(document).find('span.invalid-feedback').text('');
-                    $(document).find('input').removeClass('is-invalid');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData: false,
+            dataType: 'json',
+            beforeSend: function() {
+                $(document).find('span.invalid-feedback').text('');
+                $(document).find('input').removeClass('is-invalid');
 
-                },
-                success: function(data_decoded) {
-                    if (data_decoded.status == 1) {
-                        $('#formRegisterCompras')[0].reset();
-                        demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
-                    }
-                    if (data_decoded.status == 0) {
-                        $.each(data_decoded.error, function(prefix, val) {
-                            $('span.' + prefix + '_error').text(val[0]);
-                            $('#' + prefix).addClass('is-invalid');
-                        });
-                    }
+            },
+            success: function(data_decoded) {
+                if (data_decoded.status == 1) {
+                    $('#formRegisterCompras')[0].reset();
+                    demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
                 }
-            });
+                if (data_decoded.status == 0) {
+                    $.each(data_decoded.error, function(prefix, val) {
+                        $('span.' + prefix + '_error').text(val[0]);
+                        $('#' + prefix).addClass('is-invalid');
+                    });
+                }
+            }
+        });
         });
 
         $("#formRegisterItemCompra").on('submit', function(e) {
