@@ -20,7 +20,8 @@ class CreateEstoque extends Migration
             $table->unsignedBigInteger('cor_id');
             $table->integer('est_qtde');
             $table->string('est_status');
-            $table->integer('est_limite');
+            $table->date('est_data');
+            $table->time('est_time');
             $table->timestamps();
 
             $table->foreign('dim_id')->references('id')->on('dimensoes');

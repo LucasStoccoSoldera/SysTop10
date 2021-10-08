@@ -656,8 +656,8 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
                                 </label>
-                                <select type="text" name="produtoCorProduto" id="produtoCorProduto" class="form-control"
-                                    maxlength="80" value="{{ old('produtoCorProduto') }}"
+                                <select type="text" name="produtoDimensaoProduto" id="produtoDimensaoProduto" class="form-control"
+                                    maxlength="80" value="{{ old('produtoDimensaoProduto') }}"
                                     placeholder="Selecione com o Produto">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($produtos as $produto)
@@ -671,7 +671,7 @@
                         </div>
                     </div>
                     <hr class="visible-xs-block">
-                    <h4 class="modal-label" style="font-weight: bold; color: black;text-align: -webkit-center;">Cores:</h4>
+                    <h4 class="modal-label" style="font-weight: bold; color: black;text-align: -webkit-center;">Dimensões:</h4>
                     <hr class="visible-xs-block">
                     <div class="row" style="margin-top: 15px">
                             @php
@@ -683,7 +683,7 @@
                             <div class="form-group">
                                 <label class="modal-label">{{$dimensao['dim_descricao']}}</label><br>
                                 <div style="float: unset">
-                                    <input id="{{"switch-shadow" . "$cont"}}" name="{{$dimensao['dim_descricao'] . "_" . "$cont"}}" value={{ 1 ?? 0 }}
+                                    <input id="{{"switch-shadow" . "$cont"}}" name="dimensoes[{{ $dimensao['dim_descricao'] }}]" value={{ 1 ?? 0 }}
                                          type="checkbox">
                                 </div>
                             </div>
@@ -839,7 +839,7 @@
                             <div class="form-group">
                                 <label class="modal-label">{{$cor['cor_nome']}}</label><br>
                                 <div style="float: unset">
-                                    <input id="{{"switch-shadow" . "$cont"}}" name="{{$cor['cor_nome'] . "_" . "$cont"}}" value={{ 1 ?? 0 }}
+                                    <input id="{{"switch-shadow" . "$cont"}}" name="cores[{{ $cor['cor_nome'] }}]" value="1"
                                          type="checkbox">
                                 </div>
                             </div>
@@ -1174,6 +1174,37 @@
             });
         });
 
+        $("#formRegisterDimensaoProduto").on('submit', function(e) {
+
+e.preventDefault();
+
+$.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: $(this).attr('method'),
+    url: $(this).attr('action'),
+    data: $(this).serialize(),
+    processData: false,
+    dataType: 'json',
+    beforeSend: function() {
+        $(document).find('span.invalid-feedback').text('');
+        $(document).find('input').removeClass('is-invalid');                },
+    success: function(data_decoded) {
+        if (data_decoded.status == 1) {
+            $('#formRegisterDimensaoProduto')[0].reset();
+            demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
+        }
+        if (data_decoded.status == 0) {
+            $.each(data_decoded.error, function(prefix, val) {
+                $('span.' + prefix + '_error').text(val[0]);
+                 $('#' + prefix).addClass('is-invalid');
+                });
+        }
+    }
+});
+});
+
         $("#formRegisterCores").on('submit', function(e) {
 
             e.preventDefault();
@@ -1229,8 +1260,8 @@ $.ajax({
         $(document).find('input').removeClass('is-invalid');                },
     success: function(data_decoded) {
         if (data_decoded.status == 1) {
-            $('#mensagem').text(data_decoded.msg);
-            $('#modalAlertRegistrar').modal('show');
+            $('#formRegisterCorProduto')[0].reset();
+            demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
         }
         if (data_decoded.status == 0) {
             $.each(data_decoded.error, function(prefix, val) {
@@ -1317,7 +1348,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
-            demo.showNotification('top','right',4,data_decoded.msg, 'icon-alert-circle-exc');
+            demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
     }
 });
 });

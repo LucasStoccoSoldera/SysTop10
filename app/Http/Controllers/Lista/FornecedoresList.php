@@ -26,7 +26,7 @@ class FornecedoresList extends Controller
             return  DataTables::eloquent($data)
             ->addColumn('action', function($data){
 
-                $rota = "`{{route('admin.delete.fornecedor')}}`";
+                $rota = "'" . route('admin.delete.fornecedor') . "'";
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 

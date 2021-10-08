@@ -13,7 +13,7 @@ class VendasTransformer extends TransformerAbstract
      */
     public function transformVenda(Venda $venda)
     {
-        $rota = "`{{route('admin.delete.venda')}}`";
+        $rota =  "'" . route('admin.delete.venda') . "'";
         return [
             'id' => (int) $venda->id,
             'cli_nome' => (int) $venda->cli_nome,

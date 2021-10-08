@@ -14,7 +14,7 @@ class ItemCompraTransformer extends TransformerAbstract
      */
     public function transform(Compras_Detalhe $ItemCompra)
     {
-        $rota = "`{{route('admin.delete.itemcompra')}}`";
+        $rota = "'" . route('admin.delete.itemcompra') . "'";
         return [
             'cde_produto' => (int) $ItemCompra->cde_produto,
             'cde_qtde' => $ItemCompra->cde_qtde,

@@ -19,7 +19,7 @@ class PacoteList extends Controller
             return DataTables::eloquent($data4)
             ->addColumn('action', function($data4){
 
-                $rota = "`{{route('admin.delete.pacote')}}`";
+                $rota = "'" .  route('admin.delete.pacote') . "'";
                 $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data4->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 

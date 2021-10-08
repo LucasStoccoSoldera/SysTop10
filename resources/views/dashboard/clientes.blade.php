@@ -285,7 +285,8 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-6">
+
+                    <div class="col-3">
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Nome Completo:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
@@ -328,7 +329,7 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Telefone:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
@@ -371,6 +372,86 @@
                             </span>
                                 </div>
                         </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label"> CEP:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="cepCliente" id="cepCliente" class="cep form-control"
+                                value="{{ old('cepCliente') }}" placeholder="Entre com o CEP">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback cepCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Estado:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="estadoCliente" id="estadoCliente"
+                                class="form-control" maxlength="2" value="{{ old('estadoCliente') }}"
+                                placeholder="Entre com o Estado">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback estadoCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Cidade:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="cidadeCliente" id="cidadeCliente"
+                                class="form-control" maxlength="120" value="{{ old('cidadeCliente') }}"
+                                placeholder="Entre com a Cidade">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback cidadeCliente_error" role="alert">
+                            </span>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label class="modal-label">Bairro:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="bairroCliente" id="bairroCliente"
+                                class="form-control" maxlength="80" value="{{ old('bairroCliente') }}"
+                                placeholder="Entre com o Bairro">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback bairroCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-03">
+                        <div class="form-group">
+                            <label class="modal-label">Rua:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="ruaCliente" id="ruaCliente"
+                                class="form-control" maxlength="80" value="{{ old('ruaCliente') }}"
+                                placeholder="Entre com a Rua">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback ruaCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Número:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="number" name="ncasaCliente" id="ncasaCliente"
+                                class="form-control" maxlength="4" value="{{ old('ncasaCliente') }}"
+                                placeholder="Entre com o Número">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback ncasaCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Complemento:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="complementoCliente" id="complementoCliente"
+                                class="form-control" maxlength="4" value="{{ old('complementoCliente') }}"
+                                placeholder="Entre com o Complemento">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback complementoCliente_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
                         <div class="form-group">
                             <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
                                 * </label><br>
@@ -379,7 +460,6 @@
                                     class="switch switch--shadow" type="checkbox">
                                 <label for="switch-shadow"></label>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -510,7 +590,7 @@ $.ajax({
     success: function(data_decoded) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
-            demo.showNotification('top','right',4,data_decoded.msg, 'icon-alert-circle-exc');
+            demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
     }
 });
 });

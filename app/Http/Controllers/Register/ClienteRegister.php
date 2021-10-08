@@ -22,6 +22,13 @@ class ClienteRegister extends Controller
                 'nomeCliente' => ['required', 'string'],
                 'usuarioCliente' => ['required','email'],
                 'senhaCliente' => ['required', 'confirmed'],
+                'cepCliente' => ['required'],
+                'cidadeCliente' => ['required'],
+                'estadoCliente' => ['required'],
+                'bairroCliente' => ['required'],
+                'ruaCliente' => ['required'],
+                'ncasaCliente' => ['required'],
+                'complementoCliente' => ['required'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
@@ -29,6 +36,14 @@ class ClienteRegister extends Controller
                 'usuarioCliente.email' => 'E-mail inválido.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
+                'cepCliente.required' => 'CEP obrigatório.',
+                'cepCliente.formato_cep' => 'CEP inválido.',
+                'cidadeCliente.required' => 'Cidade obrigatória.',
+                'estadoCliente.required' => 'Estado obrigatório.',
+                'bairroCliente.required' => 'Bairro obrigatório.',
+                'ruaCliente.required' => 'Rua obrigatória.',
+                'ncasaCliente.required' => 'Número obrigatório.',
+                'complementoCliente.required' => 'Complemento obrigatório.',
             ]
         );
 
@@ -140,12 +155,13 @@ class ClienteRegister extends Controller
             }
             $Cliente->cli_telefone = $request->telefoneCliente;
             $Cliente->cli_celular = $request->celularCliente;
-            $Cliente->cli_logradouro = "";
-            $Cliente->cli_bairro = "";
-            $Cliente->cli_n_casa = "";
-            $Cliente->cli_cidade = "";
-            $Cliente->cli_uf = "";
-            $Cliente->cli_complemento = "";
+            $Cliente->cli_cep = $request->cepCliente;
+            $Cliente->cli_cidade = $request->cidadeCliente;
+            $Cliente->cli_uf = $request->estadoCliente;
+            $Cliente->cli_bairro = $request->bairroCliente;
+            $Cliente->cli_logradouro = $request->ruaCliente;
+            $Cliente->cli_n_casa = $request->ncasaCliente;
+            $Cliente->cli_complemento = $request->complementoCliente;
             $Cliente->save();
 
             $credentials = [

@@ -24,8 +24,8 @@ class ContasList extends Controller
             return  DataTables::eloquent($data1)
             ->addColumn('action', function($data1){
 
-                $rota = "`{{route('admin.delete.conta')}}`";
-                $rota_parc = "`{{route('admin.list.parcelas')}}`";
+                $rota =  "'" . route('admin.delete.conta') . "'";
+                $rota_parc =  "'" . route('admin.list.parcelas') . "'";
                 $btn = '
 
                 <script>function visualizar(conta, valor, pagto, centro){preencherParcelas(conta, valor, pagto, centro);$("#modalShowParcelas").modal("show");}</script>

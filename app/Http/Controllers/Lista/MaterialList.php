@@ -19,7 +19,7 @@ class MaterialList extends Controller
             return DataTables::eloquent($data3)
             ->addColumn('action', function($data3){
 
-                $rota = "`{{route('admin.delete.material')}}`";
+                $rota = "'" . route('admin.delete.material') . "'";
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data3->id.'"><i
                 class="tim-icons icon-pencil"></i></a>
 

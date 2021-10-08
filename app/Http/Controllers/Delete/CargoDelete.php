@@ -9,7 +9,7 @@ use App\Models\Cargo;
 
 class CargoDelete extends Controller
 {
-    public function deleteDimensao(Request $request)
+    public function deleteCargo(Request $request)
     {
         $data=Cargo::find($request->id);
 
