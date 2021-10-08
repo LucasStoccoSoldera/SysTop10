@@ -108,7 +108,7 @@ class CoresRegister extends Controller
         $cores = $request->cores;
 
         if ($cores) {
-            foreach ($request->dimensoes as $campo => $value) {
+            foreach ($request->cores as $campo => $value) {
                 DB::update("update cor_produto set $campo = $value where pro_id = $request->produtoCorProduto");
             }
         }
