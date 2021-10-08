@@ -451,7 +451,7 @@
 
 <div class="modal fade" id="modalRegisterCompras" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="form-cadastro" name="formRegisterCompras" method="POST" autocomplete="off"
+        <form class="form-cadastro" name="formRegisterCompras" id="formRegisterCompras" method="POST" autocomplete="off"
             enctype="multipart/form-data" action="{{ route('admin.create.compra') }}">
             @csrf
             <div class="modal-content">
