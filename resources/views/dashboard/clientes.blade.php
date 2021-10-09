@@ -572,6 +572,7 @@
            }
        });
 
+
         $("#formExcluir").on('submit', function(e) {
 
 e.preventDefault();

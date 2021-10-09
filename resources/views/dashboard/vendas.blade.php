@@ -713,6 +713,11 @@
             ]
     });
 
+    $('#modalRegisterItemVenda').on('show', function(){
+        $("#modalRegisterVendas").hide();
+        $("#IDItemVenda").val(idVenda);
+    });
+
     $(document).on('click', '[data-dismiss="modal"]',
             function() {
                 table_venda.ajax.reload(null, false);
@@ -827,9 +832,16 @@
            }
        });
 
-function abrirItem() {
-    $('#modalRegisterItemVenda').modal('show');
-}
+                $("#modalRegisterItemVenda").on("shown.bs.modal", function() {
+                    $("modalRegisterVenda").modal('hide');
+               });
+
+                $("#modalRegisterItemVenda").on("hidden.bs.modal", function() {
+                    $("body").addClass("modal-open");
+                    $("modalRegisterVenda").modal('show');
+                });
+
+
 
 function loadItem (id) {
     $id = id;

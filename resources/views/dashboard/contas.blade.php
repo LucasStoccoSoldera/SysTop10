@@ -612,7 +612,7 @@
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block"
                                             id="btn-form-consulta-imprimir"
-                                            data-backdrop="static" data-target="#modalRegisterItemCompra">
+                                            data-backdrop="static" onclick="abrirModal('#modalRegisterItemCompra');">
                                             + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -1010,11 +1010,6 @@
         var idcompra = $("#IDCompras").val();
     });
 
-    $('#modalRegisterItemCompra').on('show', function(){
-        $("#modalRegisterCompras").hide();
-        $("#IDItemCompra").val(idcompra);
-    });
-
     $('#modalRegisterItemCompra').on('[data-dismiss="modal"]', function(){
         $("#modalRegisterCompras").show()
     });
@@ -1137,6 +1132,20 @@
                 {data: "par_data_pagto", className: "text-center"},
             ]
         });
+        });
+
+        $('#modalRegisterItemCompra').on('show', function(){
+        $("#modalRegisterCompras").hide();
+        $("#IDItemCompra").val(idcompra);
+    });
+
+        $("#modalRegisterItemVenda").on("shown.bs.modal", function() {
+            $("modalRegisterVenda").modal('hide');
+        });
+
+        $("#modalRegisterItemCompra").on("hidden.bs.modal", function() {
+            $("body").addClass("modal-open");
+            $("modalRegisterVenda").modal('show');
         });
 
         $("#formRegisterContas").on('submit', function(e) {
