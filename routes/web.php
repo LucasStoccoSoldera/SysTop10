@@ -41,7 +41,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Autocomplete_ven_cli', [App\Http\Controllers\AutocompleteController::class, 'Ven_Cliente'])->name('admin.autocomplete.ven.cliente');
 
     Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');
-    Route::get('/admin/List_Cargo', [App\Http\Controllers\Lista\CargoList::class, 'listCargo'])->name('admin.list.cargo');
     Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');
     Route::get('/admin/List_Financeiro', [App\Http\Controllers\Lista\FinanceiroList::class, 'listFinanceiro'])->name('admin.list.financeiro');
     Route::get('/admin/List_Contas', [App\Http\Controllers\Lista\ContasList::class, 'listContas'])->name('admin.list.contas');
@@ -56,14 +55,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/List_Produto', [App\Http\Controllers\Lista\ProdutosList::class, 'listProduto'])->name('admin.list.produto');
     Route::get('/admin/List_Material', [App\Http\Controllers\Lista\MaterialList::class, 'listMaterial'])->name('admin.list.material');
     Route::get('/admin/List_TipoProduto', [App\Http\Controllers\Lista\TipoProdutoList::class, 'listTipoProduto'])->name('admin.list.tipoproduto');
-    Route::get('/admin/List_Dimensao', [App\Http\Controllers\Lista\DimensaoList::class, 'listDimensao'])->name('admin.list.dimensao');
-    Route::get('/admin/List_Cor', [App\Http\Controllers\Lista\CorList::class, 'listCor'])->name('admin.list.cor');
     Route::get('/admin/List_Pacote', [App\Http\Controllers\Lista\PacoteList::class, 'listPacote'])->name('admin.list.pacote');
     Route::get('/admin/List_Estoque', [App\Http\Controllers\Lista\EstoqueList::class, 'listEstoque'])->name('admin.list.estoque');
     Route::get('/admin/List_EstoqueProduto', [App\Http\Controllers\Lista\EstoqueProdutoList::class, 'listEstoqueProduto'])->name('admin.list.estoqueproduto');
     Route::get('/admin/List_Fornecedor', [App\Http\Controllers\Lista\FornecedoresList::class, 'listFornecedores'])->name('admin.list.fornecedor');
-    Route::get('/admin/List_CentroCusto', [App\Http\Controllers\Lista\CentroCustoList::class, 'listCentroCusto'])->name('admin.list.centrocusto');
-    Route::get('/admin/List_TipoPagto', [App\Http\Controllers\Lista\TipoPagtoList::class, 'listTipoPagto'])->name('admin.list.tipopagto');
     Route::get('/admin/List_Transportadora', [App\Http\Controllers\Lista\TransportadoraList::class, 'listTransportadora'])->name('admin.list.transportadora');
     Route::get('/admin/List_Logistica', [App\Http\Controllers\Lista\LogisticaList::class, 'listLogistica'])->name('admin.list.logistica');
 

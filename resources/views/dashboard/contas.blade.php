@@ -612,7 +612,7 @@
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block"
                                             id="btn-form-consulta-imprimir"
-                                            data-backdrop="static" onclick="abrirModal('#modalRegisterItemCompra');">
+                                            data-backdrop="static" onclick="abrirModalItemCompra('#modalRegisterItemCompra');">
                                             + Add</a> </h2>
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
@@ -1009,6 +1009,8 @@
     $('#IDCompras').on('blur', function(){
         var idcompra = $("#IDCompras").val();
     });
+
+    
 
     $('#modalRegisterItemCompra').on('[data-dismiss="modal"]', function(){
         $("#modalRegisterCompras").show()

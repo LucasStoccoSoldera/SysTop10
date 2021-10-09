@@ -23,12 +23,7 @@ class CargoList extends Controller
                 $rota = "'" . route('admin.delete.cargo') . "'";
 
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data2->id.'"><i
-                class="tim-icons icon-pencil"></i></a>
-
-                <button type="button" class="btn btn-primary red" id="excluir-car"
-                name="excluir-cargo"
-                onclick="excluir('.$data2->id.' , ' . $rota . ');"><i
-                class="tim-icons icon-simple-remove"></i></button>';
+                class="tim-icons icon-pencil"></i></a>';
 
                 return $btn;
                 })
