@@ -1010,7 +1010,7 @@
         var idcompra = $("#IDCompras").val();
     });
 
-    
+
 
     $('#modalRegisterItemCompra').on('[data-dismiss="modal"]', function(){
         $("#modalRegisterCompras").show()
@@ -1320,9 +1320,14 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+        if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+    }
     }
 });
 

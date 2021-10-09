@@ -18,7 +18,7 @@ class ContasaReceberDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O recebimento $descricao foi excluído com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 0, 'msg' => $msgExcluir]);
     }
 }
 
