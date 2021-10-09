@@ -44,11 +44,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');
     Route::get('/admin/List_Financeiro', [App\Http\Controllers\Lista\FinanceiroList::class, 'listFinanceiro'])->name('admin.list.financeiro');
     Route::get('/admin/List_Contas', [App\Http\Controllers\Lista\ContasList::class, 'listContas'])->name('admin.list.contas');
+    Route::get('/admin/List_Contas_Post', [App\Http\Controllers\Lista\ContasList::class, 'postContas'])->name('admin.post.conta');
     Route::get('/admin/List_Parcelas', [App\Http\Controllers\Lista\ParcelasList::class, 'listParcelas'])->name('admin.list.parcelas');
     Route::get('/admin/List_Compra', [App\Http\Controllers\Lista\CompraList::class, 'listCompra'])->name('admin.list.compra');
     Route::get('/admin/List_ItemCompra', [App\Http\Controllers\Lista\ItemCompraList::class, 'listItemCompra'])->name('admin.list.itemcompra');
     Route::get('/admin/List_ItemCompraAto', [App\Http\Controllers\Lista\ItemCompraAtoList::class, 'listItemCompraAto'])->name('admin.list.itemcompraato');
     Route::get('/admin/List_ContasaReceber', [App\Http\Controllers\Lista\ContasaReceberList::class, 'listContasaReceber'])->name('admin.list.contasareceber');
+    Route::get('/admin/List_ContasaReceber_Post', [App\Http\Controllers\Lista\ContasaReceberList::class, 'postContasaReceber'])->name('admin.post.receber');
     Route::get('/admin/List_Vendas', [App\Http\Controllers\Lista\VendasList::class, 'listVendas'])->name('admin.list.vendas');
     Route::get('/admin/List_ItemVenda', [App\Http\Controllers\Lista\ItemVendaList::class, 'listItemVenda'])->name('admin.list.itemvenda');
     Route::get('/admin/List_ItemVendaAto', [App\Http\Controllers\Lista\ItemVendaAtoList::class, 'listItemVendaAto'])->name('admin.list.itemvendaato');
