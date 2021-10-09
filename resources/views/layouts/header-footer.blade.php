@@ -350,7 +350,8 @@
                 $('#' + modal2).modal('toggle');
             }
 
-            function abrirModal(modalOpen) {
+            function abrirModal(modalOpen, De, Para) {
+                $(Para).val($(De).val());
                 $(modalOpen).modal('show', {backdrop: false});
 
             }

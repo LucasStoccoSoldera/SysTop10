@@ -434,8 +434,8 @@
                                     <div class="card-header" id="ch-adaptado">
                                         <h2 class="card-title">Itens da Venda
                                             <a class="btn btn-primary btn-block"
-                                            id="btn-form-consulta-imprimir" data-toggle="modal"
-                                            data-backdrop="static" data-target="#modalRegisterItemVenda">
+                                            id="btn-form-consulta-imprimir"
+                                            data-backdrop="static" onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
                                             + Add</a> </h2>
                                     </div>
                                     <div class="card-body" id="cd-adaptado">
