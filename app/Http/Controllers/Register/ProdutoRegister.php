@@ -27,7 +27,7 @@ class ProdutoRegister extends Controller
             $request->all(),
             [
                 'IDProduto' => ['required', 'integer'],
-                'NomeProduto' => ['required', 'string'],
+                'NomeProduto' => ['required'],
                 'TipoProduto' => ['required', 'integer'],
                 'PCProduto' => ['required'],
                 'PVProduto' => ['required'],
@@ -77,5 +77,40 @@ class ProdutoRegister extends Controller
         if ($Produto) {
             return response()->json(['status' => 1, 'msg' => 'Produto cadastrado com sucesso!']);
         }
+    }
+
+    protected function preenchePV(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'custoPV' => ['required'],
+                'impostoPV' => ['required'],
+                'comissaoPV' => ['required'],
+                'custofixoPV' => ['required'],
+                'lucroPV' => ['required'],
+            ],
+            [
+                'custoPV.required' => 'Custo obrigatório.',
+                'impostoPV.required' => 'Imposto obrigatório.',
+                'comissaoPV.required' => 'Comissão obrigatório.',
+                'custofixoPV.required' => 'Custo Fixo obrigatório.',
+                'lucroPV.required' => 'Lucro obrigatório.',
+            ]
+        );
+
+        $Custo = $request->custoPV / 100;
+        $Imposto = $request->impostoPV / 100;
+        $Comissao = $request->comissaoPV / 100;
+        $CustoFixo = $request->custofixoPV / 100;
+        $Lucro =  $request->lucroPV / 100;
+
+        $PV = $Custo / (1-($Imposto + $Comissao + $CustoFixo + $Lucro)/100);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 0, 'error' => $validator->errors()]);
+        }
+
+        return response()->json(['status' => 1, 'PV' => $PV, 'msg' => 'Cálculo realizado!']);
     }
 }

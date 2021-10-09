@@ -309,6 +309,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
+                                        <label style="color: blueviolet; font-size: 14px;" onclick="abrirModal('#modalPreenchePV');"> Calcular... </label>
                                     <input type="text" name="PVProduto" id="PVProduto" class=" dinheiro form-control"
                                         maxlength="9"
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
@@ -942,6 +943,95 @@
 </div>
 </div>
 
+<div class="modal fade" id="modalPreenchePV" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formPreenchePV" autocomplete="off" enctype="multipart/form-data" method="POST"
+            action="{{ route('admin.preenche.pv') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Calcular Preço Venda à Vista</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Custo Mercadoria:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="custoPV" id="custoPV" class="dinheiro form-control"
+                                    maxlength="11" value="{{ old('custoPV') }}"
+                                    placeholder="Entre com o Custo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback custoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Impostos (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="impostoPV" id="impostoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('impostoPV') }}"
+                                    placeholder="Entre com o imposto">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback impostoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Comissões (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="comissaoPV" id="comissaoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('comissaoPV') }}"
+                                    placeholder="Entre com a comissão">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback comissaoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Custo Fixo (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="custofixoPV" id="custofixoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('custofixoPV') }}"
+                                    placeholder="Entre com o custo fixo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback custofixoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Lucro (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="lucroPV" id="lucroPV" class="form-control"
+                                    maxlength="11" value="{{ old('lucroPV') }}"
+                                    placeholder="Entre com o custo fixo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback lucroPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContas">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Inserir</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 @endsection
 
 @push('ajax')
@@ -1071,6 +1161,47 @@
                 }
             });
         });
+
+    $("#formPreenchePV").on('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        beforeSend: function() {
+            $(document).find('span.invalid-feedback').text('');
+            $(document).find('input').removeClass('is-invalid');
+
+        },
+        success: function(data_decoded) {
+            if (data_decoded.status == 1) {
+                $('#formPreenchePV')[0].reset();
+                demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
+                $('#formPreenchePV').hide();
+                $("body").addClass("modal-open");
+                $('#PVProduto').val(data_decoded.PV);
+            }
+            if (data_decoded.status == 0) {
+                $.each(data_decoded.error, function(prefix, val) {
+                    $('span.' + prefix + '_error').text(val[0]);
+                    $('#' + prefix).addClass('is-invalid');
+                });
+            }
+        }
+    });
+    });
+
+    $("#modalPreenchePV").on("hidden.bs.modal", function() {
+        $("body").addClass("modal-open");
+    });
 
         $("#formRegisterTipoProduto").on('submit', function(e) {
 

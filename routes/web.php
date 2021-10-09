@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Autocomplete_ven_cli', [App\Http\Controllers\AutocompleteController::class, 'Ven_Cliente'])->name('admin.autocomplete.ven.cliente');
 
     Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');
+    Route::get('/admin/List_Cargo', [App\Http\Controllers\Lista\CargoList::class, 'listCargo'])->name('admin.list.cargo');
     Route::get('/admin/List_Cliente', [App\Http\Controllers\Lista\ClienteList::class, 'listCliente'])->name('admin.list.cliente');
     Route::get('/admin/List_Financeiro', [App\Http\Controllers\Lista\FinanceiroList::class, 'listFinanceiro'])->name('admin.list.financeiro');
     Route::get('/admin/List_Contas', [App\Http\Controllers\Lista\ContasList::class, 'listContas'])->name('admin.list.contas');
@@ -57,10 +58,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/List_Produto', [App\Http\Controllers\Lista\ProdutosList::class, 'listProduto'])->name('admin.list.produto');
     Route::get('/admin/List_Material', [App\Http\Controllers\Lista\MaterialList::class, 'listMaterial'])->name('admin.list.material');
     Route::get('/admin/List_TipoProduto', [App\Http\Controllers\Lista\TipoProdutoList::class, 'listTipoProduto'])->name('admin.list.tipoproduto');
+    Route::get('/admin/List_Dimensao', [App\Http\Controllers\Lista\DimensaoList::class, 'listDimensao'])->name('admin.list.dimensao');
+    Route::get('/admin/List_Cor', [App\Http\Controllers\Lista\CorList::class, 'listCor'])->name('admin.list.cor');
     Route::get('/admin/List_Pacote', [App\Http\Controllers\Lista\PacoteList::class, 'listPacote'])->name('admin.list.pacote');
     Route::get('/admin/List_Estoque', [App\Http\Controllers\Lista\EstoqueList::class, 'listEstoque'])->name('admin.list.estoque');
     Route::get('/admin/List_EstoqueProduto', [App\Http\Controllers\Lista\EstoqueProdutoList::class, 'listEstoqueProduto'])->name('admin.list.estoqueproduto');
     Route::get('/admin/List_Fornecedor', [App\Http\Controllers\Lista\FornecedoresList::class, 'listFornecedores'])->name('admin.list.fornecedor');
+    Route::get('/admin/List_CentroCusto', [App\Http\Controllers\Lista\CentroCustoList::class, 'listCentroCusto'])->name('admin.list.centrocusto');
+    Route::get('/admin/List_TipoPagto', [App\Http\Controllers\Lista\TipoPagtoList::class, 'listTipoPagto'])->name('admin.list.tipopagto');
     Route::get('/admin/List_Transportadora', [App\Http\Controllers\Lista\TransportadoraList::class, 'listTransportadora'])->name('admin.list.transportadora');
     Route::get('/admin/List_Logistica', [App\Http\Controllers\Lista\LogisticaList::class, 'listLogistica'])->name('admin.list.logistica');
 
@@ -75,6 +80,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Financeiro/Registrar_venda', [App\Http\Controllers\Register\VendasRegister::class, 'createVenda'])->name('admin.create.venda');
     Route::post('/admin/Financeiro/Registrar_item_venda', [App\Http\Controllers\Register\VendasRegister::class, 'createItemVenda'])->name('admin.create.itemvenda');
     Route::post('/admin/Produto/Registrar_produto', [App\Http\Controllers\Register\ProdutoRegister::class, 'createProduto'])->name('admin.create.produto');
+    Route::post('/admin//Produto/Preenche_PV', [App\Http\Controllers\Register\ProdutoRegister::class, 'preenchePV'])->name('admin.preenche.pv');
     Route::post('/admin/Produto/Registrar_material_base', [App\Http\Controllers\Register\MaterialBaseRegister::class, 'createMaterialBase'])->name('admin.create.material');
     Route::post('/admin/Produto/Registrar_tipo_produto', [App\Http\Controllers\Register\TipoProdutoRegister::class, 'createTipoProduto'])->name('admin.create.tipoproduto');
     Route::post('/admin/Produto/Registrar_pacote', [App\Http\Controllers\Register\PacoteRegister::class, 'createPacote'])->name('admin.create.pacote');
@@ -90,7 +96,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Logistica/Registrar_logistica', [App\Http\Controllers\Register\LogisticaRegister::class, 'createLogistica'])->name('admin.create.logistica');
 
     Route::delete('/admin/Usuario/Delete_usuario', [App\Http\Controllers\Delete\UserDelete::class, 'deleteUser'])->name('admin.delete.user');
-    Route::delete('/admin/Usuario/Delete_cargo', [App\Http\Controllers\Delete\CargoDelete::class, 'deleteCargo'])->name('admin.delete.cargo');
     Route::delete('/admin/Usuario/Delete_privilegio', [App\Http\Controllers\Delete\PrivilegioDelete::class, 'deletePrivilegio'])->name('admin.delete.privilegio');
     Route::delete('/admin/Cliente/Delete_cliente', [App\Http\Controllers\Delete\ClienteDelete::class, 'deleteCliente'])->name('admin.delete.cliente');
     Route::delete('/admin/Financeiro/Delete_conta', [App\Http\Controllers\Delete\ContasDelete::class, 'deleteConta'])->name('admin.delete.conta');
@@ -103,12 +108,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/admin/Produto/Delete_material', [App\Http\Controllers\Delete\MaterialBaseDelete::class, 'deleteMaterialBase'])->name('admin.delete.material');
     Route::delete('/admin/Produto/Delete_tipo_produto', [App\Http\Controllers\Delete\TipoProdutoDelete::class, 'deleteTipoProduto'])->name('admin.delete.tipoproduto');
     Route::delete('/admin/Produto/Delete_pacote', [App\Http\Controllers\Delete\PacoteDelete::class, 'deletePacote'])->name('admin.delete.pacote');
-    Route::delete('/admin/Produto/Delete_cor', [App\Http\Controllers\Delete\CorDelete::class, 'deleteCor'])->name('admin.delete.cor');
-    Route::delete('/admin/Produto/Delete_dimensao', [App\Http\Controllers\Delete\DimensaoDelete::class, 'deleteDimensao'])->name('admin.delete.dimensao');
     Route::delete('/admin/Estoque/Delete_estoque', [App\Http\Controllers\Delete\EstoqueDelete::class, 'deleteEstoque'])->name('admin.delete.estoque');
     Route::delete('/admin/Fornecedor/Delete_fornecedor', [App\Http\Controllers\Delete\FornecedorDelete::class, 'deleteFornecedor'])->name('admin.delete.fornecedor');
-    Route::delete('/admin/Detalhe/Delete_centro_custo', [App\Http\Controllers\Delete\CentroCustoDelete::class, 'deleteCentroCusto'])->name('admin.delete.centrocusto');
-    Route::delete('/admin/Detalhe/Delete_tipo_pagamento', [App\Http\Controllers\Delete\TipoPagtoDelete::class, 'deleteTipoPagto'])->name('admin.delete.tpgpagto');
     Route::delete('/admin/Logistica/Delete_transportadora', [App\Http\Controllers\Delete\LogisticaDelete::class, 'deleteTransportadora'])->name('admin.delete.transportadora');
     Route::delete('/admin/Logistica/Delete_logistica', [App\Http\Controllers\Delete\LogisticaDelete::class, 'deleteLogistica'])->name('admin.delete.logistica');
 
