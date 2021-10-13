@@ -161,10 +161,6 @@
                                 <div class="text-center">
                                     <a href="#" class="btn btn-primary alter"><i
                                             class="tim-icons icon-pencil"></i></a>
-                                    <button class="btn btn-primary red" id="excluir-cc"
-                                        name="excluir-centro-custo" data-id="{{ $centro['id'] }}" data-rota="{{ route('admin.delete.centrocusto') }}"
-                                        style="padding: 11px 25px;"><i
-                                            class="tim-icons icon-simple-remove"></i></button>
                                 </div>
                             @endforeach
                         </div>
@@ -202,10 +198,6 @@
                                 <div class="text-center">
                                     <a href="#" class="btn btn-primary alter"><i
                                             class="tim-icons icon-pencil"></i></a>
-                                    <button href="#" class="btn btn-primary red" id="excluir-tpg"
-                                        name="excluir-tipo-pagamento" data-id="{{ $pagamento['id'] }}" data-rota="{{ route('admin.delete.tpgpagto') }}"
-                                        style="padding: 11px 25px;"><i
-                                            class="tim-icons icon-simple-remove"></i></button>
                                 </div>
                             @endforeach
                         </div>
@@ -440,34 +432,6 @@
                     }
                 });
             });
-
-    $("#formExcluir").on('submit', function(e) {
-
-e.preventDefault();
-
-var rota = $('#rotaDelete').val();
-
-$.ajax({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    type: 'DELETE',
-    url: rota,
-    data: $(this).serialize(),
-    processData: false,
-    dataType: 'json',
-    success: function(data_decoded) {
-        if (data_decoded.status == 1) {
-            $('#formExcluir')[0].reset();
-            $('#modalAlertDelete').hide();
-            demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
-        }
-        if (data_decoded.status == 0) {
-                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
-    }
-    }
-});
-});
 
 });
     </script>
