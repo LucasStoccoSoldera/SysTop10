@@ -1111,7 +1111,9 @@
             $('#modalShowParcelas').modal('show');
         });
 
+        $('.visu').on('click', function(){
 
+        });
 
     $('#modalShowParcelas').on('show', function(){
             $('#ls_par_conta').val(conta);
@@ -1125,7 +1127,7 @@
             processing: true,
             serverside: true,
             ajax: {
-                type: 'POST',
+                type: 'GET',
                 url: "{{ route('admin.list.parcelas') }}",
                 data: conta,
             },
