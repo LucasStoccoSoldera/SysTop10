@@ -258,7 +258,7 @@
         </form>
     </div>
 </div>
-</div>
+
 <div class="modal fade" id="modalRegisterTransportadora" style="display:none;" aria-hidden="true">
 <div class="modal-dialog">
     <form class="form-cadastro" id="formRegisterTransportadora" method="POST" autocomplete="off"
@@ -330,9 +330,138 @@
     </form>
 </div>
 </div>
+
+<div class="modal fade" id="modalUpdateLogistica" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formUpdateLogistica" method="PUT" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.update.logistica') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Relação Logística</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Pacote</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="pacoteLogistica" id="pacoteLogistica" class="form-control"
+                                    maxlength="25" value="{{ old('pacoteLogistica') }}"
+                                    placeholder="Selecione com um Pacote" autofocus>
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($pacotes as $pacote)
+                                        <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <span class="invalid-feedback pacoteLogistica_error" role="alert">
+                                </span>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Transportadora:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="transLogistica" id="transLogistica" class="form-control"
+                                    maxlength="50" value="{{ old('transLogistica') }}"
+                                    placeholder="Selecione com uma Transportadora">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($transportadoras as $transportadora)
+                                        <option value="{{ $transportadora['id'] }}">
+                                            {{ $transportadora['trans_nome'] }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="invalid-feedback transLogistica_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formUpdateLogistica" data-modal="modalUpdateLogistica">Cancelar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalUpdateTransportadora" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdateTransportadora" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.create.transportadora') }}">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Atualizar Transportadora</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Nome:</label> <label style="color: red; font-size: 12px;"> *
+                            </label>
+                            <input type="text" name="nomeTrans" id="nomeTrans" class="form-control" maxlength="50"
+                                value="{{ old('nomeTrans') }}" placeholder="Entre com o Nome" autofocus>
+                                <div class="div-feedback">
+                            <span class="invalid-feedback nomeTrans_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Limite de Transporte:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="limitetransTrans" id="limitetransTrans" class="form-control"
+                                maxlength="50" value="{{ old('limitetransTrans') }}"
+                                placeholder="Entre com o Limite de Pacote">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback limitetransTrans_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Telefone</label> <label style="color: red; font-size: 12px;">
+                                * </label>
+                            <input type="text" name="telefoneTrans" id="telefoneTrans" class="telefone form-control"
+                                value="{{ old('telefoneTrans') }}" placeholder="Entre com o Telefone">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback telefoneTrans_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Celular</label> <label style="color: red; font-size: 12px;">
+                                * </label>
+                            <input type="text" name="celularTrans" id="celularTrans" class="celular form-control"
+                                value="{{ old('celularTrans') }}" placeholder="Entre com o Celular">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback celularTrans_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formUpdateTransportadora"
+                        data-modal="modalUpdateTransportadora">Cancelar</button>
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateTransportadora">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+    </form>
 </div>
 </div>
-</div>
+
 @endsection
 
 @push('ajax')

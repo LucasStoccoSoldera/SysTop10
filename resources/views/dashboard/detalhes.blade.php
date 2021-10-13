@@ -221,12 +221,12 @@
 @section('modals')
     <div class="modal" id="modalRegisterCentroCusto" style="display:none;top: 0;" aria-hidden="true">
         <div class="modal-dialog">
-            <form class="form-cadastro" id="formRegisterCentroCusto" method="POST" autocomplete="off"
-                enctype="multipart/form-data" action="{{ route('admin.create.centrocusto') }}">
+            <form class="form-cadastro" id="formRegisterCentroCusto" method="PUT" autocomplete="off"
+                enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Cadastrar Centro de Custo</h4>
+                        <h4 class="modal-title">Atualizar Centro de Custo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -264,7 +264,7 @@
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Cadastrar Tipo de Pagamento</h4>
+                        <h4 class="modal-title">Atualizar Tipo de Pagamento</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -287,6 +287,82 @@
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
                             data-form="formRegisterTpgPagto" data-modal="modalRegisterTpgPagto">Cancelar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="modalUpdateCentroCusto" style="display:none;top: 0;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-cadastro" id="formUpdateCentroCusto" method="PUT" autocomplete="off"
+                enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastrar Centro de Custo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Nome do Departamento:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="NomeCentroCusto" id="NomeCentroCusto" maxlength="25"
+                                        value="{{ old('NomeCentroCusto') }}" class="form-control"
+                                        placeholder="Entre com o Nome do Departamento">
+                                    <span class="invalid-feedback NomeCentroCusto_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateCentroCusto" data-modal="modalUpdateCentroCusto">Cancelar</button>
+
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalUpdateTpgPagto" style="display:none;top: 0;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-cadastro" id="formUpdateTpgPagto" method="POST" autocomplete="off"
+                enctype="multipart/form-data" action="{{ route('admin.create.tpgpagto') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastrar Tipo de Pagamento</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Tipo de Pagamento:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="TPTipoPagto" id="TPTipoPagto" maxlength="25"
+                                        value="{{ old('TPTipoPagto') }}" class="form-control"
+                                        placeholder="Entre com o Tipo de Pagamento">
+                                    <span class="TPTipoPagto_error invalid-feedback" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateTpgPagto" data-modal="modalUpdateTpgPagto">Cancelar</button>
 
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>

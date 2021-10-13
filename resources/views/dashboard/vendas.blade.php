@@ -486,14 +486,14 @@
 </div>
 </div>
 
-<div class="modal fade" id="modalRegisterItemVenda" style="display:none;" aria-hidden="true">
+<div class="modal fade" id="modalUpdateItemVenda" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
-        <form id="formRegisterItemVenda" method="POST" autocomplete="off"
-            enctype="multipart/form-data" action="{{ route('admin.create.itemvenda') }}">
+        <form id="formUpdateItemVenda" method="PUT" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.update.itemvenda') }}">
             @csrf
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Cadastrar Itens da Venda</h4>
+                    <h4 class="modal-title">Atualizar Itens da Venda</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -619,13 +619,353 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="cancela btn btn-secondary btn-danger"
-                            data-form="formRegisterItemVenda" data-modal="modalRegisterItemVenda">Cancelar</button>
-                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemVenda">Limpar</button>
+                            data-form="formUpdateItemVenda" data-modal="modalUpdateItemVenda">Cancelar</button>
+                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateItemVenda">Limpar</button>
                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
         </form>
     </div>
+</div>
+
+<div class="modal fade" id="modalUpdateVenda" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formUpdateVenda" method="PUT" autocomplete="off" enctype="multipart/form-data"
+            action="{{ route('admin.update.venda') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Nova Venda</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">ID da Venda:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="IDVenda" id="IDVenda" maxlength="80" class="form-control id"
+                                    value="{{ old('IDVenda') }}" placeholder="ID Automático" autofocus>
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback IDVenda_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Cliente:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="IDCliente" id="IDCliente" maxlength="80"
+                                    class="form-control" value="{{ old('IDCliente') }}"
+                                    placeholder="Entre com o Cliente">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback IDCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Valor:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="VTVenda" id="VTVenda" class="dinheiro form-control"
+                                    disabled maxlength="11" value="{{ old('VTVenda') }}">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback VTVenda_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Desconto:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="descontoVenda" id="descontoVenda"
+                                    class="porcentagem form-control" maxlength="11"
+                                    value="{{ old('descontoVenda') }}" placeholder="Entre com o Desconto">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback descontoVenda_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Tipo de Pagamento:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="IDTipoPagamento" id="IDTipoPagamento" maxlength="25"
+                                    class="form-control" value="{{ old('IDTipoPagamento') }}"
+                                    placeholder="Selecione com o Tipo de Pagamento">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($pagamentos as $pagamento)
+                                        <option value="{{ $pagamento['id'] }}">
+                                            {{ $pagamento['tpg_descricao'] }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback IDTipoPagamento_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Qtde. Parcelas:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="parcelasVenda" id="parcelasVenda" class="form-control"
+                                    maxlength="25" value="{{ old('parcelasVendas') }}"
+                                    placeholder="Selecione a Qtde de Parcelas">
+                                    <option value="">------------Selecione------------</option>
+                                    <option value="1">A Vista</option>
+                                    <option value="2">2x</option>
+                                    <option value="3">3x</option>
+                                    <option value="4">4x</option>
+                                    <option value="5">5x</option>
+                                    <option value="6">6x</option>
+                                    <option value="7">7x</option>
+                                    <option value="8">8x</option>
+                                    <option value="9">9x</option>
+                                    <option value="10">10x</option>
+                                    <option value="11">11x</option>
+                                    <option value="12">12x</option>
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback parcelasVenda_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Logistica:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="IDLogistica" id="IDLogistica" maxlength="25"
+                                    class="form-control" value="{{ old('IDLogistica') }}"
+                                    placeholder="Selecione a Logistica">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($logisticas as $logistica)
+                                        <option value="{{ $logistica['id'] }}">
+                                            {{ $logistica['log_descricao'] }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback IDLogistica_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Status:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="statusVenda" id="statusVenda" class="form-control"
+                                    maxlength="25" value="{{ old('statusVenda') }}"
+                                    placeholder="Selecione o Status">
+                                    <option value="">------------Selecione------------</option>
+                                    <option value="1">Em Aberto</option>
+                                    <option value="2">Faturada</option>
+                                    <option value="3">Fechada</option>
+                                    <option value="4">Cancelada</option>
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback statusVenda_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" id="card-consulta-tabela">
+                                <div class="card-header" id="ch-adaptado">
+                                    <h2 class="card-title">Itens da Venda
+                                        <a class="btn btn-primary btn-block"
+                                        id="btn-form-consulta-imprimir"
+                                        data-backdrop="static" onclick="abrirModal('#modalUpdateItemVenda', '#IDVenda', '#IDItemVenda');">
+                                        + Add</a> </h2>
+                                </div>
+                                <div class="card-body" id="cd-adaptado">
+                                    <div class="table-responsive">
+                                        <table class="table tablesorter " id="tb_item_venda_ato">
+                                            <thead class=" text-primary">
+                                                <tr>
+                                                    <th class="text-center" style="width: 25%">
+                                                        Produto
+                                                    </th>
+                                                    <th style="width: 10%">
+                                                        Qtde
+                                                    </th>
+                                                    <th style="width: 20%">
+                                                        Dimensão
+                                                    </th>
+                                                    <th style="width: 5%">
+                                                        Cor
+                                                    </th>
+                                                    <th style="width: 20%">
+                                                        Valor Total
+                                                    </th>
+                                                    <th class="text-right" style="width: 5%">
+                                                        <div id="acao">Ações</div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{-- DataTables --}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formUpdateVenda" data-modal="modalUpdateVenda">Cancelar</button>
+                                          <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateVenda">Limpar</button>
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modalRegisterItemVenda" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form id="formRegisterItemVenda" method="POST" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.create.itemvenda') }}">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Cadastrar Itens da Venda</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">ID da Venda:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="IDItemVenda" id="IDItemVenda" maxlength="2"
+                                value="{{ old('IDItemVenda') }}" onloadstart="pegaCodigo(IDItemVenda, IDVenda)"
+                                disabled class="form-control id">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback IDItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Descrição:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="descricaoItemVenda" id="descricaoItemVenda"
+                                class="form-control" maxlength="80" value="{{ old('descricaoItemVenda') }}"
+                                placeholder="Entre com a Descrição" autofocus>
+                                <div class="div-feedback">
+                            <span class="invalid-feedback descricaoItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Cor:</label> <label style="color: red; font-size: 12px;"> *
+                            </label>
+                            <select type="text" name="IDCor" id="IDCor" class="form-control" maxlength="25"
+                                value="{{ old('IDCor') }}" placeholder="Selecione com a Cor">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($cores as $cor)
+                                    <option value="{{ $cor['id'] }}">{{ $cor['cor_nome'] }}</option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback IDCor_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Dimensão:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <select type="text" name="IDDimensao" id="IDDimensao" class="form-control"
+                                onkeypress="mascara(this, '### x ### x ###')" maxlength="15"
+                                value="{{ old('IDDimensao') }}" placeholder="Selecione com a Dimensão">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($dimensoes as $dimensao)
+                                    <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback IDDimensao_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;">
+                                * </label>
+                            <select type="text" name="IDProduto" id="IDProduto" class="form-control" maxlength="50"
+                                value="{{ old('IDProduto') }}" placeholder="Selecione com o Produto">
+                                <option value="">------------Selecione------------</option>
+                                @foreach ($produtos as $produto)
+                                    <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="div-feedback">
+                            <span class="invalid-feedback IDProduto_error" role="alert">
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Quantidade:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="number" name="qtdeItemVenda" id="qtdeItemVenda" class="form-control"
+                                maxlength="6" value="{{ old('qtdeItemVenda') }}"
+                                placeholder="Entre com a Quantidade">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback qtdeItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Anexo / Arte:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="file" name="anexoItemVenda" id="anexoItemVenda" class="form-control"
+                                placeholder="Entre com o Anexo" value="{{ old('anexoItemVenda') }}">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback anexoItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Valor Unitário:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="VUItemVenda" id="VUItemVenda" class="dinheiro form-control"
+                                maxlength="11" value="{{ old('VUItemVenda') }}"
+                                placeholder="Entre com o Valor Unit.">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback VUItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Valor Total:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="VTItemVenda" id="VTItemVenda" class="dinheiro form-control"
+                                disabled maxlength="11" value="{{ old('VTItemVenda') }}">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback VTItemVenda_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                        data-form="formRegisterItemVenda" data-modal="modalRegisterItemVenda">Cancelar</button>
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterItemVenda">Limpar</button>
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+    </form>
+</div>
 </div>
 @endsection
 
