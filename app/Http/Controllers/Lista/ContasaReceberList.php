@@ -42,11 +42,7 @@ class ContasaReceberList extends Controller
                             searching: false,
                             processing: true,
                             serverside: true,
-                            ajax: {
-                                type: `POST`,
-                                url: '. $rota_parc. ',
-                                data: conta,
-                            },
+                            ajax: '.$rota_parc.',
                             columns: [
                                 {data: "par_venda", className: "text-center"},
                                 {data: "par_numero", className: "text-center"},
@@ -77,5 +73,10 @@ class ContasaReceberList extends Controller
             ->rawColumns(['action'])
             ->toJson();
         }
+    }
+    public function postContasaReceber(Request $request){
+
+
+
     }
 }

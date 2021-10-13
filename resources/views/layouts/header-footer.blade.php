@@ -350,8 +350,10 @@
                 $('#' + modal2).modal('toggle');
             }
 
-            function abrirModal(modalOpen) {
+            function abrirModal(modalOpen, De, Para) {
+                $(Para).val($(De).val());
                 $(modalOpen).modal('show', {backdrop: false});
+
             }
 
                 $('.red').on('click', function() {
@@ -551,8 +553,19 @@
                 $(document).on('click', '[data-dismiss="modal"]',
                     function() {
                         document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+
                     }
                );
+
+               $("#modalAlertDelete").on("hidden.bs.modal", function() {
+                    $("body").addClass("modal-open");
+                });
+                $("#modalAlertCancelar").on("hidden.bs.modal", function() {
+                    $("body").addClass("modal-open");
+                });
+                $("#modalReturnCadastro").on("hidden.bs.modal", function() {
+                    $("body").addClass("modal-open");
+                });
 
             function pegaCodigo(campoItem, campoOrigem) {
                 document.getElementById(campoItem).value = document.getElementById(campoOrigem).value();

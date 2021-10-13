@@ -22,7 +22,7 @@ class ContasDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A conta $descricao foi excluído com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 
     public function deleteCompra(Request $request)
@@ -31,7 +31,7 @@ class ContasDelete extends Controller
 
         $data->delete();
         $msgExcluir = "Compra excluída com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 
     public function deleteItemCompra(Request $request)

@@ -170,8 +170,9 @@
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-12" style="padding-left: 0px;">
+        <div class="col-12" style="padding-left: 0px;padding-right: 0px;">
             <div class="card" id="card-consulta-tabela">
                 <div class="card-header" id="ch-adaptado">
                     <h2 class="card-title">Consulta de Produtos <button class="btn btn-primary btn-block"
@@ -309,6 +310,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Preço de Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
+                                        <label style="color: blueviolet; font-size: 14px;" onclick="abrirModal('#modalPreenchePV');"> Calcular... </label>
                                     <input type="text" name="PVProduto" id="PVProduto" class=" dinheiro form-control"
                                         maxlength="9"
                                         value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
@@ -942,6 +944,758 @@
 </div>
 </div>
 
+<div class="modal fade" id="modalPreenchePV" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formPreenchePV" autocomplete="off" enctype="multipart/form-data" method="POST"
+            action="{{ route('admin.preenche.pv') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Calcular Preço Venda à Vista</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Custo Mercadoria:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="custoPV" id="custoPV" class="dinheiro form-control"
+                                    maxlength="11" value="{{ old('custoPV') }}"
+                                    placeholder="Entre com o Custo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback custoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Impostos (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="impostoPV" id="impostoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('impostoPV') }}"
+                                    placeholder="Entre com o imposto">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback impostoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Comissões (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="comissaoPV" id="comissaoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('comissaoPV') }}"
+                                    placeholder="Entre com a comissão">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback comissaoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Custo Fixo (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="custofixoPV" id="custofixoPV" class=" form-control"
+                                    maxlength="11" value="{{ old('custofixoPV') }}"
+                                    placeholder="Entre com o custo fixo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback custofixoPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Lucro (%):</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="lucroPV" id="lucroPV" class="form-control"
+                                    maxlength="11" value="{{ old('lucroPV') }}"
+                                    placeholder="Entre com o custo fixo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback lucroPV_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterContas">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Inserir</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modalUpdateProdutos" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formUpdateProdutos" method="PUT" autocomplete="off" enctype="multipart/form-data"
+            action="{{ route('admin.update.produto') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Produtos</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">ID:</label> <label style="color: red; font-size: 12px;">
+                                    * </label>
+                                <input type="number" name="IDProduto" id="IDProduto" class="form-control id"
+                                     value="{{ old('IDProduto') }}" placeholder="ID do Produto"
+                                    autofocus>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback IDProduto_error" role="alert">
+                                </span>
+                            </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Nome do Produto:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="NomeProduto" id="NomeProduto" class="form-control"
+                                    maxlength="80" value="{{ old('NomeProduto') }}"
+                                    placeholder="Entre com o Nome">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback NomeProduto_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Tipo de Produto:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="TipoProduto" id="TipoProduto" class="form-control"
+                                    maxlength="50" value="{{ old('TipoProduto') }}"
+                                    placeholder="Selecione com o Tipo do Produto">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($tipos as $tipo)
+                                        <option value="{{ $tipo['id'] }}">{{ $tipo['tpp_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback TipoProduto_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Preço de Custo:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="PCProduto" id="PCProduto" class="dinheiro form-control"
+                                    maxlength="9"
+                                    value="{{ old('PCProduto') }}" placeholder="Entre com o Preço de Custo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback PCProduto_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Preço de Venda:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                    <label style="color: blueviolet; font-size: 14px;" onclick="abrirModal('#modalPreenchePV');"> Calcular... </label>
+                                <input type="text" name="PVProduto" id="PVProduto" class=" dinheiro form-control"
+                                    maxlength="9"
+                                    value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback PVProduto_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="modal-label">Material:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="MaterialProduto" id="MaterialProduto" class="form-control"
+                                    maxlength="50" value="{{ old('MaterialProduto') }}"
+                                    placeholder="Selecione com a Material Base">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($materiais as $material)
+                                        <option value="{{ $material['id'] }}">
+                                            {{ $material['mat_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback MaterialProduto_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Pacote:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="PacoteProduto" id="PacoteProduto" class="form-control"
+                                    maxlength="15" value="{{ old('PacoteProduto') }}"
+                                    placeholder="Selecione com o Pacote">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($pacotes as $pacote)
+                                        <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback PacoteProduto_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Promoção: </label>
+                                    <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" form-control"
+                                    maxlength="9"
+                                    value="{{ old('PromocaoProduto') }}" placeholder="Promoção?">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback PromocaoProduto_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Pedido Mínimo: </label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                                    <input type="number" name="PedidoMinimoProduto" id="PedidoMinimoProduto" class=" form-control"
+                                    maxlength="9"
+                                    value="{{ old('PedidoMinimoProduto') }}" placeholder="Pedido Mínimo">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback PedidoMinimoProduto_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"> Personalizável?</label>
+                                <div class="switch__container">
+                                    <input id="switch-shadow" name="PersoProduto" value={{ 'Sim' }}
+                                        class="switch switch--shadow" type="checkbox">
+                                    <label for="switch-shadow"></label>
+                                    <span class="invalid-feedback PersoProduto_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label"> Terceirizado?</label>
+                                    <div class="switch__container">
+                                        <input id="switch-shadow-2" name="TerceProduto"
+                                            value={{ 'Sim' }} class="switch switch--shadow"
+                                            type="checkbox">
+                                        <label for="switch-shadow-2"></label>
+                                        <span class="invalid-feedback TerceProduto_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Foto do Produto:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
+                                        value="{{ old('FotoProduto') }}">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback FotoProduto_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateProdutos" data-modal="modalUpdateProdutos">Cancelar</button>
+                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateProdutos">Limpar</button>
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="modalUpdateTipoProduto" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdateTipoProduto" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.update.tipoproduto') }}">
+        @csrf
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h4 class="modal-title">Atualizar Tipo de Produto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group" id="form-direita" style="width: 100%;">
+                            <label class="modal-label">Tipo de Produto: </label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="NomeTipoProduto" id="NomeTipoProduto"style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="50" value="{{ old('NomeTipoProduto') }}"
+                                placeholder="Entre com o Tipo de Produto">
+                            <span class="invalid-feedback NomeTipoProduto_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateTipoProduto"
+                            data-modal="modalUpdateTipoProduto">Cancelar</button>
+
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card" id="card-consulta-tabela">
+            <div class="card-header" id="ch-adaptado">
+                <h2 class="card-title">Consulta de Tipos de Produto</h2>
+            </div>
+            <div class="card-body" id="cd-adaptado">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tb_tipo_produto">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th class="text-center" style="width: 10%">
+                                    ID
+                                </th>
+                                <th style="width: 50%">
+                                    Descrição
+                                </th>
+                                <th class="text-right" style="width: 40%">
+                                    <div id="acao">Ações</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{-- DataTables --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modalUpdateMaterial" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdateMaterial" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.update.material') }}">
+        @csrf
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h4 class="modal-title">Atualizar Materiais dos Produtos</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group" id="form-direita">
+                            <label class="modal-label">Material de Fabricação: </label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="NomeMaterial" id="NomeMaterial" style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="50" value="{{ old('NomeMaterial') }}"
+                                placeholder="Entre com o Material de Fabricação">
+                            <span class="invalid-feedback NomeMaterial_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateMaterial" data-modal="modalUpdateMaterial">Cancelar</button>
+
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card" id="card-consulta-tabela">
+            <div class="card-header" id="ch-adaptado">
+                <h2 class="card-title">Consulta de Materiais</h2>
+            </div>
+            <div class="card-body" id="cd-adaptado">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tb_material">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th class="text-center" style="width: 10%">
+                                    ID
+                                </th>
+                                <th style="width: 50%">
+                                    Descrição
+                                </th>
+                                <th class="text-right" style="width: 40%">
+                                    <div id="acao">Ações</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- DataTables --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modalUpdateDimensao" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdateDimensao" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.update.dimensao') }}">
+        @csrf
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h4 class="modal-title">Atualizar Dimensões de Produtos</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label class="modal-label">Nome e Dimensão <br>(Sacola Grande ZZZ X ZZZ X ZZZ): </label><label style="color: red; font-size: 12px;">
+                                 * </label>
+                            <input type="text" name="NomeDimensao" id="NomeDimensao" style="width: 100%; margin-right: 0px;" class="form-control"
+                                value="{{ old('NomeDimensao') }}" placeholder="Entre com a Nova Dimensão">
+                            <span class="invalid-feedback NomeDimensao_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateDimensao" data-modal="modalUpdateDimensao">Cancelar</button>
+
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card" id="card-consulta-tabela">
+            <div class="card-header" id="ch-adaptado">
+                <h2 class="card-title">Consulta de Dimensões</h2>
+            </div>
+            <div class="card-body" id="cd-adaptado">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tb_dimensao">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th class="text-center" style="width: 10%">
+                                    ID
+                                </th>
+                                <th style="width: 50%">
+                                    Tamanho
+                                </th>
+                                <th class="text-right" style="width: 40%">
+                                    <div id="acao">Ações</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{-- DataTables --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modalUpdateCores" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdateCores" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.update.cor') }}">
+        @csrf
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h4 class="modal-title">Atualizar Cores dos Produtos</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="modal-label">Nome da Cor:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="NomeCores" id="NomeCores" style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="25" value="{{ old('NomeCores') }}"
+                                placeholder="Entre com o Nome da Cor">
+                            <span class="invalid-feedback NomeCores_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="modal-label">Código de Cor:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="color" name="CodigoCores" id="CodigoCores" style="width: 100%; margin-right: 0px;" class="form-control"
+                                placeholder="Entre com o Codigo da Cor">
+                            <span class="invalid-feedback CodigoCores_error" role="alert">
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="modal-label">Cor Especial:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="EspecialCores" id="EspecialCores" style="width: 100%; margin-right: 0px;" class="form-control"
+                                value="{{ old('EspecialCores') }}" placeholder="Entre com a Cor Especial">
+                            <span class="invalid-feedback EspecialCores_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateCores" data-modal="modalUpdateCores">Cancelar</button>
+
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card" id="card-consulta-tabela">
+            <div class="card-header" id="ch-adaptado">
+                <h2 class="card-title">Consulta de Cores</h2>
+            </div>
+            <div class="card-body" id="cd-adaptado">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tb_cor">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th class="text-center" style="width: 5%">
+                                    ID
+                                </th>
+                                <th style="width: 20%">
+                                    Nome
+                                </th>
+                                <th style="width: 20%">
+                                    Cód / Pal
+                                </th>
+                                <th class="text-right" style="width: 20%">
+                                    <div id="acao">Ações</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- DataTables --}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modalUpdatePacotes" style="display:none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form class="form-cadastro" id="formUpdatePacotes" method="PUT" autocomplete="off"
+        enctype="multipart/form-data" action="{{ route('admin.update.pacote') }}">
+        @csrf
+        <div class="modal-content" style="width: 100%">
+            <div class="modal-header">
+                <h4 class="modal-title">Cadastrar Pacotes para Envio</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Dimensão da Caixa:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="DimensaoPacotes" id=" dimensao DimensaoPacotes"
+                                class="dimensao form-control" value="{{ old('DimensaoPacotes') }}"
+                                placeholder="Entre com a Dimensão da Caixa">
+                            <span class="invalid-feedback DimensaoPacotes_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Descrição da Caixa:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="DescricaoPacotes" id="DescricaoPacotes" class="form-control"
+                                maxlength="80" value="{{ old('DescricaoPacotes') }}"
+                                placeholder="Entre com a Descrição">
+                            <span class="invalid-feedback DescricaoPacotes_error" role="alert">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+            <div class="modal-footer"style="width: 100%; padding: 24px 15px 16px 15px;">
+                <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formUpdatePacotes"
+                    data-modal="modalUpdatePacotes">Cancelar</button>
+            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+            </div>
+    </form>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="card-consulta-tabela">
+                <div class="card-header" id="ch-adaptado">
+                    <h2 class="card-title">Consulta de Pacotes</h2>
+                </div>
+                <div class="card-body" id="cd-adaptado">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="tb_pacote">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="text-center" style="width: 10%">
+                                        ID
+                                    </th>
+                                    <th style="width: 30%">
+                                        Nome
+                                    </th>
+                                    <th style="width: 20%">
+                                       Dimensão
+                                    </th>
+                                    <th class="text-right" style="width: 40%">
+                                        <div id="acao">Ações</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- DataTables --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="modalPreenchePV" style="display: none;" aria-hidden="true">
+<div class="modal-dialog">
+    <form id="formPreenchePV" autocomplete="off" enctype="multipart/form-data" method="POST"
+        action="{{ route('admin.preenche.pv') }}">
+        @csrf
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Calcular Preço Venda à Vista</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Custo Mercadoria:</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="custoPV" id="custoPV" class="dinheiro form-control"
+                                maxlength="11" value="{{ old('custoPV') }}"
+                                placeholder="Entre com o Custo">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback custoPV_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Impostos (%):</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="impostoPV" id="impostoPV" class=" form-control"
+                                maxlength="11" value="{{ old('impostoPV') }}"
+                                placeholder="Entre com o imposto">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback impostoPV_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Comissões (%):</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="comissaoPV" id="comissaoPV" class=" form-control"
+                                maxlength="11" value="{{ old('comissaoPV') }}"
+                                placeholder="Entre com a comissão">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback comissaoPV_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Custo Fixo (%):</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="custofixoPV" id="custofixoPV" class=" form-control"
+                                maxlength="11" value="{{ old('custofixoPV') }}"
+                                placeholder="Entre com o custo fixo">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback custofixoPV_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+
+                        <div class="form-group" id="form-group">
+                            <label class="modal-label">Lucro (%):</label> <label
+                                style="color: red; font-size: 12px;"> * </label>
+                            <input type="text" name="lucroPV" id="lucroPV" class="form-control"
+                                maxlength="11" value="{{ old('lucroPV') }}"
+                                placeholder="Entre com o custo fixo">
+                                <div class="div-feedback">
+                            <span class="invalid-feedback lucroPV_error" role="alert">
+                            </span>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                              <button  type="reset" class="limpar btn btn-secondary btn-danger">Limpar</button>
+            <button type="submit" class="btn-register btn btn-primary">Inserir</button>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
 @endsection
 
 @push('ajax')
@@ -1071,6 +1825,47 @@
                 }
             });
         });
+
+    $("#formPreenchePV").on('submit', function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        beforeSend: function() {
+            $(document).find('span.invalid-feedback').text('');
+            $(document).find('input').removeClass('is-invalid');
+
+        },
+        success: function(data_decoded) {
+            if (data_decoded.status == 1) {
+                $('#formPreenchePV')[0].reset();
+                demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
+                $('#modalPreenchePV').modal('hide');
+                $("body").addClass("modal-open");
+                $('#PVProduto').val(data_decoded.PV);
+            }
+            if (data_decoded.status == 0) {
+                $.each(data_decoded.error, function(prefix, val) {
+                    $('span.' + prefix + '_error').text(val[0]);
+                    $('#' + prefix).addClass('is-invalid');
+                });
+            }
+        }
+    });
+    });
+
+    $("#modalPreenchePV").on("hidden.bs.modal", function() {
+        $("body").addClass("modal-open");
+    });
 
         $("#formRegisterTipoProduto").on('submit', function(e) {
 
@@ -1346,9 +2141,14 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+        if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+    }
     }
 });
 });

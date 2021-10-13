@@ -473,7 +473,210 @@
     </form>
 </div>
 </div>
-</div>
+
+<div class="modal fade" id="modalUpdateCliente" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formUpdateCliente" method="PUT" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.update.cliente') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Cliente</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+                        <div class="col-3">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Nome Completo:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="nomeCliente" id="nomeCliente" class="form-control"
+                                    maxlength="25" value="{{ old('nomeCliente') }}" placeholder="Entre com o Nome"
+                                    autofocus>
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback nomeCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Email para Login:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="usuarioCliente" id="usuarioCliente" class="form-control"
+                                    value="{{ old('usuarioCliente') }}" placeholder="Entre com o Login">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback usuarioCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <input type="text" name="cpfCliente" id="cpfCliente" class="cpf form-control"
+                                    value="{{ old('cpfCliente') }}" placeholder="Entre com o CPF">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback cpfCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">CNPJ:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <input type="text" name="cnpjCliente" id="cnpjCliente" class="cnpj form-control"
+                                    value="{{ old('cnpjCliente') }}" placeholder="Entre com o CNPJ">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback cnpjCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Telefone:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="telefoneCliente" id="telefoneCliente"
+                                    class="telefone form-control" value="{{ old('telefoneCliente') }}"
+                                    placeholder="Entre com o Telefone">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback telefoneCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Celular:</label> <label style="color: red; font-size: 12px;">
+                                    * </label>
+                                <input type="text" name="celularCliente" id="celularCliente"
+                                    class="celular form-control" value="{{ old('celularCliente') }}"
+                                    placeholder="Entre com o Celular">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback celularCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Senha:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <input type="password" name="senhaCliente" id="senhaCliente" class="form-control"
+                                    value="{{ old('senhaCliente') }}" placeholder="Entre com a Senha">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback senhaCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Confirmar Senha:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="password" name="senhaCliente_confirmation" id="senhaCliente_confirmation"
+                                    class="form-control" placeholder="Confirmação da Senha">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback senhaCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"> CEP:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="cepCliente" id="cepCliente" class="cep form-control"
+                                    value="{{ old('cepCliente') }}" placeholder="Entre com o CEP">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback cepCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Estado:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="estadoCliente" id="estadoCliente"
+                                    class="form-control" maxlength="2" value="{{ old('estadoCliente') }}"
+                                    placeholder="Entre com o Estado">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback estadoCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Cidade:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="cidadeCliente" id="cidadeCliente"
+                                    class="form-control" maxlength="120" value="{{ old('cidadeCliente') }}"
+                                    placeholder="Entre com a Cidade">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback cidadeCliente_error" role="alert">
+                                </span>
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <label class="modal-label">Bairro:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="bairroCliente" id="bairroCliente"
+                                    class="form-control" maxlength="80" value="{{ old('bairroCliente') }}"
+                                    placeholder="Entre com o Bairro">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback bairroCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-03">
+                            <div class="form-group">
+                                <label class="modal-label">Rua:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="ruaCliente" id="ruaCliente"
+                                    class="form-control" maxlength="80" value="{{ old('ruaCliente') }}"
+                                    placeholder="Entre com a Rua">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback ruaCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Número:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="number" name="ncasaCliente" id="ncasaCliente"
+                                    class="form-control" maxlength="4" value="{{ old('ncasaCliente') }}"
+                                    placeholder="Entre com o Número">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback ncasaCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Complemento:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="complementoCliente" id="complementoCliente"
+                                    class="form-control" maxlength="4" value="{{ old('complementoCliente') }}"
+                                    placeholder="Entre com o Complemento">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback complementoCliente_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
+                                    * </label><br>
+                                <div class="switch__container">
+                                    <input id="switch-shadow" name="statusCliente" value={{ 'Ativo' ?? 'Inativo' }}
+                                        class="switch switch--shadow" type="checkbox">
+                                    <label for="switch-shadow"></label>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formUpdateCliente"
+                        data-modal="modalUpdateCliente">Cancelar</button>
+                    <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateCliente">Limpar</button>
+                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
 @endsection
 
 @push('ajax')
@@ -572,6 +775,7 @@
            }
        });
 
+
         $("#formExcluir").on('submit', function(e) {
 
 e.preventDefault();
@@ -588,10 +792,15 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+            if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
     }
+}
 });
 });
     });

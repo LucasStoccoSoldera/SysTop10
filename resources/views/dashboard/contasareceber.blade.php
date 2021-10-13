@@ -413,6 +413,130 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalUpdateContasaReceber" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="formUpdateContasaReceber" method="PUT" autocomplete="off" enctype="multipart/form-data"
+            action="{{ route('admin.update.receber') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Conta a Receber</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Descrição:</label><label style="color: red; font-size: 12px;">
+                                     * </label>
+                                <input type="text" name="descricaoReceber" id="descricaoReceber" maxlength="80"
+                                    value="{{ old('descricaoReceber') }}" class="form-control"
+                                    placeholder="Entre com a Descricao">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback descricaoReceber_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Tipo de Pagamento:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="tipoPagtoReceber" id="tipoPagtoReceber" maxlength="25"
+                                    value="{{ old('tipoPagtoReceber') }}" class="form-control"
+                                    placeholder="Selecione com o Tipo de Pagamento">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($pagamentos as $pagamento)
+                                        <option value="{{ $pagamento['id'] }}">
+                                            {{ $pagamento['tpg_descricao'] }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback tipoPagtoReceber_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Status:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <select type="text" name="statusReceber" id="statusReceber" class="form-control"
+                                    maxlength="25" value="{{ old('statusReceber') }}"
+                                    placeholder="Selecione o Status">
+                                    <option value="">------------Selecione------------</option>
+                                    <option value="Aberta">Aberto</option>
+                                    <option value="Cancelada">Cancelada</option>
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback statusReceber_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Valor a Receber:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="valorReceber" id="valorReceber"
+                                        class="dinheiro form-control" maxlength="11"
+                                        value="{{ old('valorReceber') }}" placeholder="Entre com o Valor">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback valorReceber_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Qtde. Parcelas:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="parcelasReceber" id="parcelasReceber"
+                                        class="form-control" maxlength="25" value="{{ old('parcelasReceber') }}"
+                                        placeholder="Selecione a Qtde de Parcelas">
+                                        <option value="">------------Selecione------------</option>
+                                        <option value="1">A Vista</option>
+                                        <option value="2">2x</option>
+                                        <option value="3">3x</option>
+                                        <option value="4">4x</option>
+                                        <option value="5">5x</option>
+                                        <option value="6">6x</option>
+                                        <option value="7">7x</option>
+                                        <option value="8">8x</option>
+                                        <option value="9">9x</option>
+                                        <option value="10">10x</option>
+                                        <option value="11">11x</option>
+                                        <option value="12">12x</option>
+                                    </select>
+                                    <div class="div-feedback">
+                                    <span class="invalid-feedback parcelasReceber_error" role="alert">
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Data de Recebimento:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="date" name="dataReceber" id="dataReceber"
+                                        onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                        value="{{ old('dataReceber') }}" class="form-control"
+                                        placeholder="Entre com a Data">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback dataReceber_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formUpdateContasaReceber"
+                                data-modal="modalUpdateContasaReceber">Cancelar</button>
+                                          <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateContasaReceber">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        </div>
+                    </div>
+        </form>
+    </div>
+</div>
+
 <div class="modal fade" id="modalShowParcelas" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
             <div class="modal-content">
@@ -627,9 +751,14 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+        if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+    }
     }
 });
 });

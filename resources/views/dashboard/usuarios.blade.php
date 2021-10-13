@@ -405,6 +405,193 @@
 </div>
 </div>
 
+<div class="modal fade" id="modalUpdateUser" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formUpdateUser" method="PUT" autocomplete="off" enctype="multipart/form-data"
+            action="{{ route('admin.update.user') }}">
+            @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Usuário</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Nome Completo:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="nomeUser" id="nomeUser" class="form-control" maxlength="25"
+                                    value="{{ old('nomeUser') }}" placeholder="Entre com o Nome" autofocus>
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback nomeUser_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Email para Login:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
+                                    value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback usu_usuario_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
+                                    * </label>
+                                <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
+                                    value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback cpfUser_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Celular:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="celularUser" id="celularUser"
+                                    class="celular form-control" value="{{ old('celularUser') }}"
+                                    placeholder="Entre com o Celular">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback celularUser_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Senha:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <input type="password" name="senhaUser" id="senhaUser" class="form-control"
+                                    value="{{ old('senhaUser') }}" placeholder="Entre com a Senha">
+                                    <div class="div-feedback">
+                                <span class="invalid-feedback senhaUser_error" role="alert">
+                                </span>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Confirmar Senha:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
+                                    class="form-control" placeholder="Confirmação da Senha">
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback senhaUser_error" role="alert">
+                                        </span>
+                                            </div>
+                            </div>
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="80"
+                                    value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
+                                    <option value="">------------Selecione------------</option>
+                                    @foreach ($cargos as $cargo)
+                                        <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="div-feedback">
+                                <span class="invalid-feedback cargoUser_error" role="alert">
+                                </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
+                                    * </label><br>
+                                <div class="switch__container">
+                                    <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
+                                        class="switch switch--shadow" type="checkbox">
+                                    <label for="switch-shadow"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formUpdateUser"
+                        data-modal="modalUpdateUser">Cancelar</button>
+                                  <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateUser">Limpar</button>
+                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <div class="modal fade" id="modalUpdateCargo" style="display:none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <form class="form-cadastro" id="formUpdateCargo" method="PUT" autocomplete="off"
+            enctype="multipart/form-data" action="{{ route('admin.update.cargo') }}">
+            @csrf
+            <div class="modal-content" style="width: 150%">
+                <div class="modal-header">
+                    <h4 class="modal-title">Atualizar Cargo</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" id="form-direita">
+                                <label class="modal-label">Cargo:</label> <label style="color: red; font-size: 12px;"> *
+                                </label>
+                                <input type="text" name="descricaoCargo" id="descricaoCargo" class="form-control"
+                                    maxlength="15" value="{{ old('descricaoCargo') }}"
+                                    placeholder="Entre com o Cargo">
+                                <span class="invalid-feedback descricaoCargo_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                            <button type="button" class="cancela btn btn-secondary btn-danger"
+                                data-form="formUpdateCargo" data-modal="modalUpdateCargo">Cancelar</button>
+                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="card-consulta-tabela">
+                <div class="card-header" id="ch-adaptado">
+                    <h2 class="card-title">Consulta de Cargos</h2>
+                </div>
+                <div class="card-body" id="cd-adaptado">
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="tb_cargo">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="text-center" style="width: 10%">
+                                        ID
+                                    </th>
+                                    <th style="width: 50%">
+                                        Descrição
+                                    </th>
+                                    <th class="text-right" style="width: 40%">
+                                        <div id="acao">Ações</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- DataTables --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
 <div class="modal fade" id="modalRegisterPrivilegio" style="display:none;" aria-hidden="true">
 <div class="modal-dialog">
     <form class="form-cadastro" id="formRegisterPrivilegio" method="POST" autocomplete="off"
@@ -721,9 +908,14 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+        if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+    }
     }
 });
 });

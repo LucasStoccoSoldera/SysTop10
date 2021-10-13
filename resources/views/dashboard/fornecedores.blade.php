@@ -356,6 +356,173 @@
             </form>
         </div>
     </div>
+
+    <div class="modal fade" id="modalUpdateFornecedores" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formUpdateFornecedores" method="PUT" autocomplete="off" enctype="multipart/form-data"
+                action="{{ route('admin.update.fornecedor') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Atualizar Fornecedores</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Nome:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="nomeFornecedor" id="nomeFornecedor" maxlength="80"
+                                        value="{{ old('nomeFornecedor') }}" class="form-control"
+                                        placeholder="Entre com o Nome" autofocus>
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback nomeFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Telefone:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="telefoneFornecedor" id="telefoneFornecedor"
+                                        value="{{ old('telefoneFornecedor') }}" class="telefone form-control"
+                                        placeholder="Entre com o Telefone">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback telefoneFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Celular:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="celularFornecedor" id="celularFornecedor"
+                                        class="celular form-control" value="{{ old('celularFornecedor') }}"
+                                        placeholder="Entre com o Celular">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback celularFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
+                                        * </label>
+                                    <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="cpf form-control"
+                                        value="{{ old('cpfFornecedor') }}" placeholder="Entre com o CPF">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cpfFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">CNPJ:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
+                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
+                                        placeholder="Entre com o CNPJ">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Produtos:</label>
+                                    <select type="text" name="produtosFornecedor" id="produtosFornecedor"
+                                        class="form-control" maxlength="80" value="{{ old('produtosFornecedor') }}"
+                                        placeholder="Selecione com o Produtos">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($produtos as $produto)
+                                            <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                    <span class="invalid-feedback produtosFornecedor_error" role="alert">
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label"> CEP:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cepFornecedor" id="cepFornecedor" class="cep form-control"
+                                        value="{{ old('cepFornecedor') }}" placeholder="Entre com o CEP">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cepFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Estado:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="estadoFornecedor" id="estadoFornecedor"
+                                        class="form-control" maxlength="2" value="{{ old('estadoFornecedor') }}"
+                                        placeholder="Entre com o Estado">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback estadoFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Cidade:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="cidadeFornecedor" id="cidadeFornecedor"
+                                        class="form-control" maxlength="120" value="{{ old('cidadeFornecedor') }}"
+                                        placeholder="Entre com a Cidade">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback cidadeFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Bairro:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="bairroFornecedor" id="bairroFornecedor"
+                                        class="form-control" maxlength="80" value="{{ old('bairroFornecedor') }}"
+                                        placeholder="Entre com o Bairro">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback bairroFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Rua:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="ruaFornecedor" id="ruaFornecedor"
+                                        class="form-control" maxlength="80" value="{{ old('ruaFornecedor') }}"
+                                        placeholder="Entre com a Rua">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback ruaFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="modal-label">Número:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="number" name="ncasaFornecedor" id="ncasaFornecedor"
+                                        class="form-control" maxlength="4" value="{{ old('ncasaFornecedor') }}"
+                                        placeholder="Entre com o Número">
+                                        <div class="div-feedback">
+                                    <span class="invalid-feedback ncasaFornecedor_error" role="alert">
+                                    </span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formUpdateFornecedores"
+                            data-modal="modalUpdateFornecedores">Cancelar</button>
+                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateFornecedores">Limpar</button>
+                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @endsection
@@ -464,9 +631,14 @@ $.ajax({
     processData: false,
     dataType: 'json',
     success: function(data_decoded) {
+        if (data_decoded.status == 1) {
             $('#formExcluir')[0].reset();
             $('#modalAlertDelete').hide();
             demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+        }
+        if (data_decoded.status == 0) {
+                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+    }
     }
 });
 });
