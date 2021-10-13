@@ -99,18 +99,20 @@ class ProdutoRegister extends Controller
             ]
         );
 
-        $Custo = $request->custoPV / 100;
-        $Imposto = $request->impostoPV / 100;
-        $Comissao = $request->comissaoPV / 100;
-        $CustoFixo = $request->custofixoPV / 100;
-        $Lucro =  $request->lucroPV / 100;
+        $Custo = $request->custoPV;
+        $Imposto = $request->impostoPV;
+        $Comissao = $request->comissaoPV;
+        $CustoFixo = $request->custofixoPV;
+        $Lucro =  $request->lucroPV;
 
-        $PV = $Custo / (1-($Imposto + $Comissao + $CustoFixo + $Lucro)/100);
+        $Soma = $Imposto + $Comissao + $CustoFixo + $Lucro;
+        $Dividendo =1 - $Soma / 100;
+        $PV = $Custo / $Dividendo;
 
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        return response()->json(['status' => 1, 'PV' => $PV, 'msg' => 'Cálculo realizado!']);
+        return response()->json(['status' => 1, 'PV' => round($PV, 2), 'msg' => 'Cálculo realizado!']);
     }
 }
