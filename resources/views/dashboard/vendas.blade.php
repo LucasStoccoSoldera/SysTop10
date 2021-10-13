@@ -845,7 +845,6 @@
                             <label class="modal-label">ID da Venda:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="IDItemVenda" id="IDItemVenda" maxlength="2"
-                                value="{{ old('IDItemVenda') }}" onloadstart="pegaCodigo(IDItemVenda, IDVenda)"
                                 disabled class="form-control id">
                                 <div class="div-feedback">
                             <span class="invalid-feedback IDItemVenda_error" role="alert">

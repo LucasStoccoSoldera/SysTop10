@@ -679,7 +679,6 @@
                             <label class="modal-label">ID da Compra:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
                             <input type="text" name="IDItemCompra" id="IDItemCompra"
-                                value="{{ old('IDItemCompra') }}"
                                  disabled class="form-control id">
                                 <div class="div-feedback">
                             <span class="invalid-feedback IDItemCompra_error" role="alert">
