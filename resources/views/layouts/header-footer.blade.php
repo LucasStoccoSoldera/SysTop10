@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="perfect-scrollbar-on">
 
 <head>
     <meta charset="utf-8" />
@@ -317,7 +317,7 @@
     <!--  Notifications Plugin    -->
     <script src="../js/dash/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../js/dash/black-dashboard.min.js?v=1.0.0"></script>
+    <script src="../js/dash/black-dashboard.js?v=1.0.0"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="../demo/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>

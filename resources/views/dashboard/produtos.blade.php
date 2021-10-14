@@ -221,22 +221,26 @@
             </a>
             <div class="dropdown-menu" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterProdutos');"><img
-                        src="../img/dash/cadastro_produtos.png" width="55" height="55"></a>
+                        src="../img/dash/cadastro_produtos.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static"
-                     onclick="abrirModal('#modalRegisterTipoProduto');"><img src="../img/dash/logistica.png" width="55"
-                        height="55"></a>
+                     onclick="abrirModal('#modalRegisterTipoProduto');"><img src="../img/dash/logistica.png" width="65"
+                        height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterMaterial');"><img
-                        src="../img/dash/materia_prima.png" width="55" height="55"></a>
+                        src="../img/dash/materia_prima.png" width="65" height="65"></a>
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterDimensao');"><img
-                        src="../img/dash/dimensao.png" width="55" height="55"></a>
+                        src="../img/dash/dimensao.png" width="65" height="65"></a>
+
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCores');"><img
+                        src="../img/dash/cores.png" width="65" height="65"></a>
+
+                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterPacotes');"><img
+                        src="../img/dash/pacote.png" width="65" height="65"></a>
+            </div>
+            <div class="btn-group dropleft" id="add-menu">
                 <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterDimensaoProduto');"><img
                     src="../img/dash/dimensao.png" width="55" height="55"></a>
-                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCores');"><img
+                    <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCorProduto');"><img
                         src="../img/dash/cores.png" width="55" height="55"></a>
-                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterCorProduto');"><img
-                        src="../img/dash/cores.png" width="55" height="55"></a>
-                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterPacotes');"><img
-                        src="../img/dash/pacote.png" width="55" height="55"></a>
             </div>
         </div>
     </div>
