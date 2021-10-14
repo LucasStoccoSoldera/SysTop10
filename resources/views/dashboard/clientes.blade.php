@@ -849,21 +849,21 @@
         {
             $.get('/admin/Usuario/Editar_cliente/' + id, function (cliente) {
                 $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
+                $("#nomeClienteUp").val(cliente.cli_nome)
+                $("#usuarioClienteUp").val(cliente.cli_usuario)
+                $("#cpfClienteUp").val(cliente.cli_cpf_cnpj)
+                $("#cnpjClienteUp").val(cliente.cli_cpf_cnpj)
+                $("#telefoneClienteUp").val(cliente.cli_telefone)
+                $("#celularClienteUp").val(cliente.cli_celular)
+                $("#senhaClienteUp").val(cliente.cli_senha)
+                $("#cepClienteUp").val(cliente.cli_cep)
+                $("#estadoClienteUp").val(cliente.cli_uf)
+                $("#cidadeClienteUp").val(cliente.cli_cidade)
+                $("#bairroClienteUp").val(cliente.cli_bairro)
+                $("#ruaClienteUp").val(cliente.cli_logradouro)
+                $("#ncasaClienteUp").val(cliente.cli_n_casa)
+                $("#complementoClienteUp").val(cliente.cli_complemento)
+                $("#statusClienteUp").val(cliente.cli_status)
                 $("modalUpdateCliente").modal('toggle');
 
             });

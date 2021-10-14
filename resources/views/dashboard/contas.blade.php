@@ -2000,21 +2000,21 @@
         {
             $.get('/admin/Usuario/Editar_conta/' + id, function (conta) {
                 $("#idCon").val(conta.id);
-                $("#descricaoContasUp").val(conta.id)
-                $("#tipoContasUp").val(conta.id)
-                $("#valorContasUp").val(conta.id)
-                $("#valorfContasUp").val(conta.id)
-                $("#parcelasContasUp").val(conta.id)
-                $("#datavContasUp").val(conta.id)
-                $("#datapContasUp").val(conta.id)
-                $("#tpgpagtoContasUp").val(conta.id)
-                $("#centrocustoContasUp").val(conta.id)
+                $("#descricaoContasUp").val(conta.con_descricao)
+                $("#tipoContasUp").val(conta.con_tipo)
+                $("#valorContasUp").val(conta.con_valor)
+                $("#valorfContasUp").val(conta.con_valor_final)
+                $("#parcelasContasUp").val(conta.con_parcelas)
+                $("#datavContasUp").val(conta.con_data_venc)
+                $("#datapContasUp").val(conta.con_data_pag)
+                $("#tpgpagtoContasUp").val(conta.tpg_id)
+                $("#centrocustoContasUp").val(conta.cc_id)
                 $("modalUpdateContas").modal('toggle');
 
             });
         }
 
-        function editconta(id)
+        function editCompra(id)
         {
             $.get('/admin/Usuario/Editar_compra/' + id, function (compra) {
                 $("#idCom").val(compra.id);
@@ -2037,9 +2037,9 @@
         {
             $.get('/admin/Usuario/Editar_item_compra/' + id, function (itemcompra) {
                 $("#idIteCom").val(itemcompra.id);
-                $("#IDItemCompraUp").val(itemcompra.id)
-                $("#descricaoItemCompraUp").val(itemcompra.id)
-                $("#IDFornecedorUp").val(itemcompra.id)
+                $("#IDItemCompraUp").val(itemcompra.com_id)
+                $("#descricaoItemCompraUp").val(itemcompra.cde_descricao)
+                $("#IDFornecedorUp").val(itemcompra.for_id)
                 $("#tipoItemCompraUp").val(itemcompra.id)
                 $("#valorItemCompraUp").val(itemcompra.id)
                 $("#qtdeItemCompraUp").val(itemcompra.id)
