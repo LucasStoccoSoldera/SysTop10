@@ -659,24 +659,16 @@
 
             function editEstoque(id)
         {
-            $.get('/admin/Usuario/Editar_estoque/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_estoque/' + id, function (estoque) {
+                $("#idEst").val(estoque.id);
+                $("#qtdeEstoqueUp").val(estoque.id)
+                $("#dataEstoqueUp").val(estoque.id)
+                $("#timeEstoqueUp").val(estoque.id)
+                $("#statusEstoqueUp").val(estoque.id)
+                $("#produtoEstoqueUp").val(estoque.id)
+                $("#IDDimensaoUp").val(estoque.id)
+                $("#IDCorUp").val(estoque.id)
+                $("modalUpdateEstoque").modal('toggle');
 
             });
         }

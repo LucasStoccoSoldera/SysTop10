@@ -671,24 +671,21 @@
 
             function editFornecedor(id)
         {
-            $.get('/admin/Usuario/Editar_fornecedor/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_fornecedor/' + id, function (fornecedor) {
+                $("#idFor").val(fornecedor.id);
+                $("#nomeFornecedorUp").val(fornecedor.id)
+                $("#telefoneFornecedorUp").val(fornecedor.id)
+                $("#celularFornecedorUp").val(fornecedor.id)
+                $("#cpfFornecedorUp").val(fornecedor.id)
+                $("#cnpjFornecedorUp").val(fornecedor.id)
+                $("#produtosFornecedorUp").val(fornecedor.id)
+                $("#cepFornecedorUp").val(fornecedor.id)
+                $("#estadoFornecedorUp").val(fornecedor.id)
+                $("#cidadeFornecedorUp").val(fornecedor.id)
+                $("#bairroFornecedorUp").val(fornecedor.id)
+                $("#ruaFornecedorUp").val(fornecedor.id)
+                $("#ncasaFornecedorUp").val(fornecedor.id)
+                $("modalUpdateFornecedores").modal('toggle');
 
             });
         }

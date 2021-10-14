@@ -1215,8 +1215,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Foto do Produto:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="file" name="FotoProduto" id="FotoProduto" class="form-control"
-                                        value="{{ old('FotoProduto') }}">
+                                    <input type="file" name="FotoProdutoUp" id="FotoProdutoUp" class="form-control"
+                                        value="{{ old('FotoProdutoUp') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback FotoProduto_error" role="alert">
                                         </span>
@@ -2260,192 +2260,73 @@
 
             function editProduto(id)
         {
-            $.get('/admin/Usuario/Editar_produto/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_produto/' + id, function (produto) {
+                $("#idPro").val(produto.id);
+                $("#IDProdutoUp").val(produto.id)
+                $("#NomeProdutoUp").val(produto.id)
+                $("#TipoProdutoUp").val(produto.id)
+                $("#PCProdutoUp").val(produto.id)
+                $("#PVProdutoUp").val(produto.id)
+                $("#MaterialProdutoUp").val(produto.id)
+                $("#PacoteProdutoUp").val(produto.id)
+                $("#PromocaoProdutoUp").val(produto.id)
+                $("#PedidoMinimoProdutoUp").val(produto.id)
+                $("#PersoProdutoUp").val(produto.id)
+                $("#TerceProdutoUp").val(produto.id)
+                $("#FotoProdutoUp").val(produto.id)
+                $("modalUpdateProdutos").modal('toggle');
 
             });
         }
 
         function editTipoProduto(id)
         {
-            $.get('/admin/Usuario/Editar_tipo_produto/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_tipo_produto/' + id, function (tipoproduto) {
+                $("#idTpp").val(tipoproduto.id);
+                $("#NomeTipoProdutoUp").val(tipoproduto.id)
+                $("modalUpdateTipoProduto").modal('toggle');
 
             });
         }
 
         function editMaterial(id)
         {
-            $.get('/admin/Usuario/Editar_material_base/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_material_base/' + id, function (material) {
+                $("#idMat").val(material.id);
+                $("#NomeMaterialUp").val(material.id)
+                $("modalUpdateMaterial").modal('toggle');
 
             });
         }
 
         function editDimensao(id)
         {
-            $.get('/admin/Usuario/Editar_dimensao/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_dimensao/' + id, function (dimensao) {
+                $("#idDim").val(dimensao.id);
+                $("#NomeDimensaoUp").val(dimensao.id)
+                $("modalUpdateDimensao").modal('toggle');
 
             });
         }
 
         function editCor(id)
         {
-            $.get('/admin/Usuario/Editar_cor/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_cor/' + id, function (cor) {
+                $("#idCor").val(cor.id);
+                $("#CodigoCoresUp").val(cor.id)
+                $("#EspecialCoresUp").val(cor.id)
+                $("modalUpdateCores").modal('toggle');
 
             });
         }
 
         function editPacote(id)
         {
-            $.get('/admin/Usuario/Editar_pacote/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
-
-            });
-        }
-
-        function editDimensaoProduto(id)
-        {
-            $.get('/admin/Usuario/Editar_dimensao_produto/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
-
-            });
-        }
-
-        function editCorProduto(id)
-        {
-            $.get('/admin/Usuario/Editar_cor_produto/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_pacote/' + id, function (pacote) {
+                $("#idPac").val(pacote.id);
+                $("#DimensaoPacotesUp").val(pacote.id)
+                $("#DescricaoPacotesUp").val(pacote.id)
+                $("modalUpdatePacotes").modal('toggle');
 
             });
         }

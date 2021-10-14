@@ -724,6 +724,123 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalUpdatePrivilegio" style="display:none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="form-cadastro" id="formUpdatePrivilegio" method="PUT" autocomplete="off"
+                enctype="multipart/form-data" action="{{ route('admin.update.privilegio') }}">
+                @csrf
+                <input type="hidden" id="idPri" name="idPri">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ajustar Privilégios</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Cargo:</label> <label
+                                        style="color: red; font-size: 12px;"> *
+                                    </label>
+                                    <select type="text" name="cargoPrivilegio" id="cargoPrivilegio" class="form-control"
+                                        maxlength="80" value="{{ old('cargoPrivilegio') }}"
+                                        placeholder="Selecione com o Cargo">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($cargos as $cargo)
+                                            <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback cargoPrivilegio_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="text-align: -webkit-center;">
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Usuários:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowusu" name="usuarioPrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowusu"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Clientes:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowcli" name="clientePrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowcli"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Financeiro:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowfin" name="financeiroPrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowfin"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Produtos:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowpro" name="produtoPrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowpro"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6" style="text-align: -webkit-center;">
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Estoque:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowest" name="estoquePrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowest"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Fornecedores:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowfor" name="fornecedorPrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowfor"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Detalhes:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowdet" name="detalhePrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowdet"></label>
+                                    </div>
+                                </div>
+                                <div class="form-group switch_group">
+                                    <label class="modal-label">Logistica:</label><br>
+                                    <div class="switch__container">
+                                        <input id="switch-shadowlog" name="logisticaPrivilegio" value="1"
+                                            class="switch switch--shadow" type="checkbox">
+                                        <label for="switch-shadowlog"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancela btn btn-secondary btn-danger"
+                            data-form="formRegisterPrivilegio" data-modal="modalRegisterPrivilegio">Cancelar</button>
+                        <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
 @endsection
 
 @push('ajax')
@@ -969,72 +1086,44 @@
 
             function editUser(id)
         {
-            $.get('/admin/Usuario/Editar_usuario/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_usuario/' + id, function (usuario) {
+                $("#idUse").val(usuario.id);
+                $("#nomeUserUp").val(usuario.id)
+                $("#usu_usuarioUp").val(usuario.id)
+                $("#cpfUserUp").val(usuario.id)
+                $("#celularUserUp").val(usuario.id)
+                $("#senhaUserUp").val(usuario.id)
+                $("#cargoUserUp").val(usuario.id)
+                $("#statusUserUp").val(usuario.id)
+                $("modalUpdateUser").modal('toggle');
 
             });
         }
 
         function editCargo(id)
         {
-            $.get('/admin/Usuario/Editar_cargo/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_cargo/' + id, function (cargo) {
+                $("#idCar").val(cargo.id);
+                $("#descricaoCargoUp").val(cargo.id)
+                $("modalUpdateCargo").modal('toggle');
 
             });
         }
 
         function editPrivilegio(id)
         {
-            $.get('/admin/Usuario/Editar_privilegio/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_privilegio/' + id, function (privilegio) {
+                $("#idPri").val(privilegio.id);
+                $("#cargoPrivilegio").val(privilegio.id)
+                $("#usuarioPrivilegio").val(privilegio.id)
+                $("#privilegioPrivilegio").val(privilegio.id)
+                $("#financeiroPrivilegio").val(privilegio.id)
+                $("#produtoPrivilegio").val(privilegio.id)
+                $("#estoquePrivilegio").val(privilegio.id)
+                $("#fornecedorPrivilegio").val(privilegio.id)
+                $("#detalhePrivilegio").val(privilegio.id)
+                $("#logisticaPrivilegio").val(privilegio.id)
+                $("modalUpdatePrivilegio").modal('toggle');
 
             });
         }

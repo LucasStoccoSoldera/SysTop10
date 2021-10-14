@@ -670,48 +670,24 @@
 
             function editLogistica(id)
         {
-            $.get('/admin/Usuario/Editar_logistica/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_logistica/' + id, function (logistica) {
+                $("#idLog").val(logistica.id);
+                $("#pacoteLogisticaUp").val(logistica.id)
+                $("#transLogisticaUp").val(logistica.id)
+                $("modalUpdateLogistica").modal('toggle');
 
             });
         }
 
         function editTransportadora(id)
         {
-            $.get('/admin/Usuario/Editar_transportadora/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_transportadora/' + id, function (transportadora) {
+                $("#idTrans").val(transportadora.id);
+                $("#nomeTransUp").val(transportadora.id)
+                $("#limitetransTransUp").val(transportadora.id)
+                $("#telefoneTransUp").val(transportadora.id)
+                $("#celularTransUp").val(transportadora.id)
+                $("modalUpdateTransportadora").modal('toggle');
 
             });
         }

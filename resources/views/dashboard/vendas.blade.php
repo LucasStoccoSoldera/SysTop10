@@ -1315,48 +1315,35 @@
 
             function editVenda(id)
         {
-            $.get('/admin/Usuario/Editar_venda/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_venda/' + id, function (venda) {
+                $("#idVen").val(venda.id);
+                $("#IDVendaUp").val(venda.id)
+                $("#IDClienteUp").val(venda.id)
+                $("#VTVendaUp").val(venda.id)
+                $("#descontoVendaUp").val(venda.id)
+                $("#IDTipoPagamentoUp").val(venda.id)
+                $("#parcelasVendaUp").val(venda.id)
+                $("#IDLogisticaUp").val(venda.id)
+                $("#statusVendaUp").val(venda.id)
+                $("modalUpdateVenda").modal('toggle');
 
             });
         }
 
         function editItemVenda(id)
         {
-            $.get('/admin/Usuario/Editar_item_venda/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_item_venda/' + id, function (itemvenda) {
+                $("#idIteVen").val(itemvenda.id);
+                $("#IDItemVendaUp").val(itemvenda.id)
+                $("#descricaoItemVendaUp").val(itemvenda.id)
+                $("#IDCorUp").val(itemvenda.id)
+                $("#IDDimensaoUp").val(itemvenda.id)
+                $("#IDProdutoUp").val(itemvenda.id)
+                $("#qtdeItemVendaUp").val(itemvenda.id)
+                $("#anexoItemVendaUp").val(itemvenda.id)
+                $("#VUItemVendaUp").val(itemvenda.id)
+                $("#VTItemVendaUp").val(itemvenda.id)
+                $("modalUpdateItemVenda").modal('toggle');
 
             });
         }

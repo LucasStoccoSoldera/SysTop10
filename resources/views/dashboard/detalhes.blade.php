@@ -214,7 +214,6 @@
                 <form class="form-cadastro" id="formRegisterCentroCusto" method="PUT" autocomplete="off"
                     enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
                     @csrf
-                    <input type="hidden" id="idPag" name="idPag">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Atualizar Centro de Custo</h4>
@@ -330,6 +329,7 @@
                 <form class="form-cadastro" id="formUpdateTpgPagto" method="POST" autocomplete="off"
                     enctype="multipart/form-data" action="{{ route('admin.create.tpgpagto') }}">
                     @csrf
+                    <input type="hidden" id="idPag" name="idPag">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Cadastrar Tipo de Pagamento</h4>
@@ -437,48 +437,20 @@
 
                 function editCentroCusto(id)
         {
-            $.get('/admin/Usuario/Editar_centro_custo/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_centro_custo/' + id, function (centrocusto) {
+                $("#idCC").val(centrocusto.id);
+                $("#NomeCentroCustoUp").val(centrocusto.id)
+                $("modalUpdateCentroCusto").modal('toggle');
 
             });
         }
 
         function editTpgPagto(id)
         {
-            $.get('/admin/Usuario/Editar_tipo_pagamento/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.id)
-                $("#usuarioClienteUp").val(cliente.id)
-                $("#cpfClienteUp").val(cliente.id)
-                $("#cnpjClienteUp").val(cliente.id)
-                $("#telefoneClienteUp").val(cliente.id)
-                $("#celularClienteUp").val(cliente.id)
-                $("#senhaClienteUp").val(cliente.id)
-                $("#cepClienteUp").val(cliente.id)
-                $("#estadoClienteUp").val(cliente.id)
-                $("#cidadeClienteUp").val(cliente.id)
-                $("#bairroClienteUp").val(cliente.id)
-                $("#ruaClienteUp").val(cliente.id)
-                $("#ncasaClienteUp").val(cliente.id)
-                $("#complementoClienteUp").val(cliente.id)
-                $("#statusClienteUp").val(cliente.id)
-                $("modalUpdateCliente").modal('toggle');
+            $.get('/admin/Usuario/Editar_tipo_pagamento/' + id, function (tpgpagto) {
+                $("#idPag").val(tpgpagto.id);
+                $("#TPTipoPagto").val(tpgpagto.id)
+                $("modalUpdateTpgPagto").modal('toggle');
 
             });
         }
