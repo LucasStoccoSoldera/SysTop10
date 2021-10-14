@@ -25,6 +25,7 @@ class CompraRegister extends Controller
      */
     protected function createCompra(Request $request)
     {
+
         $validator = Validator::make(
             $request->all(),
             [

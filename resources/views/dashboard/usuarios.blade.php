@@ -410,6 +410,7 @@
         <form class="form-cadastro" id="formUpdateUser" method="PUT" autocomplete="off" enctype="multipart/form-data"
             action="{{ route('admin.update.user') }}">
             @csrf
+            <input type="hidden" id="idUse" name="idUse">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Atualizar Usuário</h4>
@@ -423,41 +424,41 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Nome Completo:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="nomeUser" id="nomeUser" class="form-control" maxlength="25"
-                                    value="{{ old('nomeUser') }}" placeholder="Entre com o Nome" autofocus>
+                                <input type="text" name="nomeUserUp" id="nomeUserUp" class="form-control" maxlength="25"
+                                    value="{{ old('nomeUserUp') }}" placeholder="Entre com o Nome" autofocus>
                                     <div class="div-feedback">
-                                <span class="invalid-feedback nomeUser_error" role="alert">
+                                <span class="invalid-feedback nomeUserUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Email para Login:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
-                                    value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
+                                <input type="text" name="usu_usuarioUp" id="usu_usuarioUp" class="form-control"
+                                    value="{{ old('usu_usuarioUp') }}" placeholder="Entre com o Login">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback usu_usuario_error" role="alert">
+                                <span class="invalid-feedback usu_usuarioUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
                                     * </label>
-                                <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
-                                    value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
+                                <input type="text" name="cpfUserUp" id="cpfUserUp" class="cpf form-control"
+                                    value="{{ old('cpfUserUp') }}" placeholder="Entre com o CPF">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback cpfUser_error" role="alert">
+                                <span class="invalid-feedback cpfUserUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Celular:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="celularUser" id="celularUser"
-                                    class="celular form-control" value="{{ old('celularUser') }}"
+                                <input type="text" name="celularUserUp" id="celularUserUp"
+                                    class="celular form-control" value="{{ old('celularUserUp') }}"
                                     placeholder="Entre com o Celular">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback celularUser_error" role="alert">
+                                <span class="invalid-feedback celularUserUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
@@ -466,28 +467,28 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Senha:</label> <label style="color: red; font-size: 12px;"> *
                                 </label>
-                                <input type="password" name="senhaUser" id="senhaUser" class="form-control"
-                                    value="{{ old('senhaUser') }}" placeholder="Entre com a Senha">
+                                <input type="password" name="senhaUserUp" id="senhaUserUp" class="form-control"
+                                    value="{{ old('senhaUserUp') }}" placeholder="Entre com a Senha">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback senhaUser_error" role="alert">
+                                <span class="invalid-feedback senhaUserUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Confirmar Senha:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
+                                <input type="password" name="senhaUserUp_confirmation" id="senhaUserUp_confirmation"
                                     class="form-control" placeholder="Confirmação da Senha">
                                     <div class="div-feedback">
-                                        <span class="invalid-feedback senhaUser_error" role="alert">
+                                        <span class="invalid-feedback senhaUserUp_error" role="alert">
                                         </span>
                                             </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Permissões:</label> <label style="color: red; font-size: 12px;"> *
                                 </label>
-                                <select type="text" name="cargoUser" id="cargoUser" class="form-control" maxlength="80"
-                                    value="{{ old('cargoUser') }}" placeholder="Selecione com o Cargo">
+                                <select type="text" name="cargoUserUp" id="cargoUserUp" class="form-control" maxlength="80"
+                                    value="{{ old('cargoUserUp') }}" placeholder="Selecione com o Cargo">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($cargos as $cargo)
                                         <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
@@ -495,7 +496,7 @@
                                     @endforeach
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback cargoUser_error" role="alert">
+                                <span class="invalid-feedback cargoUserUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
@@ -503,7 +504,7 @@
                                 <label class="modal-label">Status:</label> <label style="color: red; font-size: 12px;">
                                     * </label><br>
                                 <div class="switch__container">
-                                    <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
+                                    <input id="switch-shadow" name="statusUserUp" value={{ 'Ativo' ?? 'Inativo' }}
                                         class="switch switch--shadow" type="checkbox">
                                     <label for="switch-shadow"></label>
                                 </div>
@@ -527,6 +528,7 @@
         <form class="form-cadastro" id="formUpdateCargo" method="PUT" autocomplete="off"
             enctype="multipart/form-data" action="{{ route('admin.update.cargo') }}">
             @csrf
+            <input type="hidden" id="idCar" name="idCar">
             <div class="modal-content" style="width: 150%">
                 <div class="modal-header">
                     <h4 class="modal-title">Atualizar Cargo</h4>
@@ -540,10 +542,10 @@
                             <div class="form-group" id="form-direita">
                                 <label class="modal-label">Cargo:</label> <label style="color: red; font-size: 12px;"> *
                                 </label>
-                                <input type="text" name="descricaoCargo" id="descricaoCargo" class="form-control"
-                                    maxlength="15" value="{{ old('descricaoCargo') }}"
+                                <input type="text" name="descricaoCargoUp" id="descricaoCargoUp" class="form-control"
+                                    maxlength="15" value="{{ old('descricaoCargoUp') }}"
                                     placeholder="Entre com o Cargo">
-                                <span class="invalid-feedback descricaoCargo_error" role="alert">
+                                <span class="invalid-feedback descricaoCargoUp_error" role="alert">
                                 </span>
                             </div>
                         </div>

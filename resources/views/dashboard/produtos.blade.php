@@ -1042,6 +1042,7 @@
         <form id="formUpdateProdutos" method="PUT" autocomplete="off" enctype="multipart/form-data"
             action="{{ route('admin.update.produto') }}">
             @csrf
+            <input type="hidden" id="idPro" name="idPro">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Atualizar Produtos</h4>
@@ -1055,30 +1056,30 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID:</label> <label style="color: red; font-size: 12px;">
                                     * </label>
-                                <input type="number" name="IDProduto" id="IDProduto" class="form-control id"
-                                     value="{{ old('IDProduto') }}" placeholder="ID do Produto"
+                                <input type="number" name="IDProdutoUp" id="IDProdutoUp" class="form-control id"
+                                     value="{{ old('IDProdutoUp') }}" placeholder="ID do Produto"
                                     autofocus>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback IDProduto_error" role="alert">
+                                <span class="invalid-feedback IDProdutoUp_error" role="alert">
                                 </span>
                             </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Nome do Produto:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="NomeProduto" id="NomeProduto" class="form-control"
-                                    maxlength="80" value="{{ old('NomeProduto') }}"
+                                <input type="text" name="NomeProdutoUp" id="NomeProdutoUp" class="form-control"
+                                    maxlength="80" value="{{ old('NomeProdutoUp') }}"
                                     placeholder="Entre com o Nome">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback NomeProduto_error" role="alert">
+                                <span class="invalid-feedback NomeProdutoUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Tipo de Produto:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="TipoProduto" id="TipoProduto" class="form-control"
-                                    maxlength="50" value="{{ old('TipoProduto') }}"
+                                <select type="text" name="TipoProdutoUp" id="TipoProdutoUp" class="form-control"
+                                    maxlength="50" value="{{ old('TipoProdutoUp') }}"
                                     placeholder="Selecione com o Tipo do Produto">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($tipos as $tipo)
@@ -1087,18 +1088,18 @@
                                     @endforeach
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback TipoProduto_error" role="alert">
+                                <span class="invalid-feedback TipoProdutoUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Preço de Custo:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="PCProduto" id="PCProduto" class="dinheiro form-control"
+                                <input type="text" name="PCProdutoUp" id="PCProdutoUp" class="dinheiro form-control"
                                     maxlength="9"
-                                    value="{{ old('PCProduto') }}" placeholder="Entre com o Preço de Custo">
+                                    value="{{ old('PCProdutoUp') }}" placeholder="Entre com o Preço de Custo">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback PCProduto_error" role="alert">
+                                <span class="invalid-feedback PCProdutoUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
@@ -1106,11 +1107,11 @@
                                 <label class="modal-label">Preço de Venda:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                     <label style="color: blueviolet; font-size: 14px;" onclick="abrirModal('#modalPreenchePV');"> Calcular... </label>
-                                <input type="text" name="PVProduto" id="PVProduto" class=" dinheiro form-control"
+                                <input type="text" name="PVProdutoUp" id="PVProdutoUp" class=" dinheiro form-control"
                                     maxlength="9"
-                                    value="{{ old('PVProduto') }}" placeholder="Entre com o Preço de Venda">
+                                    value="{{ old('PVProdutoUp') }}" placeholder="Entre com o Preço de Venda">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback PVProduto_error" role="alert">
+                                <span class="invalid-feedback PVProdutoUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
@@ -1119,8 +1120,8 @@
                             <div class="form-group">
                                 <label class="modal-label">Material:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="MaterialProduto" id="MaterialProduto" class="form-control"
-                                    maxlength="50" value="{{ old('MaterialProduto') }}"
+                                <select type="text" name="MaterialProdutoUp" id="MaterialProdutoUp" class="form-control"
+                                    maxlength="50" value="{{ old('MaterialProdutoUp') }}"
                                     placeholder="Selecione com a Material Base">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($materiais as $material)
@@ -1130,15 +1131,15 @@
                                     @endforeach
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback MaterialProduto_error" role="alert">
+                                <span class="invalid-feedback MaterialProdutoUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Pacote:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="PacoteProduto" id="PacoteProduto" class="form-control"
-                                    maxlength="15" value="{{ old('PacoteProduto') }}"
+                                <select type="text" name="PacoteProdutoUp" id="PacoteProdutoUp" class="form-control"
+                                    maxlength="15" value="{{ old('PacoteProdutoUp') }}"
                                     placeholder="Selecione com o Pacote">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pacotes as $pacote)
@@ -1147,49 +1148,49 @@
                                     @endforeach
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback PacoteProduto_error" role="alert">
+                                <span class="invalid-feedback PacoteProdutoUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Promoção: </label>
-                                    <input type="text" name="PromocaoProduto" id="PromocaoProduto" class=" form-control"
+                                    <input type="text" name="PromocaoProdutoUp" id="PromocaoProdutoUp" class=" form-control"
                                     maxlength="9"
-                                    value="{{ old('PromocaoProduto') }}" placeholder="Promoção?">
+                                    value="{{ old('PromocaoProdutoUp') }}" placeholder="Promoção?">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback PromocaoProduto_error" role="alert">
+                                <span class="invalid-feedback PromocaoProdutoUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="modal-label">Pedido Mínimo: </label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                                    <input type="number" name="PedidoMinimoProduto" id="PedidoMinimoProduto" class=" form-control"
+                                    <input type="number" name="PedidoMinimoProdutoUp" id="PedidoMinimoProdutoUp" class=" form-control"
                                     maxlength="9"
-                                    value="{{ old('PedidoMinimoProduto') }}" placeholder="Pedido Mínimo">
+                                    value="{{ old('PedidoMinimoProdutoUp') }}" placeholder="Pedido Mínimo">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback PedidoMinimoProduto_error" role="alert">
+                                <span class="invalid-feedback PedidoMinimoProdutoUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label"> Personalizável?</label>
                                 <div class="switch__container">
-                                    <input id="switch-shadow" name="PersoProduto" value={{ 'Sim' }}
+                                    <input id="switch-shadow" name="PersoProdutoUp" value={{ 'Sim' }}
                                         class="switch switch--shadow" type="checkbox">
                                     <label for="switch-shadow"></label>
-                                    <span class="invalid-feedback PersoProduto_error" role="alert">
+                                    <span class="invalid-feedback PersoProdutoUp_error" role="alert">
                                     </span>
                                 </div>
                             </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"> Terceirizado?</label>
                                     <div class="switch__container">
-                                        <input id="switch-shadow-2" name="TerceProduto"
+                                        <input id="switch-shadow-2" name="TerceProdutoUp"
                                             value={{ 'Sim' }} class="switch switch--shadow"
                                             type="checkbox">
                                         <label for="switch-shadow-2"></label>
-                                        <span class="invalid-feedback TerceProduto_error" role="alert">
+                                        <span class="invalid-feedback TerceProdutoUp_error" role="alert">
                                         </span>
                                     </div>
                                 </div>
@@ -1227,6 +1228,7 @@
     <form class="form-cadastro" id="formUpdateTipoProduto" method="PUT" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.update.tipoproduto') }}">
         @csrf
+        <input type="hidden" id="idTpp" name="idTpp">
         <div class="modal-content" style="width: 150%">
             <div class="modal-header">
                 <h4 class="modal-title">Atualizar Tipo de Produto</h4>
@@ -1240,10 +1242,10 @@
                         <div class="form-group" id="form-direita" style="width: 100%;">
                             <label class="modal-label">Tipo de Produto: </label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="NomeTipoProduto" id="NomeTipoProduto"style="width: 100%; margin-right: 0px;" class="form-control"
-                                maxlength="50" value="{{ old('NomeTipoProduto') }}"
+                            <input type="text" name="NomeTipoProdutoUp" id="NomeTipoProdutoUp"style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="50" value="{{ old('NomeTipoProdutoUp') }}"
                                 placeholder="Entre com o Tipo de Produto">
-                            <span class="invalid-feedback NomeTipoProduto_error" role="alert">
+                            <span class="invalid-feedback NomeTipoProdutoUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1300,6 +1302,7 @@
     <form class="form-cadastro" id="formUpdateMaterial" method="PUT" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.update.material') }}">
         @csrf
+        <input type="hidden" id="idMat" name="idMat">
         <div class="modal-content" style="width: 150%">
             <div class="modal-header">
                 <h4 class="modal-title">Atualizar Materiais dos Produtos</h4>
@@ -1313,10 +1316,10 @@
                         <div class="form-group" id="form-direita">
                             <label class="modal-label">Material de Fabricação: </label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="NomeMaterial" id="NomeMaterial" style="width: 100%; margin-right: 0px;" class="form-control"
-                                maxlength="50" value="{{ old('NomeMaterial') }}"
+                            <input type="text" name="NomeMaterialUp" id="NomeMaterialUp" style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="50" value="{{ old('NomeMaterialUp') }}"
                                 placeholder="Entre com o Material de Fabricação">
-                            <span class="invalid-feedback NomeMaterial_error" role="alert">
+                            <span class="invalid-feedback NomeMaterialUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1370,6 +1373,7 @@
     <form class="form-cadastro" id="formUpdateDimensao" method="PUT" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.update.dimensao') }}">
         @csrf
+        <input type="hidden" id="idDim" name="idDim">
         <div class="modal-content" style="width: 150%">
             <div class="modal-header">
                 <h4 class="modal-title">Atualizar Dimensões de Produtos</h4>
@@ -1383,9 +1387,9 @@
                         <div class="form-group">
                             <label class="modal-label">Nome e Dimensão <br>(Sacola Grande ZZZ X ZZZ X ZZZ): </label><label style="color: red; font-size: 12px;">
                                  * </label>
-                            <input type="text" name="NomeDimensao" id="NomeDimensao" style="width: 100%; margin-right: 0px;" class="form-control"
-                                value="{{ old('NomeDimensao') }}" placeholder="Entre com a Nova Dimensão">
-                            <span class="invalid-feedback NomeDimensao_error" role="alert">
+                            <input type="text" name="NomeDimensaoUp" id="NomeDimensaoUp" style="width: 100%; margin-right: 0px;" class="form-control"
+                                value="{{ old('NomeDimensaoUp') }}" placeholder="Entre com a Nova Dimensão">
+                            <span class="invalid-feedback NomeDimensaoUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1440,6 +1444,7 @@
     <form class="form-cadastro" id="formUpdateCores" method="PUT" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.update.cor') }}">
         @csrf
+        <input type="hidden" id="idCor" name="idCor">
         <div class="modal-content" style="width: 150%">
             <div class="modal-header">
                 <h4 class="modal-title">Atualizar Cores dos Produtos</h4>
@@ -1453,10 +1458,10 @@
                         <div class="form-group">
                             <label class="modal-label">Nome da Cor:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="NomeCores" id="NomeCores" style="width: 100%; margin-right: 0px;" class="form-control"
-                                maxlength="25" value="{{ old('NomeCores') }}"
+                            <input type="text" name="NomeCoresUp" id="NomeCoresUp" style="width: 100%; margin-right: 0px;" class="form-control"
+                                maxlength="25" value="{{ old('NomeCoresUp') }}"
                                 placeholder="Entre com o Nome da Cor">
-                            <span class="invalid-feedback NomeCores_error" role="alert">
+                            <span class="invalid-feedback NomeCoresUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1464,17 +1469,17 @@
                         <div class="form-group">
                             <label class="modal-label">Código de Cor:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="color" name="CodigoCores" id="CodigoCores" style="width: 100%; margin-right: 0px;" class="form-control"
+                            <input type="color" name="CodigoCoresUp" id="CodigoCoresUp" style="width: 100%; margin-right: 0px;" class="form-control"
                                 placeholder="Entre com o Codigo da Cor">
-                            <span class="invalid-feedback CodigoCores_error" role="alert">
+                            <span class="invalid-feedback CodigoCoresUp_error" role="alert">
                             </span>
                         </div>
                         <div class="form-group">
                             <label class="modal-label">Cor Especial:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="EspecialCores" id="EspecialCores" style="width: 100%; margin-right: 0px;" class="form-control"
-                                value="{{ old('EspecialCores') }}" placeholder="Entre com a Cor Especial">
-                            <span class="invalid-feedback EspecialCores_error" role="alert">
+                            <input type="text" name="EspecialCoresUp" id="EspecialCoresUp" style="width: 100%; margin-right: 0px;" class="form-control"
+                                value="{{ old('EspecialCoresUp') }}" placeholder="Entre com a Cor Especial">
+                            <span class="invalid-feedback EspecialCoresUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1532,6 +1537,7 @@
     <form class="form-cadastro" id="formUpdatePacotes" method="PUT" autocomplete="off"
         enctype="multipart/form-data" action="{{ route('admin.update.pacote') }}">
         @csrf
+        <input type="hidden" id="idPac" name="idPac">
         <div class="modal-content" style="width: 100%">
             <div class="modal-header">
                 <h4 class="modal-title">Cadastrar Pacotes para Envio</h4>
@@ -1545,10 +1551,10 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Dimensão da Caixa:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="DimensaoPacotes" id=" dimensao DimensaoPacotes"
-                                class="dimensao form-control" value="{{ old('DimensaoPacotes') }}"
+                            <input type="text" name="DimensaoPacotesUp" id="DimensaoPacotesUp"
+                                class="dimensao form-control" value="{{ old('DimensaoPacotesUp') }}"
                                 placeholder="Entre com a Dimensão da Caixa">
-                            <span class="invalid-feedback DimensaoPacotes_error" role="alert">
+                            <span class="invalid-feedback DimensaoPacotesUp_error" role="alert">
                             </span>
                         </div>
                     </div>
@@ -1556,10 +1562,10 @@
                         <div class="form-group" id="form-group">
                             <label class="modal-label">Descrição da Caixa:</label> <label
                                 style="color: red; font-size: 12px;"> * </label>
-                            <input type="text" name="DescricaoPacotes" id="DescricaoPacotes" class="form-control"
-                                maxlength="80" value="{{ old('DescricaoPacotes') }}"
+                            <input type="text" name="DescricaoPacotesUp" id="DescricaoPacotesUp" class="form-control"
+                                maxlength="80" value="{{ old('DescricaoPacotesUp') }}"
                                 placeholder="Entre com a Descrição">
-                            <span class="invalid-feedback DescricaoPacotes_error" role="alert">
+                            <span class="invalid-feedback DescricaoPacotesUp_error" role="alert">
                             </span>
                         </div>
                     </div>

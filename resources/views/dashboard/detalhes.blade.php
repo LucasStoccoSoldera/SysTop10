@@ -216,6 +216,7 @@
             <form class="form-cadastro" id="formRegisterCentroCusto" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
                 @csrf
+                <input type="hidden" id="idPag" name="idPag">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Atualizar Centro de Custo</h4>
@@ -229,10 +230,10 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Nome do Departamento:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="NomeCentroCusto" id="NomeCentroCusto" maxlength="25"
-                                        value="{{ old('NomeCentroCusto') }}" class="form-control"
+                                    <input type="text" name="NomeCentroCustoUp" id="NomeCentroCustoUp" maxlength="25"
+                                        value="{{ old('NomeCentroCustoUp') }}" class="form-control"
                                         placeholder="Entre com o Nome do Departamento">
-                                    <span class="invalid-feedback NomeCentroCusto_error" role="alert">
+                                    <span class="invalid-feedback NomeCentroCustoUp_error" role="alert">
                                     </span>
                                 </div>
                             </div>
@@ -292,6 +293,7 @@
             <form class="form-cadastro" id="formUpdateCentroCusto" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
                 @csrf
+                <input type="hidden" id="idCC" name="idCC">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Cadastrar Centro de Custo</h4>
@@ -305,10 +307,10 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Nome do Departamento:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="NomeCentroCusto" id="NomeCentroCusto" maxlength="25"
-                                        value="{{ old('NomeCentroCusto') }}" class="form-control"
+                                    <input type="text" name="NomeCentroCustoUp" id="NomeCentroCustoUp" maxlength="25"
+                                        value="{{ old('NomeCentroCustoUp') }}" class="form-control"
                                         placeholder="Entre com o Nome do Departamento">
-                                    <span class="invalid-feedback NomeCentroCusto_error" role="alert">
+                                    <span class="invalid-feedback NomeCentroCustoUp_error" role="alert">
                                     </span>
                                 </div>
                             </div>

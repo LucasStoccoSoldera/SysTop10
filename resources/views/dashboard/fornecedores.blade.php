@@ -362,6 +362,7 @@
             <form id="formUpdateFornecedores" method="PUT" autocomplete="off" enctype="multipart/form-data"
                 action="{{ route('admin.update.fornecedor') }}">
                 @csrf
+                <input type="hidden" id="idFor" name="idFor">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">Atualizar Fornecedores</h4>
@@ -375,61 +376,61 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Nome:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="nomeFornecedor" id="nomeFornecedor" maxlength="80"
-                                        value="{{ old('nomeFornecedor') }}" class="form-control"
+                                    <input type="text" name="nomeFornecedorUp" id="nomeFornecedorUp" maxlength="80"
+                                        value="{{ old('nomeFornecedorUp') }}" class="form-control"
                                         placeholder="Entre com o Nome" autofocus>
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback nomeFornecedor_error" role="alert">
+                                    <span class="invalid-feedback nomeFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Telefone:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="telefoneFornecedor" id="telefoneFornecedor"
-                                        value="{{ old('telefoneFornecedor') }}" class="telefone form-control"
+                                    <input type="text" name="telefoneFornecedorUp" id="telefoneFornecedorUp"
+                                        value="{{ old('telefoneFornecedorUp') }}" class="telefone form-control"
                                         placeholder="Entre com o Telefone">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback telefoneFornecedor_error" role="alert">
+                                    <span class="invalid-feedback telefoneFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Celular:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="celularFornecedor" id="celularFornecedor"
-                                        class="celular form-control" value="{{ old('celularFornecedor') }}"
+                                    <input type="text" name="celularFornecedorUp" id="celularFornecedorUp"
+                                        class="celular form-control" value="{{ old('celularFornecedorUp') }}"
                                         placeholder="Entre com o Celular">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback celularFornecedor_error" role="alert">
+                                    <span class="invalid-feedback celularFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
                                         * </label>
-                                    <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="cpf form-control"
-                                        value="{{ old('cpfFornecedor') }}" placeholder="Entre com o CPF">
+                                    <input type="text" name="cpfFornecedorUp" id="cpfFornecedorUp" class="cpf form-control"
+                                        value="{{ old('cpfFornecedorUp') }}" placeholder="Entre com o CPF">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback cpfFornecedor_error" role="alert">
+                                    <span class="invalid-feedback cpfFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CNPJ:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cnpjFornecedor" id="cnpjFornecedor"
-                                        class="cnpj form-control" value="{{ old('cnpjFornecedor') }}"
+                                    <input type="text" name="cnpjFornecedorUp" id="cnpjFornecedorUp"
+                                        class="cnpj form-control" value="{{ old('cnpjFornecedorUp') }}"
                                         placeholder="Entre com o CNPJ">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback cnpjFornecedor_error" role="alert">
+                                    <span class="invalid-feedback cnpjFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produtos:</label>
-                                    <select type="text" name="produtosFornecedor" id="produtosFornecedor"
-                                        class="form-control" maxlength="80" value="{{ old('produtosFornecedor') }}"
+                                    <select type="text" name="produtosFornecedorUp" id="produtosFornecedorUp"
+                                        class="form-control" maxlength="80" value="{{ old('produtosFornecedorUp') }}"
                                         placeholder="Selecione com o Produtos">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($produtos as $produto)
@@ -438,7 +439,7 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback produtosFornecedor_error" role="alert">
+                                    <span class="invalid-feedback produtosFornecedorUp_error" role="alert">
                                     </span>
                                     </div>
                                 </div>
@@ -447,65 +448,65 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"> CEP:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cepFornecedor" id="cepFornecedor" class="cep form-control"
-                                        value="{{ old('cepFornecedor') }}" placeholder="Entre com o CEP">
+                                    <input type="text" name="cepFornecedorUp" id="cepFornecedorUp" class="cep form-control"
+                                        value="{{ old('cepFornecedorUp') }}" placeholder="Entre com o CEP">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback cepFornecedor_error" role="alert">
+                                    <span class="invalid-feedback cepFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Estado:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="estadoFornecedor" id="estadoFornecedor"
-                                        class="form-control" maxlength="2" value="{{ old('estadoFornecedor') }}"
+                                    <input type="text" name="estadoFornecedorUp" id="estadoFornecedorUp"
+                                        class="form-control" maxlength="2" value="{{ old('estadoFornecedorUp') }}"
                                         placeholder="Entre com o Estado">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback estadoFornecedor_error" role="alert">
+                                    <span class="invalid-feedback estadoFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Cidade:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="cidadeFornecedor" id="cidadeFornecedor"
-                                        class="form-control" maxlength="120" value="{{ old('cidadeFornecedor') }}"
+                                    <input type="text" name="cidadeFornecedorUp" id="cidadeFornecedorUp"
+                                        class="form-control" maxlength="120" value="{{ old('cidadeFornecedorUp') }}"
                                         placeholder="Entre com a Cidade">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback cidadeFornecedor_error" role="alert">
+                                    <span class="invalid-feedback cidadeFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                     </div>
                                 <div class="form-group">
                                     <label class="modal-label">Bairro:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="bairroFornecedor" id="bairroFornecedor"
-                                        class="form-control" maxlength="80" value="{{ old('bairroFornecedor') }}"
+                                    <input type="text" name="bairroFornecedorUp" id="bairroFornecedorUp"
+                                        class="form-control" maxlength="80" value="{{ old('bairroFornecedorUp') }}"
                                         placeholder="Entre com o Bairro">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback bairroFornecedor_error" role="alert">
+                                    <span class="invalid-feedback bairroFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Rua:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="ruaFornecedor" id="ruaFornecedor"
-                                        class="form-control" maxlength="80" value="{{ old('ruaFornecedor') }}"
+                                    <input type="text" name="ruaFornecedorUp" id="ruaFornecedorUp"
+                                        class="form-control" maxlength="80" value="{{ old('ruaFornecedorUp') }}"
                                         placeholder="Entre com a Rua">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback ruaFornecedor_error" role="alert">
+                                    <span class="invalid-feedback ruaFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="modal-label">Número:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="number" name="ncasaFornecedor" id="ncasaFornecedor"
-                                        class="form-control" maxlength="4" value="{{ old('ncasaFornecedor') }}"
+                                    <input type="number" name="ncasaFornecedorUp" id="ncasaFornecedorUp"
+                                        class="form-control" maxlength="4" value="{{ old('ncasaFornecedorUp') }}"
                                         placeholder="Entre com o Número">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback ncasaFornecedor_error" role="alert">
+                                    <span class="invalid-feedback ncasaFornecedorUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>

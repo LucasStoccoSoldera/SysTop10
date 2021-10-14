@@ -336,6 +336,7 @@
         <form class="form-cadastro" id="formUpdateLogistica" method="PUT" autocomplete="off"
             enctype="multipart/form-data" action="{{ route('admin.update.logistica') }}">
             @csrf
+            <input type="hidden" id="idLog" name="idLog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Atualizar Relação Logística</h4>
@@ -349,8 +350,8 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Pacote</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="pacoteLogistica" id="pacoteLogistica" class="form-control"
-                                    maxlength="25" value="{{ old('pacoteLogistica') }}"
+                                <select type="text" name="pacoteLogisticaUp" id="pacoteLogisticaUp" class="form-control"
+                                    maxlength="25" value="{{ old('pacoteLogisticaUp') }}"
                                     placeholder="Selecione com um Pacote" autofocus>
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pacotes as $pacote)
@@ -358,14 +359,14 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <span class="invalid-feedback pacoteLogistica_error" role="alert">
+                                <span class="invalid-feedback pacoteLogisticaUp_error" role="alert">
                                 </span>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Transportadora:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="transLogistica" id="transLogistica" class="form-control"
-                                    maxlength="50" value="{{ old('transLogistica') }}"
+                                <select type="text" name="transLogisticaUp" id="transLogisticaUp" class="form-control"
+                                    maxlength="50" value="{{ old('transLogisticaUp') }}"
                                     placeholder="Selecione com uma Transportadora">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($transportadoras as $transportadora)
@@ -373,7 +374,7 @@
                                             {{ $transportadora['trans_nome'] }}</option>
                                     @endforeach
                                 </select>
-                                <span class="invalid-feedback transLogistica_error" role="alert">
+                                <span class="invalid-feedback transLogisticaUp_error" role="alert">
                                 </span>
                             </div>
                         </div>

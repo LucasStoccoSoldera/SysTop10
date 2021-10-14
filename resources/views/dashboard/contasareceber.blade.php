@@ -418,6 +418,7 @@
         <form id="formUpdateContasaReceber" method="PUT" autocomplete="off" enctype="multipart/form-data"
             action="{{ route('admin.update.receber') }}">
             @csrf
+            <input type="hidden" id="idRec" name="idRec">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Atualizar Conta a Receber</h4>
@@ -431,19 +432,19 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Descrição:</label><label style="color: red; font-size: 12px;">
                                      * </label>
-                                <input type="text" name="descricaoReceber" id="descricaoReceber" maxlength="80"
-                                    value="{{ old('descricaoReceber') }}" class="form-control"
+                                <input type="text" name="descricaoReceberUp" id="descricaoReceberUp" maxlength="80"
+                                    value="{{ old('descricaoReceberUp') }}" class="form-control"
                                     placeholder="Entre com a Descricao">
                                     <div class="div-feedback">
-                                <span class="invalid-feedback descricaoReceber_error" role="alert">
+                                <span class="invalid-feedback descricaoReceberUp_error" role="alert">
                                 </span>
                                     </div>
                             </div>
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Tipo de Pagamento:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="tipoPagtoReceber" id="tipoPagtoReceber" maxlength="25"
-                                    value="{{ old('tipoPagtoReceber') }}" class="form-control"
+                                <select type="text" name="tipoPagtoReceberUp" id="tipoPagtoReceberUp" maxlength="25"
+                                    value="{{ old('tipoPagtoReceberUp') }}" class="form-control"
                                     placeholder="Selecione com o Tipo de Pagamento">
                                     <option value="">------------Selecione------------</option>
                                     @foreach ($pagamentos as $pagamento)
@@ -452,7 +453,7 @@
                                     @endforeach
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback tipoPagtoReceber_error" role="alert">
+                                <span class="invalid-feedback tipoPagtoReceberUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
@@ -460,15 +461,15 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Status:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <select type="text" name="statusReceber" id="statusReceber" class="form-control"
-                                    maxlength="25" value="{{ old('statusReceber') }}"
+                                <select type="text" name="statusReceberUp" id="statusReceberUp" class="form-control"
+                                    maxlength="25" value="{{ old('statusReceberUp') }}"
                                     placeholder="Selecione o Status">
                                     <option value="">------------Selecione------------</option>
                                     <option value="Aberta">Aberto</option>
                                     <option value="Cancelada">Cancelada</option>
                                 </select>
                                 <div class="div-feedback">
-                                <span class="invalid-feedback statusReceber_error" role="alert">
+                                <span class="invalid-feedback statusReceberUp_error" role="alert">
                                 </span>
                                 </div>
                             </div>
@@ -477,19 +478,19 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Valor a Receber:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="valorReceber" id="valorReceber"
+                                    <input type="text" name="valorReceberUp" id="valorReceberUp"
                                         class="dinheiro form-control" maxlength="11"
-                                        value="{{ old('valorReceber') }}" placeholder="Entre com o Valor">
+                                        value="{{ old('valorReceberUp') }}" placeholder="Entre com o Valor">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback valorReceber_error" role="alert">
+                                    <span class="invalid-feedback valorReceberUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Qtde. Parcelas:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="parcelasReceber" id="parcelasReceber"
-                                        class="form-control" maxlength="25" value="{{ old('parcelasReceber') }}"
+                                    <select type="text" name="parcelasReceberUp" id="parcelasReceberUp"
+                                        class="form-control" maxlength="25" value="{{ old('parcelasReceberUp') }}"
                                         placeholder="Selecione a Qtde de Parcelas">
                                         <option value="">------------Selecione------------</option>
                                         <option value="1">A Vista</option>
@@ -506,19 +507,19 @@
                                         <option value="12">12x</option>
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback parcelasReceber_error" role="alert">
+                                    <span class="invalid-feedback parcelasReceberUp_error" role="alert">
                                     </span>
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Recebimento:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="date" name="dataReceber" id="dataReceber"
+                                    <input type="date" name="dataReceberUp" id="dataReceberUp"
                                         onkeypress="mascara(this, '##/##/####')" maxlength="10"
-                                        value="{{ old('dataReceber') }}" class="form-control"
+                                        value="{{ old('dataReceberUp') }}" class="form-control"
                                         placeholder="Entre com a Data">
                                         <div class="div-feedback">
-                                    <span class="invalid-feedback dataReceber_error" role="alert">
+                                    <span class="invalid-feedback dataReceberUp_error" role="alert">
                                     </span>
                                         </div>
                                 </div>
