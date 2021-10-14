@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\DB;
 class ClienteUpdate extends Controller
 {
 
-    protected function editCliente(ClienteRequest $request)
+    protected function editCliente($id)
     {
-        $object = Cliente::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Cliente::find($id);
+        return response()->json('object');
     }
 
     /**

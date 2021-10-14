@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedores;
 use App\Providers\RouteServiceProvider;
+use Facade\FlareClient\Stacktrace\Frame;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -14,10 +15,10 @@ use Illuminate\Support\Facades\Hash;
 class FornecedorUpdate extends Controller
 {
 
-    protected function editFornecedor(Request $request)
+    protected function editFornecedor($id)
     {
-        $object = Fornecedores::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Fornecedores::find($id);
+        return response()->json('object');
     }
 
     /**

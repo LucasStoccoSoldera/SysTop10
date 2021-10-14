@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 class CoresUpdate extends Controller
 {
 
-    protected function editCor(Request $request)
+    protected function editCor($id)
     {
-        $object = Cor::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Cor::find($id);
+        return response()->json('object');
     }
 
     /**

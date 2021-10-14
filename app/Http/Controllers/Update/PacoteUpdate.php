@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 
 class PacoteUpdate extends Controller
 {
-    protected function editPacote(Request $request)
+    protected function editPacote($id)
     {
-        $object = Pacote::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Pacote::find($id);
+        return response()->json('object');
     }
 
     /**

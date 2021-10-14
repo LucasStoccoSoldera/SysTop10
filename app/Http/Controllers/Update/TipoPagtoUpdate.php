@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class TipoPagtoUpdate extends Controller
 {
 
-    protected function editTipoPagto(Request $request)
+    protected function editTipoPagto($id)
     {
-        $object = TipoPagto::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = TipoPagto::find($id);
+        return response()->json('object');
     }
 
     /**

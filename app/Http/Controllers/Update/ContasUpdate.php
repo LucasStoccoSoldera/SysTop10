@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 class ContasUpdate extends Controller
 {
 
-    protected function editPagar(Request $request)
+    protected function editPagar($id)
     {
-        $object = Contas_a_Pagar::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Contas_a_Pagar::find($id);
+        return response()->json('object');
     }
 
     /**

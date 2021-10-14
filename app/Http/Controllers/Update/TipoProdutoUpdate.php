@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class TipoProdutoUpdate extends Controller
 {
 
-    protected function editTipoProduto(Request $request)
+    protected function editTipoProduto($id)
     {
-        $object = TipoProduto::find($request->IDEdit->get());
-        return response()->json(compact('object'));
+        $object = TipoProduto::find($id);
+        return response()->json('object');
     }
 
     /**

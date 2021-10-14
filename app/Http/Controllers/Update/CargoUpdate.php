@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Hash;
 class CargoUpdate extends Controller
 {
 
-    protected function editCargo(Request $request)
+    protected function editCargo($id)
     {
-        $object = Cargo::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Cargo::find($id);
+        return response()->json('object');
     }
 
     protected function updateCargo(Request $request)

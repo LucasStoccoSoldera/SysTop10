@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Validator;
 class CentroCustoUpdate extends Controller
 {
 
-    protected function editCentroCusto(Request $request)
+    protected function editCentroCusto($id)
     {
-        $object = Centro_Custo::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Centro_Custo::find($id);
+        return response()->json('object');
     }
 
     /**

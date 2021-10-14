@@ -20,10 +20,16 @@ use Illuminate\Support\Facades\DB;
 class CompraUpdate extends Controller
 {
 
-    protected function editCompra(Request $request)
+    protected function editCompra($id)
     {
-        $object = Compras::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Compras::find($id);
+        return response()->json('object');
+    }
+
+    protected function editItemCompra($id)
+    {
+        $object = Compras_Detalhe::find($id);
+        return response()->json('object');
     }
 
     /**

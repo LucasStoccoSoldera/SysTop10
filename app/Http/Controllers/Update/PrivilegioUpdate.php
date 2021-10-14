@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 class PrivilegioUpdate extends Controller
 {
 
-    protected function  editPrivilegio(Request $request)
+    protected function  editPrivilegio($id)
     {
-        $object = Privilegio::find($request->IDEdit)->get();
-        return response()->json([compact('object')]);
+        $object = Privilegio::find($id);
+        return response()->json('object');
     }
 
     protected function updatePrivilegio(Request $request)

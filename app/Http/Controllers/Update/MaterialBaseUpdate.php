@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class MaterialBaseUpdate extends Controller
 {
 
-    protected function editMaterialBase(Request $request)
+    protected function editMaterialBase($id)
     {
-        $object = Material_Base::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Material_Base::find($id);
+        return response()->json('object');
     }
 
     /**

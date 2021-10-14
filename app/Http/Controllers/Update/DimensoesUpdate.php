@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class DimensoesUpdate extends Controller
 {
 
-    protected function editDimensao(Request $request)
+    protected function editDimensao($id)
     {
-        $object = Dimensao::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Dimensao::find($id);
+        return response()->json('object');
     }
 
     /**

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Hash;
 class UserUpdate extends Controller
 {
 
-    protected function editUser(Request $request)
+    protected function editUser($id)
     {
-        $object = Usuario::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Usuario::find($id);
+        return response()->json('object');
     }
 
     use RegistersUsers;

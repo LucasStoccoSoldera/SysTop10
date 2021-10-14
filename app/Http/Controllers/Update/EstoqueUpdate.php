@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 class EstoqueUpdate extends Controller
 {
 
-    protected function editEstoque(Request $request)
+    protected function editEstoque($id)
     {
-        $object = Estoque::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Estoque::find($id);
+        return response()->json('object');
     }
 
     /**

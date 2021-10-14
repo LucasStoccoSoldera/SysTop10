@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class TransportadoraUpdate extends Controller
 {
-    protected function editTransportadora(Request $request)
+    protected function editTransportadora($id)
     {
-        $object = Transportadora::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Transportadora::find($id);
+        return response()->json('object');
     }
 
     /**

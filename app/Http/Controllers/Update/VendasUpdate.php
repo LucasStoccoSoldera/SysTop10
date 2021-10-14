@@ -18,10 +18,17 @@ use Illuminate\Http\Request;
 class VendasUpdate extends Controller
 {
 
-    protected function editVenda(Request $request)
+    protected function editVenda($id)
     {
-        $object = Venda::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Venda::find($id);
+        return response()->json('object');
+    }
+
+
+    protected function editItemVenda($id)
+    {
+        $object = Venda::find($id);
+        return response()->json('object');
     }
 
     /**

@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class LogisticaUpdate extends Controller
 {
 
-    protected function editLogistica(Request $request)
+    protected function editLogistica($id)
     {
-        $object = Logistica::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Logistica::find($id);
+        return response()->json('object');
     }
 
     /**

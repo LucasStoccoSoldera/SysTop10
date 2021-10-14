@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 class ContasaReceberUpdate extends Controller
 {
 
-    protected function editReceber(Request $request)
+    protected function editReceber($id)
     {
-        $object = Contas_a_Receber::find($request->IDEdit)->get();
-        return response()->json(compact('object'));
+        $object = Contas_a_Receber::find($id);
+        return response()->json('object');
     }
 
     /**
