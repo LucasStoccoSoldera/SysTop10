@@ -1,81 +1,81 @@
 @extends('layouts.header-footer')
 @section('title', 'Estoque - TopSystem')
 @section('menu-principal')
-<div class="sidebar">
-    <!--
-                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-            -->
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="javascript:void(0)" class="simple-text logo-mini">
-                10
-            </a>
-            <a href="javascript:void(0)" class="simple-text logo-normal">
-                Top System
-            </a>
+    <div class="sidebar">
+        <!--
+                    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                -->
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="javascript:void(0)" class="simple-text logo-mini">
+                    10
+                </a>
+                <a href="javascript:void(0)" class="simple-text logo-normal">
+                    Top System
+                </a>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="{{ route('admin') }}">
+                        <i class="tim-icons icon-chart-pie-36"></i>
+                        <p>Página Inicial</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.usuario') }}">
+                        <i class="tim-icons icon-single-02"></i>
+                        <p>Usuários</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.cliente') }}">
+                        <i class="tim-icons icon-satisfied"></i>
+                        <p>Clientes</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.financeiro') }}">
+                        <i class="tim-icons icon-coins"></i>
+                        <p>Financeiro</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.produto') }}">
+                        <i class="tim-icons icon-components"></i>
+                        <p>Produtos</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{{ route('admin.estoque') }}">
+                        <i class="tim-icons icon-bag-16"></i>
+                        <p>Estoque</p>
+                    </a>
+                </li>
+                <li>
+                <li>
+                    <a href="{{ route('admin.fornecedor') }}">
+                        <i class="tim-icons icon-badge"></i>
+                        <p>Fornecedores</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.detalhe') }}">
+                        <i class="tim-icons icon-pin"></i>
+                        <p>Gerenciamento Geral</p>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav">
-            <li>
-                <a href="{{ route('admin') }}">
-                    <i class="tim-icons icon-chart-pie-36"></i>
-                    <p>Página Inicial</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.usuario') }}">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>Usuários</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.cliente') }}">
-                    <i class="tim-icons icon-satisfied"></i>
-                    <p>Clientes</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.financeiro') }}">
-                    <i class="tim-icons icon-coins"></i>
-                    <p>Financeiro</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.produto') }}">
-                    <i class="tim-icons icon-components"></i>
-                    <p>Produtos</p>
-                </a>
-            </li>
-            <li class="active">
-                <a href="{{ route('admin.estoque') }}">
-                    <i class="tim-icons icon-bag-16"></i>
-                    <p>Estoque</p>
-                </a>
-            </li>
-            <li>
-            <li>
-                <a href="{{ route('admin.fornecedor') }}">
-                    <i class="tim-icons icon-badge"></i>
-                    <p>Fornecedores</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('admin.detalhe') }}">
-                    <i class="tim-icons icon-pin"></i>
-                    <p>Gerenciamento Geral</p>
-                </a>
-            </li>
-        </ul>
     </div>
-</div>
 @endsection
 @section('content')
-<div class="content">
-    <div class="col-12">
-        <div class="row">
-            <div class="card">
+    <div class="content">
+        <div class="col-12">
+            <div class="row">
+                <div class="card">
                     <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                    enctype="multipart/form-data" action="">
-                    @csrf
+                        enctype="multipart/form-data" action="">
+                        @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Produtos no Estoque</h2>
                         </div>
@@ -85,67 +85,71 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <input type="text" name="txt_produto" id="txt_produto" maxlength="25"
-                                        value="{{ old('txt_produto') }}" class="filtro form-control @error('txt_produto') is-invalid @enderror">
-                                        @error('txt_produto')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors }}</strong>
-                                            </span>
-                                        @enderror
+                                        value="{{ old('txt_produto') }}"
+                                        class="filtro form-control @error('txt_produto') is-invalid @enderror">
+                                    @error('txt_produto')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                    </div>
+                            </div>
 
-                                    <div class="col-4 float-left">
+                            <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label"style="float: left; margin-right: 100%;   ">Quantidade:</label>
+                                    <label class="modal-label"
+                                        style="float: left; margin-right: 100%;   ">Quantidade:</label>
                                     <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
-                                     value="{{ old('txt_fil') }}" style="width: 15%; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
-                                    <option value="">...</option>
-                                    <option value="1"><=</option>
-                                    <option value="2"> =</option>
-                                    <option value="3">>=</option>
-                                </select>
+                                        value="{{ old('txt_fil') }}"
+                                        style="width: 15%; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                        <option value="">...</option>
+                                        <option value="1">
+                                            <=< /option>
+                                        <option value="2"> =</option>
+                                        <option value="3">>=</option>
+                                    </select>
                                     <input type="number" name="txt_qtde" id="txt_qtde" maxlength="6"
-                                        value="{{ old('txt_qtde') }}" class="filtro form-control @error('txt_qtde') is-invalid @enderror"style="width: 80%;float:right;">
-                                        @error('txt_qtde')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                        value="{{ old('txt_qtde') }}"
+                                        class="filtro form-control @error('txt_qtde') is-invalid @enderror"
+                                        style="width: 80%;float:right;">
+                                    @error('txt_qtde')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
+                            </div>
 
-                                <div class="col-4 float-left">
+                            <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control" @error('txt_dimensao') is-invalid @enderror
-                                    value="{{ old('txt_centro') }}"
-                                   >
-                                    <option value="">------------Selecione------------</option>
-                                    @foreach ($dimensoes as $dimensao)
-                                        <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                        @error('txt_dimensao')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors }}</strong>
-                                            </span>
-                                        @enderror
+                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
+                                        @error('txt_dimensao') is-invalid @enderror value="{{ old('txt_centro') }}">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($dimensoes as $dimensao)
+                                            <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('txt_dimensao')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <button class="btn btn-primary"
-                                        id="btn-form-consulta">Filtrar</button>
                             </div>
-                            </div>
-                            </div>
-                        </form>
+                    </form>
                 </div>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="col-12 justify-content-center">
         <div class="row">
@@ -169,9 +173,9 @@
                 </div>
                 <div class="col-12">
                     <div class="card " id="card-consulta-tabela" style="border-color: #2CAEEC !important;
-                    border-color: white;
-                    border-width: medium;
-                    border-style: double;">
+                        border-color: white;
+                        border-width: medium;
+                        border-style: double;">
                         <div class="card-header" id="ch-adaptado">
                             <h2 class="card-title">Todos os Produtos
                         </div>
@@ -195,7 +199,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       {{-- DataTables --}}
+                                        {{-- DataTables --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -256,8 +260,9 @@
                 <img id="imgsub" src="../img/dash/addbtn.png">
             </a>
             <div class="dropdown-menu" id="add-menu">
-                <a class="dropdown-item" id="no-padding" data-backdrop="static" onclick="abrirModal('#modalRegisterEstoque');"> <img
-                        src="../img/dash/materia_prima.png" width="75" height="75"></a>
+                <a class="dropdown-item" id="no-padding" data-backdrop="static"
+                    onclick="abrirModal('#modalRegisterEstoque');"> <img src="../img/dash/materia_prima.png" width="75"
+                        height="75"></a>
             </div>
         </div>
     </div>
@@ -286,32 +291,30 @@
                                     <input type="number" name="qtdeEstoque" id="qtdeEstoque" class="form-control"
                                         maxlength="6" value="{{ old('qtdeEstoque') }}"
                                         placeholder="Entre com a Quantidade" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback qtdeEstoque_error" role="alert">
-                                    </span>
-                                        </div>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback qtdeEstoque_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label" >Data:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Data:</label> <label style="color: red; font-size: 12px;">
+                                        * </label>
                                     <input type="date" name="dataEstoque" id="dataEstoque" class="form-control"
-                                         value="{{ old('dataEstoque') }}"
-                                        placeholder="Entre com a Data" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback dataEstoque_error" role="alert">
-                                    </span>
-                                        </div>
+                                        value="{{ old('dataEstoque') }}" placeholder="Entre com a Data" autofocus>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback dataEstoque_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Horário:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="time" name="timeEstoque" id="timeEstoque" class="form-control"
-                                        value="{{ old('timeEstoque') }}"
-                                        placeholder="Entre com o Horário" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback timeEstoque_error" role="alert">
-                                    </span>
-                                        </div>
+                                        value="{{ old('timeEstoque') }}" placeholder="Entre com o Horário" autofocus>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback timeEstoque_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Status:</label> <label
@@ -325,14 +328,15 @@
                                         <option value="4">Cancelada</option>
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback statusEstoque_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback statusEstoque_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
+                                    <label class="modal-label">Produto:</label> <label
+                                        style="color: red; font-size: 12px;"> *
                                     </label>
                                     <select type="text" name="produtoEstoque" id="produtoEstoque" class="form-control"
                                         maxlength="80" value="{{ old('produtoEstoque') }}"
@@ -344,8 +348,8 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback produtoEstoque_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback produtoEstoque_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
@@ -361,8 +365,8 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback IDDimensao_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback IDDimensao_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
@@ -376,18 +380,19 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback IDCor_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback IDCor_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="cancela btn btn-secondary btn-danger"
-                            data-form="formRegisterEstoque" data-modal="modalRegisterEstoque">Cancelar</button>
-                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formRegisterEstoque">Limpar</button>
-                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterEstoque"
+                            data-modal="modalRegisterEstoque">Cancelar</button>
+                        <button type="reset" class="limpar btn btn-secondary btn-danger"
+                            data-form="formRegisterEstoque">Limpar</button>
+                        <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -416,32 +421,30 @@
                                     <input type="number" name="qtdeEstoqueUp" id="qtdeEstoqueUp" class="form-control"
                                         maxlength="6" value="{{ old('qtdeEstoqueUp') }}"
                                         placeholder="Entre com a Quantidade" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback qtdeEstoqueUp_error" role="alert">
-                                    </span>
-                                        </div>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback qtdeEstoqueUp_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label" >Data:</label> <label
+                                    <label class="modal-label">Data:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="date" name="dataEstoqueUp" id="dataEstoqueUp" class="form-control"
-                                         value="{{ old('dataEstoqueUp') }}"
-                                        placeholder="Entre com a Data" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback dataEstoqueUp_error" role="alert">
-                                    </span>
-                                        </div>
+                                        value="{{ old('dataEstoqueUp') }}" placeholder="Entre com a Data" autofocus>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback dataEstoqueUp_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Horário:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="time" name="timeEstoqueUp" id="timeEstoqueUp" class="form-control"
-                                        value="{{ old('timeEstoqueUp') }}"
-                                        placeholder="Entre com o Horário" autofocus>
-                                        <div class="div-feedback">
-                                    <span class="invalid-feedback timeEstoqueUp_error" role="alert">
-                                    </span>
-                                        </div>
+                                        value="{{ old('timeEstoqueUp') }}" placeholder="Entre com o Horário" autofocus>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback timeEstoqueUp_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Status:</label> <label
@@ -455,17 +458,18 @@
                                         <option value="4">Cancelada</option>
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback statusEstoqueUp_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback statusEstoqueUp_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produto:</label> <label style="color: red; font-size: 12px;"> *
+                                    <label class="modal-label">Produto:</label> <label
+                                        style="color: red; font-size: 12px;"> *
                                     </label>
-                                    <select type="text" name="produtoEstoqueUp" id="produtoEstoqueUp" class="form-control"
-                                        maxlength="80" value="{{ old('produtoEstoqueUp') }}"
+                                    <select type="text" name="produtoEstoqueUp" id="produtoEstoqueUp"
+                                        class="form-control" maxlength="80" value="{{ old('produtoEstoqueUp') }}"
                                         placeholder="Selecione com o Produto">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($produtos as $produto)
@@ -474,8 +478,8 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback produtoEstoqueUp_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback produtoEstoqueUp_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
@@ -491,8 +495,8 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback IDDimensaoUp_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback IDDimensaoUp_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
@@ -506,18 +510,19 @@
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                    <span class="invalid-feedback IDCorUp_error" role="alert">
-                                    </span>
+                                        <span class="invalid-feedback IDCorUp_error" role="alert">
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="cancela btn btn-secondary btn-danger"
-                            data-form="formUpdateEstoque" data-modal="modalUpdateEstoque">Cancelar</button>
-                                      <button  type="reset" class="limpar btn btn-secondary btn-danger"  data-form="formUpdateEstoque">Limpar</button>
-                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formUpdateEstoque"
+                            data-modal="modalUpdateEstoque">Cancelar</button>
+                        <button type="reset" class="limpar btn btn-secondary btn-danger"
+                            data-form="formUpdateEstoque">Limpar</button>
+                        <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                     </div>
                 </div>
             </form>
@@ -529,41 +534,64 @@
     <script>
         $(document).ready(function() {
 
-            var table_estoque = $('#tb_estoque').DataTable( {
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.estoque') }}",
-            columns: [
-                {data: "pro_id", className: "text-center"},
-                {data: "est_qtde"},
-                {data: "dim_descricao"},
-                {data: "cor_nome"},
-                {data: "est_data", className: "text-center"},
-                {data: "est_time", className: "text-center"},
-            ]
-        });
-        var table_produto_estoque = $('#tb_produto_estoque').DataTable( {
-            paging: false,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.estoqueproduto') }}",
-            columns: [
-                {data: "pro_id", className: "text-center"},
-                {data: "pro_nome"},
-                {data: "est_qtde"},
-                {data: "est_status", className: "text-center"},
-            ]
-        });
+            var table_estoque = $('#tb_estoque').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: "{{ route('admin.list.estoque') }}",
+                columns: [{
+                        data: "pro_id",
+                        className: "text-center"
+                    },
+                    {
+                        data: "est_qtde"
+                    },
+                    {
+                        data: "dim_descricao"
+                    },
+                    {
+                        data: "cor_nome"
+                    },
+                    {
+                        data: "est_data",
+                        className: "text-center"
+                    },
+                    {
+                        data: "est_time",
+                        className: "text-center"
+                    },
+                ]
+            });
+            var table_produto_estoque = $('#tb_produto_estoque').DataTable({
+                paging: false,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: "{{ route('admin.list.estoqueproduto') }}",
+                columns: [{
+                        data: "pro_id",
+                        className: "text-center"
+                    },
+                    {
+                        data: "pro_nome"
+                    },
+                    {
+                        data: "est_qtde"
+                    },
+                    {
+                        data: "est_status",
+                        className: "text-center"
+                    },
+                ]
+            });
 
-        $(document).on('click', '[data-dismiss="modal"]',
-            function() {
-                table_estoque.ajax.reload(null, false);
-                table_produto_estoque.ajax.reload(null, false);
-        }
-    );
+            $(document).on('click', '[data-dismiss="modal"]',
+                function() {
+                    table_estoque.ajax.reload(null, false);
+                    table_produto_estoque.ajax.reload(null, false);
+                }
+            );
 
             $("#formRegisterEstoque").on('submit', function(e) {
 
@@ -586,45 +614,73 @@
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
                             $('#formRegisterEstoque')[0].reset();
-                            demo.showNotification('top','right',2,data_decoded.msg, 'tim-icons icon-check-2');
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
                         }
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                 $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
                 });
             });
 
-    $("#formExcluir").on('submit', function(e) {
+            $("#formExcluir").on('submit', function(e) {
 
-e.preventDefault();
+                e.preventDefault();
 
-var rota = $('#rotaDelete').val();
+                var rota = $('#rotaDelete').val();
 
-$.ajax({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    type: 'DELETE',
-    url: rota,
-    data: $(this).serialize(),
-    processData: false,
-    dataType: 'json',
-    success: function(data_decoded) {
-        if (data_decoded.status == 1) {
-            $('#formExcluir')[0].reset();
-            $('#modalAlertDelete').hide();
-            demo.showNotification('top','right',4,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'DELETE',
+                    url: rota,
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formExcluir')[0].reset();
+                            $('#modalAlertDelete').hide();
+                            demo.showNotification('top', 'right', 4, data_decoded.msg,
+                                'tim-icons icon-alert-circle-exc');
+                        }
+                        if (data_decoded.status == 0) {
+                            demo.showNotification('top', 'right', 5, data_decoded.msg,
+                                'tim-icons icon-alert-circle-exc');
+                        }
+                    }
+                });
+            });
+
+            function editEstoque(id)
+        {
+            $.get('/admin/Usuario/Editar_estoque/' + id, function (cliente) {
+                $("#idCli").val(cliente.id);
+                $("#nomeClienteUp").val(cliente.id)
+                $("#usuarioClienteUp").val(cliente.id)
+                $("#cpfClienteUp").val(cliente.id)
+                $("#cnpjClienteUp").val(cliente.id)
+                $("#telefoneClienteUp").val(cliente.id)
+                $("#celularClienteUp").val(cliente.id)
+                $("#senhaClienteUp").val(cliente.id)
+                $("#cepClienteUp").val(cliente.id)
+                $("#estadoClienteUp").val(cliente.id)
+                $("#cidadeClienteUp").val(cliente.id)
+                $("#bairroClienteUp").val(cliente.id)
+                $("#ruaClienteUp").val(cliente.id)
+                $("#ncasaClienteUp").val(cliente.id)
+                $("#complementoClienteUp").val(cliente.id)
+                $("#statusClienteUp").val(cliente.id)
+                $("modalUpdateCliente").modal('toggle');
+
+            });
         }
-        if (data_decoded.status == 0) {
-                demo.showNotification('top','right',5,data_decoded.msg, 'tim-icons icon-alert-circle-exc');
-    }
-    }
-});
-});
+
         });
     </script>
 @endpush
