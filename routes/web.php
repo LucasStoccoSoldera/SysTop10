@@ -115,7 +115,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/admin/Usuario/Editar_usuario/{id}', [App\Http\Controllers\Update\UserUpdate::class, 'editUser'])->name('admin.edit.user');
     Route::get('/admin/Usuario/Editar_cargo/{id}', [App\Http\Controllers\Update\CargoUpdate::class, 'editCargo'])->name('admin.edit.cargo');
-    Route::get('/admin/Usuario/Editar_privilegio/{id}', [App\Http\Controllers\Update\PrivilegioUpdate::class, 'editPrivilegio'])->name('admin.edit.privilegio');
     Route::get('/admin/Usuario/Editar_cliente/{id}', [App\Http\Controllers\Update\ClienteUpdate::class, 'editCliente'])->name('admin.edit.cliente');
     Route::get('/admin/Financeiro/Editar_conta/{id}', [App\Http\Controllers\Update\ContasUpdate::class, 'editPagar'])->name('admin.edit.conta');
     Route::get('/admin/Financeiro/Editar_compra/{id}', [App\Http\Controllers\Update\CompraUpdate::class, 'editCompra'])->name('admin.edit.compra');
@@ -129,8 +128,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Produto/Editar_pacote/{id}', [App\Http\Controllers\Update\PacoteUpdate::class, 'editPacote'])->name('admin.edit.pacote');
     Route::get('/admin/Produto/Editar_cor/{id}', [App\Http\Controllers\Update\CoresUpdate::class, 'editCor'])->name('admin.edit.cor');
     Route::get('/admin/Produto/Editar_dimensao/{id}', [App\Http\Controllers\Update\DimensoesUpdate::class, 'editDimensao'])->name('admin.edit.dimensao');
-    Route::get('/admin/Produto/Editar_cor_produto/{id}', [App\Http\Controllers\Update\CoresUpdate::class, 'editCorProduto'])->name('admin.edit.cor.produto');
-    Route::get('/admin/Produto/Editar_dimensao_produto/{id}', [App\Http\Controllers\Update\DimensoesUpdate::class, 'editDimensaoProduto'])->name('admin.edit.dimensao.produto');
     Route::get('/admin/Estoque/Editar_estoque/{id}', [App\Http\Controllers\Update\EstoqueUpdate::class, 'editEstoque'])->name('admin.edit.estoque');
     Route::get('/admin/Fornecedor/Editar_fornecedor/{id}', [App\Http\Controllers\Update\FornecedorUpdate::class, 'editFornecedor'])->name('admin.edit.fornecedor');
     Route::get('/admin/Detalhe/Editar_centro_custo/{id}', [App\Http\Controllers\Update\CentroCustoUpdate::class, 'editCentroCusto'])->name('admin.edit.centrocusto');
