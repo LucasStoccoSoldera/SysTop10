@@ -730,7 +730,7 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
-
+            /*
             $('#cargoPrivilegio').on('blur', function(e) {
                 e.preventDefault();
 
@@ -752,7 +752,7 @@
                         }
                     }
                 });
-            });
+            }); */
 
             function preencher_privilegios(usu, cli, fin, pro, est, forn, det, log) {
                 $('#usuarioPrivilegio').val(usu);
