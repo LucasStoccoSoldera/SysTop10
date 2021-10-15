@@ -739,7 +739,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type: "GET",
-                    url: "{{ route('admin.edit.privilegio') }}",
+                    url: "",
                     data: $(this).serialize(),
                     processData: false,
                     dataType: 'json',
