@@ -8,6 +8,7 @@ use App\Models\TipoProduto;
 use App\Models\Pacote;
 use App\Models\Cor;
 use App\Models\Dimensao;
+use App\Models\Logistica;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -37,6 +38,7 @@ class ProdutosController extends Controller
         $data4 = Pacote::all();
         $data5 = Dimensao::all();
         $data6 = Cor::all();
+        $data7 = Logistica::all();
 
 
         return view('dashboard.produtos', [
@@ -50,7 +52,8 @@ class ProdutosController extends Controller
             'materiais' => $data3,
             'pacotes' => $data4,
             'dimensoes' => $data5,
-            'cores' => $data6
+            'cores' => $data6,
+            'logistica' => $data7
 
         ]);
     }
