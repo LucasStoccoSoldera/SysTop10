@@ -53,7 +53,7 @@ class ProdutosController extends Controller
             'pacotes' => $data4,
             'dimensoes' => $data5,
             'cores' => $data6,
-            'logistica' => $data7
+            'logisticas' => $data7
 
         ]);
     }
