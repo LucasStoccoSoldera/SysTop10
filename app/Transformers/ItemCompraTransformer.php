@@ -23,7 +23,7 @@ class ItemCompraTransformer extends TransformerAbstract
             'cde_valoritem' => (string) $ItemCompra->cde_valoritem,
             'cde_valortotal' => (string) $ItemCompra->cde_valortotal,
             'action' => '<a href="#" class="btn btn-primary alter-min" data-id="'.$ItemCompra->id.'"><i
-            class="tim-icons icon-pencil"></i></a>
+            class="tim-icons icon-pencil" onclick="editItemCompra('.$ItemCompra->id.');"></i></a>
 
             <button type="button" class="btn btn-primary red-min" id="excluir-cde"
             name="excluir-itemcompra"

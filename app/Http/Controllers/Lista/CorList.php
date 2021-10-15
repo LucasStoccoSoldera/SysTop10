@@ -20,7 +20,7 @@ class CorList extends Controller
             ->addColumn('action', function($data6){
 
                 $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data6->id.'"><i
-                class="tim-icons icon-pencil"></i></a>';
+                class="tim-icons icon-pencil" onclick="editCor('.$data6->id.');"></i></a>';
 
                 return $btn;
             })

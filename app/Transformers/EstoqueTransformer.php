@@ -21,7 +21,7 @@ class EstoqueTransformer extends TransformerAbstract
             'est_data' => (string) $estoque->est_data,
             'est_time' => (string) $estoque->est_time,
             'action' => '<a href="#" class="btn btn-primary alter" data-id=" '.$estoque->id.' "><i
-            class="tim-icons icon-pencil"></i></a>'
+            class="tim-icons icon-pencil" onclick="editEstoque('.$estoque->id.');"></i></a>'
         ];
     }
 }

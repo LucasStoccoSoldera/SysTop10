@@ -21,7 +21,7 @@ class TipoProdutoList extends Controller
 
             $rota = "'" .  route('admin.delete.tipoproduto') . "'";
             $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data2->id.'"><i
-            class="tim-icons icon-pencil"></i></a>
+            class="tim-icons icon-pencil" onclick="editTipoProduto('.$data2->id.');"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-tpp"
             name="excluir-tipoproduto"

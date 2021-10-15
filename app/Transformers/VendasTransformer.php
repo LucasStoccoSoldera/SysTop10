@@ -26,7 +26,7 @@ class VendasTransformer extends TransformerAbstract
             onclick="visualizar('.$venda->id.');"><i
             class="tim-icons icon-chart-pie-36"></i></button>
 
-            <a href="#" class="btn btn-primary alter-min" data-id= '.$venda->id.'"><i
+            <a href="#" class="btn btn-primary alter-min" onclick="editVenda('.$venda->id.');"><i
             class="tim-icons icon-pencil"></i></a>
 
            <button type="button" class="btn btn-primary red-min" id="excluir-ven"

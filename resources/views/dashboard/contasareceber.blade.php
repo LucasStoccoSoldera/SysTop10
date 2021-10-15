@@ -812,7 +812,7 @@
             });
         });
 
-        function editCredito(id)
+        function editReceber(id)
         {
             $.get('/admin/Usuario/Editar_credito/' + id, function (receber) {
                 $("#idRec").val(receber.id);
