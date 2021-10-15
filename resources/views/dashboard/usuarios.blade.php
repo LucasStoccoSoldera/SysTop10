@@ -156,6 +156,7 @@
                 </div>
             </div>
         </div>
+        <a class="btn btn-primary alter" onclick="edit.editUser(1);"><i class="tim-icons icon-pencil"></i></a>
 
         <div class="row">
             <div class="col-12" style="padding-left: 0px; padding-right: 0px;">
@@ -968,49 +969,6 @@
                 });
             });
 
-            function editUser(id)
-        {
-            $.get('/admin/Usuario/Editar_usuario/' + id, function (usuario) {
-                $("#idUse").val(usuario.id);
-                $("#nomeUserUp").val(usuario.usu_nome_completo)
-                $("#usu_usuarioUp").val(usuario.usu_usuario)
-                $("#cpfUserUp").val(usuario.usu_cpf)
-                $("#celularUserUp").val(usuario.usu_celularid)
-                $("#senhaUserUp").val(usuario.usu_senha)
-                $("#cargoUserUp").val(usuario.car_id)
-                $("#statusUserUp").val(usuario.usu_status)
-                $("modalUpdateUser").modal('toggle');
-
-            });
-        }
-
-        function editCargo(id)
-        {
-            $.get('/admin/Usuario/Editar_cargo/' + id, function (cargo) {
-                $("#idCar").val(cargo.id);
-                $("#descricaoCargoUp").val(cargo.id)
-                $("modalUpdateCargo").modal('toggle');
-
-            });
-        }
-
-     /*   function editPrivilegio(id)
-        {
-            $.get('/admin/Usuario/Editar_privilegio/' + id, function (privilegio) {
-                $("#idPri").val(privilegio.id);
-                $("#cargoPrivilegio").val(privilegio.id)
-                $("#usuarioPrivilegio").val(privilegio.id)
-                $("#privilegioPrivilegio").val(privilegio.id)
-                $("#financeiroPrivilegio").val(privilegio.id)
-                $("#produtoPrivilegio").val(privilegio.id)
-                $("#estoquePrivilegio").val(privilegio.id)
-                $("#fornecedorPrivilegio").val(privilegio.id)
-                $("#detalhePrivilegio").val(privilegio.id)
-                $("#logisticaPrivilegio").val(privilegio.id)
-                $("modalUpdatePrivilegio").modal('toggle');
-
-            });
-        } */
         });
     </script>
 @endpush

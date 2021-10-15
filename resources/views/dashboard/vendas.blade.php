@@ -1313,40 +1313,6 @@
                 $('#ls_par_data').val(data);
             });
 
-            function editVenda(id)
-        {
-            $.get('/admin/Usuario/Editar_venda/' + id, function (venda) {
-                $("#idVen").val(venda.id);
-                $("#IDVendaUp").val(venda.id)
-                $("#IDClienteUp").val(venda.cli_id)
-                $("#VTVendaUp").val(venda.ven_valor_total)
-                $("#descontoVendaUp").val(venda.ven_desconto)
-                $("#IDTipoPagamentoUp").val(venda.tpg_id)
-                $("#parcelasVendaUp").val(venda.ven_parcelas)
-                $("#IDLogisticaUp").val(venda.log_id)
-                $("#statusVendaUp").val(venda.ven_status)
-                $("modalUpdateVenda").modal('toggle');
-
-            });
-        }
-
-        function editItemVenda(id)
-        {
-            $.get('/admin/Usuario/Editar_item_venda/' + id, function (itemvenda) {
-                $("#idIteVen").val(itemvenda.id);
-                $("#IDItemVendaUp").val(itemvenda.ven_id)
-                $("#descricaoItemVendaUp").val(itemvenda.det_descricao)
-                $("#IDCorUp").val(itemvenda.cor_id)
-                $("#IDDimensaoUp").val(itemvenda.dim_id)
-                $("#IDProdutoUp").val(itemvenda.pro_id)
-                $("#qtdeItemVendaUp").val(itemvenda.det_qtde)
-                $("#anexoItemVendaUp").val(itemvenda.det_anexo_path)
-                $("#VUItemVendaUp").val(itemvenda.det_valor_unitario)
-                $("#VTItemVendaUp").val(itemvenda.det_valor_total)
-                $("modalUpdateItemVenda").modal('toggle');
-
-            });
-        }
         });
     </script>
 @endpush

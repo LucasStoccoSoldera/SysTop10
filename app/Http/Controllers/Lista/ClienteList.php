@@ -24,8 +24,8 @@ class ClienteList extends Controller
             ->addColumn('action', function($data){
 
                 $rota = "'" .  route('admin.delete.cliente') . "'";
-                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data->id.'"><i
-                class="tim-icons icon-pencil" onclick="editCliente('.$data->id.');"></i></a>
+                $btn = '<a class="btn btn-primary alter" data-id="'.$data->id.'"><i
+                class="tim-icons icon-pencil" onclick="edit.editCliente('.$data->id.');"></i></a>
 
                 <button type="button" class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente"

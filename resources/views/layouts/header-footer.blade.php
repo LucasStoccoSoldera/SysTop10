@@ -35,6 +35,27 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../demo/demo.css" rel="stylesheet" />
 
+    <!--   Core JS Files   -->
+    <script src="../js/dash/core/jquery.min.js"></script>
+    <script src="../js/dash/core/popper.min.js"></script>
+    <script src="../js/dash/core/bootstrap.min.js"></script>
+    <script src="../js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Chart JS -->
+    <script src="../js/dash/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../js/dash/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../js/dash/black-dashboard.js?v=1.0.0"></script>
+    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="../demo/demo.js"></script>
+    <script src="../demo/edit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js" integrity="sha512-Rc24PGD2NTEGNYG/EMB+jcFpAltU9svgPcG/73l1/5M6is6gu3Vo1uVqyaNWf/sXfKyI0l240iwX9wpm6HE/Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 
@@ -307,25 +328,6 @@
             </div>
 
 
-    <!--   Core JS Files   -->
-    <script src="../js/dash/core/jquery.min.js"></script>
-    <script src="../js/dash/core/popper.min.js"></script>
-    <script src="../js/dash/core/bootstrap.min.js"></script>
-    <script src="../js/dash/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Chart JS -->
-    <script src="../js/dash/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../js/dash/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../js/dash/black-dashboard.js?v=1.0.0"></script>
-    <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../demo/demo.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
-        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js" integrity="sha512-Rc24PGD2NTEGNYG/EMB+jcFpAltU9svgPcG/73l1/5M6is6gu3Vo1uVqyaNWf/sXfKyI0l240iwX9wpm6HE/Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
 
         <script>
 

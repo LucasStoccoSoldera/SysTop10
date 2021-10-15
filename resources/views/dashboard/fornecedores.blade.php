@@ -657,27 +657,6 @@
                 });
             });
 
-            function editFornecedor(id)
-        {
-            $.get('/admin/Usuario/Editar_fornecedor/' + id, function (fornecedor) {
-                $("#idFor").val(fornecedor.id);
-                $("#nomeFornecedorUp").val(fornecedor.for_nome)
-                $("#telefoneFornecedorUp").val(fornecedor.for_telefone)
-                $("#celularFornecedorUp").val(fornecedor.for_celular)
-                $("#cpfFornecedorUp").val(fornecedor.for_cpf_cnpj)
-                $("#cnpjFornecedorUp").val(fornecedor.for_cpf_cnpj)
-                $("#produtosFornecedorUp").val(fornecedor.produtosFornecedor)
-                $("#cepFornecedorUp").val(fornecedor.for_cep)
-                $("#estadoFornecedorUp").val(fornecedor.for_estado)
-                $("#cidadeFornecedorUp").val(fornecedor.for_cidade)
-                $("#bairroFornecedorUp").val(fornecedor.for_bairro)
-                $("#ruaFornecedorUp").val(fornecedor.for_rua)
-                $("#ncasaFornecedorUp").val(fornecedor.for_numero)
-                $("modalUpdateFornecedores").modal('toggle');
-
-            });
-        }
-
         });
     </script>
 @endpush

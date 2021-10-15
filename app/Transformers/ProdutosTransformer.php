@@ -25,8 +25,8 @@ class ProdutosTransformer extends TransformerAbstract
             onclick="visualizar('.$produto->id.');"><i
             class="tim-icons icon-chart-pie-36"></i></button>
 
-            <a href="#" class="btn btn-primary alter-min" data-id= '.$produto->id.'"><i
-            class="tim-icons icon-pencil" onclick="editProduto('.$produto->id.');"></i></a>
+            <a class="btn btn-primary alter-min" data-id= '.$produto->id.'"><i
+            class="tim-icons icon-pencil" onclick="edit.editProduto('.$produto->id.');"></i></a>
 
            <button type="button" class="btn btn-primary red-min" id="excluir-pro"
             name="excluir-produto"

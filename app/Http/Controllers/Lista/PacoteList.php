@@ -20,8 +20,8 @@ class PacoteList extends Controller
             ->addColumn('action', function($data4){
 
                 $rota = "'" .  route('admin.delete.pacote') . "'";
-                $btn = '<a href="#" class="btn btn-primary alter-min" data-id="'.$data4->id.'"><i
-                class="tim-icons icon-pencil" onclick="editPacote('.$data4->id.');"></i></a>
+                $btn = '<a class="btn btn-primary alter-min" data-id="'.$data4->id.'"><i
+                class="tim-icons icon-pencil" onclick="edit.editPacote('.$data4->id.');"></i></a>
 
                <button type="button" class="btn btn-primary red-min" id="excluir-pac"
                 name="excluir-pacote"

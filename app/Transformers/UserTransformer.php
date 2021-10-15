@@ -21,7 +21,7 @@ class UserTransformer extends TransformerAbstract
             'car_descricao' => $user->car_descricao,
             'usu_celular' => (string) $user->usu_celular,
             'usu_data_cadastro' => (string) $user->usu_data_cadastro,
-            'action' => '<a href="#" class="btn btn-primary alter" onclick="editUser('.$user->id.');"><i class="tim-icons icon-pencil"></i></a>
+            'action' => '<a class="btn btn-primary alter" onclick="edit.editUser('.$user->id.');"><i class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-usu"
             name="excluir-user"

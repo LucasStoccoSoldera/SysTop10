@@ -18,8 +18,8 @@ class DimensaoList extends Controller
             return DataTables::eloquent($data5)
             ->addColumn('action', function($data5){
 
-                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data5->id.'"><i
-                class="tim-icons icon-pencil" onclick="editDimensao('.$data5->id.');"></i></a>  ';
+                $btn = '<a class="btn btn-primary alter" data-id="'.$data5->id.'"><i
+                class="tim-icons icon-pencil" onclick="edit.editDimensao('.$data5->id.');"></i></a>  ';
 
                 return $btn;
             })

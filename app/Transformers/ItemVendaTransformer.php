@@ -20,8 +20,8 @@ class ItemVendaTransformer extends TransformerAbstract
             'pro_nome' => (int) $ItemVenda->pro_nome,
             'det_qtde' => $ItemVenda->det_qtde,
             'det_valor_total' => (string) $ItemVenda->det_valor_total,
-            'action' => '<a href="#" class="btn btn-primary alter-min" data-id="'.$ItemVenda->id.'"><i
-            class="tim-icons icon-pencil" onclick="editItemVenda('.$ItemVenda->id.');"></i></a>
+            'action' => '<a class="btn btn-primary alter-min" data-id="'.$ItemVenda->id.'"><i
+            class="tim-icons icon-pencil" onclick="edit.editItemVenda('.$ItemVenda->id.');"></i></a>
 
             <button type="button" class="btn btn-primary red-min" id="excluir-deta"
             name="excluir-itemvendaa"

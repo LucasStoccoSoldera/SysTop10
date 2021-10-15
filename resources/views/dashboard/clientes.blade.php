@@ -845,30 +845,6 @@
             });
         });
 
-        function editCliente(id)
-        {
-            $.get('/admin/Usuario/Editar_cliente/' + id, function (cliente) {
-                $("#idCli").val(cliente.id);
-                $("#nomeClienteUp").val(cliente.cli_nome)
-                $("#usuarioClienteUp").val(cliente.cli_usuario)
-                $("#cpfClienteUp").val(cliente.cli_cpf_cnpj)
-                $("#cnpjClienteUp").val(cliente.cli_cpf_cnpj)
-                $("#telefoneClienteUp").val(cliente.cli_telefone)
-                $("#celularClienteUp").val(cliente.cli_celular)
-                $("#senhaClienteUp").val(cliente.cli_senha)
-                $("#cepClienteUp").val(cliente.cli_cep)
-                $("#estadoClienteUp").val(cliente.cli_uf)
-                $("#cidadeClienteUp").val(cliente.cli_cidade)
-                $("#bairroClienteUp").val(cliente.cli_bairro)
-                $("#ruaClienteUp").val(cliente.cli_logradouro)
-                $("#ncasaClienteUp").val(cliente.cli_n_casa)
-                $("#complementoClienteUp").val(cliente.cli_complemento)
-                $("#statusClienteUp").val(cliente.cli_status)
-                $("modalUpdateCliente").modal('toggle');
-
-            });
-        }
-
     });
 </script>
 @endpush

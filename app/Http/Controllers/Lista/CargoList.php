@@ -21,8 +21,8 @@ class CargoList extends Controller
                 ->addColumn('action', function($data2){
 
 
-                $btn = '<a href="#" class="btn btn-primary alter" data-id="'.$data2->id.'"><i
-                class="tim-icons icon-pencil" onclick="editCargo('.$data2->id.');"></i></a>';
+                $btn = '<a class="btn btn-primary alter" data-id="'.$data2->id.'"><i
+                class="tim-icons icon-pencil" onclick="edit.editCargo('.$data2->id.');"></i></a>';
 
                 return $btn;
                 })

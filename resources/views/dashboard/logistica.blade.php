@@ -668,30 +668,6 @@
                 });
             });
 
-            function editLogistica(id)
-        {
-            $.get('/admin/Usuario/Editar_logistica/' + id, function (logistica) {
-                $("#idLog").val(logistica.id);
-                $("#pacoteLogisticaUp").val(logistica.pac_id)
-                $("#transLogisticaUp").val(logistica.trans_id)
-                $("modalUpdateLogistica").modal('toggle');
-
-            });
-        }
-
-        function editTransportadora(id)
-        {
-            $.get('/admin/Usuario/Editar_transportadora/' + id, function (transportadora) {
-                $("#idTrans").val(transportadora.id);
-                $("#nomeTransUp").val(transportadora.trans_nome)
-                $("#limitetransTransUp").val(transportadora.trans_limite_transporte)
-                $("#telefoneTransUp").val(transportadora.trans_telefone)
-                $("#celularTransUp").val(transportadora.trans_celular)
-                $("modalUpdateTransportadora").modal('toggle');
-
-            });
-        }
-
         });
     </script>
 @endpush

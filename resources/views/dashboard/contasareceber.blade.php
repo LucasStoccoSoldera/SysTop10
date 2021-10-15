@@ -812,21 +812,6 @@
             });
         });
 
-        function editReceber(id)
-        {
-            $.get('/admin/Usuario/Editar_credito/' + id, function (receber) {
-                $("#idRec").val(receber.id);
-                $("#descricaoReceberUp").val(receber.rec_descricao)
-                $("#tipoPagtoReceberUp").val(receber.tpg_id)
-                $("#statusReceberUp").val(receber.rec_status)
-                $("#valorReceberUp").val(receber.rec_valor)
-                $("#parcelasReceberUp").val(receber.rec_parcelas)
-                $("#dataReceberUp").val(receber.rec_data)
-                $("modalUpdateContasaReceber").modal('toggle');
-
-            });
-        }
-
     });
 </script>
 @endpush
