@@ -661,13 +661,13 @@
         {
             $.get('/admin/Usuario/Editar_estoque/' + id, function (estoque) {
                 $("#idEst").val(estoque.id);
-                $("#qtdeEstoqueUp").val(estoque.id)
-                $("#dataEstoqueUp").val(estoque.id)
-                $("#timeEstoqueUp").val(estoque.id)
-                $("#statusEstoqueUp").val(estoque.id)
-                $("#produtoEstoqueUp").val(estoque.id)
-                $("#IDDimensaoUp").val(estoque.id)
-                $("#IDCorUp").val(estoque.id)
+                $("#qtdeEstoqueUp").val(estoque.est_qtde)
+                $("#dataEstoqueUp").val(estoque.est_data)
+                $("#timeEstoqueUp").val(estoque.est_time)
+                $("#statusEstoqueUp").val(estoque.est_status)
+                $("#produtoEstoqueUp").val(estoque.pro_id)
+                $("#IDDimensaoUp").val(estoque.dim_id)
+                $("#IDCorUp").val(estoque.cor_id)
                 $("modalUpdateEstoque").modal('toggle');
 
             });

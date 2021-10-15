@@ -439,7 +439,7 @@
         {
             $.get('/admin/Usuario/Editar_centro_custo/' + id, function (centrocusto) {
                 $("#idCC").val(centrocusto.id);
-                $("#NomeCentroCustoUp").val(centrocusto.id)
+                $("#NomeCentroCustoUp").val(centrocusto.cc_descricao)
                 $("modalUpdateCentroCusto").modal('toggle');
 
             });
@@ -449,7 +449,7 @@
         {
             $.get('/admin/Usuario/Editar_tipo_pagamento/' + id, function (tpgpagto) {
                 $("#idPag").val(tpgpagto.id);
-                $("#TPTipoPagto").val(tpgpagto.id)
+                $("#TPTipoPagto").val(tpgpagto.tpg_descricao)
                 $("modalUpdateTpgPagto").modal('toggle');
 
             });

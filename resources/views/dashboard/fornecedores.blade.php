@@ -263,15 +263,9 @@
                                     </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Produtos:</label>
-                                        <select type="text" name="produtosFornecedor" id="produtosFornecedor"
+                                        <input type="text" name="produtosFornecedor" id="produtosFornecedor"
                                             class="form-control" maxlength="80" value="{{ old('produtosFornecedor') }}"
-                                            placeholder="Selecione com o Produtos">
-                                            <option value="">------------Selecione------------</option>
-                                            @foreach ($produtos as $produto)
-                                                <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                            placeholder="Selecione com o Produto">
                                         <div class="div-feedback">
                                             <span class="invalid-feedback produtosFornecedor_error" role="alert">
                                             </span>
@@ -434,16 +428,10 @@
                                     </div>
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Produtos:</label>
-                                        <select type="text" name="produtosFornecedorUp" id="produtosFornecedorUp"
+                                        <input type="text" name="produtosFornecedorUp" id="produtosFornecedorUp"
                                             class="form-control" maxlength="80"
                                             value="{{ old('produtosFornecedorUp') }}"
                                             placeholder="Selecione com o Produtos">
-                                            <option value="">------------Selecione------------</option>
-                                            @foreach ($produtos as $produto)
-                                                <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
                                         <div class="div-feedback">
                                             <span class="invalid-feedback produtosFornecedorUp_error" role="alert">
                                             </span>
@@ -673,18 +661,18 @@
         {
             $.get('/admin/Usuario/Editar_fornecedor/' + id, function (fornecedor) {
                 $("#idFor").val(fornecedor.id);
-                $("#nomeFornecedorUp").val(fornecedor.id)
-                $("#telefoneFornecedorUp").val(fornecedor.id)
-                $("#celularFornecedorUp").val(fornecedor.id)
-                $("#cpfFornecedorUp").val(fornecedor.id)
-                $("#cnpjFornecedorUp").val(fornecedor.id)
-                $("#produtosFornecedorUp").val(fornecedor.id)
-                $("#cepFornecedorUp").val(fornecedor.id)
-                $("#estadoFornecedorUp").val(fornecedor.id)
-                $("#cidadeFornecedorUp").val(fornecedor.id)
-                $("#bairroFornecedorUp").val(fornecedor.id)
-                $("#ruaFornecedorUp").val(fornecedor.id)
-                $("#ncasaFornecedorUp").val(fornecedor.id)
+                $("#nomeFornecedorUp").val(fornecedor.for_nome)
+                $("#telefoneFornecedorUp").val(fornecedor.for_telefone)
+                $("#celularFornecedorUp").val(fornecedor.for_celular)
+                $("#cpfFornecedorUp").val(fornecedor.for_cpf_cnpj)
+                $("#cnpjFornecedorUp").val(fornecedor.for_cpf_cnpj)
+                $("#produtosFornecedorUp").val(fornecedor.produtosFornecedor)
+                $("#cepFornecedorUp").val(fornecedor.for_cep)
+                $("#estadoFornecedorUp").val(fornecedor.for_estado)
+                $("#cidadeFornecedorUp").val(fornecedor.for_cidade)
+                $("#bairroFornecedorUp").val(fornecedor.for_bairro)
+                $("#ruaFornecedorUp").val(fornecedor.for_rua)
+                $("#ncasaFornecedorUp").val(fornecedor.for_numero)
                 $("modalUpdateFornecedores").modal('toggle');
 
             });

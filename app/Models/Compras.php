@@ -18,6 +18,7 @@ class Compras extends Model
         'com_data_pagto',
         'com_valor',
         'com_desconto',
+        'com_descricao',
         'com_observacoes',
         'com_parcelas',
     ];

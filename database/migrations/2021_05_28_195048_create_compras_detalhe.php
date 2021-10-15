@@ -20,6 +20,7 @@ class CreateComprasDetalhe extends Migration
             $table->integer('dim_id');
             $table->integer('cor_id');
             $table->string('cde_produto');
+            $table->string('cde_tipo');
             $table->integer('cde_qtde');
             $table->integer('cde_valoritem');
             $table->integer('cde_valortotal');

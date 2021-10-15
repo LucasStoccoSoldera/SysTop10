@@ -1088,13 +1088,13 @@
         {
             $.get('/admin/Usuario/Editar_usuario/' + id, function (usuario) {
                 $("#idUse").val(usuario.id);
-                $("#nomeUserUp").val(usuario.id)
-                $("#usu_usuarioUp").val(usuario.id)
-                $("#cpfUserUp").val(usuario.id)
-                $("#celularUserUp").val(usuario.id)
-                $("#senhaUserUp").val(usuario.id)
-                $("#cargoUserUp").val(usuario.id)
-                $("#statusUserUp").val(usuario.id)
+                $("#nomeUserUp").val(usuario.usu_nome_completo)
+                $("#usu_usuarioUp").val(usuario.usu_usuario)
+                $("#cpfUserUp").val(usuario.usu_cpf)
+                $("#celularUserUp").val(usuario.usu_celularid)
+                $("#senhaUserUp").val(usuario.usu_senha)
+                $("#cargoUserUp").val(usuario.car_id)
+                $("#statusUserUp").val(usuario.usu_status)
                 $("modalUpdateUser").modal('toggle');
 
             });

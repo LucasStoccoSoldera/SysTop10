@@ -352,17 +352,17 @@
                                     <div class="form-group">
                                         <label class="modal-label">Pacote:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="PacoteProduto" id="PacoteProduto" class="form-control"
-                                            maxlength="15" value="{{ old('PacoteProduto') }}"
+                                        <select type="text" name="LogisticaProduto" id="LogisticaProduto" class="form-control"
+                                            maxlength="15" value="{{ old('LogisticaProduto') }}"
                                             placeholder="Selecione com o Pacote">
                                             <option value="">------------Selecione------------</option>
-                                            @foreach ($pacotes as $pacote)
-                                                <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
+                                            @foreach ($logisticas as $logistica)
+                                            <option value="{{ $logistica['id'] }}">{{ $logistica['log_pacote'] . $logistica['log_transportadora']}}
                                                 </option>
                                             @endforeach
                                         </select>
                                         <div class="div-feedback">
-                                            <span class="invalid-feedback PacoteProduto_error" role="alert">
+                                            <span class="invalid-feedback LogisticaProduto_error" role="alert">
                                             </span>
                                         </div>
                                     </div>
@@ -1151,19 +1151,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Pacote:</label> <label
+                                    <label class="modal-label">Logistica:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="PacoteProdutoUp" id="PacoteProdutoUp" class="form-control"
-                                        maxlength="15" value="{{ old('PacoteProdutoUp') }}"
+                                    <select type="text" name="LogisticaProdutoUp" id="LogisticaProdutoUp" class="form-control"
+                                        maxlength="15" value="{{ old('LogisticaProdutoUp') }}"
                                         placeholder="Selecione com o Pacote">
                                         <option value="">------------Selecione------------</option>
-                                        @foreach ($pacotes as $pacote)
-                                            <option value="{{ $pacote['id'] }}">{{ $pacote['pac_descricao'] }}
+                                        @foreach ($logisticas as $logistica)
+                                            <option value="{{ $logistica['id'] }}">{{ $logistica['log_pacote'] . $logistica['log_transportadora']}}
                                             </option>
                                         @endforeach
                                     </select>
                                     <div class="div-feedback">
-                                        <span class="invalid-feedback PacoteProdutoUp_error" role="alert">
+                                        <span class="invalid-feedback LogisticaProdutoUp_error" role="alert">
                                         </span>
                                     </div>
                                 </div>
@@ -2263,17 +2263,17 @@
             $.get('/admin/Usuario/Editar_produto/' + id, function (produto) {
                 $("#idPro").val(produto.id);
                 $("#IDProdutoUp").val(produto.id)
-                $("#NomeProdutoUp").val(produto.id)
-                $("#TipoProdutoUp").val(produto.id)
-                $("#PCProdutoUp").val(produto.id)
-                $("#PVProdutoUp").val(produto.id)
-                $("#MaterialProdutoUp").val(produto.id)
-                $("#PacoteProdutoUp").val(produto.id)
-                $("#PromocaoProdutoUp").val(produto.id)
-                $("#PedidoMinimoProdutoUp").val(produto.id)
-                $("#PersoProdutoUp").val(produto.id)
-                $("#TerceProdutoUp").val(produto.id)
-                $("#FotoProdutoUp").val(produto.id)
+                $("#NomeProdutoUp").val(produto.pro_nome)
+                $("#TipoProdutoUp").val(produto.tpp_id)
+                $("#PCProdutoUp").val(produto.pro_precocusto)
+                $("#PVProdutoUp").val(produto.pro_precovenda)
+                $("#MaterialProdutoUp").val(produto.mat_id)
+                $("#LogisticaProdutoUp").val(produto.log_id)
+                $("#PromocaoProdutoUp").val(produto.pro_promocao)
+                $("#PedidoMinimoProdutoUp").val(produto.pro_pedidominimo)
+                $("#PersoProdutoUp").val(produto.pro_personalizacao)
+                $("#TerceProdutoUp").val(produto.pro_terceirizacao)
+                $("#FotoProdutoUp").val(produto.pro_foto_path)
                 $("modalUpdateProdutos").modal('toggle');
 
             });
@@ -2283,7 +2283,7 @@
         {
             $.get('/admin/Usuario/Editar_tipo_produto/' + id, function (tipoproduto) {
                 $("#idTpp").val(tipoproduto.id);
-                $("#NomeTipoProdutoUp").val(tipoproduto.id)
+                $("#NomeTipoProdutoUp").val(tipoproduto.tpp_descricao)
                 $("modalUpdateTipoProduto").modal('toggle');
 
             });
@@ -2293,7 +2293,7 @@
         {
             $.get('/admin/Usuario/Editar_material_base/' + id, function (material) {
                 $("#idMat").val(material.id);
-                $("#NomeMaterialUp").val(material.id)
+                $("#NomeMaterialUp").val(material.mat_descricao)
                 $("modalUpdateMaterial").modal('toggle');
 
             });
@@ -2303,7 +2303,7 @@
         {
             $.get('/admin/Usuario/Editar_dimensao/' + id, function (dimensao) {
                 $("#idDim").val(dimensao.id);
-                $("#NomeDimensaoUp").val(dimensao.id)
+                $("#NomeDimensaoUp").val(dimensao.dim_descricao)
                 $("modalUpdateDimensao").modal('toggle');
 
             });
@@ -2313,8 +2313,9 @@
         {
             $.get('/admin/Usuario/Editar_cor/' + id, function (cor) {
                 $("#idCor").val(cor.id);
-                $("#CodigoCoresUp").val(cor.id)
-                $("#EspecialCoresUp").val(cor.id)
+                $("#NomeCoresUP").val(cor.cor_nome);
+                $("#CodigoCoresUp").val(cor.cor_hex_especial)
+                $("#EspecialCoresUp").val(cor.cor_hex_especial)
                 $("modalUpdateCores").modal('toggle');
 
             });
@@ -2324,8 +2325,8 @@
         {
             $.get('/admin/Usuario/Editar_pacote/' + id, function (pacote) {
                 $("#idPac").val(pacote.id);
-                $("#DimensaoPacotesUp").val(pacote.id)
-                $("#DescricaoPacotesUp").val(pacote.id)
+                $("#DimensaoPacotesUp").val(pacote.pac_descricao)
+                $("#DescricaoPacotesUp").val(pacote.pac_dimensao)
                 $("modalUpdatePacotes").modal('toggle');
 
             });

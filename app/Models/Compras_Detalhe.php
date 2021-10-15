@@ -13,6 +13,7 @@ class Compras_Detalhe extends Model
     protected $fillable = [
         'com_id',
         'for_id',
+        'cde_tipo',
         'cde_produto',
         'dim_id',
         'cor_id',

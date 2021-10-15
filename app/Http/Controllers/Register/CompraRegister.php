@@ -57,6 +57,7 @@ class CompraRegister extends Controller
         $Compras->tpg_id = $request->tpgpagtoCompras;
         $Compras->cc_id = $request->ccCompras;
         $Compras->com_parcelas = $request->parcelasCompra;
+        $Compras->com_descricao = $request->descricaoCompras;
         $Compras->com_desconto = $request->descontoCompras;
         $Compras->com_valor = $request->VTCompras;
         $Compras->com_data_compra = $request->dataCompras;

@@ -29,6 +29,7 @@ class FornecedorRegister extends Controller
                 'bairroFornecedor' => ['required', 'string'],
                 'ruaFornecedor' => ['required', 'string'],
                 'ncasaFornecedor' => ['required'],
+                'produtosFornecedor' => ['required'],
             ],
             [
                 'nomeFornecedor.required' => 'Nome obrigatório.',
@@ -39,6 +40,7 @@ class FornecedorRegister extends Controller
                 'bairroFornecedor.required' => 'Bairro obrigatório.',
                 'ruaFornecedor.required' => 'Rua obrigatória.',
                 'ncasaFornecedor.required' => 'Número obrigatório.',
+                'produtosFornecedor.required' => 'Produto obrigatório.',
             ]
         );
 
@@ -148,6 +150,7 @@ class FornecedorRegister extends Controller
         $Fornecedores->for_bairro = $request->bairroFornecedor;
         $Fornecedores->for_rua = $request->ruaFornecedor;
         $Fornecedores->for_numero = $request->ncasaFornecedor;
+        $Fornecedores->for_produto = $request->produtosFornecedor;
         $Fornecedores->save();
 
         if ($Fornecedores) {

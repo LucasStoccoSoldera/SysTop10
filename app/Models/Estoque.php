@@ -16,6 +16,7 @@ class Estoque extends Model
         'cor_id',
         'est_status',
         'est_data',
+        'est_qtde',
         'est_time',
         'est_limite',
     ];

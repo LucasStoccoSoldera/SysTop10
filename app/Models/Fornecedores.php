@@ -17,7 +17,9 @@ class Fornecedores extends Model
         'for_bairro',
         'for_rua',
         'for_numero',
+        'for_produto',
         'for_telefone',
+        'for_celular',
         'for_cpf_cnpj',
         'for_cep',
     ];

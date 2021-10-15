@@ -32,7 +32,7 @@ class ProdutoRegister extends Controller
                 'PCProduto' => ['required'],
                 'PVProduto' => ['required'],
                 'MaterialProduto' => ['required', 'integer'],
-                'PacoteProduto' => ['required', 'integer'],
+                'LogisticaProduto' => ['required', 'integer'],
                 'PedidoMinimoProduto' => ['required', 'integer'],
                 'FotoProduto' => ['required', 'image', 'dimensions:width=200,height=200'],
             ],
@@ -43,7 +43,7 @@ class ProdutoRegister extends Controller
                 'PCProduto.required' => 'Preço de custo obrigatório.',
                 'PVProduto.required' => 'Preço de venda obrigatório.',
                 'MaterialProduto.required' => 'Material obrigatório.',
-                'PacoteProduto.required' => 'Pacote obrigatório.',
+                'LogisticaProduto.required' => 'Pacote obrigatório.',
                 'FotoProduto.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.image' => 'Arquivo não é uma imagem.',
                 'FotoProduto.dimensions' => 'Dimensão de 100 x 200.',
@@ -62,6 +62,7 @@ class ProdutoRegister extends Controller
         $Produto->id = $request->IDProduto;
         $Produto->pro_nome = $request->NomeProduto;
         $Produto->tpp_id = $request->TipoProduto;
+        $Produto->log_id = $request->LogisticaProduto;
         $Produto->pro_precocusto = $request->PCProduto;
         $Produto->pro_precovenda = $request->PVProduto;
         $Produto->pro_promocao = $request->PromocaoProduto;

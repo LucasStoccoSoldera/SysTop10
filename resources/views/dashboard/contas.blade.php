@@ -2019,15 +2019,15 @@
             $.get('/admin/Usuario/Editar_compra/' + id, function (compra) {
                 $("#idCom").val(compra.id);
                 $("#IDComprasUp").val(compra.id)
-                $("#descricaoComprasUp").val(compra.id)
-                $("#descontoComprasUp").val(compra.id)
-                $("#VTComprasUp").val(compra.id)
-                $("#ccComprasUp").val(compra.id)
-                $("#tpgpagtoComprasUp").val(compra.id)
-                $("#parcelasComprasUp").val(compra.id)
-                $("#dataComprasUp").val(compra.id)
-                $("#datapagComprasUp").val(compra.id)
-                $("#obsComprasUp").val(compra.id)
+                $("#descricaoComprasUp").val(compra.com_descricao)
+                $("#descontoComprasUp").val(compra.com_desconto)
+                $("#VTComprasUp").val(compra.com_valor)
+                $("#ccComprasUp").val(compra.cc_id)
+                $("#tpgpagtoComprasUp").val(compra.tpg_id)
+                $("#parcelasComprasUp").val(compra.com_parcelas)
+                $("#dataComprasUp").val(compra.com_data_compra)
+                $("#datapagComprasUp").val(compra.com_data_pagto)
+                $("#obsComprasUp").val(compra.com_observacoes)
                 $("modalUpdateCompras").modal('toggle');
 
             });
@@ -2040,14 +2040,14 @@
                 $("#IDItemCompraUp").val(itemcompra.com_id)
                 $("#descricaoItemCompraUp").val(itemcompra.cde_descricao)
                 $("#IDFornecedorUp").val(itemcompra.for_id)
-                $("#tipoItemCompraUp").val(itemcompra.id)
-                $("#valorItemCompraUp").val(itemcompra.id)
-                $("#qtdeItemCompraUp").val(itemcompra.id)
-                $("#valorTotalItemCompraUp").val(itemcompra.id)
-                $("#IDProdutoIUp").val(itemcompra.id)
-                $("#dimensaoItemCompraUp").val(itemcompra.id)
-                $("#coresItemCompraUp").val(itemcompra.id)
-                $("#IDProdutoEUp").val(itemcompra.id)
+                $("#tipoItemCompraUp").val(itemcompra.cde_tipo)
+                $("#valorItemCompraUp").val(itemcompra.cde_valoritem)
+                $("#qtdeItemCompraUp").val(itemcompra.cde_qtde)
+                $("#valorTotalItemCompraUp").val(itemcompra.cde_valortotal)
+                $("#IDProdutoIUp").val(itemcompra.cde_produto)
+                $("#dimensaoItemCompraUp").val(itemcompra.dim_id)
+                $("#coresItemCompraUp").val(itemcompra.cor_id)
+                $("#IDProdutoEUp").val(itemcompra.cde_produto)
                 $("modalUpdateItemCompra").modal('toggle');
 
             });
