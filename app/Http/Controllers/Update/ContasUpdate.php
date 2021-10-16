@@ -19,7 +19,7 @@ class ContasUpdate extends Controller
     protected function editPagar($id)
     {
         $object = Contas_a_Pagar::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

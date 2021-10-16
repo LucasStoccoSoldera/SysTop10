@@ -621,8 +621,8 @@
                         if (data_decoded.status == 1) {
                             $('#formRegisterTransportadora')[0].reset();
                             $('#mensagem').text(data_decoded.msg);
-                            var rota_reload = $('#logistica').attr('href');
-                            $('#modalReturnCadastro').modal('show');
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
                         }
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {

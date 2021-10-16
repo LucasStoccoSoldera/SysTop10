@@ -12,7 +12,7 @@ class TransportadoraUpdate extends Controller
     protected function editTransportadora($id)
     {
         $object = Transportadora::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

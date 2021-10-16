@@ -23,13 +23,13 @@ class CompraUpdate extends Controller
     protected function editCompra($id)
     {
         $object = Compras::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     protected function editItemCompra($id)
     {
         $object = Compras_Detalhe::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

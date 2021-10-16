@@ -28,7 +28,7 @@ class FornecedoresList extends Controller
 
                 $rota = "'" . route('admin.delete.fornecedor') . "'";
                 $btn = '<a class="btn btn-primary alter" data-id="'.$data->id.'"><i
-                class="tim-icons icon-pencil" onclick="edit.editFornecedor('.$data->id.');"></i></a>
+                class="tim-icons icon-pencil" onclick="editFornecedor('.$data->id.');"></i></a>
 
                 <button type="button" class="btn btn-primary red" id="excluir-for"
                 name="excluir-fornecedor"

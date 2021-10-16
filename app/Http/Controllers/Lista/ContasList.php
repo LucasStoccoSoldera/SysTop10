@@ -75,7 +75,7 @@ class ContasList extends Controller
                 class="tim-icons icon-chart-pie-36"></i></button>
 
                 <a class="btn btn-primary alter-min"><i
-                class="tim-icons icon-pencil" onclick="edit.editConta('.$data1->id.');"></i></a>
+                class="tim-icons icon-pencil" onclick="editConta('.$data1->id.');"></i></a>
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-con"
                 name="excluir-contas"

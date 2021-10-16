@@ -15,7 +15,7 @@ class MaterialBaseUpdate extends Controller
     protected function editMaterialBase($id)
     {
         $object = Material_Base::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

@@ -21,14 +21,14 @@ class VendasUpdate extends Controller
     protected function editVenda($id)
     {
         $object = Venda::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
 
     protected function editItemVenda($id)
     {
         $object = Venda::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

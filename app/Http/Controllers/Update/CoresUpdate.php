@@ -16,7 +16,7 @@ class CoresUpdate extends Controller
     protected function editCor($id)
     {
         $object = Cor::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

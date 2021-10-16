@@ -13,7 +13,7 @@ class DimensoesUpdate extends Controller
     protected function editDimensao($id)
     {
         $object = Dimensao::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

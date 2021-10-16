@@ -13,7 +13,7 @@ class TipoPagtoUpdate extends Controller
     protected function editTipoPagto($id)
     {
         $object = TipoPagto::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

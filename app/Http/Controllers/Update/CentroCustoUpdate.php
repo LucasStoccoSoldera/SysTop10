@@ -17,7 +17,7 @@ class CentroCustoUpdate extends Controller
     protected function editCentroCusto($id)
     {
         $object = Centro_Custo::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

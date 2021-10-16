@@ -14,7 +14,7 @@ class PacoteUpdate extends Controller
     protected function editPacote($id)
     {
         $object = Pacote::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

@@ -22,7 +22,7 @@ class CargoList extends Controller
 
 
                 $btn = '<a class="btn btn-primary alter" data-id="'.$data2->id.'"><i
-                class="tim-icons icon-pencil" onclick="edit.editCargo('.$data2->id.');"></i></a>';
+                class="tim-icons icon-pencil" onclick="editCargo('.$data2->id.');"></i></a>';
 
                 return $btn;
                 })

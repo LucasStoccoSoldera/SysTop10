@@ -156,7 +156,6 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-primary alter" onclick="edit.editUser(1);"><i class="tim-icons icon-pencil"></i></a>
 
         <div class="row">
             <div class="col-12" style="padding-left: 0px; padding-right: 0px;">

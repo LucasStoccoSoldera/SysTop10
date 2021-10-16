@@ -18,7 +18,7 @@ class ClienteUpdate extends Controller
     protected function editCliente($id)
     {
         $object = Cliente::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

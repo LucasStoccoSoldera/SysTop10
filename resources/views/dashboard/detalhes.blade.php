@@ -159,7 +159,7 @@
                                     color: fff;">
                                         {{ $centro['cc_descricao'] }}</h3>
                                     <div class="text-center">
-                                        <a href="#" class="btn btn-primary alter"><i class="tim-icons icon-pencil"></i></a>
+                                        <a class="btn btn-primary alter" onclick="editCentroCusto({{$centro['id']}});"><i class="tim-icons icon-pencil"></i></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -195,7 +195,7 @@
                                     color: fff;">
                                         {{ $pagamento['tpg_descricao'] }}</h3>
                                     <div class="text-center">
-                                        <a href="#" class="btn btn-primary alter"><i class="tim-icons icon-pencil"></i></a>
+                                        <a class="btn btn-primary alter" onclick="editTpgPagto({{$pagamento['id']}});"><i class="tim-icons icon-pencil"></i></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -211,12 +211,12 @@
     @section('modals')
         <div class="modal" id="modalRegisterCentroCusto" style="display:none;top: 0;" aria-hidden="true">
             <div class="modal-dialog">
-                <form class="form-cadastro" id="formRegisterCentroCusto" method="PUT" autocomplete="off"
-                    enctype="multipart/form-data" action="{{ route('admin.update.centrocusto') }}">
+                <form class="form-cadastro" id="formRegisterCentroCusto" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="{{ route('admin.create.centrocusto') }}">
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Atualizar Centro de Custo</h4>
+                            <h4 class="modal-title">Cadastrar Centro de Custo</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -227,10 +227,10 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Nome do Departamento:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="NomeCentroCustoUp" id="NomeCentroCustoUp" maxlength="25"
-                                            value="{{ old('NomeCentroCustoUp') }}" class="form-control"
+                                        <input type="text" name="NomeCentroCusto" id="NomeCentroCusto" maxlength="25"
+                                            value="{{ old('NomeCentroCusto') }}" class="form-control"
                                             placeholder="Entre com o Nome do Departamento">
-                                        <span class="invalid-feedback NomeCentroCustoUp_error" role="alert">
+                                        <span class="invalid-feedback NomeCentroCusto_error" role="alert">
                                         </span>
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@
                     @csrf
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Atualizar Tipo de Pagamento</h4>
+                            <h4 class="modal-title">Cadastrar Tipo de Pagamento</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -293,7 +293,7 @@
                     <input type="hidden" id="idCC" name="idCC">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Cadastrar Centro de Custo</h4>
+                            <h4 class="modal-title">Atualizar Centro de Custo</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -332,7 +332,7 @@
                     <input type="hidden" id="idPag" name="idPag">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Cadastrar Tipo de Pagamento</h4>
+                            <h4 class="modal-title">Atualizar Tipo de Pagamento</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

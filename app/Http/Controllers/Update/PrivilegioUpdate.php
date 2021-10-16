@@ -14,7 +14,7 @@ class PrivilegioUpdate extends Controller
     protected function  editPrivilegio($id)
     {
         $object = Privilegio::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     protected function updatePrivilegio(Request $request)

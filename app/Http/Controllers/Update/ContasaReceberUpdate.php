@@ -17,7 +17,7 @@ class ContasaReceberUpdate extends Controller
     protected function editReceber($id)
     {
         $object = Contas_a_Receber::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

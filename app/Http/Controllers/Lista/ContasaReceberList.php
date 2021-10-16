@@ -61,7 +61,7 @@ class ContasaReceberList extends Controller
                 class="tim-icons icon-chart-pie-36"></i></button>
 
                 <a class="btn btn-primary alter-min"><i
-                class="tim-icons icon-pencil" onclick="edit.editReceber('.$data->id.');"></i></a>
+                class="tim-icons icon-pencil" onclick="editReceber('.$data->id.');"></i></a>
 
                 <button type="button" class="btn btn-primary red-min" id="excluir-rec"
                 name="excluir-receber"

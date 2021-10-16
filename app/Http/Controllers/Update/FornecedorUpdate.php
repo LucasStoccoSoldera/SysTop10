@@ -18,7 +18,7 @@ class FornecedorUpdate extends Controller
     protected function editFornecedor($id)
     {
         $object = Fornecedores::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     /**

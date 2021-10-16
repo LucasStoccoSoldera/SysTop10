@@ -19,7 +19,7 @@ class LogisticaTransformer extends TransformerAbstract
             'pac_descricao' => $logistica->pac_descricao,
             'trans_nome' => $logistica->trans_nome,
             'action' => '<a class="btn btn-primary alter" data-id="'.$logistica->id.'"><i
-            class="tim-icons icon-pencil" onclick="edit.editLogistica('.$logistica->id.');"></i></a>
+            class="tim-icons icon-pencil" onclick="editLogistica('.$logistica->id.');"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-log"
             name="excluir-logistica"

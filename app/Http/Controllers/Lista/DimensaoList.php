@@ -19,7 +19,7 @@ class DimensaoList extends Controller
             ->addColumn('action', function($data5){
 
                 $btn = '<a class="btn btn-primary alter" data-id="'.$data5->id.'"><i
-                class="tim-icons icon-pencil" onclick="edit.editDimensao('.$data5->id.');"></i></a>  ';
+                class="tim-icons icon-pencil" onclick="editDimensao('.$data5->id.');"></i></a>  ';
 
                 return $btn;
             })

@@ -17,7 +17,7 @@ class UserUpdate extends Controller
     protected function editUser($id)
     {
         $object = Usuario::find($id);
-        return response()->json('object');
+        return response()->json($object);
     }
 
     use RegistersUsers;

@@ -25,7 +25,7 @@ class ClienteList extends Controller
 
                 $rota = "'" .  route('admin.delete.cliente') . "'";
                 $btn = '<a class="btn btn-primary alter" data-id="'.$data->id.'"><i
-                class="tim-icons icon-pencil" onclick="edit.editCliente('.$data->id.');"></i></a>
+                class="tim-icons icon-pencil" onclick="editCliente('.$data->id.');"></i></a>
 
                 <button type="button" class="btn btn-primary red" id="excluir-cli"
                 name="excluir-cliente"
