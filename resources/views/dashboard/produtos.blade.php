@@ -1275,37 +1275,6 @@
                             </div>
             </form>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Tipos de Produto</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_tipo_produto">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 50%">
-                                            Descrição
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
     </div>
@@ -1348,37 +1317,6 @@
                             </div>
             </form>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Materiais</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_material">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 50%">
-                                            Descrição
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
     </div>
@@ -1419,37 +1357,6 @@
                                 <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                             </div>
             </form>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Dimensões</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_dimensao">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 50%">
-                                            Tamanho
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     </div>
@@ -1512,40 +1419,6 @@
                             </div>
             </form>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Cores</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_cor">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 5%">
-                                            ID
-                                        </th>
-                                        <th style="width: 20%">
-                                            Nome
-                                        </th>
-                                        <th style="width: 20%">
-                                            Cód / Pal
-                                        </th>
-                                        <th class="text-right" style="width: 20%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
     </div>
@@ -1597,130 +1470,11 @@
                             </div>
             </form>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Pacotes</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_pacote">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 30%">
-                                            Nome
-                                        </th>
-                                        <th style="width: 20%">
-                                            Dimensão
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
     </div>
     </div>
 
-    <div class="modal fade" id="modalPreenchePV" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="formPreenchePV" autocomplete="off" enctype="multipart/form-data" method="POST"
-                action="{{ route('admin.preenche.pv') }}">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Calcular Preço Venda à Vista</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Custo Mercadoria:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="custoPV" id="custoPV" class="dinheiro form-control"
-                                        maxlength="11" value="{{ old('custoPV') }}" placeholder="Entre com o Custo">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback custoPV_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Impostos (%):</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="impostoPV" id="impostoPV" class=" form-control"
-                                        maxlength="11" value="{{ old('impostoPV') }}" placeholder="Entre com o imposto">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback impostoPV_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Comissões (%):</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="comissaoPV" id="comissaoPV" class=" form-control"
-                                        maxlength="11" value="{{ old('comissaoPV') }}"
-                                        placeholder="Entre com a comissão">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback comissaoPV_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Custo Fixo (%):</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="custofixoPV" id="custofixoPV" class=" form-control"
-                                        maxlength="11" value="{{ old('custofixoPV') }}"
-                                        placeholder="Entre com o custo fixo">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback custofixoPV_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Lucro (%):</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="lucroPV" id="lucroPV" class="form-control" maxlength="11"
-                                        value="{{ old('lucroPV') }}" placeholder="Entre com o custo fixo">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback lucroPV_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="limpar btn btn-secondary btn-danger">Limpar</button>
-                        <button type="submit" class="btn-register btn btn-primary">Inserir</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
 @endsection
 

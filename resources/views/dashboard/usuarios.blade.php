@@ -572,37 +572,6 @@
                             </div>
             </form>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Cargos</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_cargo">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 50%">
-                                            Descrição
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     </div>
     </div>
