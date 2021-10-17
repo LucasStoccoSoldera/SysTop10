@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -90,41 +90,41 @@
                         <div class="justify-content-md-center">
                             <div class="col-auto justify-content-md-center">
                                 <h4 class="resumo" style="text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">Total de Relações</h4>
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">Total de Relações</h4>
                                 <h3 class="dados-resumo" style="color: #2caeec;text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">{{ $relacao_total }}
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">{{ $relacao_total }}
                                 </h3>
                             </div>
                             <div class="col-auto justify-content-center">
                                 <h4 class="resumo" style="text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">Total de Transportadoras</h4>
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">Total de Transportadoras</h4>
                                 <h3 class="dados-resumo" style="color: #2caeec;text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">
                                     {{ $transportadora_total }}</h3>
                             </div>
                             <div class="col-auto justify-content-center">
                                 <h4 class="resumo" style="text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">Total de Pacotes</h4>
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">Total de Pacotes</h4>
                                 <h3 class="dados-resumo" style="color: #2caeec;text-align: center;
-                                float: unset;
-                                margin: 0 auto;
-                                margin-top: 30px;
-                                color: fff;">{{ $pacotes_total }}
+                                    float: unset;
+                                    margin: 0 auto;
+                                    margin-top: 30px;
+                                    color: fff;">{{ $pacotes_total }}
                                 </h3>
                             </div>
 
@@ -153,13 +153,14 @@
                             <div class="col-auto justify-content-md-center">
                                 @foreach ($centros as $centro)
                                     <h3 class="dados-resumo" id="cc_descricao_json" style="color: #2caeec;    text-align: center;
-                                    float: unset;
-                                    margin: 0 auto;
-                                    margin-top: 30px;
-                                    color: fff;">
+                                        float: unset;
+                                        margin: 0 auto;
+                                        margin-top: 30px;
+                                        color: fff;">
                                         {{ $centro['cc_descricao'] }}</h3>
                                     <div class="text-center">
-                                        <a class="btn btn-primary alter" onclick="editCentroCusto({{$centro['id']}});"><i class="tim-icons icon-pencil"></i></a>
+                                        <a class="btn btn-primary alter" onclick="editCentroCusto({{ $centro['id'] }});"><i
+                                                class="tim-icons icon-pencil"></i></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -189,13 +190,14 @@
                             <div class="col-auto justify-content-md-center">
                                 @foreach ($pagamentos as $pagamento)
                                     <h3 class="dados-resumo" id="tpg_descricao_json" style="color: #2caeec;    text-align: center;
-                                    float: unset;
-                                    margin: 0 auto;
-                                    margin-top: 30px;
-                                    color: fff;">
+                                        float: unset;
+                                        margin: 0 auto;
+                                        margin-top: 30px;
+                                        color: fff;">
                                         {{ $pagamento['tpg_descricao'] }}</h3>
                                     <div class="text-center">
-                                        <a class="btn btn-primary alter" onclick="editTpgPagto({{$pagamento['id']}});"><i class="tim-icons icon-pencil"></i></a>
+                                        <a class="btn btn-primary alter" onclick="editTpgPagto({{ $pagamento['id'] }});"><i
+                                                class="tim-icons icon-pencil"></i></a>
                                     </div>
                                 @endforeach
                             </div>
@@ -422,6 +424,73 @@
                         success: function(data_decoded) {
                             if (data_decoded.status == 1) {
                                 $('#formRegisterTpgPagto')[0].reset();
+                                demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                    'tim-icons icon-check-2');
+                            }
+                            if (data_decoded.status == 0) {
+                                $.each(data_decoded.error, function(prefix, val) {
+                                    $('span.' + prefix + '_error').text(val[0]);
+                                    $('#' + prefix).addClass('is-invalid');
+                                });
+                            }
+                        }
+                    });
+                });
+
+                $("#formUpdateCentroCusto").on('submit', function(e) {
+
+                    e.preventDefault();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: $(this).attr('method'),
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        processData: false,
+                        dataType: 'json',
+                        beforeSend: function() {
+                            $(document).find('span.invalid-feedback').attr('');
+                            $(document).find('input').removeClass('is-invalid');
+
+                        },
+                        success: function(data_decoded) {
+                            if (data_decoded.status == 1) {
+                                $('#formUpdateCentroCusto')[0].reset();
+                                demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                    'tim-icons icon-check-2');
+                            }
+                            if (data_decoded.status == 0) {
+                                $.each(data_decoded.error, function(prefix, val) {
+                                    $('span.' + prefix + '_error').text(val[0]);
+                                    $('#' + prefix).addClass('is-invalid');
+                                });
+                            }
+                        }
+                    });
+                });
+
+                $("#formUpdateTpgPagto").on('submit', function(e) {
+
+                    e.preventDefault();
+
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: $(this).attr('method'),
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        processData: false,
+                        dataType: 'json',
+                        beforeSend: function() {
+                            $(document).find('span.invalid-feedback').attr('');
+                            $(document).find('input').removeClass('is-invalid');
+                        },
+                        success: function(data_decoded) {
+                            if (data_decoded.status == 1) {
+                                $('#formUpdateTpgPagto')[0].reset();
                                 demo.showNotification('top', 'right', 2, data_decoded.msg,
                                     'tim-icons icon-check-2');
                             }

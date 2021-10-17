@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                -->
+                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                    -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -757,6 +757,40 @@
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterContasaReceber')[0].reset();
+                        demo.showNotification('top', 'right', 2, data_decoded.msg,
+                            'tim-icons icon-check-2');
+                    }
+                    if (data_decoded.status == 0) {
+                        $.each(data_decoded.error, function(prefix, val) {
+                            $('span.' + prefix + '_error').text(val[0]);
+                            $('#' + prefix).addClass('is-invalid');
+                        });
+                    }
+                }
+            });
+        });
+
+        $("#formUpdateContasaReceber").on('submit', function(e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                processData: false,
+                dataType: 'json',
+                beforeSend: function() {
+                    $(document).find('span.invalid-feedback').text('');
+                    $(document).find('input').removeClass('is-invalid');
+
+                },
+                success: function(data_decoded) {
+                    if (data_decoded.status == 1) {
+                        $('#formUpdateContasaReceber')[0].reset();
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
                     }

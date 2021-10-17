@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                    Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                -->
+                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                    -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -352,12 +352,13 @@
                                     <div class="form-group">
                                         <label class="modal-label">Pacote:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="LogisticaProduto" id="LogisticaProduto" class="form-control"
-                                            maxlength="15" value="{{ old('LogisticaProduto') }}"
+                                        <select type="text" name="LogisticaProduto" id="LogisticaProduto"
+                                            class="form-control" maxlength="15" value="{{ old('LogisticaProduto') }}"
                                             placeholder="Selecione com o Pacote">
                                             <option value="">------------Selecione------------</option>
                                             @foreach ($logisticas as $logistica)
-                                            <option value="{{ $logistica['id'] }}">{{ $logistica['log_pacote'] . $logistica['log_transportadora']}}
+                                                <option value="{{ $logistica['id'] }}">
+                                                    {{ $logistica['log_pacote'] . $logistica['log_transportadora'] }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -1153,12 +1154,13 @@
                                 <div class="form-group">
                                     <label class="modal-label">Logistica:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <select type="text" name="LogisticaProdutoUp" id="LogisticaProdutoUp" class="form-control"
-                                        maxlength="15" value="{{ old('LogisticaProdutoUp') }}"
+                                    <select type="text" name="LogisticaProdutoUp" id="LogisticaProdutoUp"
+                                        class="form-control" maxlength="15" value="{{ old('LogisticaProdutoUp') }}"
                                         placeholder="Selecione com o Pacote">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($logisticas as $logistica)
-                                            <option value="{{ $logistica['id'] }}">{{ $logistica['log_pacote'] . $logistica['log_transportadora']}}
+                                            <option value="{{ $logistica['id'] }}">
+                                                {{ $logistica['log_pacote'] . $logistica['log_transportadora'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -1934,6 +1936,216 @@
                             $('#mensagem').text(data_decoded.msg);
                             var rota_reload = $('#produtos').attr('href');
                             $('#modalReturnCadastro').modal('show');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdateProdutos").on('submit', function(e) {
+
+                e.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formUpdateProdutos')[0].reset();
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdateTipoProduto").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formUpdateTipoProduto')[0].reset();
+                            $('#mensagem').text(data_decoded.msg);
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdateMaterial").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formUpdateMaterial')[0].reset();
+                            $('#mensagem').text(data_decoded.msg);
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdateDimensao").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formUpdateDimensao')[0].reset();
+                            $('#mensagem').text(data_decoded.msg);
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdateCores").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formUpdateCores')[0].reset();
+                            $('#mensagem').text(data_decoded.msg);
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
+                        }
+                        if (data_decoded.status == 0) {
+                            $.each(data_decoded.error, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                            $.each(data_decoded.error_cor_especial, function(prefix, val) {
+                                $('span.' + prefix + '_error').text(val[0]);
+                                $('#' + prefix).addClass('is-invalid');
+                            });
+                        }
+                    }
+                });
+            });
+
+            $("#formUpdatePacotes").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $(document).find('span.invalid-feedback').text('');
+                        $(document).find('input').removeClass('is-invalid');
+                    },
+                    success: function(data_decoded) {
+                        if (data_decoded.status == 1) {
+                            $('#formRegisterPacotes')[0].reset();
+                            $('#mensagem').text(data_decoded.msg);
+                            demo.showNotification('top', 'right', 2, data_decoded.msg,
+                                'tim-icons icon-check-2');
                         }
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
