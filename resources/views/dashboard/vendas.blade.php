@@ -1060,30 +1060,6 @@
                 ]
             });
 
-            var table_item_venda = $('#tb_item_venda').DataTable({
-                paging: true,
-                searching: false,
-                processing: true,
-                serverside: true,
-                ajax: "{{ route('admin.list.itemvendaato') }}",
-                columns: [{
-                        data: "id",
-                        className: "text-center"
-                    },
-                    {
-                        data: "pro_id"
-                    },
-                    {
-                        data: "det_qtde"
-                    },
-                    {
-                        data: "det_valor_total",
-                        className: "text-right",
-                        render: DataTable.render.number('.', ',', 2, 'R$')
-                    },
-                ]
-            });
-
             var table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
                 paging: true,
                 searching: false,

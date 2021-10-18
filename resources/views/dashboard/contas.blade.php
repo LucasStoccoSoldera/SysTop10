@@ -1690,38 +1690,6 @@
             ]
         });
 
-        var table_item_compra = $('#tb_item_compra').DataTable({
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.itemcompra') }}",
-            columns: [{
-                    data: "cde_produto"
-                },
-                {
-                    data: "cde_qtde"
-                },
-                {
-                    data: "dim_id"
-                },
-                {
-                    data: "cor_id"
-                },
-                {
-                    data: "cde_valoritem",
-                    className: "text-right"
-                },
-                {
-                    data: "cde_valortotal",
-                    className: "text-right"
-                },
-                {
-                    data: "action",
-                    className: "text-right"
-                },
-            ]
-        });
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
@@ -1752,39 +1720,6 @@
             $('#ls_par_tpg').val(pagto);
             $('#ls_par_cc').val(centro);
 
-            var table_parcelas = $('#tb_parcelas').DataTable({
-                paging: true,
-                searching: false,
-                processing: true,
-                serverside: true,
-                ajax: {
-                    type: 'GET',
-                    url: "{{ route('admin.list.parcelas') }}",
-                    data: conta,
-                },
-                columns: [{
-                        data: "par_conta",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_numero",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_valor",
-                        className: "text-right",
-                        render: DataTable.render.number('.', ',', 2, 'R$')
-                    },
-                    {
-                        data: "par_status",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_data_pagto",
-                        className: "text-center"
-                    },
-                ]
-            });
         });
 
         $('#modalRegisterItemCompra').on('show', function() {
