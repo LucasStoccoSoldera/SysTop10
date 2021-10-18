@@ -25,10 +25,10 @@ class CargoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'descricaoCargo' => ['required', 'string'],
+                'descricaoCargoUp' => ['required', 'string'],
             ],
             [
-                'descricaoCargo.required' => 'Cargo obrigatório.',
+                'descricaoCargoUp.required' => 'Cargo obrigatório.',
             ]
         );
 
@@ -36,7 +36,7 @@ class CargoUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Cargo = new Cargo;
-        $Cargo->car_descricao = $request->descricaoCargo;
+        $Cargo->car_descricao = $request->descricaoCargoUp;
         $Cargo->save();
 
 

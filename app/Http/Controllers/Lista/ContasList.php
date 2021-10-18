@@ -25,49 +25,8 @@ class ContasList extends Controller
             ->addColumn('action', function($data1){
 
                 $rota =  "'" . route('admin.delete.conta') . "'";
-                $rota_parc =  "'" . route('admin.list.parcelas') . "'";
-                $rota_conta =  "'" . route('admin.post.conta') . "'";
                 $btn = '
 
-                <script>function visualizar(conta, valor, pagto, centro){preencherParcelas(conta, valor, pagto, centro);$("#modalShowParcelas").modal("show");}</script>
-
-                <script>
-                function preencherParcelas(conta, valor, pagto, centro){
-
-                        document.getElementById(`ls_par_conta`).innerHTML = conta;
-                        document.getElementById(`ls_par_valor`).innerHTML = "R$" + valor;
-                        document.getElementById(`ls_par_tpg`).innerHTML = pagto;
-                        document.getElementById(`ls_par_cc`).innerHTML = centro;
-
-                        $.ajax({
-                            headers: {
-                                `X-CSRF-TOKEN`: $(`meta[name="csrf-token"]`).attr(`content`)
-                            },
-                            type: POST,
-                            url: '.$rota_conta.',
-                            data: conta,
-                            processData: false,
-                            dataType: `json`,
-                            success: function() {
-                                var table_parcelas = $(`#tb_parcelas`).DataTable( {
-                                    paging: true,
-                                    searching: false,
-                                    processing: true,
-                                    serverside: true,
-                                    ajax: '.$rota_parc.',
-                                    columns: [
-                                        {data: "par_venda", className: "text-center"},
-                                        {data: "par_numero", className: "text-center"},
-                                        {data: "par_valor", className: "text-right", render: DataTable.render.number( `.`, `,`, 2, `R$` )},
-                                        {data: "par_status", className: "text-center"},
-                                        {data: "par_data_pagto", className: "text-center"},
-                                    ]
-                                });
-                                }
-                        });
-                        }
-
-    </script>
 
                 <button type="button" class="btn btn-primary visu" id="visu-con"
                 name="visu-conta"

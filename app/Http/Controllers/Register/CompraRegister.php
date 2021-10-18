@@ -117,7 +117,7 @@ class CompraRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDItemCompra' => ['required', 'integer'],
+                'IDItemCompra' => ['required'],
                 'IDFornecedor' => ['required', 'integer'],
                 'qtdeItemCompra' => ['required', 'integer'],
                 'descricaoItemCompra' => ['required', 'string'],

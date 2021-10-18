@@ -775,7 +775,7 @@
                                         style="color: red; font-size: 12px;">
                                         * </label>
                                     <select type="text" name="IDProdutoI" id="IDProdutoI" class="form-control"
-                                        maxlength="50" value="{{ old('IDProdutoI') }}"
+                                        maxlength="50" value="{{ old('IDProdutoI') }}"  
                                         placeholder="Selecione com o Produto">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($produtos as $produto)
@@ -1570,6 +1570,7 @@
 
 @push('ajax')
 <script>
+
     $("#itemcompra").hide();
     $("#externo").hide();
     $("#interno").show();
@@ -1588,6 +1589,7 @@
             $('.div-feedback').hide();
             $('.is-invalid').removeClass('is-invalid');
         }
+        $('.div-feedback').show();
     });
 
     $('#IDCompras').on('blur', function() {
@@ -1694,7 +1696,7 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
                 table_conta.ajax.reload(null, false);
-                table_item_compra.ajax.reload(null, false);
+                table_item_compra_ato.ajax.reload(null, false);
                 console.log(lista_parcelas);
                 if (lista_parcelas == true) {
                     table_parcelas.ajax.reload(null, false);
@@ -1702,29 +1704,24 @@
             }
         );
 
-        $('button.visu').on('click', function() {
+        function visualizar(conta, valor, pagto, data) {
+            console.log(conta);
             var conta = $(this).data('id');
             var valor = $(this).data('valor');
             var pagto = $(this).data('tpg');
             var centro = $(this).data('cc');
-            $('#modalShowParcelas').modal('show');
-        });
-
-        $('.visu').on('click', function() {
-
-        });
-
-        $('#modalShowParcelas').on('show', function() {
+            showParcelas(conta);
             $('#ls_par_conta').val(conta);
             $('#ls_par_valor').val(valor);
             $('#ls_par_tpg').val(pagto);
             $('#ls_par_cc').val(centro);
-
-        });
+            $('#modalShowParcelas').modal('show');
+            }
 
         $('#modalRegisterItemCompra').on('show', function() {
             $("#modalRegisterCompras").hide();
             $("#IDItemCompra").val(idcompra);
+            console.log( $("#IDItemCompra").val());
         });
 
         $("#modalRegisterItemVenda").on("shown.bs.modal", function() {
@@ -1980,33 +1977,6 @@
 
     function abrirItem() {
         $('#modalRegisterItemCompra').modal('show');
-    }
-
-    function loadItem(id) {
-        $id = id;
-        $('#tb_parcela').DataTable({
-            paging: false,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: "{{ route('admin.list.parcelas') }}",
-            columns: [{
-                    data: "par_numero"
-                },
-                {
-                    data: "par_conta"
-                },
-                {
-                    data: "tpg_id"
-                },
-                {
-                    data: "par_valor"
-                },
-                {
-                    data: "par_status"
-                },
-            ]
-        });
     }
 
     $("#formExcluir").on('submit', function(e) {

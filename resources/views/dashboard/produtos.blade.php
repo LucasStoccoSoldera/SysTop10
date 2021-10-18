@@ -2213,7 +2213,6 @@
             });
 
             function visualizar(conta, valor, pagto, data) {
-                console.log(conta, valor, pagto, data);
                 $('#modalShowParcelas').modal('show');
             }
 
