@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Dimensao;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class DimensoesUpdate extends Controller
 {
@@ -35,10 +37,13 @@ class DimensoesUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-
         $Dimensao = new Dimensao;
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
+
+        Schema::table('dimensao_produto', function (Blueprint $table) use ($request) {
+            $table->char($request->NomeDimensao)->default(0);
+        });
 
         if ($Dimensao) {
             return response()->json(['status' => 1, 'msg' => 'Dimensão cadastrada com sucesso!']);

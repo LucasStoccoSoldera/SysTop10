@@ -27,14 +27,18 @@ class EstoqueUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDDimensao' => ['required', 'integer'],
-                'IDCor' => ['required', 'integer'],
+                'IDDimensao' => ['required'],
+                'IDCor' => ['required'],
+                'produtoEstoque' => ['required'],
                 'qtdeEstoque' => ['required', 'integer'],
+                'dataEstoque' => ['required'],
+                'timeEstoque' => ['required'],
                 'statusEstoque' => ['required', 'string'],
             ],
             [
                 'IDDimensao.required' => 'Dimensão obrigatória.',
                 'IDCor.required' => 'Cor obrigatória.',
+                'produtoEstoque.required' => 'Produto obrigatório.',
                 'qtdeEstoque.required' => 'Quantidade obrigatória.',
                 'statusEstoque.required' => 'Status obrigatório.',
             ]
@@ -46,9 +50,11 @@ class EstoqueUpdate extends Controller
         $Estoque = new Estoque;
         $Estoque->dim_id = $request->IDDimensao;
         $Estoque->cor_id = $request->IDCor;
+        $Estoque->pro_id = $request->produtoEstoque;
         $Estoque->est_qtde = $request->qtdeEstoque;
+        $Estoque->est_data = $request->dataEstoque;
+        $Estoque->est_time = $request->timeEstoque;
         $Estoque->est_status = $request->statusEstoque;
-        $Estoque->est_limite = $request->limiteEstoque;
         $Estoque->save();
 
         if ($Estoque) {

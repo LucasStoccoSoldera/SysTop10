@@ -41,23 +41,20 @@ class CompraUpdate extends Controller
             $request->all(),
             [
                 'IDCompras' => ['required', 'integer'],
-                'descricaoCompras' => ['string'],
-                'tpgpagtoCompras' => ['required', 'string'],
-                'ccCompras' => ['required', 'string'],
-                'parcelasCompra' => ['required', 'integer'],
-                'qtdeCompras' => ['required', 'integer'],
-                'descontoCompras' => ['required'],
+                'descricaoCompras' => ['required'],
+                'tpgpagtoCompras' => ['required'],
+                'ccCompras' => ['required'],
+                'parcelasCompras' => ['required'],
                 'VTCompras' => ['required'],
-                'dataCompras' => ['required', 'date'],
-                'datapagCompras' => ['date'],
-                'obsCompras' => ['string'],
+                'dataCompras' => ['required'],
             ],
             [
                 'IDCompras.required' => 'ID da compra obrigatório.',
+                'descricaoCompras.required' => 'Descrição obrigatória.',
                 'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
                 'ccCompras.required' => 'Centro de Custo obrigatório.',
-                'parcelasCompra.required' => 'Quantidade de parcelas obrigatório.',
-                'qtdeCompras.required' => 'Quantidade obrigatória.',
+                'parcelasCompras.required' => 'Qtde. de parcelas obrigatório.',
+                'VTCompras.required' => 'Valor Total obrigatório.',
                 'dataCompras.required' => 'Data da compra obrigatória.',
             ]
         );
@@ -71,7 +68,7 @@ class CompraUpdate extends Controller
         $Compras->tpg_id = $request->tpgpagtoCompras;
         $Compras->cc_id = $request->ccCompras;
         $Compras->com_parcelas = $request->parcelasCompra;
-        $Compras->com_qtde = $request->qtdeCompras;
+        $Compras->com_descricao = $request->descricaoCompras;
         $Compras->com_desconto = $request->descontoCompras;
         $Compras->com_valor = $request->VTCompras;
         $Compras->com_data_compra = $request->dataCompras;
@@ -87,7 +84,9 @@ class CompraUpdate extends Controller
         $Conta->con_valor_final = $request->VTCompras;
         $Conta->con_data_venc = $request->datapagCompras;
         $Conta->con_parcelas = $request->parcelasCompras;
-        $Conta->con_data_pag = "";
+        if ($request->datapagCompras <> null){
+        $Conta->con_data_pag = $request->datapagCompras;
+        }
         $Conta->con_status= "Aberto";
         $Conta->con_compra= "Compra";
         $Conta->save();
@@ -97,7 +96,6 @@ class CompraUpdate extends Controller
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->VTCompras;
         $Caixa->cax_ctpagar = $request->VTCompras;
-        $Caixa->cax_ctreceber = "";
         $Caixa->save();
 
         $cont = 0;
@@ -112,8 +110,11 @@ class CompraUpdate extends Controller
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->VTCompras / $request->parcelasCompras) * $cont;
             $Parcela->par_status = "Em Aberto";
+            if ($compras_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            }
             $Parcela->save();
+            $cont ++;
         }
 
         if ($Parcela) {
@@ -131,29 +132,31 @@ class CompraUpdate extends Controller
                 'IDFornecedor' => ['required', 'integer'],
                 'qtdeItemCompra' => ['required', 'integer'],
                 'descricaoItemCompra' => ['required', 'string'],
+                'valorItemCompra' => ['required'],
             ],
             [
                 'IDItemCompra.required' => 'ID da compra obrigatório.',
                 'IDFornecedor.required' => 'Fornecedor obrigatório.',
                 'qtdeItemCompra.required' => 'Quantidade obrigatória.',
                 'descricaoItemCompra.required' => 'Descrição obrigatória.',
+                'valorItemCompra.required' => 'Valor do item obrigatório.',
             ]
         );
 
 
-        if ($request->tipoItemCompra == 'Produto Interno') {
+        if ($request->tipoItemCompra == "1") {
             $validator_interno = Validator::make(
                 $request->all(),
                 [
-                    'IDProduto' => ['required', 'integer'],
+                    'IDProdutoI' => ['required', 'integer'],
                     'dimensaoItemCompra' => ['required', 'integer'],
                     'coresItemCompra' => ['required', 'integer'],
 
                 ],
                 [
-                    'IDProduto.required' => 'Produto obrigatório.',
-                    'dimensaoItemCompra.cpf' => 'Dimensão obrigatória.',
-                    'coresItemCompra.cpf' => 'Cor obrigatória.',
+                    'IDProdutoI.required' => 'Produto obrigatório.',
+                    'dimensaoItemCompra.required' => 'Dimensão obrigatória.',
+                    'coresItemCompra.required' => 'Cor obrigatória.',
                 ]
             );
             $interno = true;
@@ -161,10 +164,10 @@ class CompraUpdate extends Controller
             $validator_interno = Validator::make(
                 $request->all(),
                 [
-                    'IDProduto' => ['required', 'integer'],
+                    'IDProdutoE' => ['required', 'integer'],
                 ],
                 [
-                    'IDProduto.required' => 'Produto obrigatório.',
+                    'IDProduto.requiredE' => 'Produto obrigatório.',
                 ]
             );
             $interno = false;

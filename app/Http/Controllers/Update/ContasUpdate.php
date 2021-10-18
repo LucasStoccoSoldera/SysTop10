@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Response;
 use App\Models\Contas_a_Pagar;
 use App\Models\Caixa;
 use App\Models\Parcelas;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notificacao;
 use Illuminate\Support\Facades\Validator;
@@ -27,6 +28,8 @@ class ContasUpdate extends Controller
      */
     protected function updatePagar(Request $request)
     {
+        $ontem = Carbon::now()->subDay();
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -64,8 +67,10 @@ class ContasUpdate extends Controller
         $Contas_a_Pagar->con_data_pag = $request->datapContas;
         $Contas_a_Pagar->tpg_id = $request->tpgpagtoContas;
         $Contas_a_Pagar->cc_id = $request->centrocustoContas;
-        $Contas_a_Pagar->con_status= "Aberto";
         $Contas_a_Pagar->con_compra= "Conta";
+
+        if(isset($request->datapContas) && $request->datapContasdatapContas <= $ontem){
+        $Contas_a_Pagar->con_status= "Pago";
         $Contas_a_Pagar->save();
 
         $Caixa = new Caixa();
@@ -73,9 +78,16 @@ class ContasUpdate extends Controller
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->valorfContas;
         $Caixa->cax_ctpagar = $request->valorfContas;
-        $Caixa->cax_ctreceber = "";
         $Caixa->save();
+        }else{
+            $Contas_a_Pagar->con_status= "Aberto";
+            $Contas_a_Pagar->save();
+        }
 
+        if($request->tipoContas == 'Fixa'){
+
+
+        } else{
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
@@ -87,13 +99,18 @@ class ContasUpdate extends Controller
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas) * $cont;
+            if(isset($request->datapContas) && $request->datapContas <= $ontem){
             $Parcela->par_status = "Em Aberto";
-            $Parcela->par_data_pagto = ($conta_last->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            }
+            $Parcela->par_status = "Em Aberto";
+            if (isset($contas_dados->con_data_pag)){
+            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            }
             $Parcela->save();
+            $cont ++;
         }
+    }
 
-        if ($Contas_a_Pagar) {
             return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
-        }
     }
 }

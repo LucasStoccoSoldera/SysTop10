@@ -27,14 +27,19 @@ class ClienteUpdate extends Controller
      */
     protected function updateCliente(ClienteRequest $request)
     {
-     $dataForm = $request->all();
-
         $validator = Validator::make(
             $request->all(),
             [
                 'nomeCliente' => ['required', 'string'],
                 'usuarioCliente' => ['required','email'],
                 'senhaCliente' => ['required', 'confirmed'],
+                'cepCliente' => ['required'],
+                'cidadeCliente' => ['required'],
+                'estadoCliente' => ['required'],
+                'bairroCliente' => ['required'],
+                'ruaCliente' => ['required'],
+                'ncasaCliente' => ['required'],
+                'complementoCliente' => ['required'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
@@ -42,6 +47,14 @@ class ClienteUpdate extends Controller
                 'usuarioCliente.email' => 'E-mail inválido.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
+                'cepCliente.required' => 'CEP obrigatório.',
+                'cepCliente.formato_cep' => 'CEP inválido.',
+                'cidadeCliente.required' => 'Cidade obrigatória.',
+                'estadoCliente.required' => 'Estado obrigatório.',
+                'bairroCliente.required' => 'Bairro obrigatório.',
+                'ruaCliente.required' => 'Rua obrigatória.',
+                'ncasaCliente.required' => 'Número obrigatório.',
+                'complementoCliente.required' => 'Complemento obrigatório.',
             ]
         );
 
@@ -49,75 +62,84 @@ class ClienteUpdate extends Controller
 
             if (isset($request->cpfCliente)) {
                 $validator_cpf_cnpj = Validator::make(
-                    $request->cpfCliente,
+                    $request->all(),
                     [
-                        'cpfCliente' => ['required', 'cpf'],
+                        'cpfCliente' => ['cpf'],
                     ],
                     [
-                        'cpfCliente.required' => 'CPF Obrigatório.',
                         'cpfCliente.cpf' => 'CPF inválido.',
                     ]
                 );
                 $cpf = $request->cpfCliente;
             } else {
                 $validator_cpf_cnpj = Validator::make(
-                    $request->cnpjCliente,
+                    $request->all(),
                     [
-                        'cnpjCliente' => ['required', 'cnpj'],
+                        'cnpjCliente' => ['cnpj'],
                     ],
                     [
-                        'cnpjCliente.required' => 'CNPJ Obrigatório.',
                         'cnpjCliente.cnpj' => 'CNPJ inválido.',
                     ]
                 );
             }
         } else {
             $validator_cpf_cnpj = Validator::make(
-                [$request->cpfCliente, $request->cnpjCliente],
+                [$request->all()],
                 [
-                    'cpfCliente' => ['required', 'digits:11', 'cpf'],
-                    'cnpjCliente' => ['required', 'digits:14', 'cnpj'],
+                    'cpfCliente' => ['required', 'cpf'],
+                    'cnpjCliente' => ['required', 'cnpj'],
                 ],
                 [
-                    'cpfCliente.required' => 'CPF Obrigatório.',
-                    'cnpjCliente.required' => 'CNPJ Obrigatório.',
+                    'cpfCliente.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cnpjCliente.required' => 'CPF ou CNPJ obrigatório.',
                 ]
             );
         }
 
+        if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
+
+            $validator_telefone_celular = Validator::make(
+                [$request->all()],
+                [
+                    'telefoneCliente' => ['telefone'],
+                    'celularCliente' => ['celular_com_ddd'],
+                ],
+                [
+                    'telefoneCliente.telefone' => 'Telefone inválido.',
+                    'celularCliente.celular_com_ddd' => 'Celular inválido.',
+                ]
+            );
+        } else{
         if (!empty($request->telefoneCliente || $request->celularCliente)) {
-            if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
 
             if (isset($request->telefoneCliente)) {
                 $validator_telefone_celular = Validator::make(
-                    $request->telefoneCliente,
+                    $request->all(),
                     [
-                        'telefoneCliente' => ['required', 'telefone'],
+                        'telefoneCliente' => ['telefone'],
                     ],
                     [
-                        'telefoneCliente.required' => 'Telefone obrigatório.',
                         'telefoneCliente.telefone' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneCliente;
             } else {
                 $validator_telefone_celular = Validator::make(
-                    $request->celularCliente,
+                    $request->all(),
                     [
-                        'celularCliente' => ['required', 'celular'],
+                        'celularCliente' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularCliente.required' => 'Celular obrigatório.',
-                        'celularCliente.celular' => 'Celular inválido.',
+                        'celularCliente.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
         } else {
             $validator_telefone_celular = Validator::make(
-                [$request->telefoneCliente, $request->celularCliente],
+                [$request->all()],
                 [
-                    'telefoneCliente' => ['required', 'telefone'],
-                    'celularCliente' => ['required', 'celular'],
+                    'telefoneCliente' => ['required'],
+                    'celularCliente' => ['required'],
                 ],
                 [
                     'telefoneCliente.required' => 'Telefone ou Celular obrigatórios.',
@@ -125,18 +147,6 @@ class ClienteUpdate extends Controller
                 ]
             );
         }
-    } else {
-        $validator_telefone_celular = Validator::make(
-            [$request->telefoneCliente, $request->celularCliente],
-            [
-                'telefoneCliente' => ['telefone'],
-                'celularCliente' => ['celular'],
-            ],
-            [
-                'telefoneCliente.telefone' => 'Telefone inválido.',
-                'celularCliente.celular' => 'Celular inválido.',
-            ]
-        );
     }
 
         if ($validator->fails() || $validator_cpf_cnpj->fails() || $validator_telefone_celular->fails()) {
@@ -149,22 +159,20 @@ class ClienteUpdate extends Controller
             $Cliente->cli_nome = $request->nomeCliente;
             $Cliente->cli_usuario = $request->usuarioCliente;
             $Cliente->cli_senha = Hash::make($request->senhaCliente);
-            if (isset($cpf)) {
-                $Cliente->cli_cpf_cnpj = $request->cpfCliente;
-            } else {
-                $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
+            if (isset($cpf)){
+            $Cliente->cli_cpf_cnpj = $request->cpfCliente;
+            }else{
+            $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
             }
-            if (isset($telefone)) {
-                $Cliente->cli_telefone = $request->telefoneCliente;
-            } else {
-                $Cliente->cli_celular = $request->celularCliente;
-            }
-            $Cliente->cli_logradouro = "";
-            $Cliente->cli_bairro = "";
-            $Cliente->cli_n_casa = "";
-            $Cliente->cli_cidade = "";
-            $Cliente->cli_uf = "";
-            $Cliente->cli_complemento = "";
+            $Cliente->cli_telefone = $request->telefoneCliente;
+            $Cliente->cli_celular = $request->celularCliente;
+            $Cliente->cli_cep = $request->cepCliente;
+            $Cliente->cli_cidade = $request->cidadeCliente;
+            $Cliente->cli_uf = $request->estadoCliente;
+            $Cliente->cli_bairro = $request->bairroCliente;
+            $Cliente->cli_logradouro = $request->ruaCliente;
+            $Cliente->cli_n_casa = $request->ncasaCliente;
+            $Cliente->cli_complemento = $request->complementoCliente;
             $Cliente->save();
 
             $credentials = [
@@ -172,7 +180,7 @@ class ClienteUpdate extends Controller
                 'password' => $request->senhaCliente
             ];
             if ($Cliente) {
-                return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
+                return response()->json(['status' => 1, 'msg' => 'Cliente cadastrado com sucesso!']);
             }
         }
     }

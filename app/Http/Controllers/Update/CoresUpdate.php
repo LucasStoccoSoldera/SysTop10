@@ -34,53 +34,53 @@ class CoresUpdate extends Controller
             ]
         );
         if ($request->CodigoCores != "#000000" || !empty($request->EspecialCores)) {
-        if (isset($request->EspecialCores)) {
-            $validator_cor_especial = Validator::make(
-                $request->all(),
-                [
-                    'EspecialCores' => ['required', 'string'],
-                ],
-                [
-                    'EspecialCores.required' => 'Cor especial obrigatório.',
-                ]
-            );
-            $cor = $request->EspecialCores;
+            if (isset($request->EspecialCores)) {
+                $validator_cor_especial = Validator::make(
+                    $request->all(),
+                    [
+                        'EspecialCores' => ['required', 'string'],
+                    ],
+                    [
+                        'EspecialCores.required' => 'Cor especial obrigatório.',
+                    ]
+                );
+                $cor = $request->EspecialCores;
+            } else {
+                $validator_cor_especial = Validator::make(
+                    $request->all(),
+                    [
+                        'CodigoCores' => ['required', 'string'],
+                    ],
+                    [
+                        'CodigoCores.required' => 'Código obrigatório.',
+                    ]
+                );
+                $cor = $request->CodigoCores;
+            }
         } else {
             $validator_cor_especial = Validator::make(
                 $request->all(),
                 [
-                    'CodigoCores' => ['required', 'string'],
+                    'CodigoCores' => ['integer'],
+                    'EspecialCores' => ['required', 'string'],
                 ],
                 [
-                    'CodigoCores.required' => 'Código obrigatório.',
+                    'CodigoCores.integer' => 'Código ou Especial obrigatórios.',
+                    'EspecialCores.required' => 'Código ou Especial obrigatórios.',
                 ]
             );
-            $cor = $request->CodigoCores;
         }
-    } else {
-        $validator_cor_especial = Validator::make(
-            $request->all(),
-            [
-                'CodigoCores' => ['integer'],
-                'EspecialCores' => ['required', 'string'],
-            ],
-            [
-                'CodigoCores.integer' => 'Código ou Especial obrigatórios.',
-                'EspecialCores.required' => 'Código ou Especial obrigatórios.',
-            ]
-        );
-    }
 
         if ($validator->fails() || $validator_cor_especial->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cor_especial' => $validator_cor_especial->errors()]);
         }
         $Cor = new Cor;
         $Cor->cor_nome = $request->NomeCores;
-         $Cor->cor_hex_especial = $cor;
+        $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
-        Schema::table('cor_produto', function (Blueprint $table, Request $request) {
-            $table->char($request->NomeCores)->default(0);
+        Schema::table('cor_produto', function (Blueprint $table) use ($request) {
+            return $table->char($request->NomeCores)->default(0);
         });
 
         if ($Cor) {

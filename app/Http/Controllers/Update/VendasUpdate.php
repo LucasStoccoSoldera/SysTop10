@@ -76,7 +76,6 @@ class VendasUpdate extends Controller
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->VTVenda;
-        $Caixa->cax_ctpagar = "";
         $Caixa->cax_ctreceber = $request->VTVenda;
         $Caixa->save();
 
@@ -110,7 +109,6 @@ class VendasUpdate extends Controller
                 'IDItemVenda' => ['required', 'integer'],
                 'qtdeItemVenda' => ['required', 'integer'],
                 'descricaoItemVenda' => ['required', 'string'],
-                'anexoItemVenda' => ['image'],
                 'VUItemVenda' => ['required'],
             ],
             [
@@ -120,7 +118,6 @@ class VendasUpdate extends Controller
                 'IDItemVenda.required' => 'ID da venda obrigatório.',
                 'qtdeItemVenda.required' => 'Quantidade obrigatória.',
                 'descricaoItemVenda.required' => 'Descrição obrigatório.',
-                'anexoItemVenda.image' => 'O arquivo precisa ser uma imagem.',
                 'VUItemVenda.required' => 'Valor unitário obrigatório.',
             ]
         );
@@ -128,6 +125,10 @@ class VendasUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
+
+        $random = rand(1,1000);
+        $nameFile =  $request->IDItemVenda . "$random" . strtotime("now") . $request->anexoItemVenda->extension();
+
         $Venda_Detalhe = new Venda_Detalhe;
         $Venda_Detalhe->cor_id = $request->IDCor;
         $Venda_Detalhe->dim_id = $request->IDDimensao;
@@ -135,7 +136,7 @@ class VendasUpdate extends Controller
         $Venda_Detalhe->ven_id = $request->IDItemVenda;
         $Venda_Detalhe->det_qtde = $request->qtdeItemVenda;
         $Venda_Detalhe->det_descricao = $request->descricaoItemVenda;
-        $Venda_Detalhe->det_anexo_path = $request->anexoItemVenda;
+        $Venda_Detalhe->det_anexo_path = $nameFile;
         $Venda_Detalhe->det_valor_unitario = $request->VUItemVenda;
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
@@ -146,6 +147,8 @@ class VendasUpdate extends Controller
         $Estoque->cor_id =  $request->IDCor;
         $Estoque->est_qtde = $request->qtdeItemVenda * -1;
         $Estoque->save();
+
+        $upload = $request->anexoItemVenda->storeAs('artes_vendas', $nameFile);
 
         if ($Venda_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
