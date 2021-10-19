@@ -328,8 +328,8 @@
 
         <div class="modal fade" id="modalUpdateTpgPagto" style="display:none;top: 0;" aria-hidden="true">
             <div class="modal-dialog">
-                <form class="form-cadastro" id="formUpdateTpgPagto" method="POST" autocomplete="off"
-                    enctype="multipart/form-data" action="{{ route('admin.create.tpgpagto') }}">
+                <form class="form-cadastro" id="formUpdateTpgPagto" method="PUT" autocomplete="off"
+                    enctype="multipart/form-data" action="{{ route('admin.update.tpgpagto') }}">
                     @csrf
                     <input type="hidden" id="idPag" name="idPag">
                     <div class="modal-content">
@@ -345,10 +345,10 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Tipo de Pagamento:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="TPTipoPagto" id="TPTipoPagto" maxlength="25"
-                                            value="{{ old('TPTipoPagto') }}" class="form-control"
+                                        <input type="text" name="TPTipoPagtoUp" id="TPTipoPagtoUp" maxlength="25"
+                                            value="{{ old('TPTipoPagtoUp') }}" class="form-control"
                                             placeholder="Entre com o Tipo de Pagamento">
-                                        <span class="TPTipoPagto_error invalid-feedback" role="alert">
+                                        <span class="TPTipoPagtoUp_error invalid-feedback" role="alert">
                                         </span>
                                     </div>
                                 </div>

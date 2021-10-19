@@ -157,7 +157,7 @@ class CompraRegister extends Controller
                 ],
                 [
                     'IDProduto.requiredE' => 'Produto obrigatório.',
-                ]
+                ]   
             );
             $interno = false;
         }

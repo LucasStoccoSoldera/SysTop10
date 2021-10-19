@@ -1240,7 +1240,7 @@
     </div>
     </div>
 
-    <div class="modal fade" id="modalUpdateTipoProduto" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdateTipoProduto" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdateTipoProduto" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.tipoproduto') }}">
@@ -1282,7 +1282,7 @@
     </div>
     </div>
 
-    <div class="modal fade" id="modalUpdateMaterial" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdateMaterial" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdateMaterial" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.material') }}">
@@ -1323,7 +1323,7 @@
     </div>
     </div>
     </div>
-    <div class="modal fade" id="modalUpdateDimensao" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdateDimensao" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdateDimensao" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.dimensao') }}">
@@ -1365,7 +1365,7 @@
     </div>
     </div>
 
-    <div class="modal fade" id="modalUpdateCores" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdateCores" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdateCores" method="PUT" autocomplete="off" enctype="multipart/form-data"
                 action="{{ route('admin.update.cor') }}">
@@ -1426,7 +1426,7 @@
     </div>
     </div>
 
-    <div class="modal fade" id="modalUpdatePacotes" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdatePacotes" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdatePacotes" method="PUT" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.update.pacote') }}">
@@ -1434,7 +1434,7 @@
                 <input type="hidden" id="idPac" name="idPac">
                 <div class="modal-content" style="width: 100%">
                     <div class="modal-header">
-                        <h4 class="modal-title">Cadastrar Pacotes para Envio</h4>
+                        <h4 class="modal-title">Atualizar Pacotes para Envio</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

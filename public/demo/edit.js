@@ -1,6 +1,6 @@
 function editCliente(id)
 {
-    $.get('/admin/Usuario/Editar_cliente/' + id, function (cliente) {
+    $.get('/admin/Cliente/Editar_cliente/' + id, function (cliente) {
         $("#idCli").val(cliente.id);
         $("#nomeClienteUp").val(cliente.cli_nome);
         $("#usuarioClienteUp").val(cliente.cli_usuario);
@@ -24,7 +24,7 @@ function editCliente(id)
 
 function editConta(id)
 {
-    $.get('/admin/Usuario/Editar_conta/' + id, function (conta) {
+    $.get('/admin/Financeiro/Editar_conta/' + id, function (conta) {
         $("#idCon").val(conta.id);
         $("#descricaoContasUp").val(conta.con_descricao);
         $("#tipoContasUp").val(conta.con_tipo);
@@ -42,7 +42,7 @@ function editConta(id)
 
 function editCompra(id)
 {
-    $.get('/admin/Usuario/Editar_compra/' + id, function (compra) {
+    $.get('/admin/Financeiro/Editar_compra/' + id, function (compra) {
         $("#idCom").val(compra.id);
         $("#IDComprasUp").val(compra.id);
         $("#descricaoComprasUp").val(compra.com_descricao);
@@ -61,7 +61,7 @@ function editCompra(id)
 
 function editItemCompra(id)
 {
-    $.get('/admin/Usuario/Editar_item_compra/' + id, function (itemcompra) {
+    $.get('/admin/Financeiro/Editar_item_compra/' + id, function (itemcompra) {
         $("#idIteCom").val(itemcompra.id);
         $("#IDItemCompraUp").val(itemcompra.com_id);
         $("#descricaoItemCompraUp").val(itemcompra.cde_descricao);
@@ -82,7 +82,7 @@ function editItemCompra(id)
 
 function editReceber(id)
 {
-    $.get('/admin/Usuario/Editar_credito/' + id, function (receber) {
+    $.get('/admin/Financeiro/Editar_credito/' + id, function (receber) {
         $("#idRec").val(receber.id);
         $("#descricaoReceberUp").val(receber.rec_descricao);
         $("#tipoPagtoReceberUp").val(receber.tpg_id);
@@ -97,7 +97,7 @@ function editReceber(id)
 
 function editCentroCusto(id)
 {
-    $.get('/admin/Usuario/Editar_centro_custo/' + id, function (centrocusto) {
+    $.get('/admin/Detalhe/Editar_centro_custo/' + id, function (centrocusto) {
         $("#idCC").val(centrocusto.id);
         $("#NomeCentroCustoUp").val(centrocusto.cc_descricao);
         $("#modalUpdateCentroCusto").modal('toggle');
@@ -107,9 +107,9 @@ function editCentroCusto(id)
 
 function editTpgPagto(id)
 {
-    $.get('/admin/Usuario/Editar_tipo_pagamento/' + id, function (tpgpagto) {
+    $.get('/admin/Detalhe/Editar_tipo_pagamento/' + id, function (tpgpagto) {
         $("#idPag").val(tpgpagto.id);
-        $("#TPTipoPagto").val(tpgpagto.tpg_descricao);
+        $("#TPTipoPagtoUp").val(tpgpagto.tpg_descricao);
         $("#modalUpdateTpgPagto").modal('toggle');
 
     });
@@ -117,7 +117,7 @@ function editTpgPagto(id)
 
 function editEstoque(id)
 {
-    $.get('/admin/Usuario/Editar_estoque/' + id, function (estoque) {
+    $.get('/admin/Estoque/Editar_estoque/' + id, function (estoque) {
         $("#idEst").val(estoque.id);
         $("#qtdeEstoqueUp").val(estoque.est_qtde);
         $("#dataEstoqueUp").val(estoque.est_data);
@@ -133,7 +133,7 @@ function editEstoque(id)
 
 function editFornecedor(id)
 {
-    $.get('/admin/Usuario/Editar_fornecedor/' + id, function (fornecedor) {
+    $.get('/admin/Fornecedor/Editar_fornecedor/' + id, function (fornecedor) {
         $("#idFor").val(fornecedor.id);
         $("#nomeFornecedorUp").val(fornecedor.for_nome);
         $("#telefoneFornecedorUp").val(fornecedor.for_telefone);
@@ -154,7 +154,7 @@ function editFornecedor(id)
 
 function editLogistica(id)
 {
-    $.get('/admin/Usuario/Editar_logistica/' + id, function (logistica) {
+    $.get('/admin/Logistica/Editar_logistica/' + id, function (logistica) {
         $("#idLog").val(logistica.id);
         $("#pacoteLogisticaUp").val(logistica.pac_id);
         $("#transLogisticaUp").val(logistica.trans_id);
@@ -165,7 +165,7 @@ function editLogistica(id)
 
 function editTransportadora(id)
 {
-    $.get('/admin/Usuario/Editar_transportadora/' + id, function (transportadora) {
+    $.get('/admin/Logistica/Editar_transportadora/' + id, function (transportadora) {
         $("#idTrans").val(transportadora.id);
         $("#nomeTransUp").val(transportadora.trans_nome);
         $("#limitetransTransUp").val(transportadora.trans_limite_transporte);
@@ -178,7 +178,7 @@ function editTransportadora(id)
 
 function editProduto(id)
 {
-    $.get('/admin/Usuario/Editar_produto/' + id, function (produto) {
+    $.get('/admin/Produto/Editar_produto/' + id, function (produto) {
         $("#idPro").val(produto.id);
         $("#IDProdutoUp").val(produto.id);
         $("#NomeProdutoUp").val(produto.pro_nome);
@@ -199,7 +199,7 @@ function editProduto(id)
 
 function editTipoProduto(id)
 {
-    $.get('/admin/Usuario/Editar_tipo_produto/' + id, function (tipoproduto) {
+    $.get('/admin/Produto/Editar_tipo_produto/' + id, function (tipoproduto) {
         $("#idTpp").val(tipoproduto.id);
         $("#NomeTipoProdutoUp").val(tipoproduto.tpp_descricao);
         $("#modalUpdateTipoProduto").modal('toggle');
@@ -209,7 +209,7 @@ function editTipoProduto(id)
 
 function editMaterial(id)
 {
-    $.get('/admin/Usuario/Editar_material_base/' + id, function (material) {
+    $.get('/admin/Produto/Editar_material_base/' + id, function (material) {
         $("#idMat").val(material.id);
         $("#NomeMaterialUp").val(material.mat_descricao);
         $("#modalUpdateMaterial").modal('toggle');
@@ -219,7 +219,7 @@ function editMaterial(id)
 
 function editDimensao(id)
 {
-    $.get('/admin/Usuario/Editar_dimensao/' + id, function (dimensao) {
+    $.get('/admin/Produto/Editar_dimensao/' + id, function (dimensao) {
         $("#idDim").val(dimensao.id);
         $("#NomeDimensaoUp").val(dimensao.dim_descricao);
         $("#modalUpdateDimensao").modal('toggle');
@@ -229,7 +229,7 @@ function editDimensao(id)
 
 function editCor(id)
 {
-    $.get('/admin/Usuario/Editar_cor/' + id, function (cor) {
+    $.get('/admin/Produto/Editar_cor/' + id, function (cor) {
         $("#idCor").val(cor.id);
         $("#NomeCoresUP").val(cor.cor_nome);
         $("#CodigoCoresUp").val(cor.cor_hex_especial);
@@ -241,7 +241,7 @@ function editCor(id)
 
 function editPacote(id)
 {
-    $.get('/admin/Usuario/Editar_pacote/' + id, function (pacote) {
+    $.get('/admin/Produto/Editar_pacote/' + id, function (pacote) {
         $("#idPac").val(pacote.id);
         $("#DimensaoPacotesUp").val(pacote.pac_descricao);
         $("#DescricaoPacotesUp").val(pacote.pac_dimensao);
@@ -296,7 +296,7 @@ function editCargo(id)
 
 function editVenda(id)
 {
-    $.get('/admin/Usuario/Editar_venda/' + id, function (venda) {
+    $.get('/admin/Financeiro/Editar_venda/' + id, function (venda) {
         $("#idVen").val(venda.id);
         $("#IDVendaUp").val(venda.id);
         $("#IDClienteUp").val(venda.cli_id);
@@ -313,7 +313,7 @@ function editVenda(id)
 
 function editItemVenda(id)
 {
-    $.get('/admin/Usuario/Editar_item_venda/' + id, function (itemvenda) {
+    $.get('/admin/Financeiro/Editar_item_venda/' + id, function (itemvenda) {
         $("#idIteVen").val(itemvenda.id);
         $("#IDItemVendaUp").val(itemvenda.ven_id);
         $("#descricaoItemVendaUp").val(itemvenda.det_descricao);

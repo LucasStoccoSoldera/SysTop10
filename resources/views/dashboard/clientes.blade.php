@@ -482,6 +482,7 @@
             </form>
         </div>
     </div>
+    </div>
 
     <div class="modal fade" id="modalUpdateCliente" style="display:none;" aria-hidden="true">
         <div class="modal-dialog">

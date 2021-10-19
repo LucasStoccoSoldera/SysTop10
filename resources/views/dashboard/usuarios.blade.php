@@ -536,7 +536,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalUpdateCargo" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalUpdateCargo" style="display:none;top: 25%" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formUpdateCargo" method="PUT" autocomplete="off" enctype="multipart/form-data"
                 action="{{ route('admin.update.cargo') }}">
