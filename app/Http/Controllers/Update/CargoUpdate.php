@@ -42,7 +42,7 @@ class CargoUpdate extends Controller
 
 
         if ($Cargo) {
-            return response()->json(['status' => 1, 'msg' => 'Cargo cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Cargo atualizado com sucesso!']);
         }
     }
 }

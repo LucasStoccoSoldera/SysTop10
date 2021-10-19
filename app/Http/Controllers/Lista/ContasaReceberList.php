@@ -26,9 +26,13 @@ class ContasaReceberList extends Controller
                 $rota = "'" .  route('admin.delete.receber') . "'";
                 $btn = '
 
-                <button type="button" class="btn btn-primary visu" id="visu-rec"
+                <button type="button" class="parcelas btn btn-primary visu" id="visu-rec"
                 name="visu-receber"
-                onclick="visualizar('.$data->id.', '.$data->rec_valor.', '.$data->tpg_id.', '.$data->rec_data.');"><i
+                data-id = "'.$data->id.'"
+                data-valor = "'.$data->con_valor_final.'"
+                data-tpg = "'.$data->tpg_id.'"
+                data-data = "'.$data->rec_data.'"
+                ><i
                 class="tim-icons icon-chart-pie-36"></i></button>
 
                 <a class="btn btn-primary alter-min"><i

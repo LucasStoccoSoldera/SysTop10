@@ -677,19 +677,53 @@
             ]
         });
 
-        function visualizar(conta, valor, pagto, data) {
+        $('body').on('click', 'button.parcelas', function() {
+    console.log('vai');
+    var table_parcelas = $('#tb_parcelas').DataTable({
+        paging: true,
+        searching: false,
+        processing: true,
+        serverside: true,
+        ajax: {
+            type: 'GET',
+            url: '/admin/List_Parcelas/' + $(this).data('id'),
+        },
+        columns: [{
+                data: "par_conta",
+                className: "text-center"
+            },
+            {
+                data: "par_numero",
+                className: "text-center"
+            },
+            {
+                data: "par_valor",
+                className: "text-right",
+                render: DataTable.render.number('.', ',', 2, 'R$')
+            },
+            {
+                data: "par_status",
+                className: "text-center"
+            },
+            {
+                data: "par_data_pagto",
+                className: "text-center"
+            },
+        ]
+    });
+        $("#modalShowParcelas").modal('toggle');
+});
+
+        $("#modalShowParcelas").on("shown.bs.modal", function() {
             var conta = $(this).data('id');
             var valor = $(this).data('valor');
             var pagto = $(this).data('tpg');
             var data = $(this).data('data');
-            showParcelas(conta);
             $('#ls_par_conta').val(conta);
             $('#ls_par_valor').val(valor);
             $('#ls_par_tpg').val(pagto);
             $('#ls_par_data').val(data);
-            $('#modalShowParcelas').modal('show');
-            }
-
+        });
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
