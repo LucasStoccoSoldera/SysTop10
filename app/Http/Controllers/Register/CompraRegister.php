@@ -157,7 +157,7 @@ class CompraRegister extends Controller
                 ],
                 [
                     'IDProduto.requiredE' => 'Produto obrigatório.',
-                ]   
+                ]
             );
             $interno = false;
         }
@@ -170,11 +170,11 @@ class CompraRegister extends Controller
         $Compras_Detalhe->for_id = $request->IDFornecedor;
         $Compras_Detalhe->cde_tipo = $request->tipoItemCompra;
         if($interno = true){
-        $Compras_Detalhe->cde_produto = $request->IDProduto;
+        $Compras_Detalhe->cde_produto = $request->IDProdutoI;
         $Compras_Detalhe->dim_id = $request->dimensaoItemCompra;
         $Compras_Detalhe->cor_id = $request->coresItemCompra;
         } else{
-        $Compras_Detalhe->cde_produto = $request->IDProduto;
+        $Compras_Detalhe->cde_produto = $request->IDProdutoE;
         }
         $Compras_Detalhe->cde_qtde = $request->qtdeItemCompra;
         $Compras_Detalhe->cde_valoritem = $request->valorItemCompra;

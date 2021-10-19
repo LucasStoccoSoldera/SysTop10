@@ -1,5 +1,5 @@
 @extends('layouts.header-footer')
-@section('title', 'Clientes - TopSystem')
+@section('title', 'Vendas - TopSystem')
 @section('menu-principal')
     <div class="sidebar">
         <!--
@@ -330,7 +330,7 @@
                                         <label class="modal-label">Valor:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
                                         <input type="text" name="VTVenda" id="VTVenda" class="dinheiro form-control"
-                                            disabled maxlength="11" value="{{ old('VTVenda') }}">
+                                             maxlength="11" value="{{ old('VTVenda') }}">
                                         <div class="div-feedback">
                                             <span class="invalid-feedback VTVenda_error" role="alert">
                                             </span>
@@ -436,9 +436,9 @@
                                         <div class="card-header" id="ch-adaptado">
                                             <h2 class="card-title">Itens da Venda
                                                 <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
-                                                    data-backdrop="static"
-                                                    onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
-                                                    + Add</a>
+                                                data-backdrop="static"
+                                                onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
+                                                + Add</a>
                                             </h2>
                                         </div>
                                         <div class="card-body" id="cd-adaptado">
@@ -511,7 +511,7 @@
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="IDItemVendaUp" id="IDItemVendaUp" maxlength="2"
                                         value="{{ old('IDItemVendaUp') }}" onloadstart="pegaCodigo(IDItemVenda, IDVenda)"
-                                        disabled class="form-control id">
+                                         class="form-control id">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDItemVendaUp_error" role="alert">
                                         </span>
@@ -617,7 +617,7 @@
                                     <label class="modal-label">Valor Total:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTItemVendaUp" id="VTItemVendaUp"
-                                        class="dinheiro form-control" disabled maxlength="11"
+                                        class="dinheiro form-control"  maxlength="11"
                                         value="{{ old('VTItemVendaUp') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTItemVendaUp_error" role="alert">
@@ -680,7 +680,7 @@
                                     <label class="modal-label">Valor:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTVendaUp" id="VTVendaUp" class="dinheiro form-control"
-                                        disabled maxlength="11" value="{{ old('VTVendaUp') }}">
+                                         maxlength="11" value="{{ old('VTVendaUp') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTVendaUp_error" role="alert">
                                         </span>
@@ -858,7 +858,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID da Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="IDItemVenda" id="IDItemVenda" maxlength="2" disabled
+                                    <input type="text" name="IDItemVenda" id="IDItemVenda" maxlength="2"
                                         class="form-control id">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDItemVenda_error" role="alert">
@@ -965,7 +965,7 @@
                                     <label class="modal-label">Valor Total:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTItemVenda" id="VTItemVenda" class="dinheiro form-control"
-                                        disabled maxlength="11" value="{{ old('VTItemVenda') }}">
+                                         maxlength="11" value="{{ old('VTItemVenda') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTItemVenda_error" role="alert">
                                         </span>
@@ -1288,33 +1288,6 @@
                 $("body").addClass("modal-open");
                 $("modalRegisterVenda").modal('show');
             });
-
-
-
-            function loadItem(id) {
-                $id = id;
-                var table_item_venda = $('#tb_item_venda').DataTable({
-                    paging: true,
-                    searching: false,
-                    processing: true,
-                    serverside: true,
-                    ajax: "{{ route('admin.list.itemvenda') }}",
-                    columns: [{
-                            data: "id"
-                        },
-                        {
-                            data: "pro_id"
-                        },
-                        {
-                            data: "det_qtde"
-                        },
-                        {
-                            data: "det_valor_total",
-                            className: "text-right"
-                        },
-                    ]
-                });
-            }
 
             $("#formExcluir").on('submit', function(e) {
 

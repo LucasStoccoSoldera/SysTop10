@@ -503,7 +503,7 @@
                                     <label class="modal-label">Valor Total:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTCompras" id="VTCompras"
-                                        class="dinheiro valor form-control" value="{{ old('VTCompras') }}" disabled>
+                                        class="dinheiro valor form-control auto" value="{{ old('VTCompras') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTCompras_error" role="alert">
                                         </span>
@@ -683,7 +683,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID da Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDItemCompra" id="IDItemCompra" disabled
+                                <input type="text" name="IDItemCompra" id="IDItemCompra"
                                     class="form-control id">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDItemCompra_error" role="alert">
@@ -761,7 +761,7 @@
                                 <label class="modal-label">Valor Total Item:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="valorTotalItemCompra" id="valorTotalItemCompra"
-                                    class="valor dinheiro form-control" disabled
+                                    class="valor dinheiro form-control auto"
                                     value="{{ old('valorTotalItemCompra') }}">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback valorTotalItemCompra_error" role="alert">
@@ -829,15 +829,9 @@
                                     <label class="modal-label">Produto:</label> <label
                                         style="color: red; font-size: 12px;">
                                         * </label>
-                                    <select type="text" name="IDProdutoE" id="IDProdutoE" class="form-control"
+                                    <input type="text" name="IDProdutoE" id="IDProdutoE" class="form-control"
                                         maxlength="50" value="{{ old('IDProdutoE') }}"
                                         placeholder="Selecione com o Produto">
-                                        <option value="">------------Selecione------------</option>
-                                        @foreach ($produtos as $produto)
-                                            <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDProdutoE_error" role="alert">
                                         </span>
@@ -917,7 +911,7 @@
                                 <label class="modal-label">Valor Final:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="valorfContasUp" id="valorfContasUp"
-                                    class="dinheiro form-control" maxlength="11" value="{{ old('valorfContasUp') }}"
+                                    class="dinheiro form-control auto" maxlength="11" value="{{ old('valorfContasUp') }}"
                                     placeholder="Entre com o Valor Final da Conta">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback valorfContasUp_error" role="alert">
@@ -1074,7 +1068,7 @@
                                 <label class="modal-label">Valor Total:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="VTComprasUp" id="VTComprasUp"
-                                    class="dinheiro valor form-control" value="{{ old('VTComprasUp') }}" disabled>
+                                    class="dinheiro valor form-control auto" value="{{ old('VTComprasUp') }}">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback VTComprasUp_error" role="alert">
                                     </span>
@@ -1256,7 +1250,7 @@
                                 <label class="modal-label">ID da Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="IDItemCompraUp" id="IDItemCompraUp"
-                                    value="{{ old('IDItemCompraUp') }}" disabled class="form-control id">
+                                    value="{{ old('IDItemCompraUp') }}" class="form-control id">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDItemCompraUp_error" role="alert">
                                     </span>
@@ -1333,7 +1327,7 @@
                                 <label class="modal-label">Valor Total Item:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="valorTotalItemCompraUp" id="valorTotalItemCompraUp"
-                                    class="valor dinheiro form-control" disabled
+                                    class="valor dinheiro form-control"
                                     value="{{ old('valorTotalItemCompraUp') }}">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback valorTotalItemCompraUp_error" role="alert">

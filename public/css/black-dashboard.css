@@ -23214,8 +23214,14 @@ font-size: 16px;
 color: green !important;
 }
 
+.auto{
+    color: green !important;
+    background-color: #1c2130;
+}
+
 .id{
-    color: orange !important;
+    color: orangered !important;
+    background-color: #1c2130;
 }
 
 
