@@ -26,7 +26,7 @@ class VendasRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDVenda' => ['required', 'integer'],
+                'IDVenda' => ['required', 'integer','unique:compra,id'],
                 'IDTipoPagamento' => ['required', 'integer'],
                 'IDLogistica' => ['required', 'integer'],
                 'IDCliente' => ['required', 'integer'],
@@ -36,6 +36,7 @@ class VendasRegister extends Controller
             ],
             [
                 'IDVenda.required' => 'ID obrigatório.',
+                'IDCompras.unique' => 'ID da venda ja existe.',
                 'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
                 'IDLogistica.required' => 'Logistica obrigatória.',
                 'IDCliente.required' => 'Cliente obrigatório.',
@@ -81,7 +82,7 @@ class VendasRegister extends Controller
             $Receber->save();
         }
         if ($Receber) {
-            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!', 'codigo' => $request->IDVenda]);
         }
     }
 
@@ -133,6 +134,7 @@ class VendasRegister extends Controller
         $Estoque->dim_id = $request->IDDimensao;
         $Estoque->cor_id =  $request->IDCor;
         $Estoque->est_qtde = $request->qtdeItemVenda * -1;
+        $Estoque->est_status = 'Venda';
         $Estoque->save();
 
         $upload = $request->anexoItemVenda->storeAs('artes_vendas', $nameFile);
@@ -141,4 +143,6 @@ class VendasRegister extends Controller
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
         }
     }
+
+
 }

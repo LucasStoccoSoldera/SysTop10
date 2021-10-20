@@ -22,7 +22,7 @@ class CreateVendas extends Migration
             $table->float('ven_valor_total', 12, 2);
             $table->string('ven_parcelas');
             $table->char('ven_status', 1);
-            $table->float('desconto', 12, 2);
+            $table->float('desconto', 12, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('tpg_id')->references('id')->on('tipopagto');

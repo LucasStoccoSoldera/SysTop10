@@ -26,4 +26,12 @@ class VendasList extends Controller
                 ->toJson();
         }
     }
+
+    public function getLastIDVendas(Request $request){
+        $object = Venda::all()->last()->id();
+        if(isset($object)){
+        return response()->json(['id' => $object->id]);
+        }
+        return response()->json(['id' => '1000']);
+    }
 }

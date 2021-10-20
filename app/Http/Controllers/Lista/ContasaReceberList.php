@@ -54,4 +54,5 @@ class ContasaReceberList extends Controller
 
 
     }
+    
 }

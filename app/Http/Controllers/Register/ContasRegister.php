@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Response;
 use App\Models\Contas_a_Pagar;
 use App\Models\Caixa;
+use App\Models\Compras;
 use App\Models\Parcelas;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notificacao;
@@ -109,7 +110,5 @@ class ContasRegister extends Controller
             return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
     }
 
-    public function baixaContas(Request $request){
-        
-    }
+
 }

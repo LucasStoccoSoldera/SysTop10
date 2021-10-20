@@ -609,6 +609,19 @@
                         <br>
 
                         <div class="row">
+                            <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                                <button type="button" class="btn btn-secondary btn-danger cancela"
+                                    data-form="formRegisterCompras" data-modal="modalRegisterCompras">Cancelar</button>
+                                <button type="reset" class="limpar btn btn-secondary btn-danger"
+                                    data-form="formRegisterCompras">Limpar</button>
+                                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                            </div>
+                        </div>
+            </form>
+
+                        <br>
+
+                        <div class="row">
                             <div class="col-12">
                                 <div class="card" id="card-consulta-tabela">
                                     <div class="card-header" id="ch-adaptado">
@@ -650,16 +663,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                                <button type="button" class="btn btn-secondary btn-danger cancela"
-                                    data-form="formRegisterCompras" data-modal="modalRegisterCompras">Cancelar</button>
-                                <button type="reset" class="limpar btn btn-secondary btn-danger"
-                                    data-form="formRegisterCompras">Limpar</button>
-                                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
-                            </div>
-                        </div>
-            </form>
         </div>
     </div>
 </div>
@@ -1698,6 +1701,38 @@
             }
         );
 
+        $("#modalRegisterCompras").on("shown.bs.modal", function() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                url: '/admin/Get_Last_Compra/',
+                processData: false,
+                success: function(data_decoded) {
+                        $('#IDCompras').val(data_decoded.id);
+                        $('#IDComprasUp').val(data_decoded.id);
+                    }
+                }
+            );
+        });
+
+        $("#modalUpdateCompras").on("shown.bs.modal", function() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                url: '/admin/Get_Last_Compra/',
+                processData: false,
+                success: function(data_decoded) {
+                        $('#IDCompras').val(data_decoded.id);
+                        $('#IDComprasUp').val(data_decoded.id);
+                    }
+                }
+            );
+        });
+
         $('body').on('click', 'button.parcelas', function() {
     console.log('vai');
     var table_parcelas = $('#tb_parcelas').DataTable({
@@ -1818,6 +1853,7 @@
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterCompras')[0].reset();
+                        $('#IDCompras').val(data_decoded.codigo);
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
                     }

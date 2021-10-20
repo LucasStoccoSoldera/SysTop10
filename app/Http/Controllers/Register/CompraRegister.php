@@ -29,7 +29,7 @@ class CompraRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDCompras' => ['required', 'integer'],
+                'IDCompras' => ['required', 'integer','unique:compra,id'],
                 'descricaoCompras' => ['required'],
                 'tpgpagtoCompras' => ['required'],
                 'ccCompras' => ['required'],
@@ -39,6 +39,7 @@ class CompraRegister extends Controller
             ],
             [
                 'IDCompras.required' => 'ID da compra obrigatório.',
+                'IDCompras.unique' => 'ID da compra ja existe.',
                 'descricaoCompras.required' => 'Descrição obrigatória.',
                 'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
                 'ccCompras.required' => 'Centro de Custo obrigatório.',
@@ -52,11 +53,10 @@ class CompraRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Compras = new Compras;
-        $Compras->com_id = $request->IDCompras;
-        $Compras->cde_id = $request->descricaoCompras;
+        $Compras->id = $request->IDCompras;
         $Compras->tpg_id = $request->tpgpagtoCompras;
         $Compras->cc_id = $request->ccCompras;
-        $Compras->com_parcelas = $request->parcelasCompra;
+        $Compras->com_parcelas = $request->parcelasCompras;
         $Compras->com_descricao = $request->descricaoCompras;
         $Compras->com_desconto = $request->descontoCompras;
         $Compras->com_valor = $request->VTCompras;
@@ -70,6 +70,7 @@ class CompraRegister extends Controller
         $Conta->cc_id = $request->ccCompras;
         $Conta->con_descricao =  "Compra de $request->descricaoCompras";
         $Conta->con_tipo = "Variável";
+        $Conta->con_valor = $request->VTCompras;
         $Conta->con_valor_final = $request->VTCompras;
         $Conta->con_data_venc = $request->datapagCompras;
         $Conta->con_parcelas = $request->parcelasCompras;
@@ -107,7 +108,7 @@ class CompraRegister extends Controller
         }
 
         if ($Parcela) {
-            return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!', 'codigo' => $request->IDCompras]);
         }
     }
 
@@ -184,10 +185,14 @@ class CompraRegister extends Controller
 
         if($interno = true){
         $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProduto;
-        $Estoque->dim_id = $request->IDDimensao;
-        $Estoque->cor_id =  $request->IDCor;
+        $Estoque->pro_id = $request->IDProdutoI;
+        $Estoque->dim_id = $request->dimensaoItemCompra;
+        $Estoque->cor_id =  $request->coresItemCompra;
         $Estoque->est_qtde = $request->qtdeItemCompra;
+        $Estoque->est_data = date("Y-m-d");
+        $Estoque->est_time = date("H:i:s");
+        $Estoque->est_status = 'Compra realizada';
+
         $Estoque->save();
         }
 

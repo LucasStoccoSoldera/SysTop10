@@ -350,7 +350,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="modal-label">Pacote:</label> <label
+                                        <label class="modal-label">Logística:</label> <label>
                                             style="color: red; font-size: 12px;"> * </label>
                                         <select type="text" name="LogisticaProduto" id="LogisticaProduto"
                                             class="form-control" maxlength="15" value="{{ old('LogisticaProduto') }}"

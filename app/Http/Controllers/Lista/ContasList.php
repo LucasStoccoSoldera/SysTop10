@@ -6,6 +6,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Contas_a_Pagar;
+use App\Models\Compras;
 use Illuminate\Support\Facades\DB;
 use App\Transformers\ContasTransformer;
 
@@ -57,4 +58,11 @@ class ContasList extends Controller
 
 
     }
+    public function getLastIDContas(Request $request){
+        $object = Compras::all()->last()->id();
+        if(isset($object)){
+            return response()->json(['id' => $object->id]);
+            }
+            return response()->json(['id' => '1000']);
+        }
 }

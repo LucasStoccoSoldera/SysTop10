@@ -18,12 +18,12 @@ class CreateCompra extends Migration
             $table->unsignedBigInteger('tpg_id');
             $table->unsignedBigInteger('cc_id');
             $table->date('com_data_compra');
-            $table->date('com_data_pagto');
+            $table->date('com_data_pagto')->nullable();
             $table->string('com_descricao');
-            $table->integer('com_desconto');
+            $table->integer('com_desconto')->nullable();
             $table->float('com_valor', 12, 2);
             $table->string('com_parcelas');
-            $table->string('com_observacoes');
+            $table->string('com_observacoes')->nullable();
             $table->timestamps();
 
             $table->foreign('tpg_id')->references('id')->on('tipopagto');

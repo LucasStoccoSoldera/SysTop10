@@ -429,7 +429,16 @@
                             </div>
 
                             <br>
-
+                            <div class="row">
+                                <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                                        data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
+                                    <button type="reset" class="limpar btn btn-secondary btn-danger"
+                                        data-form="formRegisterVenda">Limpar</button>
+                                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                                </div>
+                </form>
+                <br>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="card" id="card-consulta-tabela">
@@ -475,15 +484,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                                    <button type="button" class="cancela btn btn-secondary btn-danger"
-                                        data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
-                                    <button type="reset" class="limpar btn btn-secondary btn-danger"
-                                        data-form="formRegisterVenda">Limpar</button>
-                                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
-                                </div>
-                </form>
             </div>
         </div>
     </div>
@@ -1100,6 +1100,38 @@
                 }
             );
 
+            $("#modalRegisterVenda").on("shown.bs.modal", function() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                url: '/admin/Get_Last_Venda/',
+                processData: false,
+                success: function(data_decoded) {
+                        $('#IDVenda').val(data_decoded.id);
+                        $('#IDVendaUp').val(data_decoded.id);
+                    }
+                }
+            );
+        });
+
+        $("#modalUpdateVenda").on("shown.bs.modal", function() {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                url: '/admin/Get_Last_Venda/',
+                processData: false,
+                success: function(data_decoded) {
+                        $('#IDVenda').val(data_decoded.id);
+                        $('#IDVendaUp').val(data_decoded.id);
+                    }
+                }
+            );
+        });
+
             $("#formRegisterVenda").on('submit', function(e) {
 
                 e.preventDefault();
@@ -1121,6 +1153,7 @@
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
                             $('#formRegisterVenda')[0].reset();
+                            $('#IDVenda').val(data_decoded.codigo);
                             demo.showNotification('top', 'right', 2, data_decoded.msg,
                                 'tim-icons icon-check-2');
                         }
