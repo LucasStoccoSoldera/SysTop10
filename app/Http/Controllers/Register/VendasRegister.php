@@ -26,7 +26,7 @@ class VendasRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDVenda' => ['required', 'integer','unique:compra,id'],
+                'IDVenda' => ['required', 'integer','unique:vendas,id'],
                 'IDTipoPagamento' => ['required', 'integer'],
                 'IDLogistica' => ['required', 'integer'],
                 'IDCliente' => ['required', 'integer'],
@@ -36,7 +36,7 @@ class VendasRegister extends Controller
             ],
             [
                 'IDVenda.required' => 'ID obrigatório.',
-                'IDCompras.unique' => 'ID da venda ja existe.',
+                'IDVenda.unique' => 'ID da venda ja existe.',
                 'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
                 'IDLogistica.required' => 'Logistica obrigatória.',
                 'IDCliente.required' => 'Cliente obrigatório.',
@@ -134,6 +134,8 @@ class VendasRegister extends Controller
         $Estoque->dim_id = $request->IDDimensao;
         $Estoque->cor_id =  $request->IDCor;
         $Estoque->est_qtde = $request->qtdeItemVenda * -1;
+        $Estoque->est_data = date("Y-m-d");
+        $Estoque->est_time = date("H:i:s");
         $Estoque->est_status = 'Venda';
         $Estoque->save();
 
