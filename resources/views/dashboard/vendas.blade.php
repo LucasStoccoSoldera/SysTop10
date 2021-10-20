@@ -437,9 +437,10 @@
                                         data-form="formRegisterVenda">Limpar</button>
                                     <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                                 </div>
+                            </div>
                 </form>
                 <br>
-                            <div class="row">
+                               <div class="row">
                                 <div class="col-12">
                                     <div class="card" id="card-consulta-tabela">
                                         <div class="card-header" id="ch-adaptado">
@@ -486,7 +487,6 @@
                             </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
 
@@ -981,6 +981,7 @@
                             <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>

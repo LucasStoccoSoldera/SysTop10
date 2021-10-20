@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -619,50 +619,50 @@
                         </div>
             </form>
 
-                        <br>
+            <br>
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card" id="card-consulta-tabela">
-                                    <div class="card-header" id="ch-adaptado">
-                                        <h2 class="card-title">Itens da Compra
-                                            <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
-                                                data-backdrop="static"
-                                                onclick="abrirModal('#modalRegisterItemCompra', '#IDCompras', '#IDItemCompra');">
-                                                + Add</a>
-                                        </h2>
-                                    </div>
-                                    <div class="card-body" id="cd-adaptado">
-                                        <div class="table-responsive">
-                                            <table class="table tablesorter " id="tb_item_compra_ato">
-                                                <thead class=" text-primary">
-                                                    <tr>
-                                                        <th style="width: 30%">
-                                                            Produto
-                                                        </th>
-                                                        <th style="width: 10%">
-                                                            Qtde
-                                                        </th>
-                                                        <th style="width: 20%">
-                                                            Valor Unit.
-                                                        </th>
-                                                        <th style="width: 20%">
-                                                            Valor Final
-                                                        </th>
-                                                        <th class="text-right" style="width: 5%">
-                                                            <div id="acao">Ações</div>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{-- DataTables --}}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" id="card-consulta-tabela">
+                        <div class="card-header" id="ch-adaptado">
+                            <h2 class="card-title">Itens da Compra
+                                <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
+                                    data-backdrop="static"
+                                    onclick="abrirModal('#modalRegisterItemCompra', '#IDCompras', '#IDItemCompra');">
+                                    + Add</a>
+                            </h2>
+                        </div>
+                        <div class="card-body" id="cd-adaptado">
+                            <div class="table-responsive">
+                                <table class="table tablesorter " id="tb_item_compra_ato">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th style="width: 30%">
+                                                Produto
+                                            </th>
+                                            <th style="width: 10%">
+                                                Qtde
+                                            </th>
+                                            <th style="width: 20%">
+                                                Valor Unit.
+                                            </th>
+                                            <th style="width: 20%">
+                                                Valor Final
+                                            </th>
+                                            <th class="text-right" style="width: 5%">
+                                                <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- DataTables --}}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -686,8 +686,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID da Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDItemCompra" id="IDItemCompra"
-                                    class="form-control id">
+                                <input type="text" name="IDItemCompra" id="IDItemCompra" class="form-control id">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDItemCompra_error" role="alert">
                                     </span>
@@ -914,7 +913,8 @@
                                 <label class="modal-label">Valor Final:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="valorfContasUp" id="valorfContasUp"
-                                    class="dinheiro form-control auto" maxlength="11" value="{{ old('valorfContasUp') }}"
+                                    class="dinheiro form-control auto" maxlength="11"
+                                    value="{{ old('valorfContasUp') }}"
                                     placeholder="Entre com o Valor Final da Conta">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback valorfContasUp_error" role="alert">
@@ -1264,8 +1264,8 @@
                                 <label class="modal-label">Descrição:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="textarea" name="descricaoItemCompraUp" id="descricaoItemCompraUp"
-                                    class="form-control" maxlength="80"
-                                    value="{{ old('descricaoItemCompraUp') }}" placeholder="Coloque uma Descrição">
+                                    class="form-control" maxlength="80" value="{{ old('descricaoItemCompraUp') }}"
+                                    placeholder="Coloque uma Descrição">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback descricaoItemCompraUp_error" role="alert">
                                     </span>
@@ -1567,7 +1567,6 @@
 
 @push('ajax')
 <script>
-
     $("#itemcompra").hide();
     $("#externo").hide();
     $("#interno").show();
@@ -1710,11 +1709,10 @@
                 url: '/admin/Get_Last_Compra/',
                 processData: false,
                 success: function(data_decoded) {
-                        $('#IDCompras').val(data_decoded.id);
-                        $('#IDComprasUp').val(data_decoded.id);
-                    }
+                    $('#IDCompras').val(data_decoded.id);
+                    $('#IDComprasUp').val(data_decoded.id);
                 }
-            );
+            });
         });
 
         $("#modalUpdateCompras").on("shown.bs.modal", function() {
@@ -1726,49 +1724,48 @@
                 url: '/admin/Get_Last_Compra/',
                 processData: false,
                 success: function(data_decoded) {
-                        $('#IDCompras').val(data_decoded.id);
-                        $('#IDComprasUp').val(data_decoded.id);
-                    }
+                    $('#IDCompras').val(data_decoded.id);
+                    $('#IDComprasUp').val(data_decoded.id);
                 }
-            );
+            });
         });
 
         $('body').on('click', 'button.parcelas', function() {
-    console.log('vai');
-    var table_parcelas = $('#tb_parcelas').DataTable({
-        paging: true,
-        searching: false,
-        processing: true,
-        serverside: true,
-        ajax: {
-            type: 'GET',
-            url: '/admin/List_Parcelas/' + $(this).data('id'),
-        },
-        columns: [{
-                data: "par_conta",
-                className: "text-center"
-            },
-            {
-                data: "par_numero",
-                className: "text-center"
-            },
-            {
-                data: "par_valor",
-                className: "text-right",
-                render: DataTable.render.number('.', ',', 2, 'R$')
-            },
-            {
-                data: "par_status",
-                className: "text-center"
-            },
-            {
-                data: "par_data_pagto",
-                className: "text-center"
-            },
-        ]
-    });
-        $("#modalShowParcelas").modal('toggle');
-});
+            console.log('vai');
+            var table_parcelas = $('#tb_parcelas').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: {
+                    type: 'GET',
+                    url: '/admin/List_Parcelas/' + $(this).data('id'),
+                },
+                columns: [{
+                        data: "par_conta",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_numero",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_valor",
+                        className: "text-right",
+                        render: DataTable.render.number('.', ',', 2, 'R$')
+                    },
+                    {
+                        data: "par_status",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_data_pagto",
+                        className: "text-center"
+                    },
+                ]
+            });
+            $("#modalShowParcelas").modal('toggle');
+        });
 
         $("#modalShowParcelas").on("shown.bs.modal", function() {
             var conta = $(this).data('id');
@@ -1785,7 +1782,7 @@
         $('#modalRegisterItemCompra').on('show', function() {
             $("#modalRegisterCompras").hide();
             $("#IDItemCompra").val(idcompra);
-            console.log( $("#IDItemCompra").val());
+            console.log($("#IDItemCompra").val());
         });
 
         $("#modalRegisterItemVenda").on("shown.bs.modal", function() {
