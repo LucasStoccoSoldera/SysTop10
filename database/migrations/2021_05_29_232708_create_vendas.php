@@ -19,6 +19,7 @@ class CreateVendas extends Migration
             $table->unsignedBigInteger('log_id');
             $table->unsignedBigInteger('cli_id');
             $table->timestamp('ven_data');
+            $table->date('ven_data_pagto');
             $table->float('ven_valor_total', 12, 2);
             $table->string('ven_parcelas');
             $table->char('ven_status', 1);

@@ -18,7 +18,7 @@ class ContasAReceber extends Migration
             $table->unsignedBigInteger('tpg_id');
             $table->string('rec_descricao');
             $table->string('rec_ven_id')->nullable();
-            $table->date('rec_data');
+            $table->date('rec_data')->nullable();
             $table->float('rec_valor', 12, 2);
             $table->string('rec_parcelas');
             $table->string('rec_status');
