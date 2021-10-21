@@ -11,6 +11,8 @@ use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
 use App\Models\Estoque;
 use App\Models\Notificacao;
+use App\Models\Parcelas;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -60,6 +62,18 @@ class VendasRegister extends Controller
         $Venda->ven_desconto = $request->descontoVenda;
         $Venda->save();
 
+        $Receber = new Contas_a_Receber();
+        $Receber->tpg_id = $request->IDTipoPagamento;
+        $Receber->rec_descricao = "Venda para $request->IDCliente";
+        $Receber->rec_ven_id = $request->IDVenda;
+        $Receber->rec_valor = $request->VTVenda;
+        $Receber->rec_parcelas = $request->parcelasVenda;
+        if(isset($request->datapagtoVendas)){
+        $Receber->rec_data = $request->datapagtoVendas;
+        }
+        $Receber->rec_status = $request->statusVenda;
+        $Receber->save();
+
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
@@ -68,20 +82,22 @@ class VendasRegister extends Controller
         $Caixa->save();
 
         $cont = 0;
+        $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVenda);
         while ($cont < $request->parcelasVenda) {
 
-            $Receber = new Contas_a_Receber();
-            $Receber->tpg_id = $request->IDTipoPagamento;
-            $Receber->rec_descricao = "Venda para $request->IDCliente";
-            $Receber->rec_ven_id = $request->IDVenda;
-            $Receber->rec_valor = ($request->VTVenda / $request->parcelasVenda) * $cont;
-            $Receber->rec_parcelas = $request->parcelasVenda;
-            $Receber->rec_data = ($venda_dados->ven_data->modify('+' . ($cont * 30) . ' days'));
-            $Receber->rec_status = $request->statusVenda;
-            $Receber->save();
+            $Parcela = new Parcelas();
+            $Parcela->tpg_id = $request->IDTipoPagamentoUp;
+            $Parcela->par_conta = $conta_last;
+            $Parcela->par_numero = $cont;
+            $Parcela->par_valor = ($request->VTVendaUp / $request->parcelasVendaUp) * $cont;
+            $Parcela->par_status = $request->statusVendaUp;
+            if ($venda_dados->ven_data_pagto <> null){
+            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            }
         }
-        if ($Receber) {
+
+        if ($Parcela) {
             return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!', 'codigo' => $request->IDVenda]);
         }
     }
