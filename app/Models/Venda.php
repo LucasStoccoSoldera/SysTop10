@@ -18,6 +18,7 @@ class Venda extends Model
         'ven_status',
         'ven_desconto',
         'ven_parcelas',
+        'ven_data_pagto',
     ];
 
     public function tipopagto_venda()
