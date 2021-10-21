@@ -62,7 +62,7 @@ class CompraUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Compras = new Compras;
+        $Compras = Compras::find($request->idCom);
         $Compras->com_id = $request->IDComprasUp;
         $Compras->cde_id = $request->descricaoComprasUp;
         $Compras->tpg_id = $request->tpgpagtoComprasUp;
@@ -76,7 +76,7 @@ class CompraUpdate extends Controller
         $Compras->com_observacoes = $request->obsComprasUp;
         $Compras->save();
 
-        $Conta = new Contas_a_Pagar();
+        $Conta = Contas_a_Pagar::find($request->idCom);
         $Conta->tpg_id = $request->tpgpagtoComprasUp;
         $Conta->cc_id = $request->ccComprasUp;
         $Conta->con_descricao =  "Compra de $request->descricaoComprasUp";
@@ -104,7 +104,7 @@ class CompraUpdate extends Controller
 
         while ($cont < $request->parcelasCompras) {
 
-            $Parcela = new Parcelas();
+            $Parcela = Centro_Custo::find($request->idCC);
             $Parcela->tpg_id = $request->tpgpagtoComprasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
@@ -176,7 +176,7 @@ class CompraUpdate extends Controller
         if ($validator->fails() || $validator_interno->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_interno' => $validator_interno->errors()]);
         }
-        $Compras_Detalhe = new Compras_Detalhe;
+        $Compras_Detalhe = Compras_Detalhe::find($request->idIteCom);
         $Compras_Detalhe->com_id = $request->IDItemCompraUp;
         $Compras_Detalhe->for_id = $request->IDFornecedorUp;
         $Compras_Detalhe->cde_tipo = $request->tipoItemCompraUp;

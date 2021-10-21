@@ -142,7 +142,7 @@ class FornecedorUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cpf_cnpj' => $validator_cpf_cnpj->errors(), 'error_telefone_celular' => $validator_telefone_celular->errors()]);
         }
 
-        $Fornecedores = new Fornecedores;
+        $Fornecedores = Fornecedores::find($request->idFor);
         $Fornecedores->for_nome = $request->nomeFornecedorUp;
         $Fornecedores->for_telefone = $request->telefoneFornecedorUp;
         $Fornecedores->for_celular = $request->celularFornecedorUp;

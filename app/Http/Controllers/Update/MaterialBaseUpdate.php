@@ -36,7 +36,7 @@ class MaterialBaseUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Material_Base = new Material_Base;
+        $Material_Base = Material_Base::find($request->idMat);
         $Material_Base->mat_descricao = $request->NomeMaterialUp;
         $Material_Base->save();
 

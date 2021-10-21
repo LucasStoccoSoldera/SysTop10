@@ -62,7 +62,7 @@ class ProdutoUpdate extends Controller
         $random = rand(1,1000);
         $nameFile = strtotime("now") . "_" . "$random" . $request->FotoProdutoUp->extension();
 
-        $Produto = new Produto;
+        $Produto = Produto::find($request->idPro);
         $Produto->id = $request->IDProdutoUp;
         $Produto->pro_nome = $request->NomeProdutoUp;
         $Produto->tpp_id = $request->TipoProdutoUp;

@@ -54,7 +54,7 @@ class ContasaReceberUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Contas_a_Receber = new Contas_a_Receber;
+        $Contas_a_Receber = Contas_a_Receber::find($request->idRec);
         $Contas_a_Receber->tpg_id = $request->tipoPagtoReceberUp;
         $Contas_a_Receber->rec_descricao = $request->descricaoReceberUp;
         $Contas_a_Receber->rec_ven_id = $request->IDVendaUp;
@@ -66,7 +66,7 @@ class ContasaReceberUpdate extends Controller
         $Contas_a_Receber->rec_status = "Baixa";
         $Contas_a_Receber->save();
 
-        $Caixa = new Caixa();
+        $Caixa = Cliente::find($request->idCli);
         $Caixa->cax_descricao = "Credito $request->descricaoReceberUp";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->valorReceberUp;

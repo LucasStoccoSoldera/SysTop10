@@ -38,7 +38,7 @@ class PacoteUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Pacote = new Pacote;
+        $Pacote = Pacote::find($request->idPac);
         $Pacote->pac_dimensao = $request->DimensaoPacotesUp;
         $Pacote->pac_descricao = $request->DescricaoPacotesUp;
         $Pacote->save();

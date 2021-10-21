@@ -57,7 +57,7 @@ class ContasUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Contas_a_Pagar = new Contas_a_Pagar;
+        $Contas_a_Pagar = Contas_a_Pagar::find($request->idCon);
         $Contas_a_Pagar->con_descricao = $request->descricaoContasUp;
         $Contas_a_Pagar->con_tipo = $request->tipoContasUp;
         $Contas_a_Pagar->con_valor = $request->valorContasUp;
@@ -73,7 +73,7 @@ class ContasUpdate extends Controller
         $Contas_a_Pagar->con_status= "Pago";
         $Contas_a_Pagar->save();
 
-        $Caixa = new Caixa();
+        $Caixa = Cliente::find($request->idCli);
         $Caixa->cax_descricao = "Conta $request->descricaoContasUp";
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->valorfContasUp;

@@ -55,7 +55,7 @@ class UserUpdate extends Controller
         if($validator->fails()){
             return response()->json(['status' =>0, 'error' => $validator->errors()]);
         }
-        $Usuario = new Usuario;
+        $Usuario = Usuario::find($request->idUsu);
         $Usuario->usu_nome_completo = $request->nomeUserUp;
         $Usuario->usu_usuario = $request->usu_usuarioUp;
         $Usuario->usu_senha = Hash::make($request->senhaUserUp);

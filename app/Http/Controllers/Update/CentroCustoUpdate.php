@@ -45,7 +45,7 @@ class CentroCustoUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $Centro_Custo = new Centro_Custo;
+        $Centro_Custo = Centro_Custo::find($request->idCC);
         $Centro_Custo->cc_descricao = $request->NomeCentroCustoUp;
         $Centro_Custo->save();
 

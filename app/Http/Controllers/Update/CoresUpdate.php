@@ -74,7 +74,7 @@ class CoresUpdate extends Controller
         if ($validator->fails() || $validator_cor_especial->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cor_especial' => $validator_cor_especial->errors()]);
         }
-        $Cor = new Cor;
+        $Cor = Cor::find($request->idCor);
         $Cor->cor_nome = $request->NomeCoresUp;
         $Cor->cor_hex_especial = $cor;
         $Cor->save();

@@ -47,7 +47,7 @@ class EstoqueUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Estoque = new Estoque;
+        $Estoque = Estoque::find($request->idEst);
         $Estoque->dim_id = $request->IDDimensaoUp;
         $Estoque->cor_id = $request->IDCorUp;
         $Estoque->pro_id = $request->produtoEstoqueUp;

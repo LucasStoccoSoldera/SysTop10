@@ -35,7 +35,7 @@ class CargoUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Cargo = new Cargo;
+        $Cargo = Cargo::find($request->idCar);
         $Cargo->car_descricao = $request->descricaoCargoUp;
         $Cargo->save();
 

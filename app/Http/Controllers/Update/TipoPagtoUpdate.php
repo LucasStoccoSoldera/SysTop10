@@ -35,7 +35,7 @@ class TipoPagtoUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $TipoPagto = new TipoPagto;
+        $TipoPagto = TipoPagto::find($request->idPag);
         $TipoPagto->tpg_descricao = $request->TPTipoPagtoUp;
         $TipoPagto->save();
 

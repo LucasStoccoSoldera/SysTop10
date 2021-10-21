@@ -11,6 +11,7 @@ use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
 use App\Models\Estoque;
 use App\Models\Notificacao;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -61,7 +62,7 @@ class VendasUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Venda = new Venda;
+        $Venda = Venda::find($request->idVen);
         $Venda->ven_id = $request->IDVendaUp;
         $Venda->tpg_id = $request->IDTipoPagamentoUp;
         $Venda->log_id = $request->IDLogisticaUp;
@@ -72,7 +73,20 @@ class VendasUpdate extends Controller
         $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
 
-        $Caixa = new Caixa();
+        $Receber = Centro_Custo::find($request->idCC);
+        $Receber->tpg_id = $request->IDTipoPagamentoUp;
+        $Receber->rec_descricao = "Venda para $request->IDClienteUp";
+        $Receber->rec_ven_id = $request->IDVendaUp;
+        $Receber->rec_valor = $request->VTVendaUp;
+        $Receber->rec_parcelas = $request->parcelasVendaUp;
+        if(isset($request->datapagtoVendasUp)){
+        $Receber->rec_data = $request->datapagtoVendasUp;
+        }
+        $Receber->rec_status = $request->statusVendaUp;
+        $Receber->save();
+
+
+        $Caixa = Centro_Custo::find($request->idCC);
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->VTVendaUp;
@@ -80,21 +94,24 @@ class VendasUpdate extends Controller
         $Caixa->save();
 
         $cont = 0;
+        $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVendaUp);
         while ($cont < $request->parcelasVendaUp) {
 
-            $Receber = new Contas_a_Receber();
-            $Receber->tpg_id = $request->IDTipoPagamentoUp;
-            $Receber->rec_descricao = "Venda para $request->IDClienteUp";
-            $Receber->rec_ven_id = $request->IDVendaUp;
-            $Receber->rec_valor = ($request->VTVendaUp / $request->parcelasVendaUp) * $cont;
-            $Receber->rec_parcelas = $request->parcelasVendaUp;
-            $Receber->rec_data = ($venda_dados->ven_data->modify('+' . ($cont * 30) . ' days'));
-            $Receber->rec_status = $request->statusVendaUp;
-            $Receber->save();
+        $Parcela = Centro_Custo::find($request->idCC);
+        $Parcela->tpg_id = $request->IDTipoPagamentoUp;
+        $Parcela->par_conta = $conta_last;
+        $Parcela->par_numero = $cont;
+        $Parcela->par_valor = ($request->VTVendaUp / $request->parcelasVendaUp) * $cont;
+        $Parcela->par_status = $request->statusVendaUp;
+        if ($venda_dados->ven_data_pagto <> null){
+        $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
         }
-        if ($Receber) {
-            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);
+        $Parcela->save();
+        $cont ++;
+    }
+        if ($Parcela) {
+            return response()->json(['status' => 1, 'msg' => 'Venda atualizada com sucesso!']);
         }
     }
 
@@ -127,31 +144,31 @@ class VendasUpdate extends Controller
         }
 
         $random = rand(1,1000);
-        $nameFile =  $request->IDItemVenda . "$random" . strtotime("now") . $request->anexoItemVenda->extension();
+        $nameFile =  $request->IDItemVendaUp . "$random" . strtotime("now") . $request->anexoItemVendaUp->extension();
 
-        $Venda_Detalhe = new Venda_Detalhe;
-        $Venda_Detalhe->cor_id = $request->IDCor;
-        $Venda_Detalhe->dim_id = $request->IDDimensao;
-        $Venda_Detalhe->pro_id = $request->IDProduto;
-        $Venda_Detalhe->ven_id = $request->IDItemVenda;
-        $Venda_Detalhe->det_qtde = $request->qtdeItemVenda;
-        $Venda_Detalhe->det_descricao = $request->descricaoItemVenda;
+        $Venda_Detalhe = Venda_Detalhe::find($request->idCC);
+        $Venda_Detalhe->cor_id = $request->IDCorUp;
+        $Venda_Detalhe->dim_id = $request->IDDimensaoUp;
+        $Venda_Detalhe->pro_id = $request->IDProdutoUp;
+        $Venda_Detalhe->ven_id = $request->IDItemVendaUp;
+        $Venda_Detalhe->det_qtde = $request->qtdeItemVendaUp;
+        $Venda_Detalhe->det_descricao = $request->descricaoItemVendaUp;
         $Venda_Detalhe->det_anexo_path = $nameFile;
-        $Venda_Detalhe->det_valor_unitario = $request->VUItemVenda;
-        $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
+        $Venda_Detalhe->det_valor_unitario = $request->VUItemVendaUp;
+        $Venda_Detalhe->det_valor_total = $request->VTItemVendaUp;
         $Venda_Detalhe->save();
 
-        $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProduto;
-        $Estoque->dim_id = $request->IDDimensao;
-        $Estoque->cor_id =  $request->IDCor;
+        $Estoque = Centro_Custo::find($request->idCC);
+        $Estoque->pro_id = $request->IDProdutoUp;
+        $Estoque->dim_id = $request->IDDimensaoUp;
+        $Estoque->cor_id =  $request->IDCorUp;
         $Estoque->est_qtde = $request->qtdeItemVenda * -1;
         $Estoque->save();
 
-        $upload = $request->anexoItemVenda->storeAs('artes_vendas', $nameFile);
+        $upload = $request->anexoItemVendaUp->storeAs('artes_vendas', $nameFile);
 
         if ($Venda_Detalhe) {
-            return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Item atualizado com sucesso!']);
         }
     }
 }

@@ -38,7 +38,7 @@ class LogisticaUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Logistica = new Logistica;
+        $Logistica = Logistica::find($request->idLog);
         $Logistica->pac_id = $request->pacoteLogisticaUp;
         $Logistica->trans_id = $request->transLogisticaUp;
         $Logistica->save();

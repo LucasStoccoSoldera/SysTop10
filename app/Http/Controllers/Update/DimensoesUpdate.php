@@ -37,7 +37,7 @@ class DimensoesUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
 
-        $Dimensao = new Dimensao;
+        $Dimensao = Dimensao::find($request->idDim);
         $Dimensao->dim_descricao = $request->NomeDimensaoUp;
         $Dimensao->save();
 

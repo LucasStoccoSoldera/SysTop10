@@ -154,7 +154,7 @@ class ClienteUpdate extends Controller
         }
 
 
-        $Cliente = new Cliente;
+        $Cliente = Cliente::find($request->idCli);
         if (empty(DB::table('cliente')->where('cli_usuario', $request->usuario)->first())) {
             $Cliente->cli_nome = $request->nomeClienteUp;
             $Cliente->cli_usuario = $request->usuarioClienteUp;

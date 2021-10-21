@@ -89,7 +89,7 @@ class TransportadoraUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors(),  'error_telefone_celular' => $validator_telefone_celular->errors()]);
         }
 
-        $Transportadora = new Transportadora;
+        $Transportadora = Transportadora::find($request->idTrans);
         $Transportadora->trans_nome = $request->nomeTransUp;
         $Transportadora->trans_telefone = $request->telefoneTransUp;
         $Transportadora->trans_celular = $request->celularTransUp;

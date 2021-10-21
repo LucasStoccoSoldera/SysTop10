@@ -36,7 +36,7 @@ class TipoProdutoUpdate extends Controller
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
-        $Tipo_Produto = new TipoProduto;
+        $Tipo_Produto = TipoProduto::find($request->idTpp);
         $Tipo_Produto->tpp_descricao = $request->NomeTipoProdutoUp;
         $Tipo_Produto->save();
 
