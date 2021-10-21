@@ -33,24 +33,24 @@ class ContasUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'descricaoContas' => ['required', 'string'],
-                'tipoContas' => ['required', 'string'],
-                'valorContas' => ['required'],
-                'valorfContas' => ['required'],
-                'parcelasContas' => ['required', 'integer'],
-                'datavContas' => ['required', 'date'],
-                'tpgpagtoContas' => ['required', 'string'],
-                'centrocustoContas' => ['required', 'string'],
+                'descricaoContasUp' => ['required', 'string'],
+                'tipoContasUp' => ['required', 'string'],
+                'valorContasUp' => ['required'],
+                'valorfContasUp' => ['required'],
+                'parcelasContasUp' => ['required', 'integer'],
+                'datavContasUp' => ['required', 'date'],
+                'tpgpagtoContasUp' => ['required', 'string'],
+                'centrocustoContasUp' => ['required', 'string'],
             ],
             [
-                'descricaoContas.required' => 'Descrição obrigatória.',
-                'tipoContas.required' => 'Tipo obrigatório.',
-                'valorContas.required' => 'Valor obrigatório.',
-                'valorfContas.required' => 'Valor final obrigatório.',
-                'parcelasContas.required' => 'Qtde. de parcelas obrigatória.',
-                'datavContas.required' => 'Data de venc. obrigatória.',
-                'tpgpagtoContas.required' => 'Tipo de Pagamento obrigatório.',
-                'centrocustoContas.required' => 'Centro de custo obrigatório.',
+                'descricaoContasUp.required' => 'Descrição obrigatória.',
+                'tipoContasUp.required' => 'Tipo obrigatório.',
+                'valorContasUp.required' => 'Valor obrigatório.',
+                'valorfContasUp.required' => 'Valor final obrigatório.',
+                'parcelasContasUp.required' => 'Qtde. de parcelas obrigatória.',
+                'datavContasUp.required' => 'Data de venc. obrigatória.',
+                'tpgpagtoContasUp.required' => 'Tipo de Pagamento obrigatório.',
+                'centrocustoContasUp.required' => 'Centro de custo obrigatório.',
             ]
         );
 
@@ -58,33 +58,33 @@ class ContasUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Contas_a_Pagar = new Contas_a_Pagar;
-        $Contas_a_Pagar->con_descricao = $request->descricaoContas;
-        $Contas_a_Pagar->con_tipo = $request->tipoContas;
-        $Contas_a_Pagar->con_valor = $request->valorContas;
-        $Contas_a_Pagar->con_valor_final = $request->valorfContas;
-        $Contas_a_Pagar->con_parcelas = $request->parcelasContas;
-        $Contas_a_Pagar->con_data_venc = $request->datavContas;
-        $Contas_a_Pagar->con_data_pag = $request->datapContas;
-        $Contas_a_Pagar->tpg_id = $request->tpgpagtoContas;
-        $Contas_a_Pagar->cc_id = $request->centrocustoContas;
+        $Contas_a_Pagar->con_descricao = $request->descricaoContasUp;
+        $Contas_a_Pagar->con_tipo = $request->tipoContasUp;
+        $Contas_a_Pagar->con_valor = $request->valorContasUp;
+        $Contas_a_Pagar->con_valor_final = $request->valorfContasUp;
+        $Contas_a_Pagar->con_parcelas = $request->parcelasContasUp;
+        $Contas_a_Pagar->con_data_venc = $request->datavContasUp;
+        $Contas_a_Pagar->con_data_pag = $request->datapContasUp;
+        $Contas_a_Pagar->tpg_id = $request->tpgpagtoContasUp;
+        $Contas_a_Pagar->cc_id = $request->centrocustoContasUp;
         $Contas_a_Pagar->con_compra= "Conta";
 
-        if(isset($request->datapContas) && $request->datapContasdatapContas <= $ontem){
+        if(isset($request->datapContasUp) && $request->datapContasdatapContasUp <= $ontem){
         $Contas_a_Pagar->con_status= "Pago";
         $Contas_a_Pagar->save();
 
         $Caixa = new Caixa();
-        $Caixa->cax_descricao = "Conta $request->descricaoContas";
+        $Caixa->cax_descricao = "Conta $request->descricaoContasUp";
         $Caixa->cax_operacao = 0;
-        $Caixa->cax_valor =  $request->valorfContas;
-        $Caixa->cax_ctpagar = $request->valorfContas;
+        $Caixa->cax_valor =  $request->valorfContasUp;
+        $Caixa->cax_ctpagar = $request->valorfContasUp;
         $Caixa->save();
         }else{
             $Contas_a_Pagar->con_status= "Aberto";
             $Contas_a_Pagar->save();
         }
 
-        if($request->tipoContas == 'Fixa'){
+        if($request->tipoContasUp == 'Fixa'){
 
 
         } else{
@@ -92,14 +92,14 @@ class ContasUpdate extends Controller
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $contas_dados = Contas_a_Pagar::find($conta_last);
-        while ($cont < $request->parcelasContas) {
+        while ($cont < $request->parcelasContasUp) {
 
             $Parcela = new Parcelas();
-            $Parcela->tpg_id = $request->tpgpagtoContas;
+            $Parcela->tpg_id = $request->tpgpagtoContasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas) * $cont;
-            if(isset($request->datapContas) && $request->datapContas <= $ontem){
+            $Parcela->par_valor = ($request->valorfContasUp / $request->parcelasContasUp) * $cont;
+            if(isset($request->datapContasUp) && $request->datapContasUp <= $ontem){
             $Parcela->par_status = "Em Aberto";
             }
             $Parcela->par_status = "Em Aberto";
@@ -111,6 +111,6 @@ class ContasUpdate extends Controller
         }
     }
 
-            return response()->json(['status' => 1, 'msg' => 'Conta cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Conta atualizada com sucesso!']);
     }
 }

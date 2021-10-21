@@ -24,10 +24,10 @@ class TipoPagtoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'TPTipoPagto' => ['required', 'string'],
+                'TPTipoPagtoUp' => ['required', 'string'],
             ],
             [
-                'TPTipoPagto.required' => 'Tipo de pagamento obrigatório.',
+                'TPTipoPagtoUp.required' => 'Tipo de pagamento obrigatório.',
             ]
         );
 
@@ -36,11 +36,11 @@ class TipoPagtoUpdate extends Controller
         }
 
         $TipoPagto = new TipoPagto;
-        $TipoPagto->tpg_descricao = $request->TPTipoPagto;
+        $TipoPagto->tpg_descricao = $request->TPTipoPagtoUp;
         $TipoPagto->save();
 
         if ($TipoPagto) {
-            return response()->json(['status' => 1, 'msg' => 'Tipo de pagamento cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Tipo de pagamento atualizado com sucesso!']);
         }
     }
 }

@@ -31,42 +31,42 @@ class UserUpdate extends Controller
         $dataForm = $request->all();
 
         $validator = Validator::make($request->all(),[
-            'nomeUser' => ['required', 'string'],
-            'usu_usuario' => ['required', 'email','unique:usuario'],
-            'senhaUser' => ['required', 'string', 'confirmed'],
-            'celularUser' => ['required', 'celular_com_ddd'],
-            'cpfUser' => ['required', 'string'],
-            'cargoUser' => ['required', 'string'],
+            'nomeUserUp' => ['required', 'string'],
+            'usu_usuarioUp' => ['required', 'email','unique:usuario'],
+            'senhaUserUp' => ['required', 'string', 'confirmed'],
+            'celularUserUp' => ['required', 'celular_com_ddd'],
+            'cpfUserUp' => ['required', 'string'],
+            'cargoUserUp' => ['required', 'string'],
         ],
         [
-            'nomeUser.required' => 'Nome obrigatório.',
-            'usu_usuario.required' => 'E-mail obrigatório.',
-            'usu_usuario.unique' => 'O E-mail informado ja está em uso.',
-            'usu_usuario.email' => 'O E-mail informado é inválido.',
-            'senhaUser.required' => 'Senha obrigatória.',
-            'senhaUser.confirmed' => 'A confirmação não corresponde.',
-            'celularUser.required' => 'Celular obrigatório.',
-            'celularUser.celular_com_ddd' => 'Celular inválido.',
-            'cpfUser.required' => 'CPF obrigatório.',
-            'cpfUser.cpf' => 'CPF inválido.',
-            'cargoUser.required' => 'Cargo obrigatório.',
+            'nomeUserUp.required' => 'Nome obrigatório.',
+            'usu_usuarioUp.required' => 'E-mail obrigatório.',
+            'usu_usuarioUp.unique' => 'O E-mail informado ja está em uso.',
+            'usu_usuarioUp.email' => 'O E-mail informado é inválido.',
+            'senhaUserUp.required' => 'Senha obrigatória.',
+            'senhaUserUp.confirmed' => 'A confirmação não corresponde.',
+            'celularUserUp.required' => 'Celular obrigatório.',
+            'celularUserUp.celular_com_ddd' => 'Celular inválido.',
+            'cpfUserUp.required' => 'CPF obrigatório.',
+            'cpfUserUp.cpf' => 'CPF inválido.',
+            'cargoUserUp.required' => 'Cargo obrigatório.',
        ]);
 
         if($validator->fails()){
             return response()->json(['status' =>0, 'error' => $validator->errors()]);
         }
         $Usuario = new Usuario;
-        $Usuario->usu_nome_completo = $request->nomeUser;
-        $Usuario->usu_usuario = $request->usu_usuario;
-        $Usuario->usu_senha = Hash::make($request->senhaUser);
-        $Usuario->usu_celular = $request->celularUser;
-        $Usuario->usu_cpf = $request->cpfUser;
-        $Usuario->car_id = $request->cargoUser;
-        $Usuario->usu_status = $request->statusUser;
+        $Usuario->usu_nome_completo = $request->nomeUserUp;
+        $Usuario->usu_usuario = $request->usu_usuarioUp;
+        $Usuario->usu_senha = Hash::make($request->senhaUserUp);
+        $Usuario->usu_celular = $request->celularUserUp;
+        $Usuario->usu_cpf = $request->cpfUserUp;
+        $Usuario->car_id = $request->cargoUserUp;
+        $Usuario->usu_status = $request->statusUserUp;
         $Usuario->save();
 
             if($Usuario){
-                return response()->json(['status' => 1, 'msg' => 'Usuário cadastrado com sucesso!']);
+                return response()->json(['status' => 1, 'msg' => 'Usuário atualizado com sucesso!']);
             }
         }
 }

@@ -26,12 +26,12 @@ class LogisticaUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'pacoteLogistica' => ['required', 'integer'],
-                'transLogistica' => ['required', 'integer'],
+                'pacoteLogisticaUp' => ['required', 'integer'],
+                'transLogisticaUp' => ['required', 'integer'],
             ],
             [
-                'pacoteLogistica.required' => 'Pacote obrigatório.',
-                'transLogistica.required' => 'Transportadora obrigatória.',
+                'pacoteLogisticaUp.required' => 'Pacote obrigatório.',
+                'transLogisticaUp.required' => 'Transportadora obrigatória.',
             ]
         );
 
@@ -39,12 +39,12 @@ class LogisticaUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Logistica = new Logistica;
-        $Logistica->pac_id = $request->pacoteLogistica;
-        $Logistica->trans_id = $request->transLogistica;
+        $Logistica->pac_id = $request->pacoteLogisticaUp;
+        $Logistica->trans_id = $request->transLogisticaUp;
         $Logistica->save();
 
         if ($Logistica) {
-            return response()->json(['status' => 1, 'msg' => 'Logistica cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Logistica atualizada com sucesso!']);
         }
     }
 }

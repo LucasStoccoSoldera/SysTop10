@@ -39,22 +39,22 @@ class VendasUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDVenda' => ['required', 'integer'],
-                'IDTipoPagamento' => ['required', 'integer'],
-                'IDLogistica' => ['required', 'integer'],
-                'IDCliente' => ['required', 'integer'],
-                'VTVenda' => ['required'],
-                'parcelasVenda' => ['required', 'integer'],
-                'statusVenda' => ['required', 'string'],
+                'IDVendaUp' => ['required', 'integer'],
+                'IDTipoPagamentoUp' => ['required', 'integer'],
+                'IDLogisticaUp' => ['required', 'integer'],
+                'IDClienteUp' => ['required', 'integer'],
+                'VTVendaUp' => ['required'],
+                'parcelasVendaUp' => ['required', 'integer'],
+                'statusVendaUp' => ['required', 'string'],
             ],
             [
-                'IDVenda.required' => 'ID obrigatório.',
-                'IDTipoPagamento.required' => 'Tipo de pagamento obrigatório.',
-                'IDLogistica.required' => 'Logistica obrigatória.',
-                'IDCliente.required' => 'Cliente obrigatório.',
-                'VTVenda.required' => 'Valor total obrigatório.',
-                'parcelasVenda.required' => 'Qtde. de parcelas obrigatória.',
-                'statusVenda.required' => 'Status da venda obrigatório.',
+                'IDVendaUp.required' => 'ID obrigatório.',
+                'IDTipoPagamentoUp.required' => 'Tipo de pagamento obrigatório.',
+                'IDLogisticaUp.required' => 'Logistica obrigatória.',
+                'IDClienteUp.required' => 'Cliente obrigatório.',
+                'VTVendaUp.required' => 'Valor total obrigatório.',
+                'parcelasVendaUp.required' => 'Qtde. de parcelas obrigatória.',
+                'statusVendaUp.required' => 'Status da venda obrigatório.',
             ]
         );
 
@@ -62,35 +62,35 @@ class VendasUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Venda = new Venda;
-        $Venda->ven_id = $request->IDVenda;
-        $Venda->tpg_id = $request->IDTipoPagamento;
-        $Venda->log_id = $request->IDLogistica;
-        $Venda->cli_id = $request->IDCliente;
-        $Venda->ven_valor_total = $request->VTVenda;
-        $Venda->ven_parcelas = $request->parcelasVenda;
-        $Venda->ven_status = $request->statusVenda;
-        $Venda->ven_desconto = $request->descontoVenda;
+        $Venda->ven_id = $request->IDVendaUp;
+        $Venda->tpg_id = $request->IDTipoPagamentoUp;
+        $Venda->log_id = $request->IDLogisticaUp;
+        $Venda->cli_id = $request->IDClienteUp;
+        $Venda->ven_valor_total = $request->VTVendaUp;
+        $Venda->ven_parcelas = $request->parcelasVendaUp;
+        $Venda->ven_status = $request->statusVendaUp;
+        $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
 
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
-        $Caixa->cax_valor =  $request->VTVenda;
-        $Caixa->cax_ctreceber = $request->VTVenda;
+        $Caixa->cax_valor =  $request->VTVendaUp;
+        $Caixa->cax_ctreceber = $request->VTVendaUp;
         $Caixa->save();
 
         $cont = 0;
-        $venda_dados = Venda::find($request->IDVenda);
-        while ($cont < $request->parcelasVenda) {
+        $venda_dados = Venda::find($request->IDVendaUp);
+        while ($cont < $request->parcelasVendaUp) {
 
             $Receber = new Contas_a_Receber();
-            $Receber->tpg_id = $request->IDTipoPagamento;
-            $Receber->rec_descricao = "Venda para $request->IDCliente";
-            $Receber->rec_ven_id = $request->IDVenda;
-            $Receber->rec_valor = ($request->VTVenda / $request->parcelasVenda) * $cont;
-            $Receber->rec_parcelas = $request->parcelasVenda;
+            $Receber->tpg_id = $request->IDTipoPagamentoUp;
+            $Receber->rec_descricao = "Venda para $request->IDClienteUp";
+            $Receber->rec_ven_id = $request->IDVendaUp;
+            $Receber->rec_valor = ($request->VTVendaUp / $request->parcelasVendaUp) * $cont;
+            $Receber->rec_parcelas = $request->parcelasVendaUp;
             $Receber->rec_data = ($venda_dados->ven_data->modify('+' . ($cont * 30) . ' days'));
-            $Receber->rec_status = $request->statusVenda;
+            $Receber->rec_status = $request->statusVendaUp;
             $Receber->save();
         }
         if ($Receber) {
@@ -103,22 +103,22 @@ class VendasUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDCor' => ['required', 'integer'],
-                'IDDimensao' => ['required', 'integer'],
-                'IDProduto' => ['required', 'integer'],
-                'IDItemVenda' => ['required', 'integer'],
-                'qtdeItemVenda' => ['required', 'integer'],
-                'descricaoItemVenda' => ['required', 'string'],
-                'VUItemVenda' => ['required'],
+                'IDCorUp' => ['required', 'integer'],
+                'IDDimensaoUp' => ['required', 'integer'],
+                'IDProdutoUp' => ['required', 'integer'],
+                'IDItemVendaUp' => ['required', 'integer'],
+                'qtdeItemVendaUp' => ['required', 'integer'],
+                'descricaoItemVendaUp' => ['required', 'string'],
+                'VUItemVendaUp' => ['required'],
             ],
             [
-                'IDCor.required' => 'Cor obrigatória.',
-                'IDDimensao.required' => 'Dimensão obrigatória.',
-                'IDProduto.required' => 'Produto obrigatório.',
-                'IDItemVenda.required' => 'ID da venda obrigatório.',
-                'qtdeItemVenda.required' => 'Quantidade obrigatória.',
-                'descricaoItemVenda.required' => 'Descrição obrigatório.',
-                'VUItemVenda.required' => 'Valor unitário obrigatório.',
+                'IDCorUp.required' => 'Cor obrigatória.',
+                'IDDimensaoUp.required' => 'Dimensão obrigatória.',
+                'IDProdutoUp.required' => 'Produto obrigatório.',
+                'IDItemVendaUp.required' => 'ID da venda obrigatório.',
+                'qtdeItemVendaUp.required' => 'Quantidade obrigatória.',
+                'descricaoItemVendaUp.required' => 'Descrição obrigatório.',
+                'VUItemVendaUp.required' => 'Valor unitário obrigatório.',
             ]
         );
 

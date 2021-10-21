@@ -40,22 +40,22 @@ class CompraUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDCompras' => ['required', 'integer'],
-                'descricaoCompras' => ['required'],
-                'tpgpagtoCompras' => ['required'],
-                'ccCompras' => ['required'],
-                'parcelasCompras' => ['required'],
-                'VTCompras' => ['required'],
-                'dataCompras' => ['required'],
+                'IDComprasUp' => ['required', 'integer'],
+                'descricaoComprasUp' => ['required'],
+                'tpgpagtoComprasUp' => ['required'],
+                'ccComprasUp' => ['required'],
+                'parcelasComprasUp' => ['required'],
+                'VTComprasUp' => ['required'],
+                'dataComprasUp' => ['required'],
             ],
             [
-                'IDCompras.required' => 'ID da compra obrigatório.',
-                'descricaoCompras.required' => 'Descrição obrigatória.',
-                'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
-                'ccCompras.required' => 'Centro de Custo obrigatório.',
-                'parcelasCompras.required' => 'Qtde. de parcelas obrigatório.',
-                'VTCompras.required' => 'Valor Total obrigatório.',
-                'dataCompras.required' => 'Data da compra obrigatória.',
+                'IDComprasUp.required' => 'ID da compra obrigatório.',
+                'descricaoComprasUp.required' => 'Descrição obrigatória.',
+                'tpgpagtoComprasUp.required' => 'Tipo de pagamento obrigatório.',
+                'ccComprasUp.required' => 'Centro de Custo obrigatório.',
+                'parcelasComprasUp.required' => 'Qtde. de parcelas obrigatório.',
+                'VTComprasUp.required' => 'Valor Total obrigatório.',
+                'dataComprasUp.required' => 'Data da compra obrigatória.',
             ]
         );
 
@@ -63,52 +63,52 @@ class CompraUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Compras = new Compras;
-        $Compras->com_id = $request->IDCompras;
-        $Compras->cde_id = $request->descricaoCompras;
-        $Compras->tpg_id = $request->tpgpagtoCompras;
-        $Compras->cc_id = $request->ccCompras;
-        $Compras->com_parcelas = $request->parcelasCompra;
-        $Compras->com_descricao = $request->descricaoCompras;
-        $Compras->com_desconto = $request->descontoCompras;
-        $Compras->com_valor = $request->VTCompras;
-        $Compras->com_data_compra = $request->dataCompras;
-        $Compras->com_data_pagto = $request->datapagCompras;
-        $Compras->com_observacoes = $request->obsCompras;
+        $Compras->com_id = $request->IDComprasUp;
+        $Compras->cde_id = $request->descricaoComprasUp;
+        $Compras->tpg_id = $request->tpgpagtoComprasUp;
+        $Compras->cc_id = $request->ccComprasUp;
+        $Compras->com_parcelas = $request->parcelasCompraUp;
+        $Compras->com_descricao = $request->descricaoComprasUp;
+        $Compras->com_desconto = $request->descontoComprasUp;
+        $Compras->com_valor = $request->VTComprasUp;
+        $Compras->com_data_compra = $request->dataComprasUp;
+        $Compras->com_data_pagto = $request->datapagComprasUp;
+        $Compras->com_observacoes = $request->obsComprasUp;
         $Compras->save();
 
         $Conta = new Contas_a_Pagar();
-        $Conta->tpg_id = $request->tpgpagtoCompras;
-        $Conta->cc_id = $request->ccCompras;
-        $Conta->con_descricao =  "Compra de $request->descricaoCompras";
+        $Conta->tpg_id = $request->tpgpagtoComprasUp;
+        $Conta->cc_id = $request->ccComprasUp;
+        $Conta->con_descricao =  "Compra de $request->descricaoComprasUp";
         $Conta->con_tipo = "Variável";
-        $Conta->con_valor_final = $request->VTCompras;
-        $Conta->con_data_venc = $request->datapagCompras;
-        $Conta->con_parcelas = $request->parcelasCompras;
-        if ($request->datapagCompras <> null){
-        $Conta->con_data_pag = $request->datapagCompras;
+        $Conta->con_valor_final = $request->VTComprasUp;
+        $Conta->con_data_venc = $request->datapagComprasUp;
+        $Conta->con_parcelas = $request->parcelasComprasUp;
+        if ($request->datapagComprasUp <> null){
+        $Conta->con_data_pag = $request->datapagComprasUp;
         }
         $Conta->con_status= "Aberto";
         $Conta->con_compra= "Compra";
         $Conta->save();
 
         $Caixa = new Caixa();
-        $Caixa->cax_descricao = "Compra de $request->descricaoCompras";
+        $Caixa->cax_descricao = "Compra de $request->descricaoComprasUp";
         $Caixa->cax_operacao = 0;
-        $Caixa->cax_valor =  $request->VTCompras;
-        $Caixa->cax_ctpagar = $request->VTCompras;
+        $Caixa->cax_valor =  $request->VTComprasUp;
+        $Caixa->cax_ctpagar = $request->VTComprasUp;
         $Caixa->save();
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
-        $compras_dados = Compras::find($request->IDCompras);
+        $compras_dados = Compras::find($request->IDComprasUp);
 
         while ($cont < $request->parcelasCompras) {
 
             $Parcela = new Parcelas();
-            $Parcela->tpg_id = $request->tpgpagtoCompras;
+            $Parcela->tpg_id = $request->tpgpagtoComprasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->VTCompras / $request->parcelasCompras) * $cont;
+            $Parcela->par_valor = ($request->VTComprasUp / $request->parcelasComprasUp) * $cont;
             $Parcela->par_status = "Em Aberto";
             if ($compras_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
@@ -118,7 +118,7 @@ class CompraUpdate extends Controller
         }
 
         if ($Parcela) {
-            return response()->json(['status' => 1, 'msg' => 'Compra cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Compra atualizada com sucesso!']);
         }
     }
 
@@ -128,18 +128,18 @@ class CompraUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDItemCompra' => ['required', 'integer'],
-                'IDFornecedor' => ['required', 'integer'],
-                'qtdeItemCompra' => ['required', 'integer'],
-                'descricaoItemCompra' => ['required', 'string'],
-                'valorItemCompra' => ['required'],
+                'IDItemCompraUp' => ['required', 'integer'],
+                'IDFornecedorUp' => ['required', 'integer'],
+                'qtdeItemCompraUp' => ['required', 'integer'],
+                'descricaoItemCompraUp' => ['required', 'string'],
+                'valorItemCompraUp' => ['required'],
             ],
             [
-                'IDItemCompra.required' => 'ID da compra obrigatório.',
-                'IDFornecedor.required' => 'Fornecedor obrigatório.',
-                'qtdeItemCompra.required' => 'Quantidade obrigatória.',
-                'descricaoItemCompra.required' => 'Descrição obrigatória.',
-                'valorItemCompra.required' => 'Valor do item obrigatório.',
+                'IDItemCompraUp.required' => 'ID da compra obrigatório.',
+                'IDFornecedorUp.required' => 'Fornecedor obrigatório.',
+                'qtdeItemCompraUp.required' => 'Quantidade obrigatória.',
+                'descricaoItemCompraUp.required' => 'Descrição obrigatória.',
+                'valorItemCompraUp.required' => 'Valor do item obrigatório.',
             ]
         );
 
@@ -148,15 +148,15 @@ class CompraUpdate extends Controller
             $validator_interno = Validator::make(
                 $request->all(),
                 [
-                    'IDProdutoI' => ['required', 'integer'],
-                    'dimensaoItemCompra' => ['required', 'integer'],
-                    'coresItemCompra' => ['required', 'integer'],
+                    'IDProdutoIUp' => ['required', 'integer'],
+                    'dimensaoItemCompraUp' => ['required', 'integer'],
+                    'coresItemCompraUp' => ['required', 'integer'],
 
                 ],
                 [
-                    'IDProdutoI.required' => 'Produto obrigatório.',
-                    'dimensaoItemCompra.required' => 'Dimensão obrigatória.',
-                    'coresItemCompra.required' => 'Cor obrigatória.',
+                    'IDProdutoI.requiredUp' => 'Produto obrigatório.',
+                    'dimensaoItemCompra.requiredUp' => 'Dimensão obrigatória.',
+                    'coresItemCompra.requiredUp' => 'Cor obrigatória.',
                 ]
             );
             $interno = true;
@@ -164,10 +164,10 @@ class CompraUpdate extends Controller
             $validator_interno = Validator::make(
                 $request->all(),
                 [
-                    'IDProdutoE' => ['required', 'integer'],
+                    'IDProdutoEUp' => ['required', 'integer'],
                 ],
                 [
-                    'IDProduto.requiredE' => 'Produto obrigatório.',
+                    'IDProduto.requiredEUp' => 'Produto obrigatório.',
                 ]
             );
             $interno = false;
@@ -177,33 +177,33 @@ class CompraUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_interno' => $validator_interno->errors()]);
         }
         $Compras_Detalhe = new Compras_Detalhe;
-        $Compras_Detalhe->com_id = $request->IDItemCompra;
-        $Compras_Detalhe->for_id = $request->IDFornecedor;
-        $Compras_Detalhe->cde_tipo = $request->tipoItemCompra;
+        $Compras_Detalhe->com_id = $request->IDItemCompraUp;
+        $Compras_Detalhe->for_id = $request->IDFornecedorUp;
+        $Compras_Detalhe->cde_tipo = $request->tipoItemCompraUp;
         if($interno = true){
-        $Compras_Detalhe->cde_produto = $request->IDProduto;
-        $Compras_Detalhe->dim_id = $request->dimensaoItemCompra;
-        $Compras_Detalhe->cor_id = $request->coresItemCompra;
+        $Compras_Detalhe->cde_produto = $request->IDProdutoUp;
+        $Compras_Detalhe->dim_id = $request->dimensaoItemCompraUp;
+        $Compras_Detalhe->cor_id = $request->coresItemCompraUp;
         } else{
-        $Compras_Detalhe->cde_produto = $request->IDProduto;
+        $Compras_Detalhe->cde_produto = $request->IDProdutoUp;
         }
-        $Compras_Detalhe->cde_qtde = $request->qtdeItemCompra;
-        $Compras_Detalhe->cde_valoritem = $request->valorItemCompra;
-        $Compras_Detalhe->cde_valortotal = $request->valorTotalItemCompra;
-        $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
+        $Compras_Detalhe->cde_qtde = $request->qtdeItemCompraUp;
+        $Compras_Detalhe->cde_valoritem = $request->valorItemCompraUp;
+        $Compras_Detalhe->cde_valortotal = $request->valorTotalItemCompraUp;
+        $Compras_Detalhe->cde_descricao = $request->descricaoItemCompraUp;
         $Compras_Detalhe->save();
 
         if($interno = true){
         $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProduto;
-        $Estoque->dim_id = $request->IDDimensao;
-        $Estoque->cor_id =  $request->IDCor;
-        $Estoque->est_qtde = $request->qtdeItemCompra;
+        $Estoque->pro_id = $request->IDProdutoUp;
+        $Estoque->dim_id = $request->IDDimensaoUp;
+        $Estoque->cor_id =  $request->IDCorUp;
+        $Estoque->est_qtde = $request->qtdeItemCompraUp;
         $Estoque->save();
         }
 
         if ($Compras_Detalhe) {
-            return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Item atualizado com sucesso!']);
         }
     }
 }

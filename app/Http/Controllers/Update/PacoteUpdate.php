@@ -26,12 +26,12 @@ class PacoteUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'DimensaoPacotes' => ['required', 'string'],
-                'DescricaoPacotes' => ['required', 'string'],
+                'DimensaoPacotesUp' => ['required', 'string'],
+                'DescricaoPacotesUp' => ['required', 'string'],
             ],
             [
-                'DimensaoPacotes.required' => 'Pacote obrigatório.',
-                'DescricaoPacotes.required' => 'Dimensão obrigatória.',
+                'DimensaoPacotesUp.required' => 'Pacote obrigatório.',
+                'DescricaoPacotesUp.required' => 'Dimensão obrigatória.',
             ]
         );
 
@@ -39,12 +39,12 @@ class PacoteUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Pacote = new Pacote;
-        $Pacote->pac_dimensao = $request->DimensaoPacotes;
-        $Pacote->pac_descricao = $request->DescricaoPacotes;
+        $Pacote->pac_dimensao = $request->DimensaoPacotesUp;
+        $Pacote->pac_descricao = $request->DescricaoPacotesUp;
         $Pacote->save();
 
         if ($Pacote) {
-            return response()->json(['status' => 1, 'msg' => 'Pacote cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Pacote atualizado com sucesso!']);
         }
     }
 }

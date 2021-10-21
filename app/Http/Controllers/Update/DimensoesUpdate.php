@@ -26,10 +26,10 @@ class DimensoesUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeDimensao' => ['required', 'string'],
+                'NomeDimensaoUp' => ['required', 'string'],
             ],
             [
-                'NomeDimensao.required' => 'Dimensão obrigatória.',
+                'NomeDimensaoUp.required' => 'Dimensão obrigatória.',
             ]
         );
 
@@ -38,15 +38,15 @@ class DimensoesUpdate extends Controller
         }
 
         $Dimensao = new Dimensao;
-        $Dimensao->dim_descricao = $request->NomeDimensao;
+        $Dimensao->dim_descricao = $request->NomeDimensaoUp;
         $Dimensao->save();
 
         Schema::table('dimensao_produto', function (Blueprint $table) use ($request) {
-            $table->char($request->NomeDimensao)->default(0);
+            $table->char($request->NomeDimensaoUp)->default(0);
         });
 
         if ($Dimensao) {
-            return response()->json(['status' => 1, 'msg' => 'Dimensão cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Dimensão atualizada com sucesso!']);
         }
     }
 }

@@ -27,10 +27,10 @@ class CoresUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeCores' => ['required', 'string'],
+                'NomeCoresUp' => ['required', 'string'],
             ],
             [
-                'NomeCores.required' => 'Nome da cor obrigatório.',
+                'NomeCoresUp.required' => 'Nome da cor obrigatório.',
             ]
         );
         if ($request->CodigoCores != "#000000" || !empty($request->EspecialCores)) {
@@ -38,35 +38,35 @@ class CoresUpdate extends Controller
                 $validator_cor_especial = Validator::make(
                     $request->all(),
                     [
-                        'EspecialCores' => ['required', 'string'],
+                        'EspecialCoresUp' => ['required', 'string'],
                     ],
                     [
-                        'EspecialCores.required' => 'Cor especial obrigatório.',
+                        'EspecialCoresUp.required' => 'Cor especial obrigatório.',
                     ]
                 );
-                $cor = $request->EspecialCores;
+                $cor = $request->EspecialCoresUp;
             } else {
                 $validator_cor_especial = Validator::make(
                     $request->all(),
                     [
-                        'CodigoCores' => ['required', 'string'],
+                        'CodigoCoresUp' => ['required', 'string'],
                     ],
                     [
-                        'CodigoCores.required' => 'Código obrigatório.',
+                        'CodigoCoresUp.required' => 'Código obrigatório.',
                     ]
                 );
-                $cor = $request->CodigoCores;
+                $cor = $request->CodigoCoresUp;
             }
         } else {
             $validator_cor_especial = Validator::make(
                 $request->all(),
                 [
-                    'CodigoCores' => ['integer'],
-                    'EspecialCores' => ['required', 'string'],
+                    'CodigoCoresUp' => ['integer'],
+                    'EspecialCoresUp' => ['required', 'string'],
                 ],
                 [
-                    'CodigoCores.integer' => 'Código ou Especial obrigatórios.',
-                    'EspecialCores.required' => 'Código ou Especial obrigatórios.',
+                    'CodigoCoresUp.integer' => 'Código ou Especial obrigatórios.',
+                    'EspecialCoresUp.required' => 'Código ou Especial obrigatórios.',
                 ]
             );
         }
@@ -75,16 +75,16 @@ class CoresUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors(), 'error_cor_especial' => $validator_cor_especial->errors()]);
         }
         $Cor = new Cor;
-        $Cor->cor_nome = $request->NomeCores;
+        $Cor->cor_nome = $request->NomeCoresUp;
         $Cor->cor_hex_especial = $cor;
         $Cor->save();
 
         Schema::table('cor_produto', function (Blueprint $table) use ($request) {
-            return $table->char($request->NomeCores)->default(0);
+            return $table->char($request->NomeCoresUp)->default(0);
         });
 
         if ($Cor) {
-            return response()->json(['status' => 1, 'msg' => 'Cor cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Cor atualizada com sucesso!']);
         }
     }
 }

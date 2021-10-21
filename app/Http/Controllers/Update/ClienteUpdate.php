@@ -30,31 +30,31 @@ class ClienteUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeCliente' => ['required', 'string'],
-                'usuarioCliente' => ['required','email'],
-                'senhaCliente' => ['required', 'confirmed'],
-                'cepCliente' => ['required'],
-                'cidadeCliente' => ['required'],
-                'estadoCliente' => ['required'],
-                'bairroCliente' => ['required'],
-                'ruaCliente' => ['required'],
-                'ncasaCliente' => ['required'],
-                'complementoCliente' => ['required'],
+                'nomeClienteUp' => ['required', 'string'],
+                'usuarioClienteUp' => ['required','email'],
+                'senhaClienteUp' => ['required', 'confirmed'],
+                'cepClienteUp' => ['required'],
+                'cidadeClienteUp' => ['required'],
+                'estadoClienteUp' => ['required'],
+                'bairroClienteUp' => ['required'],
+                'ruaClienteUp' => ['required'],
+                'ncasaClienteUp' => ['required'],
+                'complementoClienteUp' => ['required'],
             ],
             [
-                'nomeCliente.required' => 'Nome completo obrigatório.',
-                'usuarioCliente.required' => 'Usuário obrigatório.',
-                'usuarioCliente.email' => 'E-mail inválido.',
-                'senhaCliente.required' => 'Senha obrigatória.',
-                'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
-                'cepCliente.required' => 'CEP obrigatório.',
-                'cepCliente.formato_cep' => 'CEP inválido.',
-                'cidadeCliente.required' => 'Cidade obrigatória.',
-                'estadoCliente.required' => 'Estado obrigatório.',
-                'bairroCliente.required' => 'Bairro obrigatório.',
-                'ruaCliente.required' => 'Rua obrigatória.',
-                'ncasaCliente.required' => 'Número obrigatório.',
-                'complementoCliente.required' => 'Complemento obrigatório.',
+                'nomeClienteUp.required' => 'Nome completo obrigatório.',
+                'usuarioClienteUp.required' => 'Usuário obrigatório.',
+                'usuarioClienteUp.email' => 'E-mail inválido.',
+                'senhaClienteUp.required' => 'Senha obrigatória.',
+                'senhaClienteUp.confirmed' => 'A confirmação da senha não corresponde.',
+                'cepClienteUp.required' => 'CEP obrigatório.',
+                'cepClienteUp.formato_cep' => 'CEP inválido.',
+                'cidadeClienteUp.required' => 'Cidade obrigatória.',
+                'estadoClienteUp.required' => 'Estado obrigatório.',
+                'bairroClienteUp.required' => 'Bairro obrigatório.',
+                'ruaClienteUp.required' => 'Rua obrigatória.',
+                'ncasaClienteUp.required' => 'Número obrigatório.',
+                'complementoClienteUp.required' => 'Complemento obrigatório.',
             ]
         );
 
@@ -64,10 +64,10 @@ class ClienteUpdate extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
-                        'cpfCliente' => ['cpf'],
+                        'cpfClienteUp' => ['cpf'],
                     ],
                     [
-                        'cpfCliente.cpf' => 'CPF inválido.',
+                        'cpfClienteUp.cpf' => 'CPF inválido.',
                     ]
                 );
                 $cpf = $request->cpfCliente;
@@ -75,10 +75,10 @@ class ClienteUpdate extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
-                        'cnpjCliente' => ['cnpj'],
+                        'cnpjClienteUp' => ['cnpj'],
                     ],
                     [
-                        'cnpjCliente.cnpj' => 'CNPJ inválido.',
+                        'cnpjClienteUp.cnpj' => 'CNPJ inválido.',
                     ]
                 );
             }
@@ -86,12 +86,12 @@ class ClienteUpdate extends Controller
             $validator_cpf_cnpj = Validator::make(
                 [$request->all()],
                 [
-                    'cpfCliente' => ['required', 'cpf'],
-                    'cnpjCliente' => ['required', 'cnpj'],
+                    'cpfClienteUp' => ['required', 'cpf'],
+                    'cnpjClienteUp' => ['required', 'cnpj'],
                 ],
                 [
-                    'cpfCliente.required' => 'CPF ou CNPJ obrigatórios.',
-                    'cnpjCliente.required' => 'CPF ou CNPJ obrigatório.',
+                    'cpfClienteUp.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cnpjClienteUp.required' => 'CPF ou CNPJ obrigatório.',
                 ]
             );
         }
@@ -101,12 +101,12 @@ class ClienteUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneCliente' => ['telefone'],
-                    'celularCliente' => ['celular_com_ddd'],
+                    'telefoneClienteUp' => ['telefone'],
+                    'celularClienteUp' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneCliente.telefone' => 'Telefone inválido.',
-                    'celularCliente.celular_com_ddd' => 'Celular inválido.',
+                    'telefoneClienteUp.telefone' => 'Telefone inválido.',
+                    'celularClienteUp.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         } else{
@@ -116,10 +116,10 @@ class ClienteUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneCliente' => ['telefone'],
+                        'telefoneClienteUp' => ['telefone'],
                     ],
                     [
-                        'telefoneCliente.telefone' => 'Telefone inválido.',
+                        'telefoneClienteUp.telefone' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneCliente;
@@ -127,10 +127,10 @@ class ClienteUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'celularCliente' => ['celular_com_ddd'],
+                        'celularClienteUp' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularCliente.celular_com_ddd' => 'Celular inválido.',
+                        'celularClienteUp.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -138,12 +138,12 @@ class ClienteUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneCliente' => ['required'],
-                    'celularCliente' => ['required'],
+                    'telefoneClienteUp' => ['required'],
+                    'celularClienteUp' => ['required'],
                 ],
                 [
-                    'telefoneCliente.required' => 'Telefone ou Celular obrigatórios.',
-                    'celularCliente.required' => 'Telefone ou Celular obrigatórios.',
+                    'telefoneClienteUp.required' => 'Telefone ou Celular obrigatórios.',
+                    'celularClienteUp.required' => 'Telefone ou Celular obrigatórios.',
                 ]
             );
         }
@@ -156,31 +156,31 @@ class ClienteUpdate extends Controller
 
         $Cliente = new Cliente;
         if (empty(DB::table('cliente')->where('cli_usuario', $request->usuario)->first())) {
-            $Cliente->cli_nome = $request->nomeCliente;
-            $Cliente->cli_usuario = $request->usuarioCliente;
-            $Cliente->cli_senha = Hash::make($request->senhaCliente);
+            $Cliente->cli_nome = $request->nomeClienteUp;
+            $Cliente->cli_usuario = $request->usuarioClienteUp;
+            $Cliente->cli_senha = Hash::make($request->senhaClienteUp);
             if (isset($cpf)){
-            $Cliente->cli_cpf_cnpj = $request->cpfCliente;
+            $Cliente->cli_cpf_cnpj = $request->cpfClienteUp;
             }else{
-            $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
+            $Cliente->cli_cpf_cnpj = $request->cnpjClienteUp;
             }
-            $Cliente->cli_telefone = $request->telefoneCliente;
-            $Cliente->cli_celular = $request->celularCliente;
-            $Cliente->cli_cep = $request->cepCliente;
-            $Cliente->cli_cidade = $request->cidadeCliente;
-            $Cliente->cli_uf = $request->estadoCliente;
-            $Cliente->cli_bairro = $request->bairroCliente;
-            $Cliente->cli_logradouro = $request->ruaCliente;
-            $Cliente->cli_n_casa = $request->ncasaCliente;
-            $Cliente->cli_complemento = $request->complementoCliente;
+            $Cliente->cli_telefone = $request->telefoneClienteUp;
+            $Cliente->cli_celular = $request->celularClienteUp;
+            $Cliente->cli_cep = $request->cepClienteUp;
+            $Cliente->cli_cidade = $request->cidadeClienteUp;
+            $Cliente->cli_uf = $request->estadoClienteUp;
+            $Cliente->cli_bairro = $request->bairroClienteUp;
+            $Cliente->cli_logradouro = $request->ruaClienteUp;
+            $Cliente->cli_n_casa = $request->ncasaClienteUp;
+            $Cliente->cli_complemento = $request->complementoClienteUp;
             $Cliente->save();
 
             $credentials = [
-                'usuario' => $request->usuarioCliente,
-                'password' => $request->senhaCliente
+                'usuario' => $request->usuarioClienteUp,
+                'password' => $request->senhaClienteUp
             ];
             if ($Cliente) {
-                return response()->json(['status' => 1, 'msg' => 'Cliente cadastrado com sucesso!']);
+                return response()->json(['status' => 1, 'msg' => 'Cliente atualizado com sucesso!']);
             }
         }
     }

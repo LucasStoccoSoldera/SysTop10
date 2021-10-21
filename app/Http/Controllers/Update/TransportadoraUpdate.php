@@ -23,12 +23,12 @@ class TransportadoraUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeTrans' => ['required'],
-                'limitetransTrans' => ['required'],
+                'nomeTransUp' => ['required'],
+                'limitetransTransUp' => ['required'],
             ],
             [
-                'nomeTrans.required' => 'Transportadora obrigatória.',
-                'limitetransTrans.required' => 'Limite obrigatório.',
+                'nomeTransUp.required' => 'Transportadora obrigatória.',
+                'limitetransTransUp.required' => 'Limite obrigatório.',
             ]
         );
 
@@ -37,12 +37,12 @@ class TransportadoraUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneTrans' => ['telefone'],
-                    'celularTrans' => ['celular_com_ddd'],
+                    'telefoneTransUp' => ['telefone'],
+                    'celularTransUp' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneTrans.telefone' => 'Telefone inválido.',
-                    'celularTrans.celular_com_ddd' => 'Celular inválido.',
+                    'telefoneTransUp.telefone' => 'Telefone inválido.',
+                    'celularTransUp.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         } else{
@@ -52,10 +52,10 @@ class TransportadoraUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneTrans' => ['telefone'],
+                        'telefoneTransUp' => ['telefone'],
                     ],
                     [
-                        'telefoneTrans.telefone' => 'Telefone inválido.',
+                        'telefoneTransUp.telefone' => 'Telefone inválido.',
                     ]
                 );
                 $telefone = $request->telefoneTrans;
@@ -63,10 +63,10 @@ class TransportadoraUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'celularTrans' => ['celular_com_ddd'],
+                        'celularTransUp' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularTrans.celular_com_ddd' => 'Celular inválido.',
+                        'celularTransUp.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -74,12 +74,12 @@ class TransportadoraUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneTrans' => ['required'],
-                    'celularTrans' => ['required'],
+                    'telefoneTransUp' => ['required'],
+                    'celularTransUp' => ['required'],
                 ],
                 [
-                    'telefoneTrans.required' => 'Telefone ou Celular obrigatórios.',
-                    'celularTrans.required' => 'Telefone ou Celular obrigatórios.',
+                    'telefoneTransUp.required' => 'Telefone ou Celular obrigatórios.',
+                    'celularTransUp.required' => 'Telefone ou Celular obrigatórios.',
                 ]
             );
         }
@@ -90,14 +90,14 @@ class TransportadoraUpdate extends Controller
         }
 
         $Transportadora = new Transportadora;
-        $Transportadora->trans_nome = $request->nomeTrans;
-        $Transportadora->trans_telefone = $request->telefoneTrans;
-        $Transportadora->trans_celular = $request->celularTrans;
-        $Transportadora->trans_limite_transporte = $request->limitetransTrans;
+        $Transportadora->trans_nome = $request->nomeTransUp;
+        $Transportadora->trans_telefone = $request->telefoneTransUp;
+        $Transportadora->trans_celular = $request->celularTransUp;
+        $Transportadora->trans_limite_transporte = $request->limitetransTransUp;
         $Transportadora->save();
 
         if ($Transportadora) {
-            return response()->json(['status' => 1, 'msg' => 'Transportadora cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Transportadora atualizada com sucesso!']);
         }
     }
 }

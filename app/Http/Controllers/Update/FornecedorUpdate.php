@@ -29,25 +29,25 @@ class FornecedorUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'nomeFornecedor' => ['required', 'string'],
-                'cepFornecedor' => ['required', 'string', 'formato_cep'],
-                'cidadeFornecedor' => ['required', 'string'],
-                'estadoFornecedor' => ['required', 'string'],
-                'bairroFornecedor' => ['required', 'string'],
-                'ruaFornecedor' => ['required', 'string'],
-                'ncasaFornecedor' => ['required'],
-                'produtosFornecedor' => ['required'],
+                'nomeFornecedorUp' => ['required', 'string'],
+                'cepFornecedorUp' => ['required', 'string', 'formato_cep'],
+                'cidadeFornecedorUp' => ['required', 'string'],
+                'estadoFornecedorUp' => ['required', 'string'],
+                'bairroFornecedorUp' => ['required', 'string'],
+                'ruaFornecedorUp' => ['required', 'string'],
+                'ncasaFornecedorUp' => ['required'],
+                'produtosFornecedorUp' => ['required'],
             ],
             [
-                'nomeFornecedor.required' => 'Nome obrigatório.',
-                'cepFornecedor.required' => 'CEP obrigatório.',
-                'cepFornecedor.formato_cep' => 'CEP inválido.',
-                'cidadeFornecedor.required' => 'Cidade obrigatória.',
-                'estadoFornecedor.required' => 'Estado obrigatório.',
-                'bairroFornecedor.required' => 'Bairro obrigatório.',
-                'ruaFornecedor.required' => 'Rua obrigatória.',
-                'ncasaFornecedor.required' => 'Número obrigatório.',
-                'produtosFornecedor.required' => 'Produto obrigatório.',
+                'nomeFornecedorUp.required' => 'Nome obrigatório.',
+                'cepFornecedorUp.required' => 'CEP obrigatório.',
+                'cepFornecedorUp.formato_cep' => 'CEP inválido.',
+                'cidadeFornecedorUp.required' => 'Cidade obrigatória.',
+                'estadoFornecedorUp.required' => 'Estado obrigatório.',
+                'bairroFornecedorUp.required' => 'Bairro obrigatório.',
+                'ruaFornecedorUp.required' => 'Rua obrigatória.',
+                'ncasaFornecedorUp.required' => 'Número obrigatório.',
+                'produtosFornecedorUp.required' => 'Produto obrigatório.',
             ]
         );
 
@@ -57,20 +57,20 @@ class FornecedorUpdate extends Controller
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
-                        'cpfFornecedor' => ['cpf'],
+                        'cpfFornecedorUp' => ['cpf'],
                     ],
                     [
-                        'cpfFornecedor.cpf' => 'CPF inválido.',
+                        'cpfFornecedorUp.cpf' => 'CPF inválido.',
                     ]
                 );
             } else {
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
-                        'cnpjFornecedor' => ['cnpj'],
+                        'cnpjFornecedorUp' => ['cnpj'],
                     ],
                     [
-                        'cnpjFornecedor.cnpj' => 'CNPJ inválido.',
+                        'cnpjFornecedorUp.cnpj' => 'CNPJ inválido.',
                     ]
                 );
             }
@@ -78,12 +78,12 @@ class FornecedorUpdate extends Controller
             $validator_cpf_cnpj = Validator::make(
                 [$request->all()],
                 [
-                    'cpfFornecedor' => ['required'],
-                    'cnpjFornecedor' => ['required'],
+                    'cpfFornecedorUp' => ['required'],
+                    'cnpjFornecedorUp' => ['required'],
                 ],
                 [
-                    'cpfFornecedor.required' => 'CPF ou CNPJ obrigatórios.',
-                    'cnpjFornecedor.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cpfFornecedorUp.required' => 'CPF ou CNPJ obrigatórios.',
+                    'cnpjFornecedorUp.required' => 'CPF ou CNPJ obrigatórios.',
                 ]
             );
         }
@@ -94,20 +94,20 @@ class FornecedorUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneFornecedor' => ['telefone'],
+                        'telefoneFornecedorUp' => ['telefone'],
                     ],
                     [
-                        'telefoneFornecedor.telefone' => 'Telefone inválido.',
+                        'telefoneFornecedorUp.telefone' => 'Telefone inválido.',
                     ]
                 );
             } else {
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'celularCliente' => ['celular_com_ddd'],
+                        'celularFornecedorUp' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularFornecedor.celular_com_ddd' => 'Celular inválido.',
+                        'celularFornecedorUp.celular_com_ddd' => 'Celular inválido.',
                     ]
                 );
             }
@@ -115,12 +115,12 @@ class FornecedorUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneFornecedor' => ['telefone'],
-                    'celularFornecedor' => ['celular_com_ddd'],
+                    'telefoneFornecedorUp' => ['telefone'],
+                    'celularFornecedorUp' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneFornecedor.telefone' => 'Telefone inválido.',
-                    'celularFornecedor.celular_com_ddd' => 'Celular inválido.',
+                    'telefoneFornecedorUp.telefone' => 'Telefone inválido.',
+                    'celularFornecedorUp.celular_com_ddd' => 'Celular inválido.',
                 ]
             );
         }
@@ -128,12 +128,12 @@ class FornecedorUpdate extends Controller
         $validator_telefone_celular = Validator::make(
             [$request->all()],
             [
-                'telefoneFornecedor' => ['required'],
-                'celularFornecedor' => ['required'],
+                'telefoneFornecedorUp' => ['required'],
+                'celularFornecedorUp' => ['required'],
             ],
             [
-                'telefoneFornecedor.required' => 'Telefone ou Celular obrigatórios.',
-                'celularFornecedor.required' => 'Telefone ou Celular obrigatórios.',
+                'telefoneFornecedorUp.required' => 'Telefone ou Celular obrigatórios.',
+                'celularFornecedorUp.required' => 'Telefone ou Celular obrigatórios.',
             ]
         );
     }
@@ -143,25 +143,25 @@ class FornecedorUpdate extends Controller
         }
 
         $Fornecedores = new Fornecedores;
-        $Fornecedores->for_nome = $request->nomeFornecedor;
-        $Fornecedores->for_telefone = $request->telefoneFornecedor;
-        $Fornecedores->for_celular = $request->celularFornecedor;
+        $Fornecedores->for_nome = $request->nomeFornecedorUp;
+        $Fornecedores->for_telefone = $request->telefoneFornecedorUp;
+        $Fornecedores->for_celular = $request->celularFornecedorUp;
         if (isset($cpf)){
-        $Fornecedores->for_cpf_cnpj = $request->cpfFornecedor;
+        $Fornecedores->for_cpf_cnpj = $request->cpfFornecedorUp;
        }else{
-        $Fornecedores->for_cpf_cnpj = $request->cnpjFornecedor;
+        $Fornecedores->for_cpf_cnpj = $request->cnpjFornecedorUp;
         }
-        $Fornecedores->for_cep = $request->cepFornecedor;
-        $Fornecedores->for_cidade = $request->cidadeFornecedor;
-        $Fornecedores->for_estado = $request->estadoFornecedor;
-        $Fornecedores->for_bairro = $request->bairroFornecedor;
-        $Fornecedores->for_rua = $request->ruaFornecedor;
-        $Fornecedores->for_numero = $request->ncasaFornecedor;
-        $Fornecedores->for_produto = $request->produtosFornecedor;
+        $Fornecedores->for_cep = $request->cepFornecedorUp;
+        $Fornecedores->for_cidade = $request->cidadeFornecedorUp;
+        $Fornecedores->for_estado = $request->estadoFornecedorUp;
+        $Fornecedores->for_bairro = $request->bairroFornecedorUp;
+        $Fornecedores->for_rua = $request->ruaFornecedorUp;
+        $Fornecedores->for_numero = $request->ncasaFornecedorUp;
+        $Fornecedores->for_produto = $request->produtosFornecedorUp;
         $Fornecedores->save();
 
         if ($Fornecedores) {
-            return response()->json(['status' => 1, 'msg' => 'Fornecedor cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Fornecedor atualizado com sucesso!']);
         }
     }
 }

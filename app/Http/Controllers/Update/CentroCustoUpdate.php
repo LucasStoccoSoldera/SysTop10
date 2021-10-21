@@ -34,10 +34,10 @@ class CentroCustoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeCentroCusto' => ['required', 'string'],
+                'NomeCentroCustoUp' => ['required', 'string'],
             ],
             [
-                'NomeCentroCusto.required' => 'Centro de custo obrigatório.',
+                'NomeCentroCusto.requiredUp' => 'Centro de custo obrigatório.',
             ]
         );
 
@@ -46,11 +46,11 @@ class CentroCustoUpdate extends Controller
         }
 
         $Centro_Custo = new Centro_Custo;
-        $Centro_Custo->cc_descricao = $request->NomeCentroCusto;
+        $Centro_Custo->cc_descricao = $request->NomeCentroCustoUp;
         $Centro_Custo->save();
 
         if ($Centro_Custo) {
-            return response()->json(['status' => 1, 'msg' => 'Centro cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Centro atualizado com sucesso!']);
         }
     }
 }

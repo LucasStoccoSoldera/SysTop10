@@ -27,20 +27,20 @@ class EstoqueUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDDimensao' => ['required'],
-                'IDCor' => ['required'],
-                'produtoEstoque' => ['required'],
-                'qtdeEstoque' => ['required', 'integer'],
-                'dataEstoque' => ['required'],
-                'timeEstoque' => ['required'],
-                'statusEstoque' => ['required', 'string'],
+                'IDDimensaoUp' => ['required'],
+                'IDCorUp' => ['required'],
+                'produtoEstoqueUp' => ['required'],
+                'qtdeEstoqueUp' => ['required', 'integer'],
+                'dataEstoqueUp' => ['required'],
+                'timeEstoqueUp' => ['required'],
+                'statusEstoqueUp' => ['required', 'string'],
             ],
             [
-                'IDDimensao.required' => 'Dimensão obrigatória.',
-                'IDCor.required' => 'Cor obrigatória.',
-                'produtoEstoque.required' => 'Produto obrigatório.',
-                'qtdeEstoque.required' => 'Quantidade obrigatória.',
-                'statusEstoque.required' => 'Status obrigatório.',
+                'IDDimensaoUp.required' => 'Dimensão obrigatória.',
+                'IDCorUp.required' => 'Cor obrigatória.',
+                'produtoEstoqueUp.required' => 'Produto obrigatório.',
+                'qtdeEstoqueUp.required' => 'Quantidade obrigatória.',
+                'statusEstoqueUp.required' => 'Status obrigatório.',
             ]
         );
 
@@ -48,17 +48,17 @@ class EstoqueUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Estoque = new Estoque;
-        $Estoque->dim_id = $request->IDDimensao;
-        $Estoque->cor_id = $request->IDCor;
-        $Estoque->pro_id = $request->produtoEstoque;
-        $Estoque->est_qtde = $request->qtdeEstoque;
-        $Estoque->est_data = $request->dataEstoque;
-        $Estoque->est_time = $request->timeEstoque;
-        $Estoque->est_status = $request->statusEstoque;
+        $Estoque->dim_id = $request->IDDimensaoUp;
+        $Estoque->cor_id = $request->IDCorUp;
+        $Estoque->pro_id = $request->produtoEstoqueUp;
+        $Estoque->est_qtde = $request->qtdeEstoqueUp;
+        $Estoque->est_data = $request->dataEstoqueUp;
+        $Estoque->est_time = $request->timeEstoqueUp;
+        $Estoque->est_status = $request->statusEstoqueUp;
         $Estoque->save();
 
         if ($Estoque) {
-            return response()->json(['status' => 1, 'msg' => 'Entrada cadastrada com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Entrada atualizada com sucesso!']);
         }
     }
 }

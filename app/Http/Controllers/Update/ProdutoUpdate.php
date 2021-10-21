@@ -30,28 +30,28 @@ class ProdutoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDProduto' => ['required', 'integer'],
-                'NomeProduto' => ['required'],
-                'TipoProduto' => ['required', 'integer'],
-                'PCProduto' => ['required'],
-                'PVProduto' => ['required'],
-                'MaterialProduto' => ['required', 'integer'],
-                'LogisticaProduto' => ['required', 'integer'],
-                'PedidoMinimoProduto' => ['required', 'integer'],
-                'FotoProduto' => ['required', 'image', 'dimensions:width=200,height=200'],
+                'IDProdutoUp' => ['required', 'integer'],
+                'NomeProdutoUp' => ['required'],
+                'TipoProdutoUp' => ['required', 'integer'],
+                'PCProdutoUp' => ['required'],
+                'PVProdutoUp' => ['required'],
+                'MaterialProdutoUp' => ['required', 'integer'],
+                'LogisticaProdutoUp' => ['required', 'integer'],
+                'PedidoMinimoProdutoUp' => ['required', 'integer'],
+                'FotoProdutoUp' => ['required', 'image', 'dimensions:width=200,height=200'],
             ],
             [
-                'IDProduto' => 'ID obrigatório.',
-                'NomeProduto.required' => 'Nome obrigatório.',
-                'TipoProduto.required' => 'Tipo obrigatório.',
-                'PCProduto.required' => 'Preço de custo obrigatório.',
-                'PVProduto.required' => 'Preço de venda obrigatório.',
-                'MaterialProduto.required' => 'Material obrigatório.',
-                'LogisticaProduto.required' => 'Pacote obrigatório.',
-                'FotoProduto.required' => 'Foto do produto obrigatória.',
-                'FotoProduto.image' => 'Arquivo não é uma imagem.',
-                'FotoProduto.dimensions' => 'Dimensão de 100 x 200.',
-                'PedidoMinimoProduto.required' => 'Pedido Mínimo obrigatório.',
+                'IDProdutoUp' => 'ID obrigatório.',
+                'NomeProdutoUp.required' => 'Nome obrigatório.',
+                'TipoProdutoUp.required' => 'Tipo obrigatório.',
+                'PCProdutoUp.required' => 'Preço de custo obrigatório.',
+                'PVProdutoUp.required' => 'Preço de venda obrigatório.',
+                'MaterialProdutoUp.required' => 'Material obrigatório.',
+                'LogisticaProdutoUp.required' => 'Pacote obrigatório.',
+                'FotoProdutoUp.required' => 'Foto do produto obrigatória.',
+                'FotoProdutoUp.image' => 'Arquivo não é uma imagem.',
+                'FotoProdutoUp.dimensions' => 'Dimensão de 100 x 200.',
+                'PedidoMinimoProdutoUp.required' => 'Pedido Mínimo obrigatório.',
             ]
         );
 
@@ -60,27 +60,27 @@ class ProdutoUpdate extends Controller
         }
 
         $random = rand(1,1000);
-        $nameFile = strtotime("now") . "_" . "$random" . $request->FotoProduto->extension();
+        $nameFile = strtotime("now") . "_" . "$random" . $request->FotoProdutoUp->extension();
 
         $Produto = new Produto;
-        $Produto->id = $request->IDProduto;
-        $Produto->pro_nome = $request->NomeProduto;
-        $Produto->tpp_id = $request->TipoProduto;
-        $Produto->log_id = $request->LogisticaProduto;
-        $Produto->pro_precocusto = $request->PCProduto;
-        $Produto->pro_precovenda = $request->PVProduto;
-        $Produto->pro_promocao = $request->PromocaoProduto;
-        $Produto->mat_id = $request->MaterialProduto;
-        $Produto->pro_pedidominimo = $request->PedidoMinimoProduto;
+        $Produto->id = $request->IDProdutoUp;
+        $Produto->pro_nome = $request->NomeProdutoUp;
+        $Produto->tpp_id = $request->TipoProdutoUp;
+        $Produto->log_id = $request->LogisticaProdutoUp;
+        $Produto->pro_precocusto = $request->PCProdutoUp;
+        $Produto->pro_precovenda = $request->PVProdutoUp;
+        $Produto->pro_promocao = $request->PromocaoProdutoUp;
+        $Produto->mat_id = $request->MaterialProdutoUp;
+        $Produto->pro_pedidominimo = $request->PedidoMinimoProdutoUp;
         $Produto->pro_foto_path = $nameFile;
-        $Produto->pro_personalizacao = $request->PersoProduto;
-        $Produto->pro_terceirizacao = $request->TerceProduto;
+        $Produto->pro_personalizacao = $request->PersoProdutoUp;
+        $Produto->pro_terceirizacao = $request->TerceProdutoUp;
         $Produto->save();
 
-        $upload = $request->FotoProduto->storeAs('fotos', $nameFile);
+        $upload = $request->FotoProdutoUp->storeAs('fotos', $nameFile);
 
         if ($Produto) {
-            return response()->json(['status' => 1, 'msg' => 'Produto cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Produto atualizado com sucesso!']);
         }
     }
 

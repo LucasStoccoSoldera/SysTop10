@@ -26,10 +26,10 @@ class TipoProdutoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeTipoProduto' => ['required', 'string'],
+                'NomeTipoProdutoUp' => ['required', 'string'],
             ],
             [
-                'NomeTipoProduto.required' => 'Tipo de produto obrigatório.',
+                'NomeTipoProdutoUp.required' => 'Tipo de produto obrigatório.',
             ]
         );
 
@@ -37,11 +37,11 @@ class TipoProdutoUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Tipo_Produto = new TipoProduto;
-        $Tipo_Produto->tpp_descricao = $request->NomeTipoProduto;
+        $Tipo_Produto->tpp_descricao = $request->NomeTipoProdutoUp;
         $Tipo_Produto->save();
 
         if ($Tipo_Produto) {
-            return response()->json(['status' => 1, 'msg' => 'Tipo de produto cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Tipo de produto atualizado com sucesso!']);
         }
     }
 }

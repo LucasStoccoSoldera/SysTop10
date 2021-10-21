@@ -26,10 +26,10 @@ class MaterialBaseUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'NomeMaterial' => ['required', 'string'],
+                'NomeMaterialUp' => ['required', 'string'],
             ],
             [
-                'NomeMaterial.required' => 'Material obrigatório.',
+                'NomeMaterialUp.required' => 'Material obrigatório.',
             ]
         );
 
@@ -37,11 +37,11 @@ class MaterialBaseUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Material_Base = new Material_Base;
-        $Material_Base->mat_descricao = $request->NomeMaterial;
+        $Material_Base->mat_descricao = $request->NomeMaterialUp;
         $Material_Base->save();
 
         if ($Material_Base) {
-            return response()->json(['status' => 1, 'msg' => 'Material cadastrado com sucesso!']);
+            return response()->json(['status' => 1, 'msg' => 'Material atualizado com sucesso!']);
         }
     }
 }
