@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/List_Parcelas/{id}', [App\Http\Controllers\Lista\ParcelasList::class, 'listParcelas'])->name('admin.list.parcelas');
     Route::get('/admin/List_Compra', [App\Http\Controllers\Lista\CompraList::class, 'listCompra'])->name('admin.list.compra');
     Route::get('/admin/List_ItemCompra/{id}', [App\Http\Controllers\Lista\ItemCompraList::class, 'listItemCompra'])->name('admin.list.itemcompra');
-    Route::get('/admin/List_ItemCompraAto', [App\Http\Controllers\Lista\ItemCompraAtoList::class, 'listItemCompraAto'])->name('admin.list.itemcompraato');
+    Route::get('/admin/List_ItemCompraAto/{id}', [App\Http\Controllers\Lista\ItemCompraAtoList::class, 'listItemCompraAto'])->name('admin.list.itemcompraato');
     Route::get('/admin/List_ContasaReceber', [App\Http\Controllers\Lista\ContasaReceberList::class, 'listContasaReceber'])->name('admin.list.contasareceber');
     Route::get('/admin/List_ContasaReceber_Post', [App\Http\Controllers\Lista\ContasaReceberList::class, 'postContasaReceber'])->name('admin.post.receber');
     Route::get('/admin/List_Vendas', [App\Http\Controllers\Lista\VendasList::class, 'listVendas'])->name('admin.list.vendas');
@@ -138,7 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Logistica/Editar_transportadora/{id}', [App\Http\Controllers\Update\TransportadoraUpdate::class, 'editTransportadora'])->name('admin.edit.transportadora');
     Route::get('/admin/Logistica/Editar_logistica/{id}', [App\Http\Controllers\Update\LogisticaUpdate::class, 'editLogistica'])->name('admin.edit.logistica');
 
-    Route::put('/admin/Usuario/Atualizar_usuario', [App\Http\Controllers\Update\UserUpdate::class, 'createUser'])->name('admin.update.user');
+    Route::put('/admin/Usuario/Atualizar_usuario', [App\Http\Controllers\Update\UserUpdate::class, 'updateUser'])->name('admin.update.user');
     Route::put('/admin/Usuario/Atualizar_cargo', [App\Http\Controllers\Update\CargoUpdate::class, 'updateCargo'])->name('admin.update.cargo');
     Route::put('/admin/Usuario/Atualizar_privilegio', [App\Http\Controllers\Update\PrivilegioUpdate::class, 'updatePrivilegio'])->name('admin.update.privilegio');
     Route::get('/admin/Usuario/Atualizar_cliente', [App\Http\Controllers\Update\ClienteUpdate::class, 'updateCliente'])->name('admin.update.cliente');
