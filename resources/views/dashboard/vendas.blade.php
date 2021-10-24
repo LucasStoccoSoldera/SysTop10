@@ -307,8 +307,8 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">ID da Venda:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="IDVenda" id="IDVenda" maxlength="80"
-                                            class="form-control id" value="{{ old('IDVenda') }}"
+                                        <input type="text" name="IDVenda" id="IDVenda" maxlength="10"
+                                            class="form-control id" value="{{ old('IDVenda')}}"
                                             placeholder="ID Automático" autofocus>
                                         <div class="div-feedback">
                                             <span class="invalid-feedback IDVenda_error" role="alert">
@@ -1066,7 +1066,10 @@
                 searching: false,
                 processing: true,
                 serverside: true,
-                ajax: "{{ route('admin.list.itemvendaato') }}",
+                ajax: {
+                    type: 'GET',
+                    url: '/admin/List_ItemVendaAto/{id}' + $('#IDVenda').val('id'),
+                },
                 columns: [{
                         data: "id",
                         className: "text-center"

@@ -472,7 +472,7 @@
                                     <label class="modal-label">ID Compra:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="IDCompras" id="IDCompras" class="form-control id"
-                                        maxlength="80" value="{{ old('IDCompras') }}" placeholder="ID" autofocus>
+                                        maxlength="10" value="{{ old('IDCompras')}}" placeholder="ID" autofocus>
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDCompras_error" role="alert">
                                         </span>
@@ -1473,7 +1473,7 @@
                             </div>
                             <div class="card-body" id="cd-adaptado">
                                 <div class="table-responsive">
-                                    <table class="table tablesorter " id="tb_parcelas">
+                                    <table class="table tablesorter " id="table_parcelas">
                                         <thead class=" text-primary">
                                             <tr>
                                                 <th class="text-center" style="width: 10%">
@@ -1590,6 +1590,7 @@
 
     $('#IDCompras').on('blur', function() {
         var idcompra = $("#IDCompras").val();
+        table_item_compra_ato.ajax.reload(null, false);
     });
 
 
@@ -1664,7 +1665,10 @@
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.itemcompraato') }}",
+                ajax: {
+                    type: 'GET',
+                    url: '/admin/List_ItemCompraAto/' + $('#IDCompras').val('id'),
+                },
             columns: [{
                     data: "cde_produto"
                 },
@@ -1687,7 +1691,6 @@
                 },
             ]
         });
-
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
@@ -1731,8 +1734,7 @@
         });
 
         $('body').on('click', 'button.parcelas', function() {
-            console.log('vai');
-            var table_parcelas = $('#tb_parcelas').DataTable({
+            var table_parcelas = $('#table_parcelas').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
