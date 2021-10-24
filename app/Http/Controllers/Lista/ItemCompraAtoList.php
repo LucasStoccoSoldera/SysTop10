@@ -11,19 +11,28 @@ use App\Transformers\ItemCompraAtoTransformer;
 
 class ItemCompraAtoList extends Controller
 {
-    public function listItemCompraAto(Request $request){
+    public function listItemCompraAto($id){
 
-        if($request->ajax()){
-
+        if(empty($id)){
             $data = Compras_Detalhe::select('pro_nome', 'cde_qtde',
             'cde_valoritem',
             'cde_valortotal')
-            ->join('produto', 'compras_detalhe.cde_produto', '=', 'produto.id')->where('com_id', $request->IDCompra);
+            ->join('produto', 'compras_detalhe.cde_produto', '=', 'produto.id')->where('com_id', '=', 0);
 
             return DataTables::eloquent($data)
             ->setTransformer(new ItemCompraAtoTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }
-    }
+
+            $data = Compras_Detalhe::select('pro_nome', 'cde_qtde',
+            'cde_valoritem',
+            'cde_valortotal')
+            ->join('produto', 'compras_detalhe.cde_produto', '=', 'produto.id')->where('com_id', '=', $id);
+
+            return DataTables::eloquent($data)
+            ->setTransformer(new ItemCompraAtoTransformer)
+            ->rawColumns(['action'])
+            ->toJson();
+        }
 }
