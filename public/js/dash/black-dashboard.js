@@ -48,6 +48,7 @@ var seq2 = 0,
 (function() {
   var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
+  if (isWindows) {
     // if we are on windows OS we activate the perfectScrollbar function
     if ($('.main-panel').length != 0) {
       var ps = new PerfectScrollbar('.main-panel', {
@@ -69,6 +70,9 @@ var seq2 = 0,
 
 
     $html.addClass('perfect-scrollbar-on');
+  } else {
+    $html.addClass('perfect-scrollbar-off');
+  }
 })();
 
 $(document).ready(function() {
