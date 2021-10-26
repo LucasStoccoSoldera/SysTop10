@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Update;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
+use App\Models\Venda;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -179,6 +180,7 @@ class ClienteUpdate extends Controller
                 'usuario' => $request->usuarioClienteUp,
                 'password' => $request->senhaClienteUp
             ];
+
             if ($Cliente) {
                 return response()->json(['status' => 1, 'msg' => 'Cliente atualizado com sucesso!']);
             }

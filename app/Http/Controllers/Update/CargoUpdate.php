@@ -39,8 +39,6 @@ class CargoUpdate extends Controller
         $Cargo->car_descricao = $request->descricaoCargoUp;
         $Cargo->save();
 
-
-
         if ($Cargo) {
             return response()->json(['status' => 1, 'msg' => 'Cargo atualizado com sucesso!']);
         }

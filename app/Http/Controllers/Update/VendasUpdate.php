@@ -11,6 +11,7 @@ use App\Models\Contas_a_Receber;
 use App\Models\Caixa;
 use App\Models\Estoque;
 use App\Models\Notificacao;
+use App\Models\Parcelas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Providers\RouteServiceProvider;
@@ -73,7 +74,7 @@ class VendasUpdate extends Controller
         $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
 
-        $Receber = Centro_Custo::find($request->idCC);
+        $Receber = DB::table('contas_a_receber')->where('rec_ven_id', '=', "$request->IDVendaUp")->get();
         $Receber->tpg_id = $request->IDTipoPagamentoUp;
         $Receber->rec_descricao = "Venda para $request->IDClienteUp";
         $Receber->rec_ven_id = $request->IDVendaUp;
@@ -86,7 +87,7 @@ class VendasUpdate extends Controller
         $Receber->save();
 
 
-        $Caixa = Centro_Custo::find($request->idCC);
+        $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->VTVendaUp;
@@ -98,7 +99,7 @@ class VendasUpdate extends Controller
         $venda_dados = Venda::find($request->IDVendaUp);
         while ($cont < $request->parcelasVendaUp) {
 
-        $Parcela = Centro_Custo::find($request->idCC);
+        $Parcela = new Parcelas();
         $Parcela->tpg_id = $request->IDTipoPagamentoUp;
         $Parcela->par_conta = $conta_last;
         $Parcela->par_numero = $cont;
@@ -158,7 +159,7 @@ class VendasUpdate extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVendaUp;
         $Venda_Detalhe->save();
 
-        $Estoque = Centro_Custo::find($request->idCC);
+        $Estoque = new Estoque();
         $Estoque->pro_id = $request->IDProdutoUp;
         $Estoque->dim_id = $request->IDDimensaoUp;
         $Estoque->cor_id =  $request->IDCorUp;

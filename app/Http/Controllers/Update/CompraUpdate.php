@@ -76,7 +76,7 @@ class CompraUpdate extends Controller
         $Compras->com_observacoes = $request->obsComprasUp;
         $Compras->save();
 
-        $Conta = Contas_a_Pagar::find($request->idCom);
+        $Conta = Contas_a_Pagar::find($request->idCon);
         $Conta->tpg_id = $request->tpgpagtoComprasUp;
         $Conta->cc_id = $request->ccComprasUp;
         $Conta->con_descricao =  "Compra de $request->descricaoComprasUp";
@@ -104,7 +104,7 @@ class CompraUpdate extends Controller
 
         while ($cont < $request->parcelasCompras) {
 
-            $Parcela = Centro_Custo::find($request->idCC);
+            $Parcela = DB::table('parcelas')->where('par_conta', '=', "$conta_last")->get();
             $Parcela->tpg_id = $request->tpgpagtoComprasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;

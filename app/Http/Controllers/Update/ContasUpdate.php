@@ -73,7 +73,7 @@ class ContasUpdate extends Controller
         $Contas_a_Pagar->con_status= "Pago";
         $Contas_a_Pagar->save();
 
-        $Caixa = Cliente::find($request->idCli);
+        $Caixa = new Caixa();
         $Caixa->cax_descricao = "Conta $request->descricaoContasUp";
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $request->valorfContasUp;

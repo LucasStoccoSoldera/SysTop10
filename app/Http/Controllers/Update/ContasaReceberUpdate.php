@@ -66,7 +66,7 @@ class ContasaReceberUpdate extends Controller
         $Contas_a_Receber->rec_status = "Baixa";
         $Contas_a_Receber->save();
 
-        $Caixa = Cliente::find($request->idCli);
+        $Caixa = new Caixa();
         $Caixa->cax_descricao = "Credito $request->descricaoReceberUp";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =  $request->valorReceberUp;
