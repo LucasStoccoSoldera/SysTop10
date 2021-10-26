@@ -22,11 +22,7 @@ class TransportadoraList extends Controller
                 $rota = "'" .  route('admin.delete.transportadora') . "'";
                 $btn = '<a class="btn btn-primary alter-min" data-id="'.$data->id.'"><i
                 class="tim-icons icon-pencil" onclick="editTransportadora('.$data->id.');"></i></a>
-
-                <button type="button" class="btn btn-primary red-min" id="excluir-trans"
-                name="excluir-transportadora"
-                 onclick="excluir('.$data->id.', ' . $rota . ');"><i
-                class="tim-icons icon-simple-remove"></i></button>';
+                ';
 
                 return $btn;
             })
