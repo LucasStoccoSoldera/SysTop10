@@ -60,7 +60,7 @@ class VendasRegister extends Controller
         $Venda->save();
 
         $Total = DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->sum('det_valor_total') *
-        DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->get('det_qtde');
+        DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->select('det_qtde')->get();
 
         $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
 
