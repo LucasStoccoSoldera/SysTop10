@@ -40,7 +40,7 @@ class CompraUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDComprasUp' => ['required', 'integer'],
+                'IDComprasUp' => ['required', 'unique:compra,id'],
                 'descricaoComprasUp' => ['required'],
                 'tpgpagtoComprasUp' => ['required'],
                 'ccComprasUp' => ['required'],
@@ -49,6 +49,7 @@ class CompraUpdate extends Controller
             ],
             [
                 'IDComprasUp.required' => 'ID da compra obrigatório.',
+                'IDComprasUp.unique' => 'ID da compra ja existe.',
                 'descricaoComprasUp.required' => 'Descrição obrigatória.',
                 'tpgpagtoComprasUp.required' => 'Tipo de pagamento obrigatório.',
                 'ccComprasUp.required' => 'Centro de Custo obrigatório.',

@@ -41,7 +41,7 @@ class VendasUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDVendaUp' => ['required', 'integer'],
+                'IDVendaUp' => ['required', 'unique:vendas,id'],
                 'IDTipoPagamentoUp' => ['required', 'integer'],
                 'IDLogisticaUp' => ['required', 'integer'],
                 'IDClienteUp' => ['required', 'integer'],
@@ -50,6 +50,7 @@ class VendasUpdate extends Controller
             ],
             [
                 'IDVendaUp.required' => 'ID obrigatório.',
+                'IDVendaUp.unique' => 'ID da venda ja existe.',
                 'IDTipoPagamentoUp.required' => 'Tipo de pagamento obrigatório.',
                 'IDLogisticaUp.required' => 'Logistica obrigatória.',
                 'IDClienteUp.required' => 'Cliente obrigatório.',

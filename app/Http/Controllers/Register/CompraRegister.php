@@ -29,7 +29,7 @@ class CompraRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDCompras' => ['required', 'integer','unique:compra,id'],
+                'IDCompras' => ['required','unique:compra,id'],
                 'descricaoCompras' => ['required'],
                 'tpgpagtoCompras' => ['required'],
                 'ccCompras' => ['required'],

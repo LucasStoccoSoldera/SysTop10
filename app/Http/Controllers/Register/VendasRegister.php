@@ -28,7 +28,7 @@ class VendasRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDVenda' => ['required', 'integer','unique:vendas,id'],
+                'IDVenda' => ['required','unique:vendas,id'],
                 'IDTipoPagamento' => ['required', 'integer'],
                 'IDLogistica' => ['required', 'integer'],
                 'IDCliente' => ['required', 'integer'],
