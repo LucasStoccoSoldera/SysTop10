@@ -16,9 +16,10 @@ class VendasList extends Controller
             if($request->ajax()){
 
                 $data = Venda::query();
-                $data = Venda::select('vendas.id', 'cli_nome', 'ven_valor_total', 'ven_status', 'ven_parcelas',
+                $data = Venda::select('vendas.id', 'cli_nome', 'vendas_detalhe.det_valor_total * vendas_detalhe.det_qtde AS ven_valor_total', 'ven_status', 'ven_parcelas',
                 DB::raw("DATE_FORMAT(vendas.ven_data, '%d/%m/%Y %H:%i') as ven_data"))
-                ->join('cliente', 'vendas.cli_id', '=', 'cliente.id');
+                ->join('cliente', 'vendas.cli_id', '=', 'cliente.id')
+                ->join('vendas', 'vendas_detalhe.ven_id', '=', 'vendas.id');
 
                 return  DataTables::eloquent($data)
                 ->setTransformer(new VendasTransformer)

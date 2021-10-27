@@ -17,7 +17,6 @@ class VendasTransformer extends TransformerAbstract
         return [
             'id' => (int) $venda->id,
             'cli_nome' => (int) $venda->cli_nome,
-            'ven_valor_total' => (string) $venda->ven_valor_total,
             'ven_status' => $venda->ven_status,
             'ven_parcelas' => $venda->ven_parcelas,
             'ven_data' => (string) $venda->ven_data,
