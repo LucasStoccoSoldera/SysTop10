@@ -20,10 +20,9 @@ class CreateVendas extends Migration
             $table->unsignedBigInteger('cli_id');
             $table->timestamp('ven_data');
             $table->date('ven_data_pagto');
-            $table->float('ven_valor_total', 12, 2);
             $table->string('ven_parcelas');
             $table->char('ven_status', 1);
-            $table->float('desconto', 12, 2)->nullable();
+            $table->float('ven_desconto', 12, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('tpg_id')->references('id')->on('tipopagto');

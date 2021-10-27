@@ -618,7 +618,7 @@
                     </div>
                     <div class="row">
                         <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                            <button type="button" class="cancela btn btn-secondary btn-danger" data-dismiss="modal"
+                            <button type="button" class=" btn btn-secondary btn-danger" data-dismiss="modal"
                                 style="width: 100%">Cancelar</button>
                         </div>
                     </div>

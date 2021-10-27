@@ -45,7 +45,6 @@ class VendasUpdate extends Controller
                 'IDTipoPagamentoUp' => ['required', 'integer'],
                 'IDLogisticaUp' => ['required', 'integer'],
                 'IDClienteUp' => ['required', 'integer'],
-                'VTVendaUp' => ['required'],
                 'parcelasVendaUp' => ['required', 'integer'],
                 'statusVendaUp' => ['required', 'string'],
             ],
@@ -54,7 +53,6 @@ class VendasUpdate extends Controller
                 'IDTipoPagamentoUp.required' => 'Tipo de pagamento obrigatório.',
                 'IDLogisticaUp.required' => 'Logistica obrigatória.',
                 'IDClienteUp.required' => 'Cliente obrigatório.',
-                'VTVendaUp.required' => 'Valor total obrigatório.',
                 'parcelasVendaUp.required' => 'Qtde. de parcelas obrigatória.',
                 'statusVendaUp.required' => 'Status da venda obrigatório.',
             ]
@@ -68,17 +66,22 @@ class VendasUpdate extends Controller
         $Venda->tpg_id = $request->IDTipoPagamentoUp;
         $Venda->log_id = $request->IDLogisticaUp;
         $Venda->cli_id = $request->IDClienteUp;
-        $Venda->ven_valor_total = $request->VTVendaUp;
         $Venda->ven_parcelas = $request->parcelasVendaUp;
         $Venda->ven_status = $request->statusVendaUp;
         $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
 
+        $Total = DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->sum('det_valor_total') *
+        DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->get('det_qtde');
+
+        $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
+
         $Receber = DB::table('contas_a_receber')->where('rec_ven_id', '=', "$request->IDVendaUp")->get();
         $Receber->tpg_id = $request->IDTipoPagamentoUp;
         $Receber->rec_descricao = "Venda para $request->IDClienteUp";
         $Receber->rec_ven_id = $request->IDVendaUp;
-        $Receber->rec_valor = $request->VTVendaUp;
+        $Receber->rec_valor = $Total;
+        $Receber->rec_valor_final = $Final;
         $Receber->rec_parcelas = $request->parcelasVendaUp;
         if(isset($request->datapagtoVendasUp)){
         $Receber->rec_data = $request->datapagtoVendasUp;
@@ -90,8 +93,8 @@ class VendasUpdate extends Controller
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
-        $Caixa->cax_valor =  $request->VTVendaUp;
-        $Caixa->cax_ctreceber = $request->VTVendaUp;
+        $Caixa->cax_valor = $Final;
+        $Caixa->cax_ctreceber = $Final;
         $Caixa->save();
 
         $cont = 0;
@@ -103,7 +106,7 @@ class VendasUpdate extends Controller
         $Parcela->tpg_id = $request->IDTipoPagamentoUp;
         $Parcela->par_conta = $conta_last;
         $Parcela->par_numero = $cont;
-        $Parcela->par_valor = ($request->VTVendaUp / $request->parcelasVendaUp) * $cont;
+        $Parcela->par_valor = ($Final / $request->parcelasVendaUp) * $cont;
         $Parcela->par_status = $request->statusVendaUp;
         if ($venda_dados->ven_data_pagto <> null){
         $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));

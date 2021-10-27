@@ -327,16 +327,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group" id="form-group">
-                                        <label class="modal-label">Valor:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="VTVenda" id="VTVenda" class="dinheiro form-control"
-                                             maxlength="11" value="{{ old('VTVenda') }}">
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback VTVenda_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
                                         <label class="modal-label">Desconto:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
                                         <input type="text" name="descontoVenda" id="descontoVenda"
@@ -673,16 +663,6 @@
                                         placeholder="Entre com o Cliente">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDClienteUp_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Valor:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="VTVendaUp" id="VTVendaUp" class="dinheiro form-control"
-                                         maxlength="11" value="{{ old('VTVendaUp') }}">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback VTVendaUp_error" role="alert">
                                         </span>
                                     </div>
                                 </div>
@@ -1092,6 +1072,13 @@
                 ]
             });
 
+            $(document).on('click', '[data-dismiss="modal"]',
+                    function() {
+                        document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+
+                    }
+               );
+
             $('#modalRegisterItemVenda').on('show', function() {
                 $("#modalRegisterVendas").hide();
                 $("#IDItemVenda").val(idVenda);
@@ -1156,7 +1143,6 @@
                     },
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
-                            $('#formRegisterVenda')[0].reset();
                             $('#IDVenda').val(data_decoded.codigo);
                             demo.showNotification('top', 'right', 2, data_decoded.msg,
                                 'tim-icons icon-check-2');
@@ -1226,7 +1212,6 @@
                     },
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
-                            $('#formUpdateVenda')[0].reset();
                             demo.showNotification('top', 'right', 2, data_decoded.msg,
                                 'tim-icons icon-check-2');
                         }

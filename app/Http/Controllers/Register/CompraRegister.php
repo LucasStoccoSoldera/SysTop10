@@ -34,7 +34,6 @@ class CompraRegister extends Controller
                 'tpgpagtoCompras' => ['required'],
                 'ccCompras' => ['required'],
                 'parcelasCompras' => ['required'],
-                'VTCompras' => ['required'],
                 'dataCompras' => ['required'],
             ],
             [
@@ -44,7 +43,6 @@ class CompraRegister extends Controller
                 'tpgpagtoCompras.required' => 'Tipo de pagamento obrigatório.',
                 'ccCompras.required' => 'Centro de Custo obrigatório.',
                 'parcelasCompras.required' => 'Qtde. de parcelas obrigatório.',
-                'VTCompras.required' => 'Valor Total obrigatório.',
                 'dataCompras.required' => 'Data da compra obrigatória.',
             ]
         );
@@ -59,19 +57,23 @@ class CompraRegister extends Controller
         $Compras->com_parcelas = $request->parcelasCompras;
         $Compras->com_descricao = $request->descricaoCompras;
         $Compras->com_desconto = $request->descontoCompras;
-        $Compras->com_valor = $request->VTCompras;
         $Compras->com_data_compra = $request->dataCompras;
         $Compras->com_data_pagto = $request->datapagCompras;
         $Compras->com_observacoes = $request->obsCompras;
         $Compras->save();
+
+        $Total = DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->sum('cde_valortotal') *
+        DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->get('cde_qtde');
+
+        $Final = $Total - ( $Total * ($request->descontoComprasUp / 100));
 
         $Conta = new Contas_a_Pagar();
         $Conta->tpg_id = $request->tpgpagtoCompras;
         $Conta->cc_id = $request->ccCompras;
         $Conta->con_descricao =  "Compra de $request->descricaoCompras";
         $Conta->con_tipo = "Variável";
-        $Conta->con_valor = $request->VTCompras;
-        $Conta->con_valor_final = $request->VTCompras;
+        $Conta->con_valor = $Total;
+        $Conta->con_valor_final = $Final;
         $Conta->con_data_venc = $request->datapagCompras;
         $Conta->con_parcelas = $request->parcelasCompras;
         if ($request->datapagCompras <> null){
@@ -84,8 +86,8 @@ class CompraRegister extends Controller
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Compra de $request->descricaoCompras";
         $Caixa->cax_operacao = 0;
-        $Caixa->cax_valor =  $request->VTCompras;
-        $Caixa->cax_ctpagar = $request->VTCompras;
+        $Caixa->cax_valor = $Final;
+        $Caixa->cax_ctpagar = $Final;
         $Caixa->save();
 
         $cont = 0;
@@ -98,7 +100,7 @@ class CompraRegister extends Controller
             $Parcela->tpg_id = $request->tpgpagtoCompras;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->VTCompras / $request->parcelasCompras) * $cont;
+            $Parcela->par_valor = ($Final / $request->parcelasCompras) * $cont;
             $Parcela->par_status = "Em Aberto";
             if ($compras_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));

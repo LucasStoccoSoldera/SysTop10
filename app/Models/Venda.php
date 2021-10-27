@@ -14,7 +14,6 @@ class Venda extends Model
         'tpg_id',
         'log_id',
         'cli_id',
-        'ven_valor_total',
         'ven_status',
         'ven_desconto',
         'ven_parcelas',

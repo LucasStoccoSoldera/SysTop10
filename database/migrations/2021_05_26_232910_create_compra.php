@@ -21,7 +21,6 @@ class CreateCompra extends Migration
             $table->date('com_data_pagto')->nullable();
             $table->string('com_descricao');
             $table->integer('com_desconto')->nullable();
-            $table->float('com_valor', 12, 2);
             $table->string('com_parcelas');
             $table->string('com_observacoes')->nullable();
             $table->timestamps();

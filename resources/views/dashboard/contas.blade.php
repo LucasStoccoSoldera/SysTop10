@@ -500,16 +500,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Valor Total:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="VTCompras" id="VTCompras"
-                                        class="dinheiro valor form-control auto" value="{{ old('VTCompras') }}">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback VTCompras_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
                                     <label class="modal-label">Centro de Custo:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <select type="text" name="ccCompras" id="ccCompras" class="form-control"
@@ -1068,16 +1058,6 @@
                                 </div>
                             </div>
                             <div class="form-group" id="form-group">
-                                <label class="modal-label">Valor Total:</label> <label
-                                    style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="VTComprasUp" id="VTComprasUp"
-                                    class="dinheiro valor form-control auto" value="{{ old('VTComprasUp') }}">
-                                <div class="div-feedback">
-                                    <span class="invalid-feedback VTComprasUp_error" role="alert">
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group" id="form-group">
                                 <label class="modal-label">Centro de Custo:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <select type="text" name="ccComprasUp" id="ccComprasUp" class="form-control"
@@ -1544,15 +1524,15 @@
                                                 {{-- DataTables --}}
                                             </tbody>
                                         </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="row">
                     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                        <button type="button" class="cancela btn btn-secondary btn-danger" data-dismiss="modal"
+                        <button type="button" class=" btn btn-secondary btn-danger" data-dismiss="modal"
                             style="width: 100%">Cancelar</button>
                     </div>
                 </div>
@@ -1796,6 +1776,13 @@
             $("modalRegisterVenda").modal('show');
         });
 
+        $(document).on('click', '[data-dismiss="modal"]',
+                    function() {
+                        document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+
+                    }
+               );
+
         $("#formRegisterContas").on('submit', function(e) {
 
             e.preventDefault();
@@ -1851,7 +1838,6 @@
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
-                        $('#formRegisterCompras')[0].reset();
                         $('#IDCompras').val(data_decoded.codigo);
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
@@ -1925,7 +1911,6 @@
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
-                        $('#formUpdateContas')[0].reset();
                         $('#mensagem').text(data_decoded.msg);
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
@@ -1959,7 +1944,6 @@
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
-                        $('#formUpdateCompras')[0].reset();
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
                     }
@@ -2022,22 +2006,6 @@
             $('#valorTotalItemCompra').val(qtd * vlr);
         });
     });
-
-    //    $('#modalAlertRegistrar').modal('hide',
-    //        function(e)
-    //        { //autoimplementa o valor total da compra puxando todos os itens
-    //            $.ajax({
-    //                headers: {
-    //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //                },
-    //                type: "GET",
-    //                url: "{{ route('admin.contas.soma') }}",
-    //                processData: false,
-    //                dataType: 'json',
-    //                success: function(data_decoded) {
-    //                    $('#VTCompras').val(data_decoded.total - $('#descontoCompras').val());
-    //                }
-    //            });
 
     function abrirItem() {
         $('#modalRegisterItemCompra').modal('show');
