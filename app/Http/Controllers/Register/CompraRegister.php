@@ -62,8 +62,10 @@ class CompraRegister extends Controller
         $Compras->com_observacoes = $request->obsCompras;
         $Compras->save();
 
-        $Total = DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->sum('cde_valortotal') *
-        DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->select('cde_qtde')->get();
+        $soma_total = DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->sum('cde_valortotal');
+        $qtde = DB::table('compras_detalhe')->where('com_id', '=', $request->IDCompras)->first('cde_qtde');
+
+        $Total = $soma_total * $qtde;
 
         $Final = $Total - ( $Total * ($request->descontoComprasUp / 100));
 

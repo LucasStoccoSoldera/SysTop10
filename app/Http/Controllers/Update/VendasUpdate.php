@@ -72,8 +72,10 @@ class VendasUpdate extends Controller
         $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
 
-        $Total = DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->sum('det_valor_total') *
-        DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->select('det_qtde')->get();
+        $soma_total = DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->sum('det_valor_total');
+        $qtde = DB::table('vendas_detalhe')->where('ven_id', '=', $request->IDVenda)->first('det_qtde');
+
+        $Total = $soma_total * $qtde;
 
         $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
 
