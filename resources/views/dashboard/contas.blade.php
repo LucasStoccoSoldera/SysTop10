@@ -471,7 +471,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID Compra:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="IDCompras" id="IDCompras" class="form-control id"
+                                    <input type="number" name="IDCompras" id="IDCompras" class="form-control id"
                                         maxlength="10" value="{{ old('IDCompras')}}" placeholder="ID" autofocus>
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDCompras_error" role="alert">
@@ -676,7 +676,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID da Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDItemCompra" id="IDItemCompra" class="form-control id">
+                                <input type="number" name="IDItemCompra" id="IDItemCompra" class="form-control id">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDItemCompra_error" role="alert">
                                     </span>
@@ -1029,7 +1029,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDComprasUp" id="IDComprasUp" class="form-control id"
+                                <input type="number" name="IDComprasUp" id="IDComprasUp" class="form-control id"
                                     maxlength="80" value="{{ old('IDComprasUp') }}" placeholder="ID" autofocus>
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDComprasUp_error" role="alert">
@@ -1232,7 +1232,7 @@
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">ID da Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
-                                <input type="text" name="IDItemCompraUp" id="IDItemCompraUp"
+                                <input type="number" name="IDItemCompraUp" id="IDItemCompraUp"
                                     value="{{ old('IDItemCompraUp') }}" class="form-control id">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDItemCompraUp_error" role="alert">

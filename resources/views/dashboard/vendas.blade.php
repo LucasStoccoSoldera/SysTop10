@@ -307,7 +307,7 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">ID da Venda:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="IDVenda" id="IDVenda" maxlength="10"
+                                        <input type="number" name="IDVenda" id="IDVenda" maxlength="10"
                                             class="form-control id" value="{{ old('IDVenda')}}"
                                             placeholder="ID Automático" autofocus>
                                         <div class="div-feedback">
@@ -499,7 +499,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID da Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="IDItemVendaUp" id="IDItemVendaUp" maxlength="2"
+                                    <input type="number" name="IDItemVendaUp" id="IDItemVendaUp" maxlength="2"
                                         value="{{ old('IDItemVendaUp') }}" onloadstart="pegaCodigo(IDItemVenda, IDVenda)"
                                          class="form-control id">
                                     <div class="div-feedback">
@@ -647,7 +647,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID da Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="IDVendaUp" id="IDVendaUp" maxlength="80"
+                                    <input type="number" name="IDVendaUp" id="IDVendaUp" maxlength="80"
                                         class="form-control id" value="{{ old('IDVendaUp') }}"
                                         placeholder="ID Automático" autofocus>
                                     <div class="div-feedback">
@@ -838,7 +838,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">ID da Venda:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="IDItemVenda" id="IDItemVenda" maxlength="2"
+                                    <input type="number" name="IDItemVenda" id="IDItemVenda" maxlength="2"
                                         class="form-control id">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDItemVenda_error" role="alert">
