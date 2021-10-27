@@ -15,7 +15,6 @@ class Compras extends Model
         'cc_id',
         'com_data_compra',
         'com_data_pagto',
-        'com_valor',
         'com_desconto',
         'com_descricao',
         'com_observacoes',
