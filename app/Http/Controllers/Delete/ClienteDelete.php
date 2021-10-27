@@ -17,7 +17,7 @@ class ClienteDelete extends Controller
 
         if(isset($verifica_venda)) {
             return response()->json(['status' => 0, 'msg' => 'Existe uma venda em aberto para esse cliente!']);
-        }
+        }   
 
         $nome = $data->cli_nome;
 
