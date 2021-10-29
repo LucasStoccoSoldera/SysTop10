@@ -47,7 +47,6 @@ function editCompra(id)
         $("#IDComprasUp").val(compra.id);
         $("#descricaoComprasUp").val(compra.com_descricao);
         $("#descontoComprasUp").val(compra.com_desconto);
-        $("#VTComprasUp").val(compra.com_valor);
         $("#ccComprasUp").val(compra.cc_id);
         $("#tpgpagtoComprasUp").val(compra.tpg_id);
         $("#parcelasComprasUp").val(compra.com_parcelas);

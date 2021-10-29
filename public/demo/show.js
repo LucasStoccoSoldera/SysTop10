@@ -1,42 +1,5 @@
 const { find } = require("lodash");
 
-function showParcelas(id)
-{
-    var table_parcelas = $('#tb_parcelas').DataTable({
-        paging: true,
-        searching: false,
-        processing: true,
-        serverside: true,
-        ajax: {
-            type: 'GET',
-            url: '/admin/List_Parcelas/' + id,
-            data: conta,
-        },
-        columns: [{
-                data: "par_conta",
-                className: "text-center"
-            },
-            {
-                data: "par_numero",
-                className: "text-center"
-            },
-            {
-                data: "par_valor",
-                className: "text-right",
-                render: DataTable.render.number('.', ',', 2, 'R$')
-            },
-            {
-                data: "par_status",
-                className: "text-center"
-            },
-            {
-                data: "par_data_pagto",
-                className: "text-center"
-            },
-        ]
-    });
-        $("#modalShowParcelas").modal('toggle');
-}
 
 $('body').on('click', 'button.list_item_compra', function() {
     var table_item_compra = $('#tb_item_compra').DataTable({
