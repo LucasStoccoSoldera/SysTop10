@@ -522,9 +522,9 @@
         <script>
             $(document).ready(function() {
                 // Javascript method's body can be found in assets/js/demos.js
-             //   demo.initDashboardPageCharts();
+                demo.initDashboardPageCharts();
             });
-            $(event).ready(function() { // A DIFERENÇA ESTA AQUI, EXECUTA QUANDO O DOCUMENTO ESTA "PRONTO"
+            $(event).ready(function() {
                 $("div.voltar").fadeIn(500);
             });
         </script>
@@ -579,13 +579,14 @@
         </script>
 
 
-        <script>
-            window.TrackJS &&
-                TrackJS.install({
-                    token: "ee6fab19c5a04ac1a32a645abde4613a",
-                    application: "black-dashboard-free"
-                });
-        </script>
+
+<script>
+    window.TrackJS &&
+        TrackJS.install({
+            token: "ee6fab19c5a04ac1a32a645abde4613a",
+            application: "black-dashboard-free"
+        });
+</script>
 
         @stack('ajax')
         <script>
