@@ -2219,6 +2219,7 @@ pre code {
 
 .filtro{
     color: #fff;
+    width: 100% !important;
 }
 
 .valor {
