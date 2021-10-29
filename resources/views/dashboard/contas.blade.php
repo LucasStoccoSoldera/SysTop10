@@ -84,42 +84,7 @@
                                 <h5 class="card-category">Análise Financeira</h5>
                                 <h2 class="card-title">Contas a Pagar</h2>
                             </div>
-                            <div class="col-sm-6 float-right">
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                    <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                                        <input type="radio" name="options" checked>
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-single-02"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                        <input type="radio" class="d-none d-sm-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-gift-2"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                        <input type="radio" class="d-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-tap-02"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="3">
-                                        <input type="radio" class="d-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-tap-02"></i>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="card-body">
@@ -1600,6 +1565,8 @@
     });
 
     $(document).ready(function() {
+
+        geraGrafico('con');
 
         var lista_parcelas = false;
 
