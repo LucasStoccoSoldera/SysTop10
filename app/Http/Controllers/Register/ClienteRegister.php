@@ -20,7 +20,7 @@ class ClienteRegister extends Controller
             $request->all(),
             [
                 'nomeCliente' => ['required', 'string'],
-                'usuarioCliente' => ['required','email'],
+                'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario'],
                 'senhaCliente' => ['required', 'confirmed'],
                 'cepCliente' => ['required'],
                 'cidadeCliente' => ['required'],
@@ -34,6 +34,7 @@ class ClienteRegister extends Controller
                 'nomeCliente.required' => 'Nome completo obrigatório.',
                 'usuarioCliente.required' => 'Usuário obrigatório.',
                 'usuarioCliente.email' => 'E-mail inválido.',
+                'usuarioCliente.unique' => 'Usuário já está em uso.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
                 'cepCliente.required' => 'CEP obrigatório.',

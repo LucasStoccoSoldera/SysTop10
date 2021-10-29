@@ -78,12 +78,14 @@ class VendasRegister extends Controller
         $Receber->rec_status = $request->statusVenda;
         $Receber->save();
 
+        if(isset($request->datapagtoVendas)){
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor =   $Final;
         $Caixa->cax_ctreceber =  $Final;
         $Caixa->save();
+    }
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
@@ -149,15 +151,6 @@ class VendasRegister extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
 
-        $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProduto;
-        $Estoque->dim_id = $request->IDDimensao;
-        $Estoque->cor_id =  $request->IDCor;
-        $Estoque->est_qtde = $request->qtdeItemVenda * -1;
-        $Estoque->est_data = date("Y-m-d");
-        $Estoque->est_time = date("H:i:s");
-        $Estoque->est_status = 'Venda';
-        $Estoque->save();
 
         $upload = $request->anexoItemVenda->storeAs('artes_vendas', $nameFile);
 

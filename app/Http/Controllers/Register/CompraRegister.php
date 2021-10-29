@@ -85,12 +85,14 @@ class CompraRegister extends Controller
         $Conta->con_compra= "Compra";
         $Conta->save();
 
+        if ($request->datapagCompras <> null){
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Compra de $request->descricaoCompras";
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor = $Final;
         $Caixa->cax_ctpagar = $Final;
         $Caixa->save();
+    }
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
@@ -186,19 +188,6 @@ class CompraRegister extends Controller
         $Compras_Detalhe->cde_valortotal = $request->valorTotalItemCompra;
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
         $Compras_Detalhe->save();
-
-        if($interno = true){
-        $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProdutoI;
-        $Estoque->dim_id = $request->dimensaoItemCompra;
-        $Estoque->cor_id =  $request->coresItemCompra;
-        $Estoque->est_qtde = $request->qtdeItemCompra;
-        $Estoque->est_data = date("Y-m-d");
-        $Estoque->est_time = date("H:i:s");
-        $Estoque->est_status = 'Compra realizada';
-
-        $Estoque->save();
-        }
 
         if ($Compras_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
