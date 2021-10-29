@@ -80,9 +80,12 @@ class ContasaReceberUpdate extends Controller
         $cont = 0;
         $conta_last = DB::table('contas_a_receber')->get()->last()->id;
         $contas_dados = Contas_a_Receber::find($conta_last);
-        while ($cont < $request->parcelasReceberUp) {
 
-            $Parcela = new Parcelas();
+
+        $Parcelas = DB::select('select * from parcelas where par_conta = ?', [$request->idRec]);
+
+            foreach ($Parcelas as $Parcela) {
+
             $Parcela->tpg_id = $request->tipoPagtoReceberUp;
             $Parcela->par_venda = $conta_last;
             $Parcela->par_numero = $cont;
@@ -98,7 +101,7 @@ class ContasaReceberUpdate extends Controller
             $cont ++;
         }
 
-        if ($Parcela) {
+        if ($Parcelas) {
             return response()->json(['status' => 1, 'msg' => 'Crédito atualizado com sucesso!']);
         }
     }

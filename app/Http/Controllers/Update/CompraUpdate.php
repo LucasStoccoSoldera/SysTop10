@@ -81,7 +81,7 @@ class CompraUpdate extends Controller
 
         $Final = $Total - ( $Total * ($request->descontoComprasUp / 100));
 
-        $Conta = Contas_a_Pagar::find($request->idCon);
+        $Conta = Contas_a_Pagar::find($request->idCom);
         $Conta->tpg_id = $request->tpgpagtoComprasUp;
         $Conta->cc_id = $request->ccComprasUp;
         $Conta->con_descricao =  "Compra de $request->descricaoComprasUp";
@@ -97,33 +97,35 @@ class CompraUpdate extends Controller
         $Conta->con_compra= "Compra";
         $Conta->save();
 
+        if ($request->datapagComprasUp <> null){
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Compra de $request->descricaoComprasUp";
         $Caixa->cax_operacao = 0;
         $Caixa->cax_valor =  $Final;
         $Caixa->cax_ctpagar = $Final;
         $Caixa->save();
+        }
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $compras_dados = Compras::find($request->IDComprasUp);
 
-        while ($cont < $request->parcelasCompras) {
+            $Parcelas = DB::select('select * from parcelas where par_conta = ?', [$request->idCom]);
 
-            $Parcela = DB::table('parcelas')->where('par_conta', '=', "$conta_last")->get();
-            $Parcela->tpg_id = $request->tpgpagtoComprasUp;
-            $Parcela->par_conta = $conta_last;
-            $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($Final / $request->parcelasComprasUp) * $cont;
-            $Parcela->par_status = "Em Aberto";
-            if ($compras_dados->con_data_pag <> null){
-            $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            foreach ($Parcelas as $Parcela) {
+                $Parcela->tpg_id = $request->tpgpagtoComprasUp;
+                $Parcela->par_conta = $conta_last;
+                $Parcela->par_numero = $cont;
+                $Parcela->par_valor = ($Final / $request->parcelasComprasUp) * $cont;
+                $Parcela->par_status = "Em Aberto";
+                if ($compras_dados->con_data_pag <> null){
+                $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                }
+                $Parcela->save();
+                $cont ++;
             }
-            $Parcela->save();
-            $cont ++;
-        }
 
-        if ($Parcela) {
+        if ($Parcelas) {
             return response()->json(['status' => 1, 'msg' => 'Compra atualizada com sucesso!']);
         }
     }
@@ -199,14 +201,6 @@ class CompraUpdate extends Controller
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompraUp;
         $Compras_Detalhe->save();
 
-        if($interno = true){
-        $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProdutoUp;
-        $Estoque->dim_id = $request->IDDimensaoUp;
-        $Estoque->cor_id =  $request->IDCorUp;
-        $Estoque->est_qtde = $request->qtdeItemCompraUp;
-        $Estoque->save();
-        }
 
         if ($Compras_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item atualizado com sucesso!']);

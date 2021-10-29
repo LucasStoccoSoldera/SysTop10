@@ -92,15 +92,17 @@ class ContasUpdate extends Controller
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $contas_dados = Contas_a_Pagar::find($conta_last);
-        while ($cont < $request->parcelasContasUp) {
 
-            $Parcela = new Parcelas();
+        $Parcelas = DB::select('select * from parcelas where par_conta = ?', [$request->idCon]);
+
+        foreach ($Parcelas as $Parcela) {
+
             $Parcela->tpg_id = $request->tpgpagtoContasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = ($request->valorfContasUp / $request->parcelasContasUp) * $cont;
             if(isset($request->datapContasUp) && $request->datapContasUp <= $ontem){
-            $Parcela->par_status = "Em Aberto";
+            $Parcela->par_status = "Fechado";
             }
             $Parcela->par_status = "Em Aberto";
             if (isset($contas_dados->con_data_pag)){
@@ -110,7 +112,8 @@ class ContasUpdate extends Controller
             $cont ++;
         }
     }
-
+    if ($Parcelas) {
             return response()->json(['status' => 1, 'msg' => 'Conta atualizada com sucesso!']);
+        }
     }
 }

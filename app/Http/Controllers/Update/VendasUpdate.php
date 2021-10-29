@@ -92,20 +92,23 @@ class VendasUpdate extends Controller
         $Receber->rec_status = $request->statusVendaUp;
         $Receber->save();
 
-
+        if(isset($request->datapagtoVendasUp)){
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
         $Caixa->cax_valor = $Final;
         $Caixa->cax_ctreceber = $Final;
         $Caixa->save();
+        }
 
         $cont = 0;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVendaUp);
-        while ($cont < $request->parcelasVendaUp) {
 
-        $Parcela = new Parcelas();
+        $Parcelas = DB::select('select * from parcelas where par_conta = ?', [$request->idVen]);
+
+        foreach ($Parcelas as $Parcela) {
+
         $Parcela->tpg_id = $request->IDTipoPagamentoUp;
         $Parcela->par_conta = $conta_last;
         $Parcela->par_numero = $cont;
@@ -117,7 +120,8 @@ class VendasUpdate extends Controller
         $Parcela->save();
         $cont ++;
     }
-        if ($Parcela) {
+
+        if ($Parcelas) {
             return response()->json(['status' => 1, 'msg' => 'Venda atualizada com sucesso!']);
         }
     }
@@ -164,13 +168,6 @@ class VendasUpdate extends Controller
         $Venda_Detalhe->det_valor_unitario = $request->VUItemVendaUp;
         $Venda_Detalhe->det_valor_total = $request->VTItemVendaUp;
         $Venda_Detalhe->save();
-
-        $Estoque = new Estoque();
-        $Estoque->pro_id = $request->IDProdutoUp;
-        $Estoque->dim_id = $request->IDDimensaoUp;
-        $Estoque->cor_id =  $request->IDCorUp;
-        $Estoque->est_qtde = $request->qtdeItemVenda * -1;
-        $Estoque->save();
 
         $upload = $request->anexoItemVendaUp->storeAs('artes_vendas', $nameFile);
 
