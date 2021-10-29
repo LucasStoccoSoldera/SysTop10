@@ -80,42 +80,7 @@
                                 <h5 class="card-category">Análise Geral</h5>
                                 <h2 class="card-title">Clientes</h2>
                             </div>
-                            <div class="col-sm-6 float-right">
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                    <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                                        <input type="radio" name="options" checked>
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-single-02"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                        <input type="radio" class="d-none d-sm-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-gift-2"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                        <input type="radio" class="d-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-tap-02"></i>
-                                        </span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="3">
-                                        <input type="radio" class="d-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                                            id="btn-grafico">Teste</span>
-                                        <span class="d-block d-sm-none">
-                                            <i class="tim-icons icon-tap-02"></i>
-                                        </span>
-                                    </label>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -164,45 +129,43 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">CPF / CNPJ:</label>
-                                    <input type="number" name="txt_cpf_cnpj" id="txt_cpf_cnpj" maxlength="13"
-                                        value="{{ old('txt_cpf_cnpj') }}"
-                                        class="filtro form-control @error('txt_cpf_cnpj') is-invalid @enderror">
-                                    @error('txt_cpf_cnpj')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <label class="modal-label" for="filtro_nome">Nome:</label>
+                                    <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13"
+                                    data-column="0"
+                                   class="filtro form-control filter-input">
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label" for="filtro_cidade">Cidade:</label>
+                                    <input type="text" name="filtro_cidade" id="filtro_cidade"
+                                    data-column="3"
+                                   class="filtro form-control filter-input">
                                 </div>
                             </div>
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Nome:</label>
-                                    <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                        value="{{ old('txt_nome') }}"
-                                        class="filtro form-control @error('txt_nome') is-invalid @enderror">
-                                    @error('txt_nome')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <label class="modal-label" for="filtro_doc">Documento:</label>
+                                    <input type="text" name="filtro_doc" id="filtro_doc"
+                                    data-column="1"
+                                    class="filtro form-control filter-input">
                                 </div>
+
                             </div>
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Data:</label>
-                                    <input type="date" name="txt_data" id="txt_data" value="{{ old('txt_data') }}"
-                                        class="filtro form-control @error('txt_data') is-invalid @enderror">
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                    <label class="modal-label" for="filtro_cel">Celular:</label>
+                                    <input type="text" name="filtro_cel" id="filtro_cel"
+                                    data-column="2"
+                                    class="filtro form-control filter-input">
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label" for="filtro_data">Data:</label>
+                                    <input type="date" name="filtro_data" id="filtro_data"
+                                    data-column="4"
+                                   class="filtro form-control filter-input">
                                 </div>
                             </div>
-                            <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
                                         <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
@@ -212,6 +175,7 @@
                     </form>
                 </div>
             </div>
+        </div>
 
             <div class="row">
                 <div class="col-12">
@@ -704,7 +668,9 @@
 
 @push('ajax')
 <script>
+
     $(document).ready(function() {
+
 
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,
@@ -733,6 +699,10 @@
                     className: "text-right"
                 },
             ],
+        });
+
+        $('.filter-input').keyup(function(){
+            table.column( $(this).data('column')).search($(this).val()).draw();
         });
 
         $(document).on('click', '[data-dismiss="modal"]',
