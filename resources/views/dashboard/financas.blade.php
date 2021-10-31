@@ -179,11 +179,3 @@
     @endsection
 @endsection
 
-@push('ajax')
-<script>
-$(document).ready(function() {
-
-    geraGrafico('fin');
-});
-</script>
-@endpush

@@ -1566,8 +1566,6 @@
 
     $(document).ready(function() {
 
-        geraGrafico('con');
-
         var lista_parcelas = false;
 
         var table_conta = $('#tb_conta').DataTable({

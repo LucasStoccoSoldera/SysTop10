@@ -599,8 +599,6 @@
 <script>
     $(document).ready(function() {
 
-        geraGrafico('rec');
-
         var lista_parcelas = false;
 
         var table_receber = $('#tb_receber').DataTable({

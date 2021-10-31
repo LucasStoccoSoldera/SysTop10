@@ -669,9 +669,6 @@
 <script>
 
     $(document).ready(function() {
-                // Javascript method's body can be found in assets/js/demos.js
-           //     geraGrafico('cli');
-       // demo.geraGrafico('cli');
 
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,
