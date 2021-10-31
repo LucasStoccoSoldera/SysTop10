@@ -941,21 +941,21 @@ demo = {
         marker.setMap(map);
     },
 
-    showNotification: function (from, align) {
-        color = 3;
+    showNotification: function(from, align, cor, msg, icon) {
+        color = cor;
 
         $.notify({
-            icon: "tim-icons icon-bell-55",
-            message: "Welcome to <b>Black Dashboard</b> - a beautiful freebie for every web developer."
+          icon: icon,
+          message: msg,
 
         }, {
-            type: type[color],
-            timer: 8000,
-            placement: {
-                from: from,
-                align: align
-            }
+          type: type[color],
+          timer: 3000,
+          placement: {
+            from: from,
+            align: align
+          }
         });
-    }
+      }
 
 };
