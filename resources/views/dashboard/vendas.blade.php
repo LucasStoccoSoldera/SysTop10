@@ -84,7 +84,7 @@
                                 <h5 class="card-category">Analise de Vendas</h5>
                                 <h2 class="card-title">Vendas Online</h2>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -283,9 +283,15 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Cliente:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="text" name="IDCliente" id="IDCliente" maxlength="80"
+                                            <select type="text" name="IDCliente" id="IDCliente" maxlength="25"
                                             class="form-control" value="{{ old('IDCliente') }}"
-                                            placeholder="Entre com o Cliente">
+                                            placeholder="Selecione com o Cliente">
+                                            <option value="">------------Selecione------------</option>
+                                            @foreach ($clientes as $cliente)
+                                                <option value="{{ $cliente['id'] }}">
+                                                    {{ $cliente['cli_nome'] }}</option>
+                                            @endforeach
+                                        </select>
                                         <div class="div-feedback">
                                             <span class="invalid-feedback IDCliente_error" role="alert">
                                             </span>
@@ -299,6 +305,17 @@
                                             value="{{ old('descontoVenda') }}" placeholder="Entre com o Desconto">
                                         <div class="div-feedback">
                                             <span class="invalid-feedback descontoVenda_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Recebimento:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="date" name="datapagtoVendas" id="datapagtoVendas" class="form-control"
+                                            onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                            value="{{ old('datapagtoVendas') }}" placeholder="Entre com o Recebimento">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback datapagtoVendas_error" role="alert">
                                             </span>
                                         </div>
                                     </div>
@@ -642,6 +659,17 @@
                                         </span>
                                     </div>
                                 </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Recebimento:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="date" name="datapagtoVendasUp" id="datapagtoVendasUp" class="form-control"
+                                        onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                        value="{{ old('datapagtoVendasUp') }}" placeholder="Entre com o Recebimento">
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback datapagtoVendasUp_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
@@ -968,8 +996,6 @@
         });
 
         $(document).ready(function() {
-
-            geraGrafico('ven');
 
             var table_venda = $('#tb_venda').DataTable({
                 paging: true,
