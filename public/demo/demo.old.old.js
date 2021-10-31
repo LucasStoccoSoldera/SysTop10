@@ -350,91 +350,25 @@ demo = {
     };
 
     var chart_labels = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
-        console.log('teste');
-        var chart_cli = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
-        /*
-        var chart_cli =
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "{{route('admin.grafico.cliente')}}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(response) {
-                var chart_data = response.grafico;
-                break;
-        }
-    });
-
-    var chart_fin =
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "{{route('admin.grafico.financeiro')}}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(response) {
-                var chart_data = response.grafico;
-                break;
-        }
-    });
-
-    var chart_con =
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "{{route('admin.grafico.pagar')}}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(response) {
-                var chart_data = response.grafico;
-                break;
-        }
-    });
-
-    var chart_rec =
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "{{route('admin.grafico.receber')}}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(response) {
-                var chart_data = response.grafico;
-                break;
-        }
-    });
-
-    var chart_ven =
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "{{route('admin.grafico.vendas')}}",
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(response) {
-                var chart_data = response.grafico;
-                break;
-        }
-    });
-
-*/
-
+    function geraGrafico(contexto){
+         console.log('teste');
+    switch (contexto){
+    case 'cli':
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    break;
+    case 'fin':
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    break;
+    case 'con':
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    break;
+    case 'rec':
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    break;
+    case 'ven':
+    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    break;
+    }
 
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
@@ -472,9 +406,31 @@ demo = {
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
     };
+    var myChartData = new Chart(ctx, config);
+    $("#0").click(function() {
+      var data = myChartData.config.data;
+      data.datasets[0].data = chart_data;
+      data.labels = chart_labels;
+      myChartData.update();
+    });
+    $("#1").click(function() {
+      var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
+      var data = myChartData.config.data;
+      data.datasets[0].data = chart_data;
+      data.labels = chart_labels;
+      myChartData.update();
+    });
 
+    $("#2").click(function() {
+      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
+      var data = myChartData.config.data;
+      data.datasets[0].data = chart_data;
+      data.labels = chart_labels;
+      myChartData.update();
+    });
+    }
 
-   var ctx = document.getElementById("chartLinePurple").getContext("2d");
+   /*var ctx = document.getElementById("chartLinePurple").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
@@ -550,6 +506,7 @@ demo = {
 
 
 
+
     var ctx = document.getElementById("CountryChart").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -581,214 +538,9 @@ demo = {
       },
       options: gradientBarChartConfiguration
     });
-
+*/
   },
 
-  initGoogleMaps: function() {
-    var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
-    var mapOptions = {
-      zoom: 13,
-      center: myLatlng,
-      scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-      styles: [{
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#1d2c4d"
-          }]
-        },
-        {
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#8ec3b9"
-          }]
-        },
-        {
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "color": "#1a3646"
-          }]
-        },
-        {
-          "featureType": "administrative.country",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#4b6878"
-          }]
-        },
-        {
-          "featureType": "administrative.land_parcel",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#64779e"
-          }]
-        },
-        {
-          "featureType": "administrative.province",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#4b6878"
-          }]
-        },
-        {
-          "featureType": "landscape.man_made",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#334e87"
-          }]
-        },
-        {
-          "featureType": "landscape.natural",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#023e58"
-          }]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#283d6a"
-          }]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#6f9ba5"
-          }]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "color": "#1d2c4d"
-          }]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#023e58"
-          }]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#3C7680"
-          }]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#304a7d"
-          }]
-        },
-        {
-          "featureType": "road",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#98a5be"
-          }]
-        },
-        {
-          "featureType": "road",
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "color": "#1d2c4d"
-          }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#2c6675"
-          }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#9d2a80"
-          }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#9d2a80"
-          }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#b0d5ce"
-          }]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "color": "#023e58"
-          }]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#98a5be"
-          }]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "labels.text.stroke",
-          "stylers": [{
-            "color": "#1d2c4d"
-          }]
-        },
-        {
-          "featureType": "transit.line",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#283d6a"
-          }]
-        },
-        {
-          "featureType": "transit.station",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#3a4762"
-          }]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#0e1626"
-          }]
-        },
-        {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#4e6d70"
-          }]
-        }
-      ]
-    };
-
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-    var marker = new google.maps.Marker({
-      position: myLatlng,
-      title: "Hello World!"
-    });
-
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
-  },
 
   showNotification: function(from, align, cor, msg, icon) {
     color = cor;
@@ -806,4 +558,4 @@ demo = {
       }
     });
   }
-};
+}

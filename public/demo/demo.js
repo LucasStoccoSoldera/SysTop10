@@ -350,28 +350,39 @@ demo = {
     };
 
     var chart_labels = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+    var chart_cli = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var chart_fin = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var chart_con = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var chart_rec = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var chart_ven = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-   var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+        if(document.getElementById("chartCli")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Cliente/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                    var chart_cli = response.grafico;
+            }
+        });
 
+    var ctxCli = document.getElementById("chartCli").getContext('2d');
 
-
-    var ctx = document.getElementById("chartBig1").getContext('2d');
-
-    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+    var gradientStroke = ctxCli.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke.addColorStop(1, 'rgba(44, 174, 236, 0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(44, 174, 236, 0.0)');
-    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)'); //purple colors
+    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)');
 
-    //gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-    //gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-    //gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-    var config = {
-      type: 'line',
-      data: {
+    var data = {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Gráfico",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#2CAEEC',
@@ -385,34 +396,224 @@ demo = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: chart_data,
+          data: chart_cli,
         }]
-      },
-      options: gradientChartOptionsConfigurationWithTooltipPurple
-    };
-    var myChartData = new Chart(ctx, config);
-    $("#0").click(function() {
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
-    $("#1").click(function() {
-      var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
+      };
 
-    $("#2").click(function() {
-      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
+      var myChart = new Chart(ctxCli, {
+        type: 'line',
+        data: data,
+        options: gradientChartOptionsConfigurationWithTooltipPurple
+      });
+    }
 
+//--------------------------------------------------------------------------------------------------------------
+
+    if(document.getElementById("chartFin")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Financeiro/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                    var chart_fin = response.grafico;
+            }
+        });
+
+    var ctxFin = document.getElementById("chartFin").getContext('2d');
+
+    var gradientStroke = ctxFin.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(44, 174, 236, 0.1)');
+    gradientStroke.addColorStop(0.4, 'rgba(44, 174, 236, 0.0)');
+    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)');
+
+    var data = {
+        labels: chart_labels,
+        datasets: [{
+          label: "Gráfico",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#2CAEEC',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#2CAEEC',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#2CAEEC',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: chart_fin,
+        }]
+      };
+
+      var myChart = new Chart(ctxFin, {
+        type: 'line',
+        data: data,
+        options: gradientChartOptionsConfigurationWithTooltipPurple
+      });
+    }
+
+    if(document.getElementById("chartCon")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Contas_a_pagar/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                    var chart_con = response.grafico;
+            }
+        });
+
+    var ctxCon = document.getElementById("chartCon").getContext('2d');
+
+    var gradientStroke = ctxCon.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(44, 174, 236, 0.1)');
+    gradientStroke.addColorStop(0.4, 'rgba(44, 174, 236, 0.0)');
+    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)');
+
+    var data = {
+        labels: chart_labels,
+        datasets: [{
+          label: "Gráfico",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#2CAEEC',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#2CAEEC',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#2CAEEC',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: chart_con,
+        }]
+      };
+
+      var myChart = new Chart(ctxCon, {
+        type: 'line',
+        data: data,
+        options: gradientChartOptionsConfigurationWithTooltipPurple
+      });
+    }
+
+    if(document.getElementById("chartRec")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Contas_a_receber/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                    var chart_rec = response.grafico;
+            }
+        });
+
+    var ctxRec = document.getElementById("chartRec").getContext('2d');
+
+    var gradientStroke = ctxRec.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(44, 174, 236, 0.1)');
+    gradientStroke.addColorStop(0.4, 'rgba(44, 174, 236, 0.0)');
+    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)');
+
+    var data = {
+        labels: chart_labels,
+        datasets: [{
+          label: "Gráfico",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#2CAEEC',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#2CAEEC',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#2CAEEC',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: chart_rec,
+        }]
+      };
+
+      var myChart = new Chart(ctxRec, {
+        type: 'line',
+        data: data,
+        options: gradientChartOptionsConfigurationWithTooltipPurple
+      });
+    }
+
+    if(document.getElementById("chartVen")){
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Vendas/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(response) {
+                    var chart_ven = response.grafico;
+            }
+        });
+
+    var ctxVen = document.getElementById("chartVen").getContext('2d');
+
+    var gradientStroke = ctxVen.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(44, 174, 236, 0.1)');
+    gradientStroke.addColorStop(0.4, 'rgba(44, 174, 236, 0.0)');
+    gradientStroke.addColorStop(0, 'rgba(44, 174, 236, 0)');
+
+    var data = {
+        labels: chart_labels,
+        datasets: [{
+          label: "Gráfico",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: '#2CAEEC',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#2CAEEC',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#2CAEEC',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: chart_ven,
+        }]
+      };
+
+      var myChart = new Chart(ctxVen, {
+        type: 'line',
+        data: data,
+        options: gradientChartOptionsConfigurationWithTooltipPurple
+      });
+    }
+
+    if(document.getElementById("chartLinePurple")){
    var ctx = document.getElementById("chartLinePurple").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -447,8 +648,9 @@ demo = {
       data: data,
       options: gradientChartOptionsConfigurationWithTooltipPurple
     });
+    }
 
-
+    if(document.getElementById("chartLineGreen")){
     var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -484,12 +686,13 @@ demo = {
       options: gradientChartOptionsConfigurationWithTooltipGreen
 
     });
+    }
 
 
 
 
 
-
+        if(document.getElementById("CountryChart")){
     var ctx = document.getElementById("CountryChart").getContext("2d");
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -521,7 +724,7 @@ demo = {
       },
       options: gradientBarChartConfiguration
     });
-
+        }
   },
 
   initGoogleMaps: function() {
@@ -730,20 +933,21 @@ demo = {
     marker.setMap(map);
   },
 
-  showNotification: function(from, align, cor, msg, icon) {
-    color = cor;
+  showNotification: function(from, align) {
+    color = 3;
 
     $.notify({
-      icon: icon,
-      message: msg,
+      icon: "tim-icons icon-bell-55",
+      message: "Welcome to <b>Black Dashboard</b> - a beautiful freebie for every web developer."
 
     }, {
       type: type[color],
-      timer: 3000,
+      timer: 8000,
       placement: {
         from: from,
         align: align
       }
     });
   }
+
 };
