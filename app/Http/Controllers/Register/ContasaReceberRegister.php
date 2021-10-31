@@ -52,6 +52,7 @@ class ContasaReceberRegister extends Controller
         $Contas_a_Receber->rec_descricao = $request->descricaoReceber;
         $Contas_a_Receber->rec_ven_id = $request->IDVenda;
         $Contas_a_Receber->rec_valor = $request->valorReceber;
+        $Contas_a_Receber->rec_valor_final = $request->valorReceber;
         $Contas_a_Receber->rec_parcelas = $request->parcelasReceber;
         $Contas_a_Receber->rec_data = $request->dataReceber;
 
