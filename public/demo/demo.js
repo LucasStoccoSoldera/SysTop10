@@ -1,3 +1,4 @@
+
 type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 demo = {
@@ -368,6 +369,9 @@ demo = {
                 dataType: 'json',
                 success: function (response) {
                     var chart_cli = response.grafico;
+                    data.datasets[0].data = chart_cli;
+                    data.labels = chart_labels;
+                    Clientes.update();
                 }
             });
 
@@ -382,7 +386,7 @@ demo = {
             var data = {
                 labels: chart_labels,
                 datasets: [{
-                    label: "Gráfico",
+                    label: "Qtde",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#2CAEEC',
@@ -400,7 +404,7 @@ demo = {
                 }]
             };
 
-            var myChart = new Chart(ctxCli, {
+            var Clientes = new Chart(ctxCli, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -421,6 +425,9 @@ demo = {
                 dataType: 'json',
                 success: function (response) {
                     var chart_fin = response.grafico;
+                    data.datasets[0].data = chart_fin;
+                    data.labels = chart_labels;
+                    Financeiro.update();
                 }
             });
 
@@ -435,7 +442,7 @@ demo = {
             var data = {
                 labels: chart_labels,
                 datasets: [{
-                    label: "Gráfico",
+                    label: "Saldo",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#2CAEEC',
@@ -453,7 +460,7 @@ demo = {
                 }]
             };
 
-            var myChart = new Chart(ctxFin, {
+            var Financeiro = new Chart(ctxFin, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -474,6 +481,9 @@ demo = {
                 dataType: 'json',
                 success: function (response) {
                     var chart_con = response.grafico;
+                    data.datasets[0].data = chart_con;
+                    data.labels = chart_labels;
+                    Contas.update();
                 }
             });
 
@@ -488,7 +498,7 @@ demo = {
             var data = {
                 labels: chart_labels,
                 datasets: [{
-                    label: "Gráfico",
+                    label: "Valor Total",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#2CAEEC',
@@ -506,7 +516,7 @@ demo = {
                 }]
             };
 
-            var myChart = new Chart(ctxCon, {
+            var Contas = new Chart(ctxCon, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -527,6 +537,9 @@ demo = {
                 dataType: 'json',
                 success: function (response) {
                     var chart_rec = response.grafico;
+                    data.datasets[0].data = chart_rec;
+                    data.labels = chart_labels;
+                    Receber.update();
                 }
             });
 
@@ -541,7 +554,7 @@ demo = {
             var data = {
                 labels: chart_labels,
                 datasets: [{
-                    label: "Gráfico",
+                    label: "Valor Total",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#2CAEEC',
@@ -559,7 +572,7 @@ demo = {
                 }]
             };
 
-            var myChart = new Chart(ctxRec, {
+            var Receber = new Chart(ctxRec, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -580,6 +593,9 @@ demo = {
                 dataType: 'json',
                 success: function (response) {
                     var chart_ven = response.grafico;
+                    data.datasets[0].data = chart_ven;
+                    data.labels = chart_labels;
+                    Vendas.update();
                 }
             });
 
@@ -594,7 +610,7 @@ demo = {
             var data = {
                 labels: chart_labels,
                 datasets: [{
-                    label: "Gráfico",
+                    label: "Qtde",
                     fill: true,
                     backgroundColor: gradientStroke,
                     borderColor: '#2CAEEC',
@@ -612,7 +628,7 @@ demo = {
                 }]
             };
 
-            var myChart = new Chart(ctxVen, {
+            var Vendas = new Chart(ctxVen, {
                 type: 'line',
                 data: data,
                 options: gradientChartOptionsConfigurationWithTooltipPurple

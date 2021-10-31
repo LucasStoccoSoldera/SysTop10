@@ -16,32 +16,20 @@ class GraficoController extends Controller
 {
 
     public function cliente(){
-        $ano = Carbon::now()->year;
-        $jan = "$ano -01-01 and $ano -01-31";
-        $fev = "$ano -02-01 and $ano -02-28";
-        $mar = "$ano -03-01 and $ano -03-31";
-        $abr = "$ano -04-01 and $ano -04-30";
-        $mai = "$ano -05-01 and $ano -05-31";
-        $jun = "$ano -06-01 and $ano -06-30";
-        $jul = "$ano -07-01 and $ano -07-31";
-        $ago = "$ano -08-01 and $ano -08-31";
-        $set = "$ano -09-01 and $ano -09-30";
-        $out = "$ano -10-01 and $ano -10-31";
-        $nov = "$ano -11-01 and $ano -11-30";
-        $dez = "$ano -12-01 and $ano -12-31";
+        $ano= Carbon::now()->year;
 
-        $sql_jan = DB::table('cliente')->where('created_at', 'between', "$jan")->count();
-        $sql_fev = DB::table('cliente')->where('created_at', 'between', "$fev")->count();
-        $sql_mar = DB::table('cliente')->where('created_at', 'between', "$mar")->count();
-        $sql_abr = DB::table('cliente')->where('created_at', 'between', "$abr")->count();
-        $sql_mai = DB::table('cliente')->where('created_at', 'between', "$mai")->count();
-        $sql_jun = DB::table('cliente')->where('created_at', 'between', "$jun")->count();
-        $sql_jul = DB::table('cliente')->where('created_at', 'between', "$jul")->count();
-        $sql_ago = DB::table('cliente')->where('created_at', 'between', "$ago")->count();
-        $sql_set = DB::table('cliente')->where('created_at', 'between', "$set")->count();
-        $sql_out = DB::table('cliente')->where('created_at', 'between', "$out")->count();
-        $sql_nov = DB::table('cliente')->where('created_at', 'between', "$nov")->count();
-        $sql_dez = DB::table('cliente')->where('created_at', 'between', "$dez")->count();
+        $sql_jan = DB::table('cliente')->whereMonth('created_at',  '1')->count();
+        $sql_fev = DB::table('cliente')->whereMonth('created_at',  '2')->count();
+        $sql_mar = DB::table('cliente')->whereMonth('created_at',  '3')->count();
+        $sql_abr = DB::table('cliente')->whereMonth('created_at',  '4')->count();
+        $sql_mai = DB::table('cliente')->whereMonth('created_at',  '5')->count();
+        $sql_jun = DB::table('cliente')->whereMonth('created_at',  '6')->count();
+        $sql_jul = DB::table('cliente')->whereMonth('created_at',  '7')->count();
+        $sql_ago = DB::table('cliente')->whereMonth('created_at',  '8')->count();
+        $sql_set = DB::table('cliente')->whereMonth('created_at',  '9')->count();
+        $sql_out = DB::table('cliente')->whereMonth('created_at',  '10')->count();
+        $sql_nov = DB::table('cliente')->whereMonth('created_at',  '11')->count();
+        $sql_dez = DB::table('cliente')->whereMonth('created_at',  '12')->count();
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
@@ -49,128 +37,80 @@ class GraficoController extends Controller
     }
 
     public function financeiro(){
-        $ano = Carbon::now()->year;
-        $jan = "$ano -01-01 and $ano -01-31";
-        $fev = "$ano -02-01 and $ano -02-28";
-        $mar = "$ano -03-01 and $ano -03-31";
-        $abr = "$ano -04-01 and $ano -04-30";
-        $mai = "$ano -05-01 and $ano -05-31";
-        $jun = "$ano -06-01 and $ano -06-30";
-        $jul = "$ano -07-01 and $ano -07-31";
-        $ago = "$ano -08-01 and $ano -08-31";
-        $set = "$ano -09-01 and $ano -09-30";
-        $out = "$ano -10-01 and $ano -10-31";
-        $nov = "$ano -11-01 and $ano -11-30";
-        $dez = "$ano -12-01 and $ano -12-31";
+        $ano= Carbon::now()->year;
 
-        $sql_jan = DB::table('caixa')->where('created_at', 'between', "$jan")->sum('cax_valor');
-        $sql_fev = DB::table('caixa')->where('created_at', 'between', "$fev")->sum('cax_valor');
-        $sql_mar = DB::table('caixa')->where('created_at', 'between', "$mar")->sum('cax_valor');
-        $sql_abr = DB::table('caixa')->where('created_at', 'between', "$abr")->sum('cax_valor');
-        $sql_mai = DB::table('caixa')->where('created_at', 'between', "$mai")->sum('cax_valor');
-        $sql_jun = DB::table('caixa')->where('created_at', 'between', "$jun")->sum('cax_valor');
-        $sql_jul = DB::table('caixa')->where('created_at', 'between', "$jul")->sum('cax_valor');
-        $sql_ago = DB::table('caixa')->where('created_at', 'between', "$ago")->sum('cax_valor');
-        $sql_set = DB::table('caixa')->where('created_at', 'between', "$set")->sum('cax_valor');
-        $sql_out = DB::table('caixa')->where('created_at', 'between', "$out")->sum('cax_valor');
-        $sql_nov = DB::table('caixa')->where('created_at', 'between', "$nov")->sum('cax_valor');
-        $sql_dez = DB::table('caixa')->where('created_at', 'between', "$dez")->sum('cax_valor');
+        $sql_jan = DB::table('caixa')->whereMonth('created_at',  '1')->sum('cax_valor');
+        $sql_fev = DB::table('caixa')->whereMonth('created_at',  '2')->sum('cax_valor');
+        $sql_mar = DB::table('caixa')->whereMonth('created_at',  '3')->sum('cax_valor');
+        $sql_abr = DB::table('caixa')->whereMonth('created_at',  '4')->sum('cax_valor');
+        $sql_mai = DB::table('caixa')->whereMonth('created_at',  '5')->sum('cax_valor');
+        $sql_jun = DB::table('caixa')->whereMonth('created_at',  '6')->sum('cax_valor');
+        $sql_jul = DB::table('caixa')->whereMonth('created_at',  '7')->sum('cax_valor');
+        $sql_ago = DB::table('caixa')->whereMonth('created_at',  '8')->sum('cax_valor');
+        $sql_set = DB::table('caixa')->whereMonth('created_at',  '9')->sum('cax_valor');
+        $sql_out = DB::table('caixa')->whereMonth('created_at',  '10')->sum('cax_valor');
+        $sql_nov = DB::table('caixa')->whereMonth('created_at',  '11')->sum('cax_valor');
+        $sql_dez = DB::table('caixa')->whereMonth('created_at',  '12')->sum('cax_valor');
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
     }
 
     public function contas_a_pagar(){
-        $ano = Carbon::now()->year;
-        $jan = "$ano -01-01 and $ano -01-31";
-        $fev = "$ano -02-01 and $ano -02-28";
-        $mar = "$ano -03-01 and $ano -03-31";
-        $abr = "$ano -04-01 and $ano -04-30";
-        $mai = "$ano -05-01 and $ano -05-31";
-        $jun = "$ano -06-01 and $ano -06-30";
-        $jul = "$ano -07-01 and $ano -07-31";
-        $ago = "$ano -08-01 and $ano -08-31";
-        $set = "$ano -09-01 and $ano -09-30";
-        $out = "$ano -10-01 and $ano -10-31";
-        $nov = "$ano -11-01 and $ano -11-30";
-        $dez = "$ano -12-01 and $ano -12-31";
+        $ano= Carbon::now()->year;
 
-        $sql_jan = DB::table('contas_a_pagar')->where('created_at', 'between', "$jan")->sum('con_valor_final');
-        $sql_fev = DB::table('contas_a_pagar')->where('created_at', 'between', "$fev")->sum('con_valor_final');
-        $sql_mar = DB::table('contas_a_pagar')->where('created_at', 'between', "$mar")->sum('con_valor_final');
-        $sql_abr = DB::table('contas_a_pagar')->where('created_at', 'between', "$abr")->sum('con_valor_final');
-        $sql_mai = DB::table('contas_a_pagar')->where('created_at', 'between', "$mai")->sum('con_valor_final');
-        $sql_jun = DB::table('contas_a_pagar')->where('created_at', 'between', "$jun")->sum('con_valor_final');
-        $sql_jul = DB::table('contas_a_pagar')->where('created_at', 'between', "$jul")->sum('con_valor_final');
-        $sql_ago = DB::table('contas_a_pagar')->where('created_at', 'between', "$ago")->sum('con_valor_final');
-        $sql_set = DB::table('contas_a_pagar')->where('created_at', 'between', "$set")->sum('con_valor_final');
-        $sql_out = DB::table('contas_a_pagar')->where('created_at', 'between', "$out")->sum('con_valor_final');
-        $sql_nov = DB::table('contas_a_pagar')->where('created_at', 'between', "$nov")->sum('con_valor_final');
-        $sql_dez = DB::table('contas_a_pagar')->where('created_at', 'between', "$dez")->sum('con_valor_final');
+        $sql_jan = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '1')->sum('con_valor_final');
+        $sql_fev = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '2')->sum('con_valor_final');
+        $sql_mar = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '3')->sum('con_valor_final');
+        $sql_abr = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '4')->sum('con_valor_final');
+        $sql_mai = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '5')->sum('con_valor_final');
+        $sql_jun = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '6')->sum('con_valor_final');
+        $sql_jul = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '7')->sum('con_valor_final');
+        $sql_ago = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '8')->sum('con_valor_final');
+        $sql_set = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '9')->sum('con_valor_final');
+        $sql_out = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '10')->sum('con_valor_final');
+        $sql_nov = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '11')->sum('con_valor_final');
+        $sql_dez = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '12')->sum('con_valor_final');
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
     }
 
     public function contas_a_receber(){
-        $ano = Carbon::now()->year;
-        $jan = "$ano -01-01 and $ano -01-31";
-        $fev = "$ano -02-01 and $ano -02-28";
-        $mar = "$ano -03-01 and $ano -03-31";
-        $abr = "$ano -04-01 and $ano -04-30";
-        $mai = "$ano -05-01 and $ano -05-31";
-        $jun = "$ano -06-01 and $ano -06-30";
-        $jul = "$ano -07-01 and $ano -07-31";
-        $ago = "$ano -08-01 and $ano -08-31";
-        $set = "$ano -09-01 and $ano -09-30";
-        $out = "$ano -10-01 and $ano -10-31";
-        $nov = "$ano -11-01 and $ano -11-30";
-        $dez = "$ano -12-01 and $ano -12-31";
+        $ano= Carbon::now()->year;
 
-        $sql_jan = DB::table('contas_a_receber')->where('created_at', 'between', "$jan")->sum('rec_valor_final');
-        $sql_fev = DB::table('contas_a_receber')->where('created_at', 'between', "$fev")->sum('rec_valor_final');
-        $sql_mar = DB::table('contas_a_receber')->where('created_at', 'between', "$mar")->sum('rec_valor_final');
-        $sql_abr = DB::table('contas_a_receber')->where('created_at', 'between', "$abr")->sum('rec_valor_final');
-        $sql_mai = DB::table('contas_a_receber')->where('created_at', 'between', "$mai")->sum('rec_valor_final');
-        $sql_jun = DB::table('contas_a_receber')->where('created_at', 'between', "$jun")->sum('rec_valor_final');
-        $sql_jul = DB::table('contas_a_receber')->where('created_at', 'between', "$jul")->sum('rec_valor_final');
-        $sql_ago = DB::table('contas_a_receber')->where('created_at', 'between', "$ago")->sum('rec_valor_final');
-        $sql_set = DB::table('contas_a_receber')->where('created_at', 'between', "$set")->sum('rec_valor_final');
-        $sql_out = DB::table('contas_a_receber')->where('created_at', 'between', "$out")->sum('rec_valor_final');
-        $sql_nov = DB::table('contas_a_receber')->where('created_at', 'between', "$nov")->sum('rec_valor_final');
-        $sql_dez = DB::table('contas_a_receber')->where('created_at', 'between', "$dez")->sum('rec_valor_final');
+        $sql_jan = DB::table('contas_a_receber')->whereMonth('rec_data',  '1')->sum('rec_valor_final');
+        $sql_fev = DB::table('contas_a_receber')->whereMonth('rec_data',  '2')->sum('rec_valor_final');
+        $sql_mar = DB::table('contas_a_receber')->whereMonth('rec_data',  '3')->sum('rec_valor_final');
+        $sql_abr = DB::table('contas_a_receber')->whereMonth('rec_data',  '4')->sum('rec_valor_final');
+        $sql_mai = DB::table('contas_a_receber')->whereMonth('rec_data',  '5')->sum('rec_valor_final');
+        $sql_jun = DB::table('contas_a_receber')->whereMonth('rec_data',  '6')->sum('rec_valor_final');
+        $sql_jul = DB::table('contas_a_receber')->whereMonth('rec_data',  '7')->sum('rec_valor_final');
+        $sql_ago = DB::table('contas_a_receber')->whereMonth('rec_data',  '8')->sum('rec_valor_final');
+        $sql_set = DB::table('contas_a_receber')->whereMonth('rec_data',  '9')->sum('rec_valor_final');
+        $sql_out = DB::table('contas_a_receber')->whereMonth('rec_data',  '10')->sum('rec_valor_final');
+        $sql_nov = DB::table('contas_a_receber')->whereMonth('rec_data',  '11')->sum('rec_valor_final');
+        $sql_dez = DB::table('contas_a_receber')->whereMonth('rec_data',  '12')->sum('rec_valor_final');
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
     }
 
     public function vendas(){
-        $ano = Carbon::now()->year;
-        $jan = "$ano -01-01 and $ano -01-31";
-        $fev = "$ano -02-01 and $ano -02-28";
-        $mar = "$ano -03-01 and $ano -03-31";
-        $abr = "$ano -04-01 and $ano -04-30";
-        $mai = "$ano -05-01 and $ano -05-31";
-        $jun = "$ano -06-01 and $ano -06-30";
-        $jul = "$ano -07-01 and $ano -07-31";
-        $ago = "$ano -08-01 and $ano -08-31";
-        $set = "$ano -09-01 and $ano -09-30";
-        $out = "$ano -10-01 and $ano -10-31";
-        $nov = "$ano -11-01 and $ano -11-30";
-        $dez = "$ano -12-01 and $ano -12-31";
+        $ano= Carbon::now()->year;
 
-        $sql_jan = DB::table('cliente')->where('created_at', 'between', "$jan")->count();
-        $sql_fev = DB::table('cliente')->where('created_at', 'between', "$fev")->count();
-        $sql_mar = DB::table('cliente')->where('created_at', 'between', "$mar")->count();
-        $sql_abr = DB::table('cliente')->where('created_at', 'between', "$abr")->count();
-        $sql_mai = DB::table('cliente')->where('created_at', 'between', "$mai")->count();
-        $sql_jun = DB::table('cliente')->where('created_at', 'between', "$jun")->count();
-        $sql_jul = DB::table('cliente')->where('created_at', 'between', "$jul")->count();
-        $sql_ago = DB::table('cliente')->where('created_at', 'between', "$ago")->count();
-        $sql_set = DB::table('cliente')->where('created_at', 'between', "$set")->count();
-        $sql_out = DB::table('cliente')->where('created_at', 'between', "$out")->count();
-        $sql_nov = DB::table('cliente')->where('created_at', 'between', "$nov")->count();
-        $sql_dez = DB::table('cliente')->where('created_at', 'between', "$dez")->count();
+        $sql_jan = DB::table('cliente')->whereMonth('created_at',  '1')->count();
+        $sql_fev = DB::table('cliente')->whereMonth('created_at',  '2')->count();
+        $sql_mar = DB::table('cliente')->whereMonth('created_at',  '3')->count();
+        $sql_abr = DB::table('cliente')->whereMonth('created_at',  '4')->count();
+        $sql_mai = DB::table('cliente')->whereMonth('created_at',  '5')->count();
+        $sql_jun = DB::table('cliente')->whereMonth('created_at',  '6')->count();
+        $sql_jul = DB::table('cliente')->whereMonth('created_at',  '7')->count();
+        $sql_ago = DB::table('cliente')->whereMonth('created_at',  '8')->count();
+        $sql_set = DB::table('cliente')->whereMonth('created_at',  '9')->count();
+        $sql_out = DB::table('cliente')->whereMonth('created_at',  '10')->count();
+        $sql_nov = DB::table('cliente')->whereMonth('created_at',  '11')->count();
+        $sql_dez = DB::table('cliente')->whereMonth('created_at',  '12')->count();
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
