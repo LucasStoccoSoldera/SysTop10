@@ -84,12 +84,12 @@
                                 <h5 class="card-category">Análise Financeira</h5>
                                 <h2 class="card-title">Contas a Pagar</h2>
                             </div>
-                           
+
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
+                            <canvas id="chartCon"></canvas>
                         </div>
                     </div>
                 </div>

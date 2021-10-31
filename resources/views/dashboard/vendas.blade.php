@@ -89,7 +89,7 @@
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
+                            <canvas id="chartVen"></canvas>
                         </div>
                     </div>
                 </div>

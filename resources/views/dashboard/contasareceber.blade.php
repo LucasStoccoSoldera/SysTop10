@@ -84,12 +84,12 @@
                                 <h5 class="card-category">Analise de Contas a Receber</h5>
                                 <h2 class="card-title">Contas a Receber</h2>
                             </div>
-                         
+
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
+                            <canvas id="chartRec"></canvas>
                         </div>
                     </div>
                 </div>

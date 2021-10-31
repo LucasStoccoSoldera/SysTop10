@@ -124,7 +124,7 @@
                                     <label class="modal-label">Material:</label>
                                     <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
                                         @error('txt_material') is-invalid @enderror value="{{ old('txt_material') }}">
-                                        <option value="">------------Selecione------------</option>
+                                        <option value="">-------------------------Selecione-------------------------</option>
                                         @foreach ($materiais as $material)
                                             <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
                                             </option>
@@ -143,7 +143,7 @@
                                     <label class="modal-label">Dimensão:</label>
                                     <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
                                         @error('txt_dimensao') is-invalid @enderror value="{{ old('txt_centro') }}">
-                                        <option value="">------------Selecione------------</option>
+                                        <option value="">-------------------------Selecione-------------------------</option>
                                         @foreach ($dimensoes as $dimensao)
                                             <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                             </option>

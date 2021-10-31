@@ -85,7 +85,7 @@
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
+                            <canvas id="chartCli"></canvas>
                         </div>
                     </div>
                 </div>
@@ -446,7 +446,6 @@
             </form>
         </div>
     </div>
-    </div>
 
     <div class="modal fade" id="modalUpdateCliente" style="display:none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -670,7 +669,9 @@
 <script>
 
     $(document).ready(function() {
-
+                // Javascript method's body can be found in assets/js/demos.js
+           //     geraGrafico('cli');
+       // demo.geraGrafico('cli');
 
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,

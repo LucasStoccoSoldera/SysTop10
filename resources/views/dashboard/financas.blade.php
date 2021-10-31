@@ -79,12 +79,12 @@
                                 <h5 class="card-category">Análise Financeira</h5>
                                 <h2 class="card-title">Caixa ao Longo do Mês</h2>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
+                            <canvas id="chartFin"></canvas>
                         </div>
                     </div>
                 </div>
