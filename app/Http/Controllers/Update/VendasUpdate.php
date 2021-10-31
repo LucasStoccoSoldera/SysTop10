@@ -63,11 +63,12 @@ class VendasUpdate extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Venda = Venda::find($request->idVen);
-        $Venda->ven_id = $request->IDVendaUp;
+        $Venda->id = $request->IDVendaUp;
         $Venda->tpg_id = $request->IDTipoPagamentoUp;
         $Venda->log_id = $request->IDLogisticaUp;
         $Venda->cli_id = $request->IDClienteUp;
         $Venda->ven_parcelas = $request->parcelasVendaUp;
+        $Venda->ven_data_pagto = $request->datapagtoVendasUp;
         $Venda->ven_status = $request->statusVendaUp;
         $Venda->ven_desconto = $request->descontoVendaUp;
         $Venda->save();
@@ -77,7 +78,11 @@ class VendasUpdate extends Controller
 
         $Total = $soma_total * $qtde;
 
+        if(isset($request->descontoVendaUp) and $request->descontoVendaUp <> 0){
         $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
+    }else{
+        $Final = $Total;
+    }
 
         $Receber = DB::table('contas_a_receber')->where('rec_ven_id', '=', "$request->IDVendaUp")->get();
         $Receber->tpg_id = $request->IDTipoPagamentoUp;
@@ -112,7 +117,11 @@ class VendasUpdate extends Controller
         $Parcela->tpg_id = $request->IDTipoPagamentoUp;
         $Parcela->par_conta = $conta_last;
         $Parcela->par_numero = $cont;
-        $Parcela->par_valor = ($Final / $request->parcelasVendaUp) * $cont;
+        if($request->parcelasVendaUp <> 0 and $Final <> 0){
+            $Parcela->par_valor = ($Final / $request->parcelasVendaUp);
+            }else{
+            $Parcela->par_valor = $Final;
+            }
         $Parcela->par_status = $request->statusVendaUp;
         if ($venda_dados->ven_data_pagto <> null){
         $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));

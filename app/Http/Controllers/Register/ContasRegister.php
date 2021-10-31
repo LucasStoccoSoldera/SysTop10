@@ -94,7 +94,7 @@ class ContasRegister extends Controller
             $Parcela->tpg_id = $request->tpgpagtoContas;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas) * $cont;
+            $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas);
             if(isset($request->datapContas) && $request->datapContas <= $ontem){
             $Parcela->par_status = "Em Aberto";
             }

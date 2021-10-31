@@ -79,7 +79,7 @@ class ContasaReceberRegister extends Controller
             $Parcela->tpg_id = $request->tipoPagtoReceber;
             $Parcela->par_venda = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorReceber / $request->parcelasReceber) * $cont;
+            $Parcela->par_valor = ($request->valorReceber / $request->parcelasReceber);
             if(isset($request->dataReceber) && $request->dataReceber <= $ontem){
                 $Parcela->par_status = "Baixa";
             }

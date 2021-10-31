@@ -104,7 +104,11 @@ class CompraRegister extends Controller
             $Parcela->tpg_id = $request->tpgpagtoCompras;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($Final / $request->parcelasCompras) * $cont;
+            if($request->parcelasCompras <> 0 and $Final <> 0){
+                $Parcela->par_valor = ($Final / $request->parcelasCompras);
+                }else{
+                $Parcela->par_valor = $Final;
+                }
             $Parcela->par_status = "Em Aberto";
             if ($compras_dados->con_data_pag <> null){
             $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));

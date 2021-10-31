@@ -89,7 +89,7 @@ class ContasaReceberUpdate extends Controller
             $Parcela->tpg_id = $request->tipoPagtoReceberUp;
             $Parcela->par_venda = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorReceberUp / $request->parcelasReceberUp) * $cont;
+            $Parcela->par_valor = ($request->valorReceberUp / $request->parcelasReceberUp);
             if(isset($request->dataReceberUp) && $request->dataReceberUp <= $ontem){
                 $Parcela->par_status = "Baixa";
             }

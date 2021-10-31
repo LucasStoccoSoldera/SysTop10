@@ -100,7 +100,7 @@ class ContasUpdate extends Controller
             $Parcela->tpg_id = $request->tpgpagtoContasUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorfContasUp / $request->parcelasContasUp) * $cont;
+            $Parcela->par_valor = ($request->valorfContasUp / $request->parcelasContasUp);
             if(isset($request->datapContasUp) && $request->datapContasUp <= $ontem){
             $Parcela->par_status = "Fechado";
             }

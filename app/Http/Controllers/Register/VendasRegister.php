@@ -50,11 +50,12 @@ class VendasRegister extends Controller
             return response()->json(['status' => 0, 'error' => $validator->errors()]);
         }
         $Venda = new Venda;
-        $Venda->ven_id = $request->IDVenda;
+        $Venda->id = $request->IDVenda;
         $Venda->tpg_id = $request->IDTipoPagamento;
         $Venda->log_id = $request->IDLogistica;
         $Venda->cli_id = $request->IDCliente;
         $Venda->ven_parcelas = $request->parcelasVenda;
+        $Venda->ven_data_pagto = $request->datapagtoVendas;
         $Venda->ven_status = $request->statusVenda;
         $Venda->ven_desconto = $request->descontoVenda;
         $Venda->save();
@@ -64,13 +65,18 @@ class VendasRegister extends Controller
 
         $Total = $soma_total * $qtde;
 
+        if(isset($request->descontoVendaUp) and $request->descontoVendaUp <> 0){
         $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
+        }else{
+            $Final = $Total;
+        }
 
         $Receber = new Contas_a_Receber();
         $Receber->tpg_id = $request->IDTipoPagamento;
         $Receber->rec_descricao = "Venda para $request->IDCliente";
         $Receber->rec_ven_id = $request->IDVenda;
         $Receber->rec_valor = $Total;
+        $Receber->rec_valor_final = $Final;
         $Receber->rec_parcelas = $request->parcelasVenda;
         if(isset($request->datapagtoVendas)){
         $Receber->rec_data = $request->datapagtoVendas;
@@ -96,7 +102,11 @@ class VendasRegister extends Controller
             $Parcela->tpg_id = $request->IDTipoPagamentoUp;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($Final / $request->parcelasVendaUp) * $cont;
+            if($request->parcelasVendaUp <> 0 and $Final <> 0){
+            $Parcela->par_valor = ($Final / $request->parcelasVendaUp);
+            }else{
+            $Parcela->par_valor = $Final;
+            }
             $Parcela->par_status = $request->statusVendaUp;
             if ($venda_dados->ven_data_pagto <> null){
             $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
