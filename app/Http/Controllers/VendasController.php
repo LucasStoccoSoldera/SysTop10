@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Cor;
 use App\Models\Dimensao;
 use App\Models\Produto;
@@ -43,6 +44,7 @@ class VendasController extends Controller
 
         $data7 = TipoPagto::all();
         $data8 = Logistica::all();
+        $data9 = Cliente::all();
 
         if(isset($id)){
         $data5 = Venda_Detalhe::where('id', $id);
@@ -63,7 +65,8 @@ class VendasController extends Controller
             'itens_ato' => $data6,
 
             'pagamentos' => $data7,
-            'logisticas' => $data8
+            'logisticas' => $data8,
+            'clientes' => $data9
 
         ]);
         } else{
@@ -80,7 +83,8 @@ class VendasController extends Controller
                 'itens_ato' => $data6,
 
                 'pagamentos' => $data7,
-                'logisticas' => $data8
+                'logisticas' => $data8,
+                'clientes' => $data9
 
             ]);
         }
