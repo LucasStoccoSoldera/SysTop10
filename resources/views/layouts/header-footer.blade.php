@@ -116,11 +116,6 @@
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-navbar">
-                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Meu
-                                            Perfil</a></li>
-                                    <li class="nav-link"><a href="javascript:void(0)"
-                                            class="nav-item dropdown-item">Settings</a></li>
-                                    <li class="dropdown-divider"></li>
                                     <li class="nav-link"><a class="nav-item dropdown-item"
                                             href="{{ route('admin.logout') }}" onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();">
