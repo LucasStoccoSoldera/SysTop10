@@ -350,7 +350,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="modal-label">Logística:</label> <label>
+                                        <label class="modal-label">Logística:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
                                         <select type="text" name="LogisticaProduto" id="LogisticaProduto"
                                             class="form-control" maxlength="15" value="{{ old('LogisticaProduto') }}"
@@ -358,7 +358,7 @@
                                             <option value="">------------Selecione------------</option>
                                             @foreach ($logisticas as $logistica)
                                                 <option value="{{ $logistica['id'] }}">
-                                                    {{ $logistica['log_pacote'] . $logistica['log_transportadora'] }}
+                                                    {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -1160,7 +1160,7 @@
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($logisticas as $logistica)
                                             <option value="{{ $logistica['id'] }}">
-                                                {{ $logistica['log_pacote'] . $logistica['log_transportadora'] }}
+                                                {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
                                             </option>
                                         @endforeach
                                     </select>

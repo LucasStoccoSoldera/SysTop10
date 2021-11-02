@@ -164,7 +164,7 @@ class CompraRegister extends Controller
             $validator_interno = Validator::make(
                 $request->all(),
                 [
-                    'IDProdutoE' => ['required', 'integer'],
+                    'IDProdutoE' => ['required'],
                 ],
                 [
                     'IDProduto.requiredE' => 'Produto obrigatório.',
@@ -180,7 +180,7 @@ class CompraRegister extends Controller
         $Compras_Detalhe->com_id = $request->IDItemCompra;
         $Compras_Detalhe->for_id = $request->IDFornecedor;
         $Compras_Detalhe->cde_tipo = $request->tipoItemCompra;
-        if($interno = true){
+        if($interno == true){
         $Compras_Detalhe->cde_produto = $request->IDProdutoI;
         $Compras_Detalhe->dim_id = $request->dimensaoItemCompra;
         $Compras_Detalhe->cor_id = $request->coresItemCompra;

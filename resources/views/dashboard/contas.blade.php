@@ -548,8 +548,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Observações:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Observações:</label>
                                     <input type="textarea" name="obsCompras" id="obsCompras" class="form-control"
                                         maxlength="255" value="{{ old('obsCompras') }}"
                                         placeholder="Caso tenha alguma Observação">
@@ -1106,8 +1105,7 @@
                                 </div>
                             </div>
                             <div class="form-group" id="form-group">
-                                <label class="modal-label">Observações:</label> <label
-                                    style="color: red; font-size: 12px;"> * </label>
+                                <label class="modal-label">Observações:</label>
                                 <input type="textarea" name="obsComprasUp" id="obsComprasUp" class="form-control"
                                     maxlength="255" value="{{ old('obsComprasUp') }}"
                                     placeholder="Caso tenha alguma Observação">

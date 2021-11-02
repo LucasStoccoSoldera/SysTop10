@@ -428,7 +428,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group" id="form-group">
-                                        <label class="modal-label">Produtos:</label>
+                                        <label class="modal-label">Produtos:</label><label
+                                        style="color: red; font-size: 12px;"> * </label>
                                         <input type="text" name="produtosFornecedorUp" id="produtosFornecedorUp"
                                             class="form-control" maxlength="80"
                                             value="{{ old('produtosFornecedorUp') }}"
