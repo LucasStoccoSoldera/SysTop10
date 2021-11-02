@@ -89,20 +89,18 @@
                                     <div class="notification d-none d-lg-block d-xl-block"></div>
                                     <i class="tim-icons icon-sound-wave"></i>
                                     <p class="d-lg-none">
-                                        Notifications
+                                        Notificações
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                                    <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded
-                                            to your email</a></li>
-                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You
-                                            have 5 more tasks</a></li>
+                                    <li class="nav-link"><a href="#" class="nav-item dropdown-item">Conta com vencimento próximo!</a></li>
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">50 novos clientes foram cadastrados ontem!</a></li>
                                     <li class="nav-link"><a href="javascript:void(0)"
-                                            class="nav-item dropdown-item">Your friend Michael is in town</a></li>
+                                            class="nav-item dropdown-item">Produto sem estoque!</a></li>
                                     <li class="nav-link"><a href="javascript:void(0)"
-                                            class="nav-item dropdown-item">Another notification</a></li>
+                                            class="nav-item dropdown-item">Novo funcionário inserido!</a></li>
                                     <li class="nav-link"><a href="javascript:void(0)"
-                                            class="nav-item dropdown-item">Another one</a></li>
+                                            class="nav-item dropdown-item">43 vendas em aberto essa semana.</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown nav-item">
@@ -112,7 +110,7 @@
                                     </div>
                                     <b class="caret d-none d-lg-block d-xl-block"></b>
                                     <p class="d-lg-none">
-                                        Log out
+                                        Sair
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-navbar">
@@ -153,18 +151,18 @@
                 <div class="container-fluid">
                     <ul class="nav" id="footer-padding">
                         <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
+                            <a href="https://www.top10embalagens.com.br/" target="_blank" class="nav-link">
                                 Site Top 10 Embalagens
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                                About Us
+                            <a href="{{route('admin')}}" class="nav-link">
+                                Início
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link">
-                                Blog
+                            <a href="../doc/manual.pdf" download class="nav-link">
+                                Manual
                             </a>
                         </li>
                     </ul>
@@ -193,7 +191,7 @@
                     <a href="javascript:void(0)" class="switch-trigger background-color">
                         <div class="badge-colors text-center">
                             <span class="badge filter badge-primary active" data-color="primary"></span>
-                            <span class="badge filter badge-info" data-color="blue"></span>
+                            <span class="badge filter badge-info" style="background-color: var(--indigo);" data-color="indigo"></span>
                             <span class="badge filter badge-success" data-color="green"></span>
                         </div>
                         <div class="clearfix"></div>
@@ -206,9 +204,13 @@
                     <span class="color-label">TEMA ESCURO</span>
                 </li>
                 <li class="button-container">
-                    <center> <a href="https://www.creative-tim.com/product/black-dashboard" data-toggle="modal"
+                    <center> <a href="#" data-toggle="modal"
                             data-target="#modalConfig" class="btn btn-primary btn-block btn-round"
                             id="btn-center">Configurações</a>
+
+                            <a href="../doc/manual.pdf" download class="btn btn-primary btn-block btn-round"
+                            id="btn-center">Manual</a>
+
                         <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html"
                             target="_blank" class="btn btn-default btn-block btn-round" id="btn-center">
                             Flex - Suporte Técnico
@@ -217,10 +219,10 @@
                 </li>
                 <li class="header-title">Acesso Rápido</li>
                 <li class="button-container text-center">
-                    <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-digital-ocean"></i> &middot;
-                        Site</button>
-                    <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot;
-                        Facebook</button>
+                    <a href="https://www.top10embalagens.com.br/" target="_blank" id="twitter" class="btn btn-round btn-info"><i class="fab fa-digital-ocean"></i> &middot;
+                        Site</a>
+                    <a href="https://pt-br.facebook.com/Top10Embalagens/" target="_blank" id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot;
+                        Facebook</a>
                     <br>
                     <br>
                 </li>
