@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Contas_a_pagar/Grafico', [App\Http\Controllers\GraficoController::class, 'contas_a_pagar'])->name('admin.grafico.pagar');
     Route::get('/admin/Contas_a_receber/Grafico', [App\Http\Controllers\GraficoController::class, 'contas_a_receber'])->name('admin.grafico.receber');
     Route::get('/admin/Vendas/Grafico', [App\Http\Controllers\GraficoController::class, 'vendas'])->name('admin.grafico.vendas');
+    Route::get('/admin/Contas/Bar/Grafico', [App\Http\Controllers\GraficoController::class, 'contas_bar'])->name('admin.grafico.contas.bar');
+    Route::get('/admin/Receber/Bar/Grafico', [App\Http\Controllers\GraficoController::class, 'receber_bar'])->name('admin.grafico.receber.bar');
+    Route::get('/admin/Cliente/Bar/Grafico', [App\Http\Controllers\GraficoController::class, 'cliente_bar'])->name('admin.grafico.cliente.bar');
 
 
     Route::get('/admin/List_Usuario', [App\Http\Controllers\Lista\UserList::class, 'listUser'])->name('admin.list.user');

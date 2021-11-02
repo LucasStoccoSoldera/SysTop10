@@ -16,7 +16,7 @@ class GraficoController extends Controller
 {
 
     public function cliente(){
-        $ano= Carbon::now()->year;
+
 
         $sql_jan = DB::table('cliente')->whereMonth('created_at',  '1')->count();
         $sql_fev = DB::table('cliente')->whereMonth('created_at',  '2')->count();
@@ -37,7 +37,7 @@ class GraficoController extends Controller
     }
 
     public function financeiro(){
-        $ano= Carbon::now()->year;
+
 
         $sql_jan = DB::table('caixa')->whereMonth('created_at',  '1')->sum('cax_valor');
         $sql_fev = DB::table('caixa')->whereMonth('created_at',  '2')->sum('cax_valor');
@@ -57,7 +57,7 @@ class GraficoController extends Controller
     }
 
     public function contas_a_pagar(){
-        $ano= Carbon::now()->year;
+
 
         $sql_jan = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '1')->sum('con_valor_final');
         $sql_fev = DB::table('contas_a_pagar')->whereMonth('con_data_venc', '2')->sum('con_valor_final');
@@ -77,7 +77,7 @@ class GraficoController extends Controller
     }
 
     public function contas_a_receber(){
-        $ano= Carbon::now()->year;
+
 
         $sql_jan = DB::table('contas_a_receber')->whereMonth('rec_data',  '1')->sum('rec_valor_final');
         $sql_fev = DB::table('contas_a_receber')->whereMonth('rec_data',  '2')->sum('rec_valor_final');
@@ -97,7 +97,7 @@ class GraficoController extends Controller
     }
 
     public function vendas(){
-        $ano= Carbon::now()->year;
+
 
         $sql_jan = DB::table('cliente')->whereMonth('created_at',  '1')->count();
         $sql_fev = DB::table('cliente')->whereMonth('created_at',  '2')->count();
@@ -115,4 +115,126 @@ class GraficoController extends Controller
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
     }
+
+
+    public function cliente_bar(){
+
+        $now = Carbon::now();
+        $mes_1_antes_calc = $now->subMonth()->month;
+        $now = Carbon::now();
+        $mes_2_antes_calc= $now->subMonths(2)->month;
+        $now = Carbon::now();
+        $mes_1_depois_calc = $now->addMonth()->month;
+        $now = Carbon::now();
+        $mes_2_depois_calc = $now->addMonths(2)->month;
+        $now = Carbon::now();
+        $mes_3_depois_calc = $now->addMonths(3)->month;
+        $now = Carbon::now()->month;
+
+        $mes_1_antes = $mes_1_antes_calc;
+        $mes_2_antes = $mes_2_antes_calc;
+        $mes_1_depois = $mes_1_depois_calc;
+        $mes_2_depois = $mes_2_depois_calc;
+        $mes_3_depois = $mes_3_depois_calc;
+
+
+        $months = array (1=>'Jan',2=>'Fev',3=>'Mar',4=>'Abr',5=>'Mai',6=>'Jun',7=>'Jul',8=>'Ago',9=>'Set',10=>'Out',11=>'Nov',12=>'Dez');
+        $nome_mes_agora =  $months[(int)$now];
+        $nome_mes_1_antes =  $months[(int)$mes_1_antes];
+        $nome_mes_2_antes =  $months[(int)$mes_2_antes];
+        $nome_mes_1_depois =  $months[(int)$mes_1_depois];
+        $nome_mes_2_depois =  $months[(int)$mes_2_depois];
+        $nome_mes_3_depois =  $months[(int)$mes_3_depois];
+
+        $now_sql = DB::table('cliente')->whereMonth('created_at',  $now)->count();
+        $mes_1_antes_sql = DB::table('cliente')->whereMonth('created_at',  $mes_1_antes)->count();
+        $mes_2_antes_sql = DB::table('cliente')->whereMonth('created_at',  $mes_2_antes)->count();
+        $mes_1_depois_sql = DB::table('cliente')->whereMonth('created_at',  $mes_1_depois)->count();
+        $mes_2_depois_sql = DB::table('cliente')->whereMonth('created_at',  $mes_2_depois)->count();
+        $mes_3_depois_sql = DB::table('cliente')->whereMonth('created_at',  $mes_3_depois)->count();
+
+        return response()->json(['legenda' =>[$nome_mes_1_antes, $nome_mes_2_antes, $nome_mes_agora, $nome_mes_1_depois, $nome_mes_2_depois, $nome_mes_3_depois], 'grafico' => [$now_sql, $mes_1_antes_sql, $mes_2_antes_sql, $mes_1_depois_sql, $mes_2_depois_sql,
+        $mes_3_depois_sql] ]);
+    }
+
+    public function contas_bar(){
+
+        $now = Carbon::now();
+        $mes_1_antes_calc = $now->subMonth()->month;
+        $now = Carbon::now();
+        $mes_2_antes_calc= $now->subMonths(2)->month;
+        $now = Carbon::now();
+        $mes_1_depois_calc = $now->addMonth()->month;
+        $now = Carbon::now();
+        $mes_2_depois_calc = $now->addMonths(2)->month;
+        $now = Carbon::now();
+        $mes_3_depois_calc = $now->addMonths(3)->month;
+        $now = Carbon::now()->month;
+
+        $mes_1_antes = $mes_1_antes_calc;
+        $mes_2_antes = $mes_2_antes_calc;
+        $mes_1_depois = $mes_1_depois_calc;
+        $mes_2_depois = $mes_2_depois_calc;
+        $mes_3_depois = $mes_3_depois_calc;
+
+        $months = array (1=>'Jan',2=>'Fev',3=>'Mar',4=>'Abr',5=>'Mai',6=>'Jun',7=>'Jul',8=>'Ago',9=>'Set',10=>'Out',11=>'Nov',12=>'Dez');
+        $nome_mes_agora =  $months[(int)$now];
+        $nome_mes_1_antes =  $months[(int)$mes_1_antes];
+        $nome_mes_2_antes =  $months[(int)$mes_2_antes];
+        $nome_mes_1_depois =  $months[(int)$mes_1_depois];
+        $nome_mes_2_depois =  $months[(int)$mes_2_depois];
+        $nome_mes_3_depois =  $months[(int)$mes_3_depois];
+
+        $now_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $now)->sum('con_valor_final');
+        $mes_1_antes_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $mes_1_antes)->sum('con_valor_final');
+        $mes_2_antes_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $mes_2_antes)->sum('con_valor_final');
+        $mes_1_depois_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $mes_1_depois)->sum('con_valor_final');
+        $mes_2_depois_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $mes_2_depois)->sum('con_valor_final');
+        $mes_3_depois_sql = DB::table('contas_a_pagar')->whereMonth('con_data_venc', $mes_3_depois)->sum('con_valor_final');
+
+        return response()->json(['legenda' =>[$nome_mes_1_antes, $nome_mes_2_antes, $nome_mes_agora, $nome_mes_1_depois, $nome_mes_2_depois, $nome_mes_3_depois], 'grafico' => [$now_sql, $mes_1_antes_sql, $mes_2_antes_sql, $mes_1_depois_sql, $mes_2_depois_sql,
+        $mes_3_depois_sql] ]);
+    }
+
+    public function receber_bar(){
+
+        $now = Carbon::now();
+        $mes_1_antes_calc = $now->subMonth()->month;
+        $now = Carbon::now();
+        $mes_2_antes_calc= $now->subMonths(2)->month;
+        $now = Carbon::now();
+        $mes_1_depois_calc = $now->addMonth()->month;
+        $now = Carbon::now();
+        $mes_2_depois_calc = $now->addMonths(2)->month;
+        $now = Carbon::now();
+        $mes_3_depois_calc = $now->addMonths(3)->month;
+        $now = Carbon::now()->month;
+
+        $mes_1_antes = $mes_1_antes_calc;
+        $mes_2_antes = $mes_2_antes_calc;
+        $mes_1_depois = $mes_1_depois_calc;
+        $mes_2_depois = $mes_2_depois_calc;
+        $mes_3_depois = $mes_3_depois_calc;
+
+
+        $months = array (1=>'Jan',2=>'Fev',3=>'Mar',4=>'Abr',5=>'Mai',6=>'Jun',7=>'Jul',8=>'Ago',9=>'Set',10=>'Out',11=>'Nov',12=>'Dez');
+        $nome_mes_agora =  $months[(int)$now];
+        $nome_mes_1_antes =  $months[(int)$mes_1_antes];
+        $nome_mes_2_antes =  $months[(int)$mes_2_antes];
+        $nome_mes_1_depois =  $months[(int)$mes_1_depois];
+        $nome_mes_2_depois =  $months[(int)$mes_2_depois];
+        $nome_mes_3_depois =  $months[(int)$mes_3_depois];
+
+        $now_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $now)->sum('rec_valor_final');
+        $mes_1_antes_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $mes_1_antes)->sum('rec_valor_final');
+        $mes_2_antes_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $mes_2_antes)->sum('rec_valor_final');
+        $mes_1_depois_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $mes_1_depois)->sum('rec_valor_final');
+        $mes_2_depois_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $mes_2_depois)->sum('rec_valor_final');
+        $mes_3_depois_sql = DB::table('contas_a_receber')->whereMonth('rec_data',  $mes_3_depois)->sum('rec_valor_final');
+
+        return response()->json(['legenda' =>[$nome_mes_1_antes, $nome_mes_2_antes, $nome_mes_agora, $nome_mes_1_depois, $nome_mes_2_depois, $nome_mes_3_depois], 'grafico' => [$now_sql, $mes_1_antes_sql, $mes_2_antes_sql, $mes_1_depois_sql, $mes_2_depois_sql,
+        $mes_3_depois_sql] ]);
+    }
+
+
 }

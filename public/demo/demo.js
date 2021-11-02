@@ -351,11 +351,15 @@ demo = {
         };
 
         var chart_labels = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+        var chart_labels_bar = ['', '', '', '', '', ''];
         var chart_cli = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var chart_fin = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var chart_con = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var chart_rec = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var chart_ven = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var chart_c_con = [0, 0, 0, 0, 0, 0];
+        var chart_c_rec = [0, 0, 0, 0, 0, 0];
+        var chart_c_cli = [0, 0, 0, 0, 0, 0];
 
         if (document.getElementById("chartCli")) {
             $.ajax({
@@ -674,6 +678,8 @@ demo = {
             });
         }
 
+      //--------------------------------------------------------------------------------------------------------------
+
         if (document.getElementById("chartLineGreen")) {
             var ctxGreen = document.getElementById("chartLineGreen").getContext("2d");
 
@@ -712,30 +718,150 @@ demo = {
             });
         }
 
+      //--------------------------------------------------------------------------------------------------------------
 
+        if (document.getElementById("CountryCon")) {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'GET',
+                url: "/admin/Contas/Bar/Grafico",
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function (response) {
+                    var chart_c_con = response.grafico;
+                    var chart_labels_bar = response.legenda;
+                    data.datasets[0].data = chart_c_con;
+                    data.labels = chart_labels_bar;
+                    CountryCon.update();
+                }
+            });
 
+        if (document.getElementById("CountryCon")) {
+            var ctxCCon = document.getElementById("CountryCon").getContext("2d");
 
-
-        if (document.getElementById("CountryChart")) {
-            var ctx = document.getElementById("CountryChart").getContext("2d");
-
-            var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+            var gradientStroke = ctxCCon.createLinearGradient(0, 230, 0, 50);
 
             gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
             gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
             gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
+            var data = {
+                labels: chart_labels_bar,
+                datasets: [{
+                    label: "Contas",
+                    fill: true,
+                    backgroundColor: gradientStroke,
+                    hoverBackgroundColor: gradientStroke,
+                    borderColor: '#1f8ef1',
+                    borderWidth: 2,
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    data: chart_c_con,
+                }]
+            };
 
-            var myChart = new Chart(ctx, {
+            var CountryCon = new Chart(ctxCCon, {
                 type: 'bar',
-                responsive: true,
-                legend: {
-                    display: false
-                },
-                data: {
-                    labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
+                data: data,
+                options: gradientBarChartConfiguration
+
+            });
+        }
+    }
+
+          //--------------------------------------------------------------------------------------------------------------
+
+    if (document.getElementById("CountryRec")) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'GET',
+            url: "/admin/Receber/Bar/Grafico",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function (response) {
+                var chart_c_rec = response.grafico;
+                var chart_labels_bar = response.legenda;
+                data1.datasets[0].data = chart_c_rec;
+                data1.labels = chart_labels_bar;
+                CountryRec.update();
+            }
+        });
+
+    if (document.getElementById("CountryRec")) {
+        var ctxCRec = document.getElementById("CountryRec").getContext("2d");
+
+        var gradientStroke = ctxCRec.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+        gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+        gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+        var data1 = {
+            labels: chart_labels_bar,
+            datasets: [{
+                label: "Contas",
+                fill: true,
+                backgroundColor: gradientStroke,
+                hoverBackgroundColor: gradientStroke,
+                borderColor: '#1f8ef1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                data: chart_c_rec,
+            }]
+        };
+
+        var CountryRec = new Chart(ctxCRec, {
+            type: 'bar',
+            data: data1,
+            options: gradientBarChartConfiguration
+
+        });
+    }
+    }
+
+              //--------------------------------------------------------------------------------------------------------------
+
+              if (document.getElementById("CountryCli")) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    url: "/admin/Cliente/Bar/Grafico",
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        var chart_c_cli = response.grafico;
+                        var chart_labels_bar = response.legenda;
+                        data2.datasets[0].data = chart_c_cli;
+                        data2.labels = chart_labels_bar;
+                        CountryCli.update();
+                    }
+                });
+
+            if (document.getElementById("CountryCli")) {
+                var ctxCCli = document.getElementById("CountryCli").getContext("2d");
+
+                var gradientStroke = ctxCCli.createLinearGradient(0, 230, 0, 50);
+
+                gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+                gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+                gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+                var data2 = {
+                    labels: chart_labels_bar,
                     datasets: [{
-                        label: "Countries",
+                        label: "Clientes",
                         fill: true,
                         backgroundColor: gradientStroke,
                         hoverBackgroundColor: gradientStroke,
@@ -743,13 +869,19 @@ demo = {
                         borderWidth: 2,
                         borderDash: [],
                         borderDashOffset: 0.0,
-                        data: [53, 20, 10, 80, 100, 45],
+                        data: chart_c_cli,
                     }]
-                },
-                options: gradientBarChartConfiguration
-            });
-        }
-    },
+                };
+
+                var CountryCli = new Chart(ctxCCli, {
+                    type: 'bar',
+                    data: data2,
+                    options: gradientBarChartConfiguration
+
+                });
+            }
+            }
+},
 
     initGoogleMaps: function () {
         var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
