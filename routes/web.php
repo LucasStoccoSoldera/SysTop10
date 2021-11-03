@@ -182,6 +182,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/Registrar_cliente', [App\Http\Controllers\Register\ClienteRegister::class, 'createCliente'])->name('admin.create.cliente');
+Route::post('/Registrar_cliente', [App\Http\Controllers\Register\ClienteRegister::class, 'createLoginCliente'])->name('admin.create.cliente.login');
 Route::get('/admin/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login/do', [App\Http\Controllers\LoginController::class, 'login'])->name('admin.login.do');

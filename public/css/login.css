@@ -42,7 +42,7 @@
     margin-right: 200px;
 }
 
-#btn-login {
+.btn-login {
     width: 100%;
     height: 60px;
     margin-top: 20px;
@@ -86,7 +86,7 @@
     margin-bottom: 200px;
 }
 .junto {
-    height: 100%;
+    height: 1175px;
     width: 969px;
     margin: auto;
     align-items: center;
