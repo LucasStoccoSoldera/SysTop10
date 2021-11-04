@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                        -->
+                                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                            -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -123,8 +123,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card">
-                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="">
+                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                        enctype="multipart/form-data" action="{{ route('admin.filtro.contas') }}">
                         @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Contas</h2>
@@ -135,13 +135,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Vencimento:</label>
                                     <input type="date" name="txt_data_venc" id="txt_data_venc"
-                                        value="{{ old('txt_data_venc') }}"
-                                        class="filtro form-control @error('txt_data_venc') is-invalid @enderror">
-                                    @error('txt_data_venc')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_data_venc') }}" class="filtro form-control">
                                 </div>
                             </div>
 
@@ -149,13 +143,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Pagamento:</label>
                                     <input type="date" name="txt_data_pag" id="txt_data_pag"
-                                        value="{{ old('txt_data_pag') }}"
-                                        class="filtro form-control @error('txt_data_pag') is-invalid @enderror">
-                                    @error('txt_data_pag')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_data_pag') }}" class="filtro form-control">
                                 </div>
                             </div>
 
@@ -163,19 +151,13 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Centro de Custo:</label>
                                     <select type="text" name="txt_centro" id="txt_centro" class="filtro form-control"
-                                        @error('txt_centro') is-invalid @enderror maxlength="25"
-                                        value="{{ old('txt_centro') }}">
+                                        maxlength="25" value="{{ old('txt_centro') }}">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($centros as $centro)
                                             <option value="{{ $centro['id'] }}">{{ $centro['cc_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('txt_centro_custo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div>
@@ -437,7 +419,7 @@
                                     <label class="modal-label">ID Compra:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="number" name="IDCompras" id="IDCompras" class="form-control id"
-                                        maxlength="10" value="{{ old('IDCompras')}}" placeholder="ID" autofocus>
+                                        maxlength="10" value="{{ old('IDCompras') }}" placeholder="ID" autofocus>
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDCompras_error" role="alert">
                                         </span>
@@ -1487,11 +1469,11 @@
                                                 {{-- DataTables --}}
                                             </tbody>
                                         </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div class="row">
                     <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
@@ -1608,10 +1590,10 @@
             searching: false,
             processing: true,
             serverside: true,
-                ajax: {
-                    type: 'GET',
-                    url: '/admin/List_ItemCompraAto/' + $('#IDCompras').val('id'),
-                },
+            ajax: {
+                type: 'GET',
+                url: '/admin/List_ItemCompraAto/' + $('#IDCompras').val('id'),
+            },
             columns: [{
                     data: "cde_produto"
                 },
@@ -1740,11 +1722,11 @@
         });
 
         $(document).on('click', '[data-dismiss="modal"]',
-                    function() {
-                        document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+            function() {
+                document.getElementById('imgsub').src = "../img/dash/addbtn.png";
 
-                    }
-               );
+            }
+        );
 
         $("#formRegisterContas").on('submit', function(e) {
 
@@ -1957,53 +1939,72 @@
                 }
             });
         });
-    });
 
-    $('#qtdeCompras, #valorItemCompra').on('change blur keyup', function() {
-        $('#qtdeCompras, #valorItemCompra').each(function() { //percorre todos os campos de quantidade
-            //quantidade
-            var qtd = $('#qtdeCompras').val();
-            //pega o valor unitário
-            var vlr = $('#valorItemCompra').val();
-            // coloca o resultado no valor total
-            $('#valorTotalItemCompra').val(qtd * vlr);
-        });
-    });
-
-    function abrirItem() {
-        $('#modalRegisterItemCompra').modal('show');
-    }
-
-    $("#formExcluir").on('submit', function(e) {
-
-        e.preventDefault();
-
-        var rota = $('#rotaDelete').val();
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'DELETE',
-            url: rota,
-            data: $(this).serialize(),
-            processData: false,
-            dataType: 'json',
-            success: function(data_decoded) {
-                if (data_decoded.status == 1) {
-                    $('#formExcluir')[0].reset();
-                    $('#modalAlertDelete').hide();
-                    demo.showNotification('top', 'right', 4, data_decoded.msg,
-                        'tim-icons icon-alert-circle-exc');
-                }
-                if (data_decoded.status == 0) {
-                    demo.showNotification('top', 'right', 5, data_decoded.msg,
-                        'tim-icons icon-alert-circle-exc');
-                }
-            }
+        $('#qtdeCompras, #valorItemCompra').on('change blur keyup', function() {
+            $('#qtdeCompras, #valorItemCompra').each(
+        function() { //percorre todos os campos de quantidade
+                //quantidade
+                var qtd = $('#qtdeCompras').val();
+                //pega o valor unitário
+                var vlr = $('#valorItemCompra').val();
+                // coloca o resultado no valor total
+                $('#valorTotalItemCompra').val(qtd * vlr);
+            });
         });
 
+        function abrirItem() {
+            $('#modalRegisterItemCompra').modal('show');
+        }
+
+        $("#formExcluir").on('submit', function(e) {
+
+            e.preventDefault();
+
+            var rota = $('#rotaDelete').val();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'DELETE',
+                url: rota,
+                data: $(this).serialize(),
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    if (data_decoded.status == 1) {
+                        $('#formExcluir')[0].reset();
+                        $('#modalAlertDelete').hide();
+                        demo.showNotification('top', 'right', 4, data_decoded.msg,
+                            'tim-icons icon-alert-circle-exc');
+                    }
+                    if (data_decoded.status == 0) {
+                        demo.showNotification('top', 'right', 5, data_decoded.msg,
+                            'tim-icons icon-alert-circle-exc');
+                    }
+                }
+            });
+        });
+
+        $("#formFilter").on('submit', function(e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    var table_conta = data_decoded.table;
+                    table_conta.ajax.reload(null, false);
+                }
+            });
+        });
     });
-    //     });
 </script>
 @endpush

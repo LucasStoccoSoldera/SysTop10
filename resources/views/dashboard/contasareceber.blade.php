@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -124,8 +124,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card">
-                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="">
+                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                        enctype="multipart/form-data" action="{{ route('admin.filtro.contasareceber') }}">
                         @csrf
                         <div class="card-header">
                             <h2 class="card-title"> Filtrar Contas a Receber</h2>
@@ -136,25 +136,14 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Descrição:</label>
                                     <input type="text" name="txt_descricao" id="txt_descricao" maxlength="20"
-                                        value="{{ old('txt_descricao') }}"
-                                        class="filtro form-control @error('txt_descricao') is-invalid @enderror">
-                                    @error('txt_descricao')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_descricao') }}" class="filtro form-control ">
                                 </div>
                             </div>
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data Contabilizada:</label>
                                     <input type="date" name="txt_data" id="txt_data" value="{{ old('txt_data') }}"
-                                        class="filtro form-control @error('txt_data') is-invalid @enderror">
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        class="filtro form-control ">
                                 </div>
                             </div>
 
@@ -162,24 +151,19 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Status:</label>
                                     <select type="text" name="txt_status" id="txt_status" class="filtro form-control"
-                                        @error('txt_status') is-invalid @enderror maxlength="25"
-                                        value="{{ old('txt_status') }}">
+                                        maxlength="25" value="{{ old('txt_status') }}">
                                         <option value="">------------Selecione------------</option>
                                         <option value="1">Em Aberto</option>
                                         <option value="2">Fechada</option>
                                         <option value="3">Cancelada</option>
                                     </select>
-                                    @error('txt_status')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -643,41 +627,41 @@
         });
 
         $('body').on('click', 'button.parcelas', function() {
-    console.log('vai');
-    var table_parcelas = $('#tb_parcelas').DataTable({
-        paging: true,
-        searching: false,
-        processing: true,
-        serverside: true,
-        ajax: {
-            type: 'GET',
-            url: '/admin/List_Parcelas/' + $(this).data('id'),
-        },
-        columns: [{
-                data: "par_conta",
-                className: "text-center"
-            },
-            {
-                data: "par_numero",
-                className: "text-center"
-            },
-            {
-                data: "par_valor",
-                className: "text-right",
-                render: DataTable.render.number('.', ',', 2, 'R$')
-            },
-            {
-                data: "par_status",
-                className: "text-center"
-            },
-            {
-                data: "par_data_pagto",
-                className: "text-center"
-            },
-        ]
-    });
-        $("#modalShowParcelas").modal('toggle');
-});
+            console.log('vai');
+            var table_parcelas = $('#tb_parcelas').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: {
+                    type: 'GET',
+                    url: '/admin/List_Parcelas/' + $(this).data('id'),
+                },
+                columns: [{
+                        data: "par_conta",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_numero",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_valor",
+                        className: "text-right",
+                        render: DataTable.render.number('.', ',', 2, 'R$')
+                    },
+                    {
+                        data: "par_status",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_data_pagto",
+                        className: "text-center"
+                    },
+                ]
+            });
+            $("#modalShowParcelas").modal('toggle');
+        });
 
         $("#modalShowParcelas").on("shown.bs.modal", function() {
             var conta = $(this).data('id');
@@ -805,6 +789,26 @@
                         demo.showNotification('top', 'right', 5, data_decoded.msg,
                             'tim-icons icon-alert-circle-exc');
                     }
+                }
+            });
+        });
+
+        $("#formFilter").on('submit', function(e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                processData: false,
+                dataType: 'json',
+                success: function(data_decoded) {
+                    var table_receber = data_decoded.table;
+                    table_receber.ajax.reload(null, false);
                 }
             });
         });

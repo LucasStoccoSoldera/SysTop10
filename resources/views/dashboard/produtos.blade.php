@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -97,8 +97,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card">
-                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="">
+                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                        enctype="multipart/form-data" action="{{ route('admin.filtro.produto') }}">
                         @csrf
                         <div class="card-header">
                             <h2 class="card-title"> Filtrar Produtos</h2>
@@ -109,13 +109,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
-                                        value="{{ old('txt_nome') }}"
-                                        class="filtro form-control @error('txt_nome') is-invalid @enderror">
-                                    @error('txt_nome')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_nome') }}" class="filtro form-control">
                                 </div>
                             </div>
 
@@ -123,18 +117,14 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Material:</label>
                                     <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
-                                        @error('txt_material') is-invalid @enderror value="{{ old('txt_material') }}">
-                                        <option value="">-------------------------Selecione-------------------------</option>
+                                        value="{{ old('txt_material') }}">
+                                        <option value="">-------------------------Selecione-------------------------
+                                        </option>
                                         @foreach ($materiais as $material)
                                             <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('txt_material')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -142,24 +132,21 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
                                     <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
-                                        @error('txt_dimensao') is-invalid @enderror value="{{ old('txt_centro') }}">
-                                        <option value="">-------------------------Selecione-------------------------</option>
+                                        value="{{ old('txt_centro') }}">
+                                        <option value="">-------------------------Selecione-------------------------
+                                        </option>
                                         @foreach ($dimensoes as $dimensao)
                                             <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('txt_dimensao')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -2221,6 +2208,26 @@
                 $('#ls_par_valor').val(valor);
                 $('#ls_par_tpg').val(pagto);
                 $('#ls_par_data').val(data);
+            });
+
+            $("#formFilter").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        var table_produto = data_decoded.table;
+                        table_produto.ajax.reload(null, false);
+                    }
+                });
             });
 
         });

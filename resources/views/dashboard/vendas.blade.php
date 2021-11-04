@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -126,8 +126,8 @@
                 <div class="card">
                     <form class="form" id="form-consulta" method="POST" action="">
                         <div class="card-header">
-                            <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                                enctype="multipart/form-data" action="">
+                            <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                                enctype="multipart/form-data" action="{{ route('admin.filtro.vendas') }}">
                                 @csrf
                         </div>
                         <div class="col-12">
@@ -136,13 +136,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cliente:</label>
                                     <input type="text" name="txt_cliente" id="txt_cliente" maxlength="13"
-                                        value="{{ old('txt_cliente') }}"
-                                        class="filtro form-control @error('txt_cliente') is-invalid @enderror">
-                                    @error('txt_cliente')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_cliente') }}" class="filtro form-control ">
                                 </div>
                             </div>
 
@@ -150,13 +144,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data da Venda:</label>
                                     <input type="date" name="txt_data" id="txt_data" maxlength="20"
-                                        value="{{ old('txt_data') }}"
-                                        class="filtro form-control @error('txt_data') is-invalid @enderror">
-                                    @error('txt_data')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_data') }}" class="filtro form-control ">
                                 </div>
                             </div>
 
@@ -164,24 +152,20 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <select type="text" name="txt_produto" id="txt_produto" class="filtro form-control"
-                                        @error('txt_produto') is-invalid @enderror value="{{ old('txt_produto') }}">
+                                        value="{{ old('txt_produto') }}">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($produtos as $produto)
                                             <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('txt_produto')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -273,7 +257,7 @@
                                         <label class="modal-label">ID da Venda:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
                                         <input type="number" name="IDVenda" id="IDVenda" maxlength="10"
-                                            class="form-control id" value="{{ old('IDVenda')}}"
+                                            class="form-control id" value="{{ old('IDVenda') }}"
                                             placeholder="ID Automático" autofocus>
                                         <div class="div-feedback">
                                             <span class="invalid-feedback IDVenda_error" role="alert">
@@ -283,7 +267,7 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Cliente:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                            <select type="text" name="IDCliente" id="IDCliente" maxlength="25"
+                                        <select type="text" name="IDCliente" id="IDCliente" maxlength="25"
                                             class="form-control" value="{{ old('IDCliente') }}"
                                             placeholder="Selecione com o Cliente">
                                             <option value="">------------Selecione------------</option>
@@ -311,8 +295,8 @@
                                     <div class="form-group" id="form-group">
                                         <label class="modal-label">Recebimento:</label> <label
                                             style="color: red; font-size: 12px;"> * </label>
-                                        <input type="date" name="datapagtoVendas" id="datapagtoVendas" class="form-control"
-                                            onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                        <input type="date" name="datapagtoVendas" id="datapagtoVendas"
+                                            class="form-control" onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                             value="{{ old('datapagtoVendas') }}" placeholder="Entre com o Recebimento">
                                         <div class="div-feedback">
                                             <span class="invalid-feedback datapagtoVendas_error" role="alert">
@@ -412,51 +396,51 @@
                             </div>
                 </form>
                 <br>
-                               <div class="row">
-                                <div class="col-12">
-                                    <div class="card" id="card-consulta-tabela">
-                                        <div class="card-header" id="ch-adaptado">
-                                            <h2 class="card-title">Itens da Venda
-                                                <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
-                                                data-backdrop="static"
-                                                onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
-                                                + Add</a>
-                                            </h2>
-                                        </div>
-                                        <div class="card-body" id="cd-adaptado">
-                                            <div class="table-responsive">
-                                                <table class="table tablesorter " id="tb_item_venda_ato">
-                                                    <thead class=" text-primary">
-                                                        <tr>
-                                                            <th class="text-center" style="width: 25%">
-                                                                Produto
-                                                            </th>
-                                                            <th style="width: 10%">
-                                                                Qtde
-                                                            </th>
-                                                            <th style="width: 20%">
-                                                                Dimensão
-                                                            </th>
-                                                            <th style="width: 5%">
-                                                                Cor
-                                                            </th>
-                                                            <th style="width: 20%">
-                                                                Valor Total
-                                                            </th>
-                                                            <th class="text-right" style="width: 5%">
-                                                                <div id="acao">Ações</div>
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {{-- DataTables --}}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card" id="card-consulta-tabela">
+                            <div class="card-header" id="ch-adaptado">
+                                <h2 class="card-title">Itens da Venda
+                                    <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
+                                        data-backdrop="static"
+                                        onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
+                                        + Add</a>
+                                </h2>
+                            </div>
+                            <div class="card-body" id="cd-adaptado">
+                                <div class="table-responsive">
+                                    <table class="table tablesorter " id="tb_item_venda_ato">
+                                        <thead class=" text-primary">
+                                            <tr>
+                                                <th class="text-center" style="width: 25%">
+                                                    Produto
+                                                </th>
+                                                <th style="width: 10%">
+                                                    Qtde
+                                                </th>
+                                                <th style="width: 20%">
+                                                    Dimensão
+                                                </th>
+                                                <th style="width: 5%">
+                                                    Cor
+                                                </th>
+                                                <th style="width: 20%">
+                                                    Valor Total
+                                                </th>
+                                                <th class="text-right" style="width: 5%">
+                                                    <div id="acao">Ações</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- DataTables --}}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -483,7 +467,7 @@
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="number" name="IDItemVendaUp" id="IDItemVendaUp" maxlength="2"
                                         value="{{ old('IDItemVendaUp') }}" onloadstart="pegaCodigo(IDItemVenda, IDVenda)"
-                                         class="form-control id">
+                                        class="form-control id">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDItemVendaUp_error" role="alert">
                                         </span>
@@ -589,8 +573,7 @@
                                     <label class="modal-label">Valor Total:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTItemVendaUp" id="VTItemVendaUp"
-                                        class="dinheiro form-control"  maxlength="11"
-                                        value="{{ old('VTItemVendaUp') }}">
+                                        class="dinheiro form-control" maxlength="11" value="{{ old('VTItemVendaUp') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTItemVendaUp_error" role="alert">
                                         </span>
@@ -662,8 +645,8 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Recebimento:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="date" name="datapagtoVendasUp" id="datapagtoVendasUp" class="form-control"
-                                        onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                    <input type="date" name="datapagtoVendasUp" id="datapagtoVendasUp"
+                                        class="form-control" onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                         value="{{ old('datapagtoVendasUp') }}" placeholder="Entre com o Recebimento">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback datapagtoVendasUp_error" role="alert">
@@ -938,7 +921,7 @@
                                     <label class="modal-label">Valor Total:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="text" name="VTItemVenda" id="VTItemVenda" class="dinheiro form-control"
-                                         maxlength="11" value="{{ old('VTItemVenda') }}">
+                                        maxlength="11" value="{{ old('VTItemVenda') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback VTItemVenda_error" role="alert">
                                         </span>
@@ -1066,11 +1049,11 @@
             });
 
             $(document).on('click', '[data-dismiss="modal"]',
-                    function() {
-                        document.getElementById('imgsub').src = "../img/dash/addbtn.png";
+                function() {
+                    document.getElementById('imgsub').src = "../img/dash/addbtn.png";
 
-                    }
-               );
+                }
+            );
 
             $('#modalRegisterItemVenda').on('show', function() {
                 $("#modalRegisterVendas").hide();
@@ -1085,36 +1068,34 @@
             );
 
             $("#modalRegisterVenda").on("shown.bs.modal", function() {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'GET',
-                url: '/admin/Get_Last_Venda/',
-                processData: false,
-                success: function(data_decoded) {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    url: '/admin/Get_Last_Venda/',
+                    processData: false,
+                    success: function(data_decoded) {
                         $('#IDVenda').val(data_decoded.id);
                         $('#IDVendaUp').val(data_decoded.id);
                     }
-                }
-            );
-        });
+                });
+            });
 
-        $("#modalUpdateVenda").on("shown.bs.modal", function() {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'GET',
-                url: '/admin/Get_Last_Venda/',
-                processData: false,
-                success: function(data_decoded) {
+            $("#modalUpdateVenda").on("shown.bs.modal", function() {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'GET',
+                    url: '/admin/Get_Last_Venda/',
+                    processData: false,
+                    success: function(data_decoded) {
                         $('#IDVenda').val(data_decoded.id);
                         $('#IDVendaUp').val(data_decoded.id);
                     }
-                }
-            );
-        });
+                });
+            });
 
             $("#formRegisterVenda").on('submit', function(e) {
 
@@ -1343,6 +1324,26 @@
                 $('#ls_par_valor').val(valor);
                 $('#ls_par_tpg').val(pagto);
                 $('#ls_par_data').val(data);
+            });
+
+            $("#formFilter").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        var table_venda = data_decoded.table;
+                        table_venda.ajax.reload(null, false);
+                    }
+                });
             });
 
         });

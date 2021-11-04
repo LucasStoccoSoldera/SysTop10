@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                        -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -73,8 +73,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card">
-                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="">
+                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                        enctype="multipart/form-data" action="{{ route('admin.filtro.estoque') }}">
                         @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Produtos no Estoque</h2>
@@ -85,13 +85,7 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
                                     <input type="text" name="txt_produto" id="txt_produto" maxlength="25"
-                                        value="{{ old('txt_produto') }}"
-                                        class="filtro form-control @error('txt_produto') is-invalid @enderror">
-                                    @error('txt_produto')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_produto') }}" class="filtro form-control">
                                 </div>
                             </div>
 
@@ -101,7 +95,7 @@
                                         style="float: left; margin-right: 100%;   ">Quantidade:</label>
                                     <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
                                         value="{{ old('txt_fil') }}"
-                                        style="width: 15%; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                        style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
                                         <option value="">...</option>
                                         <option value="1">
                                             <=< /option>
@@ -109,14 +103,8 @@
                                         <option value="3">>=</option>
                                     </select>
                                     <input type="number" name="txt_qtde" id="txt_qtde" maxlength="6"
-                                        value="{{ old('txt_qtde') }}"
-                                        class="filtro form-control @error('txt_qtde') is-invalid @enderror"
-                                        style="width: 80%;float:right;">
-                                    @error('txt_qtde')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
+                                        value="{{ old('txt_qtde') }}" class="filtro form-control"
+                                        style="width: 80% !important;float:right;">
                                 </div>
                             </div>
 
@@ -124,24 +112,20 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
                                     <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
-                                        @error('txt_dimensao') is-invalid @enderror value="{{ old('txt_centro') }}">
+                                        value="{{ old('txt_centro') }}">
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($dimensoes as $dimensao)
                                             <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
-                                    @error('txt_dimensao')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
                             <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -173,9 +157,9 @@
                 </div>
                 <div class="col-12">
                     <div class="card " id="card-consulta-tabela" style="border-color: #2CAEEC !important;
-                            border-color: white;
-                            border-width: medium;
-                            border-style: double;">
+                                border-color: white;
+                                border-width: medium;
+                                border-style: double;">
                         <div class="card-header" id="ch-adaptado">
                             <h2 class="card-title">Todos os Produtos
                         </div>
@@ -687,6 +671,26 @@
                             demo.showNotification('top', 'right', 5, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }
+                    }
+                });
+            });
+
+            $("#formFilter").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        var table_estoque = data_decoded.table;
+                        table_estoque.ajax.reload(null, false);
                     }
                 });
             });

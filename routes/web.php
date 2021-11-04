@@ -33,6 +33,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/Detalhe', [App\Http\Controllers\DetalhesController::class, 'Detalhe'])->name('admin.detalhe');
     Route::get('/admin/Logistica', [App\Http\Controllers\LogisticaController::class, 'Logistica'])->name('admin.logistica');
 
+    Route::post('/admin/Usuario/Filtro', [App\Http\Controllers\UserController::class, 'Usuario'])->name('admin.filtro.usuario');
+    Route::post('/admin/Cliente/Filtro', [App\Http\Controllers\ClienteController::class, 'Cliente'])->name('admin.filtro.cliente');
+    Route::post('/admin/Contas/Filtro', [App\Http\Controllers\ContasController::class, 'Contas'])->name('admin.filtro.contas');
+    Route::post('/admin/ContasaReceber/Filtro', [App\Http\Controllers\ContasaReceberController::class, 'ContasaReceber'])->name('admin.filtro.contasareceber');
+    Route::post('/admin/Vendas/Filtro', [App\Http\Controllers\VendasController::class, 'Vendas'])->name('admin.filtro.vendas');
+    Route::post('/admin/Produto/Filtro', [App\Http\Controllers\ProdutosController::class, 'Produto'])->name('admin.filtro.produto');
+    Route::post('/admin/Estoque/Filtro', [App\Http\Controllers\EstoqueController::class, 'Estoque'])->name('admin.filtro.estoque');
+    Route::post('/admin/Fornecedor/Filtro', [App\Http\Controllers\FornecedoresController::class, 'Fornecedores'])->name('admin.filtro.fornecedor');
+
     Route::get('/admin/Autocomplete_cli_cli', [App\Http\Controllers\AutocompleteController::class, 'Cli_Nome'])->name('admin.autocomplete.cli.nome');
     Route::get('/admin/Autocomplete_rec_des', [App\Http\Controllers\AutocompleteController::class, 'Rec_Descricao'])->name('admin.autocomplete.rec.descricao');
     Route::get('/admin/Autocomplete_for_for', [App\Http\Controllers\AutocompleteController::class, 'For_Nome'])->name('admin.autocomplete.for.nome');

@@ -3,8 +3,8 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                    -->
+                                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                            -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="javascript:void(0)" class="simple-text logo-mini">
@@ -97,8 +97,8 @@
         <div class="col-12">
             <div class="row">
                 <div class="card">
-                    <form class="form-filtro" id="formFilterCliente" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="">
+                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                        enctype="multipart/form-data" action="{{route('admin.filtro.usuario')}}">
                         @csrf
                         <div class="card-header">
                             <h2 class="card-title">Filtrar Usuários</h2>
@@ -108,308 +108,299 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_id">ID:</label>
-                                    <input type="text" name="filtro_id" id="filtro_id"
-                                    data-column="0"
-                                   class="filtro form-control filter-input">
+                                    <input type="text" name="filtro_id" id="filtro_id" data-column="0"
+                                        class="filtro form-control filter-input">
                                 </div>
+
+                            </div>
+
+                            <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_nome">Nome:</label>
-                                    <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13"
-                                    data-column="3"
-                                   class="filtro form-control filter-input">
+                                    <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13" data-column="3"
+                                        class="filtro form-control filter-input">
                                 </div>
                             </div>
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_cargo">Cargo:</label>
-                                    <select type="text" name="filtro_cargo" id="filtro_cargo" class="filtro form-control filter-select">
-                                        <option value="">-------------------------Selecione-------------------------</option>
+                                    <select type="text" name="filtro_cargo" id="filtro_cargo"
+                                        class="filtro form-control filter-select">
+                                        <option value="">-------------------------Selecione-------------------------
+                                        </option>
                                         @foreach ($cargos as $cargo)
-                                            <option value="{{ $cargo['car_descricao'] }}">{{ $cargo['car_descricao'] }}
+                                            <option value="{{ $cargo['car_descricao'] }}">
+                                                {{ $cargo['car_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-
                             </div>
-
-                            <div class="col-4 float-left">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label" for="filtro_cel">Celular:</label>
-                                    <input type="text" name="filtro_cel" id="filtro_cel"
-                                    data-column="2"
-                                    class="filtro form-control filter-input celular">
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label" for="filtro_data">Data:</label>
-                                    <input type="date" name="filtro_data" id="filtro_data"
-                                    data-column="4"
-                                   class="filtro form-control filter-input">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
                                 </div>
                             </div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
 
-        <div class="row">
-            <div class="col-12" style="padding-left: 0px; padding-right: 0px;">
-                <div class="card " id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Usuários</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_usuario">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 5%">
-                                            ID
-                                        </th>
-                                        <th style="width: 25%">
-                                            Nome
-                                        </th>
-                                        <th style="width: 15%">
-                                            Cargo
-                                        </th>
-                                        <th style="width: 20%">
-                                            Celular
-                                        </th class="text-center">
-                                        <th style="width: 15%">
-                                            Data de Cadastro
-                                        </th>
-                                        <th class="text-right" style="width: 20%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
+            <div class="row">
+                <div class="col-12" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="card " id="card-consulta-tabela">
+                        <div class="card-header" id="ch-adaptado">
+                            <h2 class="card-title">Consulta de Usuários</h2>
                         </div>
+                        <div class="card-body" id="cd-adaptado">
+                            <div class="table-responsive">
+                                <table class="table tablesorter " id="tb_usuario">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th class="text-center" style="width: 5%">
+                                                ID
+                                            </th>
+                                            <th style="width: 25%">
+                                                Nome
+                                            </th>
+                                            <th style="width: 15%">
+                                                Cargo
+                                            </th>
+                                            <th style="width: 20%">
+                                                Celular
+                                            </th class="text-center">
+                                            <th style="width: 15%">
+                                                Data de Cadastro
+                                            </th>
+                                            <th class="text-right" style="width: 20%">
+                                                <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- DataTables --}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endsection
+        @section('sub-menu')
+            <div class="add">
+                <div class="dropup show-dropdown">
+                    <a href="#" data-toggle="dropdown">
+                        <img id="imgsub" src="../img/dash/addbtn.png">
+                    </a>
+                    <div class="dropdown-menu" id="add-menu">
+                        <button class="dropdown-item" id="no-padding" data-backdrop="static"
+                            onclick="abrirModal('#modalRegisterUser');"> <img src="../img/dash/cadastro_pessoa.png"
+                                width="75" height="75"></button>
+                        <button class="dropdown-item" id="no-padding" data-backdrop="static"
+                            onclick="abrirModal('#modalRegisterCargo');"> <img src="../img/dash/cadastro_pessoa.png"
+                                width="75" height="75"></button>
+                        <button class="dropdown-item" id="no-padding" data-backdrop="static"
+                            onclick="abrirModal('#modalRegisterPrivilegio');">
+                            <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
                     </div>
                 </div>
             </div>
         </div>
     @endsection
-    @section('sub-menu')
-        <div class="add">
-            <div class="dropup show-dropdown">
-                <a href="#" data-toggle="dropdown">
-                    <img id="imgsub" src="../img/dash/addbtn.png">
-                </a>
-                <div class="dropdown-menu" id="add-menu">
-                    <button class="dropdown-item" id="no-padding" data-backdrop="static"
-                        onclick="abrirModal('#modalRegisterUser');"> <img src="../img/dash/cadastro_pessoa.png" width="75"
-                            height="75"></button>
-                    <button class="dropdown-item" id="no-padding" data-backdrop="static"
-                        onclick="abrirModal('#modalRegisterCargo');"> <img src="../img/dash/cadastro_pessoa.png" width="75"
-                            height="75"></button>
-                    <button class="dropdown-item" id="no-padding" data-backdrop="static"
-                        onclick="abrirModal('#modalRegisterPrivilegio');">
-                        <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
-                </div>
+
+    @section('modals')
+        <div class="modal fade" id="modalRegisterUser" style="display:none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-cadastro" id="formRegisterUser" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="{{ route('admin.create.user') }}">
+                    @csrf
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastrar Usuário</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Nome Completo:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="text" name="nomeUser" id="nomeUser" class="form-control"
+                                            maxlength="25" value="{{ old('nomeUser') }}" placeholder="Entre com o Nome"
+                                            autofocus>
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback nomeUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Email para Login:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
+                                            value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback usu_usuario_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">CPF:</label> <label
+                                            style="color: red; font-size: 12px;">
+                                            * </label>
+                                        <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
+                                            value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback cpfUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Celular:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="text" name="celularUser" id="celularUser" class="celular form-control"
+                                            value="{{ old('celularUser') }}" placeholder="Entre com o Celular">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback celularUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Senha:</label> <label
+                                            style="color: red; font-size: 12px;"> *
+                                        </label>
+                                        <input type="password" name="senhaUser" id="senhaUser" class="form-control"
+                                            value="{{ old('senhaUser') }}" placeholder="Entre com a Senha">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback senhaUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Confirmar Senha:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
+                                            class="form-control" placeholder="Confirmação da Senha">
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback senhaUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Permissões:</label> <label
+                                            style="color: red; font-size: 12px;"> *
+                                        </label>
+                                        <select type="text" name="cargoUser" id="cargoUser" class="form-control"
+                                            maxlength="80" value="{{ old('cargoUser') }}"
+                                            placeholder="Selecione com o Cargo">
+                                            <option value="">------------Selecione------------</option>
+                                            @foreach ($cargos as $cargo)
+                                                <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback cargoUser_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="modal-label">Status:</label> <label
+                                            style="color: red; font-size: 12px;">
+                                            * </label><br>
+                                        <div class="switch__container">
+                                            <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
+                                                class="switch switch--shadow" type="checkbox">
+                                            <label for="switch-shadow"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterUser"
+                                data-modal="modalRegisterUser">Cancelar</button>
+                            <button type="reset" class="limpar btn btn-secondary btn-danger"
+                                data-form="formRegisterUser">Limpar</button>
+                            <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-@endsection
 
-@section('modals')
-    <div class="modal fade" id="modalRegisterUser" style="display:none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <form class="form-cadastro" id="formRegisterUser" method="POST" autocomplete="off"
-                enctype="multipart/form-data" action="{{ route('admin.create.user') }}">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Cadastrar Usuário</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Nome Completo:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="nomeUser" id="nomeUser" class="form-control" maxlength="25"
-                                        value="{{ old('nomeUser') }}" placeholder="Entre com o Nome" autofocus>
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback nomeUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Email para Login:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="usu_usuario" id="usu_usuario" class="form-control"
-                                        value="{{ old('usu_usuario') }}" placeholder="Entre com o Login">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback usu_usuario_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">CPF:</label> <label style="color: red; font-size: 12px;">
-                                        * </label>
-                                    <input type="text" name="cpfUser" id="cpfUser" class="cpf form-control"
-                                        value="{{ old('cpfUser') }}" placeholder="Entre com o CPF">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback cpfUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Celular:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="celularUser" id="celularUser" class="celular form-control"
-                                        value="{{ old('celularUser') }}" placeholder="Entre com o Celular">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback celularUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Senha:</label> <label
-                                        style="color: red; font-size: 12px;"> *
-                                    </label>
-                                    <input type="password" name="senhaUser" id="senhaUser" class="form-control"
-                                        value="{{ old('senhaUser') }}" placeholder="Entre com a Senha">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback senhaUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Confirmar Senha:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
-                                    <input type="password" name="senhaUser_confirmation" id="senhaUser_confirmation"
-                                        class="form-control" placeholder="Confirmação da Senha">
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback senhaUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Permissões:</label> <label
-                                        style="color: red; font-size: 12px;"> *
-                                    </label>
-                                    <select type="text" name="cargoUser" id="cargoUser" class="form-control"
-                                        maxlength="80" value="{{ old('cargoUser') }}"
-                                        placeholder="Selecione com o Cargo">
-                                        <option value="">------------Selecione------------</option>
-                                        @foreach ($cargos as $cargo)
-                                            <option value="{{ $cargo['id'] }}">{{ $cargo['car_descricao'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="div-feedback">
-                                        <span class="invalid-feedback cargoUser_error" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="modal-label">Status:</label> <label
-                                        style="color: red; font-size: 12px;">
-                                        * </label><br>
-                                    <div class="switch__container">
-                                        <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
-                                            class="switch switch--shadow" type="checkbox">
-                                        <label for="switch-shadow"></label>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="modal fade" id="modalRegisterCargo" style="display:none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <form class="form-cadastro" id="formRegisterCargo" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="{{ route('admin.create.cargo') }}">
+                    @csrf
+                    <div class="modal-content" style="width: 150%">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Cadastrar Cargo</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="cancela btn btn-secondary btn-danger" data-form="formRegisterUser"
-                            data-modal="modalRegisterUser">Cancelar</button>
-                        <button type="reset" class="limpar btn btn-secondary btn-danger"
-                            data-form="formRegisterUser">Limpar</button>
-                        <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalRegisterCargo" style="display:none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <form class="form-cadastro" id="formRegisterCargo" method="POST" autocomplete="off"
-                enctype="multipart/form-data" action="{{ route('admin.create.cargo') }}">
-                @csrf
-                <div class="modal-content" style="width: 150%">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Cadastrar Cargo</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group" id="form-direita">
-                                    <label class="modal-label">Cargo:</label> <label
-                                        style="color: red; font-size: 12px;"> *
-                                    </label>
-                                    <input type="text" name="descricaoCargo" id="descricaoCargo" class="form-control"
-                                        maxlength="15" value="{{ old('descricaoCargo') }}"
-                                        placeholder="Entre com o Cargo">
-                                    <span class="invalid-feedback descricaoCargo_error" role="alert">
-                                    </span>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group" id="form-direita">
+                                        <label class="modal-label">Cargo:</label> <label
+                                            style="color: red; font-size: 12px;"> *
+                                        </label>
+                                        <input type="text" name="descricaoCargo" id="descricaoCargo" class="form-control"
+                                            maxlength="15" value="{{ old('descricaoCargo') }}"
+                                            placeholder="Entre com o Cargo">
+                                        <span class="invalid-feedback descricaoCargo_error" role="alert">
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                                    <button type="button" class="cancela btn btn-secondary btn-danger"
+                                        data-form="formRegisterCargo" data-modal="modalRegisterCargo">Cancelar</button>
+                                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                                </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" id="card-consulta-tabela">
+                        <div class="card-header" id="ch-adaptado">
+                            <h2 class="card-title">Consulta de Cargos</h2>
                         </div>
-                        <div class="row">
-                            <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                                <button type="button" class="cancela btn btn-secondary btn-danger"
-                                    data-form="formRegisterCargo" data-modal="modalRegisterCargo">Cancelar</button>
-                                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
+                        <div class="card-body" id="cd-adaptado">
+                            <div class="table-responsive">
+                                <table class="table tablesorter " id="tb_cargo">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th class="text-center" style="width: 10%">
+                                                ID
+                                            </th>
+                                            <th style="width: 50%">
+                                                Descrição
+                                            </th>
+                                            <th class="text-right" style="width: 40%">
+                                                <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- DataTables --}}
+                                    </tbody>
+                                </table>
                             </div>
-            </form>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card" id="card-consulta-tabela">
-                    <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Cargos</h2>
-                    </div>
-                    <div class="card-body" id="cd-adaptado">
-                        <div class="table-responsive">
-                            <table class="table tablesorter " id="tb_cargo">
-                                <thead class=" text-primary">
-                                    <tr>
-                                        <th class="text-center" style="width: 10%">
-                                            ID
-                                        </th>
-                                        <th style="width: 50%">
-                                            Descrição
-                                        </th>
-                                        <th class="text-right" style="width: 40%">
-                                            <div id="acao">Ações</div>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- DataTables --}}
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
     </div>
@@ -1004,6 +995,26 @@
                             demo.showNotification('top', 'right', 5, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }
+                    }
+                });
+            });
+
+            $("#formFilter").on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    processData: false,
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                            var table_usuario = data_decoded.table;
+                            table_usuario.ajax.reload(null, false);
                     }
                 });
             });
