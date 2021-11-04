@@ -2000,7 +2000,7 @@
                 processData: false,
                 dataType: 'json',
                 success: function(data_decoded) {
-                    var table_conta = data_decoded.table;
+                    var table_conta = data_decoded;
                     table_conta.ajax.reload(null, false);
                 }
             });

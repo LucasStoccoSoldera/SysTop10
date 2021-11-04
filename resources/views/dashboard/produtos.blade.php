@@ -115,13 +115,13 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Material:</label>
-                                    <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
-                                        value="{{ old('txt_material') }}">
+                                    <label class="modal-label">Tipo Produto:</label>
+                                    <select type="text" name="txt_tpp" id="txt_tpp" class="filtro form-control"
+                                        value="{{ old('txt_tpp') }}">
                                         <option value="">-------------------------Selecione-------------------------
                                         </option>
-                                        @foreach ($materiais as $material)
-                                            <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
+                                        @foreach ($tipos as $tipo)
+                                            <option value="{{ $tipo['id'] }}">{{ $tipo['tpp_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -130,13 +130,13 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
-                                        value="{{ old('txt_centro') }}">
+                                    <label class="modal-label">Material:</label>
+                                    <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
+                                        value="{{ old('txt_material') }}">
                                         <option value="">-------------------------Selecione-------------------------
                                         </option>
-                                        @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
+                                        @foreach ($materiais as $material)
+                                            <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -2224,7 +2224,7 @@
                     processData: false,
                     dataType: 'json',
                     success: function(data_decoded) {
-                        var table_produto = data_decoded.table;
+                        var table_produto = data_decoded;
                         table_produto.ajax.reload(null, false);
                     }
                 });

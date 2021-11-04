@@ -1013,7 +1013,7 @@
                     processData: false,
                     dataType: 'json',
                     success: function(data_decoded) {
-                            var table_usuario = data_decoded.table;
+                            var table_usuario = data_decoded;
                             table_usuario.ajax.reload(null, false);
                     }
                 });

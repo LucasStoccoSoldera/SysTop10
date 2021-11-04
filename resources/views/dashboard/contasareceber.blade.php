@@ -807,7 +807,7 @@
                 processData: false,
                 dataType: 'json',
                 success: function(data_decoded) {
-                    var table_receber = data_decoded.table;
+                    var table_receber = data_decoded;
                     table_receber.ajax.reload(null, false);
                 }
             });

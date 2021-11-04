@@ -695,7 +695,7 @@
                     processData: false,
                     dataType: 'json',
                     success: function(data_decoded) {
-                        var table_fornecedor = data_decoded.table;
+                        var table_fornecedor = data_decoded;
                         table_fornecedor.ajax.reload(null, false);
                     }
                 });

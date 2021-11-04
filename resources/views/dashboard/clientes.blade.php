@@ -853,7 +853,7 @@
                 processData: false,
                 dataType: 'json',
                 success: function(data_decoded) {
-                    var table_cliente = data_decoded.table;
+                    var table_cliente = data_decoded;
                     table_cliente.ajax.reload(null, false);
                 }
             });

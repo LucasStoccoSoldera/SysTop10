@@ -38,7 +38,7 @@ class FornecedoresList extends Controller
                 return $btn;
             })
             ->rawColumns(['action'])
-            ->toJson();;
+            ->toJson();
         }
     }
 }

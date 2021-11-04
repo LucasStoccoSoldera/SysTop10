@@ -150,15 +150,19 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produto:</label>
-                                    <select type="text" name="txt_produto" id="txt_produto" class="filtro form-control"
-                                        value="{{ old('txt_produto') }}">
-                                        <option value="">------------Selecione------------</option>
-                                        @foreach ($produtos as $produto)
-                                            <option value="{{ $produto['id'] }}">{{ $produto['pro_nome'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <label class="modal-label"
+                                    style="float: left; margin-right: 100%;   ">Valor Total:</label>
+                                <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
+                                    value="{{ old('txt_fil') }}"
+                                    style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                    <option value="<=">
+                                        <=< /option>
+                                    <option value="=">=</option>
+                                    <option value=">=">>=</option>
+                                </select>
+                                <input type="text" name="txt_valor" id="txt_valor" maxlength="15"
+                                    value="{{ old('txt_valor') }}" class="filtro form-control dinheiro"
+                                    style="width: 80% !important;float:right;">
                                 </div>
                             </div>
                             <div>
