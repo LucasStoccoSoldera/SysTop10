@@ -23222,6 +23222,18 @@ font-size: 16px;
     border-radius: 20px 20px 20px 20px;
 }
 
+.dt-button{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color:#000;
+    background: var(--yellow) ;
+    background-image: none;
+    margin-bottom: 0px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 20px 0px 20px 20px ;
+}
+
 /*--------------------------------------------------------------------------*/
 
 .dinheiro{

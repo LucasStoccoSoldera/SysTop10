@@ -1582,7 +1582,14 @@
                     data: "action",
                     className: "text-right"
                 },
-            ]
+            ],
+            dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
         });
 
         var table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
@@ -1689,7 +1696,14 @@
                         data: "par_data_pagto",
                         className: "text-center"
                     },
-                ]
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
             });
             $("#modalShowParcelas").modal('toggle');
         });

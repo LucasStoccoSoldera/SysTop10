@@ -545,7 +545,14 @@
                         data: "est_time",
                         className: "text-center"
                     },
-                ]
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
             });
             var table_produto_estoque = $('#tb_produto_estoque').DataTable({
                 paging: false,
@@ -567,7 +574,14 @@
                         data: "est_status",
                         className: "text-center"
                     },
-                ]
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
             });
 
             $(document).on('click', '[data-dismiss="modal"]',

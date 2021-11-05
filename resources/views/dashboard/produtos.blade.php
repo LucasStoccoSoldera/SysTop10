@@ -1501,7 +1501,14 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
             });
             var table_tipo_produto = $('#tb_tipo_produto').DataTable({
                 paging: true,

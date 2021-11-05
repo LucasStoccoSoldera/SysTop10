@@ -623,7 +623,14 @@
                     data: "action",
                     className: "text-right"
                 },
-            ]
+            ],
+            dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
         });
 
         $('body').on('click', 'button.parcelas', function() {
@@ -658,7 +665,14 @@
                         data: "par_data_pagto",
                         className: "text-center"
                     },
-                ]
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
             });
             $("#modalShowParcelas").modal('toggle');
         });
