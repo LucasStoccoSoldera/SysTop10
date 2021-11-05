@@ -16,7 +16,7 @@ class VendasList extends Controller
             if($request->ajax()){
 
                 $data = Venda::query();
-                $data = Venda::select('vendas.id', 'cliente.cli_nome', '(vendas_detalhe.det_valor_total * vendas_detalhe.det_qtde) AS ven_valor_total', 'ven_status', 'ven_parcelas',
+                $data = Venda::select('vendas.id', 'cliente.cli_nome', DB::raw("vendas_detalhe.det_valor_total * vendas_detalhe.det_qtde AS ven_valor_total"), 'ven_status', 'ven_parcelas',
                 DB::raw("DATE_FORMAT(vendas.ven_data, '%d/%m/%Y %H:%i') as ven_data"))
                 ->join('cliente', 'vendas.cli_id', '=', 'cliente.id')
                 ->join('vendas_detalhe', 'vendas.id', '=', 'vendas_detalhe.ven_id');
