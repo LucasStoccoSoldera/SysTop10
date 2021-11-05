@@ -133,13 +133,6 @@
                                     <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13" data-column="0"
                                         class="filtro form-control filter-input">
                                 </div>
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label" for="filtro_doc">Documento:</label>
-                                    <input type="text" name="filtro_doc" id="filtro_doc" data-column="1"
-                                        class="filtro form-control filter-input">
-                                </div>
-
-
                             </div>
 
                             <div class="col-4 float-left">
@@ -156,6 +149,16 @@
                                     <input type="date" name="filtro_data" id="filtro_data" data-column="4"
                                         class="filtro form-control filter-input">
                                 </div>
+
+                            </div>
+                            <div class="row">
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group" style="margin-left: 15px;">
+                                    <label class="modal-label" for="filtro_doc">Documento:</label>
+                                    <input type="text" name="filtro_doc" id="filtro_doc" data-column="1"
+                                        class="filtro form-control filter-input">
+                                </div>
+                            </div>
                             </div>
                             <div class="row">
                                 <div class="col-12 text-center">

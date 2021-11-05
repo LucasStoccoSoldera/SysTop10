@@ -151,12 +151,11 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"
-                                    style="float: left; margin-right: 100%;   ">Valor Total:</label>
+                                    style="float: left; margin-right: 60%;   ">Valor Total:</label>
                                 <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
                                     value="{{ old('txt_fil') }}"
                                     style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
-                                    <option value="<=">
-                                        <=< /option>
+                                    <option value="<="><=</option>
                                     <option value="=">=</option>
                                     <option value=">=">>=</option>
                                 </select>

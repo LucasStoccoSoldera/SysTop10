@@ -158,19 +158,19 @@
                                 <table class="table tablesorter " id="tb_usuario">
                                     <thead class=" text-primary">
                                         <tr>
-                                            <th class="text-center" style="width: 5%">
+                                            <th class="text-center filters" style="width: 5%">
                                                 ID
                                             </th>
-                                            <th style="width: 25%">
+                                            <th class="filters" style="width: 25%">
                                                 Nome
                                             </th>
-                                            <th style="width: 15%">
+                                            <th class="filters" style="width: 15%">
                                                 Cargo
                                             </th>
-                                            <th style="width: 20%">
+                                            <th class="filters" style="width: 20%">
                                                 Celular
-                                            </th class="text-center">
-                                            <th style="width: 15%">
+                                            </th>
+                                            <th class="filters" style="width: 15%">
                                                 Data de Cadastro
                                             </th>
                                             <th class="text-right" style="width: 20%">
@@ -715,6 +715,13 @@
                 });
             }); */
 
+
+            $('#example thead tr')
+                .clone(true)
+                .addClass('filters')
+                .appendTo('#example thead');
+
+
             function preencher_privilegios(usu, cli, fin, pro, est, forn, det, log) {
                 $('#usuarioPrivilegio').val(usu);
                 $('#clientePrivilegio').val(cli);
@@ -753,7 +760,56 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+            var api = this.api();
+
+            // For each column
+            api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                    // Set the header cell to contain the input element
+                    var cell = $('.filters th').eq(
+                        $(api.column(colIdx).header()).index()
+                    );
+                    var title = $(cell).text();
+                    $(cell).html('<input type="text" placeholder="' + title + '" />');
+
+                    // On every keypress in this input
+                    $(
+                        'input',
+                        $('.filters th').eq($(api.column(colIdx).header()).index())
+                    )
+                        .off('keyup change')
+                        .on('keyup change', function (e) {
+                            e.stopPropagation();
+
+                            // Get the search value
+                            $(this).attr('title', $(this).val());
+                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                            var cursorPosition = this.selectionStart;
+                            // Search the column for that value
+                            api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                        : '',
+                                    this.value != '',
+                                    this.value == ''
+                                )
+                                .draw();
+
+                            $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                        });
+                });
+        },
             });
             var table_cargo = $('#tb_cargo').DataTable({
                 paging: true,
