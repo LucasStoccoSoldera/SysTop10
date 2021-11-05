@@ -20,6 +20,10 @@ class Parcelas extends Model
         'par_data_pagto',
     ];
 
+    protected $dates = [
+        'par_data_pagto',
+    ];
+
     public function tipopagto_parcelas()
     {
         return $this->hasMany(TipoPagto::class);

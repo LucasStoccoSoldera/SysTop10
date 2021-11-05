@@ -20,6 +20,10 @@ class Venda extends Model
         'ven_data_pagto',
     ];
 
+    protected $dates = [
+        'ven_data_pagto',
+    ];
+
     public function tipopagto_venda()
     {
         return $this->hasMany(TipoPagto::class);

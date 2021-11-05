@@ -24,6 +24,10 @@ class Contas_a_Pagar extends Model
         'con_compra',
     ];
 
+    protected $dates = [
+        'con_data_pag',
+    ];
+
     public function tipopagto_contas_a_pagar()
     {
         return $this->hasMany(TipoPagto::class);

@@ -21,6 +21,10 @@ class Compras extends Model
         'com_parcelas',
     ];
 
+    protected $dates = [
+        'com_data_pagto',
+    ];
+
     public function tipopagto_compra()
     {
         return $this->hasMany(TipoPagto::class);

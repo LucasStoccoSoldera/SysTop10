@@ -21,6 +21,10 @@ class Contas_a_Receber extends Model
         'rec_data',
     ];
 
+    protected $dates = [
+        'rec_data',
+    ];
+
     public function tipopagto_contas_a_receber()
     {
         return $this->hasMany(TipoPagto::class);
