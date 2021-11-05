@@ -99,18 +99,18 @@ class GraficoController extends Controller
     public function vendas(){
 
 
-        $sql_jan = DB::table('cliente')->whereMonth('created_at',  '1')->count();
-        $sql_fev = DB::table('cliente')->whereMonth('created_at',  '2')->count();
-        $sql_mar = DB::table('cliente')->whereMonth('created_at',  '3')->count();
-        $sql_abr = DB::table('cliente')->whereMonth('created_at',  '4')->count();
-        $sql_mai = DB::table('cliente')->whereMonth('created_at',  '5')->count();
-        $sql_jun = DB::table('cliente')->whereMonth('created_at',  '6')->count();
-        $sql_jul = DB::table('cliente')->whereMonth('created_at',  '7')->count();
-        $sql_ago = DB::table('cliente')->whereMonth('created_at',  '8')->count();
-        $sql_set = DB::table('cliente')->whereMonth('created_at',  '9')->count();
-        $sql_out = DB::table('cliente')->whereMonth('created_at',  '10')->count();
-        $sql_nov = DB::table('cliente')->whereMonth('created_at',  '11')->count();
-        $sql_dez = DB::table('cliente')->whereMonth('created_at',  '12')->count();
+        $sql_jan = DB::table('vendas')->whereMonth('created_at',  '1')->count();
+        $sql_fev = DB::table('vendas')->whereMonth('created_at',  '2')->count();
+        $sql_mar = DB::table('vendas')->whereMonth('created_at',  '3')->count();
+        $sql_abr = DB::table('vendas')->whereMonth('created_at',  '4')->count();
+        $sql_mai = DB::table('vendas')->whereMonth('created_at',  '5')->count();
+        $sql_jun = DB::table('vendas')->whereMonth('created_at',  '6')->count();
+        $sql_jul = DB::table('vendas')->whereMonth('created_at',  '7')->count();
+        $sql_ago = DB::table('vendas')->whereMonth('created_at',  '8')->count();
+        $sql_set = DB::table('vendas')->whereMonth('created_at',  '9')->count();
+        $sql_out = DB::table('vendas')->whereMonth('created_at',  '10')->count();
+        $sql_nov = DB::table('vendas')->whereMonth('created_at',  '11')->count();
+        $sql_dez = DB::table('vendas')->whereMonth('created_at',  '12')->count();
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);
