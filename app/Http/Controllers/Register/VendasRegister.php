@@ -91,10 +91,10 @@ class VendasRegister extends Controller
         $Caixa->cax_valor =   $Final;
         $Caixa->cax_ctreceber =  $Final;
         $Caixa->save();
-    }
+        }
 
         $cont = 0;
-        $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
+        $conta_last = DB::table('contas_a_receber')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVenda);
         while ($cont < $request->parcelasVenda) {
 
