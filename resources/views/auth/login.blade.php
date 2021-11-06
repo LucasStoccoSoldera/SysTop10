@@ -13,7 +13,7 @@
     <!-- Nucleo Icons -->
     <link href="css/nucleo-icons.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+    <link href="../css/black-dashboard.css" rel="stylesheet" />
     <link href="css/login.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="demo/demo.css" rel="stylesheet" />
@@ -35,8 +35,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
         integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.11.0/jquery.typeahead.min.js" integrity="sha512-Rc24PGD2NTEGNYG/EMB+jcFpAltU9svgPcG/73l1/5M6is6gu3Vo1uVqyaNWf/sXfKyI0l240iwX9wpm6HE/Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="//cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
   </head>
 
 <div class="geral">
@@ -86,6 +84,8 @@
 
 
                 </div>
+
+                <img src="img/login_prop.jpg" style="margin-top: 80px">
             </div>
         </div>
         <div class="barra-vertical" style="height: 1100px; margin-bottom: 25px;">>
@@ -95,13 +95,16 @@
                 <div class="card-header"><h2>{{ __('Ainda não tem uma conta?') }}<strong class="strong">{{ __('Crie uma aqui mesmo!') }}</strong></h2>
                 </div>
                 <div class="card-body">
-                    <form name="formRegisterClienteLogin" method="POST" action="{{ route('admin.create.cliente.login') }}">
+                    <form name="formRegisterClienteLogin" id="formRegisterClienteLogin" method="POST" action="{{ route('admin.create.cliente.login') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="nomeCliente" class="campos" id="quebra">{{ __('Nome Completo') }}</label>
 
                             <div class="input">
-                                <input id="nomeCliente" type="text" class="form-control-filtro @error('nomeCliente') is-invalid @enderror" name="nomeCliente" value="{{ old('nomeCliente') }}" autocomplete="nomeCliente" autofocus>
+                                <input id="nomeCliente" type="text" class="form-control input-full @error('nomeCliente') is-invalid @enderror" name="nomeCliente" value="{{ old('nomeCliente') }}" autocomplete="nomeCliente" autofocus>
+
+                                <span class="invalid-feedback feedback nomeCliente_error" role="alert">
+                                </span>
                             </div>
                         </div>
 
@@ -109,9 +112,9 @@
                             <label for="usuarioCliente" class="campos">{{ __('E-Mail') }}</label>
 
                             <div class="input">
-                                <input id="usuarioCliente" type="email" class="form-control-filtro @error('usuarioCliente') is-invalid @enderror" name="usuarioCliente" value="{{ old('usuarioCliente') }}">
+                                <input id="usuarioCliente" type="email" class="form-control input-full @error('usuarioCliente') is-invalid @enderror" name="usuarioCliente" value="{{ old('usuarioCliente') }}">
 
-                                <span class="invalid-feedback usuarioCliente_error" role="alert">
+                                <span class="invalid-feedback feedback usuarioCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -120,9 +123,9 @@
                             <label for="senhaCliente" class="campos">{{ __('Senha') }}</label>
 
                             <div class="input">
-                                <input id="senhaCliente" type="password" class="form-control-filtro @error('senhaCliente') is-invalid @enderror" name="senhaCliente">
+                                <input id="senhaCliente" type="password" class="form-control input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente">
 
-                                <span class="invalid-feedback senhaCliente_error" role="alert">
+                                <span class="invalid-feedback feedback senhaCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -130,8 +133,8 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="campos" id="quebra">{{ __('Confirme sua senha') }}</label>
                             <div class="input">
-                                <input id="senhaCliente_confirmation" type="password" class="form-control-filtro  @error('senhaCliente') is-invalid @enderror" name="senhaCliente_confirmation">
-                                <span class="invalid-feedback senhaCliente_error" role="alert">
+                                <input id="senhaCliente_confirmation" type="password" class="form-control input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente_confirmation">
+                                <span class="invalid-feedback feedback senhaCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -140,9 +143,9 @@
                             <label for="cpfCliente" class="campos" id="quebra">{{ __('CPF') }}</label>
 
                             <div class="input">
-                                <input id="cpf" type="text" class="cpf form-control-filtro @error('cpfCliente') is-invalid @enderror" name="cpfCliente" value="{{ old('cpfCliente') }}">
+                                <input id="cpfCliente" type="text" class="cpf form-control input-full @error('cpfCliente') is-invalid @enderror" name="cpfCliente" value="{{ old('cpfCliente') }}">
 
-                                <span class="invalid-feedback cpfCliente_error" role="alert">
+                                <span class="invalid-feedback feedback cpfCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -151,9 +154,9 @@
                             <label for="cnpjCliente" class="campos" id="quebra">{{ __('CNPJ') }}</label>
 
                             <div class="input">
-                                <input id="cnpj" type="text" class="cnpj form-control-filtro @error('cnpjCliente') is-invalid @enderror" name="cnpjCliente" value="{{ old('cnpjCliente') }}">
+                                <input id="cnpjCliente" type="text" class="cnpj form-control input-full @error('cnpjCliente') is-invalid @enderror" name="cnpjCliente" value="{{ old('cnpjCliente') }}">
 
-                                <span class="invalid-feedback cnpjCliente_error" role="alert">
+                                <span class="invalid-feedback feedback cnpjCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -162,9 +165,9 @@
                             <label for="telefoneCliente" class="campos" id="quebra">{{ __('Telefone') }}</label>
 
                             <div class="input">
-                                <input id="telefone" type="text" class="form-control-filtro @error('telefoneCliente') is-invalid @enderror" name="telefoneCliente" value="{{ old('telefoneCliente') }}">
+                                <input id="telefoneCliente" type="text" class="form-control input-full @error('telefoneCliente') is-invalid @enderror" name="telefoneCliente" value="{{ old('telefoneCliente') }}">
 
-                                <span class="invalid-feedback telefoneCliente_error" role="alert">
+                                <span class="invalid-feedback feedback telefoneCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -173,9 +176,9 @@
                             <label for="celularCliente" class="campos" id="quebra">{{ __('Celular') }}</label>
 
                             <div class="input">
-                                <input id="celular" type="text" class="form-control-filtro @error('celularCliente') is-invalid @enderror" name="celularCliente" value="{{ old('celularCliente') }}">
+                                <input id="celularCliente" type="text" class="form-control input-full @error('celularCliente') is-invalid @enderror" name="celularCliente" value="{{ old('celularCliente') }}">
 
-                                <span class="invalid-feedback celularCliente_error" role="alert">
+                                <span class="invalid-feedback feedback celularCliente_error" role="alert">
                                 </span>
                             </div>
                         </div>
@@ -183,25 +186,24 @@
                                     {{ __('Criar Conta!') }}
                                 </button>
                     </form>
-
-
                 </div>
             </div>
           </div>
         </div>
-    </div>
+</div>
+
 
 
 <script>
+
+$(document).ready(function(){
+
     $(event).ready(function(){  // A DIFERENÇA ESTA AQUI, EXECUTA QUANDO O DOCUMENTO ESTA "PRONTO"
     $( "div.problema" ).fadeIn( 300 ).delay( 6000 ).fadeOut( 1200 );
     });
 
-$(document).ready(function(){
-
     $("#formRegisterClienteLogin").on('submit', function(e) {
             e.preventDefault();
-            console.log('teste1');
 
             $.ajax({
                 headers: {
@@ -215,7 +217,7 @@ $(document).ready(function(){
                 beforeSend: function() {
                     $(document).find('span.invalid-feedback').text('');
                     $(document).find('input').removeClass('is-invalid');
-                    console.log('teste2');
+
                 },
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
