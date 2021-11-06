@@ -191,7 +191,7 @@ class ClienteRegister extends Controller
                 'usuarioCliente.email' => 'E-mail inválido.',
                 'usuarioCliente.unique' => 'Usuário já está em uso.',
                 'senhaCliente.required' => 'Senha obrigatória.',
-                'senhaCliente.confirmed' => 'A confirmação da senha não corresponde.',
+                'senhaCliente.confirmed' => 'A confirmação não corresponde.',
             ]
         );
 
