@@ -161,7 +161,7 @@
                 <div class="card" id="card-consulta-tabela">
                     <div class="card-header" id="ch-adaptado">
                         <h2 class="card-title">Consulta de Produtos <button class="btn btn-primary btn-block"
-                                id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                                id="exportar">Exportar</button></h2>
                     </div>
                     <div class="card-body" id="cd-adaptado">
                         <div class="table-responsive">
@@ -2150,6 +2150,32 @@
                     }
                 });
             });
+
+                    $("#exportar").on('click', function(e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{route('admin.export.produto')}}",
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(data_decoded) {
+                if (data_decoded.status == 1) {
+                    demo.showNotification('top', 'right', 2, data_decoded.msg,
+                        'tim-icons icon-check-2');
+                }
+                if (data_decoded.status == 0) {
+                    demo.showNotification('top', 'right', 5, data_decoded.msg,
+                        'tim-icons icon-check-2');
+                }
+            }
+        });
+        });
 
 
             $('#CodigoCores').on('type', function() {

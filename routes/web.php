@@ -180,8 +180,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/admin/Logistica/Atualizar_transportadora', [App\Http\Controllers\Update\TransportadoraUpdate::class, 'updateTransportadora'])->name('admin.update.transportadora');
     Route::put('/admin/Logistica/Atualizar_logistica', [App\Http\Controllers\Update\LogisticaUpdate::class, 'updateLogistica'])->name('admin.update.logistica');
 
-});
 
+    Route::post('/admin/Produto/Exportacao', [App\Http\Controllers\ProdutosController::class, 'exportProduto'])->name('admin.export.produto');
+
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -191,6 +193,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/Registrar_cliente', [App\Http\Controllers\Register\ClienteRegister::class, 'createLoginCliente'])->name('admin.create.cliente.login');
 Route::get('/admin/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login/do', [App\Http\Controllers\LoginController::class, 'login'])->name('admin.login.do');
+
+Route::post('/login/Registrar_cliente', [App\Http\Controllers\Register\ClienteRegister::class, 'createLoginCliente'])->name('admin.create.cliente.login');
+

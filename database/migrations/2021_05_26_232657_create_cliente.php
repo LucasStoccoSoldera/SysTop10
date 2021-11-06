@@ -22,13 +22,13 @@ class CreateCliente extends Migration
             $table->string('cli_cpf_cnpj')->nullable();
             $table->string('cli_telefone')->nullable();
             $table->string('cli_celular')->nullable();
-            $table->string('cli_cep');
-            $table->string('cli_logradouro');
-            $table->string('cli_bairro');
-            $table->string('cli_n_casa');
-            $table->string('cli_cidade');
-            $table->char('cli_uf', 2);
-            $table->string('cli_complemento');
+            $table->string('cli_cep')->nullable();
+            $table->string('cli_logradouro')->nullable();
+            $table->string('cli_bairro')->nullable();
+            $table->string('cli_n_casa')->nullable();
+            $table->string('cli_cidade')->nullable();
+            $table->char('cli_uf', 2)->nullable();
+            $table->string('cli_complemento')->nullable();
         });
     }
 
