@@ -186,7 +186,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('http://localhost/SITE/index.html');
 })->name('welcome');
 
 Auth::routes();

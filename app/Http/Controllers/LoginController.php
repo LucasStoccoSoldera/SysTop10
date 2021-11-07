@@ -59,7 +59,7 @@ class LoginController extends Controller
                     if(Hash::check($request->password, $get_cliente->cli_senha)){
                         Auth::loginUsingId($get_cliente->id);
                         $get_cliente = null;
-                        return redirect()->route('home');
+                        return redirect()->route('welcome');
                     }
                     return redirect()->back()->withInput()->withErrors(['Os dados informados não conferem!']);
                 }
@@ -79,7 +79,7 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('admin');
+        return redirect()->route('welcome');
     }
 }
 
