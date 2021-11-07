@@ -27,6 +27,7 @@ class CreateExportProduto extends Migration
             $table->char('pro_personalizacao', 3);
             $table->integer('pro_pedidominimo');
             $table->char('pro_terceirizacao', 3);
+            $table->longText('pro_descricao');
             $table->string('pro_cor')->nullable();
             $table->string('pro_cor_referencia')->nullable();
             $table->string('pro_dimensao')->nullable();

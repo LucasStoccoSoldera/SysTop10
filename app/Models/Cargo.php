@@ -12,6 +12,7 @@ class Cargo extends Model
 
     protected $fillable = [
         'car_descricao',
+        'pri_id',
     ];
 
     public function privilegio_cargo()

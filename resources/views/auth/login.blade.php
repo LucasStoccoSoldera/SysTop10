@@ -41,7 +41,7 @@
     <a href="{{route('welcome')}}"><img class="voltar_login" src="../img/dash/back_login.png" style="height: 1150px; margin-bottom: 25px;"></a>
     <div class="junto">
         <div class="row" id="login">
-            <div class="card" id="tamanho-total">
+            <div class="card" id="tamanho-total"style="height: 105%; margin-bottom: 25px;">
                 <div class="card-header"><h2><strong>{{ __('Entrar em sua conta') }}</strong></h2></div>
                 <div class="card-body">
 
@@ -85,10 +85,10 @@
 
                 </div>
 
-                <img src="img/login_prop.jpg" style="margin-top: 80px">
+                <img src="img/login_prop.jpg" style="margin-top: 100px">
             </div>
         </div>
-        <div class="barra-vertical" style="height: 1100px; margin-bottom: 25px;">>
+        <div class="barra-vertical" style="height: 1100px; margin-bottom: 25px;">
         </div>
     <div class="row" id="register">
             <div class="card" id="tamanho-total" style="height: 1100px; margin-bottom: 25px;">

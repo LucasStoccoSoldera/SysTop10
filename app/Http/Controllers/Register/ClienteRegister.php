@@ -306,10 +306,9 @@ class ClienteRegister extends Controller
             $Cliente->save();
 
             if ($Cliente) {
-            $get_cliente = Cliente::where('cli_usuario', $request->usuario)->first();
+            $get_cliente = Cliente::select('id')->where('cli_usuario', '=', $request->usuarioCliente)->first();
             Auth::loginUsingId($get_cliente->id);
-            $get_cliente = null;
-            return redirect()->route('home')->withInput(['success' => 1]);
+            return redirect()->route('welcome')->with(['success' => 1, 'msg' => "Olá $get_cliente->cli_usuario, sua conta criada com sucesso! <br> Agora é só começar a comprar!"]);
             }
         }
     }

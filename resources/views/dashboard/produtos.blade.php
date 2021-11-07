@@ -411,6 +411,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group" id="form-group">
+                                        <label class="modal-label">Descrição:</label> <label
+                                            style="color: red; font-size: 12px;"> * </label>
+                                        <textarea name="DescricaoProduto" id="DescricaoProduto" class="form-control"
+                                            value="{{ old('DescricaoProduto') }}" rows="5" style="white-space: pre-wrap; height: 100px;"></textarea>
+                                        <div class="div-feedback">
+                                            <span class="invalid-feedback DescricaoProduto_error" role="alert">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="cancela btn btn-secondary btn-danger"
@@ -690,7 +704,7 @@
                                         <label class="modal-label">{{ $dimensao['dim_descricao'] }}</label><br>
                                         <div style="float: unset">
                                             <input id="{{ 'switch-shadow' . "$cont" }}"
-                                                name="dimensoes[{{ $dimensao['dim_descricao'] }}]"
+                                                name="dimensoes[dd{{ $dimensao['id'] }}]"
                                                 value={{ 1 ?? 0 }} type="checkbox">
                                         </div>
                                     </div>
@@ -1208,6 +1222,20 @@
                                         value="{{ old('FotoProdutoUp') }}">
                                     <div class="div-feedback">
                                         <span class="invalid-feedback FotoProduto_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Descrição:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                        <textarea name="DescricaoProdutoUp" id="DescricaoProdutoUp" class="form-control"
+                                        value="{{ old('DescricaoProdutoUp') }}" rows="5" style="white-space: pre-wrap; height: 100px;"></textarea>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback DescricaoProdutoUp_error" role="alert">
                                         </span>
                                     </div>
                                 </div>

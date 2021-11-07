@@ -435,10 +435,10 @@
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Email para Login:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
-                                    <input type="text" name="usu_usuarioUp" id="usu_usuarioUp" class="form-control"
-                                        value="{{ old('usu_usuarioUp') }}" placeholder="Entre com o Login">
+                                    <input type="text" name="EmailUsuarioUp" id="EmailUsuarioUp" class="form-control"
+                                        value="{{ old('EmailUsuarioUp') }}" placeholder="Entre com o Login">
                                     <div class="div-feedback">
-                                        <span class="invalid-feedback usu_usuarioUp_error" role="alert">
+                                        <span class="invalid-feedback EmailUsuarioUp_error" role="alert">
                                         </span>
                                     </div>
                                 </div>

@@ -2228,20 +2228,7 @@ pre code {
 }
 
 .form-control-filtro {
-    display: block;
-    width: 400px;
-    height: calc(2.25rem + 2px);
-    padding: 0.5rem 0.7rem;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.428571;
     color: #fff;
-    background-color: transparent;
-    background-clip: padding-box;
-    border: 1px solid #cad1d7;
-    border-radius: 0.25rem;
-    box-shadow: none;
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 #form-direita {
     width: 100%;
@@ -4066,6 +4053,15 @@ fieldset:disabled a.btn {
     border-radius: 20px 20px 0.4285rem 0.4285rem;
 }
 #btn-form-consulta-imprimir {
+    height: 40px;
+    width: 150px;
+    float: right;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+#exportar {
     height: 40px;
     width: 150px;
     float: right;
@@ -19768,16 +19764,17 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 @media (min-width: 991px) {
+
     .sidebar,
     .main-panel,
     .sidebar-wrapper {
-        -webkit-transition-property: top, bottom, width;
-        transition-property: top, bottom, width;
-        -webkit-transition-duration: 0.2s, 0.2s, 0.35s;
-        transition-duration: 0.2s, 0.2s, 0.35s;
-        -webkit-transition-timing-function: linear, linear, ease;
-        transition-timing-function: linear, linear, ease;
-        -webkit-overflow-scrolling: touch;
+      -webkit-transition-property: top, bottom, width;
+      transition-property: top, bottom, width;
+      -webkit-transition-duration: .2s, .2s, .35s;
+      transition-duration: .2s, .2s, .35s;
+      -webkit-transition-timing-function: linear, linear, ease;
+      transition-timing-function: linear, linear, ease;
+      -webkit-overflow-scrolling: touch;
     }
 
     .sidebar-mini .visible-on-sidebar-regular {
@@ -21229,18 +21226,11 @@ textarea.form-control {
     max-width: 100%;
     max-height: 80px;
     padding: 10px 10px 0 0;
-    resize: none;
-    border: none;
-    border-bottom: 1px solid #2b3553;
-    border-radius: 0;
-    line-height: 2;
 }
 
 textarea.form-control:focus,
 textarea.form-control:active {
-    border-left: none;
-    border-top: none;
-    border-right: none;
+
 }
 
 .has-success.form-group .form-control,

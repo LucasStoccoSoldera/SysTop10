@@ -14,6 +14,7 @@ use App\Models\ExportProduto;
 use App\Models\Logistica;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
 class ProdutosController extends Controller
@@ -79,20 +80,24 @@ class ProdutosController extends Controller
         foreach ($cor_colunas as $cor_coluna){
 
         $cor_join = Cor::select('cor_hex_especial')->where('cor_nome', '=', $cor_coluna)->first();
+        $tipo_join = TipoProduto::select('tpp_descricao')->where('id', '=', $produto->tpp_id)->first();
+        $material_join = Material_Base::select('mat_descricao')->where('id', '=', $produto->mat_id)->first();
+
 
         $Export = new ExportProduto;
         $Export->pro_id = $produto->id;
         $Export->pro_nome = $produto->pro_nome;
-        $Export->tpp_id = $produto->tpp_id;
+        $Export->tpp_id = $tipo_join->tpp_descricao;
         $Export->log_id = $produto->log_id;
+        $Export->mat_id = $material_join->mat_descricao;
         $Export->pro_precocusto = $produto->pro_precocusto;
         $Export->pro_precovenda = $produto->pro_precovenda;
         $Export->pro_promocao = $produto->pro_promocao;
-        $Export->mat_id = $produto->mat_id;
         $Export->pro_pedidominimo = $produto->pro_pedidominimo;
         $Export->pro_foto_path = $produto->pro_foto_path;
         $Export->pro_personalizacao = $produto->pro_personalizacao;
         $Export->pro_terceirizacao = $produto->pro_terceirizacao;
+        $Export->pro_descricao = $produto->pro_descricao;
         $Export->pro_cor = $cor_coluna;
         $Export->pro_cor_referencia = $cor_join->cor_hex_especial;
         $Export->pro_dimensao = null;
@@ -101,21 +106,26 @@ class ProdutosController extends Controller
 
             foreach ($dimensao_colunas as $dimensao_coluna){
 
-                $dimensao_join = Dimensao::select('dim_descricao')->where('dim_descricao', '=', $dimensao_coluna)->first();
+                $dimensao_coluna = substr($dimensao_coluna, 2);
+
+                $dimensao_join = Dimensao::select('dim_descricao')->where('id', '=', $dimensao_coluna)->first();
+                $tipo_join = TipoProduto::select('tpp_descricao')->where('id', '=', $produto->tpp_id)->first();
+                $material_join = Material_Base::select('mat_descricao')->where('id', '=', $produto->mat_id)->first();
 
                 $Export = new ExportProduto;
                 $Export->pro_id = $produto->id;
                 $Export->pro_nome = $produto->pro_nome;
-                $Export->tpp_id = $produto->tpp_id;
+                $Export->tpp_id = $tipo_join->tpp_descricao;
                 $Export->log_id = $produto->log_id;
+                $Export->mat_id = $material_join->mat_descricao;
                 $Export->pro_precocusto = $produto->pro_precocusto;
                 $Export->pro_precovenda = $produto->pro_precovenda;
                 $Export->pro_promocao = $produto->pro_promocao;
-                $Export->mat_id = $produto->mat_id;
                 $Export->pro_pedidominimo = $produto->pro_pedidominimo;
                 $Export->pro_foto_path = $produto->pro_foto_path;
                 $Export->pro_personalizacao = $produto->pro_personalizacao;
                 $Export->pro_terceirizacao = $produto->pro_terceirizacao;
+                $Export->pro_descricao = $produto->pro_descricao;
                 $Export->pro_cor = null;
                 $Export->pro_cor_referencia = null;
                 $Export->pro_dimensao = $dimensao_join->dim_descricao;

@@ -23,6 +23,7 @@ class ExportProduto extends Model
         'pro_personalizacao',
         'pro_pedidominimo',
         'pro_terceirizacao',
+        'pro_descricao',
         'pro_cor',
         'pro_cor_referencia',
         'pro_dimensao',

@@ -32,7 +32,7 @@ class UserUpdate extends Controller
 
         $validator = Validator::make($request->all(),[
             'nomeUserUp' => ['required', 'string'],
-            'usu_usuarioUp' => ['required', 'email','unique:usuario'],
+            'EmailUsuarioUp' => ['required', 'email','unique:usuario'],
             'senhaUserUp' => ['required', 'string', 'confirmed'],
             'celularUserUp' => ['required', 'celular_com_ddd'],
             'cpfUserUp' => ['required', 'string'],
@@ -40,9 +40,9 @@ class UserUpdate extends Controller
         ],
         [
             'nomeUserUp.required' => 'Nome obrigatório.',
-            'usu_usuarioUp.required' => 'E-mail obrigatório.',
-            'usu_usuarioUp.unique' => 'O E-mail informado ja está em uso.',
-            'usu_usuarioUp.email' => 'O E-mail informado é inválido.',
+            'EmailUsuarioUp.required' => 'E-mail obrigatório.',
+            'EmailUsuarioUp.unique' => 'O E-mail informado ja está em uso.',
+            'EmailUsuarioUp.email' => 'O E-mail informado é inválido.',
             'senhaUserUp.required' => 'Senha obrigatória.',
             'senhaUserUp.confirmed' => 'A confirmação não corresponde.',
             'celularUserUp.required' => 'Celular obrigatório.',
@@ -57,7 +57,7 @@ class UserUpdate extends Controller
         }
         $Usuario = Usuario::find($request->idUsu);
         $Usuario->usu_nome_completo = $request->nomeUserUp;
-        $Usuario->usu_usuario = $request->usu_usuarioUp;
+        $Usuario->usu_usuario = $request->EmailUsuarioUp;
         $Usuario->usu_senha = Hash::make($request->senhaUserUp);
         $Usuario->usu_celular = $request->celularUserUp;
         $Usuario->usu_cpf = $request->cpfUserUp;

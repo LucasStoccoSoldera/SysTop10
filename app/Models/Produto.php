@@ -22,6 +22,7 @@ class Produto extends Model
         'pro_personalizacao',
         'pro_pedidominimo',
         'pro_terceirizacao',
+        'pro_descricao',
     ];
 
     public function material_produto()

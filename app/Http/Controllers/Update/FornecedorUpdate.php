@@ -51,9 +51,9 @@ class FornecedorUpdate extends Controller
             ]
         );
 
-        if (!empty($request->cpfFornecedor || $request->cnpjFornecedor)) {
+        if (!empty($request->cpfFornecedorUp || $request->cnpjFornecedorUp)) {
 
-            if (isset($request->cpfFornecedor)) {
+            if (isset($request->cpfFornecedorUp)) {
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
@@ -88,9 +88,9 @@ class FornecedorUpdate extends Controller
             );
         }
 
-        if (!empty($request->telefoneFornecedor || $request->celularFornecedor)) {
+        if (!empty($request->telefoneFornecedorUp || $request->celularFornecedorUp)) {
 
-            if (isset($request->telefoneFornecedor)) {
+            if (isset($request->telefoneFornecedorUp)) {
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
@@ -111,7 +111,7 @@ class FornecedorUpdate extends Controller
                     ]
                 );
             }
-        } else if (isset($request->telefoneFornecedor) && isset($request->celularFornecedor)) {
+        } else if (isset($request->telefoneFornecedorUp) && isset($request->celularFornecedorUp)) {
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [

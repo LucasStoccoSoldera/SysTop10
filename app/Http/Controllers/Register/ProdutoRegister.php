@@ -34,7 +34,8 @@ class ProdutoRegister extends Controller
                 'MaterialProduto' => ['required', 'integer'],
                 'LogisticaProduto' => ['required', 'integer'],
                 'PedidoMinimoProduto' => ['required', 'integer'],
-                'FotoProduto' => ['required', 'image', 'dimensions:width=100,height=200'],
+                'FotoProduto' => ['required', 'image', 'dimensions:width=2000,height=2000'],
+                'DescricaoProduto' => ['required'],
             ],
             [
                 'IDProduto' => 'ID obrigatório.',
@@ -46,8 +47,9 @@ class ProdutoRegister extends Controller
                 'LogisticaProduto.required' => 'Pacote obrigatório.',
                 'FotoProduto.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.image' => 'Arquivo não é uma imagem.',
-                'FotoProduto.dimensions' => 'Dimensão de 100 x 200.',
+                'FotoProduto.dimensions' => 'Dimensão de 2000 x 2000.',
                 'PedidoMinimoProduto.required' => 'Pedido Mínimo obrigatório.',
+                'DescricaoProduto.required' => 'Descrição obrigatória.',
             ]
         );
 
@@ -71,6 +73,7 @@ class ProdutoRegister extends Controller
         $Produto->pro_foto_path = $nameFile;
         $Produto->pro_personalizacao = $request->PersoProduto;
         $Produto->pro_terceirizacao = $request->TerceProduto;
+        $Produto->pro_descricao = $request->DescricaoProduto;
         $Produto->save();
 
         $upload = $request->FotoProduto->storeAs('fotos', $nameFile);

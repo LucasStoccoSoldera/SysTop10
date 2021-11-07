@@ -38,7 +38,8 @@ class ProdutoUpdate extends Controller
                 'MaterialProdutoUp' => ['required', 'integer'],
                 'LogisticaProdutoUp' => ['required', 'integer'],
                 'PedidoMinimoProdutoUp' => ['required', 'integer'],
-                'FotoProdutoUp' => ['required', 'image', 'dimensions:width=200,height=200'],
+                'FotoProdutoUp' => ['required', 'image', 'dimensions:width=2000,height=2000'],
+                'DescricaoProdutoUp' => ['required'],
             ],
             [
                 'IDProdutoUp' => 'ID obrigatório.',
@@ -50,8 +51,9 @@ class ProdutoUpdate extends Controller
                 'LogisticaProdutoUp.required' => 'Pacote obrigatório.',
                 'FotoProdutoUp.required' => 'Foto do produto obrigatória.',
                 'FotoProdutoUp.image' => 'Arquivo não é uma imagem.',
-                'FotoProdutoUp.dimensions' => 'Dimensão de 100 x 200.',
+                'FotoProdutoUp.dimensions' => 'Dimensão de 2000 x 2000.',
                 'PedidoMinimoProdutoUp.required' => 'Pedido Mínimo obrigatório.',
+                'DescricaoProdutoUp.required' => 'Descrição obrigatória.',
             ]
         );
 
@@ -75,6 +77,7 @@ class ProdutoUpdate extends Controller
         $Produto->pro_foto_path = $nameFile;
         $Produto->pro_personalizacao = $request->PersoProdutoUp;
         $Produto->pro_terceirizacao = $request->TerceProdutoUp;
+        $Produto->pro_descricao = $request->DescricaoProdutoUp;
         $Produto->save();
 
         $upload = $request->FotoProdutoUp->storeAs('fotos', $nameFile);

@@ -139,7 +139,7 @@ function editFornecedor(id)
         $("#celularFornecedorUp").val(fornecedor.for_celular);
         $("#cpfFornecedorUp").val(fornecedor.for_cpf_cnpj);
         $("#cnpjFornecedorUp").val(fornecedor.for_cpf_cnpj);
-        $("#produtosFornecedorUp").val(fornecedor.produtosFornecedor);
+        $("#produtosFornecedorUp").val(fornecedor.for_produto);
         $("#cepFornecedorUp").val(fornecedor.for_cep);
         $("#estadoFornecedorUp").val(fornecedor.for_estado);
         $("#cidadeFornecedorUp").val(fornecedor.for_cidade);

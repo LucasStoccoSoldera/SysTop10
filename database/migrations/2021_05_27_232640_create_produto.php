@@ -26,6 +26,7 @@ class CreateProduto extends Migration
             $table->char('pro_personalizacao', 3);
             $table->integer('pro_pedidominimo');
             $table->char('pro_terceirizacao', 3);
+            $table->longText('pro_descricao');
             $table->timestamps();
 
             $table->foreign('mat_id')->references('id')->on('material');

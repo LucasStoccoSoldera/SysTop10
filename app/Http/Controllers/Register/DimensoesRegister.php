@@ -36,9 +36,10 @@ class DimensoesRegister extends Controller
         $Dimensao = new Dimensao;
         $Dimensao->dim_descricao = $request->NomeDimensao;
         $Dimensao->save();
+        $codigo = DB::table('dimensoes')->where('dim_descricao', '=', $request->NomeDimensao)->first();
 
-        Schema::table('dimensao_produto', function (Blueprint $table) use ($request) {
-            $table->char($request->NomeDimensao)->default(0);
+        Schema::table('dimensao_produto', function (Blueprint $table) use ($codigo) {
+            $table->char('dd'.$codigo->id)->default(0);
         });
 
         if ($Dimensao) {
