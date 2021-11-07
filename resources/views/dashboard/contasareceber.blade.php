@@ -176,8 +176,7 @@
             <div class="col-12" style="padding-left: 0px; padding-right: 0px">
                 <div class="card " id="card-consulta-tabela">
                     <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Contas a Receber <button class="btn btn-primary btn-block"
-                                id="btn-form-consulta-imprimir">Imprimir</button></h2>
+                        <h2 class="card-title">Consulta de Contas a Receber </h2>
                     </div>
                     <div class="card-body" id="cd-adaptado">
                         <div class="table-responsive">
