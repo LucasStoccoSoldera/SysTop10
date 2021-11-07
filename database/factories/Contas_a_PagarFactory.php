@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Usuario;
-use App\Models\Cargo;
+use App\Models\Contas_a_Pagar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UsuarioFactory extends Factory
+class Contas_a_PagarFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Usuario::class;
+    protected $model = Contas_a_Pagar::class;
 
     /**
      * Define the model's default state.
@@ -22,6 +21,8 @@ class UsuarioFactory extends Factory
      */
     public function definition()
     {
-
+        return [
+            //
+        ];
     }
 }
