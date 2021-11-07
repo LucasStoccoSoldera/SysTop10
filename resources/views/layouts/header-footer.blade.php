@@ -175,7 +175,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script> 2021 feito de <i class="tim-icons icon-bulb-63"></i> pela
-                        <a href="C:\xampp\htdocs\FLEX\index.html" target="_blank">Flex</a> Soluções em Tecnologia.
+                        <a href="http://localhost/FLEX/index.html" target="_blank">Flex</a> Soluções em Tecnologia.
                     </div>
                 </div>
             </footer>
@@ -215,7 +215,7 @@
                             <a href="../doc/manual.pdf" download class="btn btn-primary btn-block btn-round"
                             id="btn-center">Manual</a>
 
-                        <a href="C:\xampp\htdocs\FLEX\index.html"
+                        <a href="http://localhost/FLEX/index.html"
                             target="_blank" class="btn btn-default btn-block btn-round" id="btn-center">
                             Flex - Suporte Técnico
                         </a>
