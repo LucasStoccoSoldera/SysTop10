@@ -85,7 +85,7 @@
 
                 </div>
 
-                <img src="img/login_prop.jpg" style="margin-top: 100px">
+                <img src="img/login_prop.png" style="margin-top: 100px">
             </div>
         </div>
         <div class="barra-vertical" style="height: 1100px; margin-bottom: 25px;">
