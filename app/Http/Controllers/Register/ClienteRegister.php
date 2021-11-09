@@ -238,7 +238,7 @@ class ClienteRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneCliente' => ['telefone'],
+                    'telefoneCliente' => ['telefone_com_ddd'],
                     'celularCliente' => ['celular_com_ddd'],
                 ],
                 [
@@ -253,7 +253,7 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneCliente' => ['telefone'],
+                        'telefoneCliente' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneCliente.telefone' => 'Telefone inválido.',
@@ -308,7 +308,7 @@ class ClienteRegister extends Controller
             if ($Cliente) {
             $get_cliente = Cliente::select('id')->where('cli_usuario', '=', $request->usuarioCliente)->first();
             Auth::loginUsingId($get_cliente->id);
-            return redirect()->route('welcome')->with(['success' => 1, 'msg' => "Olá $get_cliente->cli_usuario, sua conta criada com sucesso! <br> Agora é só começar a comprar!"]);
+            return response()->json(['status' => 1, 'msg' => "Olá $get_cliente->cli_usuario, sua conta criada com sucesso! <br> Agora é só começar a comprar!"]);
             }
         }
     }
