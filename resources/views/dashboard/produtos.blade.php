@@ -118,7 +118,7 @@
                                     <label class="modal-label">Tipo Produto:</label>
                                     <select type="text" name="txt_tpp" id="txt_tpp" class="filtro form-control"
                                         value="{{ old('txt_tpp') }}">
-                                        <option value="">-------------------------Selecione-------------------------
+                                        <option value="">Selecione
                                         </option>
                                         @foreach ($tipos as $tipo)
                                             <option value="{{ $tipo['id'] }}">{{ $tipo['tpp_descricao'] }}
@@ -133,7 +133,7 @@
                                     <label class="modal-label">Material:</label>
                                     <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
                                         value="{{ old('txt_material') }}">
-                                        <option value="">-------------------------Selecione-------------------------
+                                        <option value="">Selecione
                                         </option>
                                         @foreach ($materiais as $material)
                                             <option value="{{ $material['id'] }}">{{ $material['mat_descricao'] }}
@@ -889,7 +889,7 @@
             <form class="form-cadastro" id="formRegisterPacotes" method="POST" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.create.pacote') }}">
                 @csrf
-                <div class="modal-content" style="width: 100%">
+                <div class="modal-content" style="width: 150%">
                     <div class="modal-header">
                         <h4 class="modal-title">Cadastrar Pacotes para Envio</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1447,7 +1447,7 @@
                 enctype="multipart/form-data" action="{{ route('admin.update.pacote') }}">
                 @csrf
                 <input type="hidden" id="idPac" name="idPac">
-                <div class="modal-content" style="width: 100%">
+                <div class="modal-content" style="width: 150%">
                     <div class="modal-header">
                         <h4 class="modal-title">Atualizar Pacotes para Envio</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

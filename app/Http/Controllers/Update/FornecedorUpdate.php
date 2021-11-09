@@ -94,7 +94,7 @@ class FornecedorUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneFornecedorUp' => ['telefone'],
+                        'telefoneFornecedorUp' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneFornecedorUp.telefone' => 'Telefone inválido.',
@@ -115,7 +115,7 @@ class FornecedorUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneFornecedorUp' => ['telefone'],
+                    'telefoneFornecedorUp' => ['telefone_com_ddd'],
                     'celularFornecedorUp' => ['celular_com_ddd'],
                 ],
                 [

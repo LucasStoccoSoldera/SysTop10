@@ -102,7 +102,7 @@ class ClienteUpdate extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneClienteUp' => ['telefone'],
+                    'telefoneClienteUp' => ['telefone_com_ddd'],
                     'celularClienteUp' => ['celular_com_ddd'],
                 ],
                 [
@@ -117,7 +117,7 @@ class ClienteUpdate extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneClienteUp' => ['telefone'],
+                        'telefoneClienteUp' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneClienteUp.telefone' => 'Telefone inválido.',

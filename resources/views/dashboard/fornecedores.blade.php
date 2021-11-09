@@ -545,6 +545,12 @@
                 ],
             });
 
+            $(document).on('click', '[data-dismiss="modal"]',
+                function() {
+                    table_fornecedor.ajax.reload(null, false);
+                }
+            );
+
             $("#formRegisterFornecedores").on('submit', function(e) {
                 e.preventDefault();
 
@@ -681,12 +687,6 @@
                     }
                 });
             });
-
-            $(document).on('click', '[data-dismiss="modal"]',
-                function() {
-                    table_fornecedor.ajax.reload(null, false);
-                }
-            );
 
 
             $("#formFilter").on('submit', function(e) {

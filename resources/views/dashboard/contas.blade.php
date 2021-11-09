@@ -152,7 +152,7 @@
                                     <label class="modal-label">Centro de Custo:</label>
                                     <select type="text" name="txt_centro" id="txt_centro" class="filtro form-control"
                                         maxlength="25" value="{{ old('txt_centro') }}">
-                                        <option value="">------------Selecione------------</option>
+                                        <option value="">Selecione</option>
                                         @foreach ($centros as $centro)
                                             <option value="{{ $centro['id'] }}">{{ $centro['cc_descricao'] }}
                                             </option>

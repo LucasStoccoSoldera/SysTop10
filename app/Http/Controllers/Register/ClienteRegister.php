@@ -92,7 +92,7 @@ class ClienteRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneCliente' => ['telefone'],
+                    'telefoneCliente' => ['telefone_com_ddd'],
                     'celularCliente' => ['celular_com_ddd'],
                 ],
                 [
@@ -107,7 +107,7 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneCliente' => ['telefone'],
+                        'telefoneCliente' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneCliente.telefone' => 'Telefone inválido.',
@@ -238,7 +238,7 @@ class ClienteRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneCliente' => ['telefone'],
+                    'telefoneCliente' => ['telefone_com_ddd'],
                     'celularCliente' => ['celular_com_ddd'],
                 ],
                 [
@@ -253,7 +253,7 @@ class ClienteRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneCliente' => ['telefone'],
+                        'telefoneCliente' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneCliente.telefone' => 'Telefone inválido.',

@@ -214,7 +214,7 @@
 
     @yield('modals')
 
-    <div class="modal fade" id="modalAlertDelete" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="modalAlertDelete" style="display: none; top: 2.5%;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formExcluir" method="POST" autocomplete="off" enctype="multipart/form-data" >
                 @csrf
@@ -402,7 +402,7 @@
                 $('.cnpj').mask('00.000.000/0000-00');
                 $('.rg').mask('00.000.000-0');
                 $('.cep').mask('00000-000');
-                $('.telefone').mask('0000-0000');
+                $('.telefone').mask('(00) 0000-0000');
                 $('.celular').mask('(00) 00000-0000');
                 $('.dimensao').mask('000 x 000 x 000');
                 $('.cep').mask('00000-000');

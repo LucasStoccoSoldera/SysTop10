@@ -152,7 +152,7 @@
                                     <label class="modal-label">Status:</label>
                                     <select type="text" name="txt_status" id="txt_status" class="filtro form-control"
                                         maxlength="25" value="{{ old('txt_status') }}">
-                                        <option value="">------------Selecione------------</option>
+                                        <option value="">Selecione</option>
                                         <option value="1">Em Aberto</option>
                                         <option value="2">Fechada</option>
                                         <option value="3">Cancelada</option>
