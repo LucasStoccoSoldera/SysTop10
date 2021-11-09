@@ -232,22 +232,25 @@ $(document).ready(function(){
                         $('#formRegisterClienteLogin')[0].reset();
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
-                            window.location.href = "http://www.devmedia.com.br";
+                            window.location.href = "http://localhost/SITE/index.html";
                     }
                     if (data_decoded.status == 0) {
 
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
+                            $('#' + prefix).focus();
                             $('#' + prefix).addClass('is-invalid');
                             $('#' + prefix + '_confirmation').addClass(
                                 'is-invalid');
                         });
                         $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
+                            $('#' + prefix).focus();
                             $('#' + prefix).addClass('is-invalid');
                         });
                         $.each(data_decoded.error_telefone_celular, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
+                            $('#' + prefix).focus();
                             $('#' + prefix).addClass('is-invalid');
                         });
                     }

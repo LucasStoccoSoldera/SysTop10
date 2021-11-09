@@ -577,15 +577,18 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                             $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                             $.each(data_decoded.error_telefone_celular, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -619,15 +622,18 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                             $.each(data_decoded.error_cpf_cnpj, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                             $.each(data_decoded.error_telefone_celular, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }

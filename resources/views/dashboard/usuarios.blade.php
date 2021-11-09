@@ -871,7 +871,8 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                                 $('#' + prefix + '_confirmation').addClass(
                                     'is-invalid');
                             });
@@ -908,7 +909,8 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -941,7 +943,8 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                                 $('#' + prefix + '_confirmation').addClass(
                                     'is-invalid');
                             });
@@ -978,7 +981,8 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -1013,7 +1017,8 @@
                         if (data_decoded.status == 0) {
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
-                                $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).focus();
+                            $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
