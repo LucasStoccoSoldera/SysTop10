@@ -46,7 +46,7 @@ var seq2 = 0,
   durations2 = 500;
 
 (function() {
-  var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+  var isWindows = navigator.platform.indexOf('Win') > -1 ? true : true;
 
   if (isWindows) {
     // if we are on windows OS we activate the perfectScrollbar function
