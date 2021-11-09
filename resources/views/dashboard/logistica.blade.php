@@ -61,7 +61,7 @@
                 <li class="active">
                     <a href="{{ route('admin.detalhe') }}">
                         <i class="tim-icons icon-pin"></i>
-                        <p>Gerenciamento Geral</p>
+                        <p>Administração</p>
                     </a>
                     <a href="{{ route('admin.logistica') }}" hidden id="logistica"></a>
                 </li>

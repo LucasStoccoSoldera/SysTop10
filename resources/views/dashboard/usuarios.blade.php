@@ -61,7 +61,7 @@
                 <li>
                     <a href="{{ route('admin.detalhe') }}">
                         <i class="tim-icons icon-pin"></i>
-                        <p>Gerenciamento Geral</p>
+                        <p>Administração</p>
                     </a>
                 </li>
             </ul>
