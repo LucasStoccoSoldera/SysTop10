@@ -230,6 +230,7 @@ $(document).ready(function(){
                         $('#formRegisterClienteLogin')[0].reset();
                         demo.showNotification('top', 'right', 2, data_decoded.msg,
                             'tim-icons icon-check-2');
+                            window.location.href = "http://www.devmedia.com.br";
                     }
                     if (data_decoded.status == 0) {
 
