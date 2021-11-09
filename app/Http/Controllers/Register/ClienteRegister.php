@@ -10,6 +10,7 @@ use App\Models\Cliente;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ClienteRegister extends Controller
 {
@@ -178,6 +179,7 @@ class ClienteRegister extends Controller
 
     protected function createLoginCliente(Request $request)
     {
+        return redirect()->route('login');
         $validator = Validator::make(
             $request->all(),
             [
@@ -308,7 +310,7 @@ class ClienteRegister extends Controller
             if ($Cliente) {
             $get_cliente = Cliente::select('id')->where('cli_usuario', '=', $request->usuarioCliente)->first();
             Auth::loginUsingId($get_cliente->id);
-            return redirect()->route('welcome')->with(['success' => 1, 'msg' => "Olá $get_cliente->cli_usuario, sua conta criada com sucesso! <br> Agora é só começar a comprar!"]);
+
             }
         }
     }
