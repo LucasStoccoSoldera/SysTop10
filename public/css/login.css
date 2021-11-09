@@ -95,8 +95,9 @@
 }
 .junto {
     height: 1175px;
-    width: 969px;
+    width: 100%;
     margin: auto;
+    margin-left: 0;
     align-items: center;
     justify-content: center;
 }

@@ -38,10 +38,11 @@
   </head>
 
 <div class="geral">
-    <a href="{{ route('welcome') }}">
-        <img src="img/dash/voltar_azul.png" alt="" style="margin-left: 100px; width:150px;height: 150px;" class="voltar">
-    </a>
+
     <div class="junto">
+        <a href="{{ route('welcome') }}">
+        <img src="img/dash/voltar_azul.png" alt="" style="float: left;margin-top:50px;margin-left: 4%;margin-right: 5%; width:7%;height:7%;" class="voltar">
+    </a>
         <div class="row" id="login">
             <div class="card" id="tamanho-total"style="height: 105%; margin-bottom: 25px;">
                 <div class="card-header"><h2><strong>{{ __('Entrar em sua conta') }}</strong></h2></div>
@@ -192,6 +193,7 @@
             </div>
           </div>
         </div>
+
 </div>
 
 
