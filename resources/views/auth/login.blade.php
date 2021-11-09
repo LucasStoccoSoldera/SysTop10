@@ -38,7 +38,9 @@
   </head>
 
 <div class="geral">
-    <a href="{{route('welcome')}}"><img class="voltar_login" src="../img/dash/back_login.png" style="height: 1150px; margin-bottom: 25px;"></a>
+    <a href="{{ route('welcome') }}">
+        <img src="img/dash/voltar_azul.png" alt="" style="margin-left: 100px; width:150px;height: 150px;" class="voltar">
+    </a>
     <div class="junto">
         <div class="row" id="login">
             <div class="card" id="tamanho-total"style="height: 105%; margin-bottom: 25px;">
@@ -58,7 +60,7 @@
                         <label for="usuario" class="campos">{{ __('E-Mail') }}</label>
 
                         <div class="input">
-                            <input id="usuario" type="email" class="form-control form-control-filtro input-full @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" autocomplete="usuario" autofocus>
+                            <input id="usuario" type="email" class="form-control form-control-filtro input-full @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" autocomplete="usuario" autofocus placeholder="Entre com o e-mail">
 
                         </div>
                     </div>
@@ -67,7 +69,7 @@
                         <label for="password" class="campos">{{ __('Senha') }}</label>
 
                         <div class="input">
-                            <input id="password" type="password" class="form-control form-control-filtro input-full @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                            <input id="password" type="password" class="form-control form-control-filtro input-full @error('password') is-invalid @enderror" name="password" autocomplete="current-password" placeholder="Entre com a Senha">
                         </div>
                     </div>
 
@@ -101,7 +103,7 @@
                             <label for="nomeCliente" class="campos" id="quebra">{{ __('Nome Completo') }}</label>
 
                             <div class="input">
-                                <input id="nomeCliente" type="text" class="form-control form-control-filtro input-full @error('nomeCliente') is-invalid @enderror" name="nomeCliente" value="{{ old('nomeCliente') }}" autocomplete="nomeCliente" autofocus>
+                                <input id="nomeCliente" type="text" class="form-control form-control-filtro input-full @error('nomeCliente') is-invalid @enderror" name="nomeCliente" value="{{ old('nomeCliente') }}" autocomplete="nomeCliente" autofocus placeholder="Entre com o Nome">
 
                                 <span class="invalid-feedback feedback nomeCliente_error" role="alert">
                                 </span>
@@ -112,7 +114,7 @@
                             <label for="usuarioCliente" class="campos">{{ __('E-Mail') }}</label>
 
                             <div class="input">
-                                <input id="usuarioCliente" type="email" class="form-control form-control-filtro input-full @error('usuarioCliente') is-invalid @enderror" name="usuarioCliente" value="{{ old('usuarioCliente') }}">
+                                <input id="usuarioCliente" type="email" class="form-control form-control-filtro input-full @error('usuarioCliente') is-invalid @enderror" name="usuarioCliente" value="{{ old('usuarioCliente') }}" placeholder="Entre com o E-mail">
 
                                 <span class="invalid-feedback feedback usuarioCliente_error" role="alert">
                                 </span>
@@ -123,7 +125,7 @@
                             <label for="senhaCliente" class="campos">{{ __('Senha') }}</label>
 
                             <div class="input">
-                                <input id="senhaCliente" type="password" class="form-control form-control-filtro input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente">
+                                <input id="senhaCliente" type="password" class="form-control form-control-filtro input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente" placeholder="Entre com a Senha">
 
                                 <span class="invalid-feedback feedback senhaCliente_error" role="alert">
                                 </span>
@@ -133,7 +135,7 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="campos" id="quebra">{{ __('Confirme sua senha') }}</label>
                             <div class="input">
-                                <input id="senhaCliente_confirmation" type="password" class="form-control form-control-filtro input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente_confirmation">
+                                <input id="senhaCliente_confirmation" type="password" class="form-control form-control-filtro input-full @error('senhaCliente') is-invalid @enderror" name="senhaCliente_confirmation" placeholder="Confirme a Senha">
                                 <span class="invalid-feedback feedback senhaCliente_error" role="alert">
                                 </span>
                             </div>
@@ -143,7 +145,7 @@
                             <label for="cpfCliente" class="campos" id="quebra">{{ __('CPF') }}</label>
 
                             <div class="input">
-                                <input id="cpfCliente" type="text" class="cpf form-control form-control-filtro input-full @error('cpfCliente') is-invalid @enderror" name="cpfCliente" value="{{ old('cpfCliente') }}">
+                                <input id="cpfCliente" type="text" class="cpf form-control form-control-filtro input-full @error('cpfCliente') is-invalid @enderror" name="cpfCliente" value="{{ old('cpfCliente') }}" placeholder="Entre com o CPF">
 
                                 <span class="invalid-feedback feedback cpfCliente_error" role="alert">
                                 </span>
@@ -154,7 +156,7 @@
                             <label for="cnpjCliente" class="campos" id="quebra">{{ __('CNPJ') }}</label>
 
                             <div class="input">
-                                <input id="cnpjCliente" type="text" class="cnpj form-control form-control-filtro input-full @error('cnpjCliente') is-invalid @enderror" name="cnpjCliente" value="{{ old('cnpjCliente') }}">
+                                <input id="cnpjCliente" type="text" class="cnpj form-control form-control-filtro input-full @error('cnpjCliente') is-invalid @enderror" name="cnpjCliente" value="{{ old('cnpjCliente') }}" placeholder="Entre com o CNPJ">
 
                                 <span class="invalid-feedback feedback cnpjCliente_error" role="alert">
                                 </span>
@@ -165,7 +167,7 @@
                             <label for="telefoneCliente" class="campos" id="quebra">{{ __('Telefone') }}</label>
 
                             <div class="input">
-                                <input id="telefoneCliente" type="text" class="telefone form-control form-control-filtro input-full @error('telefoneCliente') is-invalid @enderror" name="telefoneCliente" value="{{ old('telefoneCliente') }}">
+                                <input id="telefoneCliente" type="text" class="telefone form-control form-control-filtro input-full @error('telefoneCliente') is-invalid @enderror" name="telefoneCliente" value="{{ old('telefoneCliente') }}" placeholder="Entre com o Telefone">
 
                                 <span class="invalid-feedback feedback telefoneCliente_error" role="alert">
                                 </span>
@@ -176,7 +178,7 @@
                             <label for="celularCliente" class="campos" id="quebra">{{ __('Celular') }}</label>
 
                             <div class="input">
-                                <input id="celularCliente" type="text" class="celular form-control form-control-filtro input-full @error('celularCliente') is-invalid @enderror" name="celularCliente" value="{{ old('celularCliente') }}">
+                                <input id="celularCliente" type="text" class="celular form-control form-control-filtro input-full @error('celularCliente') is-invalid @enderror" name="celularCliente" value="{{ old('celularCliente') }}" placeholder="Entre com o Celular">
 
                                 <span class="invalid-feedback feedback celularCliente_error" role="alert">
                                 </span>
@@ -205,7 +207,7 @@ $(document).ready(function(){
 
                 $('.cpf').mask('000.000.000-00');
                 $('.cnpj').mask('00.000.000/0000-00');
-                $('.telefone').mask('0000-0000');
+                $('.telefone').mask('(00) 0000-0000');
                 $('.celular').mask('(00) 00000-0000');
 
     $("#formRegisterClienteLogin").on('submit', function(e) {

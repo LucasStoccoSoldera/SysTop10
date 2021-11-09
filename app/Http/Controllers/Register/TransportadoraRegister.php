@@ -32,7 +32,7 @@ class TransportadoraRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneTrans' => ['telefone'],
+                    'telefoneTrans' => ['telefone_com_ddd'],
                     'celularTrans' => ['celular_com_ddd'],
                 ],
                 [
@@ -47,7 +47,7 @@ class TransportadoraRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneTrans' => ['telefone'],
+                        'telefoneTrans' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneTrans.telefone' => 'Telefone inválido.',

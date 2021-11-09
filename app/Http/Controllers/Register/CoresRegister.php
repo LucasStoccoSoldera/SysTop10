@@ -72,9 +72,10 @@ class CoresRegister extends Controller
         $Cor->cor_nome = $request->NomeCores;
         $Cor->cor_hex_especial = $cor;
         $Cor->save();
+        $codigo = DB::table('cor')->where('cor_nome', '=', $request->NomeCores)->first();
 
-        Schema::table('cor_produto', function (Blueprint $table) use ($request) {
-            return $table->char($request->NomeCores)->default(0);
+        Schema::table('cor_produto', function (Blueprint $table) use ($codigo) {
+            return $table->char('dd'.$codigo->id)->default(0);
         });
 
         if ($Cor) {

@@ -201,8 +201,10 @@
     @endsection
 @endsection
 @section('modals')
+    </div>
+</div>
 
-    <div class="modal fade" id="modalRegisterLogistica" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalRegisterLogistica" style="display: none; top: 2.5%;"aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formRegisterLogistica" method="POST" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.create.logistica') }}">
@@ -261,7 +263,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalRegisterTransportadora" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalRegisterTransportadora" style="display: none; top: 2.5%;" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-cadastro" id="formRegisterTransportadora" method="POST" autocomplete="off"
                 enctype="multipart/form-data" action="{{ route('admin.create.transportadora') }}">

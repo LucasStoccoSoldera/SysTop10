@@ -127,7 +127,7 @@
                                     <label class="modal-label" for="filtro_cargo">Cargo:</label>
                                     <select type="text" name="filtro_cargo" id="filtro_cargo"
                                         class="filtro form-control filter-select">
-                                        <option value="">-------------------------Selecione-------------------------
+                                        <option value="">Selecione
                                         </option>
                                         @foreach ($cargos as $cargo)
                                             <option value="{{ $cargo['car_descricao'] }}">

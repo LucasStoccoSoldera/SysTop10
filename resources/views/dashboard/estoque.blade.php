@@ -113,7 +113,7 @@
                                     <label class="modal-label">Dimensão:</label>
                                     <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
                                         value="{{ old('txt_centro') }}">
-                                        <option value="">------------Selecione------------</option>
+                                        <option value="">Selecione</option>
                                         @foreach ($dimensoes as $dimensao)
                                             <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
                                             </option>

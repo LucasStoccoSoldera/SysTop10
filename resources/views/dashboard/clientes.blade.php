@@ -104,7 +104,7 @@
                             <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado1 }}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Clientes Hoje:</h4>
+                            <h4 class="resumo" style="color: #2caeec;">Clientes Mês:</h4>
                             <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado2 }}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
@@ -250,7 +250,7 @@
                                 <label class="modal-label">Nome Completo:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="nomeCliente" id="nomeCliente" class="form-control"
-                                    maxlength="25" value="{{ old('nomeCliente') }}" placeholder="Entre com o Nome"
+                                    maxlength="80" value="{{ old('nomeCliente') }}" placeholder="Entre com o Nome"
                                     autofocus>
                                 <div class="div-feedback">
                                     <span class="invalid-feedback nomeCliente_error" role="alert">
@@ -406,7 +406,7 @@
                                 <label class="modal-label">Complemento:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="complementoCliente" id="complementoCliente"
-                                    class="form-control" maxlength="4" value="{{ old('complementoCliente') }}"
+                                    class="form-control" maxlength="50" value="{{ old('complementoCliente') }}"
                                     placeholder="Entre com o Complemento">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback complementoCliente_error" role="alert">
@@ -436,7 +436,7 @@
         </form>
     </div>
 </div>
-
+</div>
 <div class="modal fade" id="modalUpdateCliente" style="display:none;" aria-hidden="true">
     <div class="modal-dialog">
         <form id="formUpdateCliente" method="PUT" autocomplete="off" enctype="multipart/form-data"
@@ -647,11 +647,18 @@
     </div>
 </div>
 </div>
+</div>
 @endsection
 
 @push('ajax')
 <script>
     $(document).ready(function() {
+
+        $(document).on('click', '[data-dismiss="modal"]',
+            function() {
+                table_cliente.ajax.reload(null, false);
+            }
+        );
 
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,
@@ -692,12 +699,6 @@
         $('.filter-input').keyup(function() {
             table.column($(this).data('column')).search($(this).val()).draw();
         });
-
-        $(document).on('click', '[data-dismiss="modal"]',
-            function() {
-                table_cliente.ajax.reload(null, false);
-            }
-        );
 
         $("#formRegisterCliente").on('submit', function(e) {
             e.preventDefault();

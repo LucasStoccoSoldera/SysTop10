@@ -87,7 +87,7 @@ class FornecedorRegister extends Controller
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneFornecedor' => ['telefone'],
+                        'telefoneFornecedor' => ['telefone_com_ddd'],
                     ],
                     [
                         'telefoneFornecedor.telefone' => 'Telefone inválido.',
@@ -108,7 +108,7 @@ class FornecedorRegister extends Controller
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneFornecedor' => ['telefone'],
+                    'telefoneFornecedor' => ['telefone_com_ddd'],
                     'celularFornecedor' => ['celular_com_ddd'],
                 ],
                 [

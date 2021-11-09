@@ -19,10 +19,11 @@ class ClienteController extends Controller
         $segundo = date("s");
         $now = date("Y-m-d H:i:s");
         $ontem = Carbon::now()->subDay();
+        $mes_passado = Carbon::now()->subMonth();
 
         $dado1 = Cliente::count();
-        $dado2 = DB::table('cliente')->where('created_at', '>=', "$ontem")->count();
-        $dado3 = Cliente::count();
+        $dado2 = DB::table('cliente')->where('created_at', '>=', "$mes_passado")->count();
+        $dado3 = DB::table('cliente')->where('created_at', '>=', "$ontem")->count();
 
         $data = Cliente::limit(25)->get();
 
