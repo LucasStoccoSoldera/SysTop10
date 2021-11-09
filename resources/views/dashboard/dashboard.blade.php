@@ -65,7 +65,6 @@
                     </a>
                 </li>
             </ul>
-            <button class="button-embaixo" style="position: absolute; bottom:65px;">Mudar para Pipas</button>
         </div>
     </div>
 @endsection
