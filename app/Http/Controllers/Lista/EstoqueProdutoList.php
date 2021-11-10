@@ -14,7 +14,6 @@ class EstoqueProdutoList extends Controller
 
         if($request->ajax()){
 
-            $data = Estoque::query();
             $data = Estoque::select('pro_id','pro_nome', 'est_qtde', 'est_status')
             ->join('produto', 'estoque.pro_id', '=', 'produto.id');
 
