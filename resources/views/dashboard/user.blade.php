@@ -65,7 +65,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.2') }}">
-                            <i class="tim-icons icon-pin"></i>
+                            <i class="tim-icons icon-settings"></i>
                             <p>Maps</p>
                         </a>
                     </li>

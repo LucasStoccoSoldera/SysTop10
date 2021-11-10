@@ -60,7 +60,7 @@
                 </li>
                 <li>
                     <a href="{{ route('admin.detalhe') }}">
-                        <i class="tim-icons icon-pin"></i>
+                        <i class="tim-icons icon-settings"></i>
                         <p>Administração</p>
                     </a>
                 </li>
@@ -634,8 +634,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Desconto:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Desconto:</label>
                                     <input type="text" name="descontoVendaUp" id="descontoVendaUp"
                                         class="porcentagem form-control" maxlength="11"
                                         value="{{ old('descontoVendaUp') }}" placeholder="Entre com o Desconto">
@@ -645,8 +644,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Recebimento:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Recebimento:</label>
                                     <input type="date" name="datapagtoVendasUp" id="datapagtoVendasUp"
                                         class="form-control" onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                         value="{{ old('datapagtoVendasUp') }}" placeholder="Entre com o Recebimento">
