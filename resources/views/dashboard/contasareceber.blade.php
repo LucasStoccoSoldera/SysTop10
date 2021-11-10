@@ -791,7 +791,7 @@
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formExcluir')[0].reset();
-                        $('#modalAlertDelete').hide();
+                        $('#modalAlertDelete').modal('toggle');
                         demo.showNotification('top', 'right', 4, data_decoded.msg,
                             'tim-icons icon-alert-circle-exc');
                     }
