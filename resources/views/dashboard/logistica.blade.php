@@ -8,7 +8,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="{{ route('admin.detalhe') }}" class="simple-text logo-mini">
-                        <img src="../img/dash/voltar.png" alt="" class="voltar">
+                        <img src="../img/dash/voltar_vermelho.png" alt="" class="voltar">
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
                     SysTop10
@@ -66,10 +66,6 @@
                     <a href="{{ route('admin.logistica') }}" hidden id="logistica"></a>
                 </li>
             </ul>
-            <div class="voltar">
-                <a href="{{ route('admin.detalhe') }}">
-                    <img src="../img/dash/voltar.png" alt="" width="75px" height="75px">
-            </div>
         </div>
     </div>
 @endsection

@@ -8,7 +8,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="{{ route('admin.financeiro') }}" class="simple-text logo-mini">
-                        <img src="../img/dash/voltar.png" alt="" class="voltar">
+                        <img src="../img/dash/voltar_vermelho.png" alt="" class="voltar">
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
                     SysTop10
@@ -65,11 +65,6 @@
                     </a>
                 </li>
             </ul>
-            <div class="voltar">
-                <a href="{{ route('admin.financeiro') }}">
-                    <img src="../img/dash/voltar.png" alt="" class="voltar">
-                </a>
-            </div>
         </div>
     </div>
 @endsection
