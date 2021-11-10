@@ -157,10 +157,13 @@
                                         <th class="text-center" style="width: 10%">
                                             ID
                                         </th>
-                                        <th style="width: 35%">
+                                        <th style="width: 40%">
+                                            Descrição
+                                        </th>
+                                        <th style="width: 15%">
                                             Pacote
                                         </th>
-                                        <th style="width: 35%">
+                                        <th style="width: 15%">
                                             Transportadora
                                         </th>
                                         <th class="text-right" style="width: 20%">
@@ -214,7 +217,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Descrição da Relação:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="descricaoLogistica" id="descricaoLogistica"
+                                        class="form-control" maxlength="80" value="{{ old('descricaoLogistica') }}"
+                                        placeholder="Entre com a Descrição">
+                                    <span class="invalid-feedback descricaoLogistica_error" role="alert">
+                                    </span>
+                                </div>
+                            <div class="col-6">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Pacote</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
@@ -407,7 +420,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Descrição da Relação:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="descricaoLogisticaUp" id="descricaoLogisticaUp"
+                                    class="form-control" maxlength="80" value="{{ old('descricaoLogisticaUp') }}"
+                                    placeholder="Entre com a Descrição">
+                                <span class="invalid-feedback descricaoLogisticaUp_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Pacote</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -603,6 +627,9 @@
             columns: [{
                     data: "id",
                     className: "text-center"
+                },
+                {
+                    data: "log_descricao"
                 },
                 {
                     data: "pac_descricao"

@@ -28,10 +28,12 @@ class LogisticaUpdate extends Controller
             [
                 'pacoteLogisticaUp' => ['required', 'integer'],
                 'transLogisticaUp' => ['required', 'integer'],
+                'descricaoLogisticaUp' => ['required'],
             ],
             [
                 'pacoteLogisticaUp.required' => 'Pacote obrigatório.',
                 'transLogisticaUp.required' => 'Transportadora obrigatória.',
+                'descricaoLogisticaUp.required' => 'Descrição obrigatória.',
             ]
         );
 
@@ -41,6 +43,7 @@ class LogisticaUpdate extends Controller
         $Logistica = Logistica::find($request->idLog);
         $Logistica->pac_id = $request->pacoteLogisticaUp;
         $Logistica->trans_id = $request->transLogisticaUp;
+        $Logistica->log_descricao = $request->descricaoLogisticaUp;
         $Logistica->save();
 
         if ($Logistica) {

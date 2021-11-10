@@ -22,10 +22,12 @@ class LogisticaRegister extends Controller
             [
                 'pacoteLogistica' => ['required', 'integer'],
                 'transLogistica' => ['required', 'integer'],
+                'descricaoLogistica' => ['required'],
             ],
             [
                 'pacoteLogistica.required' => 'Pacote obrigatório.',
                 'transLogistica.required' => 'Transportadora obrigatória.',
+                'descricaoLogistica.required' => 'Descrição obrigatória.',
             ]
         );
 
@@ -35,6 +37,7 @@ class LogisticaRegister extends Controller
         $Logistica = new Logistica;
         $Logistica->pac_id = $request->pacoteLogistica;
         $Logistica->trans_id = $request->transLogistica;
+        $Logistica->log_descricao = $request->descricaoLogistica;
         $Logistica->save();
 
         if ($Logistica) {

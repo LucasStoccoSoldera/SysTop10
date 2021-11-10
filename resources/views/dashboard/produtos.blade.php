@@ -345,7 +345,7 @@
                                             <option value="">------------Selecione------------</option>
                                             @foreach ($logisticas as $logistica)
                                                 <option value="{{ $logistica['id'] }}">
-                                                    {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
+                                                    {{ $logistica['log_descricao']}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -1161,7 +1161,7 @@
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($logisticas as $logistica)
                                             <option value="{{ $logistica['id'] }}">
-                                                {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
+                                                {{ $logistica['log_descricao']}}
                                             </option>
                                         @endforeach
                                     </select>

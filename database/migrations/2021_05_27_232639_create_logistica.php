@@ -17,6 +17,7 @@ class CreateLogistica extends Migration
             $table->id();
             $table->unsignedBigInteger('pac_id');
             $table->unsignedBigInteger('trans_id');
+            $table->string('log_descricao');
             $table->timestamps();
 
             $table->foreign('trans_id')->references('id')->on('transportadora');

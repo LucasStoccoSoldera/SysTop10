@@ -13,6 +13,7 @@ class Logistica extends Model
     protected $fillable = [
         'pac_id',
         'trans_id',
+        'log_descricao',
     ];
 
     public function transportadora_logistica()
