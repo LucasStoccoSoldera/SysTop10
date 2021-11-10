@@ -21,7 +21,7 @@ class VendasDelete extends Controller
 
         $data->delete();
         $msgExcluir = "A venda $descricao foi excluída com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 
     public function deleteItemVenda(Request $request)
@@ -35,6 +35,8 @@ class VendasDelete extends Controller
         $Estoque->est_qtde = $request->qtdeItemVenda;
         $Estoque->save();
         $data->delete();
-        return response()->json();
+
+        $msgExcluir = "O item $data->id foi excluído com sucesso!";
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 }
