@@ -160,7 +160,8 @@
             <div class="col-12" style="padding-left: 0px;padding-right: 0px;">
                 <div class="card" id="card-consulta-tabela">
                     <div class="card-header" id="ch-adaptado">
-                        <h2 class="card-title">Consulta de Produtos</h2>
+                        <h2 class="card-title">Consulta de Produtos</h2> <button class="btn btn-primary btn-block"
+                        id="exportar" style="width: 220px">Exportar para Site</button></h2>
                     </div>
                     <div class="card-body" id="cd-adaptado">
                         <div class="table-responsive">
@@ -344,7 +345,7 @@
                                             <option value="">------------Selecione------------</option>
                                             @foreach ($logisticas as $logistica)
                                                 <option value="{{ $logistica['id'] }}">
-                                                    {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
+                                                    {{ $logistica['log_descricao']}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -1160,7 +1161,7 @@
                                         <option value="">------------Selecione------------</option>
                                         @foreach ($logisticas as $logistica)
                                             <option value="{{ $logistica['id'] }}">
-                                                {{ $logistica['log_pacote'] + $logistica['log_transportadora'] }}
+                                                {{ $logistica['log_descricao']}}
                                             </option>
                                         @endforeach
                                     </select>
@@ -2264,7 +2265,7 @@
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
                             $('#formExcluir')[0].reset();
-                            $('#modalAlertDelete').hide();
+                        $('#modalAlertDelete').modal('toggle');
                             demo.showNotification('top', 'right', 4, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }

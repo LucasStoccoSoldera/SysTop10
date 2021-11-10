@@ -45,6 +45,8 @@ class ContasDelete extends Controller
         $Estoque->est_qtde = $request->qtdeItemVenda * -1;
         $Estoque->save();
         $data->delete();
-        return response()->json();
+
+        $msgExcluir = "O item $data->id foi excluído com sucesso!";
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 }

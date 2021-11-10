@@ -18,7 +18,7 @@ class LogisticaList extends Controller
 
         if($request->ajax()){
 
-            $data = Logistica::select('logistica.id', 'pac_descricao', 'trans_nome')
+            $data = Logistica::select('logistica.id', 'log_descricao', 'pac_descricao', 'trans_nome')
             ->join('pacote', 'logistica.pac_id', '=', 'pacote.id')
             ->join('transportadora', 'logistica.trans_id', '=', 'transportadora.id');
 

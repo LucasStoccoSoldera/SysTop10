@@ -8,7 +8,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="{{ route('admin.detalhe') }}" class="simple-text logo-mini">
-                        <img src="../img/dash/voltar.png" alt="" class="voltar">
+                        <img src="../img/dash/voltar_vermelho.png" alt="" class="voltar">
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
                     SysTop10
@@ -66,10 +66,6 @@
                     <a href="{{ route('admin.logistica') }}" hidden id="logistica"></a>
                 </li>
             </ul>
-            <div class="voltar">
-                <a href="{{ route('admin.detalhe') }}">
-                    <img src="../img/dash/voltar.png" alt="" width="75px" height="75px">
-            </div>
         </div>
     </div>
 @endsection
@@ -161,10 +157,13 @@
                                         <th class="text-center" style="width: 10%">
                                             ID
                                         </th>
-                                        <th style="width: 35%">
+                                        <th style="width: 40%">
+                                            Descrição
+                                        </th>
+                                        <th style="width: 15%">
                                             Pacote
                                         </th>
-                                        <th style="width: 35%">
+                                        <th style="width: 15%">
                                             Transportadora
                                         </th>
                                         <th class="text-right" style="width: 20%">
@@ -218,7 +217,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Descrição da Relação:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="text" name="descricaoLogistica" id="descricaoLogistica"
+                                        class="form-control" maxlength="80" value="{{ old('descricaoLogistica') }}"
+                                        placeholder="Entre com a Descrição">
+                                    <span class="invalid-feedback descricaoLogistica_error" role="alert">
+                                    </span>
+                                </div>
+                            <div class="col-6">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Pacote</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
@@ -411,7 +420,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-6">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Descrição da Relação:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="text" name="descricaoLogisticaUp" id="descricaoLogisticaUp"
+                                    class="form-control" maxlength="80" value="{{ old('descricaoLogisticaUp') }}"
+                                    placeholder="Entre com a Descrição">
+                                <span class="invalid-feedback descricaoLogisticaUp_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-6">
                             <div class="form-group" id="form-group">
                                 <label class="modal-label">Pacote</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -609,6 +629,9 @@
                     className: "text-center"
                 },
                 {
+                    data: "log_descricao"
+                },
+                {
                     data: "pac_descricao"
                 },
                 {
@@ -799,7 +822,7 @@
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formExcluir')[0].reset();
-                        $('#modalAlertDelete').hide();
+                        $('#modalAlertDelete').modal('toggle');
                         demo.showNotification('top', 'right', 4, data_decoded.msg,
                             'tim-icons icon-alert-circle-exc');
                     }

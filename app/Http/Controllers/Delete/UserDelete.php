@@ -23,7 +23,7 @@ class UserDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O usuário $nome foi excluído com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
         }
     }
 }

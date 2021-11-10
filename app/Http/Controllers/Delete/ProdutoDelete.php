@@ -17,6 +17,6 @@ class ProdutoDelete extends Controller
 
         $data->delete();
         $msgExcluir = "O produto $descricao foi excluído com sucesso!";
-        return response()->json(['msg' => $msgExcluir]);
+        return response()->json(['status' => 1, 'msg' => $msgExcluir]);
     }
 }
