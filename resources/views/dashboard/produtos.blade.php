@@ -11,7 +11,7 @@
                     10
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Top System
+                    SysTop10
                 </a>
             </div>
             <ul class="nav">

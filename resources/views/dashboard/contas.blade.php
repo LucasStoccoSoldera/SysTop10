@@ -7,11 +7,11 @@
                             -->
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="javascript:void(0)" class="simple-text logo-mini">
-                    10
+                <a href="{{ route('admin.financeiro') }}" class="simple-text logo-mini">
+                        <img src="../img/dash/voltar.png" alt="" class="voltar">
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
-                    Top System
+                    SysTop10
                 </a>
             </div>
             <ul class="nav">

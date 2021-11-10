@@ -5788,10 +5788,8 @@ input[type="button"].btn-block {
     height: 100%;
 }
 .voltar {
-    margin: 0 auto;
-    width: 75px;
-    height: 75px;
-    margin-top: 10px;
+    width: 50px;
+    height: 50px;
 }
 #p-detalhe {
     margin-top: 30px;
