@@ -227,6 +227,7 @@
                                     <span class="invalid-feedback descricaoLogistica_error" role="alert">
                                     </span>
                                 </div>
+                            </div>
                             <div class="col-6">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Pacote</label> <label
