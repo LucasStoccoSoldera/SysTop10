@@ -133,7 +133,7 @@
                 <div class="container-fluid">
                     <ul class="nav" id="footer-padding">
                         <li class="nav-item">
-                            <a href="https://www.top10embalagens.com.br/" target="_blank" class="nav-link">
+                            <a href="http://localhost/SITE/index.html" target="_blank" class="nav-link">
                                 Site Top 10 Embalagens
                             </a>
                         </li>
@@ -201,7 +201,7 @@
                 </li>
                 <li class="header-title">Acesso Rápido</li>
                 <li class="button-container text-center">
-                    <a href="https://www.top10embalagens.com.br/" target="_blank" id="twitter" class="btn btn-round btn-info"><i class="fab fa-digital-ocean"></i> &middot;
+                    <a href="http://localhost/SITE/index.html" target="_blank" id="twitter" class="btn btn-round btn-info"><i class="fab fa-digital-ocean"></i> &middot;
                         Site</a>
                     <a href="https://pt-br.facebook.com/Top10Embalagens/" target="_blank" id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot;
                         Facebook</a>
