@@ -1059,9 +1059,10 @@
                             demo.showNotification('top', 'right', 4, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }
-                        if (data_decoded.status == 0) {
-                            demo.showNotification('top', 'right', 5, data_decoded.msg,
-                                'tim-icons icon-alert-circle-exc');
+                    if (data_decoded.status == 0) {
+                        demo.showNotification('top', 'right', 3, data_decoded.msg,
+                            'tim-icons icon-alert-circle-exc');
+                            $('#modalAlertDelete').modal('toggle');
                         }
                     }
                 });

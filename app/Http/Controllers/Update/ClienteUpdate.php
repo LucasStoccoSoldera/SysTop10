@@ -47,7 +47,7 @@ class ClienteUpdate extends Controller
                 'usuarioClienteUp.required' => 'Usuário obrigatório.',
                 'usuarioClienteUp.email' => 'E-mail inválido.',
                 'senhaClienteUp.required' => 'Senha obrigatória.',
-                'senhaClienteUp.confirmed' => 'A confirmação da senha não corresponde.',
+                'senhaClienteUp.confirmed' => 'A confirmação não corresponde.',
                 'cepClienteUp.required' => 'CEP obrigatório.',
                 'cepClienteUp.formato_cep' => 'CEP inválido.',
                 'cidadeClienteUp.required' => 'Cidade obrigatória.',

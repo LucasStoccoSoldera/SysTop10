@@ -79,7 +79,9 @@ class ProdutosController extends Controller
 
         foreach ($cor_colunas as $cor_coluna){
 
-        $cor_join = Cor::select('cor_hex_especial')->where('cor_nome', '=', $cor_coluna)->first();
+        $cor_coluna = substr($cor_coluna, 2);
+
+        $cor_join = Cor::select('cor_hex_especial')->where('id', '=', $cor_coluna)->first();
         $tipo_join = TipoProduto::select('tpp_descricao')->where('id', '=', $produto->tpp_id)->first();
         $material_join = Material_Base::select('mat_descricao')->where('id', '=', $produto->mat_id)->first();
 
