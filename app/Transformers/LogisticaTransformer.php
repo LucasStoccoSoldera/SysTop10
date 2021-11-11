@@ -16,6 +16,7 @@ class LogisticaTransformer extends TransformerAbstract
         $rota =  "'" . route('admin.delete.logistica') . "'";
         return [
             'id' => (int) $logistica->id,
+            'log_descricao' => $logistica->log_descricao,
             'pac_descricao' => $logistica->pac_descricao,
             'trans_nome' => $logistica->trans_nome,
             'action' => '<a class="btn btn-primary alter" data-id="'.$logistica->id.'"><i

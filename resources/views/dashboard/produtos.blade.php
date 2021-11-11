@@ -866,7 +866,7 @@
                                         <label class="modal-label">{{ $cor['cor_nome'] }}</label><br>
                                         <div style="float: unset">
                                             <input id="{{ 'switch-shadow' . "$cont" }}"
-                                                name="cores[{{ $cor['cor_nome'] }}]" value="1" type="checkbox">
+                                                name="cores[dd{{ $cor['id'] }}]" value="1" type="checkbox">
                                         </div>
                                     </div>
                                     <hr class="visible-xs-block">
@@ -2270,8 +2270,9 @@
                                 'tim-icons icon-alert-circle-exc');
                         }
                         if (data_decoded.status == 0) {
-                            demo.showNotification('top', 'right', 5, data_decoded.msg,
+                            demo.showNotification('top', 'right', 3, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
+                                $('#modalAlertDelete').modal('toggle');
                         }
                     }
                 });

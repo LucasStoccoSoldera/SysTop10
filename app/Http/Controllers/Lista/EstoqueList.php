@@ -17,7 +17,7 @@ class EstoqueList extends Controller
 
             $data = Estoque::select('pro_id', 'est_qtde', 'dim_descricao', 'cor_nome',
             DB::raw("DATE_FORMAT(estoque.est_data, '%d/%m/%Y') as est_data"),
-            'est_time')
+            'est_time')->orderBy('est_data')
             ->join('produto', 'estoque.pro_id', '=', 'produto.id')
             ->join('dimensoes', 'estoque.dim_id', '=', 'dimensoes.id')
             ->join('cores', 'estoque.cor_id', '=', 'cores.id');
