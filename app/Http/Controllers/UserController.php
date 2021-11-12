@@ -24,9 +24,12 @@ class UserController extends Controller
         $mes_passado = Carbon::now()->subMonth();
         $ano_passado = Carbon::now()->subYear();
 
+
+        $todos = Usuario::all()->count();
+
         $dado1 = Usuario::count();
-        $dado2 = Usuario::where('car_id', '1')->count();
-        $dado3 = Usuario::where('car_id', '2' && '3')->count();
+        $dado2 = Usuario::where('car_id', 1)->count();
+        $dado3 = $todos - $dado2;
 
         $data = Usuario::all();
         $data2 = Cargo::all();

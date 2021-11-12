@@ -96,6 +96,7 @@ class FiltroController extends Controller
         }
 
         $data = Cliente::select('id', 'cli_nome', 'cli_cpf_cnpj', 'cli_celular', 'cli_cidade', 'created_at') . $where;
+        dd($data);
 
         return  DataTables::eloquent($data)
         ->addColumn('action', function($data){

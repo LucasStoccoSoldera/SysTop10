@@ -21,7 +21,7 @@ class CreateVendas extends Migration
             $table->timestamp('ven_data');
             $table->date('ven_data_pagto');
             $table->string('ven_parcelas');
-            $table->char('ven_status', 1);
+            $table->string('ven_status');
             $table->float('ven_desconto', 12, 2)->nullable();
             $table->timestamps();
 

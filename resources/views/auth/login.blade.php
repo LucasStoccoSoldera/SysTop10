@@ -232,8 +232,6 @@ $(document).ready(function(){
                 success: function(data_decoded) {
                     if (data_decoded.status == 1) {
                         $('#formRegisterClienteLogin')[0].reset();
-                        demo.showNotification('top', 'right', 2, data_decoded.msg,
-                            'tim-icons icon-check-2');
                             window.location.href = "http://localhost/SITE/index.html";
                     }
                     if (data_decoded.status == 0) {

@@ -367,10 +367,10 @@
                                             maxlength="25" value="{{ old('statusVenda') }}"
                                             placeholder="Selecione o Status">
                                             <option value="">------------Selecione------------</option>
-                                            <option value="1">Em Aberto</option>
-                                            <option value="2">Faturada</option>
-                                            <option value="3">Fechada</option>
-                                            <option value="4">Cancelada</option>
+                                            <option value="Em Aberto">Em Aberto</option>
+                                            <option value="Faturada">Faturada</option>
+                                            <option value="Fechada">Fechada</option>
+                                            <option value="Cancelada">Cancelada</option>
                                         </select>
                                         <div class="div-feedback">
                                             <span class="invalid-feedback statusVenda_error" role="alert">
@@ -1130,7 +1130,7 @@
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
                                 $('#' + prefix).focus();
-                            $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -1150,6 +1150,7 @@
                     url: $(this).attr('action'),
                     data: formData,
                     processData: false,
+                    contentType: false,
                     dataType: 'json',
                     beforeSend: function() {
                         $(document).find('span.invalid-feedback').text('');

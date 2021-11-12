@@ -33,6 +33,7 @@ class VendasRegister extends Controller
                 'IDLogistica' => ['required', 'integer'],
                 'IDCliente' => ['required', 'integer'],
                 'parcelasVenda' => ['required', 'integer'],
+                'datapagtoVendas' => ['required'],
                 'statusVenda' => ['required', 'string'],
             ],
             [
@@ -42,6 +43,7 @@ class VendasRegister extends Controller
                 'IDLogistica.required' => 'Logistica obrigatória.',
                 'IDCliente.required' => 'Cliente obrigatório.',
                 'parcelasVenda.required' => 'Qtde. de parcelas obrigatória.',
+                'datapagtoVendas' => ['required'],
                 'statusVenda.required' => 'Status da venda obrigatório.',
             ]
         );
@@ -65,8 +67,8 @@ class VendasRegister extends Controller
 
         $Total = $soma_total * $qtde;
 
-        if(isset($request->descontoVendaUp) and $request->descontoVendaUp <> 0){
-        $Final = $Total - ( $Total * ($request->descontoVendaUp / 100));
+        if(isset($request->descontoVenda) and $request->descontoVenda <> 0){
+        $Final = $Total - ( $Total * ($request->descontoVenda / 100));
         }else{
             $Final = $Total;
         }
@@ -84,7 +86,7 @@ class VendasRegister extends Controller
         $Receber->rec_status = $request->statusVenda;
         $Receber->save();
 
-        if(isset($request->datapagtoVendas)){
+        if(isset($request->statusVenda) && $request->statusVenda == "Faturada"){
         $Caixa = new Caixa();
         $Caixa->cax_descricao = "Venda";
         $Caixa->cax_operacao = 1;
@@ -99,27 +101,30 @@ class VendasRegister extends Controller
         while ($cont < $request->parcelasVenda) {
 
             $Parcela = new Parcelas();
-            $Parcela->tpg_id = $request->IDTipoPagamentoUp;
+            $Parcela->tpg_id = $request->IDTipoPagamento;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
             if($request->parcelasVendaUp <> 0 and $Final <> 0){
-            $Parcela->par_valor = ($Final / $request->parcelasVendaUp);
+            $Parcela->par_valor = ($Final / $request->parcelasVenda);
             }else{
             $Parcela->par_valor = $Final;
             }
-            $Parcela->par_status = $request->statusVendaUp;
+            $Parcela->par_status = $request->statusVenda;
             if ($venda_dados->ven_data_pagto <> null){
             $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
             }
+            $Parcela->save();
+            $cont ++;
         }
 
         if ($Parcela) {
-            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!', 'codigo' => $request->IDVenda]);
+            return response()->json(['status' => 1, 'msg' => 'Venda cadastrada com sucesso!']);
         }
     }
 
     protected function createItemVenda(Request $request)
     {
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -129,6 +134,7 @@ class VendasRegister extends Controller
                 'IDItemVenda' => ['required', 'integer'],
                 'qtdeItemVenda' => ['required', 'integer'],
                 'descricaoItemVenda' => ['required', 'string'],
+                'anexoItemVenda' => ['max:25600', 'mimes:jpg,bmp,png,jpeg,pdf,ico'],
                 'VUItemVenda' => ['required'],
             ],
             [
@@ -137,7 +143,9 @@ class VendasRegister extends Controller
                 'IDProduto.required' => 'Produto obrigatório.',
                 'IDItemVenda.required' => 'ID da venda obrigatório.',
                 'qtdeItemVenda.required' => 'Quantidade obrigatória.',
-                'descricaoItemVenda.required' => 'Descrição obrigatório.',
+                'descricaoItemVenda.required' => 'Descrição obrigatória.',
+                'anexoItemVenda.max' => 'Limite de 25 Mb.',
+                'anexoItemVenda.mimes' => 'Tipos: jpg,bmp,png, jpeg, pdf, ico.',
                 'VUItemVenda.required' => 'Valor unitário obrigatório.',
             ]
         );

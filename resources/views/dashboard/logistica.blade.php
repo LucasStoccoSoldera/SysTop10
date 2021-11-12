@@ -122,10 +122,10 @@
                                         <th style="width: 25%">
                                             Nome
                                         </th>
-                                        <th style="width: 15%">
+                                        <th style="width: 20%">
                                             Telefone
                                         </th>
-                                        <th class="text-center" style="width: 10%">
+                                        <th class="text-center" style="width: 5%">
                                             Limite
                                         </th>
                                         <th class="text-right" style="width: 15%">

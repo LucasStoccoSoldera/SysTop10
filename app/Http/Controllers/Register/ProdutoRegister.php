@@ -19,7 +19,6 @@ class ProdutoRegister extends Controller
     protected function createProduto(Request $request)
     {
 
-
         $request->PersoProduto = (!isset($request->PersoProduto))? 'Não' : 'Sim';
         $request->TerceProduto = (!isset($request->TerceProduto))? 'Não' : 'Sim';
 
@@ -45,7 +44,7 @@ class ProdutoRegister extends Controller
                 'PVProduto.required' => 'Preço de venda obrigatório.',
                 'MaterialProduto.required' => 'Material obrigatório.',
                 'LogisticaProduto.required' => 'Pacote obrigatório.',
-                'FotoProduto.required' => 'Foto do produto obrigatória.',
+                'anexoItemVenda.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.image' => 'Arquivo não é uma imagem.',
                 'FotoProduto.dimensions' => 'Dimensão de 2000 x 2000.',
                 'PedidoMinimoProduto.required' => 'Pedido Mínimo obrigatório.',
