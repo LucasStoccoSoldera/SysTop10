@@ -579,14 +579,31 @@
 
         var lista_parcelas = false;
 
+        $('body').on('click', 'button.parcelas', function(e) {
+
+            $('#table_parcelas').DataTable().ajax.reload();
+
+                    var conta = $(this).data('id');
+                    var valor = $(this).data('valor');
+                    var pagto = $(this).data('tpg');
+                    var data = $(this).data('data');
+                    $('#ls_par_conta').html(conta);
+                    $('#ls_par_valor').html(valor);
+                    $('#ls_par_tpg').html(pagto);
+                    $('#ls_par_data').html(data);
+                    $("#modalShowParcelas").modal('toggle');
+
+        });
+
         var table_parcelas = $('#tb_parcelas').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
                 ajax: {
-                    type: 'GET',
-                    url: "{{ route('admin.list.parcelas')}}",
+                    type: 'POST',
+                   url: "{{ route('admin.list.parcelas')}}",
+                  data: {id: conta},
                 },
                 columns: [{
                         data: "par_conta",
@@ -665,36 +682,6 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
-        });
-
-        $('body').on('click', 'button.parcelas', function(e) {
-            e.preventDefault();
-
-            var id = $(this).data('id');
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                url: "{{ route('admin.list.parcelas.open')}}",
-                data: {id: $(this).data('id')},
-                dataType: 'json',
-                success: function(data_decoded) {
-                    var table_parcelas = data_decoded;
-                    table_parcelas.ajax.reload(null, false);
-                    var conta = $(this).data('id');
-                    var valor = $(this).data('valor');
-                    var pagto = $(this).data('tpg');
-                    var data = $(this).data('data');
-                    $('#ls_par_conta').val(conta);
-                    $('#ls_par_valor').val(valor);
-                    $('#ls_par_tpg').val(pagto);
-                    $('#ls_par_data').val(data);
-                    $("#modalShowParcelas").modal('toggle');
-                }
-            });
-
         });
 
         $(document).on('click', '[data-dismiss="modal"]',

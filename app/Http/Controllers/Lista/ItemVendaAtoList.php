@@ -23,6 +23,15 @@ class ItemVendaAtoList extends Controller
             ->rawColumns(['action'])
             ->toJson();
         }
+
+        $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde',
+        'det_valor_total')
+        ->join('venda', 'vendas_detalhe.ven_id', '=', 'venda.id')->where('ven_id', '=', $request->id);
+
+        return DataTables::eloquent($data)
+        ->setTransformer(new ItemVendaTransformer)
+        ->rawColumns(['action'])
+        ->toJson();
     }
 
         public function listItemVendaAtoBlur(Request $request){

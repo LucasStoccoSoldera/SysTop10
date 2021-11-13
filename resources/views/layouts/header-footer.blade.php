@@ -320,6 +320,7 @@
         <!-- Black Dashboard DEMO methods, don't include it in your project! -->
         <script src="../demo/demo.js"></script>
         <script src="../demo/edit.js"></script>
+        <script src="../js/recarrega.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
             integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
@@ -351,7 +352,11 @@
                 $('#' + modal2).delay(500).hide(800);
                 $('#modalAlertCancelar').modal('toggle');
                 $('#' + modal2).modal('toggle');
+                recarrega();
+
             }
+
+
 
             function abrirModal(modalOpen, De, Para) {
                 $(Para).val($(De).val());
@@ -378,7 +383,6 @@
             });
 
             function excluir(id3, rota3){
-                console.log(id3, rota3);
                 $('#modalAlertDelete').modal('show');
                 $('#idDelete').val(id3);
                 $('#rotaDelete').val(rota3);

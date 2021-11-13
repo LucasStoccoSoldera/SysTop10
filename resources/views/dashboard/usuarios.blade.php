@@ -817,6 +817,8 @@
                 }
             );
 
+
+
             $("#formRegisterUser").on('submit', function(e) {
                 e.preventDefault();
 

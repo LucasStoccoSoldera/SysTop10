@@ -1537,14 +1537,77 @@
 
         var lista_parcelas = false;
 
+        $("#IDCompras").on('blur', function(e) {
+            var idcompra = $('#IDCompras').val();
+            $('#tb_item_compra_ato').DataTable().ajax.reload();
+        });
+
+        var table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: {
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: 'POST',
+                url: "{{ route('admin.list.itemcompraato')}}",
+                data: {id: $('#IDCompras').val()},
+            },
+            columns: [{
+                    data: "cde_produto"
+                },
+                {
+                    data: "cde_qtde"
+                },
+                {
+                    data: "cde_valoritem",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "cde_valortotal",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "action",
+                    className: "text-right"
+                },
+            ]
+        });
+
+
+        $('body').on('click', 'button.parcelas', function(e) {
+
+            $('#table_parcelas').DataTable().ajax.reload();
+
+                    var conta = $(this).data('id');
+                    var valor = $(this).data('valor');
+                    var pagto = $(this).data('tpg');
+                    var centro = $(this).data('cc');
+                    $('#ls_par_conta').html(conta);
+                    $('#ls_par_valor').html(valor);
+                    $('#ls_par_tpg').html(pagto);
+                    $('#ls_par_cc').html(centro);
+
+                    $("#modalShowParcelas").modal('toggle');
+
+        });
+
         var table_parcelas = $('#table_parcelas').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
                 ajax: {
-                    type: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
                     url: "{{ route('admin.list.parcelas')}}",
+                    data: {id: 'conta'},
                 },
                 columns: [{
                         data: "par_conta",
@@ -1621,37 +1684,6 @@
                 ],
         });
 
-        var table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: {
-                type: 'GET',
-                url: "{{ route('admin.list.itemcompraato')}}",
-            },
-            columns: [{
-                    data: "cde_produto"
-                },
-                {
-                    data: "cde_qtde"
-                },
-                {
-                    data: "cde_valoritem",
-                    className: "text-right",
-                    render: DataTable.render.number('.', ',', 2, 'R$')
-                },
-                {
-                    data: "cde_valortotal",
-                    className: "text-right",
-                    render: DataTable.render.number('.', ',', 2, 'R$')
-                },
-                {
-                    data: "action",
-                    className: "text-right"
-                },
-            ]
-        });
 
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
@@ -1693,35 +1725,6 @@
             });
         });
 
-        $('body').on('click', 'button.parcelas', function(e) {
-            e.preventDefault();
-
-            var id = $(this).data('id');
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                url: "{{ route('admin.list.parcelas.open')}}",
-                data: {id: $(this).data('id')},
-                dataType: 'json',
-                success: function(data_decoded) {
-                    var table_parcelas = data_decoded;
-                    table_parcelas.ajax.reload(null, false);
-                    var conta = $(this).data('id');
-                    var valor = $(this).data('valor');
-                    var pagto = $(this).data('tpg');
-                    var centro = $(this).data('cc');
-                    $('#ls_par_conta').val(conta);
-                    $('#ls_par_valor').val(valor);
-                    $('#ls_par_tpg').val(pagto);
-                    $('#ls_par_cc').val(centro);
-                    $("#modalShowParcelas").modal('toggle');
-                }
-            });
-
-        });
 
         $('#modalRegisterItemCompra').on('show', function() {
             $("#modalRegisterCompras").hide();
@@ -2011,28 +2014,9 @@
             });
         });
 
-        $("#IDCompras").on('blur', function(e) {
 
-            var id = $(this).val();
 
-            e.preventDefault();
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'POST',
-                url: "{{ route('admin.list.itemcompraato.blur')}}",
-                data: {id: $('#IDCompras').val()},
-                dataType: 'json',
-                success: function(data_decoded) {
-                    var table_item_compra_ato = data_decoded;
-                    table_item_compra_ato.ajax.reload(null, false);
-                }
-            });
-        });
-
-                $("#modalRegisterItemCompra").on('click', '[data-dismiss="modal"]', function(e) {
+        $("#modalRegisterItemCompra").on('click', '[data-dismiss="modal"]', function(e) {
 
         var id = $(this).val();
 
@@ -2048,7 +2032,7 @@
             dataType: 'json',
             success: function(data_decoded) {
                 var table_item_compra_ato = data_decoded;
-                table_item_compra_ato.ajax.reload(null, false);
+                $('#tb_item_compra_ato').DataTable().ajax.reload();
             }
         });
         });

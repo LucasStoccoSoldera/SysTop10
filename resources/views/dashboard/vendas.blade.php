@@ -1022,15 +1022,23 @@
                 ],
             });
 
+            $("#IDVenda").on('blur', function(e) {
+                $('#tb_item_venda_ato').DataTable().ajax.reload();
+            });
+
             var table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
                 ajax: {
-                    type: 'GET',
-                    url: "{{ route('admin.list.itemcompraato')}}",
-                },
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: 'POST',
+                url: "{{ route('admin.list.itemvendaato')}}",
+                data: {id: $('#IDVenda').val()},
+            },
                 columns: [{
                         data: "id",
                         className: "text-center"
@@ -1336,26 +1344,6 @@
                 $('#ls_par_data').val(data);
             });
 
-            $("#IDVenda").on('blur', function(e) {
-
-                var id = $(this).val();
-
-                e.preventDefault();
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'POST',
-                    url: "{{ route('admin.list.itemvendaato.blur')}}",
-                    data: {id: $('#IDVenda').val()},
-                    dataType: 'json',
-                    success: function(data_decoded) {
-                        var table_item_venda_ato = data_decoded;
-                        table_item_venda_ato.ajax.reload(null, false);
-                    }
-                });
-                });
 
                 $("#modalRegisterItemVenda").on('click', '[data-dismiss="modal"]', function(e) {
 
@@ -1373,7 +1361,7 @@
                     dataType: 'json',
                     success: function(data_decoded) {
                         var table_item_venda_ato = data_decoded;
-                        table_item_venda_ato.ajax.reload(null, false);
+                        $('#tb_item_venda_ato').DataTable().ajax.reload();
                     }
                 });
                 });

@@ -660,6 +660,8 @@
             }
         );
 
+
+
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,
             searching: false,
