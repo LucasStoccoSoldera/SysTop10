@@ -1029,7 +1029,7 @@
                 serverside: true,
                 ajax: {
                     type: 'GET',
-                    url: '/admin/List_ItemVendaAto/{id}' + $('#IDVenda').val('id'),
+                    url: "{{ route('admin.list.itemcompraato')}}",
                 },
                 columns: [{
                         data: "id",
@@ -1336,6 +1336,48 @@
                 $('#ls_par_data').val(data);
             });
 
+            $("#IDVenda").on('blur', function(e) {
+
+                var id = $(this).val();
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: "{{ route('admin.list.itemvendaato.blur')}}",
+                    data: {id: $('#IDVenda').val()},
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        var table_item_venda_ato = data_decoded;
+                        table_item_venda_ato.ajax.reload(null, false);
+                    }
+                });
+                });
+
+                $("#modalRegisterItemVenda").on('click', '[data-dismiss="modal"]', function(e) {
+
+                var id = $(this).val();
+
+                e.preventDefault();
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: "{{ route('admin.list.itemvendaato.blur')}}",
+                    data: {id: $('#modalRegisterItemVenda').val()},
+                    dataType: 'json',
+                    success: function(data_decoded) {
+                        var table_item_venda_ato = data_decoded;
+                        table_item_venda_ato.ajax.reload(null, false);
+                    }
+                });
+                });
+
             $("#formFilter").on('submit', function(e) {
 
                 e.preventDefault();
@@ -1355,6 +1397,8 @@
                     }
                 });
             });
+
+
 
         });
     </script>

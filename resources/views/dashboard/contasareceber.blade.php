@@ -579,6 +579,46 @@
 
         var lista_parcelas = false;
 
+        var table_parcelas = $('#tb_parcelas').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: {
+                    type: 'GET',
+                    url: "{{ route('admin.list.parcelas')}}",
+                },
+                columns: [{
+                        data: "par_conta",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_numero",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_valor",
+                        className: "text-right",
+                        render: DataTable.render.number('.', ',', 2, 'R$')
+                    },
+                    {
+                        data: "par_status",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_data_pagto",
+                        className: "text-center"
+                    },
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+            });
+
         var table_receber = $('#tb_receber').DataTable({
             paging: true,
             searching: false,
@@ -627,59 +667,34 @@
                 ],
         });
 
-        $('body').on('click', 'button.parcelas', function() {
-            console.log('vai');
-            var table_parcelas = $('#tb_parcelas').DataTable({
-                paging: true,
-                searching: false,
-                processing: true,
-                serverside: true,
-                ajax: {
-                    type: 'GET',
-                    url: '/admin/List_Parcelas/' + $(this).data('id'),
-                },
-                columns: [{
-                        data: "par_conta",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_numero",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_valor",
-                        className: "text-right",
-                        render: DataTable.render.number('.', ',', 2, 'R$')
-                    },
-                    {
-                        data: "par_status",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_data_pagto",
-                        className: "text-center"
-                    },
-                ],
-                dom: 'Bfrtip',
-                buttons: [
-                    'copyHtml5',
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdfHtml5'
-                ],
-            });
-            $("#modalShowParcelas").modal('toggle');
-        });
+        $('body').on('click', 'button.parcelas', function(e) {
+            e.preventDefault();
 
-        $("#modalShowParcelas").on("shown.bs.modal", function() {
-            var conta = $(this).data('id');
-            var valor = $(this).data('valor');
-            var pagto = $(this).data('tpg');
-            var data = $(this).data('data');
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_data').val(data);
+            var id = $(this).data('id');
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                url: "{{ route('admin.list.parcelas.open')}}",
+                data: {id: $(this).data('id')},
+                dataType: 'json',
+                success: function(data_decoded) {
+                    var table_parcelas = data_decoded;
+                    table_parcelas.ajax.reload(null, false);
+                    var conta = $(this).data('id');
+                    var valor = $(this).data('valor');
+                    var pagto = $(this).data('tpg');
+                    var data = $(this).data('data');
+                    $('#ls_par_conta').val(conta);
+                    $('#ls_par_valor').val(valor);
+                    $('#ls_par_tpg').val(pagto);
+                    $('#ls_par_data').val(data);
+                    $("#modalShowParcelas").modal('toggle');
+                }
+            });
+
         });
 
         $(document).on('click', '[data-dismiss="modal"]',

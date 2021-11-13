@@ -11,26 +11,29 @@ use App\Transformers\ItemVendaTransformer;
 
 class ItemVendaAtoList extends Controller
 {
-    public function listItemVendaAto($id){
+    public function listItemVendaAto(Request $request){
 
-        if(empty($id)){
+        if(empty($request->id)){
             $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde',
             'det_valor_total')
-            ->join('produto', 'vendas_detalhe.pro_id', '=', 'produto.id')->where('ven_id', '=', 0);
+            ->join('venda', 'vendas_detalhe.ven_id', '=', 'venda.id')->where('ven_id', '=', 0);
 
             return DataTables::eloquent($data)
             ->setTransformer(new ItemVendaTransformer)
             ->rawColumns(['action'])
             ->toJson();
         }
+    }
 
-            $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde',
-            'det_valor_total')
-            ->join('produto', 'vendas_detalhe.pro_id', '=', 'produto.id')->where('ven_id', '=', $id);
+        public function listItemVendaAtoBlur(Request $request){
 
-            return DataTables::eloquent($data)
-            ->setTransformer(new ItemVendaTransformer)
-            ->rawColumns(['action'])
-            ->toJson();
-        }
+                $data = Venda_Detalhe::select('vendas_detalhe.id', 'pro_nome', 'det_qtde',
+                'det_valor_total')
+                ->join('venda', 'vendas_detalhe.ven_id', '=', 'venda.id')->where('ven_id', '=', $request->id);
+
+                return DataTables::eloquent($data)
+                ->setTransformer(new ItemVendaTransformer)
+                ->rawColumns(['action'])
+                ->toJson();
+            }
     }

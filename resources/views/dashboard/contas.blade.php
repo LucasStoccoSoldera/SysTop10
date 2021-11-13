@@ -1507,11 +1507,6 @@
         $('.div-feedback').show();
     });
 
-    $('#IDCompras').on('blur', function() {
-        var idcompra = $("#IDCompras").val();
-        table_item_compra_ato.ajax.reload(null, false);
-    });
-
 
 
     $('#modalRegisterItemCompra').on('[data-dismiss="modal"]', function() {
@@ -1541,6 +1536,46 @@
     $(document).ready(function() {
 
         var lista_parcelas = false;
+
+        var table_parcelas = $('#table_parcelas').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: {
+                    type: 'GET',
+                    url: "{{ route('admin.list.parcelas')}}",
+                },
+                columns: [{
+                        data: "par_conta",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_numero",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_valor",
+                        className: "text-right",
+                        render: DataTable.render.number('.', ',', 2, 'R$')
+                    },
+                    {
+                        data: "par_status",
+                        className: "text-center"
+                    },
+                    {
+                        data: "par_data_pagto",
+                        className: "text-center"
+                    },
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+            });
 
         var table_conta = $('#tb_conta').DataTable({
             paging: true,
@@ -1593,7 +1628,7 @@
             serverside: true,
             ajax: {
                 type: 'GET',
-                url: '/admin/List_ItemCompraAto/' + $('#IDCompras').val('id'),
+                url: "{{ route('admin.list.itemcompraato')}}",
             },
             columns: [{
                     data: "cde_produto"
@@ -1622,7 +1657,6 @@
             function() {
                 table_conta.ajax.reload(null, false);
                 table_item_compra_ato.ajax.reload(null, false);
-                console.log(lista_parcelas);
                 if (lista_parcelas == true) {
                     table_parcelas.ajax.reload(null, false);
                 }
@@ -1659,60 +1693,35 @@
             });
         });
 
-        $('body').on('click', 'button.parcelas', function() {
-            var table_parcelas = $('#table_parcelas').DataTable({
-                paging: true,
-                searching: false,
-                processing: true,
-                serverside: true,
-                ajax: {
-                    type: 'GET',
-                    url: '/admin/List_Parcelas/' + $(this).data('id'),
+        $('body').on('click', 'button.parcelas', function(e) {
+            e.preventDefault();
+
+            var id = $(this).data('id');
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                columns: [{
-                        data: "par_conta",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_numero",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_valor",
-                        className: "text-right",
-                        render: DataTable.render.number('.', ',', 2, 'R$')
-                    },
-                    {
-                        data: "par_status",
-                        className: "text-center"
-                    },
-                    {
-                        data: "par_data_pagto",
-                        className: "text-center"
-                    },
-                ],
-                dom: 'Bfrtip',
-                buttons: [
-                    'copyHtml5',
-                    'excelHtml5',
-                    'csvHtml5',
-                    'pdfHtml5'
-                ],
+                type: 'POST',
+                url: "{{ route('admin.list.parcelas.open')}}",
+                data: {id: $(this).data('id')},
+                dataType: 'json',
+                success: function(data_decoded) {
+                    var table_parcelas = data_decoded;
+                    table_parcelas.ajax.reload(null, false);
+                    var conta = $(this).data('id');
+                    var valor = $(this).data('valor');
+                    var pagto = $(this).data('tpg');
+                    var centro = $(this).data('cc');
+                    $('#ls_par_conta').val(conta);
+                    $('#ls_par_valor').val(valor);
+                    $('#ls_par_tpg').val(pagto);
+                    $('#ls_par_cc').val(centro);
+                    $("#modalShowParcelas").modal('toggle');
+                }
             });
-            $("#modalShowParcelas").modal('toggle');
-        });
 
-        $("#modalShowParcelas").on("shown.bs.modal", function() {
-            var conta = $(this).data('id');
-            var valor = $(this).data('valor');
-            var pagto = $(this).data('tpg');
-            var centro = $(this).data('cc');
-            $('#ls_par_conta').val(conta);
-            $('#ls_par_valor').val(valor);
-            $('#ls_par_tpg').val(pagto);
-            $('#ls_par_cc').val(centro);
         });
-
 
         $('#modalRegisterItemCompra').on('show', function() {
             $("#modalRegisterCompras").hide();
@@ -2002,7 +2011,9 @@
             });
         });
 
-        $("#formFilter").on('submit', function(e) {
+        $("#IDCompras").on('blur', function(e) {
+
+            var id = $(this).val();
 
             e.preventDefault();
 
@@ -2010,16 +2021,56 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                processData: false,
+                type: 'POST',
+                url: "{{ route('admin.list.itemcompraato.blur')}}",
+                data: {id: $('#IDCompras').val()},
                 dataType: 'json',
                 success: function(data_decoded) {
-                    var table_conta = data_decoded;
-                    table_conta.ajax.reload(null, false);
+                    var table_item_compra_ato = data_decoded;
+                    table_item_compra_ato.ajax.reload(null, false);
                 }
             });
+        });
+
+                $("#modalRegisterItemCompra").on('click', '[data-dismiss="modal"]', function(e) {
+
+        var id = $(this).val();
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: "{{ route('admin.list.itemcompraato.blur')}}",
+            data: {id: $('#IDCompras').val()},
+            dataType: 'json',
+            success: function(data_decoded) {
+                var table_item_compra_ato = data_decoded;
+                table_item_compra_ato.ajax.reload(null, false);
+            }
+        });
+        });
+
+        $("#formFilter").on('submit', function(e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            processData: false,
+            dataType: 'json',
+            success: function(data_decoded) {
+                var table_conta = data_decoded;
+                table_conta.ajax.reload(null, false);
+            }
+        });
         });
     });
 </script>
