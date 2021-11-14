@@ -130,7 +130,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cliente:</label>
-                                    <input type="text" name="txt_cliente" id="txt_cliente" maxlength="13"
+                                    <input type="text" name="cli_id" id="txt_cliente" maxlength="13"
                                         value="{{ old('txt_cliente') }}" class="filtro form-control ">
                                 </div>
                             </div>
@@ -138,7 +138,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data da Venda:</label>
-                                    <input type="date" name="txt_data" id="txt_data" maxlength="20"
+                                    <input type="date" name="ven_data" id="txt_data" maxlength="20"
                                         value="{{ old('txt_data') }}" class="filtro form-control ">
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                                     <option value="=">=</option>
                                     <option value=">=">>=</option>
                                 </select>
-                                <input type="text" name="txt_valor" id="txt_valor" maxlength="15"
+                                <input type="text" name="ven_valor_total" id="txt_valor" maxlength="15"
                                     value="{{ old('txt_valor') }}" class="filtro form-control dinheiro"
                                     style="width: 80% !important;float:right;">
                                 </div>

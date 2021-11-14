@@ -130,14 +130,14 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Descrição:</label>
-                                    <input type="text" name="txt_descricao" id="txt_descricao" maxlength="20"
+                                    <input type="text" name="rec_descricao" id="txt_descricao" maxlength="20"
                                         value="{{ old('txt_descricao') }}" class="filtro form-control ">
                                 </div>
                             </div>
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data Contabilizada:</label>
-                                    <input type="date" name="txt_data" id="txt_data" value="{{ old('txt_data') }}"
+                                    <input type="date" name="rec_data" id="txt_data" value="{{ old('txt_data') }}"
                                         class="filtro form-control ">
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Status:</label>
-                                    <select type="text" name="txt_status" id="txt_status" class="filtro form-control"
+                                    <select type="text" name="rec_status" id="txt_status" class="filtro form-control"
                                         maxlength="25" value="{{ old('txt_status') }}">
                                         <option value="">Selecione</option>
                                         <option value="1">Em Aberto</option>

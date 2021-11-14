@@ -108,7 +108,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Produto:</label>
-                                    <input type="text" name="txt_nome" id="txt_nome" maxlength="20"
+                                    <input type="text" name="pro_nome" id="txt_nome" maxlength="20"
                                         value="{{ old('txt_nome') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Tipo Produto:</label>
-                                    <select type="text" name="txt_tpp" id="txt_tpp" class="filtro form-control"
+                                    <select type="text" name="tpp_id" id="txt_tpp" class="filtro form-control"
                                         value="{{ old('txt_tpp') }}">
                                         <option value="">Selecione
                                         </option>
@@ -131,7 +131,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Material:</label>
-                                    <select type="text" name="txt_material" id="txt_material" class="filtro form-control"
+                                    <select type="text" name="mat_id" id="txt_material" class="filtro form-control"
                                         value="{{ old('txt_material') }}">
                                         <option value="">Selecione
                                         </option>

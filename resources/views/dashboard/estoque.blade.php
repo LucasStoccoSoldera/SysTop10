@@ -83,8 +83,8 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produto:</label>
-                                    <input type="text" name="txt_produto" id="txt_produto" maxlength="25"
+                                    <label class="modal-label">Produto (Código):</label>
+                                    <input type="text" name="pro_id" id="txt_produto" maxlength="25"
                                         value="{{ old('txt_produto') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                                         <option value="2"> =</option>
                                         <option value="3">>=</option>
                                     </select>
-                                    <input type="number" name="txt_qtde" id="txt_qtde" maxlength="6"
+                                    <input type="number" name="est_qtde" id="txt_qtde" maxlength="6"
                                         value="{{ old('txt_qtde') }}" class="filtro form-control"
                                         style="width: 80% !important;float:right;">
                                 </div>
@@ -111,7 +111,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="txt_dimensao" id="txt_dimensao" class="filtro form-control"
+                                    <select type="text" name="dim_id" id="txt_dimensao" class="filtro form-control"
                                         value="{{ old('txt_centro') }}">
                                         <option value="">Selecione</option>
                                         @foreach ($dimensoes as $dimensao)

@@ -130,14 +130,14 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_nome">Nome:</label>
-                                    <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13" data-column="0"
+                                    <input type="text" name="cli_nome" id="filtro_nome" maxlength="13" data-column="0"
                                         class="filtro form-control filter-input">
                                 </div>
                             </div>
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label" for="filtro_cidade">Cidade:</label>
+                                    <label class="modal-label" for="cli_cidade">Cidade:</label>
                                     <input type="text" name="filtro_cidade" id="filtro_cidade" data-column="3"
                                         class="filtro form-control filter-input">
                                 </div>
@@ -146,7 +146,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_data">Data:</label>
-                                    <input type="date" name="filtro_data" id="filtro_data" data-column="4"
+                                    <input type="date" name="created_at" id="filtro_data" data-column="4"
                                         class="filtro form-control filter-input">
                                 </div>
 
@@ -155,7 +155,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group" style="margin-left: 15px;">
                                     <label class="modal-label" for="filtro_doc">Documento:</label>
-                                    <input type="text" name="filtro_doc" id="filtro_doc" data-column="1"
+                                    <input type="text" name="cli_cpf_cnpj" id="filtro_doc" data-column="1"
                                         class="filtro form-control filter-input">
                                 </div>
                             </div>

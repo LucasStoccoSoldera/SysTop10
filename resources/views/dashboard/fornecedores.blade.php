@@ -84,7 +84,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">CPF / CNPJ:</label>
-                                    <input type="number" name="txt_cpf_cnpj" id="txt_cpf_cnpj" maxlength="13"
+                                    <input type="number" name="for_cpf_cnpj" id="txt_cpf_cnpj" maxlength="13"
                                         value="{{ old('txt_cpf_cnpj') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Fornecedor:</label>
-                                    <input type="text" name="txt_nome" id="txt_nome" maxlength="25"
+                                    <input type="text" name="for_nome" id="txt_nome" maxlength="25"
                                         value="{{ old('txt_nome') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Cidade:</label>
-                                    <input type="text" name="txt_cidade" id="txt_cidade" value="{{ old('txt_cidade') }}"
+                                    <input type="text" name="for_cidade" id="txt_cidade" value="{{ old('txt_cidade') }}"
                                         class="filtro form-control">
                                 </div>
                             </div>

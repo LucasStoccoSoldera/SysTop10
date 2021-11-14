@@ -129,7 +129,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Vencimento:</label>
-                                    <input type="date" name="txt_data_venc" id="txt_data_venc"
+                                    <input type="date" name="con_data_venc" id="txt_data_venc"
                                         value="{{ old('txt_data_venc') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Data de Pagamento:</label>
-                                    <input type="date" name="txt_data_pag" id="txt_data_pag"
+                                    <input type="date" name="con_data_pag" id="txt_data_pag"
                                         value="{{ old('txt_data_pag') }}" class="filtro form-control">
                                 </div>
                             </div>
@@ -145,7 +145,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label">Centro de Custo:</label>
-                                    <select type="text" name="txt_centro" id="txt_centro" class="filtro form-control"
+                                    <select type="text" name="cc_id" id="txt_centro" class="filtro form-control"
                                         maxlength="25" value="{{ old('txt_centro') }}">
                                         <option value="">Selecione</option>
                                         @foreach ($centros as $centro)

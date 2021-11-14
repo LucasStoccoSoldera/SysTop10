@@ -108,7 +108,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_id">ID:</label>
-                                    <input type="text" name="filtro_id" id="filtro_id" data-column="0"
+                                    <input type="text" name="id" id="filtro_id" data-column="0"
                                         class="filtro form-control filter-input">
                                 </div>
 
@@ -117,7 +117,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_nome">Nome:</label>
-                                    <input type="text" name="filtro_nome" id="filtro_nome" maxlength="13" data-column="3"
+                                    <input type="text" name="usu_nome_completo" id="filtro_nome" maxlength="13" data-column="3"
                                         class="filtro form-control filter-input">
                                 </div>
                             </div>
@@ -125,7 +125,7 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label" for="filtro_cargo">Cargo:</label>
-                                    <select type="text" name="filtro_cargo" id="filtro_cargo"
+                                    <select type="text" name="car_id" id="filtro_cargo"
                                         class="filtro form-control filter-select">
                                         <option value="">Selecione
                                         </option>
