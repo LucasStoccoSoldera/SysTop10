@@ -95,10 +95,10 @@ class VendasRegister extends Controller
         $Caixa->save();
         }
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_receber')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVenda);
-        while ($cont < $request->parcelasVenda) {
+        while ($cont <= $request->parcelasVenda) {
 
             $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->IDTipoPagamento;
@@ -111,7 +111,11 @@ class VendasRegister extends Controller
             }
             $Parcela->par_status = $request->statusVenda;
             if ($venda_dados->ven_data_pagto <> null){
-            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                if($cont == 1){
+                    $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto);
+                        } else{
+                            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                        }
             }
             $Parcela->save();
             $cont ++;

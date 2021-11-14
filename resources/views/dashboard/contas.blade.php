@@ -413,7 +413,7 @@
                                     <label class="modal-label">ID Compra:</label> <label
                                         style="color: red; font-size: 12px;"> * </label>
                                     <input type="number" name="IDCompras" id="IDCompras" class="form-control id"
-                                        maxlength="10" value="{{ old('IDCompras') }}" placeholder="ID" autofocus>
+                                        maxlength="10" placeholder="ID" autofocus>
                                     <div class="div-feedback">
                                         <span class="invalid-feedback IDCompras_error" role="alert">
                                         </span>
@@ -970,7 +970,7 @@
                                 <label class="modal-label">ID Compra:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="number" name="IDComprasUp" id="IDComprasUp" class="form-control id"
-                                    maxlength="80" value="{{ old('IDComprasUp') }}" placeholder="ID" autofocus>
+                                    maxlength="80" placeholder="ID" autofocus>
                                 <div class="div-feedback">
                                     <span class="invalid-feedback IDComprasUp_error" role="alert">
                                     </span>
@@ -1349,8 +1349,8 @@
 </div>
 
 <div class="modal fade" id="modalShowParcelas" style="display:none;" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content" style="width: 100%">
             <div class="modal-header">
                 <h4 class="modal-title">Visualização de Parcelas</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1533,13 +1533,26 @@
         $("#valorTotalItemCompra").val(total);
     });
 
+                    var conta;
+                    var valor_conta;
+                    var pagto;
+                    var centro;
+
+                    var idcompra;
+
+                    var table_parcelas;
+
     $(document).ready(function() {
 
         var lista_parcelas = false;
 
         $("#IDCompras").on('blur', function(e) {
-            var idcompra = $('#IDCompras').val();
+            idcompra = $('#IDCompras').val();
             $('#tb_item_compra_ato').DataTable().ajax.reload();
+        });
+
+        $("#descricaoCompras").on('blur', function(e) {
+            console.log(idcompra);
         });
 
         var table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
@@ -1553,7 +1566,7 @@
                  },
                 type: 'POST',
                 url: "{{ route('admin.list.itemcompraato')}}",
-                data: {id: $('#IDCompras').val()},
+                data: {id: idcompra},
             },
             columns: [{
                     data: "cde_produto"
@@ -1581,23 +1594,16 @@
 
         $('body').on('click', 'button.parcelas', function(e) {
 
-            $('#table_parcelas').DataTable().ajax.reload();
-
-                    var conta = $(this).data('id');
-                    var valor = $(this).data('valor');
-                    var pagto = $(this).data('tpg');
-                    var centro = $(this).data('cc');
+                     conta = $(this).data('id');
+                     valor_conta = $(this).data('valor');
+                     pagto = $(this).data('tpg');
+                     centro = $(this).data('cc');
                     $('#ls_par_conta').html(conta);
-                    $('#ls_par_valor').html(valor);
+                    $('#ls_par_valor').html(valor_conta);
                     $('#ls_par_tpg').html(pagto);
                     $('#ls_par_cc').html(centro);
 
-                    $("#modalShowParcelas").modal('toggle');
-
-        });
-
-        var table_parcelas = $('#table_parcelas').DataTable({
-                paging: true,
+                    table_parcelas = $('#table_parcelas').DataTable({ paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
@@ -1607,7 +1613,7 @@
                     },
                     type: 'POST',
                     url: "{{ route('admin.list.parcelas')}}",
-                    data: {id: 'conta'},
+                    data: {id: conta},
                 },
                 columns: [{
                         data: "par_conta",
@@ -1637,12 +1643,18 @@
                     'excelHtml5',
                     'csvHtml5',
                     'pdfHtml5'
-                ],
-            });
+                ],});
+
+                    $("#modalShowParcelas").modal('toggle');
+        });
 
 
         $("#formFilter").on('submit', function(e) {
             $('#tb_conta').DataTable().ajax.reload();
+    });
+
+    $('#modalShowParcelas').on('hidden.bs.modal', function () {
+        table_parcelas.destroy();
     });
 
         var table_conta = $('#tb_conta').DataTable({

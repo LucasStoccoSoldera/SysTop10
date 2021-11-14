@@ -17,22 +17,16 @@ class ParcelasList extends Controller
         if(empty($request->id)){
             $data7 = Parcelas::select('par_conta', 'par_numero',
             'par_valor', 'par_status',
-            DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_conta', '=', -1);
+            'par_data_pagto')->where('par_conta', '=', -1);
 
             return DataTables::eloquent($data7)
             ->toJson();
         }
 
-            $conta = Parcelas::where('par_conta', '=', $request->id)->get();
-            if(isset($conta)){
+
                 $data7 = Parcelas::select('par_conta', 'par_numero',
                 'par_valor', 'par_status',
-                DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_conta', '=', $request->id);
-            } else{
-                $data7 = Parcelas::select('par_venda', 'par_numero',
-                'par_valor', 'par_status',
-                DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_venda', '=', $request->id);
-            }
+                'par_data_pagto')->where('par_conta', '=', $request->id);
             return DataTables::eloquent($data7)
             ->toJson();
 
@@ -41,24 +35,17 @@ class ParcelasList extends Controller
         public function listParcelasOpen(Request $request){
 
             if(empty($request->id)){
-                $data7 = Parcelas::select('par_conta', 'par_numero',
+                $data7 = Parcelas::select('par_venda', 'par_numero',
                 'par_valor', 'par_status',
-                DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_conta', '=', -1);
+                'par_data_pagto')->where('par_venda', '=', -1);
 
                 return DataTables::eloquent($data7)
                 ->toJson();
             }
 
-                $conta = Parcelas::where('par_conta', '=', $request->id)->get();
-                if(isset($conta)){
-                    $data7 = Parcelas::select('par_conta', 'par_numero',
-                    'par_valor', 'par_status',
-                    DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_conta', '=', $request->id);
-                } else{
                     $data7 = Parcelas::select('par_venda', 'par_numero',
                     'par_valor', 'par_status',
-                    DB::raw("DATE_FORMAT(parcelas.par_data_pagto, '%d/%m/%Y') as par_data_pagto"))->where('par_venda', '=', $request->id);
-                }
+                    'par_data_pagto')->where('par_venda', '=', $request->id);
                 return DataTables::eloquent($data7)
                 ->toJson();
 

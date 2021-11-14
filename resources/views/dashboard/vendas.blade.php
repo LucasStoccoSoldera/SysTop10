@@ -943,6 +943,8 @@
 
 @push('ajax')
     <script>
+            var id_venda;
+
         $('#IDVenda').on('blur', function() {
             var idVenda = $("#IDVenda").val();
         });
@@ -1028,6 +1030,7 @@
             });
 
             $("#IDVenda").on('blur', function(e) {
+                id_venda = $('#IDVenda').val();
                 $('#tb_item_venda_ato').DataTable().ajax.reload();
             });
 
@@ -1042,7 +1045,7 @@
                  },
                 type: 'POST',
                 url: "{{ route('admin.list.itemvendaato')}}",
-                data: {id: $('#IDVenda').val()},
+                data: {id: id_venda},
             },
                 columns: [{
                         data: "id",

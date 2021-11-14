@@ -256,7 +256,7 @@ function editUser(id)
         $("#nomeUserUp").val(usuario.usu_nome_completo);
         $("#usu_usuarioUp").val(usuario.usu_usuario);
         $("#cpfUserUp").val(usuario.usu_cpf);
-        $("#celularUserUp").val(usuario.usu_celularid);
+        $("#celularUserUp").val(usuario.usu_celular);
         $("#senhaUserUp").val(usuario.usu_senha);
         $("#cargoUserUp").val(usuario.car_id);
         $("#statusUserUp").val(usuario.usu_status);

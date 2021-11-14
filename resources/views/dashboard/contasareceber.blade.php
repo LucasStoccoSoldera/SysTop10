@@ -487,8 +487,8 @@
     </div>
 
     <div class="modal fade" id="modalShowParcelas" style="display:none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog" style="width: 50%;">
+            <div class="modal-content" style="width: 100%">
                 <div class="modal-header">
                     <h4 class="modal-title">Visualização de Parcelas</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -499,7 +499,7 @@
                     <div class="row">
                         <div class="col-3">
                             <div class="form-group" id="form-direita">
-                                <label class="modal-label">Conta: </label><br><br>
+                                <label class="modal-label">Receber: </label><br><br>
                                 <label class="modal-label">Valor Final: </label><br>
                             </div>
                         </div>
@@ -530,11 +530,11 @@
                                 </div>
                                 <div class="card-body" id="cd-adaptado">
                                     <div class="table-responsive">
-                                        <table class="table tablesorter " id="tb_parcelas">
+                                        <table class="table tablesorter " id="table_parcelas">
                                             <thead class=" text-primary">
                                                 <tr>
                                                     <th class="text-center" style="width: 5%">
-                                                        Conta
+                                                        Receber
                                                     </th>
                                                     <th class="text-center" style="width: 5%">
                                                         Parc.
@@ -577,36 +577,42 @@
 <script>
     $(document).ready(function() {
 
+        var conta;
+        var valor_conta;
+        var pagto;
+        var data;
+
+
         var lista_parcelas = false;
+
+        var table_parcelas;
 
         $('body').on('click', 'button.parcelas', function(e) {
 
-            $('#table_parcelas').DataTable().ajax.reload();
-
-                    var conta = $(this).data('id');
-                    var valor = $(this).data('valor');
-                    var pagto = $(this).data('tpg');
-                    var data = $(this).data('data');
+                     conta = $(this).data('id');
+                     valor_conta = $(this).data('valor');
+                     pagto = $(this).data('tpg');
+                     data = $(this).data('data');
                     $('#ls_par_conta').html(conta);
-                    $('#ls_par_valor').html(valor);
+                    $('#ls_par_valor').html(valor_conta);
                     $('#ls_par_tpg').html(pagto);
                     $('#ls_par_data').html(data);
-                    $("#modalShowParcelas").modal('toggle');
 
-        });
-
-        var table_parcelas = $('#tb_parcelas').DataTable({
-                paging: true,
+                    table_parcelas = $('#table_parcelas').DataTable({
+                    paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
                 ajax: {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     type: 'POST',
-                   url: "{{ route('admin.list.parcelas')}}",
-                  data: {id: conta},
+                    url: "{{ route('admin.list.parcelas.open')}}",
+                    data: {id: conta},
                 },
                 columns: [{
-                        data: "par_conta",
+                        data: "par_venda",
                         className: "text-center"
                     },
                     {
@@ -633,9 +639,14 @@
                     'excelHtml5',
                     'csvHtml5',
                     'pdfHtml5'
-                ],
-            });
+                ],});
 
+                    $("#modalShowParcelas").modal('toggle');
+        });
+
+        $('#modalShowParcelas').on('hidden.bs.modal', function () {
+        table_parcelas.destroy();
+    });
 
         $("#formFilter").on('submit', function(e) {
             $('#tb_receber').DataTable().ajax.reload();
@@ -663,7 +674,7 @@
                     className: "text-center"
                 },
                 {
-                    data: "rec_valor",
+                    data: "rec_valor_final",
                     className: "text-right",
                     render: DataTable.render.number('.', ',', 2, 'R$')
                 },

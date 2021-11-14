@@ -94,11 +94,11 @@ class CompraRegister extends Controller
         $Caixa->save();
     }
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $compras_dados = Compras::find($request->IDCompras);
 
-        while ($cont < $request->parcelasCompras) {
+        while ($cont <= $request->parcelasCompras) {
 
             $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->tpgpagtoCompras;
@@ -111,7 +111,11 @@ class CompraRegister extends Controller
                 }
             $Parcela->par_status = "Em Aberto";
             if ($compras_dados->con_data_pag <> null){
-            $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                if($cont == 1){
+                    $Parcela->par_data_pagto = ($compras_dados->com_data_pag);
+                        } else{
+                            $Parcela->par_data_pagto = ($compras_dados->com_data_pag->modify('+' . ($cont * 30) . ' days'));
+                        }
             }
             $Parcela->save();
             $cont ++;

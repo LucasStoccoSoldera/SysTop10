@@ -628,9 +628,9 @@
                                     style="color: red; font-size: 12px;">
                                     * </label><br>
                                 <div class="switch__container">
-                                    <input id="switch-shadow" name="statusClienteUp" value={{ 'Ativo' ?? 'Inativo' }}
+                                    <input id="statusClienteUp" name="statusClienteUp" value={{ 'Ativo' ?? 'Inativo' }}
                                         class="switch switch--shadow" type="checkbox">
-                                    <label for="switch-shadow"></label>
+                                    <label for="statusClienteUp"></label>
                                 </div>
                             </div>
                         </div>

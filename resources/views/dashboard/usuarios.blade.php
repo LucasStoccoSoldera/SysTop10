@@ -314,7 +314,7 @@
                                             style="color: red; font-size: 12px;">
                                             * </label><br>
                                         <div class="switch__container">
-                                            <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
+                                            <input id="switch-shadow_add" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
                                                 class="switch switch--shadow" type="checkbox">
                                             <label for="switch-shadow"></label>
                                         </div>
@@ -508,9 +508,9 @@
                                         style="color: red; font-size: 12px;">
                                         * </label><br>
                                     <div class="switch__container">
-                                        <input id="switch-shadow" name="statusUserUp" value={{ 'Ativo' ?? 'Inativo' }}
+                                        <input id="statusUserUp" name="statusUserUp" value={{ 'Ativo' ?? 'Inativo' }}
                                             class="switch switch--shadow" type="checkbox">
-                                        <label for="switch-shadow"></label>
+                                        <label for="statusUserUp"></label>
                                     </div>
                                 </div>
                             </div>
@@ -691,6 +691,8 @@
 @push('ajax')
     <script>
         $(document).ready(function() {
+
+            var table_usuario;
             /*
             $('#cargoPrivilegio').on('blur', function(e) {
                 e.preventDefault();
@@ -733,21 +735,23 @@
                 $('#logisticaPrivilegio').val(log);
             }
 
-            $('#example tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" class="form-control" style="width:100%" placeholder="Pesquisar '+title+'" />' );
-    } );
+        $("#formFilter").on('submit', function(e) {
+            e.preventDefault();
+            table_usuario.destroy();
 
-    $("#formFilter").on('submit', function(e) {
-            $('#tb_usuario').DataTable().ajax.reload();
-    });
-
-            var table_usuario = $('#tb_usuario').DataTable({
+            table_usuario = $('#tb_usuario').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
-                ajax: "{{ route('admin.filtro.usuario') }}",
+                ajax: {
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                },
                 columns: [{
                         data: "id",
                         className: "text-center"
@@ -779,21 +783,56 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
-                initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
-
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
             });
+        });
+
+        table_usuario = $('#tb_usuario').DataTable({
+                paging: true,
+                searching: false,
+                processing: true,
+                serverside: true,
+                ajax: {
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: "POST",
+                url: "{{route('admin.filtro.usuario')}}",
+                data: '',
+                },
+                columns: [{
+                        data: "id",
+                        className: "text-center"
+                    },
+                    {
+                        data: "usu_nome_completo"
+                    },
+                    {
+                        data: "car_descricao"
+                    },
+                    {
+                        data: "usu_celular"
+                    },
+                    {
+                        data: "usu_data_cadastro",
+                        className: "text-center"
+                    },
+                    {
+                        data: "action",
+                        className: "text-right"
+                    },
+                ],
+                orderCellsTop: true,
+            fixedHeader: true,
+            dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+            });
+
+
             var table_cargo = $('#tb_cargo').DataTable({
                 paging: true,
                 searching: false,

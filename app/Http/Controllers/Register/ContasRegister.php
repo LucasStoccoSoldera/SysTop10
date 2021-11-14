@@ -85,22 +85,26 @@ class ContasRegister extends Controller
 
         } else{
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $contas_dados = Contas_a_Pagar::find($conta_last);
-        while ($cont < $request->parcelasContas) {
+        while ($cont <= $request->parcelasContas) {
 
             $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->tpgpagtoContas;
             $Parcela->par_conta = $conta_last;
             $Parcela->par_numero = $cont;
-            $Parcela->par_valor = ($request->valorfContas / $request->parcelasContas);
+            $Parcela->par_valor = $request->valorfContas / $request->parcelasContas;
             if(isset($request->datapContas) && $request->datapContas <= $ontem){
             $Parcela->par_status = "Em Aberto";
             }
             $Parcela->par_status = "Em Aberto";
-            if (isset($contas_dados->con_data_pag)){
-            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            if(isset($contas_dados->con_data_pag)){
+                if($cont == 1){
+            $Parcela->par_data_pagto = ($contas_dados->con_data_pag);
+                } else{
+                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+                }
             }
             $Parcela->save();
             $cont ++;

@@ -16,8 +16,8 @@ class ContasaReceberList extends Controller
 
         if($request->ajax()){
 
-            $data = Contas_a_Receber::select('contas_a_receber.id', 'rec_descricao', 'rec_ven_id', 'rec_parcelas', 'rec_valor',
-            DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y') as rec_data"), 'rec_status',
+            $data = Contas_a_Receber::select('contas_a_receber.id', 'rec_descricao', 'rec_ven_id', 'rec_parcelas',
+            DB::raw("DATE_FORMAT(contas_a_receber.rec_data, '%d/%m/%Y') as rec_data"), 'rec_status',  'rec_valor_final',
             'id', 'tpg_id')->where('rec_status', '<>', 'Baixa');
 
             return  DataTables::eloquent($data)
@@ -29,7 +29,7 @@ class ContasaReceberList extends Controller
                 <button type="button" class="parcelas btn btn-primary visu" id="visu-rec"
                 name="visu-receber"
                 data-id = "'.$data->id.'"
-                data-valor = "'.$data->con_valor_final.'"
+                data-valor = "'.$data->rec_valor_final.'"
                 data-tpg = "'.$data->tpg_id.'"
                 data-data = "'.$data->rec_data.'"
                 ><i
@@ -54,5 +54,5 @@ class ContasaReceberList extends Controller
 
 
     }
-    
+
 }

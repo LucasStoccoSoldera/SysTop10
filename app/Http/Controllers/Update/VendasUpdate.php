@@ -106,7 +106,7 @@ class VendasUpdate extends Controller
         $Caixa->save();
         }
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $venda_dados = Venda::find($request->IDVendaUp);
 
@@ -124,8 +124,11 @@ class VendasUpdate extends Controller
             }
         $Parcela->par_status = $request->statusVendaUp;
         if ($venda_dados->ven_data_pagto <> null){
-        $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
+            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto);
+        } else{
+            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
         }
+        
         $Parcela->save();
         $cont ++;
     }

@@ -55,8 +55,8 @@ class FiltroController extends Controller
         ->addColumn('action', function($query){
 
             $rota = "'" .  route('admin.delete.cliente') . "'";
-            $btn = '<a class="btn btn-primary alter" data-id="'.$query->id.'"><i
-            class="tim-icons icon-pencil" onclick="editCliente('.$query->id.');"></i></a>
+            $btn = '<a class="btn btn-primary alter" data-id="'.$query->id.'"  onclick="editCliente('.$query->id.');"><i
+            class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-cli"
             name="excluir-cliente"
@@ -133,7 +133,7 @@ class FiltroController extends Controller
                 <button type="button" class="parcelas btn btn-primary visu" id="visu-rec"
                 name="visu-receber"
                 data-id = "'.$query->id.'"
-                data-valor = "'.$query->con_valor_final.'"
+                data-valor = "'.$query->rec_valor_final.'"
                 data-tpg = "'.$query->tpg_id.'"
                 data-data = "'.$query->rec_data.'"
                 ><i
@@ -229,8 +229,8 @@ class FiltroController extends Controller
         ->addColumn('action', function($query){
 
             $rota = "'" . route('admin.delete.fornecedor') . "'";
-            $btn = '<a class="btn btn-primary alter" data-id="'.$query->id.'"><i
-            class="tim-icons icon-pencil" onclick="editFornecedor('.$query->id.');"></i></a>
+            $btn = '<a class="btn btn-primary alter" data-id="'.$query->id.'" onclick="editFornecedor('.$query->id.');"><i
+            class="tim-icons icon-pencil"></i></a>
 
             <button type="button" class="btn btn-primary red" id="excluir-for"
             name="excluir-fornecedor"

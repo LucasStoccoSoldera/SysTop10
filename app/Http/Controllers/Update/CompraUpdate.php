@@ -106,7 +106,7 @@ class CompraUpdate extends Controller
         $Caixa->save();
         }
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $compras_dados = Compras::find($request->IDComprasUp);
 

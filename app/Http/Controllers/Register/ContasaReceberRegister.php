@@ -71,10 +71,10 @@ class ContasaReceberRegister extends Controller
             $Contas_a_Receber->save();
         }
 
-        $cont = 0;
+        $cont = 1;
         $conta_last = DB::table('contas_a_receber')->get()->last()->id;
         $contas_dados = Contas_a_Receber::find($conta_last);
-        while ($cont < $request->parcelasReceber) {
+        while ($cont <= $request->parcelasReceber) {
 
             $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->tipoPagtoReceber;
@@ -85,8 +85,12 @@ class ContasaReceberRegister extends Controller
                 $Parcela->par_status = "Baixa";
             }
             $Parcela->par_status = "Aberta";
-            if ($contas_dados->con_data_pag <> null){
-            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+            if(isset($contas_dados->rec_data)){
+                if($cont == 1){
+            $Parcela->par_data_pagto = ($contas_dados->rec_data);
+                } else{
+                    $Parcela->par_data_pagto = ($contas_dados->rec_data->modify('+' . ($cont * 30) . ' days'));
+                }
             }
             $Parcela->save();
             $cont ++;
