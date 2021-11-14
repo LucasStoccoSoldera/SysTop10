@@ -43,12 +43,13 @@ class FiltroController extends Controller
 
         $query = Cliente::query();
 
-        $termos = $request->only('cli_nome', 'cli_cpf_cnpj', 'cli_cidade', 'created_at');
+        $termos = $request->only('cli_nome', 'cli_cidade', 'created_at', 'cli_cpf_cnpj');
 
         foreach ($termos as $nome => $valor) {
             if ($valor) {
                 $query->where($nome, 'LIKE', '%' . $valor . '%');
             }
+        }
 
         return  DataTables::eloquent($query)
         ->addColumn('action', function($query){
@@ -67,7 +68,6 @@ class FiltroController extends Controller
         ->rawColumns(['action'])
         ->toJson();
     }
-}
 
     public function Contas(Request $request){
 

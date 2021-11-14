@@ -137,8 +137,8 @@
 
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
-                                    <label class="modal-label" for="cli_cidade">Cidade:</label>
-                                    <input type="text" name="filtro_cidade" id="filtro_cidade" data-column="3"
+                                    <label class="modal-label" for="filtro_cidade">Cidade:</label>
+                                    <input type="text" name="cli_cidade" id="filtro_cidade" data-column="3"
                                         class="filtro form-control filter-input">
                                 </div>
                             </div>
@@ -660,14 +660,16 @@
             }
         );
 
-
+        $("#formFilter").on('submit', function(e) {
+            $('#tb_cliente').DataTable().ajax.reload();
+    });
 
         var table_cliente = $('#tb_cliente').DataTable({
             paging: true,
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.cliente') }}",
+            ajax: "{{ route('admin.filtro.cliente') }}",
             columns: [{
                     data: 'cli_nome'
                 },
@@ -858,25 +860,6 @@
             });
         });
 
-        $("#formFilter").on('submit', function(e) {
-
-            e.preventDefault();
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    var table_cliente = data_decoded;
-                    table_cliente.ajax.reload(null, false);
-                }
-            });
-        });
 
     });
 </script>

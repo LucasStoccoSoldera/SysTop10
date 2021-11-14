@@ -636,12 +636,17 @@
                 ],
             });
 
+
+        $("#formFilter").on('submit', function(e) {
+            $('#tb_receber').DataTable().ajax.reload();
+    });
+
         var table_receber = $('#tb_receber').DataTable({
             paging: true,
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contasareceber') }}",
+            ajax: "{{ route('admin.filtro.contasareceber') }}",
             columns: [{
                     data: "id",
                     className: "text-center"
@@ -801,26 +806,6 @@
                         demo.showNotification('top', 'right', 5, data_decoded.msg,
                             'tim-icons icon-alert-circle-exc');
                     }
-                }
-            });
-        });
-
-        $("#formFilter").on('submit', function(e) {
-
-            e.preventDefault();
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                processData: false,
-                dataType: 'json',
-                success: function(data_decoded) {
-                    var table_receber = data_decoded;
-                    table_receber.ajax.reload(null, false);
                 }
             });
         });

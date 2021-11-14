@@ -518,12 +518,17 @@
     <script>
         $(document).ready(function() {
 
+
+        $("#formFilter").on('submit', function(e) {
+            $('#tb_estoque').DataTable().ajax.reload();
+    });
+
             var table_estoque = $('#tb_estoque').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
-                ajax: "{{ route('admin.list.estoque') }}",
+                ajax: "{{ route('admin.filtro.estoque') }}",
                 columns: [{
                         data: "pro_id",
                         className: "text-center"
@@ -687,26 +692,6 @@
                             demo.showNotification('top', 'right', 5, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }
-                    }
-                });
-            });
-
-            $("#formFilter").on('submit', function(e) {
-
-                e.preventDefault();
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    processData: false,
-                    dataType: 'json',
-                    success: function(data_decoded) {
-                        var table_estoque = data_decoded;
-                        table_estoque.ajax.reload(null, false);
                     }
                 });
             });

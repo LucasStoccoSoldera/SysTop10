@@ -509,12 +509,17 @@
     <script>
         $(document).ready(function() {
 
+
+        $("#formFilter").on('submit', function(e) {
+            $('#tb_fornecedor').DataTable().ajax.reload();
+    });
+
             var table_fornecedor = $('#tb_fornecedor').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
-                ajax: "{{ route('admin.list.fornecedor') }}",
+                ajax: "{{ route('admin.filtro.fornecedor') }}",
                 columns: [{
                         data: "id",
                         className: "text-center"
@@ -691,27 +696,6 @@
                             'tim-icons icon-alert-circle-exc');
                             $('#modalAlertDelete').modal('toggle');
                         }
-                    }
-                });
-            });
-
-
-            $("#formFilter").on('submit', function(e) {
-
-                e.preventDefault();
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    processData: false,
-                    dataType: 'json',
-                    success: function(data_decoded) {
-                        var table_fornecedor = data_decoded;
-                        table_fornecedor.ajax.reload(null, false);
                     }
                 });
             });

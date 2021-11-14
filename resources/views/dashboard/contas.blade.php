@@ -1640,12 +1640,17 @@
                 ],
             });
 
+
+        $("#formFilter").on('submit', function(e) {
+            $('#tb_conta').DataTable().ajax.reload();
+    });
+
         var table_conta = $('#tb_conta').DataTable({
             paging: true,
             searching: false,
             processing: true,
             serverside: true,
-            ajax: "{{ route('admin.list.contas') }}",
+            ajax: "{{ route('admin.filtro.contas') }}",
             columns: [{
                     data: "con_descricao"
                 },
@@ -2037,25 +2042,6 @@
         });
         });
 
-        $("#formFilter").on('submit', function(e) {
-
-        e.preventDefault();
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            processData: false,
-            dataType: 'json',
-            success: function(data_decoded) {
-                var table_conta = data_decoded;
-                table_conta.ajax.reload(null, false);
-            }
-        });
-        });
     });
 </script>
 @endpush

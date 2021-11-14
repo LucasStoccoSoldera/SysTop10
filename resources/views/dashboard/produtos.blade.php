@@ -1499,12 +1499,17 @@
     <script>
         $(document).ready(function() {
 
+
+                        $("#formFilter").on('submit', function(e) {
+                        $('#tb_produto').DataTable().ajax.reload();
+                });
+
             var table_produto = $('#tb_produto').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
                 serverside: true,
-                ajax: "{{ route('admin.list.produto') }}",
+                ajax: "{{ route('admin.filtro.produto') }}",
                 columns: [{
                         data: "id",
                         className: "text-center"
@@ -2287,26 +2292,6 @@
                 $('#ls_par_valor').val(valor);
                 $('#ls_par_tpg').val(pagto);
                 $('#ls_par_data').val(data);
-            });
-
-            $("#formFilter").on('submit', function(e) {
-
-                e.preventDefault();
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    processData: false,
-                    dataType: 'json',
-                    success: function(data_decoded) {
-                        var table_produto = data_decoded;
-                        table_produto.ajax.reload(null, false);
-                    }
-                });
             });
 
         });
