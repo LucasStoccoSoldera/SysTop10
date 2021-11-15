@@ -26,6 +26,7 @@ class Contas_a_Pagar extends Model
 
     protected $dates = [
         'con_data_pag',
+        'con_data_venc',
     ];
 
     public function tipopagto_contas_a_pagar()

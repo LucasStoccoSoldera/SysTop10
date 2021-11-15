@@ -89,7 +89,7 @@ class ContasUpdate extends Controller
 
         } else{
 
-        $cont = 1;
+        $cont = 2;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $contas_dados = Contas_a_Pagar::find($request->idCon);
 
@@ -107,11 +107,11 @@ class ContasUpdate extends Controller
             $Parcela->par_status = "Em Aberto";
             }
             $Parcela->par_status = "Em Aberto";
-            if(isset($contas_dados->con_data_pag)){
-                if($cont == 1){
-            $Parcela->par_data_pagto = ($contas_dados->con_data_pag);
+            if(isset($contas_dados->con_data_venc)){
+                if($cont <= 2){
+            $Parcela->par_data_pagto = ($contas_dados->con_data_venc);
                 } else{
-                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont) . ' month'));
+                    $Parcela->par_data_pagto = ($contas_dados->con_data_venc->modify('+' . ($cont -1) . ' month'));
                 }
             }
             $Parcela->save();

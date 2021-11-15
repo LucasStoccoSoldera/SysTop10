@@ -370,6 +370,22 @@
         <script>
             $(document).ready(function() {
 
+                $('#modalRegisterCentroCusto').on('hidden.bs.modal', function(){
+                    document.location.reload(true);
+                });
+
+                $('#modalRegisterTpgPagto').on('hidden.bs.modal', function(){
+                    document.location.reload(true);
+                });
+
+                $('#modalUpdateCentroCusto').on('hidden.bs.modal', function(){
+                    document.location.reload(true);
+                });
+
+                $('#modalUpdateTpgPagto').on('hidden.bs.modal', function(){
+                    document.location.reload(true);
+                });
+
                 $("#formRegisterCentroCusto").on('submit', function(e) {
 
                     e.preventDefault();

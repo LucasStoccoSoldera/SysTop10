@@ -334,8 +334,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="modal-label">Data de Pagamento:</label> <label
-                                        style="color: red; font-size: 12px;"> * </label>
+                                    <label class="modal-label">Data de Pagamento:</label>
                                     <input type="date" name="datapContas" id="datapContas" class="form-control"
                                         onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                         value="{{ old('datapContas') }}" placeholder="Entre com a Data de Pagamento">
@@ -890,8 +889,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="modal-label">Data de Pagamento:</label> <label
-                                    style="color: red; font-size: 12px;"> * </label>
+                                <label class="modal-label">Data de Pagamento:</label>
                                 <input type="date" name="datapContasUp" id="datapContasUp" class="form-control"
                                     onkeypress="mascara(this, '##/##/####')" maxlength="10"
                                     value="{{ old('datapContasUp') }}" placeholder="Entre com a Data de Pagamento">
