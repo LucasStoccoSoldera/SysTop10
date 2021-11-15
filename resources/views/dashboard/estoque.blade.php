@@ -544,7 +544,9 @@
                     },
                     {
                         data: "est_data",
-                        className: "text-center"
+                        className: "text-center", render: function(data){
+                        return new Date(data).toLocaleDateString();
+                    }
                     },
                     {
                         data: "est_time",

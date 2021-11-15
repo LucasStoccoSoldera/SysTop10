@@ -1680,7 +1680,9 @@
                     },
                     {
                         data: "par_data_pagto",
-                        className: "text-center"
+                        className: "text-center", render: function(data){
+                        return new Date(data).toLocaleDateString();
+                    }
                     },
                 ],
                 dom: 'Bfrtip',
@@ -1727,7 +1729,9 @@
                 },
                 {
                     data: "con_data_venc",
-                    className: "text-center"
+                    className: "text-center", render: function(data){
+                        return new Date(data).toLocaleDateString();
+                    }
                 },
                 {
                     data: "con_status",

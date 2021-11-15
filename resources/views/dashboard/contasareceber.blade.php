@@ -630,7 +630,9 @@
                     },
                     {
                         data: "par_data_pagto",
-                        className: "text-center"
+                        className: "text-center", render: function(data){
+                        return new Date(data).toLocaleDateString();
+                    }
                     },
                 ],
                 dom: 'Bfrtip',
@@ -680,7 +682,9 @@
                 },
                 {
                     data: "rec_data",
-                    className: "text-center"
+                    className: "text-center", render: function(data){
+                        return new Date(data).toLocaleDateString();
+                    }
                 },
                 {
                     data: "rec_status",

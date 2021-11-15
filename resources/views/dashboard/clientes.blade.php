@@ -684,7 +684,9 @@
                 },
                 {
                     data: 'created_at',
-                    className: "text-center"
+                        className: "text-center", render: function(data){
+                            return new Date(data).toLocaleString();
+                        }
                 },
                 {
                     data: "action",
