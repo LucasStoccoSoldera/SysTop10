@@ -1139,7 +1139,6 @@
             $(document).on('click', '[data-dismiss="modal"]',
                 function() {
                     table_venda.ajax.reload(null, false);
-                    table_item_venda_ato.ajax.reload(null, false);
                 }
             );
 

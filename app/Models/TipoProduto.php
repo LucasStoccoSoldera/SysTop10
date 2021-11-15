@@ -11,12 +11,13 @@ class TipoProduto extends Model
     public $table='tipoproduto';
 
     protected $fillable = [
+        'id',
         'tpp_descricao',
 
     ];
 
     public function  tipoproduto_produto()
     {
-        return $this->belongsToOne(Produto::class);
+        return $this->belongsTo(Produto::class, 'tpp_id', 'id');
     }
 }

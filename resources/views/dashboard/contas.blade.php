@@ -399,7 +399,7 @@
             <form class="form-cadastro" name="formRegisterCompras" id="formRegisterCompras" method="POST"
                 autocomplete="off" enctype="multipart/form-data" action="{{ route('admin.create.compra') }}">
                 @csrf
-                <div class="modal-content">
+                <div class="modal-content" style="width: 705px">
                     <div class="modal-header">
                         <h4 class="modal-title">Cadastrar Compras</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1630,11 +1630,12 @@
         });
 
         $('#modalRegisterItemCompra').on('shown.bs.modal', function () {
+            console.log('teste');
             table_item_compra_ato.destroy();
     });
 
     $('#IDCompras').on('focus', function () {
-            table_item_compra_ato.destroy();
+        table_item_compra_ato.destroy();
     });
 
 
@@ -1755,10 +1756,6 @@
         $(document).on('click', '[data-dismiss="modal"]',
             function() {
                 table_conta.ajax.reload(null, false);
-                table_item_compra_ato.ajax.reload(null, false);
-                if (lista_parcelas == true) {
-                    table_parcelas.ajax.reload(null, false);
-                }
             }
         );
 
@@ -2077,29 +2074,6 @@
                     }
                 }
             });
-        });
-
-
-
-        $("#modalRegisterItemCompra").on('click', '[data-dismiss="modal"]', function(e) {
-
-        var id = $(this).val();
-
-        e.preventDefault();
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'POST',
-            url: "{{ route('admin.list.itemcompraato.blur')}}",
-            data: {id: $('#IDCompras').val()},
-            dataType: 'json',
-            success: function(data_decoded) {
-                var table_item_compra_ato = data_decoded;
-                $('#tb_item_compra_ato').DataTable().ajax.reload();
-            }
-        });
         });
 
     });

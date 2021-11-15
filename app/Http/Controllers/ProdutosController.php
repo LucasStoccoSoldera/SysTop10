@@ -12,6 +12,7 @@ use App\Models\Dimensao;
 use App\Models\DimensaoProduto;
 use App\Models\ExportProduto;
 use App\Models\Logistica;
+use App\Models\Venda_Detalhe;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -33,8 +34,10 @@ class ProdutosController extends Controller
         $ano_passado = Carbon::now()->subYear();
 
         $dado1 = Produto::count();
-        $dado2 = 'teste';
+        $dado2 = Venda_Detalhe::select(DB::raw("count(pro_id) as pro_id"))->groupBy('pro_id')->having('pro_id', '>', 1)->orderBy('pro_id', 'desc')->first();
         $dado3 = DB::table('produto')->where('pro_promocao', '=', 'Sim')->count();
+        $dado3 = str_replace('{"pro_id":', '', $dado3);
+        $dado3 = str_replace('}', '', $dado3);
 
         $data = Produto::all();
         $data2 = TipoProduto::all();

@@ -27,10 +27,9 @@ class EstoqueController extends Controller
 
         $dado1 = DB::table('estoque')->sum('est_qtde');
         $dado2 = DB::table('estoque')->sum('est_qtde');
-       $dado3 =  'teste';//DB::table('estoque')
-                           //                            ->max('est_qtde')
-                             //                          ->first();
-
+       $dado3 =  Estoque::select('pro_id')->groupBy('pro_id')->having('pro_id', '>', 1)->orderBy('est_qtde', 'desc')->first();
+       $dado3 = str_replace('{"pro_id":', '', $dado3);
+        $dado3 = str_replace('}', '', $dado3);
         $data = Estoque::all();
         $data2 = Produto::all();
         $data3 = Dimensao::all();
