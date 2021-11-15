@@ -16,9 +16,10 @@ class ItemVendaTransformer extends TransformerAbstract
     {
         $rota =  "'" . route('admin.delete.itemvenda') . "'";
         return [
-            'id' => (int) $ItemVenda->id,
-            'pro_nome' => (int) $ItemVenda->pro_nome,
-            'det_qtde' => $ItemVenda->det_qtde,
+            'pro_nome' => $ItemVenda->id,
+            'det_qtde' => (int) $ItemVenda->pro_nome,
+            'dim_descricao' => $ItemVenda->dim_id,
+            'cor_nome' => $ItemVenda->cor_id,
             'det_valor_total' => (string) $ItemVenda->det_valor_total,
             'action' => '<a class="btn btn-primary alter-min" data-id="'.$ItemVenda->id.'"><i
             class="tim-icons icon-pencil" onclick="editItemVenda('.$ItemVenda->id.');"></i></a>

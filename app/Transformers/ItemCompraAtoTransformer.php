@@ -16,7 +16,7 @@ class ItemCompraAtoTransformer extends TransformerAbstract
     {
         $rota = "'" . route('admin.delete.itemcompra') . "'";
         return [
-            'cde_produto' => (int) $ItemCompra->cde_produto,
+            'cde_produto' => $ItemCompra->cde_produto,
             'cde_qtde' => $ItemCompra->cde_qtde,
             'cde_valoritem' => (string) $ItemCompra->cde_valoritem,
             'cde_valortotal' => (string) $ItemCompra->cde_valortotal,

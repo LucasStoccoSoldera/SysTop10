@@ -12,9 +12,9 @@ class Usuario extends Authenticatable
     protected $primaryKey = 'id';
     protected $table = "usuario";
 
-    public function cargo_user()
+    public function cargo()
     {
-        return $this->hasMany(Cargo::class);
+        return $this->hasMany('App\Models\Cargo', 'id', 'car_id');
     }
 
 }

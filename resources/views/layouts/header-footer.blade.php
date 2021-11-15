@@ -66,6 +66,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
+                            <li class="dropdown nav-item" style="margin-top: 12px; margin-right: 20px;">
+                                <?php
+                                setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                                date_default_timezone_set('America/Sao_Paulo');
+                                $uppercaseMonth = ucfirst(gmstrftime('%B'));
+                                echo utf8_encode(ucfirst(strftime( '%A, %d de ' .$uppercaseMonth. ' de %Y', strtotime('today'))));
+                                ?>
+                                <i class="far fa-clock"></i></i> <span id="timer"></span></span>
+                            </li>
                             <li class="dropdown nav-item">
                                 <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <div class="notification d-none d-lg-block d-xl-block"></div>
@@ -85,6 +94,7 @@
                                             class="nav-item dropdown-item">43 vendas em aberto essa semana.</a></li>
                                 </ul>
                             </li>
+
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <div class="photo">
@@ -108,6 +118,9 @@
                                         </form>
                                     </li>
                                 </ul>
+                            </li>
+                            <li class="dropdown nav-item" style="margin-top: 12px;" >
+                                {{ Auth::user()->usu_nome_completo }}
                             </li>
                             <li class="separator d-lg-none"></li>
                         </ul>

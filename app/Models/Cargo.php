@@ -20,8 +20,8 @@ class Cargo extends Model
         return $this->hasMany(Privilegio::class);
     }
 
-    public function cargo_muitos()
+    public function usuario()
     {
-        return $this->belongsToMany(Usuario::class, Notificacao::class);
+        return $this->belongsToMany('App\Models\Usuario',  'id', 'car_id');
     }
 }

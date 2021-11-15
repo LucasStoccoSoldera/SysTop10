@@ -570,16 +570,16 @@
                                             <th style="width: 30%">
                                                 Produto
                                             </th>
-                                            <th style="width: 10%">
+                                            <th style="width: 5%">
                                                 Qtde
                                             </th>
-                                            <th style="width: 20%">
+                                            <th style="width: 15%">
                                                 Valor Unit.
                                             </th>
-                                            <th style="width: 20%">
+                                            <th style="width: 15%">
                                                 Valor Final
                                             </th>
-                                            <th class="text-right" style="width: 5%">
+                                            <th class="text-right" style="width: 20%">
                                                 <div id="acao">Ações</div>
                                             </th>
                                         </tr>
@@ -1102,7 +1102,7 @@
                                     <h2 class="card-title">Itens da Compra
                                         <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
                                             data-backdrop="static"
-                                            onclick="abrirModal('#modalUpdateItemCompra', '#IDCompras', '#IDItemCompra');">
+                                            onclick="abrirModal('#modalUpdateItemCompra', '#IDComprasUp', '#IDItemCompraUp');">
                                             + Add</a>
                                     </h2>
                                 </div>
@@ -1111,10 +1111,10 @@
                                         <table class="table tablesorter " id="tb_item_compra_ato">
                                             <thead class=" text-primary">
                                                 <tr>
-                                                    <th style="width: 30%">
+                                                    <th style="width: 10%">
                                                         Produto
                                                     </th>
-                                                    <th style="width: 10%">
+                                                    <th style="width: 5%">
                                                         Qtde
                                                     </th>
                                                     <th style="width: 20%">
@@ -1542,20 +1542,57 @@
 
                     var table_parcelas;
 
+                    var table_item_compra_ato;
+
     $(document).ready(function() {
 
         var lista_parcelas = false;
 
         $("#IDCompras").on('blur', function(e) {
             idcompra = $('#IDCompras').val();
-            $('#tb_item_compra_ato').DataTable().ajax.reload();
+
+             table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: {
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: 'POST',
+                url: "{{ route('admin.list.itemcompraato')}}",
+                data: {id: idcompra},
+            },
+            columns: [{
+                    data: "cde_produto"
+                },
+                {
+                    data: "cde_qtde",
+                    className: "text-center"
+                },
+                {
+                    data: "cde_valoritem",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "cde_valortotal",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "action",
+                    className: "text-right"
+                },
+            ]
+        });
         });
 
-        $("#descricaoCompras").on('blur', function(e) {
-            console.log(idcompra);
-        });
+        $("#modalRegisterItemCompra").on('hidden.bs.modal', function(e) {
+            idcompra = $('#IDCompras').val();
 
-        var table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
+             table_item_compra_ato = $('#tb_item_compra_ato').DataTable({
             paging: true,
             searching: false,
             processing: true,
@@ -1590,6 +1627,15 @@
                 },
             ]
         });
+        });
+
+        $('#modalRegisterItemCompra').on('shown.bs.modal', function () {
+            table_item_compra_ato.destroy();
+    });
+
+    $('#IDCompras').on('focus', function () {
+            table_item_compra_ato.destroy();
+    });
 
 
         $('body').on('click', 'button.parcelas', function(e) {
@@ -1828,7 +1874,6 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('#' + prefix).focus();
                             $('#' + prefix).addClass('is-invalid');
                         });
                     }
@@ -1937,7 +1982,6 @@
                     if (data_decoded.status == 0) {
                         $.each(data_decoded.error, function(prefix, val) {
                             $('span.' + prefix + '_error').text(val[0]);
-                            $('#' + prefix).focus();
                             $('#' + prefix).addClass('is-invalid');
                         });
                     }

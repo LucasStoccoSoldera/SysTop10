@@ -409,22 +409,22 @@
                                     <table class="table tablesorter " id="tb_item_venda_ato">
                                         <thead class=" text-primary">
                                             <tr>
-                                                <th class="text-center" style="width: 25%">
+                                                <th style="width: 25%">
                                                     Produto
                                                 </th>
-                                                <th style="width: 10%">
+                                                <th style="width: 5%">
                                                     Qtde
                                                 </th>
-                                                <th style="width: 20%">
+                                                <th style="width: 15%">
                                                     Dimensão
                                                 </th>
-                                                <th style="width: 5%">
+                                                <th style="width: 15%">
                                                     Cor
                                                 </th>
                                                 <th style="width: 20%">
                                                     Valor Total
                                                 </th>
-                                                <th class="text-right" style="width: 5%">
+                                                <th class="text-right" style="width: 20%">
                                                     <div id="acao">Ações</div>
                                                 </th>
                                             </tr>
@@ -895,13 +895,13 @@
                                             <table class="table tablesorter " id="tb_item_venda_ato">
                                                 <thead class=" text-primary">
                                                     <tr>
-                                                        <th class="text-center" style="width: 25%">
+                                                        <th class="text-center" style="width: 20%">
                                                             Produto
                                                         </th>
                                                         <th style="width: 10%">
                                                             Qtde
                                                         </th>
-                                                        <th style="width: 20%">
+                                                        <th style="width: 15%">
                                                             Dimensão
                                                         </th>
                                                         <th style="width: 5%">
@@ -910,7 +910,7 @@
                                                         <th style="width: 20%">
                                                             Valor Total
                                                         </th>
-                                                        <th class="text-right" style="width: 5%">
+                                                        <th class="text-right" style="width: 15%">
                                                             <div id="acao">Ações</div>
                                                         </th>
                                                     </tr>
@@ -944,6 +944,8 @@
 @push('ajax')
     <script>
             var id_venda;
+
+            var table_item_venda_ato;
 
         $('#IDVenda').on('blur', function() {
             var idVenda = $("#IDVenda").val();
@@ -1031,10 +1033,7 @@
 
             $("#IDVenda").on('blur', function(e) {
                 id_venda = $('#IDVenda').val();
-                $('#tb_item_venda_ato').DataTable().ajax.reload();
-            });
-
-            var table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
+                table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
                 paging: true,
                 searching: false,
                 processing: true,
@@ -1048,14 +1047,17 @@
                 data: {id: id_venda},
             },
                 columns: [{
-                        data: "id",
+                        data: "pro_nome",
                         className: "text-center"
                     },
                     {
-                        data: "pro_id"
+                        data: "det_qtde"
                     },
                     {
-                        data: "det_qtde"
+                        data: "dim_descricao"
+                    },
+                    {
+                    data: "cor_nome"
                     },
                     {
                         data: "det_valor_total",
@@ -1068,6 +1070,57 @@
                     },
                 ]
             });
+            });
+
+            $("#modalRegisterItemVenda").on('hidden.bs.modal', function(e) {
+                id_venda = $('#IDVenda').val();
+
+            table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
+            paging: true,
+            searching: false,
+            processing: true,
+            serverside: true,
+            ajax: {
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                 },
+                type: 'POST',
+                url: "{{ route('admin.list.itemvendaato')}}",
+                data: {id: id_venda},
+            },
+            columns: [{
+                    data: "cde_produto"
+                },
+                {
+                    data: "cde_qtde"
+                },
+                {
+                    data: "cde_valoritem",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "cde_valortotal",
+                    className: "text-right",
+                    render: DataTable.render.number('.', ',', 2, 'R$')
+                },
+                {
+                    data: "action",
+                    className: "text-right"
+                },
+            ]
+        });
+        });
+
+        $('#modalRegisterItemVenda').on('shown.bs.modal', function () {
+            table_item_compra_ato.destroy();
+    });
+
+    $('#IDVenda').on('focus', function () {
+            table_item_compra_ato.destroy();
+    });
+
+
 
             $(document).on('click', '[data-dismiss="modal"]',
                 function() {
@@ -1351,28 +1404,6 @@
                 $('#ls_par_tpg').val(pagto);
                 $('#ls_par_data').val(data);
             });
-
-
-                $("#modalRegisterItemVenda").on('click', '[data-dismiss="modal"]', function(e) {
-
-                var id = $(this).val();
-
-                e.preventDefault();
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'POST',
-                    url: "{{ route('admin.list.itemvendaato.blur')}}",
-                    data: {id: $('#modalRegisterItemVenda').val()},
-                    dataType: 'json',
-                    success: function(data_decoded) {
-                        var table_item_venda_ato = data_decoded;
-                        $('#tb_item_venda_ato').DataTable().ajax.reload();
-                    }
-                });
-                });
 
 
 
