@@ -98,7 +98,7 @@ class ContasaReceberUpdate extends Controller
                 if($cont == 1){
                     $Parcela->par_data_pagto = ($contas_dados->rec_data);
                         } else{
-                            $Parcela->par_data_pagto = ($contas_dados->rec_data->modify('+' . ($cont * 30) . ' days'));
+                            $Parcela->par_data_pagto = ($contas_dados->rec_data->modify('+' . ($cont) . ' month'));
                         }
             }
             $Parcela->save();

@@ -20,7 +20,7 @@ class CreateParcelas extends Migration
             $table->BigInteger('par_venda')->nullable();
             $table->BigInteger('par_conta')->nullable();
             $table->Integer('par_numero');
-            $table->float('par_valor', 2);
+            $table->float('par_valor', 12, 2);
             $table->string('par_status');
             $table->string('par_data_pagto')->nullable();
             $table->timestamps();

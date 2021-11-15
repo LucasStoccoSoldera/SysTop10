@@ -114,7 +114,7 @@ class CompraRegister extends Controller
                 if($cont == 1){
                     $Parcela->par_data_pagto = ($compras_dados->com_data_pag);
                         } else{
-                            $Parcela->par_data_pagto = ($compras_dados->com_data_pag->modify('+' . ($cont * 30) . ' days'));
+                            $Parcela->par_data_pagto = ($compras_dados->com_data_pag->modify('+' . ($cont) . ' month'));
                         }
             }
             $Parcela->save();

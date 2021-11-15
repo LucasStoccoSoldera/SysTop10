@@ -91,32 +91,34 @@ class ContasUpdate extends Controller
 
         $cont = 1;
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
-        $contas_dados = Contas_a_Pagar::find($conta_last);
+        $contas_dados = Contas_a_Pagar::find($request->idCon);
 
-        $Parcelas = DB::select('select * from parcelas where par_conta = ?', [$request->idCon]);
+        $Parcelas_delete = Parcelas::where('par_conta', '=', $request->idCon);
+        $Parcelas_delete->delete();
 
-        foreach ($Parcelas as $Parcela) {
+        while ($cont <= $request->parcelasContasUp) {
 
+            $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->tpgpagtoContasUp;
-            $Parcela->par_conta = $conta_last;
+            $Parcela->par_conta = $request->idCon;
             $Parcela->par_numero = $cont;
             $Parcela->par_valor = $request->valorfContasUp / $request->parcelasContasUp;
             if(isset($request->datapContasUp) && $request->datapContasUp <= $ontem){
-            $Parcela->par_status = "Fechado";
+            $Parcela->par_status = "Em Aberto";
             }
             $Parcela->par_status = "Em Aberto";
             if(isset($contas_dados->con_data_pag)){
                 if($cont == 1){
-                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag);
-                        } else{
-                            $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
-                        }
+            $Parcela->par_data_pagto = ($contas_dados->con_data_pag);
+                } else{
+                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont) . ' month'));
+                }
             }
             $Parcela->save();
             $cont ++;
         }
     }
-    if ($Parcelas) {
+    if ($Parcela) {
             return response()->json(['status' => 1, 'msg' => 'Conta atualizada com sucesso!']);
         }
     }

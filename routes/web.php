@@ -163,7 +163,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/admin/Usuario/Atualizar_usuario', [App\Http\Controllers\Update\UserUpdate::class, 'updateUser'])->name('admin.update.user');
     Route::put('/admin/Usuario/Atualizar_cargo', [App\Http\Controllers\Update\CargoUpdate::class, 'updateCargo'])->name('admin.update.cargo');
     Route::put('/admin/Usuario/Atualizar_privilegio', [App\Http\Controllers\Update\PrivilegioUpdate::class, 'updatePrivilegio'])->name('admin.update.privilegio');
-    Route::get('/admin/Usuario/Atualizar_cliente', [App\Http\Controllers\Update\ClienteUpdate::class, 'updateCliente'])->name('admin.update.cliente');
+    Route::put('/admin/Usuario/Atualizar_cliente', [App\Http\Controllers\Update\ClienteUpdate::class, 'updateCliente'])->name('admin.update.cliente');
     Route::put('/admin/Financeiro/Atualizar_conta', [App\Http\Controllers\Update\ContasUpdate::class, 'updatePagar'])->name('admin.update.conta');
     Route::put('/admin/Financeiro/Atualizar_compra', [App\Http\Controllers\Update\CompraUpdate::class, 'updateCompra'])->name('admin.update.compra');
     Route::put('/admin/Financeiro/Atualizar_itemcompra', [App\Http\Controllers\Update\CompraUpdate::class, 'updateItemCompra'])->name('admin.update.itemcompra');

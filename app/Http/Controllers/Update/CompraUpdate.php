@@ -123,7 +123,7 @@ class CompraUpdate extends Controller
                     }
                 $Parcela->par_status = "Em Aberto";
                 if ($compras_dados->con_data_pag <> null){
-                $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                $Parcela->par_data_pagto = ($compras_dados->com_data_pagto->modify('+' . ($cont) . ' month'));
                 }
                 $Parcela->save();
                 $cont ++;

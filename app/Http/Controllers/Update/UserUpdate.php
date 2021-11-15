@@ -28,11 +28,10 @@ class UserUpdate extends Controller
      */
     protected function updateUser(Request $request)
     {
-        $dataForm = $request->all();
 
         $validator = Validator::make($request->all(),[
             'nomeUserUp' => ['required', 'string'],
-            'EmailUsuarioUp' => ['required', 'email','unique:usuario'],
+            'EmailUsuarioUp' => ['required', 'email', 'unique:usuario,usu_usuario'],
             'senhaUserUp' => ['required', 'string', 'confirmed'],
             'celularUserUp' => ['required', 'celular_com_ddd'],
             'cpfUserUp' => ['required', 'string'],
@@ -55,14 +54,23 @@ class UserUpdate extends Controller
         if($validator->fails()){
             return response()->json(['status' =>0, 'error' => $validator->errors()]);
         }
-        $Usuario = Usuario::find($request->idUsu);
+
+        if(empty($request->statusUserUp)){
+            $status = 'Inativo';
+        }
+
+        $Usuario = Usuario::find($request->idUse);
         $Usuario->usu_nome_completo = $request->nomeUserUp;
         $Usuario->usu_usuario = $request->EmailUsuarioUp;
         $Usuario->usu_senha = Hash::make($request->senhaUserUp);
         $Usuario->usu_celular = $request->celularUserUp;
         $Usuario->usu_cpf = $request->cpfUserUp;
         $Usuario->car_id = $request->cargoUserUp;
+        if(isset($request->statusUserUp)){
         $Usuario->usu_status = $request->statusUserUp;
+        } else{
+            $Usuario->usu_status = $status;
+        }
         $Usuario->save();
 
             if($Usuario){

@@ -32,7 +32,7 @@ class ClienteUpdate extends Controller
             $request->all(),
             [
                 'nomeClienteUp' => ['required', 'string'],
-                'usuarioClienteUp' => ['required','email'],
+                'usuarioClienteUp' => ['required','email', 'unique:cliente,cli_usuario'],
                 'senhaClienteUp' => ['required', 'confirmed'],
                 'cepClienteUp' => ['required'],
                 'cidadeClienteUp' => ['required'],
@@ -43,35 +43,36 @@ class ClienteUpdate extends Controller
                 'complementoClienteUp' => ['required'],
             ],
             [
-                'nomeClienteUp.required' => 'Nome completo obrigatório.',
-                'usuarioClienteUp.required' => 'Usuário obrigatório.',
-                'usuarioClienteUp.email' => 'E-mail inválido.',
-                'senhaClienteUp.required' => 'Senha obrigatória.',
-                'senhaClienteUp.confirmed' => 'A confirmação não corresponde.',
-                'cepClienteUp.required' => 'CEP obrigatório.',
-                'cepClienteUp.formato_cep' => 'CEP inválido.',
-                'cidadeClienteUp.required' => 'Cidade obrigatória.',
-                'estadoClienteUp.required' => 'Estado obrigatório.',
-                'bairroClienteUp.required' => 'Bairro obrigatório.',
-                'ruaClienteUp.required' => 'Rua obrigatória.',
-                'ncasaClienteUp.required' => 'Número obrigatório.',
-                'complementoClienteUp.required' => 'Complemento obrigatório.',
+                'nomeCliente.requiredUp' => 'Nome completo obrigatório.',
+                'usuarioCliente.requiredUp' => 'Usuário obrigatório.',
+                'usuarioCliente.emailUp' => 'E-mail inválido.',
+                'usuarioCliente.uniqueUp' => 'Usuário já está em uso.',
+                'senhaCliente.requiredUp' => 'Senha obrigatória.',
+                'senhaCliente.confirmedUp' => 'A confirmação não corresponde.',
+                'cepCliente.requiredUp' => 'CEP obrigatório.',
+                'cepCliente.formato_cepUp' => 'CEP inválido.',
+                'cidadeCliente.requiredUp' => 'Cidade obrigatória.',
+                'estadoCliente.requiredUp' => 'Estado obrigatório.',
+                'bairroCliente.requiredUp' => 'Bairro obrigatório.',
+                'ruaCliente.requiredUp' => 'Rua obrigatória.',
+                'ncasaCliente.requiredUp' => 'Número obrigatório.',
+                'complementoCliente.requiredUp' => 'Complemento obrigatório.',
             ]
         );
 
-        if (!empty($request->cpfCliente || $request->cnpjCliente)) {
+        if (!empty($request->cpfClienteUp || $request->cnpjClienteUp)) {
 
-            if (isset($request->cpfCliente)) {
+            if (isset($request->cpfClienteUp)) {
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
                     [
                         'cpfClienteUp' => ['cpf'],
                     ],
                     [
-                        'cpfClienteUp.cpf' => 'CPF inválido.',
+                        'cpfClienteUp.cpfUp' => 'CPF inválido.',
                     ]
                 );
-                $cpf = $request->cpfCliente;
+                $cpf = $request->cpfClienteUp;
             } else {
                 $validator_cpf_cnpj = Validator::make(
                     $request->all(),
@@ -79,7 +80,7 @@ class ClienteUpdate extends Controller
                         'cnpjClienteUp' => ['cnpj'],
                     ],
                     [
-                        'cnpjClienteUp.cnpj' => 'CNPJ inválido.',
+                        'cnpjClienteUp.cnpjUp' => 'CNPJ inválido.',
                     ]
                 );
             }
@@ -97,33 +98,33 @@ class ClienteUpdate extends Controller
             );
         }
 
-        if (isset($request->telefoneCliente) && isset($request->celularCliente)) {
+        if (isset($request->telefoneClienteUp) && isset($request->celularClienteUp)) {
 
             $validator_telefone_celular = Validator::make(
                 [$request->all()],
                 [
-                    'telefoneClienteUp' => ['telefone_com_ddd'],
+                    'telefoneClienteUp' => ['telefone'],
                     'celularClienteUp' => ['celular_com_ddd'],
                 ],
                 [
-                    'telefoneClienteUp.telefone' => 'Telefone inválido.',
-                    'celularClienteUp.celular_com_ddd' => 'Celular inválido.',
+                    'telefoneCliente.telefoneUp' => 'Telefone inválido.',
+                    'celularCliente.celular_com_dddUp' => 'Celular inválido.',
                 ]
             );
         } else{
-        if (!empty($request->telefoneCliente || $request->celularCliente)) {
+        if (!empty($request->telefoneClienteUp || $request->celularClienteUp)) {
 
-            if (isset($request->telefoneCliente)) {
+            if (isset($request->telefoneClienteUp)) {
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
                     [
-                        'telefoneClienteUp' => ['telefone_com_ddd'],
+                        'telefoneClienteUp' => ['telefone'],
                     ],
                     [
-                        'telefoneClienteUp.telefone' => 'Telefone inválido.',
+                        'telefoneCliente.telefoneUp' => 'Telefone inválido.',
                     ]
                 );
-                $telefone = $request->telefoneCliente;
+                $telefone = $request->telefoneClienteUp;
             } else {
                 $validator_telefone_celular = Validator::make(
                     $request->all(),
@@ -131,7 +132,7 @@ class ClienteUpdate extends Controller
                         'celularClienteUp' => ['celular_com_ddd'],
                     ],
                     [
-                        'celularClienteUp.celular_com_ddd' => 'Celular inválido.',
+                        'celularCliente.celular_com_dddUp' => 'Celular inválido.',
                     ]
                 );
             }
@@ -143,8 +144,8 @@ class ClienteUpdate extends Controller
                     'celularClienteUp' => ['required'],
                 ],
                 [
-                    'telefoneClienteUp.required' => 'Telefone ou Celular obrigatórios.',
-                    'celularClienteUp.required' => 'Telefone ou Celular obrigatórios.',
+                    'telefoneCliente.requiredUp' => 'Telefone ou Celular obrigatórios.',
+                    'celularCliente.requiredUp' => 'Telefone ou Celular obrigatórios.',
                 ]
             );
         }
@@ -155,7 +156,7 @@ class ClienteUpdate extends Controller
         }
 
 
-        $Cliente = Cliente::find($request->idCli);
+        $Cliente = new Cliente;
         if (empty(DB::table('cliente')->where('cli_usuario', $request->usuario)->first())) {
             $Cliente->cli_nome = $request->nomeClienteUp;
             $Cliente->cli_usuario = $request->usuarioClienteUp;

@@ -413,16 +413,6 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="modal-label">Status:</label> <label
-                                    style="color: red; font-size: 12px;">
-                                    * </label><br>
-                                <div class="switch__container">
-                                    <input id="switch-shadow" name="statusCliente" value={{ 'Ativo' ?? 'Inativo' }}
-                                        class="switch switch--shadow" type="checkbox">
-                                    <label for="switch-shadow"></label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -458,7 +448,7 @@
                                 <label class="modal-label">Nome Completo:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="nomeClienteUp" id="nomeClienteUp" class="form-control"
-                                    maxlength="25" value="{{ old('nomeClienteUp') }}" placeholder="Entre com o Nome"
+                                    maxlength="80" value="{{ old('nomeClienteUp') }}" placeholder="Entre com o Nome"
                                     autofocus>
                                 <div class="div-feedback">
                                     <span class="invalid-feedback nomeClienteUp_error" role="alert">
@@ -616,21 +606,11 @@
                                 <label class="modal-label">Complemento:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="complementoClienteUp" id="complementoClienteUp"
-                                    class="form-control" maxlength="4" value="{{ old('complementoClienteUp') }}"
+                                    class="form-control" maxlength="50" value="{{ old('complementoClienteUp') }}"
                                     placeholder="Entre com o Complemento">
                                 <div class="div-feedback">
                                     <span class="invalid-feedback complementoClienteUp_error" role="alert">
                                     </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="modal-label">Status:</label> <label
-                                    style="color: red; font-size: 12px;">
-                                    * </label><br>
-                                <div class="switch__container">
-                                    <input id="statusClienteUp" name="statusClienteUp" value={{ 'Ativo' ?? 'Inativo' }}
-                                        class="switch switch--shadow" type="checkbox">
-                                    <label for="statusClienteUp"></label>
                                 </div>
                             </div>
                         </div>

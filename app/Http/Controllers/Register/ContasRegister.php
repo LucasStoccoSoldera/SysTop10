@@ -89,7 +89,7 @@ class ContasRegister extends Controller
         $conta_last = DB::table('contas_a_pagar')->get()->last()->id;
         $contas_dados = Contas_a_Pagar::find($conta_last);
         while ($cont <= $request->parcelasContas) {
-            
+
             $Parcela = new Parcelas();
             $Parcela->tpg_id = $request->tpgpagtoContas;
             $Parcela->par_conta = $conta_last;
@@ -103,7 +103,7 @@ class ContasRegister extends Controller
                 if($cont == 1){
             $Parcela->par_data_pagto = ($contas_dados->con_data_pag);
                 } else{
-                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont * 30) . ' days'));
+                    $Parcela->par_data_pagto = ($contas_dados->con_data_pag->modify('+' . ($cont) . ' month'));
                 }
             }
             $Parcela->save();

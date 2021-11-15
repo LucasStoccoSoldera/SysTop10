@@ -114,7 +114,7 @@ class VendasRegister extends Controller
                 if($cont == 1){
                     $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto);
                         } else{
-                            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont * 30) . ' days'));
+                            $Parcela->par_data_pagto = ($venda_dados->ven_data_pagto->modify('+' . ($cont) . ' month'));
                         }
             }
             $Parcela->save();
