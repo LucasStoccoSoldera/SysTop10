@@ -18,7 +18,7 @@ class UserTransformer extends TransformerAbstract
             'id' => (int) $user->id,
             'usu_nome_completo' => $user->usu_nome_completo,
             'usu_usuario' => $user->usu_usuario,
-            'car_descricao' => $user->car_descricao,
+            'car_descricao' => $user->cargo->car_descricao,
             'usu_celular' => (string) $user->usu_celular,
             'usu_data_cadastro' => (string) $user->usu_data_cadastro,
             'action' => '<a class="btn btn-primary alter" onclick="editUser('.$user->id.');"><i class="tim-icons icon-pencil"></i></a>

@@ -199,11 +199,11 @@
                             onclick="abrirModal('#modalRegisterUser');"> <img src="../img/dash/cadastro_pessoa.png"
                                 width="75" height="75"></button>
                         <button class="dropdown-item" id="no-padding" data-backdrop="static"
-                            onclick="abrirModal('#modalRegisterCargo');"> <img src="../img/dash/cadastro_pessoa.png"
+                            onclick="abrirModal('#modalRegisterCargo');"> <img src="../img/dash/cargo.png"
                                 width="75" height="75"></button>
                         <button class="dropdown-item" id="no-padding" data-backdrop="static"
                             onclick="abrirModal('#modalRegisterPrivilegio');">
-                            <img src="../img/dash/cadastro_pessoa.png" width="75" height="75"></button>
+                            <img src="../img/dash/privilegio.png" width="75" height="75"></button>
                     </div>
                 </div>
             </div>
@@ -314,7 +314,7 @@
                                             style="color: red; font-size: 12px;">
                                             * </label><br>
                                         <div class="switch__container">
-                                            <input id="switch-shadow_add" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
+                                            <input id="switch-shadow" name="statusUser" value={{ 'Ativo' ?? 'Inativo' }}
                                                 class="switch switch--shadow" type="checkbox">
                                             <label for="switch-shadow"></label>
                                         </div>
@@ -735,9 +735,12 @@
                 $('#logisticaPrivilegio').val(log);
             }
 
-        $("#formFilter").on('submit', function(e) {
-            e.preventDefault();
+
+        $("#btn-form-consulta").on('click', function(e) {
             table_usuario.destroy();
+});
+
+        $("#formFilter").on('submit', function(e) {
 
             table_usuario = $('#tb_usuario').DataTable({
                 paging: true,
@@ -767,7 +770,9 @@
                     },
                     {
                         data: "usu_data_cadastro",
-                        className: "text-center"
+                        className: "text-center", render: function(data){
+                            return new Date(data).toLocaleString();
+                        }
                     },
                     {
                         data: "action",

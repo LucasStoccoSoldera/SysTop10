@@ -17,7 +17,7 @@ class Cor extends Model
 
     public function cor_muitos()
     {
-        return $this->belongsToMany(Estoque::class, Produto::class, Venda::class);
+        return $this->belongsTo(Estoque::class, 'cor_id', 'id');
     }
 }
 

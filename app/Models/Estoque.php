@@ -23,12 +23,12 @@ class Estoque extends Model
 
     public function dimensoes_estoque()
     {
-        return $this->hasMany(Dimensao::class);
+        return $this->hasOne(Dimensao::class, 'id', 'dim_id');
     }
 
     public function cores_estoque()
     {
-        return $this->hasMany(Cor::class);
+        return $this->hasOne(Cor::class, 'id', 'cor_id');
     }
 
     public function estoque_produto()

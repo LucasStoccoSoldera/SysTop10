@@ -14,7 +14,7 @@ class Usuario extends Authenticatable
 
     public function cargo()
     {
-        return $this->hasMany('App\Models\Cargo', 'id', 'car_id');
+        return $this->hasOne(Cargo::class, 'id', 'car_id');
     }
 
 }

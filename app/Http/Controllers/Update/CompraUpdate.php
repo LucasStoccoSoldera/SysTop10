@@ -205,6 +205,9 @@ class CompraUpdate extends Controller
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompraUp;
         $Compras_Detalhe->save();
 
+        $Contas_a_Pagar = Contas_a_Pagar::where('con_compra', '=', $request->IDItemCompraUp);
+        $Contas_a_Pagar->con_valor_final = $request->valorfContasUp;
+        $Contas_a_Pagar->save();
 
         if ($Compras_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item atualizado com sucesso!']);

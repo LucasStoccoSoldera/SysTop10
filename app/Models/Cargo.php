@@ -22,6 +22,6 @@ class Cargo extends Model
 
     public function usuario()
     {
-        return $this->belongsToMany('App\Models\Usuario',  'id', 'car_id');
+        return $this->belongsTo(Usuario::class,  'car_id', 'id');
     }
 }
