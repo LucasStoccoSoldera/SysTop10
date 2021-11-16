@@ -74,11 +74,14 @@
                         </div>
                     </div>
 
+                    {{--
+
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" id="link" href="{{ route('password.request') }}">
                                     {{ __('Esqueceu seu senha?') }}
                                 </a>
                             @endif
+                            --}}
 
                             <button type="submit" class="btn btn-primary btn-login">
                                 {{ __('Entrar') }}
