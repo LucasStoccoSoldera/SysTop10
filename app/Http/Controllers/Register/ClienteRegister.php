@@ -21,7 +21,7 @@ class ClienteRegister extends Controller
             $request->all(),
             [
                 'nomeCliente' => ['required', 'string'],
-                'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario'],
+                'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario', 'unique:usuario,usu_usuario'],
                 'senhaCliente' => ['required', 'confirmed'],
                 'cepCliente' => ['required'],
                 'cidadeCliente' => ['required'],
@@ -35,7 +35,7 @@ class ClienteRegister extends Controller
                 'nomeCliente.required' => 'Nome completo obrigatório.',
                 'usuarioCliente.required' => 'Usuário obrigatório.',
                 'usuarioCliente.email' => 'E-mail inválido.',
-                'usuarioCliente.unique' => 'Usuário já está em uso.',
+                'usuarioCliente.unique' => 'E-mail já está em uso.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação não corresponde.',
                 'cepCliente.required' => 'CEP obrigatório.',
@@ -182,14 +182,14 @@ class ClienteRegister extends Controller
             $request->all(),
             [
                 'nomeCliente' => ['required', 'string'],
-                'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario'],
+                'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario', 'unique:usuario,usu_usuario'],
                 'senhaCliente' => ['required', 'confirmed'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
                 'usuarioCliente.required' => 'Usuário obrigatório.',
                 'usuarioCliente.email' => 'E-mail inválido.',
-                'usuarioCliente.unique' => 'Usuário já está em uso.',
+                'usuarioCliente.unique' => 'E-mail já está em uso.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação não corresponde.',
             ]

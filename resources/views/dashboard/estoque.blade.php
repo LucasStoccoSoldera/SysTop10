@@ -98,7 +98,7 @@
                                         style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
                                         <option value="">...</option>
                                         <option value="1">
-                                            <=< /option>
+                                            <= </option>
                                         <option value="2"> =</option>
                                         <option value="3">>=</option>
                                     </select>

@@ -173,6 +173,10 @@ class VendasRegister extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
 
+        $Contas_a_Receber = Contas_a_Receber::select('rec_ven_id', '=', $request->IDItemVenda);
+        $Contas_a_Receber->rec_valor_final = $request->VTItemVenda;
+        $Contas_a_Receber->save();
+
 
         $upload = $request->anexoItemVenda->storeAs('artes_vendas', $nameFile);
 

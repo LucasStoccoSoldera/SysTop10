@@ -197,6 +197,11 @@ class CompraRegister extends Controller
         $Compras_Detalhe->cde_descricao = $request->descricaoItemCompra;
         $Compras_Detalhe->save();
 
+        $Contas_a_Pagar = Contas_a_Pagar::where('con_compra', '=', $request->IDItemCompra);
+        $Contas_a_Pagar->con_valor_final = $request->valorfContas;
+        $Contas_a_Pagar->save();
+
+
         if ($Compras_Detalhe) {
             return response()->json(['status' => 1, 'msg' => 'Item cadastrado com sucesso!']);
         }

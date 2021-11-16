@@ -32,7 +32,7 @@ class Produto extends Model
 
     public function tipoproduto_produto()
     {
-        return $this->hasMany(TipoProduto::class, 'id', 'tpp_id');
+        return $this->hasOne(TipoProduto::class, 'id', 'tpp_id');
     }
 
     public function logistica_produto()

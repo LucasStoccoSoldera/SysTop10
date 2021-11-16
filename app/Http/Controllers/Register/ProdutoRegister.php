@@ -25,7 +25,7 @@ class ProdutoRegister extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDProduto' => ['required', 'integer'],
+                'IDProduto' => ['required'],
                 'NomeProduto' => ['required'],
                 'TipoProduto' => ['required', 'integer'],
                 'PCProduto' => ['required'],
@@ -46,6 +46,7 @@ class ProdutoRegister extends Controller
                 'LogisticaProduto.required' => 'Pacote obrigatório.',
                 'anexoItemVenda.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.image' => 'Arquivo não é uma imagem.',
+                'FotoProduto.required' => 'Foto do produto obrigatória.',
                 'FotoProduto.dimensions' => 'Dimensão de 2000 x 2000.',
                 'PedidoMinimoProduto.required' => 'Pedido Mínimo obrigatório.',
                 'DescricaoProduto.required' => 'Descrição obrigatória.',

@@ -3,12 +3,12 @@
 @section('menu-principal')
     <div class="sidebar">
         <!--
-                            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
-                        -->
+                                Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+                            -->
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="{{ route('admin.financeiro') }}" class="simple-text logo-mini">
-                        <img src="../img/dash/voltar_vermelho.png" alt="" class="voltar">
+                    <img src="../img/dash/voltar_vermelho.png" alt="" class="voltar">
                 </a>
                 <a href="javascript:void(0)" class="simple-text logo-normal">
                     SysTop10
@@ -125,6 +125,7 @@
                                 enctype="multipart/form-data" action="{{ route('admin.filtro.vendas') }}">
                                 @csrf
                         </div>
+                        <div class="row">
                         <div class="col-12">
 
                             <div class="col-4 float-left">
@@ -146,31 +147,53 @@
                             <div class="col-4 float-left">
                                 <div class="form-group" id="form-group">
                                     <label class="modal-label"
-                                    style="float: left; margin-right: 60%;   ">Valor Total:</label>
-                                <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
-                                    value="{{ old('txt_fil') }}"
-                                    style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
-                                    <option value="<="><=</option>
-                                    <option value="=">=</option>
-                                    <option value=">=">>=</option>
-                                </select>
-                                <input type="text" name="ven_valor_total" id="txt_valor" maxlength="15"
-                                    value="{{ old('txt_valor') }}" class="filtro form-control dinheiro"
-                                    style="width: 80% !important;float:right;">
+                                        style="float: left; margin-right: 100%;   ">Valor:</label>
+                                    <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
+                                        value="{{ old('txt_fil') }}"
+                                        style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                        <option value="">...</option>
+                                        <option value="1">
+                                            <= </option>
+                                        <option value="2"> =</option>
+                                        <option value="3">>=</option>
+                                    </select>
+                                    <input type="text" name="ven_valor_total" id="txt_valor" maxlength="15"
+                                        value="{{ old('txt_valor') }}" class="filtro form-control"
+                                        style="width: 80% !important;float:right;">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+{{--
+                            <div class="col-4 float-left">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label" style="float: left; margin-right: 60%;   ">Valor
+                                        Total:</label>
+                                    <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
+                                        value="{{ old('txt_fil') }}"
+                                        style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                        <option value="<=">
+                                            <= </option>
+                                        <option value="=">=</option>
+                                        <option value=">=">>=</option>
+                                    </select>
+                                    <input type="text" name="ven_valor_total" id="txt_valor" maxlength="15"
+                                        value="{{ old('txt_valor') }}" class="filtro form-control dinheiro"
+                                        style="width: 80% !important;float:right;">
+                                </div>
+                            </div>
+                            --}}
+
                             <div>
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary"
-                                            id="btn-form-consulta">Filtrar</button>
+                                        <button type="submit" class="btn btn-primary" id="btn-form-consulta">Filtrar</button>
                                     </div>
                                 </div>
                             </div>
                     </form>
                 </div>
             </div>
-        </div>
 
 
         <div class="row">
@@ -217,223 +240,219 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection
 
-    @section('sub-menu')
-        <div class="add">
-            <div class="dropup show-dropdown">
-                <a href="#" data-toggle="dropdown">
-                    <img id="imgsub" src="../img/dash/addbtn.png">
-                </a>
-                <div class="dropdown-menu" id="add-menu">
-                    <a class="dropdown-item" id="no-padding" data-backdrop="static"
-                        onclick="abrirModal('#modalRegisterVenda');"> <img src="../img/dash/cadastro_receber.png" width="75"
-                            height="75"></a>
-                </div>
+@section('sub-menu')
+    <div class="add">
+        <div class="dropup show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <img id="imgsub" src="../img/dash/addbtn.png">
+            </a>
+            <div class="dropdown-menu" id="add-menu">
+                <a class="dropdown-item" id="no-padding" data-backdrop="static"
+                    onclick="abrirModal('#modalRegisterVenda');"> <img src="../img/dash/cadastro_receber.png" width="75"
+                        height="75"></a>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('modals')
+@section('modals')
 
-        <div class="modal fade" id="modalRegisterVenda" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog">
-                <form id="formRegisterVenda" method="POST" autocomplete="off" enctype="multipart/form-data"
-                    action="{{ route('admin.create.venda') }}">
-                    @csrf
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Cadastrar Nova Venda</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+    <div class="modal fade" id="modalRegisterVenda" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="formRegisterVenda" method="POST" autocomplete="off" enctype="multipart/form-data"
+                action="{{ route('admin.create.venda') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cadastrar Nova Venda</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">ID da Venda:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <input type="number" name="IDVenda" id="IDVenda" maxlength="10" class="form-control id"
+                                        value="{{ old('IDVenda') }}" placeholder="ID Automático" autofocus>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback IDVenda_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Cliente:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="IDCliente" id="IDCliente" maxlength="25"
+                                        class="form-control" value="{{ old('IDCliente') }}"
+                                        placeholder="Selecione com o Cliente">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($clientes as $cliente)
+                                            <option value="{{ $cliente['id'] }}">
+                                                {{ $cliente['cli_nome'] }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback IDCliente_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Desconto:</label>
+                                    <input type="text" name="descontoVenda" id="descontoVenda"
+                                        class="porcentagem form-control" maxlength="11"
+                                        value="{{ old('descontoVenda') }}" placeholder="Entre com o Desconto">
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback descontoVenda_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Recebimento:</label>
+                                    <input type="date" name="datapagtoVendas" id="datapagtoVendas" class="form-control"
+                                        onkeypress="mascara(this, '##/##/####')" maxlength="10"
+                                        value="{{ old('datapagtoVendas') }}" placeholder="Entre com o Recebimento">
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback datapagtoVendas_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Tipo de Pagamento:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="IDTipoPagamento" id="IDTipoPagamento" maxlength="25"
+                                        class="form-control" value="{{ old('IDTipoPagamento') }}"
+                                        placeholder="Selecione com o Tipo de Pagamento">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($pagamentos as $pagamento)
+                                            <option value="{{ $pagamento['id'] }}">
+                                                {{ $pagamento['tpg_descricao'] }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback IDTipoPagamento_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Qtde. Parcelas:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="parcelasVenda" id="parcelasVenda" class="form-control"
+                                        maxlength="25" value="{{ old('parcelasVendas') }}"
+                                        placeholder="Selecione a Qtde de Parcelas">
+                                        <option value="">------------Selecione------------</option>
+                                        <option value="1">A Vista</option>
+                                        <option value="2">2x</option>
+                                        <option value="3">3x</option>
+                                        <option value="4">4x</option>
+                                        <option value="5">5x</option>
+                                        <option value="6">6x</option>
+                                        <option value="7">7x</option>
+                                        <option value="8">8x</option>
+                                        <option value="9">9x</option>
+                                        <option value="10">10x</option>
+                                        <option value="11">11x</option>
+                                        <option value="12">12x</option>
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback parcelasVenda_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Logistica:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="IDLogistica" id="IDLogistica" maxlength="25"
+                                        class="form-control" value="{{ old('IDLogistica') }}"
+                                        placeholder="Selecione a Logistica">
+                                        <option value="">------------Selecione------------</option>
+                                        @foreach ($logisticas as $logistica)
+                                            <option value="{{ $logistica['id'] }}">
+                                                {{ $logistica['log_descricao'] }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback IDLogistica_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="form-group">
+                                    <label class="modal-label">Status:</label> <label
+                                        style="color: red; font-size: 12px;"> * </label>
+                                    <select type="text" name="statusVenda" id="statusVenda" class="form-control"
+                                        maxlength="25" value="{{ old('statusVenda') }}" placeholder="Selecione o Status">
+                                        <option value="">------------Selecione------------</option>
+                                        <option value="Em Aberto">Em Aberto</option>
+                                        <option value="Faturada">Faturada</option>
+                                        <option value="Fechada">Fechada</option>
+                                        <option value="Cancelada">Cancelada</option>
+                                    </select>
+                                    <div class="div-feedback">
+                                        <span class="invalid-feedback statusVenda_error" role="alert">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">ID da Venda:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <input type="number" name="IDVenda" id="IDVenda" maxlength="10"
-                                            class="form-control id" value="{{ old('IDVenda') }}"
-                                            placeholder="ID Automático" autofocus>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback IDVenda_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Cliente:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="IDCliente" id="IDCliente" maxlength="25"
-                                            class="form-control" value="{{ old('IDCliente') }}"
-                                            placeholder="Selecione com o Cliente">
-                                            <option value="">------------Selecione------------</option>
-                                            @foreach ($clientes as $cliente)
-                                                <option value="{{ $cliente['id'] }}">
-                                                    {{ $cliente['cli_nome'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback IDCliente_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Desconto:</label>
-                                        <input type="text" name="descontoVenda" id="descontoVenda"
-                                            class="porcentagem form-control" maxlength="11"
-                                            value="{{ old('descontoVenda') }}" placeholder="Entre com o Desconto">
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback descontoVenda_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Recebimento:</label>
-                                        <input type="date" name="datapagtoVendas" id="datapagtoVendas"
-                                            class="form-control" onkeypress="mascara(this, '##/##/####')" maxlength="10"
-                                            value="{{ old('datapagtoVendas') }}" placeholder="Entre com o Recebimento">
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback datapagtoVendas_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Tipo de Pagamento:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="IDTipoPagamento" id="IDTipoPagamento" maxlength="25"
-                                            class="form-control" value="{{ old('IDTipoPagamento') }}"
-                                            placeholder="Selecione com o Tipo de Pagamento">
-                                            <option value="">------------Selecione------------</option>
-                                            @foreach ($pagamentos as $pagamento)
-                                                <option value="{{ $pagamento['id'] }}">
-                                                    {{ $pagamento['tpg_descricao'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback IDTipoPagamento_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Qtde. Parcelas:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="parcelasVenda" id="parcelasVenda" class="form-control"
-                                            maxlength="25" value="{{ old('parcelasVendas') }}"
-                                            placeholder="Selecione a Qtde de Parcelas">
-                                            <option value="">------------Selecione------------</option>
-                                            <option value="1">A Vista</option>
-                                            <option value="2">2x</option>
-                                            <option value="3">3x</option>
-                                            <option value="4">4x</option>
-                                            <option value="5">5x</option>
-                                            <option value="6">6x</option>
-                                            <option value="7">7x</option>
-                                            <option value="8">8x</option>
-                                            <option value="9">9x</option>
-                                            <option value="10">10x</option>
-                                            <option value="11">11x</option>
-                                            <option value="12">12x</option>
-                                        </select>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback parcelasVenda_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Logistica:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="IDLogistica" id="IDLogistica" maxlength="25"
-                                            class="form-control" value="{{ old('IDLogistica') }}"
-                                            placeholder="Selecione a Logistica">
-                                            <option value="">------------Selecione------------</option>
-                                            @foreach ($logisticas as $logistica)
-                                                <option value="{{ $logistica['id'] }}">
-                                                    {{ $logistica['log_descricao'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback IDLogistica_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group" id="form-group">
-                                        <label class="modal-label">Status:</label> <label
-                                            style="color: red; font-size: 12px;"> * </label>
-                                        <select type="text" name="statusVenda" id="statusVenda" class="form-control"
-                                            maxlength="25" value="{{ old('statusVenda') }}"
-                                            placeholder="Selecione o Status">
-                                            <option value="">------------Selecione------------</option>
-                                            <option value="Em Aberto">Em Aberto</option>
-                                            <option value="Faturada">Faturada</option>
-                                            <option value="Fechada">Fechada</option>
-                                            <option value="Cancelada">Cancelada</option>
-                                        </select>
-                                        <div class="div-feedback">
-                                            <span class="invalid-feedback statusVenda_error" role="alert">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <br>
-                            <div class="row">
-                                <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
-                                    <button type="button" class="cancela btn btn-secondary btn-danger"
-                                        data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
-                                    <button type="reset" class="limpar btn btn-secondary btn-danger"
-                                        data-form="formRegisterVenda">Limpar</button>
-                                    <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
-                                </div>
+                        <br>
+                        <div class="row">
+                            <div class="modal-footer" style="width: 100%; padding: 24px 15px 16px 15px;">
+                                <button type="button" class="cancela btn btn-secondary btn-danger"
+                                    data-form="formRegisterVenda" data-modal="modalRegisterVenda">Cancelar</button>
+                                <button type="reset" class="limpar btn btn-secondary btn-danger"
+                                    data-form="formRegisterVenda">Limpar</button>
+                                <button type="submit" class="btn-register btn btn-primary">Cadastrar</button>
                             </div>
-                </form>
-                <br>
+                        </div>
+            </form>
+            <br>
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card" id="card-consulta-tabela">
-                            <div class="card-header" id="ch-adaptado">
-                                <h2 class="card-title">Itens da Venda
-                                    <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir"
-                                        data-backdrop="static"
-                                        onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
-                                        + Add</a>
-                                </h2>
-                            </div>
-                            <div class="card-body" id="cd-adaptado">
-                                <div class="table-responsive">
-                                    <table class="table tablesorter " id="tb_item_venda_ato">
-                                        <thead class=" text-primary">
-                                            <tr>
-                                                <th style="width: 25%">
-                                                    Produto
-                                                </th>
-                                                <th style="width: 5%">
-                                                    Qtde
-                                                </th>
-                                                <th style="width: 15%">
-                                                    Dimensão
-                                                </th>
-                                                <th style="width: 15%">
-                                                    Cor
-                                                </th>
-                                                <th style="width: 20%">
-                                                    Valor Total
-                                                </th>
-                                                <th class="text-right" style="width: 20%">
-                                                    <div id="acao">Ações</div>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{-- DataTables --}}
-                                        </tbody>
-                                    </table>
-                                </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card" id="card-consulta-tabela">
+                        <div class="card-header" id="ch-adaptado">
+                            <h2 class="card-title">Itens da Venda
+                                <a class="btn btn-primary btn-block" id="btn-form-consulta-imprimir" data-backdrop="static"
+                                    onclick="abrirModal('#modalRegisterItemVenda', '#IDVenda', '#IDItemVenda');">
+                                    + Add</a>
+                            </h2>
+                        </div>
+                        <div class="card-body" id="cd-adaptado">
+                            <div class="table-responsive">
+                                <table class="table tablesorter " id="tb_item_venda_ato">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th style="width: 25%">
+                                                Produto
+                                            </th>
+                                            <th style="width: 5%">
+                                                Qtde
+                                            </th>
+                                            <th style="width: 15%">
+                                                Dimensão
+                                            </th>
+                                            <th style="width: 15%">
+                                                Cor
+                                            </th>
+                                            <th style="width: 20%">
+                                                Valor Total
+                                            </th>
+                                            <th class="text-right" style="width: 20%">
+                                                <div id="acao">Ações</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- DataTables --}}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -441,10 +460,11 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+    </div>
 
 
-        <div class="modal fade" id="modalRegisterItemVenda" style="display:none;" aria-hidden="true">
+    <div class="modal fade" id="modalRegisterItemVenda" style="display:none;" aria-hidden="true">
         <div class="modal-dialog">
             <form id="formRegisterItemVenda" method="POST" autocomplete="off" enctype="multipart/form-data"
                 action="{{ route('admin.create.itemvenda') }}">
@@ -943,9 +963,9 @@
 
 @push('ajax')
     <script>
-            var id_venda;
+        var id_venda;
 
-            var table_item_venda_ato;
+        var table_item_venda_ato;
 
         $('#IDVenda').on('blur', function() {
             var idVenda = $("#IDVenda").val();
@@ -983,9 +1003,9 @@
         $(document).ready(function() {
 
 
-        $("#formFilter").on('submit', function(e) {
-            $('#tb_venda').DataTable().ajax.reload();
-    });
+            $("#formFilter").on('submit', function(e) {
+                $('#tb_venda').DataTable().ajax.reload();
+            });
 
             var table_venda = $('#tb_venda').DataTable({
                 paging: true,
@@ -1015,9 +1035,10 @@
                     },
                     {
                         data: "ven_data",
-                        className: "text-center", render: function(data){
-                        return new Date(data).toLocaleString();
-                    }
+                        className: "text-center",
+                        render: function(data) {
+                            return new Date(data).toLocaleString();
+                        }
                     },
                     {
                         data: "action",
@@ -1036,91 +1057,95 @@
             $("#IDVenda").on('blur', function(e) {
                 id_venda = $('#IDVenda').val();
                 table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
-                paging: true,
-                searching: false,
-                processing: true,
-                serverside: true,
-                ajax: {
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                 },
-                type: 'POST',
-                url: "{{ route('admin.list.itemvendaato')}}",
-                data: {id: id_venda},
-            },
-                columns: [{
-                        data: "pro_nome",
-                        className: "text-center"
+                    paging: true,
+                    searching: false,
+                    processing: true,
+                    serverside: true,
+                    ajax: {
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        url: "{{ route('admin.list.itemvendaato') }}",
+                        data: {
+                            id: id_venda
+                        },
                     },
-                    {
-                        data: "det_qtde"
-                    },
-                    {
-                        data: "dim_descricao"
-                    },
-                    {
-                    data: "cor_nome"
-                    },
-                    {
-                        data: "det_valor_total",
-                        className: "text-right",
-                        render: DataTable.render.number('.', ',', 2, 'R$')
-                    },
-                    {
-                        data: "action",
-                        className: "text-right"
-                    },
-                ]
-            });
+                    columns: [{
+                            data: "pro_nome",
+                            className: "text-center"
+                        },
+                        {
+                            data: "det_qtde"
+                        },
+                        {
+                            data: "dim_descricao"
+                        },
+                        {
+                            data: "cor_nome"
+                        },
+                        {
+                            data: "det_valor_total",
+                            className: "text-right",
+                            render: DataTable.render.number('.', ',', 2, 'R$')
+                        },
+                        {
+                            data: "action",
+                            className: "text-right"
+                        },
+                    ]
+                });
             });
 
             $("#modalRegisterItemVenda").on('hidden.bs.modal', function(e) {
                 id_venda = $('#IDVenda').val();
 
-            table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
-            paging: true,
-            searching: false,
-            processing: true,
-            serverside: true,
-            ajax: {
-                headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                 },
-                type: 'POST',
-                url: "{{ route('admin.list.itemvendaato')}}",
-                data: {id: id_venda},
-            },
-            columns: [{
-                    data: "cde_produto"
-                },
-                {
-                    data: "cde_qtde"
-                },
-                {
-                    data: "cde_valoritem",
-                    className: "text-right",
-                    render: DataTable.render.number('.', ',', 2, 'R$')
-                },
-                {
-                    data: "cde_valortotal",
-                    className: "text-right",
-                    render: DataTable.render.number('.', ',', 2, 'R$')
-                },
-                {
-                    data: "action",
-                    className: "text-right"
-                },
-            ]
-        });
-        });
+                table_item_venda_ato = $('#tb_item_venda_ato').DataTable({
+                    paging: true,
+                    searching: false,
+                    processing: true,
+                    serverside: true,
+                    ajax: {
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'POST',
+                        url: "{{ route('admin.list.itemvendaato') }}",
+                        data: {
+                            id: id_venda
+                        },
+                    },
+                    columns: [{
+                            data: "cde_produto"
+                        },
+                        {
+                            data: "cde_qtde"
+                        },
+                        {
+                            data: "cde_valoritem",
+                            className: "text-right",
+                            render: DataTable.render.number('.', ',', 2, 'R$')
+                        },
+                        {
+                            data: "cde_valortotal",
+                            className: "text-right",
+                            render: DataTable.render.number('.', ',', 2, 'R$')
+                        },
+                        {
+                            data: "action",
+                            className: "text-right"
+                        },
+                    ]
+                });
+            });
 
-        $('#modalRegisterItemVenda').on('shown.bs.modal', function () {
-            table_item_compra_ato.destroy();
-    });
+            $('#modalRegisterItemVenda').on('shown.bs.modal', function() {
+                table_item_compra_ato.destroy();
+            });
 
-    $('#IDVenda').on('focus', function () {
-            table_item_compra_ato.destroy();
-    });
+            $('#IDVenda').on('focus', function() {
+                table_item_compra_ato.destroy();
+            });
 
 
 
@@ -1237,7 +1262,7 @@
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
                                 $('#' + prefix).focus();
-                            $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -1271,7 +1296,7 @@
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
                                 $('#' + prefix).focus();
-                            $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -1307,7 +1332,7 @@
                             $.each(data_decoded.error, function(prefix, val) {
                                 $('span.' + prefix + '_error').text(val[0]);
                                 $('#' + prefix).focus();
-                            $('#' + prefix).addClass('is-invalid');
+                                $('#' + prefix).addClass('is-invalid');
                             });
                         }
                     }
@@ -1383,7 +1408,7 @@
                     success: function(data_decoded) {
                         if (data_decoded.status == 1) {
                             $('#formExcluir')[0].reset();
-                        $('#modalAlertDelete').modal('toggle');
+                            $('#modalAlertDelete').modal('toggle');
                             demo.showNotification('top', 'right', 4, data_decoded.msg,
                                 'tim-icons icon-alert-circle-exc');
                         }

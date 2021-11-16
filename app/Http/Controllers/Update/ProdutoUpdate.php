@@ -30,7 +30,7 @@ class ProdutoUpdate extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'IDProdutoUp' => ['required', 'integer'],
+                'IDProdutoUp' => ['required'],
                 'NomeProdutoUp' => ['required'],
                 'TipoProdutoUp' => ['required', 'integer'],
                 'PCProdutoUp' => ['required'],

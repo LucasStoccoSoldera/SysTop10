@@ -181,6 +181,11 @@ class VendasUpdate extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVendaUp;
         $Venda_Detalhe->save();
 
+        $Contas_a_Receber = Contas_a_Receber::select('rec_ven_id', '=', $request->IDItemVendaUp);
+        $Contas_a_Receber->rec_valor_final = $request->VTItemVendaUp;
+        $Contas_a_Receber->save();
+
+
         $upload = $request->anexoItemVendaUp->storeAs('artes_vendas', $nameFile);
 
         if ($Venda_Detalhe) {
