@@ -174,7 +174,6 @@
     </div>
 
     @yield('sub-menu')
-
     <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
             <a href="#" data-toggle="dropdown">
@@ -198,13 +197,16 @@
                     <span class="badge dark-badge ml-2"></span>
                     <span class="color-label">TEMA ESCURO</span>
                 </li>
+
                 <li class="button-container">
-                    <center> <a href="#" data-toggle="modal"
-                            data-target="#modalConfig" class="btn btn-primary btn-block btn-round"
-                            id="btn-center">Configurações</a>
+                    <center>
 
                             <a href="../doc/manual.pdf" download class="btn btn-primary btn-block btn-round"
                             id="btn-center">Manual</a>
+
+                            <a href="#" data-toggle="modal"
+                            data-target="#modalLGPD" class="btn btn-primary btn-block btn-round"
+                            id="btn-center">LGPD</a>
 
                         <a href="http://localhost/FLEX/FLEX/index.html"
                             target="_blank" class="btn btn-default btn-block btn-round" id="btn-center">
@@ -308,6 +310,32 @@
                                         <button type="submit" class="btn btn-secondary"
                                             style="background-color: #00cca4;background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;"
                                             onclick="hideModal('modalReturnCadastro');">Próximo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="modal fade" id="modalLGPD" style="display: none; top: 10%;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: var(--orange);">
+                            <h4 class="modal-title">LGPD</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div style="text-align: center;">
+                                        <label class="modal-label" style="font-size: 18px; padding 0px;"> Este sistema compactua com a nova Lei Geral de Proteção de Dados, <br>
+                                            garantindo assim a integridade das informações <br>aqui armazenadas e seu correto manusei,<br> compartilhamento de dados e segurança.<br>
+                                        <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2018/Lei/L13709.htm" target="__blank" style="color: var(--orange);">Norma Completa +</a></label>
+                                        <div class="modal-footer" style="justify-content:center;">
+                                            <center><button type="submit" class="btn btn-secondary" data-dismiss="modal"
+                                                style="background-color: var(--orange);background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;">Entendido!</button></center>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
