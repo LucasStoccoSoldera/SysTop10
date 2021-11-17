@@ -98,19 +98,18 @@ class GraficoController extends Controller
 
     public function vendas(){
 
-
-        $sql_jan = DB::table('vendas')->whereMonth('created_at',  '1')->count();
-        $sql_fev = DB::table('vendas')->whereMonth('created_at',  '2')->count();
-        $sql_mar = DB::table('vendas')->whereMonth('created_at',  '3')->count();
-        $sql_abr = DB::table('vendas')->whereMonth('created_at',  '4')->count();
-        $sql_mai = DB::table('vendas')->whereMonth('created_at',  '5')->count();
-        $sql_jun = DB::table('vendas')->whereMonth('created_at',  '6')->count();
-        $sql_jul = DB::table('vendas')->whereMonth('created_at',  '7')->count();
-        $sql_ago = DB::table('vendas')->whereMonth('created_at',  '8')->count();
-        $sql_set = DB::table('vendas')->whereMonth('created_at',  '9')->count();
-        $sql_out = DB::table('vendas')->whereMonth('created_at',  '10')->count();
-        $sql_nov = DB::table('vendas')->whereMonth('created_at',  '11')->count();
-        $sql_dez = DB::table('vendas')->whereMonth('created_at',  '12')->count();
+        $sql_jan = DB::table('vendas_detalhe')->whereMonth('created_at',  '1')->sum('det_valor_total');
+        $sql_fev = DB::table('vendas_detalhe')->whereMonth('created_at',  '2')->sum('det_valor_total');
+        $sql_mar = DB::table('vendas_detalhe')->whereMonth('created_at',  '3')->sum('det_valor_total');
+        $sql_abr = DB::table('vendas_detalhe')->whereMonth('created_at',  '4')->sum('det_valor_total');
+        $sql_mai = DB::table('vendas_detalhe')->whereMonth('created_at',  '5')->sum('det_valor_total');
+        $sql_jun = DB::table('vendas_detalhe')->whereMonth('created_at',  '6')->sum('det_valor_total');
+        $sql_jul = DB::table('vendas_detalhe')->whereMonth('created_at',  '7')->sum('det_valor_total');
+        $sql_ago = DB::table('vendas_detalhe')->whereMonth('created_at',  '8')->sum('det_valor_total');
+        $sql_set = DB::table('vendas_detalhe')->whereMonth('created_at',  '9')->sum('det_valor_total');
+        $sql_out = DB::table('vendas_detalhe')->whereMonth('created_at',  '10')->sum('det_valor_total');
+        $sql_nov = DB::table('vendas_detalhe')->whereMonth('created_at',  '11')->sum('det_valor_total');
+        $sql_dez = DB::table('vendas_detalhe')->whereMonth('created_at',  '12')->sum('det_valor_total');
 
         return response()->json(['grafico' => [$sql_jan, $sql_fev, $sql_mar, $sql_abr, $sql_mai,
         $sql_jun, $sql_jul, $sql_ago, $sql_set, $sql_out, $sql_nov, $sql_dez] ]);

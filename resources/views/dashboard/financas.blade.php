@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-sm-6 text-left">
                                 <h5 class="card-category">Análise Financeira</h5>
-                                <h2 class="card-title">Caixa ao Longo do Mês</h2>
+                                <h2 class="card-title">Saldo ao Longo do Ano:</h2>
                             </div>
 
                         </div>
@@ -99,16 +99,16 @@
                     </div>
                     <div>
                         <div class="col-auto justify-content-md-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Caixa:</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $hoje1 }}</h3>
+                            <h4 class="resumo" style="color: #2caeec;">Saldo (Hoje):</h4>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $hoje1)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Total de Entradas:</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $hoje2 }}</h3>
+                            <h4 class="resumo" style="color: #2caeec;">Total de Entradas (Hoje):</h4>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $hoje2)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Total de Saídas:</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $hoje3 }}</h3>
+                            <h4 class="resumo" style="color: #2caeec;">Total de Saídas (Hoje):</h4>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $hoje3)}}</h3>
                         </div>
                     </div>
                 </div>
@@ -123,16 +123,16 @@
                     </div>
                     <div>
                         <div class="col-auto justify-content-md-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Caixa (Sem):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem4 }}</h3>
+                            <h4 class="resumo" style="color: #2caeec;">Saldo (Sem):</h4>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $sem4)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">T. de Entradas (Sem):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem5 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $sem5)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">T. de Saídas (Sem):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $sem6 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $sem6)}}</h3>
                         </div>
                     </div>
                 </div>
@@ -147,16 +147,16 @@
                     </div>
                     <div>
                         <div class="col-auto justify-content-md-center float-left">
-                            <h4 class="resumo" style="color: #2caeec;">Caixa (Mês):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $mes7 }}</h3>
+                            <h4 class="resumo" style="color: #2caeec;">Saldo (Mês):</h4>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $mes7)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">Total de Entradas (Mês):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $mes8 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $mes8)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">Total de Saídas (Mês):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $mes9 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $mes9)}}</h3>
                         </div>
                     </div>
                 </div>
