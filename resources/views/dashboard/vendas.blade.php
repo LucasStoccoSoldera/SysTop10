@@ -210,10 +210,13 @@
                                         <th class="text-center" style="width: 5%">
                                             ID
                                         </th>
-                                        <th style="width: 25%">
+                                        <th style="width: 5%">
+                                            Cd. Cli.
+                                        </th>
+                                        <th style="width: 20%">
                                             Cliente
                                         </th>
-                                        <th class="text-right" style="width: 15%">
+                                        <th class="text-right" style="width: 10%">
                                             Valor Total
                                         </th>
                                         <th style="width: 10%">
@@ -1018,7 +1021,11 @@
                         className: "text-center"
                     },
                     {
-                        data: "cli_id"
+                        data: "cli_id",
+                        className: "text-center"
+                    },
+                    {
+                        data: "cli_nome"
                     },
                     {
                         data: "ven_valor_total",

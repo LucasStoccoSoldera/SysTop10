@@ -3,6 +3,7 @@
 namespace App\Transformers;
 
 use App\Models\Venda;
+use App\Models\Venda_Detalhe;
 use League\Fractal\TransformerAbstract;
 
 class VendasTransformer extends TransformerAbstract
@@ -11,12 +12,16 @@ class VendasTransformer extends TransformerAbstract
      * @param \App\Models\Venda $vendas
      * @return array
      */
-    public function transformVenda(Venda $venda)
+    public function transform(Venda $venda)
     {
+        $total = Venda_Detalhe::where('ven_id', '=', $venda->id)->sum('det_valor_total');
+
         $rota =  "'" . route('admin.delete.venda') . "'";
         return [
             'id' => (int) $venda->id,
-            'cli_nome' => (int) $venda->cli_nome,
+            'cli_id' => (int) $venda->cli_id,
+            'cli_nome' => $venda->cliente_venda->cli_nome,
+            'ven_valor_total' => (string) $total,
             'ven_status' => $venda->ven_status,
             'ven_parcelas' => $venda->ven_parcelas,
             'ven_data' => (string) $venda->ven_data,

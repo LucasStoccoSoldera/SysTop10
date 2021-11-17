@@ -12,5 +12,10 @@ class Cliente extends Authenticatable
     protected $primaryKey = 'id';
     protected $table = "cliente";
 
+    public function venda_cliente()
+    {
+        return $this->belongsTo(Venda::class, 'cli_id', 'id');
+    }
+
 }
 

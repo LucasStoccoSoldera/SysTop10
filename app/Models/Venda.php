@@ -36,7 +36,7 @@ class Venda extends Model
 
     public function cliente_venda()
     {
-        return $this->hasMany(Cliente::class);
+        return $this->hasOne(Cliente::class, 'id', 'cli_id');
     }
 
     public function venda_itemvenda()
