@@ -126,6 +126,17 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="dtNascCliente" class="campos">{{ __('Dt. Nascimento') }}</label>
+
+                            <div class="input">
+                                <input id="dtNascCliente" type="email" class="form-control form-control-filtro input-full @error('dtNascCliente') is-invalid @enderror" name="dtNascCliente" value="{{ old('dtNascCliente') }}" placeholder="Entre com a Dt. Nascimento">
+
+                                <span class="invalid-feedback feedback dtNascCliente_error" role="alert">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="senhaCliente" class="campos">{{ __('Senha') }}</label>
 
                             <div class="input">

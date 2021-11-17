@@ -30,6 +30,7 @@ class ClienteRegister extends Controller
                 'ruaCliente' => ['required'],
                 'ncasaCliente' => ['required'],
                 'complementoCliente' => ['required'],
+                'dtNascCliente' => ['required'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
@@ -46,6 +47,7 @@ class ClienteRegister extends Controller
                 'ruaCliente.required' => 'Rua obrigatória.',
                 'ncasaCliente.required' => 'Número obrigatório.',
                 'complementoCliente.required' => 'Complemento obrigatório.',
+                'dtNascCliente.required' => 'Dt. Nasc. obrigatória.',
             ]
         );
 
@@ -157,6 +159,7 @@ class ClienteRegister extends Controller
             }
             $Cliente->cli_telefone = $request->telefoneCliente;
             $Cliente->cli_celular = $request->celularCliente;
+            $Cliente->cli_dtnasc = $request->dtNascCliente;
             $Cliente->cli_cep = $request->cepCliente;
             $Cliente->cli_cidade = $request->cidadeCliente;
             $Cliente->cli_uf = $request->estadoCliente;
@@ -184,6 +187,7 @@ class ClienteRegister extends Controller
                 'nomeCliente' => ['required', 'string'],
                 'usuarioCliente' => ['required','email', 'unique:cliente,cli_usuario', 'unique:usuario,usu_usuario'],
                 'senhaCliente' => ['required', 'confirmed'],
+                'dtNascCliente' => ['required'],
             ],
             [
                 'nomeCliente.required' => 'Nome completo obrigatório.',
@@ -192,6 +196,7 @@ class ClienteRegister extends Controller
                 'usuarioCliente.unique' => 'E-mail já está em uso.',
                 'senhaCliente.required' => 'Senha obrigatória.',
                 'senhaCliente.confirmed' => 'A confirmação não corresponde.',
+                'dtNascCliente.required' => 'Dt. Nasc. obrigatória.',
             ]
         );
 
@@ -301,6 +306,7 @@ class ClienteRegister extends Controller
             }else{
             $Cliente->cli_cpf_cnpj = $request->cnpjCliente;
             }
+            $Cliente->cli_dtnasc = $request->dtNascCliente;
             $Cliente->cli_telefone = $request->telefoneCliente;
             $Cliente->cli_celular = $request->celularCliente;
             $Cliente->save();

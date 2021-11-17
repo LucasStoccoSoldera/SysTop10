@@ -337,6 +337,18 @@
                             </div>
                         </div>
                         <div class="col-3">
+
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"> Dt. Nascimento:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="date" name="dtNascCliente" id="dtNascCliente" class="form-control"
+                                    value="{{ old('dtNascCliente') }}" placeholder="Entre com a Dt. Nascimento">
+                                <div class="div-feedback">
+                                    <span class="invalid-feedback dtNascCliente_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+
                             <div class="form-group" id="form-group">
                                 <label class="modal-label"> CEP:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -369,6 +381,8 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-03">
                             <div class="form-group">
                                 <label class="modal-label">Bairro:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -380,8 +394,6 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-03">
                             <div class="form-group">
                                 <label class="modal-label">Rua:</label> <label style="color: red; font-size: 12px;">
                                     * </label>
@@ -537,6 +549,17 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group" id="form-group">
+                                <label class="modal-label"> Dt. Nascimento:</label> <label
+                                    style="color: red; font-size: 12px;"> * </label>
+                                <input type="date" name="dtNascClienteUp" id="dtNascClienteUp" class="form-control"
+                                    value="{{ old('dtNascClienteUp') }}" placeholder="Entre com a Dt. Nascimento">
+                                <div class="div-feedback">
+                                    <span class="invalid-feedback dtNascClienteUp_error" role="alert">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="form-group">
                                 <label class="modal-label"> CEP:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
                                 <input type="text" name="cepClienteUp" id="cepClienteUp" class="cep form-control"
@@ -568,6 +591,8 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-03">
                             <div class="form-group">
                                 <label class="modal-label">Bairro:</label> <label
                                     style="color: red; font-size: 12px;"> * </label>
@@ -579,8 +604,6 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-03">
                             <div class="form-group">
                                 <label class="modal-label">Rua:</label> <label style="color: red; font-size: 12px;">
                                     * </label>
