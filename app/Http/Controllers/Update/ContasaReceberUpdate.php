@@ -28,6 +28,11 @@ class ContasaReceberUpdate extends Controller
      */
     protected function updateReceber(Request $request)
     {
+
+        $request->valorReceberUp = str_replace('R$ ', '', $request->valorReceberUp);
+        $request->valorReceberUp = str_replace('.', '', $request->valorReceberUp);
+        $request->valorReceberUp = str_replace(',', '.', $request->valorReceberUp);
+
         $ontem = Carbon::now()->subDay();
 
         $validator = Validator::make(

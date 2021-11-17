@@ -343,6 +343,7 @@
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/fh-3.2.0/datatables.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.1/jquery.maskMoney.min.js"></script>
 
         <script>
 
@@ -411,10 +412,18 @@
         <script>
             $(document).ready(function() {
 
+                    $('.dinheiro').maskMoney({
+                    prefix:'R$ ',
+                    allowNegative: true,
+                    thousands:'.', decimal:',',
+                    affixesStay: true, reverse: true});
+
                 $('.porcentagem').mask('#0%');
-                $('.dinheiro').mask('#0.00', {
-                    reverse: true
-                });
+
+           //     $('.dinheiro').mask('#0.00', {
+           //         reverse: true
+           //     });
+
                 $('.cpf').mask('000.000.000-00');
                 $('.cnpj').mask('00.000.000/0000-00');
                 $('.rg').mask('00.000.000-0');

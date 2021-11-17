@@ -1518,6 +1518,8 @@
     $('#valorItemCompra').on('blur', function() {
         var qtde = $("#qtdeItemCompra").val();
         var valor = $("#valorItemCompra").val();
+        valor = valor.replace("R$ ", "");
+        valor = valor.replace(",", "");
         var total = qtde * valor;
 
         $("#valorTotalItemCompra").val(total);
@@ -1526,6 +1528,8 @@
     $('#qtdeItemCompra').on('blur', function() {
         var qtde = $("#qtdeItemCompra").val();
         var valor = $("#valorItemCompra").val();
+        valor = valor.replace("R$ ", "");
+        valor = valor.replace(",", "");
         var total = qtde * valor;
 
         $("#valorTotalItemCompra").val(total);

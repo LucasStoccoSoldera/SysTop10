@@ -129,6 +129,14 @@ class VendasRegister extends Controller
     protected function createItemVenda(Request $request)
     {
 
+        $request->VUItemVenda = str_replace('R$ ', '', $request->VUItemVenda);
+        $request->VUItemVenda = str_replace('.', '', $request->VUItemVenda);
+        $request->VUItemVenda = str_replace(',', '.', $request->VUItemVenda);
+
+        $request->VTItemVenda = str_replace('R$ ', '', $request->VTItemVenda);
+        $request->VTItemVenda = str_replace('.', '', $request->VTItemVenda);
+        $request->VTItemVenda = str_replace(',', '.', $request->VTItemVenda);
+
         $validator = Validator::make(
             $request->all(),
             [

@@ -987,6 +987,8 @@
         $('#VUItemVenda').on('blur', function() {
             var qtde = $("#qtdeItemVenda").val();
             var valor = $("#VUItemVenda").val();
+            valor = valor.replace("R$ ", "");
+            valor = valor.replace(",", "");
             var total = qtde * valor;
 
             $("#valorTotalItemVenda").val(total);
@@ -995,6 +997,8 @@
         $('#qtdeItemVenda').on('blur', function() {
             var qtde = $("#qtdeItemVenda").val();
             var valor = $("#VUItemVenda").val();
+            valor = valor.replace("R$ ", "");
+             valor = valor.replace(",", "");
             var total = qtde * valor;
 
             $("#valorTotalItemVenda").val(total);

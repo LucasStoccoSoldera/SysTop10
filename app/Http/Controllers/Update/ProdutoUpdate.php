@@ -24,6 +24,14 @@ class ProdutoUpdate extends Controller
     protected function updateProduto(Request $request)
     {
 
+        $request->PCProdutoUp = str_replace('R$ ', '', $request->PCProdutoUp);
+        $request->PCProdutoUp = str_replace('.', '', $request->PCProdutoUp);
+        $request->PCProdutoUp = str_replace(',', '.', $request->PCProdutoUp);
+
+        $request->PVProdutoUp = str_replace('R$ ', '', $request->PVProdutoUp);
+        $request->PVProdutoUp = str_replace('.', '', $request->PVProdutoUp);
+        $request->PVProdutoUp = str_replace(',', '.', $request->PVProdutoUp);
+
         $request->PersoProduto = (!isset($request->PersoProduto))? 'Não' : 'Sim';
         $request->TerceProduto = (!isset($request->TerceProduto))? 'Não' : 'Sim';
 

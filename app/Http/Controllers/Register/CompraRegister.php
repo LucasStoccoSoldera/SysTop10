@@ -26,6 +26,8 @@ class CompraRegister extends Controller
     protected function createCompra(Request $request)
     {
 
+
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -129,6 +131,15 @@ class CompraRegister extends Controller
 
     protected function createItemCompra(Request $request)
     {
+
+        $request->valorItemCompra = str_replace('R$ ', '', $request->valorItemCompra);
+        $request->valorItemCompra = str_replace('.', '', $request->valorItemCompra);
+        $request->valorItemCompra = str_replace(',', '.', $request->valorItemCompra);
+
+        $request->valorTotalItemCompra = str_replace('R$ ', '', $request->valorTotalItemCompra);
+        $request->valorTotalItemCompra = str_replace('.', '', $request->valorTotalItemCompra);
+        $request->valorTotalItemCompra = str_replace(',', '.', $request->valorTotalItemCompra);
+
         $validator = Validator::make(
             $request->all(),
             [

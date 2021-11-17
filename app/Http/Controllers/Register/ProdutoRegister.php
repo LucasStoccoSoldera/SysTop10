@@ -19,6 +19,14 @@ class ProdutoRegister extends Controller
     protected function createProduto(Request $request)
     {
 
+        $request->PCProduto = str_replace('R$ ', '', $request->PCProduto);
+        $request->PCProduto = str_replace('.', '', $request->PCProduto);
+        $request->PCProduto = str_replace(',', '.', $request->PCProduto);
+
+        $request->PVProduto = str_replace('R$ ', '', $request->PVProduto);
+        $request->PVProduto = str_replace('.', '', $request->PVProduto);
+        $request->PVProduto = str_replace(',', '.', $request->PVProduto);
+
         $request->PersoProduto = (!isset($request->PersoProduto))? 'Não' : 'Sim';
         $request->TerceProduto = (!isset($request->TerceProduto))? 'Não' : 'Sim';
 
