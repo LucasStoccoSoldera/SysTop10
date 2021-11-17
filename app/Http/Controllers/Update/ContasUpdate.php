@@ -28,6 +28,15 @@ class ContasUpdate extends Controller
      */
     protected function updatePagar(Request $request)
     {
+
+        $request->valorContasUp = str_replace('R$ ', '', $request->valorContasUp);
+        $request->valorContasUp = str_replace('.', '', $request->valorContasUp);
+        $request->valorContasUp = str_replace(',', '.', $request->valorContasUp);
+
+        $request->valorfContasUp = str_replace('R$ ', '', $request->valorfContasUp);
+        $request->valorfContasUp = str_replace('.', '', $request->valorfContasUp);
+        $request->valorfContasUp = str_replace(',', '.', $request->valorfContasUp);
+
         $ontem = Carbon::now()->subDay();
 
         $validator = Validator::make(

@@ -137,6 +137,15 @@ class CompraUpdate extends Controller
 
     protected function updateItemCompra(Request $request)
     {
+
+        $request->valorItemCompraUp = str_replace('R$ ', '', $request->valorItemCompraUp);
+        $request->valorItemCompraUp = str_replace('.', '', $request->valorItemCompraUp);
+        $request->valorItemCompraUp = str_replace(',', '.', $request->valorItemCompraUp);
+
+        $request->valorTotalItemCompraUp = str_replace('R$ ', '', $request->valorTotalItemCompraUp);
+        $request->valorTotalItemCompraUp = str_replace('.', '', $request->valorTotalItemCompraUp);
+        $request->valorTotalItemCompraUp = str_replace(',', '.', $request->valorTotalItemCompraUp);
+
         $validator = Validator::make(
             $request->all(),
             [

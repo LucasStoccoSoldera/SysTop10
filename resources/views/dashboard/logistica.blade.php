@@ -585,6 +585,9 @@
                     className: "text-right"
                 },
             ],
+            "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
         });
         var table_transportadora = $('#tb_transportadora').DataTable({
             paging: true,
@@ -618,6 +621,9 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
         });
         var table_logistica = $('#tb_logistica').DataTable({
             paging: true,
@@ -642,7 +648,10 @@
                     data: "action",
                     className: "text-right"
                 },
-            ]
+            ],
+            "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
         });
 
         $(document).on('click', '[data-dismiss="modal"]',

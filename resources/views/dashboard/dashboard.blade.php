@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-sm-6 text-left">
                                 <h5 class="card-category">Financeiro</h5>
-                                <h2 class="card-title">Saldo - Caixa</h2>
+                                <h2 class="card-title">Saldo - Valores</h2>
                             </div>
                         </div>
                     </div>

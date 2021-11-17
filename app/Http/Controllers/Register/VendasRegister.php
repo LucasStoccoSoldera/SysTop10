@@ -129,6 +129,14 @@ class VendasRegister extends Controller
     protected function createItemVenda(Request $request)
     {
 
+        $request->VUItemVenda = str_replace('R$ ', '', $request->VUItemVenda);
+        $request->VUItemVenda = str_replace('.', '', $request->VUItemVenda);
+        $request->VUItemVenda = str_replace(',', '.', $request->VUItemVenda);
+
+        $request->VTItemVenda = str_replace('R$ ', '', $request->VTItemVenda);
+        $request->VTItemVenda = str_replace('.', '', $request->VTItemVenda);
+        $request->VTItemVenda = str_replace(',', '.', $request->VTItemVenda);
+
         $validator = Validator::make(
             $request->all(),
             [
@@ -173,7 +181,7 @@ class VendasRegister extends Controller
         $Venda_Detalhe->det_valor_total = $request->VTItemVenda;
         $Venda_Detalhe->save();
 
-        $Contas_a_Receber = Contas_a_Receber::select('rec_ven_id', '=', $request->IDItemVenda);
+        $Contas_a_Receber = Contas_a_Receber::where('rec_ven_id', '=', $request->IDItemVenda);
         $Contas_a_Receber->rec_valor_final = $request->VTItemVenda;
         $Contas_a_Receber->save();
 

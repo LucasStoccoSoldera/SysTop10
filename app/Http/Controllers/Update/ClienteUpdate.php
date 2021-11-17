@@ -41,6 +41,7 @@ class ClienteUpdate extends Controller
                 'ruaClienteUp' => ['required'],
                 'ncasaClienteUp' => ['required'],
                 'complementoClienteUp' => ['required'],
+                'dtNascClienteUp' => ['required'],
             ],
             [
                 'nomeCliente.requiredUp' => 'Nome completo obrigatório.',
@@ -57,6 +58,7 @@ class ClienteUpdate extends Controller
                 'ruaCliente.requiredUp' => 'Rua obrigatória.',
                 'ncasaCliente.requiredUp' => 'Número obrigatório.',
                 'complementoCliente.requiredUp' => 'Complemento obrigatório.',
+                'dtNascClienteUp.required' => 'Dt. Nasc. obrigatória.',
             ]
         );
 
@@ -167,6 +169,7 @@ class ClienteUpdate extends Controller
             $Cliente->cli_cpf_cnpj = $request->cnpjClienteUp;
             }
             $Cliente->cli_telefone = $request->telefoneClienteUp;
+            $Cliente->cli_dtnasc = $request->dtNascClienteUp;
             $Cliente->cli_celular = $request->celularClienteUp;
             $Cliente->cli_cep = $request->cepClienteUp;
             $Cliente->cli_cidade = $request->cidadeClienteUp;

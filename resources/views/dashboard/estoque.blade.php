@@ -70,70 +70,6 @@
 @endsection
 @section('content')
     <div class="content">
-        <div class="col-12">
-            <div class="row">
-                <div class="card">
-                    <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
-                        enctype="multipart/form-data" action="{{ route('admin.filtro.estoque') }}">
-                        @csrf
-                        <div class="card-header">
-                            <h2 class="card-title">Filtrar Produtos no Estoque</h2>
-                        </div>
-                        <div class="col-12">
-
-                            <div class="col-4 float-left">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Produto (Código):</label>
-                                    <input type="text" name="pro_id" id="txt_produto" maxlength="25"
-                                        value="{{ old('txt_produto') }}" class="filtro form-control">
-                                </div>
-                            </div>
-
-                            <div class="col-4 float-left">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label"
-                                        style="float: left; margin-right: 100%;   ">Quantidade:</label>
-                                    <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
-                                        value="{{ old('txt_fil') }}"
-                                        style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
-                                        <option value="">...</option>
-                                        <option value="1">
-                                            <= </option>
-                                        <option value="2"> =</option>
-                                        <option value="3">>=</option>
-                                    </select>
-                                    <input type="number" name="est_qtde" id="txt_qtde" maxlength="6"
-                                        value="{{ old('txt_qtde') }}" class="filtro form-control"
-                                        style="width: 80% !important;float:right;">
-                                </div>
-                            </div>
-
-                            <div class="col-4 float-left">
-                                <div class="form-group" id="form-group">
-                                    <label class="modal-label">Dimensão:</label>
-                                    <select type="text" name="dim_id" id="txt_dimensao" class="filtro form-control"
-                                        value="{{ old('txt_centro') }}">
-                                        <option value="">Selecione</option>
-                                        @foreach ($dimensoes as $dimensao)
-                                            <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-primary"
-                                            id="btn-form-consulta">Filtrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="col-12 justify-content-center">
         <div class="row">
@@ -193,6 +129,71 @@
             </div>
         </div>
     </div>
+
+    <div class="col-12">
+        <div class="row">
+            <div class="card">
+                <form class="form-filtro" id="formFilter" method="POST" autocomplete="off"
+                    enctype="multipart/form-data" action="{{ route('admin.filtro.estoque') }}">
+                    @csrf
+                    <div class="card-header">
+                        <h2 class="card-title">Filtrar Produtos no Estoque</h2>
+                    </div>
+                    <div class="col-12">
+
+                        <div class="col-4 float-left">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Produto (Código):</label>
+                                <input type="text" name="pro_id" id="txt_produto" maxlength="25"
+                                    value="{{ old('txt_produto') }}" class="filtro form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-4 float-left">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label"
+                                    style="float: left; margin-right: 100%;   ">Quantidade:</label>
+                                <select type="text" name="txt_fil" id="txt_fil" class="filtro form-control"
+                                    value="{{ old('txt_fil') }}"
+                                    style="width: 15% !important; float:left;margin-bottom: 0px;padding: 0px 0px 0px 0px;">
+                                    <option value="">...</option>
+                                    <option value="1">
+                                        <= </option>
+                                    <option value="2"> =</option>
+                                    <option value="3">>=</option>
+                                </select>
+                                <input type="number" name="est_qtde" id="txt_qtde" maxlength="6"
+                                    value="{{ old('txt_qtde') }}" class="filtro form-control"
+                                    style="width: 80% !important;float:right;">
+                            </div>
+                        </div>
+
+                        <div class="col-4 float-left">
+                            <div class="form-group" id="form-group">
+                                <label class="modal-label">Dimensão:</label>
+                                <select type="text" name="dim_id" id="txt_dimensao" class="filtro form-control"
+                                    value="{{ old('txt_centro') }}">
+                                    <option value="">Selecione</option>
+                                    @foreach ($dimensoes as $dimensao)
+                                        <option value="{{ $dimensao['id'] }}">{{ $dimensao['dim_descricao'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary"
+                                        id="btn-form-consulta">Filtrar</button>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="row">
         <div class="col-12">
@@ -560,6 +561,9 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_produto_estoque = $('#tb_produto_estoque').DataTable({
                 paging: false,
@@ -589,6 +593,9 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
 
             $(document).on('click', '[data-dismiss="modal"]',

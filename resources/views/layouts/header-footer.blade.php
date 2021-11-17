@@ -174,7 +174,6 @@
     </div>
 
     @yield('sub-menu')
-
     <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
             <a href="#" data-toggle="dropdown">
@@ -198,13 +197,16 @@
                     <span class="badge dark-badge ml-2"></span>
                     <span class="color-label">TEMA ESCURO</span>
                 </li>
+
                 <li class="button-container">
-                    <center> <a href="#" data-toggle="modal"
-                            data-target="#modalConfig" class="btn btn-primary btn-block btn-round"
-                            id="btn-center">Configurações</a>
+                    <center>
 
                             <a href="../doc/manual.pdf" download class="btn btn-primary btn-block btn-round"
                             id="btn-center">Manual</a>
+
+                            <a href="#" data-toggle="modal"
+                            data-target="#modalLGPD" class="btn btn-primary btn-block btn-round"
+                            id="btn-center">LGPD</a>
 
                         <a href="http://localhost/FLEX/FLEX/index.html"
                             target="_blank" class="btn btn-default btn-block btn-round" id="btn-center">
@@ -315,6 +317,32 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+            <div class="modal fade" id="modalLGPD" style="display: none; top: 10%;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color: var(--orange);">
+                            <h4 class="modal-title">LGPD</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div style="text-align: center;">
+                                        <label class="modal-label" style="font-size: 18px; padding 0px;"> Este sistema compactua com a nova Lei Geral de Proteção de Dados, <br>
+                                            garantindo assim a integridade das informações <br>aqui armazenadas e seu correto manusei,<br> compartilhamento de dados e segurança.<br>
+                                        <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2018/Lei/L13709.htm" target="__blank" style="color: var(--orange);">Norma Completa +</a></label>
+                                        <div class="modal-footer" style="justify-content:center;">
+                                            <center><button type="submit" class="btn btn-secondary" data-dismiss="modal"
+                                                style="background-color: var(--orange);background-image:none;padding 0px; width: 125px; height:50px;margin-left:10px;">Entendido!</button></center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="modal fade" id="modalPivo" hidden>
             </div>
@@ -343,6 +371,7 @@
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.0.1/b-html5-2.0.1/b-print-2.0.1/fh-3.2.0/datatables.min.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.0/js/dataTables.fixedHeader.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.1/jquery.maskMoney.min.js"></script>
 
         <script>
 
@@ -411,10 +440,18 @@
         <script>
             $(document).ready(function() {
 
+                    $('.dinheiro').maskMoney({
+                    prefix:'R$ ',
+                    allowNegative: true,
+                    thousands:'.', decimal:',',
+                    affixesStay: true, reverse: true});
+
                 $('.porcentagem').mask('#0%');
-                $('.dinheiro').mask('#0.00', {
-                    reverse: true
-                });
+
+           //     $('.dinheiro').mask('#0.00', {
+           //         reverse: true
+           //     });
+
                 $('.cpf').mask('000.000.000-00');
                 $('.cnpj').mask('00.000.000/0000-00');
                 $('.rg').mask('00.000.000-0');

@@ -21,6 +21,11 @@ class ContasaReceberRegister extends Controller
     protected function createReceber(Request $request)
     {
 
+        $request->valorReceber = str_replace('R$ ', '', $request->valorReceber);
+        $request->valorReceber = str_replace('.', '', $request->valorReceber);
+        $request->valorReceber = str_replace(',', '.', $request->valorReceber);
+
+
         $ontem = Carbon::now()->subDay();
 
         $validator = Validator::make(

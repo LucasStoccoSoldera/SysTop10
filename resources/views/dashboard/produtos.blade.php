@@ -1542,6 +1542,9 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_tipo_produto = $('#tb_tipo_produto').DataTable({
                 paging: true,
@@ -1560,7 +1563,10 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_material = $('#tb_material').DataTable({
                 paging: true,
@@ -1579,7 +1585,10 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_dimensao = $('#tb_dimensao').DataTable({
                 paging: true,
@@ -1598,7 +1607,10 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_cor = $('#tb_cor').DataTable({
                 paging: true,
@@ -1620,7 +1632,10 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
             var table_pacote = $('#tb_pacote').DataTable({
                 paging: true,
@@ -1642,7 +1657,10 @@
                         data: "action",
                         className: "text-right"
                     },
-                ]
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
             });
 
             $(document).on('click', '[data-dismiss="modal"]',

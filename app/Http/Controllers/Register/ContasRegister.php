@@ -24,6 +24,14 @@ class ContasRegister extends Controller
     protected function createPagar(Request $request)
     {
 
+        $request->valorContas = str_replace('R$ ', '', $request->valorContas);
+        $request->valorContas = str_replace('.', '', $request->valorContas);
+        $request->valorContas = str_replace(',', '.', $request->valorContas);
+
+        $request->valorfContas = str_replace('R$ ', '', $request->valorfContas);
+        $request->valorfContas = str_replace('.', '', $request->valorfContas);
+        $request->valorfContas = str_replace(',', '.', $request->valorfContas);
+
         $ontem = Carbon::now()->subDay();
 
         $validator = Validator::make(

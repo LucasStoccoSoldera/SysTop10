@@ -100,15 +100,15 @@
                     <div>
                         <div class="col-auto justify-content-md-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">Rec. este Ano (R$):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado1 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $dado1)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">Rec. este Mês (R$):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado2 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $dado2)}}</h3>
                         </div>
                         <div class="col-auto justify-content-center float-left">
                             <h4 class="resumo" style="color: #2caeec;">Rec. Hoje (R$):</h4>
-                            <h3 class="dados-resumo" style="color: #2caeec;">{{ $dado3 }}</h3>
+                            <h3 class="dados-resumo" style="color: #2caeec;">{{'R$ ' .  str_replace('.', ',', $dado3)}}</h3>
                         </div>
                     </div>
                 </div>
@@ -641,7 +641,11 @@
                     'excelHtml5',
                     'csvHtml5',
                     'pdfHtml5'
-                ],});
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
+            });
 
                     $("#modalShowParcelas").modal('toggle');
         });
@@ -702,6 +706,9 @@
                     'csvHtml5',
                     'pdfHtml5'
                 ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                },
         });
 
         $(document).on('click', '[data-dismiss="modal"]',

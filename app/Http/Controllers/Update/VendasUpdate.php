@@ -140,6 +140,15 @@ class VendasUpdate extends Controller
 
     protected function updateItemVenda(Request $request)
     {
+
+        $request->VUItemVendaUp = str_replace('R$ ', '', $request->VUItemVendaUp);
+        $request->VUItemVendaUp = str_replace('.', '', $request->VUItemVendaUp);
+        $request->VUItemVendaUp = str_replace(',', '.', $request->VUItemVendaUp);
+
+        $request->VTItemVendaUp = str_replace('R$ ', '', $request->VTItemVendaUp);
+        $request->VTItemVendaUp = str_replace('.', '', $request->VTItemVendaUp);
+        $request->VTItemVendaUp = str_replace(',', '.', $request->VTItemVendaUp);
+
         $validator = Validator::make(
             $request->all(),
             [
